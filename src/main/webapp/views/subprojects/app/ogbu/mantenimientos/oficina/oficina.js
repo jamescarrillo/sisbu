@@ -8,7 +8,7 @@ var beanRequestOficina = new BeanRequest();
 document.addEventListener("DOMContentLoaded", function () {
 
     //INICIALIZANDO VARIABLES DE SOLICITUD
-    beanRequestOficina.entity_api = "api/oficinas";
+    beanRequestOficina.entity_api = "oficinas";
     beanRequestOficina.operation = "paginate";
     beanRequestOficina.type_request = "GET";
 
@@ -63,7 +63,7 @@ function processAjaxOficina() {
         }
     }
     $.ajax({
-        url: getHostAPI() + beanRequestOficina.entity_api + "/" + beanRequestOficina.operation + parameters_pagination,
+        url: getHostAndContextAPI() + beanRequestOficina.entity_api + "/" + beanRequestOficina.operation + parameters_pagination,
         type: beanRequestOficina.type_request,
         headers: {
             //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
@@ -103,8 +103,8 @@ function toListOficina(beanPagination) {
             row += "idoficina='" + oficina.idoficina + "' ";
             row += ">";
             row += "<td class='align-middle'>" + oficina.nombre + "</td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-secondary btn-xs editar-oficina' data-toggle='tooltip' title='Editar'><i class='icon icon-company icon-fw'></i></button></td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-secondary btn-xs eliminar-oficina' data-toggle='tooltip' title='Eliminar'><i class='icon icon-company icon-fw'></i></button></td>";
+            row += "<td class='text-center align-middle'><button class='btn btn-outline-primary btn-xs editar-oficina' data-toggle='tooltip' title='Editar'><i class='icon icon-editors icon-sisbu'></i></button></td>";
+            row += "<td class='text-center align-middle'><button class='btn btn-outline-primary btn-xs eliminar-oficina' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-sisbu'></i></button></td>";
             row += "</tr>";
             document.querySelector("#tbodyOficina").innerHTML += row;
         });

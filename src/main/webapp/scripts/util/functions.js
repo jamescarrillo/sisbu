@@ -14,8 +14,8 @@ function keysCOOKIES() {
 }
 
 function getContextAPP() {
-    return "/";
-    //return "/needu/";
+    //return "/";
+    return "/sisbu/";
 }
 
 function parseJwt(token) {

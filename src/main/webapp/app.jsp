@@ -29,8 +29,10 @@
         <!-- Load Styles -->
         <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/owl.carousel/dist/assets/owl.carousel.min.css">
         <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/chartist/dist/chartist.min.css">
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/semidark-style-1.min.css">
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/light-style-10.min.css">
         <!-- /load styles -->
+        
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles_sisbu.css">
 
     </head>
     <body class="dt-sidebar--fixed dt-header--fixed">
@@ -1625,6 +1627,13 @@
         <!-- Perfect Scrollbar jQuery -->
         <script src="<%=request.getContextPath()%>/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
         <!-- /perfect scrollbar jQuery -->
+        
+        
+        <!--JS COMPLEMENTS-->
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_alerts.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_operational.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/configuration_api.js"></script>
 
         <!-- masonry script -->
         <script src="<%=request.getContextPath()%>/plugins/masonry-layout/dist/masonry.pkgd.min.js"></script>
@@ -1638,13 +1647,7 @@
         <script src="<%=request.getContextPath()%>/assets/js/custom/charts/dashboard-listing.js"></script>
 
         <script src="<%=request.getContextPath()%>/plugins/jquery-pagination/jquery.Pagination.min.js"></script>
-
-
-        <!--JS COMPLEMENTS-->
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions.js"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_alerts.js"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_operational.js"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/configuration_api.js"></script>
+        
 
         <!--script src="<%out.print(request.getContextPath());%>/scripts/session/change.cookie.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/session/js.cookie.js"></script>

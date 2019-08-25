@@ -12,7 +12,7 @@
 
             <!-- Card Header -->
             <div class="card-header bg-transparent">
-                <h4 class="mb-0" id="titleManagerOficina">[ 2 ] OFICINAS</h4>
+                <h4 class="mb-0" id="titleManagerOficina">[ 0 ] OFICINAS</h4>
                 <input type="hidden" id="pageOficina" value="1">
             </div>
             <!-- /card header -->
@@ -22,28 +22,33 @@
                 <form id="FrmOficina">
                     <div class="input-group">
                         <input type="text" id="txtFilterOficina" class="form-control form-control-sm" placeholder="FILTRO. . .">
-                        <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-company icon-fw"></i> BUSCAR</button>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewOficina"><i class="icon icon-company icon-fw"></i></button>
+                        <div class="input-group-prepend">
+                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-sisbu"></i> BUSCAR</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewOficina"><i class="icon icon-plus icon-sisbu"></i></button>
+                        </div>
                     </div>
                 </form>
-                <!-- Tables -->
-                <div class="table-responsive">
-                    <table class="table mb-0">
-                        <thead>
-                            <tr>
-                                <th class="text-uppercase" scope="col" >NOMBRE</th>
-                                <th class="text-uppercase" scope="col" colspan="2" style="width: 20%">ACCION</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbodyOficina">
-                        </tbody>
-                    </table>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <!-- Tables -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-sm mb-0">
+                                <thead class="bg-primary">
+                                    <tr>
+                                        <th class="text-uppercase text-white" scope="col" >NOMBRE</th>
+                                        <th class="text-uppercase text-white text-center" scope="col" colspan="2" style="width: 20%">ACCION</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyOficina">
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /tables -->
+                    </div>
                 </div>
-                <!-- /tables -->
-
                 <div class="row mt-2">
                     <div class="col-md-2 col-sm-3 col-4">
-                        <select id="sizePageOficina" class="form-control form-control-sm select2-single">
+                        <select id="sizePageOficina" class="form-control form-control-sm select-pagination sisbu-cursor-mano">
                             <option value="10">10</option>
                             <option value="15">15</option>
                             <option value="20">20</option>
