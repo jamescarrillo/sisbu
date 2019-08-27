@@ -220,46 +220,238 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/index/index.js" + version_project
         });
         this.list_resources.add(resource);
-        
+
         //SERVICIOS
         //ENFERMERÍA
+        ///pacientes
         resource = new Resource();
-        resource.setUrl("/app/servicios/enfermeria");
-        resource.setPath("/views/subprojects/app/servicios/enfermeria/enfermeria.jsp");
+        resource.setUrl("/app/ogbu/servicios/enfermeria/pacientes");
+        resource.setPath("/views/subprojects/app/servicios/enfermeria/paciente/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/enfermeria/enfermeria.js" + version_project
+            "/views/subprojects/app/servicios/enfermeria/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
+        ///citas
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/enfermeria/citas");
+        resource.setPath("/views/subprojects/app/servicios/enfermeria/cita/cita.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/enfermeria/cita/cita.js" + version_project
+        });
+        this.list_resources.add(resource);
+
         //MEDICO
+        ///pacientes
         resource = new Resource();
-        resource.setUrl("/app/servicios/medico");
-        resource.setPath("/views/subprojects/app/servicios/medico/medico.jsp");
+        resource.setUrl("/app/ogbu/servicios/medico/pacientes");
+        resource.setPath("/views/subprojects/app/servicios/medico/paciente/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/medico/medico.js" + version_project
+            "/views/subprojects/app/servicios/medico/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
+        ///citas
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/medico/citas");
+        resource.setPath("/views/subprojects/app/servicios/medico/cita/cita.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/medico/cita/cita.js" + version_project
+        });
+        this.list_resources.add(resource);
+        
         //ODONTOLOGIA
+        ///pacientes
         resource = new Resource();
-        resource.setUrl("/app/servicios/odontologia");
-        resource.setPath("/views/subprojects/app/servicios/odontologia/odontologia.jsp");
+        resource.setUrl("/app/ogbu/servicios/odontologia/pacientes");
+        resource.setPath("/views/subprojects/app/servicios/odontologia/paciente/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/odontologia/odontologia.js" + version_project
+            "/views/subprojects/app/servicios/odontologia/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
+        ///citas
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/odontologia/citas");
+        resource.setPath("/views/subprojects/app/servicios/odontologia/cita/cita.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/odontologia/cita/cita.js" + version_project
+        });
+        this.list_resources.add(resource);
+        
         //OBSTETRICIA
+        ///pacientes
         resource = new Resource();
-        resource.setUrl("/app/servicios/obstetricia");
-        resource.setPath("/views/subprojects/app/servicios/obstetricia/obstetricia.jsp");
+        resource.setUrl("/app/ogbu/servicios/obstetricia/pacientes");
+        resource.setPath("/views/subprojects/app/servicios/obstetricia/paciente/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/obstetricia/obstetricia.js" + version_project
+            "/views/subprojects/app/servicios/obstetricia/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
-        
-        
+        ///citas
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/obstetricia/citas");
+        resource.setPath("/views/subprojects/app/servicios/obstetricia/cita/cita.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/obstetricia/cita/cita.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //FARMACIA
+        ///unidades de medida
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/farmacia/unidades");
+        resource.setPath("/views/subprojects/app/servicios/farmacia/unidad_medida/unidad_medida.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/farmacia/unidad_medida/unidad_medida.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///categoria
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/farmacia/categorias");
+        resource.setPath("/views/subprojects/app/servicios/farmacia/categoria/categoria.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/farmacia/categoria/categoria.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///productos
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/farmacia/productos");
+        resource.setPath("/views/subprojects/app/servicios/farmacia/producto/producto.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/farmacia/producto/producto.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///entradas
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/farmacia/entradas");
+        resource.setPath("/views/subprojects/app/servicios/farmacia/entrada/entrada.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/farmacia/entrada/entrada.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///salidas
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/farmacia/salidas");
+        resource.setPath("/views/subprojects/app/servicios/farmacia/salida/salida.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/farmacia/salida/salida.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //PSICOPEDAGOGIA
+        ///evaluaciones
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/psicopedagogia/evaluaciones");
+        resource.setPath("/views/subprojects/app/servicios/psicopedagogia/evaluacion/evaluacion.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/psicopedagogia/evaluacion/evaluacion.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///usuarios
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/psicopedagogia/usuarios");
+        resource.setPath("/views/subprojects/app/servicios/psicopedagogia/usuario/usuario.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/psicopedagogia/usuario/usuario.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///asignaciones
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/psicopedagogia/asignaciones");
+        resource.setPath("/views/subprojects/app/servicios/psicopedagogia/asignacion/asignacion.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/psicopedagogia/asignacion/asignacion.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //SOCIAL
+        ///fichas
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/social/fichas");
+        resource.setPath("/views/subprojects/app/servicios/social/ficha/ficha.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/social/ficha/ficha.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///usuarios
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/social/usuarios");
+        resource.setPath("/views/subprojects/app/servicios/social/usuario/usuario.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/social/usuario/usuario.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //COMEDOR UNIVERSITARIO
+        ///comidas
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/comedor/comidas");
+        resource.setPath("/views/subprojects/app/servicios/comedor/comida/comida.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/comedor/comida/comida.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///menus
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/comedor/menus");
+        resource.setPath("/views/subprojects/app/servicios/comedor/menu/menu.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/comedor/menu/menu.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///asistencia
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/comedor/asistencia");
+        resource.setPath("/views/subprojects/app/servicios/comedor/asistencia/asistencia.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/comedor/asistencia/asistencia.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///usuarios
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/comedor/usuarios");
+        resource.setPath("/views/subprojects/app/servicios/comedor/usuario/usuario.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/comedor/usuario/usuario.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //RECREACIÓN Y DEPORTE
+        ///deportes
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/recreacion-deportes/deportes");
+        resource.setPath("/views/subprojects/app/servicios/recreacion-deportes/deporte/deporte.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/recreacion-deportes/deporte/deporte.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///aficiones
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/recreacion-deportes/aficiones");
+        resource.setPath("/views/subprojects/app/servicios/recreacion-deportes/aficion/aficion.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/recreacion-deportes/aficion/aficion.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///fichas
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/recreacion-deportes/fichas");
+        resource.setPath("/views/subprojects/app/servicios/recreacion-deportes/ficha/ficha.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/recreacion-deportes/ficha/ficha.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///usuarios
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/recreacion-deportes/usuarios");
+        resource.setPath("/views/subprojects/app/servicios/recreacion-deportes/usuario/usuario.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/servicios/recreacion-deportes/usuario/usuario.js" + version_project
+        });
+        this.list_resources.add(resource);
+
         //MANTENIMIENTOS
         //CARGOS
         resource = new Resource();
-        resource.setUrl("/app/mantenimientos/cargos");
+        resource.setUrl("/app/ogbu/mantenimientos/cargos");
         resource.setPath("/views/subprojects/app/mantenimientos/cargo/cargo.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/mantenimientos/cargo/cargo.js" + version_project
@@ -267,7 +459,7 @@ public class FilterURL implements Filter {
         this.list_resources.add(resource);
         //PERSONAL
         resource = new Resource();
-        resource.setUrl("/app/mantenimientos/personal");
+        resource.setUrl("/app/ogbu/mantenimientos/personal");
         resource.setPath("/views/subprojects/app/mantenimientos/personal/personal.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/mantenimientos/personal/personal.js" + version_project
@@ -275,7 +467,7 @@ public class FilterURL implements Filter {
         this.list_resources.add(resource);
         //FACULTAD
         resource = new Resource();
-        resource.setUrl("/app/mantenimientos/facultades");
+        resource.setUrl("/app/ogbu/mantenimientos/facultades");
         resource.setPath("/views/subprojects/app/mantenimientos/facultad/facultad.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/mantenimientos/facultad/facultad.js" + version_project
@@ -283,7 +475,7 @@ public class FilterURL implements Filter {
         this.list_resources.add(resource);
         //OFICINAS
         resource = new Resource();
-        resource.setUrl("/app/mantenimientos/oficinas");
+        resource.setUrl("/app/ogbu/mantenimientos/oficinas");
         resource.setPath("/views/subprojects/app/ogbu/mantenimientos/oficina/oficina.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/mantenimientos/oficina/oficina.js" + version_project
@@ -291,7 +483,7 @@ public class FilterURL implements Filter {
         this.list_resources.add(resource);
         //OCUPACIONES
         resource = new Resource();
-        resource.setUrl("/app/mantenimientos/ocupaciones");
+        resource.setUrl("/app/ogbu/mantenimientos/ocupaciones");
         resource.setPath("/views/subprojects/app/mantenimientos/ocupacion/ocupacion.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/mantenimientos/ocupacion/ocupacion.js" + version_project
@@ -299,13 +491,12 @@ public class FilterURL implements Filter {
         this.list_resources.add(resource);
         //UBIGEO
         resource = new Resource();
-        resource.setUrl("/app/mantenimientos/ubigeo");
+        resource.setUrl("/app/ogbu/mantenimientos/ubigeo");
         resource.setPath("/views/subprojects/app/mantenimientos/ubigeo/ubigeo.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/mantenimientos/ubigeo/ubigeo.js" + version_project
         });
         this.list_resources.add(resource);
-        
 
     }
 
