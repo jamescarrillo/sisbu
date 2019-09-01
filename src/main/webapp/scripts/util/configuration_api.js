@@ -5,5 +5,5 @@ function getHostAPI(){
 }
 
 function getHostAndContextAPI(){
-    return "http://localhost:8080/sisbu-backend/";
+    return "http://localhost:8080/sisbu-backend/api/";
 }

@@ -8,10 +8,10 @@ function getDefaultOptionsPagination() {
         totalPages: 10,
         visiblePages: 5,
         initiateStartPageClick: false,
-        first: "<i class='icon icon-company icon-fw' aria-hidden='true'></i>",
-        prev: "<i class='icon icon-company icon-fw aria-hidden='true'></i>",
-        next: "<i class='icon icon-company icon-fw' aria-hidden='true'></i>",
-        last: "<i class='icon icon-company icon-fw' aria-hidden='true'></i>"
+        first: "<i class='icon icon-double-arrow-left icon-sisbu' aria-hidden='true'></i>",
+        prev: "<i class='icon icon-chevrolet-left icon-sisbu' aria-hidden='true'></i>",
+        next: "<i class='icon icon-chevrolet-right icon-sisbu' aria-hidden='true'></i>",
+        last: "<i class='icon icon-double-arrow-right icon-sisbu' aria-hidden='true'></i>"
         
         /*
          * first: "<i class='fa fa-angle-double-left' aria-hidden='true'></i>",
@@ -41,10 +41,10 @@ function getOptionsPagination(count_filter, sizePage, $pageInput, $modalLoanding
                 totalPages: totalPages,
                 visiblePages: 5,
                 initiateStartPageClick: false,
-                first: "<i class='icon icon-company icon-fw' aria-hidden='true'></i>",
-                prev: "<i class='icon icon-company icon-fw' aria-hidden='true'></i>",
-                next: "<i class='icon icon-company icon-fw' aria-hidden='true'></i>",
-                last: "<i class='icon icon-company' aria-hidden='true'></i>",
+                first: "<i class='icon icon-double-arrow-left icon-sisbu' aria-hidden='true'></i>",
+                prev: "<i class='icon icon-chevrolet-left icon-sisbu' aria-hidden='true'></i>",
+                next: "<i class='icon icon-chevrolet-right icon-sisbu' aria-hidden='true'></i>",
+                last: "<i class='icon icon-double-arrow-right icon-sisbu' aria-hidden='true'></i>",
                 onPageClick: function (evt, page) {
                     $pageInput.value = page;
                     $modalLoanding.modal("show");
