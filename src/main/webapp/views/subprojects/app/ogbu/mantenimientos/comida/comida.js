@@ -52,10 +52,12 @@ function processAjaxComida() {
     let json = "";
     if (beanRequestComida.operation === "paginate") {
         parameters_pagination = "?tipo=" + document.querySelector("#txtFilterTipoComida").value;
-        parameters_pagination += "?nombre=" + document.querySelector("#txtFilterComida").value.toUpperCase();
+        parameters_pagination += "&nombre=" + document.querySelector("#txtFilterComida").value.toUpperCase();
         parameters_pagination += "&page=" + document.querySelector("#pageComida").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageComida").value;
+        
     } else {
+      
         parameters_pagination = "";
         if(beanRequestComida.operation === "delete" ){
         parameters_pagination = "/"+comidaSelected.idcomida; 
@@ -82,7 +84,6 @@ function processAjaxComida() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
         $('#modalCargandoComida').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() === "ok") {

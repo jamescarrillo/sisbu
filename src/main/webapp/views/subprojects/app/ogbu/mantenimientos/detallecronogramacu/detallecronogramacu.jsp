@@ -11,7 +11,7 @@
         <div class="card overflow-hidden">
             <!-- Card Header -->
             <div class="card-header bg-transparent">
-                <h4 class="mb-0" id="titleManagerMenuSemanal">[ 2 ] MENUSEMANAL</h4>
+                <h4 class="mb-0" id="titleManagerMenuSemanal">[ 2 ] DETLLE CRONOGRAMA</h4>
                 <input type="hidden" id="pageMenuSemanal" value="1">
             </div>
             <!-- /card header -->
@@ -76,17 +76,58 @@
                             <label for="txtDescripcionMenuSemanal">DESCRIPCION</label>
                             <input class="form-control form-control-sm" id="txtDescripcionMenuSemanal" type="text" placeholder="DESCRIPCION">
                         </div>
-                        <div class="form-group col-12">
-                            <label for="txtTipoMenuSemanal">TIPO</label>
+                         <div class="form-group col-12">
+                            <label for="txtTipoMenuSemanal">MENU SEMANAL</label>
                             <select class="custom-select" id="txtTipoMenuSemanal">
-                                            <option selected="0" value="0">seleccione...</option>
-                                            <option value="1">SEGUNDO</option>
-                                            <option value="2">BEBIDA</option>
-                                            <option value="3">POSTRE</option>
-                                            <option value="4">SOPA</option>
-                                        </select>
+                                <option selected="0" value="0">seleccione...</option>
+                                <option value="1">SEGUNDO</option>
+                                <option value="2">BEBIDA</option>
+                                <option value="3">POSTRE</option>
+                                <option value="4">SOPA</option>
+                            </select>
                         </div>
+                        <div class="form-group col-12">
+                            <label for="txtTipoMenuSemanal">DÍA</label>
+                            <select class="custom-select" id="txtTipoMenuSemanal">
+                                <option selected="0" value="0">seleccione...</option>
+                                <option value="1">LUNES</option>
+                                <option value="2">MARTES</option>
+                                <option value="3">MIÉRCOLES</option>
+                                <option value="4">JUEVES</option>
+                                <option value="5">VIERNES</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="txtTipoMenuSemanal">COMIDA</label>
+                            <select class="custom-select" id="txtTipoMenuSemanal">
+                                <option selected="0" value="0">seleccione...</option>
+                                <option value="1">SEGUNDO</option>
+                                <option value="2">BEBIDA</option>
+                                <option value="3">POSTRE</option>
+                                <option value="4">SOPA</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-12 text-center">
+                        <button type="submit" id="btnAgregar" 
+                                class="btn btn-outline-primary btn-sm "
+                                ><i class="fa fa-floppy-o"></i> Agregar a la lista</button>
+                                </div>
                     </div>
+                    <!-- Tables -->
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase" scope="col" >TIPO</th>
+                                    <th class="text-uppercase" scope="col" >DESCRIPCION</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyMenuSemanal">
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /tables -->
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>

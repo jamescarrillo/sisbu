@@ -19,8 +19,8 @@
                 <form id="FrmComida">
                     <div class="input-group">
                         <select class="custom-select " id="txtFilterTipoComida">
-                            <option selected="0" value="">seleccione tipo...</option>
-                            <option value="1">SEGUNDO</option>
+                            <option value="">seleccione tipo...</option>
+                            <option selected  value="1">SEGUNDO</option>
                             <option value="2">BEBIDA</option>
                             <option value="3">POSTRE</option>
                             <option value="4">SOPA</option>
