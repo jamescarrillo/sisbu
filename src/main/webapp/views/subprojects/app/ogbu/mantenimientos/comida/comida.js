@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestComida.type_request = "GET";
 
     $('#FrmComida').submit(function (event) {
+        beanRequestComida.operation = "paginate";
+        beanRequestComida.type_request = "GET";
         $('#modalCargandoComida').modal('show');
         event.preventDefault();
         event.stopPropagation();
@@ -50,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function processAjaxComida() {
     let parameters_pagination = "";
     let json = "";
-    if (beanRequestComida.operation === "paginate") {
+    if (beanRequestComida.operation == "paginate") {
         parameters_pagination = "?tipo=" + document.querySelector("#txtFilterTipoComida").value;
         parameters_pagination += "&nombre=" + document.querySelector("#txtFilterComida").value.toUpperCase();
         parameters_pagination += "&page=" + document.querySelector("#pageComida").value;
@@ -59,7 +61,7 @@ function processAjaxComida() {
     } else {
       
         parameters_pagination = "";
-        if(beanRequestComida.operation === "delete" ){
+        if(beanRequestComida.operation == "delete" ){
         parameters_pagination = "/"+comidaSelected.idcomida; 
         json={};
         }else{
@@ -67,7 +69,7 @@ function processAjaxComida() {
             "descripcion": document.querySelector("#txtDescripcionComida").value,
             "tipo": document.querySelector("#txtTipoComida").value
         };
-        if (beanRequestComida.operation === "update" ) {
+        if (beanRequestComida.operation == "update" ) {
             json.idcomida = comidaSelected.idcomida;
         }   
         }
@@ -86,7 +88,7 @@ function processAjaxComida() {
     }).done(function (beanCrudResponse) {
         $('#modalCargandoComida').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
-            if (beanCrudResponse.messageServer.toLowerCase() === "ok") {
+            if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
                 $('#ventanaModalComida').modal('hide');
             } else {
@@ -127,7 +129,7 @@ function toListComida(beanPagination) {
                 $('#modalCargandoComida'),
                 $('#paginationComida'));
         addEventsComidaes();
-        if (beanRequestComida.operation === "paginate") {
+        if (beanRequestComida.operation == "paginate") {
             document.querySelector("#txtFilterComida").focus();
         }
         $('[data-toggle="tooltip"]').tooltip();
@@ -142,6 +144,7 @@ function addEventsComidaes() {
     document.querySelectorAll('.editar-comida').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
+            console.log(btn.parentElement.parentElement.getAttribute('idcomida'));
             comidaSelected = findByComida(btn.parentElement.parentElement.getAttribute('idcomida'));
             if (comidaSelected != undefined) {
                 beanRequestComida.operation = "update";
@@ -172,7 +175,7 @@ function addEventsComidaes() {
 function findByComida(idcomida) {
     let comida_;
     beanPaginationComida.list.forEach(comida => {
-        if (idcomida === comida.idcomida) {
+        if (idcomida == comida.idcomida) {
             comida_ = comida;
             return;
         }
@@ -181,11 +184,11 @@ function findByComida(idcomida) {
 }
 
 function validateFormComida() {
-    if (document.querySelector("#txtDescripcionComida").value === "") {
+    if (document.querySelector("#txtDescripcionComida").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese descripcion');
         document.querySelector("#txtDescripcionComida").focus();
         return false;
-    }else  if (document.querySelector("#txtTipoComida").value === 0) {
+    }else  if (document.querySelector("#txtTipoComida").value == 0) {
         showAlertTopEnd('warning', 'Por favor ingrese tipo ');
         document.querySelector("#txtTipoComida").focus();
         return false;

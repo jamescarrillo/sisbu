@@ -11,7 +11,7 @@
         <div class="card overflow-hidden">
             <!-- Card Header -->
             <div class="card-header bg-transparent">
-                <h4 class="mb-0" id="titleManagerMenuSemanal">[ 2 ] DETLLE CRONOGRAMA</h4>
+                <h4 class="mb-0" id="titleManagerMenuSemanal">[ 2 ] DETALLE CRONOGRAMA</h4>
                 <input type="hidden" id="pageMenuSemanal" value="1">
             </div>
             <!-- /card header -->
@@ -60,8 +60,9 @@
         <!-- /card -->
     </div>
 </div>
-<div class="modal fade" id="ventanaModalMenuSemanal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="ventanaModalMenuSemanal" data-backdrop="static"
+     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <form id="FrmMenuSemanalModal">
                 <div class="modal-header">
@@ -72,11 +73,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
+
                         <div class="form-group col-12">
                             <label for="txtDescripcionMenuSemanal">DESCRIPCION</label>
                             <input class="form-control form-control-sm" id="txtDescripcionMenuSemanal" type="text" placeholder="DESCRIPCION">
                         </div>
-                         <div class="form-group col-12">
+                        <div class="form-group col-12">
                             <label for="txtTipoMenuSemanal">MENU SEMANAL</label>
                             <select class="custom-select" id="txtTipoMenuSemanal">
                                 <option selected="0" value="0">seleccione...</option>
@@ -88,7 +90,7 @@
                         </div>
                         <div class="form-group col-12">
                             <label for="txtTipoMenuSemanal">DÍA</label>
-                            <select class="custom-select" id="txtTipoMenuSemanal">
+                            <select class="custom-select" id="txtDiaMenuSemanal">
                                 <option selected="0" value="0">seleccione...</option>
                                 <option value="1">LUNES</option>
                                 <option value="2">MARTES</option>
@@ -97,36 +99,70 @@
                                 <option value="5">VIERNES</option>
                             </select>
                         </div>
+
+                        <hr>
+
                         <div class="form-group col-12">
-                            <label for="txtTipoMenuSemanal">COMIDA</label>
-                            <select class="custom-select" id="txtTipoMenuSemanal">
-                                <option selected="0" value="0">seleccione...</option>
-                                <option value="1">SEGUNDO</option>
-                                <option value="2">BEBIDA</option>
-                                <option value="3">POSTRE</option>
-                                <option value="4">SOPA</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-12 text-center">
-                        <button type="submit" id="btnAgregar" 
-                                class="btn btn-outline-primary btn-sm "
-                                ><i class="fa fa-floppy-o"></i> Agregar a la lista</button>
+                            <label  for="txtTipoMenuSemanal">COMIDA</label>
+                            <div class="col-12 pr-0 pl-0">
+                                <select class="custom-select col-lg-2 col-sm-6" id="txtDiaComida">
+                                    <option value="">seleccione tipo...</option>
+                                    <option selected  value="1">DESAYUNO</option>
+                                    <option value="2">ALMUERZO</option>
+                                    <option value="3">CENA</option>
+                                </select>
+                                <select class="custom-select col-lg-2 col-sm-6" id="txtFilterTipoComida"style="margin-right: -9px;">
+                                    <option value="">seleccione tipo...</option>
+                                    <option selected  value="1">SEGUNDO</option>
+                                    <option value="2">BEBIDA</option>
+                                    <option value="3">POSTRE</option>
+                                    <option value="4">SOPA</option>
+                                </select>
+
+                                <div class="dropdown col-lg-8 col-sm-12 pr-0 pl-0 d-inline-block" >
+                                    <!-- Dropdown Link -->
+                                    <button  type="button" 
+                                            class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                            data-toggle="dropdown"  style="width:100%"
+                                            aria-haspopup="true" aria-expanded="false" data-reference="parent">
+                                        <span id="txtComidaMenuSemanal" class="sr-only-focusable float-left" style="width:90%">FILTRAR... </span>
+                                    </button>
+                                    <!-- /dropdown link -->
+                                    <!-- Dropdown Menu -->
+                                    <div  class="dropdown-menu col-12" x-placement="bottom-start" >
+                                        <li class="p-1">
+                                            <input class="form-control form-control-sm" id="txtFilterComida" 
+                                                               type="text" placeholder="Filter..."></li>   
+
+                                        <div id="ResultadoComida"> 
+                                        </div>
+                                    </div>
+                                    <!-- /dropdown menu -->
+
                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 ">
+                            <!-- Tables -->
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                             <th class="text-uppercase" scope="col" >COMIDA DEL DÍA</th>
+                                            <th class="text-uppercase" scope="col" >TIPO</th>
+                                            <th class="text-uppercase" scope="col" >DESCRIPCION</th>
+                                            <th class="text-uppercase" scope="col" >ACCIÓN</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyComida">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /tables -->
+                        </div>
+
                     </div>
-                    <!-- Tables -->
-                    <div class="table-responsive">
-                        <table class="table mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase" scope="col" >TIPO</th>
-                                    <th class="text-uppercase" scope="col" >DESCRIPCION</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbodyMenuSemanal">
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /tables -->
+
 
                 </div>
                 <div class="modal-footer">
