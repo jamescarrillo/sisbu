@@ -480,6 +480,31 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/mantenimientos/oficina/oficina.js" + version_project
         });
         this.list_resources.add(resource);
+         //DETALLE CRONOGRAMA COMEDOR
+        resource = new Resource();
+        resource.setUrl("/app/mantenimientos/detallecronogramacu");
+        resource.setPath("/views/subprojects/app/ogbu/mantenimientos/detallecronogramacu/detallecronogramacu.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/mantenimientos/detallecronogramacu/detallecronogramacu.js" + version_project
+        });
+        this.list_resources.add(resource);
+          //MENUSEMANAL
+        resource = new Resource();
+        resource.setUrl("/app/mantenimientos/menusemanal");
+        resource.setPath("/views/subprojects/app/ogbu/mantenimientos/menusemanal/menusemanal.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/mantenimientos/menusemanal/menusemanal.js" + version_project
+        });
+        this.list_resources.add(resource);
+        //COMIDAS
+        resource = new Resource();
+        resource.setUrl("/app/mantenimientos/comidas");
+        resource.setPath("/views/subprojects/app/ogbu/mantenimientos/comida/comida.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/mantenimientos/comida/comida.js" + version_project
+        });
+        this.list_resources.add(resource);
+       
         //OCUPACIONES
         resource = new Resource();
         resource.setUrl("/app/ogbu/mantenimientos/ocupaciones");
