@@ -63,7 +63,7 @@
                                 <h1 class="dt-login__title" style="font-size: 2.5rem">Inicio de Sesión</h1>
                                 <!-- /login title -->
 
-                                <p class="f-16">Inicie sesión y explore los servicios que ofrece la Oficina General de Bienstar Universitario (OGBU).</p>
+                                <p class="f-16">Inicia sesión y explora los servicios que ofrece la Oficina General de Bienstar Universitario (OGBU).</p>
                             </div>
 
 
@@ -86,20 +86,20 @@
                             <div class="dt-login__content-inner" style="padding-bottom: 10px">
 
                                 <!-- Form -->
-                                <form action="index.html">
+                                <form id="FrmLogin">
 
                                     <!-- Form Group -->
                                     <div class="form-group">
-                                        <label class="sr-only" for="email-1">Email address</label>
-                                        <input type="email" class="form-control" id="email-1" aria-describedby="email-1"
-                                               placeholder="Username">
+                                        <label class="sr-only" for="email-1">Username</label>
+                                        <input type="text" class="form-control" aria-describedby="email-1"
+                                               placeholder="Username" id="txtUsername" name="login">
                                     </div>
                                     <!-- /form group -->
 
                                     <!-- Form Group -->
                                     <div class="form-group">
                                         <label class="sr-only" for="password-1">Password</label>
-                                        <input type="password" class="form-control" id="password-1" placeholder="Password">
+                                        <input type="password" class="form-control" id="txtPass" name="password" placeholder="Password">
                                     </div>
                                     <!-- /form group -->
 
@@ -116,7 +116,7 @@
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary text-uppercase">Ingresar</button>
                                         <span class="d-inline-block ml-4">O
-                                            <a class="d-inline-block font-weight-500 ml-3" href="page-signup.html">Crear una Cuenta</a>
+                                            <a class="d-inline-block font-weight-500 ml-3" href="signup">Crear una Cuenta</a>
                                         </span>
                                     </div>
                                     <!-- /form group -->
@@ -191,6 +191,20 @@
         </div>
         <!-- /root -->
 
+        <div class="modal fade" id="modalCargandoLogin" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="progress" style="margin-bottom: 0px;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                Autenticando. . .
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Optional JavaScript -->
         <script src="<%=request.getContextPath()%>/plugins/jquery/dist/jquery.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/moment/moment.js"></script>
@@ -199,11 +213,22 @@
         <script src="<%=request.getContextPath()%>/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
         <!-- /perfect scrollbar jQuery -->
 
+        <!--JS COMPLEMENTS-->
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_alerts.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_operational.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/configuration_api.js"></script>
+
         <!-- masonry script -->
         <script src="<%=request.getContextPath()%>/plugins/masonry-layout/dist/masonry.pkgd.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/sweetalert2/dist/sweetalert2.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/functions.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/customizer.js"></script>
+        
+        <script src="<%out.print(request.getContextPath());%>/scripts/session/change.cookie.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/session/js.cookie.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.login.js"></script>
+        
         <!-- Custom JavaScript -->
         <script src="<%=request.getContextPath()%>/assets/js/script.js"></script>
         <%
