@@ -101,8 +101,8 @@
                                 <!-- Brand logo -->
                                 <span class="dt-brand__logo">
                                     <a class="dt-brand__logo-link" href="<%=request.getContextPath()%>/index">
-                                        <img class="dt-brand__logo-img d-none d-sm-inline-block" src="<%=request.getContextPath()%>/resources/dev/img/global/logo-plomo.png" alt="Drift">
-                                        <img class="dt-brand__logo-symbol d-sm-none" src="<%=request.getContextPath()%>/resources/dev/img/global/logo-short-plomo.png" alt="Drift">
+                                        <img class="dt-brand__logo-img d-none d-sm-inline-block" src="<%=request.getContextPath()%>/resources/dev/img/global/logo-plomo.png" alt="Logo Sisbu">
+                                        <img class="dt-brand__logo-symbol d-sm-none" src="<%=request.getContextPath()%>/resources/dev/img/global/logo-short-plomo.png" alt="Logo Sisbu">
                                     </a>
                                 </span>
                                 <!-- /brand logo -->

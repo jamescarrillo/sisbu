@@ -9,7 +9,7 @@ function closeSession() {
 }
 
 function keysCOOKIES() {
-    var keys = ["needu_user", "needu_token"];
+    var keys = ["sisbu_user", "sisbu_token"];
     return keys;
 }
 
@@ -32,22 +32,20 @@ function parseJwt(token) {
 }
 
 function setCookieSession(token, user) {
-    Cookies.set('needu_user', user);
-    Cookies.set('needu_token', token);
+    Cookies.set('sisbu_user', user);
+    Cookies.set('sisbu_token', token);
 }
 
 function sendIndex() {
-    let user = Cookies.getJSON("needu_user");
+    let user = Cookies.getJSON("sisbu_user");
     if (user != undefined) {
         switch (user.tipo_usuario) {
-            case "SAD":
-                location.href = getContextAPP() + "app/sad/index";
-                break;
-            case "PRO":
-                location.href = getContextAPP() + "app/pro/index";
-                break;
-            case "ATE":
+            case 1:
+                //ATENDIDO
                 location.href = getContextAPP() + "app/ate/index";
+                break;
+            case 2:
+                location.href = getContextAPP() + "app/ogbu/index";
                 break;
         }
     } else {

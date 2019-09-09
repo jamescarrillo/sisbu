@@ -1,22 +1,24 @@
 //console.log("Validando sessión...");
 //console.image("http://blogs.larioja.com/ganas-de-vivir/wp-content/uploads/sites/48/2018/03/stop.png");
 //console.meme("Seguro me quieres hackear!", "Y solo porque sabes programar.", "Not Sure Fry", 400, 300);
-
-if (Cookies.get("needu_token") === undefined) {
-    location.href = getContextAPP() + "auth/login";
-} else if (parseJwt(Cookies.get("needu_token"))) {
+let contextPah = getContextAPP();
+if (Cookies.get("sisbu_token") === undefined) {
+    location.href = contextPah + "auth/login";
+} else if (parseJwt(Cookies.get("sisbu_token"))) {
     //CARGAMOS LOS DATOS DEL USUARIO
-    let user = Cookies.getJSON('needu_user');
+    let user = Cookies.getJSON('sisbu_user');
     //SET DATOS USER
-    document.querySelectorAll('.user-name').forEach(element => {
-        //element.innerHTML = user.nombre + " " + user.apellido_pat;
-        element.innerHTML = getFullNameShortUser(user);
+    document.querySelectorAll('.name-user-session').forEach(element => {
+        element.innerHTML = getStringCapitalize(user.usuario.toLowerCase());
     });
-    document.querySelectorAll('.user-type').forEach(element => {
+    document.querySelectorAll('.name-type-user-session').forEach(element => {
         element.innerHTML = getStringTipoUsuario(user.tipo_usuario);
     });
+    if (document.querySelector("#title-welcome") != null) {
+        document.querySelector("#title-welcome").innerHTML = "¡Bienvenido " + getStringCapitalize(user.usuario.toLowerCase()) + "!";
+    }
     //ADD ITEMS MENU AL SIDEBAR
-    addMenus(user.tipo_usuario);
+    addMenus(user);
 } else {
     closeSession();
 }
@@ -24,126 +26,491 @@ if (Cookies.get("needu_token") === undefined) {
 function getStringTipoUsuario(tipo_usuario) {
     let st = "";
     switch (tipo_usuario) {
-        case "PRO":
-            st = "PROFESIONAL";
+        case 1:
+            st = "Usuario UNPRG";
             break;
-        case "ATE":
-            st = "ATENDIDO";
+        case 2:
+            st = "Usuario OGBU";
             break;
         default:
-            st = "SUPER ADMINISTRADOR";
+            st = "User";
             break;
     }
-    st = getStringCapitalize(st.toLowerCase());
+    //st = getStringCapitalize(st.toLowerCase());
     return st;
 }
 
-function addMenus(typeUser) {
-    let contextPah = getContextAPP();
-    let HTML_MENUS;
-    switch (typeUser) {
-        case "SAD":
-            HTML_MENUS =
-                    `
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/index" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-home"></span><span class="mtext">Inicio</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/instituciones" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-user-md"></span><span class="mtext">Instituciones</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/usuarios" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-asterisk"></span><span class="mtext">Usuarios</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/areas/atencion" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-comments-o"></span><span class="mtext">Areas Atención</span>
-                    </a>
-                </li>
-            `;
+function addMenus(usuario) {
+    switch (usuario.tipo_usuario) {
+        case 1:
+
             break;
-        case "PRO":
-            HTML_MENUS =
-                    `
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/index" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-home"></span><span class="mtext">Inicio</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/evaluaciones" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-user-md"></span><span class="mtext">Evaluaciones</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/asignaciones" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-telegram"></span><span class="mtext">Asignaciones</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/citas" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-calendar-check-o"></span><span class="mtext">Citas Virtuales</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/chat" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-comments-o"></span><span class="mtext">Chat</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/areas/atencion" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-cubes"></span><span class="mtext">Mis Areas Atención</span>
-                    </a>
-                </li>
-            `;
+        case 2:
+            //ogbu
+            createHTML_OGBU(usuario.tipo_perfil);
             break;
         default:
-            //ATENDIDO
-            HTML_MENUS =
-                    `
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/index" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-home"></span><span class="mtext">Inicio</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/perfil" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-user-md"></span><span class="mtext">Perfil</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/asignaciones" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-telegram"></span><span class="mtext">Asignaciones</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/sessiones" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-asterisk"></span><span class="mtext">Sessiones</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/chat" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-comments-o"></span><span class="mtext">Chat</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/citas" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-calendar-check-o"></span><span class="mtext">Citas Virtuales</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${contextPah}app/${typeUser.toLowerCase()}/preferencias" class="dropdown-toggle no-arrow">
-                        <span class="fa fa-tags"></span><span class="mtext">Preferencias</span>
-                    </a>
-                </li>
 
-            `;
             break;
     }
-    document.querySelector("#accordion-menu").innerHTML = HTML_MENUS;
+}
+
+function createHTML_OGBU(typeProfile) {
+    //INICIO PARA TODOS
+    document.querySelector("#menus_sisbu").innerHTML =
+            `
+        <!-- Menu Header -->
+        <li class="dt-side-nav__item dt-side-nav__header">
+            <span class="dt-side-nav__text">Dashboard</span>
+        </li>
+        <!-- /menu header -->
+
+        <!-- Menu Item -->
+        <li class="dt-side-nav__item">
+            <a href="javascript:void(0)" class="dt-side-nav__link a-index" title="Inicio">
+                <i class="icon icon-home icon-fw icon-lg"></i>
+                <span class="dt-side-nav__text">Inicio</span>
+            </a>
+        </li>
+        <!-- /menu item -->
+    `;
+    //SERVICIOS
+    ///inicio
+    document.querySelector("#menus_sisbu").innerHTML +=
+            `
+        <!-- Menu Header -->
+        <li class="dt-side-nav__item dt-side-nav__header">
+            <span class="dt-side-nav__text">Servicios</span>
+        </li>
+        <!-- /menu header -->
+    `;
+
+    ////Enfermería
+    if (typeProfile == 0 || typeProfile == 1 || typeProfile == 10) {
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
+            <!-- Menu Item -->
+            <li class="dt-side-nav__item">
+                <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Enfermería">
+                    <i class="icon icon-components icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Enfermería</span>
+                </a>
+                <!-- Sub-menu -->
+                <ul class="dt-side-nav__sub-menu">
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/enfermeria/pacientes" class="dt-side-nav__link" title="Pacientes">
+                            <i class="icon icon-contacts-app icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Pacientes</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/enfermeria/citas" class="dt-side-nav__link" title="Citas">
+                            <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Citas</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /sub-menu -->
+            </li>
+        `;
+    }
+
+    ////medicina
+    if (typeProfile == 0 || typeProfile == 1 || typeProfile == 10 || typeProfile == 11) {
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
+            <li class="dt-side-nav__item">
+                <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Medicina">
+                    <i class="icon icon-customer icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Medicina</span>
+                </a>
+                <!-- Sub-menu -->
+                <ul class="dt-side-nav__sub-menu">
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/medicina/pacientes" class="dt-side-nav__link" title="Pacientes">
+                            <i class="icon icon-contacts-app icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Pacientes</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/medicina/citas" class="dt-side-nav__link" title="Citas">
+                            <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Citas</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /sub-menu -->
+            </li>
+        `;
+    }
+    ////farmacia
+    if (typeProfile == 0 || typeProfile == 1 || typeProfile == 10) {
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
+            <li class="dt-side-nav__item">
+                <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Farmacia">
+                    <i class="icon icon-home icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Farmacia</span>
+                </a>
+                <!-- Sub-menu -->
+                <ul class="dt-side-nav__sub-menu">
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/farmacia/pacientes" class="dt-side-nav__link" title="Pacientes">
+                            <i class="icon icon-contacts-app icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Pacientes</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/farmacia/entradas" class="dt-side-nav__link" title="Entradas de Medicamentos">
+                            <i class="icon icon-arrow-left icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Entradas</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/farmacia/entradas" class="dt-side-nav__link" title="Salidas de Medicamentos">
+                            <i class="icon icon-arrow-right icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Salidas</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /sub-menu -->
+            </li>
+        `;
+    }
+    ////odontologia
+    if (typeProfile == 0 || typeProfile == 1 || typeProfile == 3) {
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
+            <li class="dt-side-nav__item">
+                <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Odontología">
+                    <i class="icon icon-link icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Odontología</span>
+                </a>
+                <!-- Sub-menu -->
+                <ul class="dt-side-nav__sub-menu">
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/odontologia/pacientes" class="dt-side-nav__link" title="Pacientes">
+                            <i class="icon icon-contacts-app icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Pacientes</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/odontologia/citas" class="dt-side-nav__link" title="Citas">
+                            <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Citas</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /sub-menu -->
+            </li>
+        `;
+    }
+    ////obstetricia
+    if (typeProfile == 0 || typeProfile == 1 || typeProfile == 4) {
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
+            <li class="dt-side-nav__item">
+                <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Obstetricia">
+                    <i class="icon icon-contacts-app icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Obstetricia</span>
+                </a>
+                <!-- Sub-menu -->
+                <ul class="dt-side-nav__sub-menu">
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/obstetricia/pacientes" class="dt-side-nav__link" title="Pacientes">
+                            <i class="icon icon-contacts-app icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Pacientes</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/obstetricia/citas" class="dt-side-nav__link" title="Citas">
+                            <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Citas</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /sub-menu -->
+            </li>
+        `;
+    }
+    ////Psicopedagogía
+    if (typeProfile == 0 || typeProfile == 1 || typeProfile == 11) {
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
+            <li class="dt-side-nav__item">
+                <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Psicopedagogía">
+                    <i class="icon icon-heart-o icon-fw icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Psicopedagogía</span>
+                </a>
+                <!-- Sub-menu -->
+                <ul class="dt-side-nav__sub-menu">
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/psicopedagogia/pacientes" class="dt-side-nav__link" title="Pacientes">
+                            <i class="icon icon-contacts-app icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Pacientes</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/psicopedagogia/citas" class="dt-side-nav__link" title="Citas">
+                            <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Citas</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /sub-menu -->
+            </li>
+        `;
+    }
+    ////social
+    if (typeProfile == 0 || typeProfile == 1 || typeProfile == 11 || typeProfile == 5) {
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
+            <li class="dt-side-nav__item">
+                <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Social">
+                    <i class="icon icon-users icon-fw icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Social</span>
+                </a>
+                <!-- Sub-menu -->
+                <ul class="dt-side-nav__sub-menu">
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/social/fichas" class="dt-side-nav__link" title="Fichas">
+                            <i class="icon icon-list icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Fichas</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/social/usuarios" class="dt-side-nav__link" title="Pacientes">
+                            <i class="icon icon-contacts-app icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Pacientes</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/social/citas" class="dt-side-nav__link" title="Citas">
+                            <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Citas</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/social/reservas-cu" class="dt-side-nav__link" title="Reservas C.U">
+                            <i class="icon icon-list icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Reservas C.U</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/social/convocatorias-cu" class="dt-side-nav__link" title="Convocatorias">
+                            <i class="icon icon-list icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Convocatorias C.U</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /sub-menu -->
+            </li>
+        `;
+    }
+    ////comedor universitario
+    if (typeProfile == 0 || typeProfile == 1 || typeProfile == 5 || typeProfile == 6) {
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
+            <li class="dt-side-nav__item">
+                <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Comedor Universitario">
+                    <i class="icon icon-card-group icon-fw icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Comedor Univ.</span>
+                </a>
+                <!-- Sub-menu -->
+                <ul class="dt-side-nav__sub-menu">
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/social/c-a-cu" class="dt-side-nav__link" title="Control Asistencia del C.U">
+                            <i class="icon icon-collapse icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Control Diario</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/social/asitencia-cu" class="dt-side-nav__link" title="Asistencia">
+                            <i class="icon icon-calendar icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Asistencia</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/social/assitencia-cu" class="dt-side-nav__link" title="Asistencia">
+                            <i class="icon icon-burger icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Comidas</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/social/assitencia-cu" class="dt-side-nav__link" title="Asistencia">
+                            <i class="icon icon-list icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Menus</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /sub-menu -->
+            </li>
+            <!-- /menu item -->
+        `;
+    }
+    ////recreacion y deporte
+    if (typeProfile == 0 || typeProfile == 1 || typeProfile == 7) {
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
+            <li class="dt-side-nav__item">
+                <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Psicopedagogía">
+                    <i class="icon icon-heart-o icon-fw icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Deportes</span>
+                </a>
+                <!-- Sub-menu -->
+                <ul class="dt-side-nav__sub-menu">
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/recreacion-deportes/usuarios" class="dt-side-nav__link" title="Usuarios">
+                            <i class="icon icon-contacts-app icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Usuarios</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/recreacion-deportes/aficiones" class="dt-side-nav__link" title="Aficiones">
+                            <i class="icon icon-crm icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Aficiones</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/recreacion-deportes/deportes" class="dt-side-nav__link" title="Deportes">
+                            <i class="icon icon-customers icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Deportes</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /sub-menu -->
+            </li>
+            <!-- /menu item -->
+        `;
+    }
+    ////mantenimientos seguridad (todos)
+    if (typeProfile == 0 || typeProfile == 1) {
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
+            <!-- Menu Header -->
+            <li class="dt-side-nav__item dt-side-nav__header">
+                <span class="dt-side-nav__text">Mantenimientos</span>
+            </li>
+            <!-- /menu header -->
+
+            <!-- Menu Item -->
+            <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ogbu/mantenimientos/cargos" class="dt-side-nav__link" title="Cargos">
+                    <i class="icon icon-task-manager icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Cargos</span>
+                </a>
+            </li>
+            <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ogbu/mantenimientos/personal" class="dt-side-nav__link" title="Personal">
+                    <i class="icon icon-user-add icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Personal</span>
+                </a>
+            </li>
+            <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ogbu/mantenimientos/oficinas" class="dt-side-nav__link" title="Oficinas">
+                    <i class="icon icon-datatable icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Oficinas</span>
+                </a>
+            </li>
+            <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ogbu/mantenimientos/facultades" class="dt-side-nav__link" title="Facultades">
+                    <i class="icon icon-components icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Facultades</span>
+                </a>
+            </li>
+            <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ogbu/mantenimientos/ubigeo" class="dt-side-nav__link" title="Ubigeo">
+                    <i class="icon icon-maps icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Ubigeo</span>
+                </a>
+            </li>
+            <!-- /menu item -->
+        
+            <!-- Menu Header -->
+            <li class="dt-side-nav__item dt-side-nav__header">
+                <span class="dt-side-nav__text">Seguridad</span>
+            </li>
+            <!-- /menu header -->
+
+            <!-- Menu Item -->
+            <li class="dt-side-nav__item">
+                <a href="basic-form.html" class="dt-side-nav__link" title="Basic Form">
+                    <i class="icon icon-settings icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Perfiles</span>
+                </a>
+            </li>
+            <!-- /menu item -->
+        
+            <!-- Menu Header -->
+            <li class="dt-side-nav__item dt-side-nav__header">
+                <span class="dt-side-nav__text">Configuraciones</span>
+            </li>
+            <!-- /menu header -->
+
+            <!-- Menu Item -->
+            <li class="dt-side-nav__item">
+                <a href="" class="dt-side-nav__link" title="Correo SISBU">
+                    <i class="icon icon-mail icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Correo SISBU</span>
+                </a>
+            </li>
+            <li class="dt-side-nav__item">
+                <a href="" class="dt-side-nav__link" title="Ciclos Académicos">
+                    <i class="icon icon-tag-o icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Ciclos Académicos</span>
+                </a>
+            </li>
+            <!-- /menu item -->
+        
+            <!-- Menu Header -->
+            <li class="dt-side-nav__item dt-side-nav__header">
+                <span class="dt-side-nav__text">Procesos</span>
+            </li>
+            <!-- /menu header -->
+
+            <!-- Menu Item -->
+            <li class="dt-side-nav__item">
+                <a href="page-wall.html" class="dt-side-nav__link" title="Importar Alumnos">
+                    <i class="icon icon-wall icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Importar Alumnos</span>
+                </a>
+            </li>
+            <!-- /menu item -->
+        
+        
+        `;
+    }
+    ////informes
+    if (typeProfile != 100) {
+        //diferente de invitado
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
+            <!-- Menu Header -->
+            <li class="dt-side-nav__item dt-side-nav__header">
+                <span class="dt-side-nav__text">Informes</span>
+            </li>
+            <!-- /menu header -->
+            <li class="dt-side-nav__item">
+                <a href="" class="dt-side-nav__link" title="Reportes">
+                    <i class="icon icon-profilepage icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Reportes</span>
+                </a>
+            </li>
+            <li class="dt-side-nav__item">
+                <a href="" class="dt-side-nav__link" title="Estadísticas">
+                    <i class="icon icon-profilepage icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Estadísticas</span>
+                </a>
+            </li>
+            <!-- /menu item -->   
+        `;
+    }
+
+
+    /*
+     document.querySelector("#menus_sisbu").innerHTML +=
+     `
+     
+     `;
+     */
 }

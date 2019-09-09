@@ -47,7 +47,7 @@
     <!--OTHERS-->
     <context-param>
         <param-name>name.page.base</param-name>
-        <param-value>.:SISBU - UNPRG:.</param-value>
+        <param-value>SISBU - WEB APP</param-value>
     </context-param>
     
     

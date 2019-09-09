@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -217,7 +216,7 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/index");
         resource.setPath("/views/subprojects/app/ogbu/index/index.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/index/index.js" + version_project
+            "/views/subprojects/app/ogbu/index/index.js" + version_project
         });
         this.list_resources.add(resource);
 

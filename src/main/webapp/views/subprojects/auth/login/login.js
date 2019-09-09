@@ -27,70 +27,46 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function processAjaxAuth() {
-    let loginRequest = {
-        "username": document.querySelector("#txtUsername").value,
-        "password": document.querySelector("#txtPass").value
-    };
+    let datosSerializados = $('#FrmLogin').serialize();
     $.ajax({
-        url: getHostAPI() + "auth/login",
+        url: getHostAndContextAPI() + "authentication/login",
         type: 'POST',
-        data: JSON.stringify(loginRequest),
-        contentType: 'application/json; charset=utf-8',
+        data: datosSerializados,
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         dataType: 'json'
-    }).done(function (beanAuth) {
+    }).done(function (jsonResponse) {
         $('#modalCargandoLogin').modal("hide");
-        if (beanAuth.messageServer != undefined) {
-            if (beanAuth.messageServer.toLowerCase() === "ok") {
-                //PROCESAMOS LA SOLICITUD DEL TOKEN
-                processAjaxAuthToken(beanAuth.usuario);
+        if (jsonResponse.message_server != undefined) {
+            if (jsonResponse.message_server.toLowerCase() === "ok") {
+                if (jsonResponse.token !== undefined) {
+                    //SET COOKIE TOKEN
+                    setCookieSession(jsonResponse.token, jsonResponse.usuario);
+                    sendIndex();
+                } else {
+                    showAlertTopEnd('warning', 'No se pudo obtener el token para iniciar sesión');
+                }
             } else {
-                switch (beanAuth.typeMessage) {
+                switch (jsonResponse.type_message) {
                     case "1":
-                        showAlertTopEnd('error', beanAuth.messageServer);
+                        showAlertTopEnd('error', jsonResponse.message_server);
                         document.querySelector("#txtUsername").value = "";
                         document.querySelector("#txtPass").value = "";
                         document.querySelector("#txtUsername").focus();
                         break;
                     case "2":
-                        showAlertTopEnd('error', beanAuth.messageServer);
+                        showAlertTopEnd('error', jsonResponse.message_server);
                         document.querySelector("#txtPass").value = "";
                         document.querySelector("#txtPass").focus();
                         break;
                     default :
                         // 3 Y 4
-                        showAlertTopEnd('warning', beanAuth.messageServer);
+                        showAlertTopEnd('warning', jsonResponse.message_server);
                         break;
                 }
             }
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoLogin').modal("hide");
-        showAlertErrorRequest();
-    });
-}
-
-function processAjaxAuthToken(user) {
-    let loginRequest = {
-        "username": document.querySelector("#txtUsername").value,
-        "password": document.querySelector("#txtPass").value
-    };
-    $.ajax({
-        url: getHostAPI() + "auth/login/token",
-        type: 'POST',
-        data: JSON.stringify(loginRequest),
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json'
-    }).done(function (jwtResponse) {
-        $('#modalCargandoLoginToken').modal("hide");
-        if (jwtResponse.token !== undefined) {
-            //SET COOKIE TOKEN
-            setCookieSession(jwtResponse.token, user);
-            sendIndex();
-        } else {
-            showAlertTopEnd('warning', 'No se pudo obtener el token para iniciar sesión');
-        }
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        $('#modalCargandoLoginToken').modal("hide");
         showAlertErrorRequest();
     });
 }
