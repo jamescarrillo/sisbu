@@ -28,6 +28,7 @@
 
         <!-- Load Styles -->
         <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/semidark-style-1.min.css">
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/light-style-10.min.css">
         <!-- /load styles -->
 
     </head>
