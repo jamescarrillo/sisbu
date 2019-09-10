@@ -383,17 +383,17 @@ public class FilterURL implements Filter {
         ///comidas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/comedor/comidas");
-        resource.setPath("/views/subprojects/app/servicios/comedor/comida/comida.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/comedor/comida/comida.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/comedor/comida/comida.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/comedor/comida/comida.js" + version_project
         });
         this.list_resources.add(resource);
         ///menus
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/comedor/menus");
-        resource.setPath("/views/subprojects/app/servicios/comedor/menu/menu.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/comedor/menu/menu.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/comedor/menu/menu.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/comedor/menu/menu.js" + version_project
         });
         this.list_resources.add(resource);
         ///asistencia
