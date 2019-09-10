@@ -35,6 +35,7 @@ function processAjaxAuth() {
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         dataType: 'json'
     }).done(function (jsonResponse) {
+        console.log(jsonResponse);
         $('#modalCargandoLogin').modal("hide");
         if (jsonResponse.message_server != undefined) {
             if (jsonResponse.message_server.toLowerCase() === "ok") {

@@ -215,25 +215,25 @@
     <!-- Sub-menu -->
     <ul class="dt-side-nav__sub-menu">
         <li class="dt-side-nav__item">
-            <a href="<%=request.getContextPath()%>/app/ogbu/social/c-a-cu" class="dt-side-nav__link" title="Control Asistencia del C.U">
+            <a href="<%=request.getContextPath()%>/app/ogbu/comedor/c-a-cu" class="dt-side-nav__link" title="Control Asistencia del C.U">
                 <i class="icon icon-collapse icon-fw icon-lg"></i>
                 <span class="dt-side-nav__text">Control Diario</span>
             </a>
         </li>
         <li class="dt-side-nav__item">
-            <a href="<%=request.getContextPath()%>/app/ogbu/social/asitencia-cu" class="dt-side-nav__link" title="Asistencia">
+            <a href="<%=request.getContextPath()%>/app/ogbu/servicios/comedor/asitencia-cu" class="dt-side-nav__link" title="Asistencia">
                 <i class="icon icon-calendar icon-fw icon-lg"></i>
                 <span class="dt-side-nav__text">Asistencia</span>
             </a>
         </li>
         <li class="dt-side-nav__item">
-            <a href="<%=request.getContextPath()%>/app/ogbu/social/assitencia-cu" class="dt-side-nav__link" title="Asistencia">
+            <a href="<%=request.getContextPath()%>/app/ogbu/servicios/comedor/comidas" class="dt-side-nav__link" title="Comidas">
                 <i class="icon icon-burger icon-fw icon-lg"></i>
                 <span class="dt-side-nav__text">Comidas</span>
             </a>
         </li>
         <li class="dt-side-nav__item">
-            <a href="<%=request.getContextPath()%>/app/ogbu/social/assitencia-cu" class="dt-side-nav__link" title="Asistencia">
+            <a href="<%=request.getContextPath()%>/app/ogbu/servicios/comedor/menus" class="dt-side-nav__link" title="Menus">
                 <i class="icon icon-list icon-fw icon-lg"></i>
                 <span class="dt-side-nav__text">Menus</span>
             </a>
