@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestComida.type_request = "POST";
         //LIMPIAR LOS CAMPOS
         document.querySelector("#txtDescripcionComida").value = "";
-         document.querySelector("#txtTipoComida").options[0].selected = 'selected';
+        document.querySelector("#txtTipoComida").options[0].selected = 'selected';
         //SET TITLE MODAL
         document.querySelector("#txtTituloModalMan").innerHTML = "REGISTRAR COMIDA";
         //OPEN MODEL
@@ -38,15 +38,21 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     $("#modalCargandoComida").on('shown.bs.modal', function () {
+        if (!$('#ventanaModalComida').hasClass("show")) {
+            beanRequestComida.operation = "paginate";
+            beanRequestComida.type_request = "GET";
+            console.log("cerrado");
+        }
+
         processAjaxComida();
     });
 
     $('#modalCargandoComida').modal('show');
-    
-    $("#sizePageComida").change(function() {
-     $('#modalCargandoComida').modal('show');
+
+    $("#sizePageComida").change(function () {
+        $('#modalCargandoComida').modal('show');
     });
-   
+
 });
 
 function processAjaxComida() {
@@ -57,24 +63,23 @@ function processAjaxComida() {
         parameters_pagination += "&nombre=" + document.querySelector("#txtFilterComida").value.toUpperCase();
         parameters_pagination += "&page=" + document.querySelector("#pageComida").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageComida").value;
-        
+
     } else {
-      
         parameters_pagination = "";
-        if(beanRequestComida.operation == "delete" ){
-        parameters_pagination = "/"+comidaSelected.idcomida; 
-        json={};
-        }else{
-         json = {
-            "descripcion": document.querySelector("#txtDescripcionComida").value,
-            "tipo": document.querySelector("#txtTipoComida").value
-        };
-        if (beanRequestComida.operation == "update" ) {
-            json.idcomida = comidaSelected.idcomida;
-        }   
+        if (beanRequestComida.operation == "delete") {
+            parameters_pagination = "/" + comidaSelected.idcomida;
+            json = {};
+        } else {
+            json = {
+                "descripcion": document.querySelector("#txtDescripcionComida").value,
+                "tipo": document.querySelector("#txtTipoComida").value
+            };
+            if (beanRequestComida.operation == "update") {
+                json.idcomida = comidaSelected.idcomida;
+            }
         }
-        
-        
+
+
     }
     $.ajax({
         url: getHostAPI() + beanRequestComida.entity_api + "/" + beanRequestComida.operation + parameters_pagination,
@@ -103,7 +108,7 @@ function processAjaxComida() {
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoComida').modal("hide");
         showAlertErrorRequest();
-       
+
     });
 }
 
@@ -118,8 +123,8 @@ function toListComida(beanPagination) {
             row += ">";
             row += "<td class='align-middle'>" + tipoComida(comida.tipo) + "</td>";
             row += "<td class='align-middle'>" + comida.descripcion + "</td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-secondary btn-xs editar-comida' data-toggle='tooltip' title='Editar'><i class='icon icon-undo icon-fw'></i></button></td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-secondary btn-xs eliminar-comida' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
+            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs editar-comida' data-toggle='tooltip' title='Editar'><i class='icon icon-editors icon-fw'></i></button></td>";
+            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs eliminar-comida' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
             row += "</tr>";
             document.querySelector("#tbodyComida").innerHTML += row;
         });
@@ -152,7 +157,7 @@ function addEventsComidaes() {
                 beanRequestComida.type_request = "PUT";
                 //SET VALUES MODAL
                 console.log(comidaSelected.descripcion);
-                document.querySelector("#txtDescripcionComida").value= comidaSelected.descripcion;
+                document.querySelector("#txtDescripcionComida").value = comidaSelected.descripcion;
                 document.querySelector("#txtTipoComida").options[comidaSelected.tipo].selected = 'selected';
                 document.querySelector("#txtTituloModalMan").innerHTML = "EDITAR COMIDA";
                 $('#ventanaModalComida').modal("show");
@@ -162,12 +167,12 @@ function addEventsComidaes() {
             }
         };
     });
- document.querySelectorAll('.eliminar-comida').forEach(btn => {
+    document.querySelectorAll('.eliminar-comida').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-          comidaSelected = findByComida(btn.parentElement.parentElement.getAttribute('idcomida'));
-          beanRequestComida.operation = "delete";
-           beanRequestComida.type_request = "DELETE";
+            comidaSelected = findByComida(btn.parentElement.parentElement.getAttribute('idcomida'));
+            beanRequestComida.operation = "delete";
+            beanRequestComida.type_request = "DELETE";
             processAjaxComida();
         };
     });
@@ -189,7 +194,7 @@ function validateFormComida() {
         showAlertTopEnd('warning', 'Por favor ingrese descripcion');
         document.querySelector("#txtDescripcionComida").focus();
         return false;
-    }else  if (document.querySelector("#txtTipoComida").value == 0) {
+    } else if (document.querySelector("#txtTipoComida").value == 0) {
         showAlertTopEnd('warning', 'Por favor ingrese tipo ');
         document.querySelector("#txtTipoComida").focus();
         return false;
@@ -197,8 +202,8 @@ function validateFormComida() {
     return true;
 }
 
-function tipoComida(tipocomida){
-    switch(tipocomida){
+function tipoComida(tipocomida) {
+    switch (tipocomida) {
         case 1:
             return "SEGUNDO";
             break;
@@ -213,7 +218,7 @@ function tipoComida(tipocomida){
             break;
         default:
             return "NINGUNO";
-            break;    
-            
+            break;
+
     }
 }

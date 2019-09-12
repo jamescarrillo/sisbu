@@ -451,25 +451,25 @@ public class FilterURL implements Filter {
         //CARGOS
         resource = new Resource();
         resource.setUrl("/app/ogbu/mantenimientos/cargos");
-        resource.setPath("/views/subprojects/app/mantenimientos/cargo/cargo.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/mantenimientos/cargo/cargo.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/mantenimientos/cargo/cargo.js" + version_project
+            "/views/subprojects/app/ogbu/mantenimientos/cargo/cargo.js" + version_project
         });
         this.list_resources.add(resource);
         //PERSONAL
         resource = new Resource();
         resource.setUrl("/app/ogbu/mantenimientos/personal");
-        resource.setPath("/views/subprojects/app/mantenimientos/personal/personal.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/mantenimientos/personal/personal.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/mantenimientos/personal/personal.js" + version_project
+            "/views/subprojects/app/ogbu/mantenimientos/personal/personal.js" + version_project
         });
         this.list_resources.add(resource);
         //FACULTAD
         resource = new Resource();
         resource.setUrl("/app/ogbu/mantenimientos/facultades");
-        resource.setPath("/views/subprojects/app/mantenimientos/facultad/facultad.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/mantenimientos/facultad/facultad.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/mantenimientos/facultad/facultad.js" + version_project
+            "/views/subprojects/app/ogbu/mantenimientos/facultad/facultad.js" + version_project
         });
         this.list_resources.add(resource);
         //OFICINAS
@@ -516,9 +516,9 @@ public class FilterURL implements Filter {
         //UBIGEO
         resource = new Resource();
         resource.setUrl("/app/ogbu/mantenimientos/ubigeo");
-        resource.setPath("/views/subprojects/app/mantenimientos/ubigeo/ubigeo.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/mantenimientos/ubigeo/ubigeo.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/mantenimientos/ubigeo/ubigeo.js" + version_project
+            "/views/subprojects/app/ogbu/mantenimientos/ubigeo/ubigeo.js" + version_project
         });
         this.list_resources.add(resource);
 

@@ -11,69 +11,44 @@
         <div class="card overflow-hidden">
             <!-- Card Header -->
             <div class="card-header bg-transparent">
-                <h4 class="mb-0" id="titleManagerDetalleCronogramaCU">[ 2 ] MENU</h4>
-                <input type="hidden" id="pageDetalleCronogramaCU" value="1">
+                <h4 class="mb-0" id="titleManagerMenuSemanal">[ 2 ] MENU</h4>
+                <input type="hidden" id="pageMenuSemanal" value="1">
             </div>
             <!-- /card header -->
             <!-- Card Body -->
             <div class="card-body pt-0">
-                <form id="FrmDetalleCronogramaCU">
+                <form id="FrmMenuSemanal">
                     <div class="input-group">
-                        <select class="custom-select " id="txtFilterMenu">
-                            <option value="">FILTRO...</option>
-                            <option selected  value="1">LUNES</option>
-                            <option value="2">MARTES</option>
-                            <option value="3">MIÉRCOLES</option>
-                            <option value="4">JUEVES</option>
-                            <option value="5">VIERNES</option>
-                        </select>
+                        <input class="form-control btn-sm" placeholder="Filter..." id="txtFilterFechaI"  type="date">
+                        <input class="form-control btn-sm" placeholder="Filter..." id="txtFilterFechaF"  type="date">
                         <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewDetalleCronogramaCU"><i class="icon icon-plus icon-fw"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewMenuSemanal"><i class="icon icon-plus icon-fw"></i></button>
                     </div>
                 </form>
+               
                 <!-- Tables -->
                 <div class="table-responsive">
                     <table class="table mb-0">
-                        <thead>
-                            <tr>
-                                <th class="text-uppercase" scope="col" >FECHA</th>
-                                <th class="text-uppercase" scope="col" >DESAYUNO</th>
-                                <th class="text-uppercase" scope="col" >ALMUERZO</th>
-                                <th class="text-uppercase" scope="col" >CENA</th>
-                                <th class="text-uppercase" scope="col" colspan="2" style="width: 20%">ACCION</th>
-                            </tr>
+                        <thead id="theadMenuSemanal">
+                           
                         </thead>
-                        <tbody id="tbodyDetalleCronogramaCU">
+                        <tbody id="tbodyMenuSemanal">
                         </tbody>
                     </table>
                 </div>
                 <!-- /tables -->
-                <div class="row mt-2">
-                    <div class="col-md-2 col-sm-3 col-4">
-                        <select id="sizePageDetalleCronogramaCU" class="form-control form-control-sm select2-single">
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                        </select>
-                    </div>
-                    <div class="col-md-10 col-sm-9 col-8">
-                        <nav aria-label="Page navigation example">
-                            <ul id="paginationDetalleCronogramaCU" class="pagination pagination-sm justify-content-end">
-                            </ul>
-                        </nav>  
-                    </div>
-                </div>
+                
             </div>
             <!-- /card body -->
         </div>
         <!-- /card -->
     </div>
 </div>
-<div class="modal fade" id="ventanaModalDetalleCronogramaCU" data-backdrop="static"
+<div class="modal fade" id="ventanaModalMenuSemanal" data-backdrop="static"
      tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form id="FrmDetalleCronogramaCUModal">
+            <form id="FrmMenuSemanalModal">
                 <div class="modal-header">
                     <h6 class="modal-title" id="txtTituloModalMan"></h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -82,27 +57,22 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-
-                        <div class="form-group col-12">
-                            <label for="txtTipoDetalleCronogramaCU">MENU SEMANAL</label>
-                            <select class="custom-select" id="txtTipoDetalleCronogramaCU">
-                                <option selected="0" value="0">seleccione...</option>
-                                <option value="1">SEGUNDO</option>
-                                <option value="2">BEBIDA</option>
-                                <option value="3">POSTRE</option>
-                                <option value="4">SOPA</option>
-                            </select>
+                         <div class="form-group col-6">
+                             <label for="txtTipoMenuSemanal">DÍA DE LA SEMANA INICIAL (LUNES)</label>
+                            <input class="form-control btn-sm" placeholder="Filter..." id="txtMenuSemanalFechaI"  type="date">
                         </div>
-                        <div class="form-group col-12">
-                            <label for="txtTipoDetalleCronogramaCU">DÍA</label>
-                            <select class="custom-select" id="txtDiaDetalleCronogramaCU">
-                                <option selected="0" value="0">seleccione...</option>
-                                <option value="1">LUNES</option>
-                                <option value="2">MARTES</option>
-                                <option value="3">MIÉRCOLES</option>
-                                <option value="4">JUEVES</option>
-                                <option value="5">VIERNES</option>
-                            </select>
+                       
+                        <div class="form-group col-6">
+                             <label for="txtTipoMenuSemanal">DÍA DE LA SEMANA FINAL (VIERNES)</label>
+                            <input class="form-control btn-sm" placeholder="Filter..." id="txtMenuSemanalFechaF"  type="date">
+                        </div>
+                         <div class="form-group col-12">
+                             <label for="txtTipoMenuSemanal">OBSERVACIÓN</label>
+                            <input class="form-control btn-sm" placeholder="OBSERVACION" id="txtMenuSemanalObservacion"  type="text">
+                        </div>
+                         <div class="form-group col-12">
+                             <label for="txtTipoMenuSemanal">DIA ACTUAL</label>
+                            <input class="form-control btn-sm" placeholder="Filter..." id="txtMenuSemanalFecha"  type="date">
                         </div>
                         <div class="form-group col-4">
                             <button type="button" id="buttonDesayuno" class="btn btn-outline-primary btn-block">
@@ -136,11 +106,7 @@
                         </div>
 
                          Tables -->
-
-
                     </div>
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
@@ -183,12 +149,6 @@
                                 <div id="ResultadoComida"> 
                                 </div>
                             </div>
-                            <!--     <div class="form-group ">                   
-                                     <input class="form-control " id="txtFilterComida" 
-                                            type="text" placeholder="Filter...">
-                                     <div id="ResultadoComida"> 
-                                     </div>
-                                 </div>-->
                         </div>
                         <div class="form-group col-12 ">
                             <!-- Tables -->
@@ -201,7 +161,7 @@
                                             <th class="text-uppercase" scope="col" >ACCIÓN</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="tbodyComidaDiaria">
+                                    <tbody class="tbodyComidaDiaria" style="height: 139px;overflow-y: scroll;">
                                     </tbody>
                                 </table>
                             </div>
@@ -220,48 +180,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="ventanaModalComidaTabla" data-backdrop="static"
-     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-           
-                <div class="modal-header">
-                    <h6 class="modal-title" id="txtTituloModalComidaTabla"></h6>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                   
-                        <div class="form-group col-12 ">
-                            <!-- Tables -->
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-uppercase" scope="col" >TIPO</th>
-                                            <th class="text-uppercase" scope="col" >DESCRIPCION</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="tbodyComidaDiaria">
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /tables -->
-                        </div>
-
-                    </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalCargandoDetalleCronogramaCU" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+<div class="modal fade" id="modalCargandoMenuSemanal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
