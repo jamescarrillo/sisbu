@@ -74,7 +74,7 @@ function destroyPagination($pagination) {
 function addEventsSelectPaginar(_class) {
     document.querySelectorAll('.' + _class).forEach(select => {
         select.onchange = function () {
-            //console.log(this.value);
+            console.log(this.value);
             $("#" + select.getAttribute('idbtnbuscar')).trigger('click');
             //document.querySelector("#" + select.getAttribute('idbtnbuscar')).dispatchEvent(new Event('click'));
         };
