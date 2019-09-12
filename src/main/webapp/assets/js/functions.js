@@ -419,7 +419,7 @@ var dtDrawer = {
 
 function notifyUser(title) {
     if (title === '') {
-        title = 'Settings saved successfully.';
+        title = 'Configuración guardada exitosamente.';
     }
 
     const toast = swal.mixin({
@@ -453,7 +453,7 @@ function changeLayout($layout, $init) {
     $(document).trigger('layout-changed');
 
     if (!$init)
-        notifyUser('Layout Updated successfully.');
+        notifyUser('Diseño actualizado exitosamente.');
 }
 
 /**
@@ -494,7 +494,7 @@ function changeTheme($theme, $style, $themeStylesheet, $init) {
     $(document).trigger('theme-changed');
 
     if (!$init)
-        notifyUser('Theme Updated successfully.');
+        notifyUser('Tema actualizado exitosamente.');
 }
 
 /*
@@ -572,9 +572,9 @@ var $themeStylesheet;
 var $dtTheme = localStorage.getItem('dt-theme');
 var $dtLayout = localStorage.getItem('dt-layout');
 var $dtStyle = localStorage.getItem('dt-style');
-var $currentTheme = ($dtTheme) ? $dtTheme : 'semidark';
+var $currentTheme = ($dtTheme) ? $dtTheme : 'light';
 var $currentLayout = ($dtLayout) ? $dtLayout : 'full-width';
-var $currentThemeStyle = ($dtStyle) ? $dtStyle : 'style-1';
+var $currentThemeStyle = ($dtStyle) ? $dtStyle : 'style-10';
 
 (function ($) {
     $themeStylesheet = document.createElement('link');
