@@ -71,9 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#modalCargandoDistrito').modal('show');
     });
 
-
     //PROVINCIA
-
     //INICIALIZANDO VARIABLES DE SOLICITUD
     beanRequestProvincia.entity_api = "api/provincias";
     beanRequestProvincia.operation = "paginate";
@@ -99,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#btnOpenNewProvincia").onclick = function () {
-         $('#modalCargandoDepartamento').modal('show');
+        $('#modalCargandoDepartamento').modal('show');
         //CONFIGURAMOS LA SOLICITUD
         beanRequestProvincia.operation = "add";
         beanRequestProvincia.type_request = "POST";
@@ -120,9 +118,10 @@ document.addEventListener("DOMContentLoaded", function () {
             beanRequestProvincia.operation = "paginate";
             beanRequestProvincia.type_request = "GET";
             console.log("cerrado");
-        } 
+        }
         processAjaxProvincia();
     });
+
     $("#sizePageProvincia").change(function () {
         $('#modalCargandoProvincia').modal('show');
     });
@@ -177,9 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#modalCargandoDepartamento').modal('show');
     });
 
-
 });
-
 
 
 function processAjaxDistrito() {
@@ -455,7 +452,7 @@ function addEventsProvincia() {
     document.querySelectorAll('.editar-provincia').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-             $('#modalCargandoDepartamento').modal('show');
+            $('#modalCargandoDepartamento').modal('show');
             document.querySelector("#ResultadoTablaDepartamento").style.height = "139px";
             processAjaxDepartamento(0);
             listFilterDepartamento();
@@ -473,7 +470,7 @@ function addEventsProvincia() {
             } else {
                 showAlertTopEnd('warning', 'No se encontró la Provincia para poder editar');
             }
-             $('#modalCargandoDepartamento').modal('hide');
+            $('#modalCargandoDepartamento').modal('hide');
         };
     });
     document.querySelectorAll('.eliminar-provincia').forEach(btn => {
@@ -513,7 +510,7 @@ function validateFormProvincia() {
 }
 
 function listFilterProvincia() {
-   
+
     $("#txtFilterProvinciaER").change(function () {
         document.querySelector("#ResultadoTablaProvincia").style.height = "139px";
         var filter = $(this).val();

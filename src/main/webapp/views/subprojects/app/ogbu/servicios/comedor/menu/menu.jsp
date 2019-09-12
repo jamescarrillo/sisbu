@@ -4,7 +4,6 @@
     Author     : Andres
 --%>
 
-
 <div class="row">
     <div class="col-xl-12">
         <!-- Card -->
@@ -132,7 +131,7 @@
                         <div class="col-lg-12">
                             <div class="form-group ">
                                 <select class="custom-select " id="txtFilterTipoComida">
-                                    <option value="">seleccione tipo...</option>
+                                    <option value="-1">seleccione tipo...</option>
                                     <option selected  value="1">SEGUNDO</option>
                                     <option value="2">BEBIDA</option>
                                     <option value="3">POSTRE</option>

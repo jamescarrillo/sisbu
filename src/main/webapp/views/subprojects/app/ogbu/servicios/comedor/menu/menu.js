@@ -1,6 +1,10 @@
 var beanPaginationMenuSemanal;
 var beanPaginationComida;
-var ListaDetalleComida = [], ListaComidaCena = [], ListaComidaAlmuerzo = [], ListaComidaDesayuno = [];
+var lista = "";
+var ListaDetalleComida = [],
+        ListaComidaCena = [],
+        ListaComidaAlmuerzo = [],
+        ListaComidaDesayuno = [];
 var comidaSelected, detalleCronogramaSelected;
 var diasemana;
 var beanRequestMenuSemanal = new BeanRequest();
@@ -49,9 +53,18 @@ document.addEventListener("DOMContentLoaded", function () {
             dia = '0' + dia; //agrega cero si el menor de 10
         if (mes < 10)
             mes = '0' + mes //agrega cero si el menor de 10
-        console.log(fechaActual);
-        console.log(diaSemana(fechaActual.getUTCDay()));
+        let diaLunes = dia - fechaActual.getUTCDay() + 1;
+        let diaViernes = diaLunes + 4;
+        if (diaLunes < 10)
+            diaLunes = '0' + diaLunes;
+
+        if (diaViernes < 10)
+            diaViernes = '0' + diaViernes;
+
+        document.querySelector('#txtMenuSemanalObservacion').value = "";
         document.querySelector('#txtMenuSemanalFecha').value = ano + "-" + mes + "-" + dia;
+        document.querySelector("#txtMenuSemanalFechaI").value = ano + "-" + mes + "-" + diaLunes;
+        document.querySelector("#txtMenuSemanalFechaF").value = ano + "-" + mes + "-" + diaViernes;
         //SET TITLE BUTTON
         document.querySelector("#buttonAlmuerzo").innerHTML = '<i class="icon icon-plus icon-fw"></i> ALMUERZO</button>';
         document.querySelector("#buttonCena").innerHTML = '<i class="icon icon-plus icon-fw"></i> CENA</button>';
@@ -122,9 +135,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector("#btnGuardarComida").onclick = function () {
         //LIMPIAR LOS CAMPOS
+        var ar;
         switch (document.querySelector("#btnGuardarComida").getAttribute("comida")) {
             case "DESAYUNO":
-                ListaComidaDesayuno.concat(ListaDetalleComida);
+                ar = lista.split(",");
+                for (var i = 0; i < ar.length-1; i++) {
+                    ListaComidaDesayuno.push({idcomida: ar[i]});
+                }
                 break;
             case "ALMUERZO":
                 ListaComidaAlmuerzo.concat(ListaDetalleComida);
@@ -136,8 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 break;
         }
-        console.log(ListaDetalleComida);
-        console.log(ListaComidaAlmuerzo);
         if (ListaDetalleComida.length < 3) {
             showAlertTopEnd('warning', 'Por favor ingrese la lista de comida completa');
         } else {
@@ -162,9 +177,9 @@ function processAjaxMenuSemanal() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestMenuSemanal.operation === "paginate") {
-        //document.querySelector("#txtFilterFechaI").value
-        parameters_pagination = "?fechai=2018-08-09";
-        parameters_pagination += "&fechaf=2019-12-08";
+        //
+        parameters_pagination = "?fechai=" + document.querySelector("#txtFilterFechaI").value;
+        parameters_pagination += "&fechaf=" + document.querySelector("#txtFilterFechaF").value;
         parameters_pagination += "&page=1";
         parameters_pagination += "&size=7";
     } else {
@@ -193,7 +208,6 @@ function processAjaxMenuSemanal() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
         $('#modalCargandoMenuSemanal').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() === "ok") {
@@ -217,7 +231,6 @@ function processAjaxMenuSemanal() {
 function listFilter() {
     $("#txtFilterComida").change(function () {
         var filter = $(this).val();
-        console.log("filtro:" + filter);
         processAjaxComida();
     }).keyup(function (e) {
         var txt = String.fromCharCode(e.which);
@@ -287,7 +300,7 @@ function toListMenuSemanal(beanPagination) {
     } else {
         destroyPagination($('#paginationMenuSemanal'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
-        document.querySelector("#txtFilterMenu").focus();
+        document.querySelector("#txtFilterFechaI").focus();
     }
 }
 
@@ -339,12 +352,15 @@ function addEventsMenuSemanales() {
 
                 if (ListaDetalleComida.length < 4) {
                     //SET VALUES MODAL
-                    ListaDetalleComida.push({idcomida: comidaSelected.idcomida, tipo: comidaSelected.tipo, descripcion: comidaSelected.descripcion.toUpperCase()});
+                    ListaDetalleComida.push({idcomida: comidaSelected.idcomida,
+                        tipo: comidaSelected.tipo,
+                        descripcion: comidaSelected.descripcion.toUpperCase()});
+
                     toListComidaTabla(ListaDetalleComida);
+                    lista += comidaSelected.idcomida+",";
                 } else {
                     showAlertTopEnd('warning', 'Solo se permite 4 comidas ');
                 }
-                console.log(ListaDetalleComida);
             } else {
                 showAlertTopEnd('warning', 'No se encontró la comida para agregar a la lista');
             }
@@ -371,7 +387,6 @@ function findByMenuSemanal(iddetallecronogramacu) {
 }
 
 function validateFormMenuSemanal() {
-    console.log(ListaComidaAlmuerzo.length);
     if (document.querySelector("#txtTipoMenuSemanal").value == 0) {
         showAlertTopEnd('warning', 'Por favor ingrese tipo ');
         document.querySelector("#txtTipoMenuSemanal").focus();
@@ -388,45 +403,6 @@ function validateFormMenuSemanal() {
         return false;
     }
     return true;
-}
-
-function tipoComida(tipocomida) {
-    switch (tipocomida) {
-        case 1:
-            return "SEGUNDO";
-            break;
-        case 2:
-            return "BEBIDA";
-            break;
-        case 3:
-            return "POSTRE";
-            break;
-        case 4:
-            return "SOPA";
-            break;
-        default:
-            return "NINGUNO";
-            break;
-
-    }
-}
-
-function diaComida(diacomida) {
-    switch (diacomida) {
-        case 1:
-            return "DESAYUNO";
-            break;
-        case 2:
-            return "ALMUERZO";
-            break;
-        case 3:
-            return "CENA";
-            break;
-        default:
-            return "NINGUNO";
-            break;
-
-    }
 }
 
 function diaSemana(diacomida) {
@@ -458,6 +434,9 @@ function diaSemana(diacomida) {
 
     }
 }
+
+//COMIDA
+
 
 function findByComida(idcomida) {
     let comida_;
@@ -528,7 +507,7 @@ function toListComidaTabla(ArrayComida) {
             row += ">";
             row += "<td class='align-middle'>" + tipoComida(element.tipo) + "</td>";
             row += "<td class='align-middle'>" + element.descripcion + "</td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-secondary btn-xs quitar-comida' data-toggle='tooltip' title='Quitar de la lista'><i class='icon icon-trash icon-fw'></i></button></td>";
+            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs quitar-comida' data-toggle='tooltip' title='Quitar de la lista'><i class='icon icon-trash icon-fw'></i></button></td>";
             row += "</tr>";
             document.querySelector(".tbodyComidaDiaria").innerHTML += row;
         });
@@ -574,4 +553,43 @@ function pushCena(detallecronograma) {
     ListaComidaCena.push({idcomida: detallecronograma.comida_cbebida.idcomida,
         tipo: detallecronograma.comida_cbebida.tipo, descripcion: detallecronograma.comida_cbebida.descripcion.toUpperCase()});
     toListComidaTabla(ListaComidaCena);
+}
+
+function tipoComida(tipocomida) {
+    switch (tipocomida) {
+        case 1:
+            return "SEGUNDO";
+            break;
+        case 2:
+            return "BEBIDA";
+            break;
+        case 3:
+            return "POSTRE";
+            break;
+        case 4:
+            return "SOPA";
+            break;
+        default:
+            return "NINGUNO";
+            break;
+
+    }
+}
+
+function diaComida(diacomida) {
+    switch (diacomida) {
+        case 1:
+            return "DESAYUNO";
+            break;
+        case 2:
+            return "ALMUERZO";
+            break;
+        case 3:
+            return "CENA";
+            break;
+        default:
+            return "NINGUNO";
+            break;
+
+    }
 }

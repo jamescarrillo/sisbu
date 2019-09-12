@@ -43,7 +43,7 @@
                 <!-- Tab Content-->
                 <div class="tab-content">
 
-                    <!-- Tab panel -->
+                    <!-- Tab panel departamento-->
                     <div id="tab-departamentos" class="tab-pane ">
 
                         <!-- Contact Container -->
@@ -98,7 +98,7 @@
                     </div>
                     <!-- /tab panel -->
 
-                    <!-- Tab panel -->
+                    <!-- Tab panel provincia-->
                     <div id="tab-provincias" class="tab-pane ">
 
                         <!-- Contact Container -->
@@ -121,7 +121,7 @@
                                     <thead >
                                         <tr >
                                             <th class="text-uppercase  text-center" scope="col" colspan="2" style="width: 20%">ACCION</th>
-                                            <th class="text-uppercase " scope="col" >PROVINCIAS</th>
+                                            <th class="text-uppercase " scope="col" >PROVINCIA</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyProvincia">
@@ -151,7 +151,7 @@
                     </div>
                     <!-- /tab panel -->
 
-                    <!-- Tab panel -->
+                    <!-- Tab panel distrito-->
                     <div id="tab-distritos" class="tab-pane active">
 
                         <!-- Contact Container -->
