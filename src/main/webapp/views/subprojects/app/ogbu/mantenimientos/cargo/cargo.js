@@ -45,6 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestCargo.type_request = "GET";
     });
 
+    $("#modalCargandoCargo").on('hide.bs.modal', function () {
+        beanRequestCargo.operation = "paginate";
+        beanRequestCargo.type_request = "GET";
+    });
+
+
     $('#modalCargandoCargo').modal('show');
 
     $("#sizePageCargo").change(function () {
@@ -114,8 +120,12 @@ function toListCargo(beanPagination) {
             row = "<tr ";
             row += "idcargo='" + cargo.idcargo + "' ";
             row += ">";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs editar-cargo' data-toggle='tooltip' title='Editar'><i class='icon icon-editors icon-fw'></i></button></td>";
-                row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs eliminar-cargo' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
+            row += "<td><ul class='dt-list dt-list-cm-0'>";
+            row += "<li class='dt-list__item editar-cargo' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-editors'></i></a></li>";
+            row += "<li class='dt-list__item eliminar-cargo' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "</ul></td>";
             row += "<td class='align-middle'>" + cargo.nombre + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyCargo").innerHTML += row;
@@ -142,7 +152,7 @@ function addEventsCargoes() {
     document.querySelectorAll('.editar-cargo').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            cargoSelected = findByCargo(btn.parentElement.parentElement.getAttribute('idcargo'));
+            cargoSelected = findByCargo(btn.parentElement.parentElement.parentElement.getAttribute('idcargo'));
             if (cargoSelected != undefined) {
                 beanRequestCargo.operation = "update";
                 beanRequestCargo.type_request = "PUT";
@@ -159,7 +169,7 @@ function addEventsCargoes() {
     document.querySelectorAll('.eliminar-cargo').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            cargoSelected = findByCargo(btn.parentElement.parentElement.getAttribute('idcargo'));
+            cargoSelected = findByCargo(btn.parentElement.parentElement.parentElement.getAttribute('idcargo'));
             beanRequestCargo.operation = "delete";
             beanRequestCargo.type_request = "DELETE";
             processAjaxCargo();

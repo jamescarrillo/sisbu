@@ -422,17 +422,17 @@ public class FilterURL implements Filter {
         ///deportes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/recreacion-deportes/deportes");
-        resource.setPath("/views/subprojects/app/servicios/recreacion-deportes/deporte/deporte.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/recreacion-deporte/deporte/deporte.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/recreacion-deportes/deporte/deporte.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/recreacion-deporte/deporte/deporte.js" + version_project
         });
         this.list_resources.add(resource);
         ///aficiones
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/recreacion-deportes/aficiones");
-        resource.setPath("/views/subprojects/app/servicios/recreacion-deportes/aficion/aficion.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/recreacion-deporte/aficion/aficion.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/recreacion-deportes/aficion/aficion.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/recreacion-deporte/aficion/aficion.js" + version_project
         });
         this.list_resources.add(resource);
         ///fichas

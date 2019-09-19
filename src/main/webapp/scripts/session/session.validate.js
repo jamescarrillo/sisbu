@@ -372,19 +372,19 @@ function createHTML_OGBU(typeProfile) {
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/recreacion-deportes/usuarios" class="dt-side-nav__link" title="Usuarios">
+                        <a href="${contextPah}app/ogbu/servicios/recreacion-deportes/usuarios" class="dt-side-nav__link" title="Usuarios">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Usuarios</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/recreacion-deportes/aficiones" class="dt-side-nav__link" title="Aficiones">
+                        <a href="${contextPah}app/ogbu/servicios/recreacion-deportes/aficiones" class="dt-side-nav__link" title="Aficiones">
                             <i class="icon icon-crm icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Aficiones</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/recreacion-deportes/deportes" class="dt-side-nav__link" title="Deportes">
+                        <a href="${contextPah}app/ogbu/servicios/recreacion-deportes/deportes" class="dt-side-nav__link" title="Deportes">
                             <i class="icon icon-customers icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Deportes</span>
                         </a>
