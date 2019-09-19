@@ -37,12 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     $("#modalCargandoCargo").on('shown.bs.modal', function () {
-        if (!$('#ventanaModalCargo').hasClass("show")) {
-          beanRequestCargo.operation = "paginate";
-            beanRequestCargo.type_request = "GET";
-            console.log("cerrado");
-        }
         processAjaxCargo();
+    });
+
+    $("#ventanaModalCargo").on('hidden.bs.modal', function () {
+        beanRequestCargo.operation = "paginate";
+        beanRequestCargo.type_request = "GET";
     });
 
     $('#modalCargandoCargo').modal('show');
@@ -115,9 +115,9 @@ function toListCargo(beanPagination) {
             row += "idcargo='" + cargo.idcargo + "' ";
             row += ">";
             row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs editar-cargo' data-toggle='tooltip' title='Editar'><i class='icon icon-editors icon-fw'></i></button></td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs eliminar-cargo' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
+                row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs eliminar-cargo' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
             row += "<td class='align-middle'>" + cargo.nombre + "</td>";
-              row += "</tr>";
+            row += "</tr>";
             document.querySelector("#tbodyCargo").innerHTML += row;
         });
         buildPagination(

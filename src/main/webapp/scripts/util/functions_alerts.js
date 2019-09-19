@@ -25,6 +25,24 @@ function showAlertTop(type, message, timer_, position_) {
     }
 }
 
+function showAlertDelete(idmodal) {
+    Swal.fire({
+        title: '¿Desea eliminar este registro?',
+        text: "No podrás revertir una vez confirmado!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, continuar',
+        cancelButtonText: 'No, cancelar'
+    }).then((result) => {
+        if (result.value) {
+            $('#' + idmodal).modal("show");
+        }
+    })
+    $('.swal2-confirm').css("margin-right", "15px");
+}
+
 function getTextHtmlFormat(text, count_palabras_for_row) {
     let values_palabras = text.split(' ');
     let text_formatter = "";

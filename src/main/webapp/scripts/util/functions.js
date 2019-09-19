@@ -18,6 +18,11 @@ function getContextAPP() {
     return "/sisbu/";
 }
 
+function getHostAPP() {
+    //return "/";
+    return "http://localhost:8080/";
+}
+
 function parseJwt(token) {
     try {
         var base64Url = token.split('.')[1];
@@ -51,4 +56,13 @@ function sendIndex() {
     } else {
         closeSession();
     }
+}
+
+function getIdAreaUserSession() {
+    let idarea = -1;
+    let url = window.location.href;
+    if (url.includes('psicopedagogia')) {
+        idarea = 6;
+    }
+    return idarea;
 }
