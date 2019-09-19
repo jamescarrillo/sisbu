@@ -339,25 +339,30 @@ public class FilterURL implements Filter {
         ///evaluaciones
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/evaluaciones");
-        resource.setPath("/views/subprojects/app/servicios/psicopedagogia/evaluacion/evaluacion.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/evaluacion.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/psicopedagogia/evaluacion/evaluacion.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/evaluacion.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/pregunta.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/area_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/subarea_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/alternativa_global.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/ciclo_academico.js" + version_project
         });
         this.list_resources.add(resource);
         ///usuarios
         resource = new Resource();
-        resource.setUrl("/app/ogbu/servicios/psicopedagogia/usuarios");
-        resource.setPath("/views/subprojects/app/servicios/psicopedagogia/usuario/usuario.jsp");
+        resource.setUrl("/app/ogbu/servicios/psicopedagogia/pacientes");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/psicopedagogia/usuario/usuario.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
         ///asignaciones
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/asignaciones");
-        resource.setPath("/views/subprojects/app/servicios/psicopedagogia/asignacion/asignacion.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/psicopedagogia/asignacion/asignacion.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/psicopedagogia/asignacion/asignacion.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/asignacion/asignacion.js" + version_project
         });
         this.list_resources.add(resource);
 

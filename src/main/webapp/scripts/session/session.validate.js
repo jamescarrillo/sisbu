@@ -245,15 +245,27 @@ function createHTML_OGBU(typeProfile) {
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/psicopedagogia/pacientes" class="dt-side-nav__link" title="Pacientes">
+                        <a href="${contextPah}app/ogbu/servicios/psicopedagogia/evaluaciones" class="dt-side-nav__link" title="Evaluaciones">
+                            <i class="icon icon-assignment icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Evaluaciones</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/servicios/psicopedagogia/pacientes" class="dt-side-nav__link" title="Pacientes">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Pacientes</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/psicopedagogia/citas" class="dt-side-nav__link" title="Citas">
+                        <a href="${contextPah}app/ogbu/servicios/psicopedagogia/citas" class="dt-side-nav__link" title="Citas">
                             <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Citas</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/servicios/psicopedagogia/citas" class="dt-side-nav__link" title="Asignaciones">
+                            <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Asignaciones</span>
                         </a>
                     </li>
                 </ul>

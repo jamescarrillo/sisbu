@@ -43,11 +43,12 @@
         });
     }
 
-    var current_path = window.location.href.split('/').pop();
+    //var current_path = window.location.href.split('/').pop();
+    var current_path = window.location.href;
+    current_path = current_path.substring(getHostAPP().length - 1, current_path.length);
     if (current_path == '') {
         current_path = 'index.html';
     }
-
     var $current_menu = $('a[href="' + current_path + '"]');
     $current_menu.addClass('active').parents('.nav-item').find('> .nav-link').addClass('active');
 

@@ -29,9 +29,11 @@
         <!-- Load Styles -->
         <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/owl.carousel/dist/assets/owl.carousel.min.css">
         <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/chartist/dist/chartist.min.css">
-        
+
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/summernote/dist/summernote-bs4.css">
+
         <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/semidark-style-1.min.css">
-        
+
         <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/light-style-10.min.css">
         <!-- /load styles -->
 
@@ -308,7 +310,7 @@
 
 
                     <!-- Theme Chooser -->
-                    <div class="dt-customizer-toggle">
+                    <div class="dt-customizer-toggle" style="top: 530px">
                         <a href="javascript:void(0)" data-toggle="customizer"> <i
                                 class="icon icon-customizer animation-customizer"></i> </a>
                     </div>
@@ -651,19 +653,22 @@
         <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_alerts.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_operational.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/util/configuration_api.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/shortcut.js"></script>
 
         <!-- masonry script -->
         <script src="<%=request.getContextPath()%>/plugins/masonry-layout/dist/masonry.pkgd.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/sweetalert2/dist/sweetalert2.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/functions.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/customizer.js"></script>
-        
+
         <script src="<%out.print(request.getContextPath());%>/scripts/session/change.cookie.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/session/js.cookie.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.js"></script>
-        
+
         <!-- Custom JavaScript -->
         <script src="<%=request.getContextPath()%>/plugins/chartist/dist/chartist.min.js"></script>
+        <script src="<%=request.getContextPath()%>/plugins/summernote/dist/summernote-bs4.js"></script>
+        <script src="<%=request.getContextPath()%>/plugins/summernote/dist/lang/summernote-es-ES.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/owl.carousel/dist/owl.carousel.min.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/script.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/custom/charts/dashboard-listing.js"></script>

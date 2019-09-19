@@ -40,6 +40,11 @@ document.addEventListener("DOMContentLoaded", function () {
         processAjaxCargo();
     });
 
+    $("#ventanaModalCargo").on('hidden.bs.modal', function () {
+        beanRequestCargo.operation = "paginate";
+        beanRequestCargo.type_request = "GET";
+    });
+
     $("#modalCargandoCargo").on('hide.bs.modal', function () {
         beanRequestCargo.operation = "paginate";
         beanRequestCargo.type_request = "GET";
