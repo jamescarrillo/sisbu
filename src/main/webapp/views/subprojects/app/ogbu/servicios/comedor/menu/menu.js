@@ -277,7 +277,6 @@ function processAjaxMenuSemanal() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestMenuSemanal.operation === "paginate") {
-
         parameters_pagination = "?fechai=" + document.querySelector("#txtFilterFechaI").value;
         parameters_pagination += "&fechaf=" + document.querySelector("#txtFilterFechaF").value;
         parameters_pagination += "&page=1";
@@ -1028,7 +1027,7 @@ function toListComida(beanPagination, tablaResultado) {
 function processAjaxComida(filterTipo, filternombre) {
     $.ajax({
         url: getHostAPI() + "api/comidas/paginate?tipo=" + filterTipo +
-                "&nombre=" + filternombre.toUpperCase() + "&page=1&size=15",
+                "&nombre=" + filternombre.toUpperCase() + "&page=1&size=20",
         type: "GET",
         headers: {
             //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
@@ -1165,10 +1164,6 @@ function diaComida(diacomida) {
             break;
 
     }
-}
-
-function existeTipo(lista) {
-    return lista.tipo === 1;
 }
 
 function AgregarComidaTabla(ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComidaCena) {
