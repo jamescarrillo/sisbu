@@ -38,13 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     $("#modalCargandoComida").on('shown.bs.modal', function () {
-        if (!$('#ventanaModalComida').hasClass("show")) {
-            beanRequestComida.operation = "paginate";
-            beanRequestComida.type_request = "GET";
-            console.log("cerrado");
-        }
-
         processAjaxComida();
+    });
+
+    $("#modalCargandoComida").on('hide.bs.modal', function () {
+        beanRequestComida.operation = "paginate";
+        beanRequestComida.type_request = "GET";
     });
 
     $('#modalCargandoComida').modal('show');
@@ -121,11 +120,15 @@ function toListComida(beanPagination) {
             row = "<tr ";
             row += "idcomida='" + comida.idcomida + "' ";
             row += ">";
+             row += "<td><ul class='dt-list dt-list-cm-0'>";
+            row += "<li class='dt-list__item editar-comida' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-editors'></i></a></li>";
+            row += "<li class='dt-list__item eliminar-comida' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "</ul></td>";
             row += "<td class='align-middle'>" + tipoComida(comida.tipo) + "</td>";
             row += "<td class='align-middle'>" + comida.descripcion + "</td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs editar-comida' data-toggle='tooltip' title='Editar'><i class='icon icon-editors icon-fw'></i></button></td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs eliminar-comida' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
-            row += "</tr>";
+             row += "</tr>";
             document.querySelector("#tbodyComida").innerHTML += row;
         });
         buildPagination(
@@ -150,8 +153,7 @@ function addEventsComidaes() {
     document.querySelectorAll('.editar-comida').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            console.log(btn.parentElement.parentElement.getAttribute('idcomida'));
-            comidaSelected = findByComida(btn.parentElement.parentElement.getAttribute('idcomida'));
+            comidaSelected = findByComida(btn.parentElement.parentElement.parentElement.getAttribute('idcomida'));
             if (comidaSelected != undefined) {
                 beanRequestComida.operation = "update";
                 beanRequestComida.type_request = "PUT";
@@ -170,7 +172,7 @@ function addEventsComidaes() {
     document.querySelectorAll('.eliminar-comida').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            comidaSelected = findByComida(btn.parentElement.parentElement.getAttribute('idcomida'));
+            comidaSelected = findByComida(btn.parentElement.parentElement.parentElement.getAttribute('idcomida'));
             beanRequestComida.operation = "delete";
             beanRequestComida.type_request = "DELETE";
             processAjaxComida();

@@ -10,7 +10,7 @@
         <div class="card overflow-hidden">
             <!-- Card Header -->
             <div class="card-header bg-transparent">
-                <h4 class="mb-0" id="titleManagerComida">[ 2 ] COMIDAS</h4>
+                <h4 class="mb-0" id="titleManagerComida">[ 0 ] COMIDAS</h4>
                 <input type="hidden" id="pageComida" value="1">
             </div>
             <!-- /card header -->
@@ -18,14 +18,14 @@
             <div class="card-body pt-0">
                 <form id="FrmComida">
                     <div class="input-group">
-                        <select class="custom-select " id="txtFilterTipoComida">
+                        <select class=" form-control form-control-sm " id="txtFilterTipoComida">
                             <option selected  value="-1">seleccione tipo...</option>
                             <option value="1">SEGUNDO</option>
                             <option value="2">BEBIDA</option>
                             <option value="3">POSTRE</option>
                             <option value="4">SOPA</option>
                         </select>
-                        <input type="text" id="txtFilterComida" class="form-control " placeholder="FILTRO. . .">
+                        <input type="search" id="txtFilterComida" class="form-control form-control-sm " placeholder="FILTRO. . .">
                         <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewComida"><i class="icon icon-plus icon-fw"></i></button>
                     </div>
@@ -35,9 +35,9 @@
                     <table class="table mb-0">
                         <thead>
                             <tr>
+                                <th class="text-uppercase" scope="col" style="width: 10%">ACCION</th>
                                 <th class="text-uppercase" scope="col" >TIPO</th>
                                 <th class="text-uppercase" scope="col" >DESCRIPCION</th>
-                                <th class="text-uppercase" scope="col" colspan="2" style="width: 20%">ACCION</th>
                             </tr>
                         </thead>
                         <tbody id="tbodyComida">

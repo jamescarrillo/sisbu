@@ -31,7 +31,7 @@
                     <table class="table mb-0">
                         <thead>
                             <tr> 
-                                <th class="text-uppercase text-center" scope="col" colspan="2" style="width: 20%">ACCION</th>
+                                <th class="text-uppercase text-center" scope="col"  style="width: 10%">ACCION</th>
                                 <th class="text-uppercase" scope="col" >FACULTAD</th>
                                 <th class="text-uppercase" scope="col" >ABREVIADO</th>
                                 <th class="text-uppercase text-center" scope="col" >ESCUELA</th>
@@ -118,7 +118,7 @@
                         <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
                         <div class="input-group-prepend">
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-sisbu"></i> BUSCAR</button>
-                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewEscuela"><i class="icon icon-plus icon-sisbu"></i></button>
+                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewEscuela"><i class="icon  icon-plus icon-sisbu"></i></button>
                         </div>
                     </div>
                 </form>
@@ -129,7 +129,7 @@
                             <table class="table table-sm mb-0 ">
                                 <thead class="bg-primary">
                                     <tr >
-                                        <th class="text-uppercase text-white pt-3 text-center" scope="col" colspan="2" style="width: 20%">ACCION</th>
+                                        <th class="text-uppercase text-white pt-3 text-center" scope="col" style="width: 15%">ACCION</th>
                                         <th class="text-uppercase text-white pt-3" scope="col" >NOMBRE</th>
                                         <th class="text-uppercase text-white pt-3" scope="col" >ABREVIADO</th>
                                     </tr>

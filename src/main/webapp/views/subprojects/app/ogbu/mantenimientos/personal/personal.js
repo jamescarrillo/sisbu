@@ -29,8 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestPersonal.operation = "add";
         beanRequestPersonal.type_request = "POST";
         //LIMPIAR LOS CAMPOS
-        document.querySelector("#txtDescripcionPersonal").value = "";
-         document.querySelector("#txtTipoPersonal").options[0].selected = 'selected';
+        document.querySelector("#txtTipoPersonal").options[0].selected = 'selected';
         //SET TITLE MODAL
         document.querySelector("#txtTituloModalMan").innerHTML = "REGISTRAR COMIDA";
         //OPEN MODEL
@@ -42,11 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $('#modalCargandoPersonal').modal('show');
-    
-    $("#sizePagePersonal").change(function() {
-     $('#modalCargandoPersonal').modal('show');
+
+    $("#sizePagePersonal").change(function () {
+        $('#modalCargandoPersonal').modal('show');
     });
-   
+
 });
 
 function processAjaxPersonal() {
@@ -57,24 +56,24 @@ function processAjaxPersonal() {
         parameters_pagination += "&estado=" + document.querySelector("#txtFilterEstadoPersonal").value;
         parameters_pagination += "&page=" + document.querySelector("#pagePersonal").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePagePersonal").value;
-        
+
     } else {
-      
+
         parameters_pagination = "";
-        if(beanRequestPersonal.operation == "delete" ){
-        parameters_pagination = "/"+personalSelected.idpersonal; 
-        json={};
-        }else{
-         json = {
-            "descripcion": document.querySelector("#txtDescripcionPersonal").value,
-            "tipo": document.querySelector("#txtTipoPersonal").value
-        };
-        if (beanRequestPersonal.operation == "update" ) {
-            json.idpersonal = personalSelected.idpersonal;
-        }   
+        if (beanRequestPersonal.operation == "delete") {
+            parameters_pagination = "/" + personalSelected.idpersonal;
+            json = {};
+        } else {
+            json = {
+                "descripcion": document.querySelector("#txtDescripcionPersonal").value,
+                "tipo": document.querySelector("#txtTipoPersonal").value
+            };
+            if (beanRequestPersonal.operation == "update") {
+                json.idpersonal = personalSelected.idpersonal;
+            }
         }
-        
-        
+
+
     }
     $.ajax({
         url: getHostAPI() + beanRequestPersonal.entity_api + "/" + beanRequestPersonal.operation + parameters_pagination,
@@ -103,11 +102,11 @@ function processAjaxPersonal() {
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoPersonal').modal("hide");
         showAlertErrorRequest();
-       
+
     });
 }
 
-function toListPersonal(beanPagination) {
+function toListPersonalER(beanPagination) {
     document.querySelector("#tbodyPersonal").innerHTML = "";
     document.querySelector("#titleManagerPersonal").innerHTML = "[ " + beanPagination.count_filter + " ] PERSONAL";
     if (beanPagination.count_filter > 0) {
@@ -116,15 +115,17 @@ function toListPersonal(beanPagination) {
             row = "<tr ";
             row += "idpersonal='" + personal.idpersonal + "' ";
             row += ">";
+            row += "<td><ul class='dt-list dt-list-cm-0'>";
+            row += "<li class='dt-list__item editar-personal' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-editors'></i></a></li>";
+            row += "<li class='dt-list__item eliminar-personal' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "</ul></td>";
             row += "<td class='align-middle'>" + personal.dni + "</td>";
-            row += "<td class='align-middle'>" + personal.apellido_pat + "</td>";
-            row += "<td class='align-middle'>" + personal.apellido_mat + "</td>";
-            row += "<td class='align-middle'>" + personal.nombre + "</td>";
+            row += "<td class='align-middle'>" + personal.apellido_pat + " " + personal.apellido_mat + " " + personal.nombre + "</td>";
             row += "<td class='align-middle'>" + personal.cargo.nombre + "</td>";
             row += "<td class='align-middle'>" + personal.area.nombre + "</td>";
-            row += "<td class='align-middle'>" + tipoPersonal(personal.tipo_personal) + "</td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs editar-personal' data-toggle='tooltip' title='Editar'><i class='icon icon-editors icon-fw'></i></button></td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs eliminar-personal' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
+            row += "<td class='align-middle " + tipoPersonalColor(personal.tipo_personal) + "'>" + tipoPersonal(personal.tipo_personal) + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyPersonal").innerHTML += row;
         });
@@ -136,13 +137,62 @@ function toListPersonal(beanPagination) {
                 $('#paginationPersonal'));
         addEventsPersonales();
         if (beanRequestPersonal.operation == "paginate") {
-            document.querySelector("#txtFilterPersonal").focus();
+            document.querySelector("#txtFilterDniPersonal").focus();
         }
         $('[data-toggle="tooltip"]').tooltip();
     } else {
         destroyPagination($('#paginationPersonal'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
-        document.querySelector("#txtFilterPersonal").focus();
+        document.querySelector("#txtFilterDniPersonal").focus();
+    }
+}
+
+function toListPersonal(beanPagination) {
+    document.querySelector("#tbodyPersonal").innerHTML = "";
+    document.querySelector("#titleManagerPersonal").innerHTML = "[ " + beanPagination.count_filter + " ] PERSONAL";
+    if (beanPagination.count_filter > 0) {
+        let row;
+        beanPagination.list.forEach(personal => {
+            row = "<div class='dt-widget__item border-bottom'>";
+            row += "<div class='dt-extra animate-slide align-self-center mr-5' idpersonal='" + personal.idpersonal + "'>";
+            row += "<span class='badge " + tipoPersonalColor(personal.tipo_personal) + " badge-circle-animate badge-pill badge-sm align-text-top'>" + tipoPersonal(personal.tipo_personal) + "</span>";
+            row += "<div class='slide-content'>";
+            row += "<a class='text-light-gray editar-personal' data-toggle='tooltip' title='Editar' href='javascript:void(0)'>";
+            row += "<i class='icon icon-editors'></i></a></div>";
+            row += "<div class='slide-content'>";
+            row += "<a class='text-light-gray editar-personal' data-toggle='tooltip' title='Editar'' href='javascript:void(0)'>";
+            row += "<i class='icon icon-trash-filled'></i></a></div></div>";
+
+            row += "<div class='text-truncate mr-2' style='min-width:50px;width:15%;'>";
+            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
+            row += personal.dni + "</p></div>";
+
+            row += "<div class=' text-truncate mr-2'  style='min-width:230px; width:42%;'>";
+            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
+            row += personal.apellido_pat + " " + personal.apellido_mat + " " + personal.nombre + "</p> <p> " + personal.cargo.nombre + "</p></div>";
+
+            row += "<div class='dt-widget__info text-truncate '  style='min-width:60px;'>";
+            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
+            row += personal.area.nombre + "</p></div>";
+
+            row += "</div>";
+            document.querySelector("#tbodyPersonal").innerHTML += row;
+        });
+        buildPagination(
+                beanPagination.count_filter,
+                parseInt(document.querySelector("#sizePagePersonal").value),
+                document.querySelector("#pagePersonal"),
+                $('#modalCargandoPersonal'),
+                $('#paginationPersonal'));
+        addEventsPersonales();
+        if (beanRequestPersonal.operation == "paginate") {
+            document.querySelector("#txtFilterDniPersonal").focus();
+        }
+        $('[data-toggle="tooltip"]').tooltip();
+    } else {
+        destroyPagination($('#paginationPersonal'));
+        showAlertTopEnd('warning', 'No se encontraron resultados');
+        document.querySelector("#txtFilterDniPersonal").focus();
     }
 }
 
@@ -157,7 +207,7 @@ function addEventsPersonales() {
                 beanRequestPersonal.type_request = "PUT";
                 //SET VALUES MODAL
                 console.log(personalSelected.descripcion);
-                document.querySelector("#txtDescripcionPersonal").value= personalSelected.descripcion;
+                document.querySelector("#txtDescripcionPersonal").value = personalSelected.descripcion;
                 document.querySelector("#txtTipoPersonal").options[personalSelected.tipo].selected = 'selected';
                 document.querySelector("#txtTituloModalMan").innerHTML = "EDITAR COMIDA";
                 $('#ventanaModalPersonal').modal("show");
@@ -167,12 +217,12 @@ function addEventsPersonales() {
             }
         };
     });
- document.querySelectorAll('.eliminar-personal').forEach(btn => {
+    document.querySelectorAll('.eliminar-personal').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-          personalSelected = findByPersonal(btn.parentElement.parentElement.getAttribute('idpersonal'));
-          beanRequestPersonal.operation = "delete";
-           beanRequestPersonal.type_request = "DELETE";
+            personalSelected = findByPersonal(btn.parentElement.parentElement.getAttribute('idpersonal'));
+            beanRequestPersonal.operation = "delete";
+            beanRequestPersonal.type_request = "DELETE";
             processAjaxPersonal();
         };
     });
@@ -194,7 +244,7 @@ function validateFormPersonal() {
         showAlertTopEnd('warning', 'Por favor ingrese descripcion');
         document.querySelector("#txtDescripcionPersonal").focus();
         return false;
-    }else  if (document.querySelector("#txtTipoPersonal").value == 0) {
+    } else if (document.querySelector("#txtTipoPersonal").value == 0) {
         showAlertTopEnd('warning', 'Por favor ingrese tipo ');
         document.querySelector("#txtTipoPersonal").focus();
         return false;
@@ -202,8 +252,8 @@ function validateFormPersonal() {
     return true;
 }
 
-function tipoPersonal(tipopersonal){
-    switch(tipopersonal){
+function tipoPersonal(tipopersonal) {
+    switch (tipopersonal) {
         case 1:
             return "NOMBRADO";
             break;
@@ -215,7 +265,25 @@ function tipoPersonal(tipopersonal){
             break;
         default:
             return "NINGUNO";
-            break;    
-            
+            break;
+
+    }
+}
+
+function tipoPersonalColor(tipopersonal) {
+    switch (tipopersonal) {
+        case 1:
+            return "badge-success";
+            break;
+        case 2:
+            return "badge-info";
+            break;
+        case 3:
+            return "badge-warning";
+            break;
+        default:
+            return "badge-default";
+            break;
+
     }
 }

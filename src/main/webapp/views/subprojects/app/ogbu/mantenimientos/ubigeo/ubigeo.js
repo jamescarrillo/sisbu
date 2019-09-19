@@ -247,8 +247,12 @@ function toListDistrito(beanPagination) {
             row = "<tr ";
             row += "iddistrito='" + distrito.iddistrito + "' ";
             row += ">";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs editar-distrito' data-toggle='tooltip' title='Editar'><i class='icon icon-editors icon-fw'></i></button></td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs eliminar-distrito' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
+            row += "<td><ul class='dt-list dt-list-cm-0'>";
+            row += "<li class='dt-list__item editar-distrito'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-editors'></i></a></li>";
+            row += "<li class='dt-list__item eliminar-distrito'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "</ul></td>";
             row += "<td class='align-middle'>" + distrito.nombre + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyDistrito").innerHTML += row;
@@ -296,7 +300,7 @@ function addEventsDistritoes() {
             document.querySelector("#ResultadoTablaProvincia").style.height = "139px";
             processAjaxProvincia(0);
             listFilterProvincia();
-            distritoSelected = findByDistrito(btn.parentElement.parentElement.getAttribute('iddistrito'));
+            distritoSelected = findByDistrito(btn.parentElement.parentElement.parentElement.getAttribute('iddistrito'));
             console.log(distritoSelected);
             if (distritoSelected != undefined) {
                 beanRequestDistrito.operation = "update";
@@ -316,7 +320,7 @@ function addEventsDistritoes() {
     document.querySelectorAll('.eliminar-distrito').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            distritoSelected = findByDistrito(btn.parentElement.parentElement.getAttribute('iddistrito'));
+            distritoSelected = findByDistrito(btn.parentElement.parentElement.parentElement.getAttribute('iddistrito'));
             beanRequestDistrito.operation = "delete";
             beanRequestDistrito.type_request = "DELETE";
             processAjaxDistrito();
@@ -423,8 +427,12 @@ function toListProvincia(beanPagination) {
             row = "<tr ";
             row += "idprovincia='" + provincia.idprovincia + "' ";
             row += ">";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs editar-provincia' data-toggle='tooltip' title='Editar'><i class='icon icon-editors icon-fw'></i></button></td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs eliminar-provincia' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
+            row += "<td><ul class='dt-list dt-list-cm-0'>";
+            row += "<li class='dt-list__item editar-provincia'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-editors'></i></a></li>";
+            row += "<li class='dt-list__item eliminar-provincia'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "</ul></td>";
             row += "<td class='align-middle'>" + provincia.nombre + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyProvincia").innerHTML += row;
@@ -456,7 +464,7 @@ function addEventsProvincia() {
             document.querySelector("#ResultadoTablaDepartamento").style.height = "139px";
             processAjaxDepartamento(0);
             listFilterDepartamento();
-            provinciaSelected = findByProvincia(btn.parentElement.parentElement.getAttribute('idprovincia'));
+            provinciaSelected = findByProvincia(btn.parentElement.parentElement.parentElement.getAttribute('idprovincia'));
             console.log(provinciaSelected);
             if (provinciaSelected != undefined) {
                 beanRequestProvincia.operation = "update";
@@ -476,7 +484,7 @@ function addEventsProvincia() {
     document.querySelectorAll('.eliminar-provincia').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            provinciaSelected = findByProvincia(btn.parentElement.parentElement.getAttribute('idprovincia'));
+            provinciaSelected = findByProvincia(btn.parentElement.parentElement.parentElement.getAttribute('idprovincia'));
             beanRequestProvincia.operation = "delete";
             beanRequestProvincia.type_request = "DELETE";
             processAjaxProvincia();
@@ -623,8 +631,12 @@ function toListDepartamento(beanPagination) {
             rowd = "<tr ";
             rowd += "iddepartamento='" + departamento.iddepartamento + "' ";
             rowd += ">";
-            rowd += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs editar-departamento' data-toggle='tooltip' title='Editar'><i class='icon icon-editors icon-fw'></i></button></td>";
-            rowd += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs eliminar-departamento' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
+            rowd += "<td><ul class='dt-list dt-list-cm-0'>";
+            rowd += "<li class='dt-list__item editar-departamento'><a class='text-light-gray' href='javascript:void(0)'>";
+            rowd += "<i class='icon icon-editors'></i></a></li>";
+            rowd += "<li class='dt-list__item eliminar-departamento'><a class='text-light-gray' href='javascript:void(0)'>";
+            rowd += "<i class='icon icon-trash-filled'></i></a></li>";
+            rowd += "</ul></td>";
             rowd += "<td class='align-middle'>" + departamento.nombre + "</td>";
             rowd += "</tr>";
             document.querySelector("#tbodyDepartamento").innerHTML += rowd;
@@ -689,7 +701,7 @@ function addEventsDepartamento() {
     document.querySelectorAll('.editar-departamento').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            departamentoSelected = findByDepartamento(btn.parentElement.parentElement.getAttribute('iddepartamento'));
+            departamentoSelected = findByDepartamento(btn.parentElement.parentElement.parentElement.getAttribute('iddepartamento'));
             if (departamentoSelected != undefined) {
                 beanRequestDepartamento.operation = "update";
                 beanRequestDepartamento.type_request = "PUT";
@@ -706,7 +718,7 @@ function addEventsDepartamento() {
     document.querySelectorAll('.eliminar-departamento').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            departamentoSelected = findByDepartamento(btn.parentElement.parentElement.getAttribute('iddepartamento'));
+            departamentoSelected = findByDepartamento(btn.parentElement.parentElement.parentElement.getAttribute('iddepartamento'));
             beanRequestDepartamento.operation = "delete";
             beanRequestDepartamento.type_request = "DELETE";
             processAjaxDepartamento(1);

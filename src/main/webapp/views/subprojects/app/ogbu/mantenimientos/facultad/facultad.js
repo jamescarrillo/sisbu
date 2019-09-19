@@ -41,11 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     $("#modalCargandoFacultad").on('shown.bs.modal', function () {
-        if (!$('#ventanaModalFacultad').hasClass("show")) {
-            beanRequestFacultad.operation = "paginate";
-            beanRequestFacultad.type_request = "GET";
-        }
         processAjaxFacultad();
+    });
+
+    $("#modalCargandoFacultad").on('hide.bs.modal', function () {
+        beanRequestFacultad.operation = "paginate";
+        beanRequestFacultad.type_request = "GET";
     });
 
     $('#modalCargandoFacultad').modal('show');
@@ -92,12 +93,14 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     $("#modalCargandoEscuela").on('shown.bs.modal', function () {
-        if (!$('#ventanaModalEscuelaCRUD').hasClass("show")) {
-           beanRequestEscuela.operation = "paginate";
-             beanRequestEscuela.type_request = "GET";
-            console.log("cerrado");
-        }
         processAjaxEscuela();
+    });
+
+    $("#modalCargandoEscuela").on('hide.bs.modal', function () {
+
+        beanRequestEscuela.operation = "paginate";
+        beanRequestEscuela.type_request = "GET";
+
     });
 
     // 
@@ -177,11 +180,15 @@ function toListFacultad(beanPagination) {
             row = "<tr ";
             row += "idfacultad='" + facultad.idfacultad + "' ";
             row += ">";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs editar-facultad' data-toggle='tooltip' title='Editar'><i class='icon icon-editors icon-fw'></i></button></td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs eliminar-facultad' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
+            row += "<td><ul class='dt-list dt-list-cm-0'>";
+            row += "<li class='dt-list__item editar-facultad' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-editors'></i></a></li>";
+            row += "<li class='dt-list__item eliminar-facultad' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "</ul></td>";
             row += "<td class='align-middle'>" + facultad.nombre + "</td>";
             row += "<td class='align-middle'>" + facultad.abreviado + "</td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs ver-escuela' data-toggle='tooltip' title='Editar Escuela'><i class='icon icon-editors icon-fw'></i></button></td>";
+            row += "<td class='text-center align-middle'><button class='btn btn-outline-primary btn-xs ver-escuela' data-toggle='tooltip' title='Editar Escuela'><i class='icon icon-list icon-fw'></i></button></td>";
             row += "</tr>";
             document.querySelector("#tbodyFacultad").innerHTML += row;
         });
@@ -225,7 +232,7 @@ function addEventsFacultades() {
     document.querySelectorAll('.editar-facultad').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            facultadSelected = findByFacultad(btn.parentElement.parentElement.getAttribute('idfacultad'));
+            facultadSelected = findByFacultad(btn.parentElement.parentElement.parentElement.getAttribute('idfacultad'));
             if (facultadSelected != undefined) {
                 beanRequestFacultad.operation = "update";
                 beanRequestFacultad.type_request = "PUT";
@@ -243,7 +250,7 @@ function addEventsFacultades() {
     document.querySelectorAll('.eliminar-facultad').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            facultadSelected = findByFacultad(btn.parentElement.parentElement.getAttribute('idfacultad'));
+            facultadSelected = findByFacultad(btn.parentElement.parentElement.parentElement.getAttribute('idfacultad'));
             beanRequestFacultad.operation = "delete";
             beanRequestFacultad.type_request = "DELETE";
             processAjaxFacultad();
@@ -335,7 +342,7 @@ function processAjaxEscuela() {
 }
 
 function toListEscuela(beanPagination) {
-     document.querySelector("#tablaEscuela-height").style.height = "185px";
+    document.querySelector("#tablaEscuela-height").style.height = "185px";
     document.querySelector("#tbodyEscuela").innerHTML = "";
     document.querySelector("#titleManagerEscuela").innerHTML = "[ " + beanPagination.length + " ] Escuelas";
     if (beanPagination.length > 0) {
@@ -344,8 +351,12 @@ function toListEscuela(beanPagination) {
             row = "<tr ";
             row += "idescuela='" + escuela.idescuela + "' ";
             row += ">";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs editar-escuela' data-toggle='tooltip' title='Editar'><i class='icon icon-editors icon-fw'></i></button></td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-secondary btn-xs eliminar-escuela' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
+            row += "<td><ul class='dt-list dt-list-cm-0'>";
+            row += "<li class='dt-list__item editar-escuela' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-editors'></i></a></li>";
+            row += "<li class='dt-list__item eliminar-escuela' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "</ul></td>";
             row += "<td class='align-middle'>" + escuela.nombre + "</td>";
             row += "<td class='align-middle'>" + escuela.abreviado + "</td>";
             row += "</tr>";
@@ -368,7 +379,7 @@ function addEventsEscuela() {
     document.querySelectorAll('.editar-escuela').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            escuelaSelected = findByEscuela(btn.parentElement.parentElement.getAttribute('idescuela'));
+            escuelaSelected = findByEscuela(btn.parentElement.parentElement.parentElement.getAttribute('idescuela'));
             if (escuelaSelected != undefined) {
                 beanRequestEscuela.operation = "update";
                 beanRequestEscuela.type_request = "PUT";
@@ -386,7 +397,7 @@ function addEventsEscuela() {
     document.querySelectorAll('.eliminar-escuela').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            escuelaSelected = findByEscuela(btn.parentElement.parentElement.getAttribute('idescuela'));
+            escuelaSelected = findByEscuela(btn.parentElement.parentElement.parentElement.getAttribute('idescuela'));
             beanRequestEscuela.operation = "delete";
             beanRequestEscuela.type_request = "DELETE";
             processAjaxEscuela();

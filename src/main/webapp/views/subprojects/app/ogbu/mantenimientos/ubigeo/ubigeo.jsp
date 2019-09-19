@@ -64,7 +64,7 @@
                                 <table class="table mb-0">
                                     <thead>
                                         <tr> 
-                                            <th class="text-uppercase text-center" scope="col" colspan="2" style="width: 20%">ACCION</th>
+                                            <th class="text-uppercase text-center" scope="col" style="width: 10%">ACCION</th>
                                             <th class="text-uppercase" scope="col" >DEPARTAMENTO</th>
                                         </tr>
                                     </thead>
@@ -120,7 +120,7 @@
                                 <table class="table mb-0 ">
                                     <thead >
                                         <tr >
-                                            <th class="text-uppercase  text-center" scope="col" colspan="2" style="width: 20%">ACCION</th>
+                                            <th class="text-uppercase  text-center" scope="col" style="width: 10%">ACCION</th>
                                             <th class="text-uppercase " scope="col" >PROVINCIA</th>
                                         </tr>
                                     </thead>
@@ -172,7 +172,7 @@
                                 <table class="table mb-0">
                                     <thead>
                                         <tr> 
-                                            <th class="text-uppercase text-center" scope="col" colspan="2" style="width: 20%">ACCION</th>
+                                            <th class="text-uppercase text-center" scope="col"  style="width: 10%">ACCION</th>
                                             <th class="text-uppercase" scope="col" >DISTRITO</th>
                                         </tr>
                                     </thead>
