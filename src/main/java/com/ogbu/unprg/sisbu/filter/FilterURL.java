@@ -396,13 +396,15 @@ public class FilterURL implements Filter {
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/servicios/comedor/comida/comida.js" + version_project
         });
+        
         this.list_resources.add(resource);
         ///menus
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/comedor/menus");
         resource.setPath("/views/subprojects/app/ogbu/servicios/comedor/menu/menu.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/servicios/comedor/menu/menu.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/comedor/menu/menu.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/comedor/menu/class.js" + version_project
         });
         this.list_resources.add(resource);
         ///asistencia
@@ -456,6 +458,15 @@ public class FilterURL implements Filter {
         });
         this.list_resources.add(resource);
 
+        //CONFIGRUACIONES
+        //CICLO ACADEMICO
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/configuraciones/cicloacademico");
+        resource.setPath("/views/subprojects/app/ogbu/configuraciones/cicloAcademico/cicloAcademico.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/configuraciones/cicloAcademico/cicloAcademico.js" + version_project
+        });
+        this.list_resources.add(resource);
         //MANTENIMIENTOS
         //CARGOS
         resource = new Resource();

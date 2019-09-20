@@ -47,7 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         event.stopPropagation();
     });
+    let p1 = new Point({x: 10, y: 20});
+    let p2 = new Point();
 
+    console.log(p1.toString()); // (0, 0)
+    console.log(p2.toString()); // (0, 0)
 //document.querySelector("#txtFilterComidaDesayuno").onfocusout =function () {
     //document.querySelector("#ResultadoComidaDesayuno").style.height = "0px";
 
@@ -105,6 +109,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     };
 
+
+
     document.querySelector("#buttonAlmuerzo").onclick = function () {
         document.querySelector("#IndexMenuSemanal").value = 1;
     };
@@ -119,6 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector("#buttonDesayuno").onclick = function () {
         document.querySelector("#IndexMenuSemanal").value = 0;
+
+
     };
 
     document.querySelector("#txtFilterComidaDesayuno").onclick = function () {
@@ -145,16 +153,16 @@ document.addEventListener("DOMContentLoaded", function () {
         processAjaxMenuSemanal();
     });
 
-    document.querySelector("#btnGuardarAddMenus").onclick = function () {
-        if (validateFormMenuDia()) {
-            var fechatxt = document.querySelector('#txtMenuSemanalFecha').value;
-            dms.fecha = fechatxt.split("-")[2] + "/" + fechatxt.split("-")[1] + "/" + fechatxt.split("-")[0];
-            console.log(dms);
-            listDMS.push(dms);
-            console.log(listDMS);
-            $('#ventanaModalMenuSemanal').modal('hide');
+    document.querySelector("#btnCerrarAddMenus").onclick = function () {
+        if (dms.comida_asegundo.idcomida == 0) {
+            
         }
-    };
+        
+        
+        $("#dsds").modal('hide');
+        
+        listDMS.push(dms);
+    }
 
     $("#modalCargandoMenuSemanal").on('hide.bs.modal', function () {
         beanRequestMenuSemanal.entity_api = "api/menusemanal";
@@ -279,6 +287,18 @@ function onclickSemana() {
     };
 }
 
+class Point {
+    constructor(args = {}) {
+        ({x: this.x = 0, y: this.y = 0} = args);
+    }
+
+    toString() {
+        return '(' + this.x + ', ' + this.y + ')';
+    }
+}
+
+
+
 function processAjaxMenuSemanal() {
 
 
@@ -388,6 +408,11 @@ function processAjaxMenuSemanal() {
             }
         }
     }
+    let  list = [
+        {},
+        {}
+
+    ];
     $.ajax({
         url: getHostAPI() + beanRequestMenuSemanal.entity_api + "/" + beanRequestMenuSemanal.operation + parameters_pagination,
         type: beanRequestMenuSemanal.type_request,
@@ -742,58 +767,31 @@ function addEventsMenuSemanales() {
     document.querySelectorAll('.agregar-menu-LUNES').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            if (listDMS.length != 0) {
-                listDMS.forEach(detallecu => {
-                    if (diaSemanaFecha(detallecu.fecha) != "LUNES") {
-
-                        document.querySelector("#txtTituloModalMan").innerHTML = "LUNES";
-                        dms = new DetalleCronogramaCu();
-                        index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComidaCena);
-                        $('#ventanaModalMenuSemanal').modal("show");
-                        return;
-                    } else {
-                        console.log("si es lunes");
-                        showAlertTopEnd('warning', 'Ya se registró el menu del LUNES');
-                    }
-                });
-            } else {
-
-                document.querySelector("#txtTituloModalMan").innerHTML = "LUNES";
-                dms = new DetalleCronogramaCu();
-                index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComidaCena);
-                $('#ventanaModalMenuSemanal').modal("show");
-            }
 
 
-
+            document.querySelector('#txtMenuSemanalFechaMiercoles').style.display = "none";
+            document.querySelector('#txtMenuSemanalFechaMartes').style.display = "none";
+            document.querySelector('#txtMenuSemanalFechaJueves').style.display = "none";
+            document.querySelector('#txtMenuSemanalFechaViernes').style.display = "none";
+            document.querySelector('#txtMenuSemanalFecha').style.display = "block";
+            document.querySelector("#txtTituloModalMan").innerHTML = "LUNES";
+            index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComidaCena);
+            dms = new DetalleCronogramaCu();
+            $('#ventanaModalMenuSemanal').modal("show");
         };
     });
     document.querySelectorAll('.agregar-menu-MARTES').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            if (listDMS.length != 0) {
-                listDMS.forEach(detallecu => {
-                    if (diaSemanaFecha(detallecu.fecha) != "MARTES") {
 
-                        document.querySelector("#txtTituloModalMan").innerHTML = "MARTES";
-                        dms = new DetalleCronogramaCu();
-                        index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayunoMa, ListaComidaAlmuerzoMa, ListaComidaCenaMa);
-                        $('#ventanaModalMenuSemanal').modal("show");
-                        return;
-                    } else {
-                        console.log("si es lunes");
-                        showAlertTopEnd('warning', 'Ya se registró el menu del MARTES');
-                    }
-                });
-            } else {
-
-                document.querySelector("#txtTituloModalMan").innerHTML = "MARTES";
-                dms = new DetalleCronogramaCu();
-                index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayunoMa, ListaComidaAlmuerzoMa, ListaComidaCenaMa);
-                $('#ventanaModalMenuSemanal').modal("show");
-
-            }
-
+            document.querySelector('#txtMenuSemanalFechaMiercoles').style.display = "none";
+            document.querySelector('#txtMenuSemanalFechaMartes').style.display = "block";
+            document.querySelector('#txtMenuSemanalFechaJueves').style.display = "none";
+            document.querySelector('#txtMenuSemanalFechaViernes').style.display = "none";
+            document.querySelector('#txtMenuSemanalFecha').style.display = "none";
+            document.querySelector("#txtTituloModalMan").innerHTML = "MARTES";
+            index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayunoMa, ListaComidaAlmuerzoMa, ListaComidaCenaMa);
+            $('#ventanaModalMenuSemanal').modal("show");
 
 
         };
@@ -801,28 +799,16 @@ function addEventsMenuSemanales() {
     document.querySelectorAll('.agregar-menu-MIERCOLES').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            if (listDMS.length != 0) {
-                listDMS.forEach(detallecu => {
-                    if (diaSemanaFecha(detallecu.fecha) != "MIERCOLES") {
 
-                        document.querySelector("#txtTituloModalMan").innerHTML = "MIERCOLES";
-                        index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayunoMi, ListaComidaAlmuerzoMi, ListaComidaCenaMi);
-                        dms = new DetalleCronogramaCu();
-                        $('#ventanaModalMenuSemanal').modal("show");
-                        return;
-                    } else {
-                        console.log("si es lunes");
-                        showAlertTopEnd('warning', 'Ya se registró el menu del MIERCOLES');
-                    }
-                });
-            } else {
+            document.querySelector('#txtMenuSemanalFechaMiercoles').style.display = "block";
+            document.querySelector('#txtMenuSemanalFechaMartes').style.display = "none";
+            document.querySelector('#txtMenuSemanalFechaJueves').style.display = "none";
+            document.querySelector('#txtMenuSemanalFechaViernes').style.display = "none";
+            document.querySelector('#txtMenuSemanalFecha').style.display = "none";
+            document.querySelector("#txtTituloModalMan").innerHTML = "MIERCOLES";
+            index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayunoMi, ListaComidaAlmuerzoMi, ListaComidaCenaMi);
 
-                document.querySelector("#txtTituloModalMan").innerHTML = "MIERCOLES";
-                index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayunoMi, ListaComidaAlmuerzoMi, ListaComidaCenaMi);
-                dms = new DetalleCronogramaCu();
-                $('#ventanaModalMenuSemanal').modal("show");
-            }
-
+            $('#ventanaModalMenuSemanal').modal("show");
 
 
         };
@@ -830,27 +816,15 @@ function addEventsMenuSemanales() {
     document.querySelectorAll('.agregar-menu-JUEVES').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            if (listDMS.length != 0) {
-                listDMS.forEach(detallecu => {
-                    if (diaSemanaFecha(detallecu.fecha) != "JUEVES") {
 
-                        document.querySelector("#txtTituloModalMan").innerHTML = "JUEVES";
-                        dms = new DetalleCronogramaCu();
-                        index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayunoJu, ListaComidaAlmuerzoJu, ListaComidaCenaJu);
-                        $('#ventanaModalMenuSemanal').modal("show");
-                        return;
-                    } else {
-                        showAlertTopEnd('warning', 'Ya se registró el menu del JUEVES');
-                    }
-                });
-            } else {
-
-                document.querySelector("#txtTituloModalMan").innerHTML = "JUEVES";
-                dms = new DetalleCronogramaCu();
-                index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayunoJu, ListaComidaAlmuerzoJu, ListaComidaCenaJu);
-                $('#ventanaModalMenuSemanal').modal("show");
-            }
-
+            document.querySelector('#txtMenuSemanalFechaMiercoles').style.display = "none";
+            document.querySelector('#txtMenuSemanalFechaMartes').style.display = "none";
+            document.querySelector('#txtMenuSemanalFechaJueves').style.display = "block";
+            document.querySelector('#txtMenuSemanalFechaViernes').style.display = "none";
+            document.querySelector('#txtMenuSemanalFecha').style.display = "none";
+            document.querySelector("#txtTituloModalMan").innerHTML = "JUEVES";
+            index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayunoJu, ListaComidaAlmuerzoJu, ListaComidaCenaJu);
+            $('#ventanaModalMenuSemanal').modal("show");
 
 
         };
@@ -858,28 +832,15 @@ function addEventsMenuSemanales() {
     document.querySelectorAll('.agregar-menu-VIERNES').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            if (listDMS.length != 0) {
-                listDMS.forEach(detallecu => {
-                    if (diaSemanaFecha(detallecu.fecha) != "VIERNES") {
 
-                        document.querySelector("#txtTituloModalMan").innerHTML = "VIERNES";
-                        dms = new DetalleCronogramaCu();
-                        index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayunoVi, ListaComidaAlmuerzoVi, ListaComidaCenaVi);
-                        $('#ventanaModalMenuSemanal').modal("show");
-                        return;
-                    } else {
-                        showAlertTopEnd('warning', 'Ya se registró el menu del VIERNES');
-                    }
-                });
-            } else {
-
-                document.querySelector("#txtTituloModalMan").innerHTML = "VIERNES";
-                dms = new DetalleCronogramaCu();
-                index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayunoVi, ListaComidaAlmuerzoVi, ListaComidaCenaVi);
-                $('#ventanaModalMenuSemanal').modal("show");
-
-            }
-
+            document.querySelector('#txtMenuSemanalFechaMiercoles').style.display = "none";
+            document.querySelector('#txtMenuSemanalFechaMartes').style.display = "none";
+            document.querySelector('#txtMenuSemanalFechaJueves').style.display = "none";
+            document.querySelector('#txtMenuSemanalFechaViernes').style.display = "block";
+            document.querySelector('#txtMenuSemanalFecha').style.display = "none";
+            document.querySelector("#txtTituloModalMan").innerHTML = "VIERNES";
+            index(document.querySelector("#IndexMenuSemanal").value, ListaComidaDesayunoVi, ListaComidaAlmuerzoVi, ListaComidaCenaVi);
+            $('#ventanaModalMenuSemanal').modal("show");
 
 
         };
@@ -906,72 +867,13 @@ function addEventsMenuSemanales() {
                 } else {
                     fechas = document.querySelector("#txtTituloModalMan").innerHTML;
                 }
+
                 switch (fechas) {
                     case 'LUNES':
-                        switch (document.querySelector("#IndexMenuSemanal").value) {
-                            case '0':
-                                switch (comidaSelected.tipo) {
-                                    case 1:
-                                        dms.comida_dsegundo = comidaSelected;
-
-                                        break;
-                                    case 2:
-                                        dms.comida_dbebida = comidaSelected;
-                                        break;
-                                    case 3:
-                                        dms.comida_dpostre = comidaSelected;
-                                        break;
-
-                                    default:
-
-                                        break;
-                                }
-                                break;
-                            case '1':
-                                switch (comidaSelected.tipo) {
-                                    case 1:
-                                        dms.comida_asegundo = comidaSelected;
-                                        break;
-                                    case 2:
-                                        dms.comida_abebida = comidaSelected;
-                                        break;
-                                    case 3:
-                                        dms.comida_apostre = comidaSelected;
-                                        break;
-                                    case 4:
-                                        dms.comida_asopa = comidaSelected;
-                                        break;
-                                    default:
-
-                                        break;
-                                }
-                                break;
-                            case '2':
-                                switch (comidaSelected.tipo) {
-                                    case 1:
-                                        dms.comida_csegundo = comidaSelected;
-                                        break;
-                                    case 2:
-                                        dms.comida_cbebida = comidaSelected;
-                                        break;
-                                    case 3:
-                                        dms.comida_cpostre = comidaSelected;
-                                        break;
-                                    case 4:
-                                        dms.comida_csopa = comidaSelected;
-                                        break;
-
-                                    default:
-
-                                        break;
-                                }
-                                break;
-
-                            default:
-
-                                break;
-                        }
                         AgregarComidaTabla(ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComidaCena);
+                        dms.comida_asegundo = comidaSelected;
+                        dms.comida_asegundo = comidaSelected;
+                        dms.comida_asegundo = comidaSelected;
                         break;
                     case 'MARTES':
                         AgregarComidaTabla(ListaComidaDesayunoMa, ListaComidaAlmuerzoMa, ListaComidaCenaMa);
@@ -1054,59 +956,6 @@ function validateFormMenuSemanal() {
         return false;
     } else if (ListaComidaCena.length < 4) {
         showAlertTopEnd('warning', 'Por favor ingrese Cena');
-        return false;
-    }
-    return true;
-}
-
-function validateFormMenuDia() {
-    if (document.querySelector('#txtMenuSemanalFecha').value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese la fecha del día ');
-        document.querySelector("#txtMenuSemanalFecha").focus();
-        return false;
-    } else if (dms.comida_dsegundo.idcomida == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese segundo al Desayuno');
-        document.querySelector("#txtFilterTipoComidaDesayuno").focus();
-        return false;
-    } else if (dms.comida_dbebida.idcomida == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese bebida al Desayuno');
-        document.querySelector("#txtFilterTipoComidaDesayuno").focus();
-        return false;
-    } else if (dms.comida_dpostre.idcomida == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese postre al Desayuno');
-        document.querySelector("#txtFilterTipoComidaDesayuno").focus();
-        return false;
-    } else if (dms.comida_asegundo.idcomida == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese segundo al Almuerzo');
-        document.querySelector("#txtFilterTipoComidaAlmuerzo").focus();
-        return false;
-    } else if (dms.comida_abebida.idcomida == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese bebida al Almuerzo');
-        document.querySelector("#txtFilterTipoComidaAlmuerzo").focus();
-        return false;
-    } else if (dms.comida_apostre.idcomida == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese postre al Almuerzo');
-        document.querySelector("#txtFilterTipoComidaAlmuerzo").focus();
-        return false;
-    } else if (dms.comida_asopa.idcomida == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese sopa al Almuerzo');
-        document.querySelector("#txtFilterTipoComidaAlmuerzo").focus();
-        return false;
-    } else if (dms.comida_csegundo.idcomida == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese segundo a la Cena');
-        document.querySelector("#txtFilterTipoComidaCena").focus();
-        return false;
-    } else if (dms.comida_cbebida.idcomida == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese bebida a la Cena');
-        document.querySelector("#txtFilterTipoComidaCena").focus();
-        return false;
-    } else if (dms.comida_cpostre.idcomida == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese postre a la Cena');
-        document.querySelector("#txtFilterTipoComidaCena").focus();
-        return false;
-    } else if (dms.comida_csopa.idcomida == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese sopa a la Cena');
-        document.querySelector("#txtFilterTipoComidaCena").focus();
         return false;
     }
     return true;
@@ -1413,21 +1262,6 @@ function QuitarComidaTabla(ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComida
         case '0':
             for (i in ListaComidaDesayuno) {
                 if (ListaComidaDesayuno[i]['idcomida'] == idarraycomida) {
-                    switch (ListaComidaDesayuno[i]['tipo']) {
-                        case 1:
-                            dms.comida_dsegundo = new Comida(undefined, undefined, undefined);
-                            console.log(dms.comida_dsegundo);
-                            break;
-                        case 2:
-                            dms.comida_dbebida = new Comida(undefined, undefined, undefined);
-                            break;
-                        case 3:
-                            dms.comida_dpostre = new Comida(undefined, undefined, undefined);
-                            break;
-                        default:
-
-                            break;
-                    }
                     break;
                 }
             }
@@ -1437,23 +1271,6 @@ function QuitarComidaTabla(ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComida
         case '1':
             for (i in ListaComidaAlmuerzo) {
                 if (ListaComidaAlmuerzo[i]['idcomida'] == idarraycomida) {
-                    switch (ListaComidaAlmuerzo[i]['tipo']) {
-                        case 1:
-                            dms.comida_asegundo = new Comida(undefined, undefined, undefined);
-                            break;
-                        case 2:
-                            dms.comida_abebida = new Comida(undefined, undefined, undefined);
-                            break;
-                        case 3:
-                            dms.comida_apostre = new Comida(undefined, undefined, undefined);
-                            break;
-                        case 4:
-                            dms.comida_apostre = new Comida(undefined, undefined, undefined);
-                            break;
-                        default:
-
-                            break;
-                    }
                     break;
                 }
             }
@@ -1463,23 +1280,6 @@ function QuitarComidaTabla(ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComida
         case '2':
             for (i in ListaComidaCena) {
                 if (ListaComidaCena[i]['idcomida'] == idarraycomida) {
-                    switch (ListaComidaCena[i]['tipo']) {
-                        case 1:
-                            dms.comida_csegundo = new Comida(undefined, undefined, undefined);
-                            break;
-                        case 2:
-                            dms.comida_cbebida = new Comida(undefined, undefined, undefined);
-                            break;
-                        case 3:
-                            dms.comida_cpostre = new Comida(undefined, undefined, undefined);
-                            break;
-                        case 4:
-                            dms.comida_cpostre = new Comida(undefined, undefined, undefined);
-                            break;
-                        default:
-
-                            break;
-                    }
                     break;
                 }
             }
