@@ -211,10 +211,6 @@
                     <div class="form-group col-lg-12">
                         <label >DIA ACTUAL</label>
                         <input class="form-control form-control-sm" placeholder="Filter..." id="txtMenuSemanalFecha"  type="date">
-                        <input class="form-control form-control-sm" placeholder="Filter..." id="txtMenuSemanalFechaMartes"  type="date">
-                        <input class="form-control form-control-sm" placeholder="Filter..." id="txtMenuSemanalFechaMiercoles"  type="date">
-                        <input class="form-control form-control-sm" placeholder="Filter..." id="txtMenuSemanalFechaJueves"  type="date">
-                        <input class="form-control form-control-sm" placeholder="Filter..." id="txtMenuSemanalFechaViernes"  type="date">
                     </div>
                 </div>
                 <!-- Card -->
@@ -260,7 +256,6 @@
                                                 <option selected  value="1">SEGUNDO</option>
                                                 <option value="2">BEBIDA</option>
                                                 <option value="3">POSTRE</option>
-                                                <option value="4">SOPA</option>
                                             </select>
                                         </div>
                                     </div>
@@ -395,7 +390,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">CERRAR</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" id="btnGuardarAddMenus">Guardar</button>
             </div>
 
         </div>
