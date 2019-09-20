@@ -82,6 +82,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    document.querySelector("#btnCancelSelectionSubArea").onclick = function () {
+        subarea_psiSelected = new SubAreaPsi();
+    };
+
 });
 
 function setSubAreaSelectedPregunta() {

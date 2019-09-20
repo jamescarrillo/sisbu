@@ -44,6 +44,13 @@ document.addEventListener("DOMContentLoaded", function () {
         //OPEN MODEL
         navigatePreguntas('crud');
         document.querySelector("#txtOrdenPregunta").value = evaluacionSelected.num_preguntas + 1;
+        if (evaluacionSelected.usa_alternativas_globales == 1) {
+            document.querySelector("#txtTipoRespuestaPregunta").value = "4";
+            document.querySelector("#txtTipoRespuestaPregunta").disabled = true;
+        } else {
+            document.querySelector("#txtTipoRespuestaPregunta").disabled = false;
+        }
+        subarea_psiSelected = new SubAreaPsi();
         document.querySelector("#txtEnunciadoPregunta").focus();
     };
 
@@ -152,20 +159,34 @@ function toListPregunta(beanPagination) {
     document.querySelector("#titleManagerPregunta").innerHTML = "[ " + beanPagination.count_filter + " ] PREGUNTAS";
     if (beanPagination.count_filter > 0) {
         let row;
+        let btn_edit_alternativas;
         beanPagination.list.forEach(pregunta => {
+            if (evaluacionSelected.usa_alternativas_globales == 1) {
+                btn_edit_alternativas = "";
+            } else {
+                btn_edit_alternativas =
+                        `
+                    <li class="dt-list__item">
+                        <a idpregunta='${pregunta.idpregunta}' class="text-light-gray editar-alternativas-pregunta sisbu-cursor-mano" data-toggle="tooltip" title="Editar alternativas u opciones" data-placement="bottom">
+                            <i class="icon icon-description "></i>
+                        </a>
+                    </li>
+                `;
+            }
             row = "<tr>";
             row += "<td class='align-middle'>" + pregunta.orden + "</td>";
-            row += "<td class='align-middle'>" + pregunta.enunciado + "</td>";
+            row += "<td class='align-middle'>" + pregunta.enunciado + "<br><span class='text-primary'>" + getSubArea(pregunta.subarea_psi) + "</span></td>";
             row += "<td class='align-middle text-center'>" + getTipoRepuestaPregunta(pregunta.tipo_respuesta) + "</td>";
             row +=
                     `
                 <td>
                     <ul class="dt-list dt-list-cm-0">
                         <li class="dt-list__item">
-                            <a idpregunta='${pregunta.idpregunta}' class="text-light-gray editar-pregunta" href="javascript:void(0)">
+                            <a idpregunta='${pregunta.idpregunta}' class="text-light-gray editar-pregunta sisbu-cursor-mano" data-toggle="tooltip" title="Editar Pregunta">
                                 <i class="icon icon-editors "></i>
                             </a>
                         </li>
+                        ${btn_edit_alternativas}
                     </ul>
                 </td>
             `;
@@ -206,6 +227,18 @@ function addEventsPreguntaes() {
             }
         };
     });
+    document.querySelectorAll('.editar-alternativas-pregunta').forEach(btn => {
+        //AGREGANDO EVENTO CLICK
+        btn.onclick = function () {
+            preguntaSelected = findByPregunta(btn.getAttribute('idpregunta'));
+            if (preguntaSelected != undefined) {
+                $('#ventanaModalAlternativa').modal('show');
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Pregunta para poder editar');
+            }
+        };
+    });
+    
 }
 
 function findByPregunta(idpregunta) {
@@ -262,6 +295,14 @@ function validateFormPregunta() {
         return false;
     }
     return true;
+}
+
+function getSubArea(subarea_psi) {
+    let res = "";
+    if (subarea_psi.nombre != null) {
+        res = subarea_psi.nombre;
+    }
+    return res;
 }
 
 function navigatePreguntas(ir) {
@@ -341,8 +382,14 @@ function openPregunta() {
     document.querySelector("#txtTooltipPregunta").value = preguntaSelected.tooltip;
     document.querySelector("#txtPlaceholderPregunta").value = preguntaSelected.placeholder;
     document.querySelector("#txtTipoRespuestaPregunta").value = preguntaSelected.tipo_respuesta;
+    if (evaluacionSelected.usa_alternativas_globales == 1) {
+        document.querySelector("#txtTipoRespuestaPregunta").disabled = true;
+    } else {
+        document.querySelector("#txtTipoRespuestaPregunta").disabled = false;
+    }
     document.querySelector("#txtColumnasPregunta").value = preguntaSelected.columnas;
-    document.querySelector("#txtItemNegativoPregunta").value = preguntaSelected.item_negativo == undefined ? "-1" : preguntaSelected.item_negativo;;
+    document.querySelector("#txtItemNegativoPregunta").value = preguntaSelected.item_negativo == undefined ? "-1" : preguntaSelected.item_negativo;
+    ;
     document.querySelector("#txtSubAreaPregunta").value = getSubAreaPregunta(preguntaSelected.subarea_psi);
     subarea_psiSelected = preguntaSelected.subarea_psi;
     navigatePreguntas('crud');
