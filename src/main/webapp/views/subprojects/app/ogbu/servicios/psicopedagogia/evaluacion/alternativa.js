@@ -125,6 +125,7 @@ function processAjaxAlternativa() {
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#ventanaModalManAlternativa').modal("hide");
+        $('#modalCargandoAlternativa').modal("hide");
         showAlertErrorRequest();
 
     });

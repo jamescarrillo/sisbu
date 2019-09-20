@@ -6,6 +6,13 @@
 var beanPaginationPregunta;
 var preguntaSelected;
 var beanRequestPregunta = new BeanRequest();
+
+class Pregunta {
+    constructor() {
+        this.idpregunta = 0;
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 
     //OCULTAMOS COMPONENTES
@@ -238,7 +245,7 @@ function addEventsPreguntaes() {
             }
         };
     });
-    
+
 }
 
 function findByPregunta(idpregunta) {

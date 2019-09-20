@@ -343,6 +343,8 @@ public class FilterURL implements Filter {
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/evaluacion.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/pregunta.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/pregunta_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/critico_psi.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/alternativa.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/procedimiento_ciclo.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/area_psi.js" + version_project,

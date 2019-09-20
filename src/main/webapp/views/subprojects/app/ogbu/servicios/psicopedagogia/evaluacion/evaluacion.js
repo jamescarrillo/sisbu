@@ -401,6 +401,18 @@ function addEventsEvaluaciones() {
             }
         };
     });
+    
+    document.querySelectorAll(".btn-conf-criticos").forEach(btn => {
+        btn.onclick = function () {
+            evaluacionSelected = getEvaluacionForId(this.getAttribute('idprocedimiento'));
+            if (evaluacionSelected != undefined) {
+                $('#ventanaModalCriticoPsi').modal('show');
+            } else {
+                showAlertTopEnd('warnign', 'No se encontró el registro para editar');
+            }
+        };
+    });
+    
 }
 
 function openEvaluacion() {
