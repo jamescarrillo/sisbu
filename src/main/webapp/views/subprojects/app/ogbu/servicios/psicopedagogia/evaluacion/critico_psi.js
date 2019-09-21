@@ -210,7 +210,7 @@ function addEventsCriticoPsies() {
                 beanRequestCriticoPsi.operation = "delete";
                 beanRequestCriticoPsi.type_request = "DELETE";
                 //MODAL ELIMINAR
-                showAlertDelete('modalCargandoCriticoPsi')
+                showAlertDelete('modalCargandoCriticoPsi');
             } else {
                 showAlertTopEnd('warning', 'No se encontró el registro para poder eliminar');
             }
@@ -266,12 +266,18 @@ function clearCriticoPsi() {
     document.querySelector("#txtDescripcionCriticoPsi").value = "";
     preguntaCSelected1 = undefined;
     preguntaCSelected2 = undefined;
+    document.querySelector("#txtPreguta1CriticoPsi").value = "";
+    document.querySelector("#txtPreguta2CriticoPsi").value = "";
 }
 
 function openCriticoPsi() {
     document.querySelector("#txtNombreCriticoPsi").value = critico_psiSelected.nombre;
     document.querySelector("#txtDescripcionCriticoPsi").value = critico_psiSelected.descripcion;
-    document.querySelector("#txtTituloModalManArePsi").innerHTML = "Editar Items Criticos";
+    preguntaCSelected1 = critico_psiSelected.pregunta_hn1;
+    preguntaCSelected2 = critico_psiSelected.pregunta_hn2;
+    document.querySelector("#txtPreguta1CriticoPsi").value = preguntaCSelected1.orden + ". " + preguntaCSelected1.enunciado;
+    document.querySelector("#txtPreguta2CriticoPsi").value = preguntaCSelected2.orden + ". " + preguntaCSelected2.enunciado;
+    document.querySelector("#txtTituloModalManCriticoPsi").innerHTML = "Editar Items Criticos";
     $('#ventanaModalManCriticoPsi').modal('show');
     document.querySelector("#txtNombreCriticoPsi").focus();
 }

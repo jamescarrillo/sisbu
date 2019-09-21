@@ -345,6 +345,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/pregunta.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/pregunta_c.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/critico_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/inconsistencia_psi.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/alternativa.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/procedimiento_ciclo.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/area_psi.js" + version_project,

@@ -413,6 +413,17 @@ function addEventsEvaluaciones() {
         };
     });
     
+    document.querySelectorAll(".btn-conf-inconsistencia").forEach(btn => {
+        btn.onclick = function () {
+            evaluacionSelected = getEvaluacionForId(this.getAttribute('idprocedimiento'));
+            if (evaluacionSelected != undefined) {
+                $('#ventanaModalInconsistenciaPsi').modal('show');
+            } else {
+                showAlertTopEnd('warnign', 'No se encontró el registro para editar');
+            }
+        };
+    });
+    
 }
 
 function openEvaluacion() {

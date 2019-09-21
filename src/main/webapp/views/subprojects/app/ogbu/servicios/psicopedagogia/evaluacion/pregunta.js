@@ -41,24 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#btnOpenNewPregunta").onclick = function () {
-        //CONFIGURAMOS LA SOLICITUD
-        beanRequestPregunta.operation = "add";
-        beanRequestPregunta.type_request = "POST";
-        //LIMPIAR LOS CAMPOS
-        clearPregunta();
-        //SET TITLE MODAL
-        document.querySelector("#titleCrudPreguntas").innerHTML = "REGISTRAR PREGUNTA";
-        //OPEN MODEL
-        navigatePreguntas('crud');
-        document.querySelector("#txtOrdenPregunta").value = evaluacionSelected.num_preguntas + 1;
-        if (evaluacionSelected.usa_alternativas_globales == 1) {
-            document.querySelector("#txtTipoRespuestaPregunta").value = "4";
-            document.querySelector("#txtTipoRespuestaPregunta").disabled = true;
-        } else {
-            document.querySelector("#txtTipoRespuestaPregunta").disabled = false;
-        }
-        subarea_psiSelected = new SubAreaPsi();
-        document.querySelector("#txtEnunciadoPregunta").focus();
+        $('#modalCargandoCountPregunta').modal("show");
     };
 
     document.querySelector("#btnGuardarPregunta").onclick = function () {
@@ -69,6 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#modalCargandoPregunta").on('shown.bs.modal', function () {
         processAjaxPregunta();
+    });
+
+    $("#modalCargandoCountPregunta").on('shown.bs.modal', function () {
+        processAjaxCountPregunta();
     });
 
     $("#ventanaModalPregunta").on('hidden.bs.modal', function () {
@@ -402,4 +389,58 @@ function openPregunta() {
     navigatePreguntas('crud');
     document.querySelector("#titleCrudPreguntas").innerHTML = "EDITAR PREGUNTA";
     document.querySelector("#txtOrdenPregunta").focus();
+}
+
+/*
+ * PROCESO DE OBTENCION DE CANTIDAD DE PREGUNTA DE UN PROCEDIMIENTO
+ */
+
+function processAjaxCountPregunta() {
+    let url_request = getHostAPI() + beanRequestPregunta.entity_api + "/get/num-preguntas?idprocedimiento=" + evaluacionSelected.idprocedimiento;
+    $.ajax({
+        url: url_request,
+        type: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        //data: JSON.stringify(json),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (jsonResponse) {
+        $('#modalCargandoCountPregunta').modal("hide");
+        if (jsonResponse.NUM_PREGUNTAS !== undefined) {
+            if (jsonResponse.NUM_PREGUNTAS > -1) {
+                openNewPregunta(jsonResponse.NUM_PREGUNTAS);
+            } else {
+                showAlertTopEnd('warning', "No se pudo obtener correctamente el n° de pregunta");
+            }
+        } else {
+            showAlertTopEnd('warning', "No se pudo obtener el n° de pregunta");
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoCountPregunta').modal("hide");
+        showAlertErrorRequest();
+    });
+}
+
+function openNewPregunta(num_pregunta_actual) {
+    //CONFIGURAMOS LA SOLICITUD
+    beanRequestPregunta.operation = "add";
+    beanRequestPregunta.type_request = "POST";
+    //LIMPIAR LOS CAMPOS
+    clearPregunta();
+    //SET TITLE MODAL
+    document.querySelector("#titleCrudPreguntas").innerHTML = "REGISTRAR PREGUNTA";
+    //OPEN MODEL
+    navigatePreguntas('crud');
+    //TRAEMOS LA CANTIDAD DE PREGUNTAS
+    document.querySelector("#txtOrdenPregunta").value = num_pregunta_actual + 1;
+    if (evaluacionSelected.usa_alternativas_globales == 1) {
+        document.querySelector("#txtTipoRespuestaPregunta").value = "4";
+        document.querySelector("#txtTipoRespuestaPregunta").disabled = true;
+    } else {
+        document.querySelector("#txtTipoRespuestaPregunta").disabled = false;
+    }
+    subarea_psiSelected = new SubAreaPsi();
+    document.querySelector("#txtEnunciadoPregunta").focus();
 }
