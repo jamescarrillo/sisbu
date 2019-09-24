@@ -242,10 +242,10 @@ public class FilterURL implements Filter {
         //MEDICO
         ///pacientes
         resource = new Resource();
-        resource.setUrl("/app/ogbu/servicios/medico/pacientes");
-        resource.setPath("/views/subprojects/app/servicios/medico/paciente/paciente.jsp");
+        resource.setUrl("/app/ogbu/servicios/medicina/pacientes");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/medicina/paciente/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/medico/paciente/paciente.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/medicina/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
         ///citas

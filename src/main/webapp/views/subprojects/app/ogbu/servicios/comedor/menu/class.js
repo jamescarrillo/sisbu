@@ -1,10 +1,10 @@
 
 class MenuSemanal {
-    constructor() {
-        this.idmenu_semanal = 0;
-        this.fechai = null;
-        this.fechaf = null;
-        this.observacion = "";
+    constructor(idmenu_semanal,fechai,fechaf,observacion) {
+        this.idmenu_semanal = idmenu_semanal;
+        this.fechai = fechai;
+        this.fechaf = fechaf;
+        this.observacion = observacion;
     }
 }
 
