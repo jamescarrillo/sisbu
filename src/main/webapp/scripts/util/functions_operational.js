@@ -12,13 +12,13 @@ function getDefaultOptionsPagination() {
         prev: "<i class='icon icon-chevrolet-left icon-sisbu' aria-hidden='true'></i>",
         next: "<i class='icon icon-chevrolet-right icon-sisbu' aria-hidden='true'></i>",
         last: "<i class='icon icon-double-arrow-right icon-sisbu' aria-hidden='true'></i>"
-        
-        /*
-         * first: "<i class='fa fa-angle-double-left' aria-hidden='true'></i>",
-        prev: "<i class='fa fa-angle-left' aria-hidden='true'></i>",
-        next: "<i class='fa fa-angle-right' aria-hidden='true'></i>",
-        last: "<i class='fa fa-angle-double-right' aria-hidden='true'></i>"
-         */
+
+                /*
+                 * first: "<i class='fa fa-angle-double-left' aria-hidden='true'></i>",
+                 prev: "<i class='fa fa-angle-left' aria-hidden='true'></i>",
+                 next: "<i class='fa fa-angle-right' aria-hidden='true'></i>",
+                 last: "<i class='fa fa-angle-double-right' aria-hidden='true'></i>"
+                 */
     };
     // icon icon-company icon-fw
     return defaultOpts;
@@ -101,4 +101,40 @@ function getStringCapitalize(s) {
     if (typeof s !== 'string')
         return ''
     return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+function getTimesTampJavaScriptCurrent() {
+    let f = new Date();
+    let f_ = "";
+    if (f.getDate() < 10) {
+        f_ += "0" + f.getDate();
+    } else {
+        f_ += f.getDate();
+    }
+    f_ += "/";
+    if (f.getMonth() < 10) {
+        f_ += "0" + (f.getMonth() + 1);
+    } else {
+        f_ += f.getMonth() + 1;
+    }
+    f_ += "/";
+    f_ += f.getFullYear();
+    f_ += " ";
+
+    if (f.getHours() < 10) {
+        f_ += "0" + f.getHours() + ":";
+    } else {
+        f_ += f.getHours() + ":";
+    }
+    if (f.getMinutes() < 10) {
+        f_ += "0" + f.getMinutes() + ":";
+    } else {
+        f_ += f.getMinutes() + ":";
+    }
+    if (f.getSeconds() < 10) {
+        f_ += "0" + f.getSeconds();
+    } else {
+        f_ += f.getSeconds();
+    }
+    return f_;
 }

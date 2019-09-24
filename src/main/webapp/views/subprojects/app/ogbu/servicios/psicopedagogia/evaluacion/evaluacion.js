@@ -145,6 +145,8 @@ function navigateHome(ir) {
 
             document.querySelector("#row-evaluaciones").style.display = "none";
             document.querySelector("#row-configurations").style.display = "flex";
+            
+            $("#modalCargandoProcedimientoCiclo").modal('show');
             break;
         default:
             //MENU PRINCIPAL

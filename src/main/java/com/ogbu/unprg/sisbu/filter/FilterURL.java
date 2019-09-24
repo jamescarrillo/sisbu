@@ -211,6 +211,17 @@ public class FilterURL implements Filter {
         this.list_resources.add(resource);
         //>>>>
 
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ATENDIDO 
+        //INDEX
+        resource = new Resource();
+        resource.setUrl("/app/ate/index");
+        resource.setPath("/views/subprojects/app/ate/index/index.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ate/index/index.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>OGBU
         //INDEX
         resource = new Resource();
         resource.setUrl("/app/ogbu/index");
@@ -256,7 +267,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/servicios/medico/cita/cita.js" + version_project
         });
         this.list_resources.add(resource);
-        
+
         //ODONTOLOGIA
         ///pacientes
         resource = new Resource();
@@ -274,7 +285,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/servicios/odontologia/cita/cita.js" + version_project
         });
         this.list_resources.add(resource);
-        
+
         //OBSTETRICIA
         ///pacientes
         resource = new Resource();
@@ -348,6 +359,8 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/inconsistencia_psi.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/alternativa.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/procedimiento_ciclo.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/detalle_procedimiento_ciclo.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/procedimiento_c.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/area_psi.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/subarea_psi.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/alternativa_global.js" + version_project,
@@ -397,7 +410,7 @@ public class FilterURL implements Filter {
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/servicios/comedor/comida/comida.js" + version_project
         });
-        
+
         this.list_resources.add(resource);
         ///menus
         resource = new Resource();
@@ -501,7 +514,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/mantenimientos/oficina/oficina.js" + version_project
         });
         this.list_resources.add(resource);
-         //DETALLE CRONOGRAMA COMEDOR
+        //DETALLE CRONOGRAMA COMEDOR
         resource = new Resource();
         resource.setUrl("/app/mantenimientos/detallecronogramacu");
         resource.setPath("/views/subprojects/app/ogbu/mantenimientos/detallecronogramacu/detallecronogramacu.jsp");
@@ -509,7 +522,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/mantenimientos/detallecronogramacu/detallecronogramacu.js" + version_project
         });
         this.list_resources.add(resource);
-          //MENUSEMANAL
+        //MENUSEMANAL
         resource = new Resource();
         resource.setUrl("/app/mantenimientos/menusemanal");
         resource.setPath("/views/subprojects/app/ogbu/mantenimientos/menusemanal/menusemanal.jsp");
@@ -525,7 +538,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/mantenimientos/comida/comida.js" + version_project
         });
         this.list_resources.add(resource);
-       
+
         //OCUPACIONES
         resource = new Resource();
         resource.setUrl("/app/ogbu/mantenimientos/ocupaciones");
