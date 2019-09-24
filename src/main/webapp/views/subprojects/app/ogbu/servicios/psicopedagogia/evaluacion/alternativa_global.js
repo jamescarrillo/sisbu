@@ -7,6 +7,7 @@
  Alt
  Shift
  */
+
 var list_alternativas_globales = [];
 var alternativa_global;
 

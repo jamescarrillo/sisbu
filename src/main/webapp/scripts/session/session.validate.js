@@ -43,7 +43,7 @@ function getStringTipoUsuario(tipo_usuario) {
 function addMenus(usuario) {
     switch (usuario.tipo_usuario) {
         case 1:
-
+            createHTML_ATE(usuario.tipo_perfil);
             break;
         case 2:
             //ogbu
@@ -67,7 +67,7 @@ function createHTML_OGBU(typeProfile) {
 
         <!-- Menu Item -->
         <li class="dt-side-nav__item">
-            <a href="javascript:void(0)" class="dt-side-nav__link a-index" title="Inicio">
+            <a href="${contextPah}app/ogbu/index" class="dt-side-nav__link a-index-no" title="Inicio">
                 <i class="icon icon-home icon-fw icon-lg"></i>
                 <span class="dt-side-nav__text">Inicio</span>
             </a>
@@ -439,18 +439,18 @@ function createHTML_OGBU(typeProfile) {
             <!-- /menu item -->
         
             <!-- Menu Header -->
-            <li class="dt-side-nav__item dt-side-nav__header">
+            <!--li class="dt-side-nav__item dt-side-nav__header">
                 <span class="dt-side-nav__text">Seguridad</span>
-            </li>
+            </li-->
             <!-- /menu header -->
 
             <!-- Menu Item -->
-            <li class="dt-side-nav__item">
+            <!--li class="dt-side-nav__item">
                 <a href="basic-form.html" class="dt-side-nav__link" title="Basic Form">
                     <i class="icon icon-settings icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text">Perfiles</span>
                 </a>
-            </li>
+            </li-->
             <!-- /menu item -->
         
             <!-- Menu Header -->
@@ -467,7 +467,7 @@ function createHTML_OGBU(typeProfile) {
                 </a>
             </li>
             <li class="dt-side-nav__item">
-                <a href="" class="dt-side-nav__link" title="Ciclos Académicos">
+                <a href="${contextPah}app/ogbu/configuraciones/cicloacademico" class="dt-side-nav__link" title="Ciclos Académicos">
                     <i class="icon icon-tag-o icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text">Ciclos Académicos</span>
                 </a>
@@ -525,4 +525,107 @@ function createHTML_OGBU(typeProfile) {
      
      `;
      */
+}
+
+function createHTML_ATE(typeProfile) {
+    //INICIO PARA TODOS
+    document.querySelector("#menus_sisbu").innerHTML =
+            `
+        <!-- Menu Header -->
+        <li class="dt-side-nav__item dt-side-nav__header">
+            <span class="dt-side-nav__text">Dashboard</span>
+        </li>
+        <!-- /menu header -->
+
+        <!-- Menu Item -->
+        <li class="dt-side-nav__item">
+            <a href="${contextPah}app/ate/index" class="dt-side-nav__link a-index-no" title="Inicio">
+                <i class="icon icon-home icon-fw icon-lg"></i>
+                <span class="dt-side-nav__text">Inicio</span>
+            </a>
+        </li>
+        <!-- /menu item -->
+    
+        <!-- Menu Item -->
+        <li class="dt-side-nav__item">
+            <a href="${contextPah}app/ate/perfil" class="dt-side-nav__link a-index-no" title="Inicio">
+                <i class="icon icon-user icon-fw icon-lg"></i>
+                <span class="dt-side-nav__text">Mi Perfil</span>
+            </a>
+        </li>
+        <!-- /menu item -->
+    `;
+
+    if (typeProfile == 1000) {
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
+             <!-- Menu Item -->
+                <li class="dt-side-nav__item">
+                    <a href="${contextPah}app/ate/evaluaciones" class="dt-side-nav__link a-index-no" title="Inicio">
+                        <i class="icon icon-description icon-fw icon-lg"></i>
+                        <span class="dt-side-nav__text">Evaluaciones<br> Virtuales</span>
+                    </a>
+                </li>
+            <!-- /menu item -->
+        `
+                ;
+    }
+
+    //SERVICIOS
+    document.querySelector("#menus_sisbu").innerHTML +=
+            `
+        <!-- Menu Header -->
+        <li class="dt-side-nav__item dt-side-nav__header">
+            <span class="dt-side-nav__text">Servicios</span>
+        </li>
+        <!-- /menu header -->
+    
+        <!-- Menu Item -->
+            <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ate/iniciar" class="dt-side-nav__link a-index-no" title="Inicio">
+                    <i class="icon icon-calendar icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text" style="text-transform: none">Reserva de Citas</span>
+                </a>
+            </li>
+        <!-- /menu item -->
+        <!-- Menu Item -->
+            <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ate/menu-semanal" class="dt-side-nav__link a-index-no" title="Inicio">
+                    <i class="icon icon-burger icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text" style="text-transform: none">Menu Semanal<br>del Comedor</span>
+                </a>
+            </li>
+        <!-- /menu item -->
+    `;
+    
+    //EXTRAS
+    document.querySelector("#menus_sisbu").innerHTML +=
+            `
+        <!-- Menu Header -->
+        <li class="dt-side-nav__item dt-side-nav__header">
+            <span class="dt-side-nav__text">Extras</span>
+        </li>
+        <!-- /menu header -->
+    
+        <!-- Menu Item -->
+            <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ate/iniciar" class="dt-side-nav__link a-index-no" title="Inicio">
+                    <i class="icon icon-attach-v icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text" style="text-transform: none">Noticias y Eventos</span>
+                </a>
+            </li>
+        <!-- /menu item -->
+        
+        <!-- Menu Item -->
+            <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ate/reserva-citas" class="dt-side-nav__link a-index-no" title="Inicio">
+                    <i class="icon icon-assignment icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text" style="text-transform: none">Constancias</span>
+                </a>
+            </li>
+        <!-- /menu item -->
+    `;
+
+
+
 }

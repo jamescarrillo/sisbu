@@ -146,6 +146,7 @@ function processAjaxAreaPsi() {
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#ventanaModalManAreaPsi').modal("hide");
+        $('#modalCargandoAreaPsi').modal("hide");
         showAlertErrorRequest();
 
     });

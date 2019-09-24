@@ -213,6 +213,52 @@
                     </div>
                 </div>
             </div>
+            <div class="col-12 mb-4">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input sisbu-cursor-mano" id="checkParametersAvanzados" name="example1">
+                    <label class="custom-control-label sisbu-cursor-mano text-warning" for="checkParametersAvanzados">PARAMETROS AVANZADOS</label>
+                </div>
+            </div>
+            <div class="col-12 div-others-parameters">
+                <div class="form-group">
+                    <label for="txtUsaParametrosInconsistenciaRU">¿USA PREGUNTAS DE INCONSISTENCIAS?</label>
+                    <select class="form-control form-control-sm sisbu-cursor-mano" id="txtUsaParametrosInconsistenciaRU">
+                        <option value="N">NO</option>
+                        <option value="S">SI</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 col-12 div-parametro-inconsistencia">
+                <div class="form-group">
+                    <label for="txtOperacionInconsistenciaRU">OPERACIÓN ALGEBRAICA</label>
+                    <select class="form-control form-control-sm sisbu-cursor-mano" id="txtOperacionInconsistenciaRU">
+                        <option value="-1">Seleccione. . . </option>
+                        <option value="+">SUMA (+)</option>
+                        <option value="-">RESTA (-)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 col-12 div-parametro-inconsistencia">
+                <div class="form-group">
+                    <label for="txtValorInconsistenciaRU">VALOR DIVISIONAL DE INCONSISTENCIA</label>
+                    <input type="number" class="form-control form-control-sm" id="txtValorInconsistenciaRU" aria-describedby="nombre" placeholder="Ingrese número . . .">
+                </div>
+            </div>
+            <div class="col-12 div-others-parameters">
+                <div class="form-group">
+                    <label for="txtUsaParametrosCriticidadRU">¿USA PREGUNTAS CRITICAS?</label>
+                    <select class="form-control form-control-sm sisbu-cursor-mano" id="txtUsaParametrosCriticidadRU">
+                        <option value="N">NO</option>
+                        <option value="S">SI</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 div-parametro-criticidad">
+                <div class="form-group">
+                    <label for="txtValorCriticidadRU">VALOR MINIMO DE PREGUNTAS CRITICAS</label>
+                    <input type="number" class="form-control form-control-sm" id="txtValorCriticidadRU" aria-describedby="nombre" placeholder="Ingrese número . . .">
+                </div>
+            </div>
             <div class="col-12">
                 <h5>INSTRUCCIONES</h5>
                 <div id="txtInstrucciones">
@@ -228,6 +274,20 @@
     <!-- /card -->
 </div>
 
+<div class="modal fade" id="modalCargandoEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row" id="row-configurations" style="display: none">
     <!-- Grid Item -->
     <div class="col-12 order-xl-3">
@@ -239,80 +299,187 @@
             <div class="dt-card__header mb-0">
                 <!-- Card Heading -->
                 <div class="dt-card__heading">
-                    <h3 class="dt-card__title">[0] Configuraciones</h3>
+                    <h3 class="dt-card__title" id="titleManagerProcedimientoCiclo">[0] CONFIGURACIONES</h3>
                 </div>
                 <!-- /card heading -->
-
+                <!-- Card Tools -->
+                <div class="dt-card__tools">
+                    <button type="button" class="btn btn-primary btn-xs" id="btnOpenNewProcedimientoCiclo"><i class="icon icon-addnew"></i> AGREGAR</button>
+                </div>
+                <!-- /card tools -->
             </div>
             <div class="mb-5 pt-5 pl-3 pr-3">
                 <div class="col-12">
-                    <form id="FrmEvaluacion">
-                        <div class="input-group" style="max-width: 100%;">
-                            <select class="form-control form-control-sm">
-                                <option value="">Seleccione. . . .</option>
-                            </select>
-                            <button type="submit" class="btn btn-primary btn-sm">BUSCAR</button>
+                    <form id="FrmProcedimientoCiclo">
+                        <div class="input-group search-box" style="max-width: 100%;">
+                            <input type="search" id="txtFilterProcedimientoCiclo" class="form-control form-control-sm" placeholder="FILTRO. . .">
+                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                            <div class="input-group-append">
+                                <button type="submit" id="btnBuscarProcedimientoCiclo" class="btn btn-primary btn-sm">BUSCAR</button>
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <!-- /card header -->
-
             <!-- Card Body -->
             <div class="dt-card__body p-0">
                 <!-- Widget -->
-                <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" id="div-container-evaluaciones">
-
-                    <!-- Widget Item -->
-                    <div class="dt-widget__item border-success">
-
-                        <!-- Widget Info -->
-                        <div class="dt-widget__info text-truncate">
-                            <div class="dt-widget__title f-16 font-weight-500 text-truncate">
-                                2018-II
-                            </div>
-                            <p class="mb-0 text-truncate text-light-gray">
-                                10/09/2019 - 24/12/2019 
-                            </p>
-                        </div>
-                        <!-- /widget info -->
-
-                        <!-- Widget Extra -->
-                        <div class="dt-widget__extra text-right">
-                            <!-- Show Content -->
-                            <div class="show-content">
-                                <span class="d-block text-dark">150</span>
-                                <span class="d-block">Evaluaciones</span>
-                            </div>
-                            <!-- /show content -->
-                            <!-- Hide Content -->
-                            <div class="hide-content">
-                                <!-- Action Button Group -->
-                                <div class="action-btn-group">
-                                    <button class="btn btn-default text-danger dt-fab-btn" title="Configurar Evaluaciones" data-toggle="tooltip">
-                                        <i class="icon icon-assignment icon-xl"></i>
-                                    </button>
-                                </div>
-                                <!-- /action button group -->
-                            </div>
-                            <!-- /hide content -->
-                        </div>
-                        <!-- /widget extra -->
-
-                    </div>
-                    <!-- /widgets item -->
-
-
+                <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" 
+                     id="div-container-procedimiento_ciclo">
                 </div>
                 <!-- /widget -->
+                <div class="row mt-2" style="padding: 30px">
+                    <input type="hidden" id="pageProcedimientoCiclo" value="1">
+                    <div class="col-lg-2 col-sm-3 mt-2">
+                        <select id="sizePageProcedimientoCiclo" class="form-control form-control-sm sisbu-cursor-mano">
+                            <option value="5">05</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-10 col-sm-9 mt-2">
+                        <nav aria-label="Page navigation example">
+                            <ul id="paginationProcedimientoCiclo" class="pagination justify-content-end">
+                            </ul>
+                        </nav>  
+                    </div>
+                </div>
             </div>
-            <!-- /card body -->
-
         </div>
-        <!-- /card -->
-
     </div>
     <!-- /grid item -->
+</div>
+
+<!--CRUD CONFIGURACIONES-->
+<div class="row" id="row-crud-configurations" style="display: none">
+    <div class="col-12">
+        <!-- Card -->
+        <div class="dt-card" style="padding: 30px">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="text-primary" id="titleCrudProcedimientoCiclo">TITLE</h4>
+                </div>
+                <div class="col-12">
+                    <label for="txtCicloAcademico">CICLO ACADÉMICO</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtCicloAcademico" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                        <div class="input-group-append">
+                            <button type="button" id="btnSeleccionarCicloAcademico" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mt-4 text-right">
+                    <button class="btn btn-outline-primary btn-xs" id="btnCancelarCrudProcedimientoCiclo">CANCELAR</button>
+                    <button class="btn btn-primary btn-xs" id="btnGuardarProcedimientoCiclo">GUARDAR</button>
+                </div>
+            </div>
+        </div>
+        <!-- /card -->
+    </div>
+</div>
+
+<!--SELECTED CICLO ACADEMICO-->
+<div id="ventanaModalCicloAcademico" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #757575; border-width: 4px;border-radius: 10px">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerCicloAcademico"><strong>[ 0 ]
+                        CICLOS ACADEMICOS</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageCicloAcademico"
+                               value="1">
+                        <form id="FrmCicloAcademico">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterCicloAcademico"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarCicloAcademico"
+                                            class="btn btn-primary btn-xs mr-3" data-toggle="tooltip"
+                                            title="Buscar Ciclo"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                    <button type="button" id="btnOpenNewCicloAcademico" class="btn btn-primary btn-xs"
+                                            data-toggle="tooltip" title="Agregar Ciclo"><i class="icon icon-plus"
+                                                                                   aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Nombre</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyCicloAcademico">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-sm-3 col-4 mt-2">
+                                <select id="sizePageCicloAcademico"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="6">06</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-9 col-8 mt-2">
+                                <nav aria-label="Page navigation Area">
+                                    <ul id="paginationCicloAcademico"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-ciclo-academico" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCargandoCicloAcademico" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none; background-color: rgba(0,0,0,.2)" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCargandoProcedimientoCiclo" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row mb-3" id="row-navigation-options" style="display: none">
@@ -320,21 +487,6 @@
         <button class="btn btn-primary btn-xs" id="btn-regresar-principal"><i class="icon icon-reply"></i> Regresar Inicio</button>
     </div>
 </div>
-
-<div class="modal fade" id="modalCargandoEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                        Cargando registros. . .
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <div class="modal fade" id="ventanaModalAddAlternativaGlobal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -563,6 +715,22 @@
     </div>
 </div>
 
+<div class="modal" id="modalCargandoCountPregunta" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Obteniendo n° de pregunta. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--T: SUBAREAPSI-->
 <div id="ventanaModalSubAreaPsi" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
      data-keyboard="false" style="padding-top: 1%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
@@ -633,10 +801,10 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionSubArea"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
                 <button type="button" id="btn-selecionar-subarea-psi" class="btn btn-primary btn-xs"><i
                         class="fas fa-check"></i> SELECCIONAR</button>
-                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i class="fas fa-ban"></i>
-                    CANCELAR</button>
             </div>
         </div>
     </div>
@@ -787,10 +955,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btn-selecionar-area-psi" class="btn btn-primary btn-xs"><i
-                        class="fas fa-check"></i> SELECCIONAR</button>
                 <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i class="fas fa-ban"></i>
                     CANCELAR</button>
+                <button type="button" id="btn-selecionar-area-psi" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
             </div>
         </div>
     </div>
@@ -856,6 +1024,708 @@
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                         Cargando areas. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--CRUD ALTERNATIVA-->
+<div id="ventanaModalAlternativa" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 1%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #757575; border-width: 4px;border-radius: 10px">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerAlternativa"><strong>[ 0 ]
+                        ALTERNATIVAS</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageAlternativa"
+                               value="1">
+                        <form id="FrmAlternativa">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterAlternativa"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarAlternativa"
+                                            class="btn btn-primary btn-xs mr-3" data-toggle="tooltip"
+                                            title="Buscar Area"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                    <button type="button" id="btnOpenNewAlternativa" class="btn btn-primary btn-xs"
+                                            data-toggle="tooltip" title="Agregar Area"><i class="icon icon-plus"
+                                                                                  aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle">Nombre</th>
+                                            <th style="width: 15%" colspan="2" class="text-center align-middle">
+                                                Acción
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyAlternativa">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-sm-3 col-4 mt-2">
+                                <select id="sizePageAlternativa"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="8">8</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-9 col-8 mt-2">
+                                <nav aria-label="Page navigation Alternativa">
+                                    <ul id="paginationAlternativa"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-area-psi" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ventanaModalManAlternativa" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 1.5%; overflow-y: visible;background-color: rgba(0,0,0,.4)">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" style="border-color: #ffbc34; border-width: 4px;border-radius: 10px">
+            <form id="FrmAlternativaModal">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="txtTituloModalManAlternativa"></h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-12 mb-2">
+                            <label for="txtDescripcionAlternativa">Descripción</label>
+                            <input type="text" id="txtDescripcionAlternativa"
+                                   class="form-control form-control-sm" placeholder="Ingrese descripción. . ." maxlength="100">
+                        </div>
+                        <div class="col-lg-6 col-12 mb-2">
+                            <label for="txtValorAlternativa">Valor Numérico</label>
+                            <input type="number" id="txtValorAlternativa"
+                                   class="form-control form-control-sm" placeholder="Ingrese valor numérico. . ." maxlength="10">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i
+                            class="fas fa-ban"></i>
+                        CANCELAR</button>
+                    <button type="submit" class="btn btn-primary btn-xs"><i class="fas fa-save"></i> GUARDAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoAlternativa" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.5)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando alternativas. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--CRUD CRITICO-->
+<div id="ventanaModalCriticoPsi" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 1%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="border-color: #757575; border-width: 4px;border-radius: 10px">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerCriticoPsi"><strong>[ 0 ]
+                        ITEMS CRITICOS</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageCriticoPsi"
+                               value="1">
+                        <form id="FrmCriticoPsi">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterCriticoPsi"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarCriticoPsi"
+                                            class="btn btn-primary btn-xs mr-3" data-toggle="tooltip"
+                                            title="Buscar"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                    <button type="button" id="btnOpenNewCriticoPsi" class="btn btn-primary btn-xs"
+                                            data-toggle="tooltip" title="Agregar Par"><i class="icon icon-plus"
+                                                                                 aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle" style="width: 35%">NOMBRE/DESCRIPCIÓN</th>
+                                            <th class="align-middle">PARES</th>
+                                            <th style="width: 15%" colspan="2" class="text-center align-middle">
+                                                Acción
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyCriticoPsi">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-sm-3 col-4 mt-2">
+                                <select id="sizePageCriticoPsi"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="8">8</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-9 col-8 mt-2">
+                                <nav aria-label="Page navigation CriticoPsi">
+                                    <ul id="paginationCriticoPsi"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i class="fas fa-ban"></i>
+                    CERRAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ventanaModalManCriticoPsi" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 1.5%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #ffbc34; border-width: 4px;border-radius: 10px">
+            <form id="FrmCriticoPsiModal">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="txtTituloModalManCriticoPsi"></h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-12 mb-2">
+                            <label for="txtNombreCriticoPsi">Nombre</label>
+                            <input type="text" id="txtNombreCriticoPsi"
+                                   class="form-control form-control-sm" placeholder="Ingrese nombre. . ." maxlength="100">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="txtDescripcionCriticoPsi">Descripción</label>
+                            <textarea type="text" id="txtDescripcionCriticoPsi"
+                                      class="form-control form-control-sm" placeholder="Ingrese descripción. . ." maxlength="200" rows="3">
+                            </textarea>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="txtPreguta1CriticoPsi">PREGUNTA 1</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-sm" id="txtPreguta1CriticoPsi" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                <div class="input-group-append">
+                                    <button type="button" id="btnSeleccionarPregunta1" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="txtPreguta2CriticoPsi">PREGUNTA 2</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-sm" id="txtPreguta2CriticoPsi" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                <div class="input-group-append">
+                                    <button type="button" id="btnSeleccionarPregunta2" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i
+                            class="fas fa-ban"></i>
+                        CANCELAR</button>
+                    <button type="submit" class="btn btn-primary btn-xs"><i class="fas fa-save"></i> GUARDAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoCriticoPsi" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Procesando Solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--CRUD INCONSISTENCIA-->
+<div id="ventanaModalInconsistenciaPsi" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 1%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="border-color: #757575; border-width: 4px;border-radius: 10px">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerInconsistenciaPsi"><strong>[ 0 ]
+                        ITEMS INCONSISTENCIA</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageInconsistenciaPsi"
+                               value="1">
+                        <form id="FrmInconsistenciaPsi">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterInconsistenciaPsi"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarInconsistenciaPsi"
+                                            class="btn btn-primary btn-xs mr-3" data-toggle="tooltip"
+                                            title="Buscar"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                    <button type="button" id="btnOpenNewInconsistenciaPsi" class="btn btn-primary btn-xs"
+                                            data-toggle="tooltip" title="Agregar Par"><i class="icon icon-plus"
+                                                                                 aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle">PARES</th>
+                                            <th style="width: 15%" colspan="2" class="text-center align-middle">
+                                                Acción
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyInconsistenciaPsi">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-sm-3 col-4 mt-2">
+                                <select id="sizePageInconsistenciaPsi"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="8">8</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-9 col-8 mt-2">
+                                <nav aria-label="Page navigation InconsistenciaPsi">
+                                    <ul id="paginationInconsistenciaPsi"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i class="fas fa-ban"></i>
+                    CERRAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ventanaModalManInconsistenciaPsi" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 1.5%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #ffbc34; border-width: 4px;border-radius: 10px">
+            <form id="FrmInconsistenciaPsiModal">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="txtTituloModalManInconsistenciaPsi"></h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <!--div class="col-12 mb-2">
+                            <label for="txtNombreInconsistenciaPsi">Nombre</label>
+                            <input type="text" id="txtNombreInconsistenciaPsi"
+                                   class="form-control form-control-sm" placeholder="Ingrese nombre. . ." maxlength="100">
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="txtDescripcionInconsistenciaPsi">Descripción</label>
+                            <textarea type="text" id="txtDescripcionInconsistenciaPsi"
+                                      class="form-control form-control-sm" placeholder="Ingrese descripción. . ." maxlength="200" rows="3">
+                            </textarea>
+                        </div-->
+                        <div class="col-12 mb-2">
+                            <label for="txtPreguta1InconsistenciaPsi">PREGUNTA 1</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-sm" id="txtPreguta1InconsistenciaPsi" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                <div class="input-group-append">
+                                    <button type="button" id="btnSeleccionarPreguntaI1" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="txtPreguta2InconsistenciaPsi">PREGUNTA 2</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-sm" id="txtPreguta2InconsistenciaPsi" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                <div class="input-group-append">
+                                    <button type="button" id="btnSeleccionarPreguntaI2" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i
+                            class="fas fa-ban"></i>
+                        CANCELAR</button>
+                    <button type="submit" class="btn btn-primary btn-xs"><i class="fas fa-save"></i> GUARDAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoInconsistenciaPsi" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Procesando Solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--PREGUNTAS SELECTED-->
+<div id="ventanaModalSelectedPreguntaC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.4)">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerPreguntaC"><strong>[ 0 ]
+                        PREGUNTAS</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pagePreguntaC"
+                               value="1">
+                        <form id="FrmPreguntaC">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterPreguntaC"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarPreguntaC"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Pregunta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyPreguntaC">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePagePreguntaC"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="8">08</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation Area">
+                                    <ul id="paginationPreguntaC"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionPreguntaC"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-preguntac" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoPreguntaC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Procesando Solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--T: DETALLE_PROCEDIMIENTO_CICLO-->
+<div id="ventanaModalDetalleProcedimientoCiclo" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 1%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerDetalleProcedimientoCiclo"><strong>[ 0 ]
+                        EVALUACIONES</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageDetalleProcedimientoCiclo"
+                               value="1">
+                        <div class="row mt-3">
+                            <div class="input-group col-12">
+                                <input type="text" id="txtProcedimientoDetalleProcedimientoCiclo"
+                                       class="form-control form-control-sm" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                <button type="submit" id="btnSeleccionarDetalleProcedimientoCiclo"
+                                        class="btn btn-warning btn-xs mr-3" data-toggle="tooltip"
+                                        title="Seleccionar Evaluación"><i class="fa fa-search" aria-hidden="true"></i>
+                                    SELECCIONAR</button>
+                                <button type="button" id="btnGuardarDetalleProcedimientoCiclo" class="btn btn-outline-primary btn-xs mr-3"
+                                        data-toggle="tooltip" title="Agregar Evaluación"><i class="icon icon-plus"
+                                                                                    aria-hidden="true"></i>AGREGAR EVALUACIÓN</button>
+                                <button type="button" id="btnBuscarDetalleProcedimientoCiclo" class="btn btn-primary btn-xs"
+                                        data-toggle="tooltip" title="Buscar"><i class="icon icon-search"
+                                                                                    aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                        <div class="row pl-5 pr-5">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle">Evaluación</th>
+                                            <th style="width: 15%" colspan="2" class="align-middle">
+                                                Eli
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyDetalleProcedimientoCiclo">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePageDetalleProcedimientoCiclo"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="6">06</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationDetalleProcedimientoCiclo"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i class="fas fa-ban"></i>
+                    CERRAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoDetalleProcedimientoCiclo" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Procesar solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--T: PROCEDIMIENTO_SELECTED-->
+<div id="ventanaModalSelectedProcedimientoC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerProcedimientoC"><strong>[ 0 ]
+                        EVALUACIONES</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageProcedimientoC"
+                               value="1">
+                        <form id="FrmProcedimientoC">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterProcedimientoC"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarProcedimientoC"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Evaluación</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyProcedimientoC">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePageProcedimientoC"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="5">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationProcedimientoC"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionProcedimientoC"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-procedimientoc" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoSelectedProcedimientoC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.4)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Procesar solicitud. . .
                     </div>
                 </div>
             </div>
