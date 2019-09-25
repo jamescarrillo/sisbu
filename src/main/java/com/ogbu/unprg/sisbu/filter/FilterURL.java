@@ -481,6 +481,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/configuraciones/cicloAcademico/cicloAcademico.js" + version_project
         });
         this.list_resources.add(resource);
+
         //MANTENIMIENTOS
         //CARGOS
         resource = new Resource();
@@ -553,6 +554,19 @@ public class FilterURL implements Filter {
         resource.setPath("/views/subprojects/app/ogbu/mantenimientos/ubigeo/ubigeo.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/mantenimientos/ubigeo/ubigeo.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //PROCESOS
+        //UPLOAD
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/procesos/upload");
+        resource.setPath("/views/subprojects/app/ogbu/procesos/upload/upload.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/procesos/upload/xls.core.min.js" + version_project,
+            "/views/subprojects/app/ogbu/procesos/upload/xlsx.core.min.js" + version_project,
+            "/views/subprojects/app/ogbu/procesos/upload/ciclo_academico.js" + version_project,
+            "/views/subprojects/app/ogbu/procesos/upload/upload.js" + version_project
         });
         this.list_resources.add(resource);
 
