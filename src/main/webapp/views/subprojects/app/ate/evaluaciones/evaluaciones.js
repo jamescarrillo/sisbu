@@ -74,6 +74,8 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-deportiva").style.display = "none";
             document.querySelector("#row-option-psicologica").style.display = "none";
             document.querySelector("#row-option-obstetricia").style.display = "none";
+            
+            $('#modalCargandoProcedimientoCicloSocie').modal('show');
             break;
     }
 }
