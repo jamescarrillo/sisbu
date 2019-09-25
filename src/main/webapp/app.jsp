@@ -38,6 +38,8 @@
         <!-- /load styles -->
 
         <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles_sisbu.css">
+        
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/chart.js/dist/Chart.min.css">
 
     </head>
     <body class="dt-sidebar--fixed dt-header--fixed">
@@ -672,8 +674,9 @@
         <script src="<%=request.getContextPath()%>/plugins/owl.carousel/dist/owl.carousel.min.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/script.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/custom/charts/dashboard-listing.js"></script>
-
+        
         <script src="<%=request.getContextPath()%>/plugins/jquery-pagination/jquery.Pagination.min.js"></script>
+        <script src="<%=request.getContextPath()%>/plugins/chart.js/dist/Chart.min.js"></script>
 
         <script src="<%out.print(request.getContextPath());%>/scripts/init_parameters.js"></script>
 

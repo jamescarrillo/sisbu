@@ -72,9 +72,44 @@
     </div>
 </div>
 
-<div class="row" id="row-option-socioeconomica" style="margin-top: 70px; display: none">
+<div class="row" id="row-option-socioeconomica" style="display: none;">
     <div class="col-12">
         <div class="row" id="div-evaluaciones-socieconomica">
+            <div class="col-12">
+                <div class="dt-card dt-card__full-height">
+                    <div class="dt-card__header mb-2 pt-4">
+                        <div class="dt-card__heading">
+                            <h3 class="dt-card__title">Avance</h3>
+                        </div>
+                    </div>
+                    <div class="dt-card__body pb-4">
+                        <div class="row">
+                            <div class="col-xl-4 col-md-12 col-sm-4">
+                                <!-- Chart -->
+                                <canvas class="mx-auto mb-5 mb-sm-0 mb-md-5 mb-xl-0"
+                                        id="estimation-socie" data-fill="0"
+                                        height="110" width="110"></canvas>
+                            </div>
+                            <div class="col-xl-8 col-md-12 col-sm-8">
+                                <div class="pb-3 mb-3 border-bottom">
+                                    <span class="display-4 d-inline-block mr-2 font-weight-500 text-dark" id="lblNumProcedimientosSocie">12</span><span
+                                        class="font-weight-light f-16">Fichas</span>
+                                </div>
+                                <ul class="dt-list dt-list-col-6">
+                                    <li class="dt-list__item">
+                                        <span class="dot-shape dot-shape-lg bg-light-green mr-2"></span>
+                                        <span class="d-inline-block" id="lblNumRespondidasSocie">0 Realizadas</span>
+                                    </li>
+                                    <li class="dt-list__item">
+                                        <span class="dot-shape dot-shape-lg bg-light-pink mr-2"></span>
+                                        <span class="d-inline-block" id="lblNumPendientesSocie">5 Pendientes</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-12">
                 <div class="dt-card">
                     <div class="dt-card__body p-0">
@@ -85,11 +120,87 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="div-preguntas-evaluacion-socieconomica">
-            <h5>hOLA</h5>
+        <div class="row" id="div-preguntas-evaluacion-socieconomica" style="display: none">
+            <div class="col-12" style="">
+
+                <!-- Card -->
+                <div class="dt-card">
+
+                    <!-- Card Header -->
+                    <div class="dt-card__header bg-primary pb-7 mb-0 rounded-top">
+
+                        <!-- Card Heading -->
+                        <div class="dt-card__heading">
+                            <div class="d-flex align-items-center">
+                                <i class="icon icon-invoice-new icon-fw icon-2x text-white mr-2"></i>
+                                <h3 class="dt-card__title text-white" style="text-transform: none">Lista de Preguntas</h3>
+                            </div>
+                        </div>
+                        <!-- /card heading -->
+                    </div>
+                    <!-- /card header -->
+
+                    <!-- Card Body -->
+                    <div class="dt-card__body pb-3">
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <div class="form-group mb-2">
+                                            <label class="mb-2">1. ¿Como estas en todo este proceso de aprendizaje?</label>
+                                            <select class="form-control form-control-sm">
+                                                <option>Respuesta...</option>
+                                                <option>OPCION 1</option>
+                                                <option>OPCION 2</option>
+                                                <option>OPCION 3</option>
+                                                <option>OPCION 4</option>
+                                            </select>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="form-group mb-2">
+                                            <label class="mb-2">1. ¿Como estas en todo este proceso de NUEVO?</label>
+                                            <input class="form-control form-control-sm">
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label class="mb-2">1. ¿Como estas en todo este proceso de NUEVO?
+                                            <i class="icon icon-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" 
+                                               title="" data-content="Mensaje de ayuda" 
+                                               style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <div class="form-group custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-1">
+                                            <label class="custom-control-label sisbu-cursor-mano" for="checkbox-1">Siempre</label>
+                                        </div>
+                                        <div class="form-group custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-2">
+                                            <label class="custom-control-label" for="checkbox-2">Casi Siempre</label>
+                                        </div>
+                                        <div class="form-group custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-3">
+                                            <label class="custom-control-label" for="checkbox-3">Aveces</label>
+                                        </div>
+                                        <div class="form-group custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-4">
+                                            <label class="custom-control-label" for="checkbox-4">Nose xd</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 text-center" id="div-cancelar-evaluation-socie" style="display: none">
+            <button class="btn btn-outline-primary" id="btn-cancelar-evaluation-socie">
+                <i class="icon icon-reply"></i>
+                Salir
+            </button>
         </div>
     </div>
-    <div class="col-12 text-center" id="div-selected-evaluation-socie">
+    <div class="col-12 text-center" id="div-regresar-selected-evaluation-socie">
         <button class="btn btn-outline-primary btn-regresar-selected-evaluation">
             <i class="icon icon-reply"></i>
             Regresar a seleccionar evaluación
