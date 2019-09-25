@@ -1,4 +1,5 @@
 var beanPaginationPaciente;
+var beanPaginationDoctor;
 var pacienteSelected;
 var beanRequestPaciente = new BeanRequest();
 document.addEventListener("DOMContentLoaded", function () {
@@ -7,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestPaciente.entity_api = "api/pacientes";
     beanRequestPaciente.operation = "paginate";
     beanRequestPaciente.type_request = "GET";
+    document.querySelector("#openPaciente").style.display = "none";
 
     $('#FrmPaciente').submit(function (event) {
         beanRequestPaciente.operation = "paginate";
@@ -15,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         event.stopPropagation();
     });
+
+    listFilter("#txtFilterMedico");
 
     $('#FrmPacienteModal').submit(function (event) {
         if (validateFormPaciente()) {
@@ -31,24 +35,40 @@ document.addEventListener("DOMContentLoaded", function () {
         //LIMPIAR LOS CAMPOS
         //document.querySelector("#txtNombrePaciente").value = "";
         //SET TITLE MODAL
-        document.querySelector("#txtTituloModalMan").innerHTML = "REGISTRAR PACIENTE";
+        document.querySelector("#txtTituloPaciente").innerHTML = "REGISTRAR PACIENTE";
+        //OPEN MODEL
+        document.querySelector("#ListaPaciente").style.display = "none";
+        document.querySelector("#openPaciente").style.display = "block";
+
+    };
+
+    document.querySelector("#btnOpenNewDiagnosticoPaciente").onclick = function () {
+        //CONFIGURAMOS LA SOLICITUD
+        beanRequestPaciente.operation = "add";
+        beanRequestPaciente.type_request = "POST";
+        //LIMPIAR LOS CAMPOS
+        //document.querySelector("#txtNombrePaciente").value = "";
+        //SET TITLE MODAL
+        document.querySelector("#txtTituloModalDiagnostico").innerHTML = "REGISTRAR DIAGNOSTICO";
         //OPEN MODEL
         $('#ventanaModalPaciente').modal('show');
+
+    };
+
+    document.querySelector("#btnCerrar").onclick = function () {
+        document.querySelector("#openPaciente").style.display = "none";
+        document.querySelector("#ListaPaciente").style.display = "block";
     };
 
     $("#modalCargandoPaciente").on('shown.bs.modal', function () {
         processAjaxPaciente();
     });
 
-    $("#ventanaModalPaciente").on('hidden.bs.modal', function () {
+    $("#modalCargandoPaciente").on('hidden.bs.modal', function () {
         beanRequestPaciente.operation = "paginate";
         beanRequestPaciente.type_request = "GET";
     });
 
-    $("#modalCargandoPaciente").on('hide.bs.modal', function () {
-        beanRequestPaciente.operation = "paginate";
-        beanRequestPaciente.type_request = "GET";
-    });
 
 
     $('#modalCargandoPaciente').modal('show');
@@ -58,6 +78,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+function listFilter(filterdni) {
+    $(filterdni).change(function () {
+        var filter = $(this).val();
+        console.log(filter);
+        processAjaxDoctor(filter);
+    }).keyup(function (e) {
+        var txt = String.fromCharCode(e.which);
+        if (txt.match(/[A-Za-z0-9]/))
+        {
+            $(this).change();
+        }
+
+    });
+
+}
 
 function processAjaxPaciente() {
     let parameters_pagination = "";
@@ -95,7 +131,6 @@ function processAjaxPaciente() {
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
-                $('#ventanaModalPaciente').modal('hide');
             } else {
                 showAlertTopEnd('warning', beanCrudResponse.messageServer);
             }
@@ -197,3 +232,52 @@ function validateFormPaciente() {
     return true;
 }
 
+//DOCTOR
+
+function toListDoctor(beanPagination) {
+    document.querySelector("#resultadoMedico").innerHTML = "";
+    if (beanPagination.count_filter > 0) {
+        let row;
+        beanPagination.list.forEach(personal => {
+            row = "<a idpersonal='" + personal.idpersonal + "' href='javascript:void(0)' ";
+            row += "class='list-group-item list-group-item-action pt-1 pb-1 agregar-personal'>"+ personal.apellido_pat.toUpperCase()+" "+ personal.apellido_mat.toUpperCase()+" " + personal.nombre.toUpperCase();
+            row += "</a>";
+            document.querySelector("#resultadoMedico").innerHTML += row;
+        });
+        addEventsMenuSemanales();
+    } else {
+        //destroyPagination($('#paginationComida'));
+        showAlertTopEnd('warning', 'No se encontraron resultados');
+
+    }
+}
+
+function processAjaxDoctor(filter) {
+    $.ajax({
+        url: getHostAPI() + "api/personal/paginate?filter=" + filter + "&estado=1&page=1&size=20",
+        type: "GET",
+        headers: {
+            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (beanCrudResponse) {
+        console.log(beanCrudResponse);
+        $('#modalCargandoPaciente').modal("hide");
+        if (beanCrudResponse.messageServer !== undefined) {
+            if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
+                showAlertTopEnd('success', 'Acción realizada exitosamente');
+            } else {
+                showAlertTopEnd('warning', beanCrudResponse.messageServer);
+            }
+        }
+        if (beanCrudResponse.beanPagination !== undefined) {
+            beanPaginationDoctor = beanCrudResponse.beanPagination;
+            toListDoctor(beanPaginationDoctor);
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoPaciente').modal("hide");
+        showAlertErrorRequest();
+
+    });
+}
