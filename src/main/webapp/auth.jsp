@@ -10,7 +10,7 @@
 <html lang="es">
     <head>
         <jsp:include page="zinclude_pages/meta_tags.jsp" />
-        <title><%=getServletContext().getInitParameter("name.page.base")%> Auth</title>
+        <title><%=getServletContext().getInitParameter("name.page.base")%> AUTH</title>
 
         <!-- Site favicon -->
         <!--link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/listing/images/favicon.ico" type="image/x-icon"-->

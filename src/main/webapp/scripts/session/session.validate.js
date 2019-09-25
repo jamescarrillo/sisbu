@@ -366,7 +366,7 @@ function createHTML_OGBU(typeProfile) {
                 `
             <li class="dt-side-nav__item">
                 <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Psicopedagogía">
-                    <i class="icon icon-heart-o icon-fw icon-fw icon-lg"></i>
+                    <i class="icon icon-influence icon-fw icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text">Deportes</span>
                 </a>
                 <!-- Sub-menu -->
@@ -482,7 +482,7 @@ function createHTML_OGBU(typeProfile) {
 
             <!-- Menu Item -->
             <li class="dt-side-nav__item">
-                <a href="page-wall.html" class="dt-side-nav__link" title="Importar Alumnos">
+                <a href="${contextPah}app/ogbu/procesos/upload" class="dt-side-nav__link" title="Importar Alumnos">
                     <i class="icon icon-wall icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text">Importar Alumnos</span>
                 </a>
