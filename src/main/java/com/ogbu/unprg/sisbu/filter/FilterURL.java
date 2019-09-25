@@ -214,6 +214,19 @@ public class FilterURL implements Filter {
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ATENDIDO 
         //INDEX
         resource = new Resource();
+        resource.setUrl("/app/ate/evaluaciones");
+        resource.setPath("/views/subprojects/app/ate/evaluaciones/evaluaciones.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ate/evaluaciones/evaluaciones.js" + version_project,
+            "/views/subprojects/app/ate/evaluaciones/evaluaciones_socieconomica.js" + version_project,
+            "/views/subprojects/app/ate/evaluaciones/evaluaciones_deportiva.js" + version_project,
+            "/views/subprojects/app/ate/evaluaciones/evaluaciones_psicologica.js" + version_project,
+            "/views/subprojects/app/ate/evaluaciones/evaluaciones_obstetricia.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //EVALUACIONES
+        resource = new Resource();
         resource.setUrl("/app/ate/index");
         resource.setPath("/views/subprojects/app/ate/index/index.jsp");
         resource.setScripts(new String[]{

@@ -5,7 +5,7 @@
 --%>
 <div class="row justify-content-center" id="row-saludo-principal" style="margin-top: 70px">
     <div class="col-md-6 col-sm-8">
-        <h2 class="text-center">¡Bienvenido <span class="text-info">James</span>!
+        <h2 class="text-center">¡Bienvenido(a) <span class="text-info" id="lblNameUserIndex">User</span>!
         </h2>
         <p class="text-center" style="font-size: 18px">
             Mira los videos tutoriales para llenar correctamente tus evaluaciones virtuales. Dale click en el botón azul de abajo.
