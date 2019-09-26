@@ -51,11 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }).then((result) => {
             if (result.value) {
                 //VALIDAMOS
-                if (validateFinalizateEvaluacionSocie()) {
+                if (validateFinalizateProcedimientoSocioeconomico()) {
                     //CARGAMOS LA LISTA DE RESPUESTAS
-                    if (loadRespuestasEvaluacionSocie()) {
+                    if (loadRespuestasProcedimientoSocioeconomico()) {
                         //MANDAMOS A LA BD
-                        
+
                     }
                 }
             }
@@ -96,7 +96,7 @@ function processAjaxProcedimientoSocioeconomico() {
 }
 
 function toListProcedimientoSocioeconomico() {
-    document.querySelector("#div-content-evaluacion-socioeconomica").innerHTML = "";
+    document.querySelector("#div-content-evaluacion-socioeconomico").innerHTML = "";
     if (beanProcedimientoSocioeconomico.procedimientos.length > 0) {
         let card;
         let card_extra;
@@ -156,12 +156,12 @@ function toListProcedimientoSocioeconomico() {
                     </div-->
                 </div>
             `;
-            document.querySelector("#div-content-evaluacion-socioeconomica").innerHTML += card;
+            document.querySelector("#div-content-evaluacion-socioeconomico").innerHTML += card;
         });
         addEventsProcedimientoSocioeconomico();
         $('[data-toggle="tooltip"]').tooltip();
-        document.querySelector("#div-preguntas-evaluacion-socioeconomicoconomica").style.display = "none";
-        setUpdateGraficaEvaluacionSocioeconomico();
+        document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "none";
+        setUpdateGraficaProcedimientoSocioeconomico();
     } else {
         showAlertTopEnd('warning', 'Lo sentimos no hay ninguna evaluación configurada para este ciclo');
     }
@@ -203,27 +203,27 @@ function validateCompleteEvaluationSocie(idprocedimiento) {
 
 function openPreguntas() {
     //GET PREGUNTAS DEL PROCEDIMIENTO SELECTED
-    let preguntas_procedimientoSelectedSocie = getPreguntasProcedimiento(beanProcedimientoSocioeconomico, procedimientoSocioeconomicoSelected);
+    let preguntas_procedimientoSocioeconomicoSelected = getPreguntasProcedimiento(beanProcedimientoSocioeconomico, procedimientoSocioeconomicoSelected);
     //LISTAMOS LAS PREGUNTAS
-    document.querySelector("#content-preguntas-evaluacion-socioeconomicoconomica").innerHTML = "";
+    document.querySelector("#content-preguntas-evaluacion-socioeconomico").innerHTML = "";
     let preguntas_checkboxs = [];
-    preguntas_procedimientoSelectedSocie.forEach(pregunta => {
+    preguntas_procedimientoSocioeconomicoSelected.forEach(pregunta => {
         if (procedimientoSocioeconomicoSelected.usa_alternativas_globales == 1) {
             preguntas_checkboxs.push(pregunta);
-            document.querySelector("#content-preguntas-evaluacion-socioeconomicoconomica").innerHTML += createLiCheckBoxPregunta(pregunta, beanProcedimientoSocioeconomico);
+            document.querySelector("#content-preguntas-evaluacion-socioeconomico").innerHTML += createLiCheckBoxPregunta(pregunta, beanProcedimientoSocioeconomico);
         } else {
             switch (pregunta.tipo_respuesta) {
                 case 1:
-                    document.querySelector("#content-preguntas-evaluacion-socioeconomicoconomica").innerHTML += createLiInputTextPregunta(pregunta, beanProcedimientoSocioeconomico);
+                    document.querySelector("#content-preguntas-evaluacion-socioeconomico").innerHTML += createLiInputTextPregunta(pregunta, beanProcedimientoSocioeconomico);
                     break;
                 case 2:
                     //CHECK BOX
                     preguntas_checkboxs.push(pregunta);
-                    document.querySelector("#content-preguntas-evaluacion-socioeconomicoconomica").innerHTML += createLiCheckBoxPregunta(pregunta, beanProcedimientoSocioeconomico);
+                    document.querySelector("#content-preguntas-evaluacion-socioeconomico").innerHTML += createLiCheckBoxPregunta(pregunta, beanProcedimientoSocioeconomico);
                     break;
                 default:
                     //SELECT - 4
-                    document.querySelector("#content-preguntas-evaluacion-socioeconomicoconomica").innerHTML += createLiSelectPregunta(pregunta, beanProcedimientoSocioeconomico);
+                    document.querySelector("#content-preguntas-evaluacion-socioeconomico").innerHTML += createLiSelectPregunta(pregunta, beanProcedimientoSocioeconomico);
                     break;
             }
         }
@@ -235,7 +235,7 @@ function openPreguntas() {
     navigateProcedimientoSocioeconomico('preguntas');
 }
 
-function setUpdateGraficaEvaluacionSocie() {
+function setUpdateGraficaProcedimientoSocioeconomico() {
     if ($('#estimation-socioeconomico').length) {
         document.querySelector("#estimation-socioeconomico").setAttribute('data-fill', beanProcedimientoSocioeconomico.procedimientos.length);
         var estimation_data = {
@@ -269,18 +269,18 @@ function setUpdateGraficaEvaluacionSocie() {
                 }
             }
         });
-        document.querySelector("#lblNumProcedimientosSocie").innerHTML = beanProcedimientoSocioeconomico.procedimientos.length;
-        document.querySelector("#lblNumRespondidasSocie").innerHTML = beanProcedimientoSocioeconomico.procedimientos_realizados.length;
+        document.querySelector("#lblNumProcedimientosSocioeconomico").innerHTML = beanProcedimientoSocioeconomico.procedimientos.length;
+        document.querySelector("#lblNumRespondidasSocioeconomico").innerHTML = beanProcedimientoSocioeconomico.procedimientos_realizados.length;
         if (beanProcedimientoSocioeconomico.procedimientos_realizados.length == 1) {
-            document.querySelector("#lblNumRespondidasSocie").innerHTML += " Realizada";
+            document.querySelector("#lblNumRespondidasSocioeconomico").innerHTML += " Realizada";
         } else {
-            document.querySelector("#lblNumRespondidasSocie").innerHTML += " Realizadas";
+            document.querySelector("#lblNumRespondidasSocioeconomico").innerHTML += " Realizadas";
         }
-        document.querySelector("#lblNumPendientesSocie").innerHTML = beanProcedimientoSocioeconomico.procedimientos.length - beanProcedimientoSocioeconomico.procedimientos_realizados.length;
+        document.querySelector("#lblNumPendientesSocioeconomico").innerHTML = beanProcedimientoSocioeconomico.procedimientos.length - beanProcedimientoSocioeconomico.procedimientos_realizados.length;
         if (beanProcedimientoSocioeconomico.procedimientos.length - beanProcedimientoSocioeconomico.procedimientos_realizados.length == 1) {
-            document.querySelector("#lblNumPendientesSocie").innerHTML += " Pendiente";
+            document.querySelector("#lblNumPendientesSocioeconomico").innerHTML += " Pendiente";
         } else {
-            document.querySelector("#lblNumPendientesSocie").innerHTML += " Pendientes";
+            document.querySelector("#lblNumPendientesSocioeconomico").innerHTML += " Pendientes";
         }
     }
 }
@@ -288,14 +288,14 @@ function setUpdateGraficaEvaluacionSocie() {
 function navigateProcedimientoSocioeconomico(opcion) {
     switch (opcion) {
         case "preguntas":
-            document.querySelector("#div-evaluaciones-socioeconomicoconomica").style.display = "none";
-            document.querySelector("#div-preguntas-evaluacion-socioeconomicoconomica").style.display = "flex";
+            document.querySelector("#div-evaluaciones-socioeconomico").style.display = "none";
+            document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "flex";
             document.querySelector("#div-regresar-selected-evaluation-socioeconomico").style.display = "none";
             break;
         default:
             //HOME, LISTA DE EVALUACIONES
-            document.querySelector("#div-evaluaciones-socioeconomicoconomica").style.display = "flex";
-            document.querySelector("#div-preguntas-evaluacion-socioeconomicoconomica").style.display = "none";
+            document.querySelector("#div-evaluaciones-socioeconomico").style.display = "flex";
+            document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "none";
             document.querySelector("#div-regresar-selected-evaluation-socioeconomico").style.display = "block";
 
             //VOLVEMOS A LISTAR
@@ -303,10 +303,10 @@ function navigateProcedimientoSocioeconomico(opcion) {
     }
 }
 
-function validateFinalizateEvaluacionSocie() {
-    let preguntas_procedimientoSelectedSocie = getPreguntasProcedimiento(beanProcedimientoSocioeconomico, procedimientoSocioeconomicoSelected);
+function validateFinalizateProcedimientoSocioeconomico() {
+    let preguntas_procedimientoSocioeconomicoSelected = getPreguntasProcedimiento(beanProcedimientoSocioeconomico, procedimientoSocioeconomicoSelected);
     let validation_complete = true;
-    preguntas_procedimientoSelectedSocie.forEach(pregunta => {
+    preguntas_procedimientoSocioeconomicoSelected.forEach(pregunta => {
         //VALIDAMOS SI YA SE A RESPONDIDO ESA PREGUNTA
         if (procedimientoSocioeconomicoSelected.usa_alternativas_globales == 1) {
             if (!validationQuestionForCheck(pregunta)) {
@@ -334,7 +334,7 @@ function validateFinalizateEvaluacionSocie() {
                 default:
                     //SELECT - 4
                     if (!validationQuestionForSelect(pregunta)) {
-                        showAlertTopEnd('warning', 'Por favor seleccione alguna opción de la pregunta n° ' + pregunta.orden);
+                        showAlertTopEnd('warning', 'Por favor seleccione una opción de la pregunta n° ' + pregunta.orden);
                         val_temp = false;
                     }
                     break;
@@ -348,11 +348,11 @@ function validateFinalizateEvaluacionSocie() {
     return validation_complete;
 }
 
-function loadRespuestasEvaluacionSocie() {
-    let preguntas_procedimientoSelectedSocie = getPreguntasProcedimiento(beanProcedimientoSocioeconomico, procedimientoSocioeconomicoSelected);
+function loadRespuestasProcedimientoSocioeconomico() {
+    let preguntas_procedimientoSocioeconomicoSelected = getPreguntasProcedimiento(beanProcedimientoSocioeconomico, procedimientoSocioeconomicoSelected);
     list_respuestas_evaluacion = [];
     //CREAMOS LOS OBTEJOS DE RESPUESTA
-    preguntas_procedimientoSelectedSocie.forEach(pregunta => {
+    preguntas_procedimientoSocioeconomicoSelected.forEach(pregunta => {
         respuesta = new RespuestaEvaluacion2();
         respuesta.pregunta = pregunta;
         //VALIDAMOS SI YA SE A RESPONDIDO ESA PREGUNTA
@@ -411,7 +411,7 @@ function validationQuestionForCheck(pregunta) {
 
 function validationQuestionForSelect(pregunta) {
     let validate = false;
-    if (document.querySelector("select-" + pregunta.idpregunta).value != "-1") {
+    if (document.querySelector("#select-" + pregunta.idpregunta).value != "-1") {
         validate = true;
     }
     return validate;
@@ -429,12 +429,12 @@ function getAlternativaQuestionForCheck(pregunta) {
     document.querySelectorAll(".check-" + pregunta.idpregunta).forEach(check => {
         if (check.checked) {
             alternativa = {
-                "idalternativa": check.getAtribute('id')
+                "idalternativa": check.getAttribute('id')
             };
         }
     });
     //VALIDAMOS QUE ESTA ALTERNATIVA SEA VALIDA, EXISTA EN LA LISTA DE ALTERNATIVAS
-    if (!validateAlternativaInListAlternativas(alternativa.idalternativa), beanProcedimientoSocioeconomico) {
+    if (!validateAlternativaInListAlternativas(alternativa.idalternativa, beanProcedimientoSocioeconomico)) {
         alternativa = undefined;
     }
     return alternativa;
@@ -442,13 +442,13 @@ function getAlternativaQuestionForCheck(pregunta) {
 
 function getAlternativaQuestionForSelect(pregunta) {
     let alternativa = false;
-    if (document.querySelector("select-" + pregunta.idpregunta).value != "-1") {
+    if (document.querySelector("#select-" + pregunta.idpregunta).value != "-1") {
         alternativa = {
-            "idalternativa": document.querySelector("select-" + pregunta.idpregunta).value
+            "idalternativa": document.querySelector("#select-" + pregunta.idpregunta).value
         };
     }
     //VALIDAMOS QUE ESTA ALTERNATIVA SEA VALIDA, EXISTA EN LA LISTA DE ALTERNATIVAS
-    if (!validateAlternativaInListAlternativas(alternativa.idalternativa), beanProcedimientoSocioeconomico) {
+    if (!validateAlternativaInListAlternativas(alternativa.idalternativa, beanProcedimientoSocioeconomico)) {
         alternativa = undefined;
     }
     return alternativa;

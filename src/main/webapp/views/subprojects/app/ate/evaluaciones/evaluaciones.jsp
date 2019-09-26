@@ -72,9 +72,9 @@
     </div>
 </div>
 
-<div class="row" id="row-option-socioeconomica" style="display: none;">
+<div class="row" id="row-option-socioeconomico" style="display: none;">
     <div class="col-12">
-        <div class="row" id="div-evaluaciones-socioconomica">
+        <div class="row" id="div-evaluaciones-socioeconomico">
             <div class="col-12">
                 <div class="dt-card dt-card__full-height">
                     <div class="dt-card__header mb-2 pt-4">
@@ -87,22 +87,22 @@
                             <div class="col-xl-4 col-md-12 col-sm-4">
                                 <!-- Chart -->
                                 <canvas class="mx-auto mb-5 mb-sm-0 mb-md-5 mb-xl-0"
-                                        id="estimation-socio" data-fill="0"
+                                        id="estimation-socioeconomico" data-fill="0"
                                         height="110" width="110"></canvas>
                             </div>
                             <div class="col-xl-8 col-md-12 col-sm-8">
                                 <div class="pb-3 mb-3 border-bottom">
-                                    <span class="display-4 d-inline-block mr-2 font-weight-500 text-dark" id="lblNumProcedimientosSocioeconomica">12</span><span
+                                    <span class="display-4 d-inline-block mr-2 font-weight-500 text-dark" id="lblNumProcedimientosSocioeconomico">12</span><span
                                         class="font-weight-light f-16">Fichas</span>
                                 </div>
                                 <ul class="dt-list dt-list-col-6">
                                     <li class="dt-list__item">
                                         <span class="dot-shape dot-shape-lg bg-light-green mr-2"></span>
-                                        <span class="d-inline-block" id="lblNumRespondidasSocioeconomica">0 Realizadas</span>
+                                        <span class="d-inline-block" id="lblNumRespondidasSocioeconomico">0 Realizadas</span>
                                     </li>
                                     <li class="dt-list__item">
                                         <span class="dot-shape dot-shape-lg bg-light-pink mr-2"></span>
-                                        <span class="d-inline-block" id="lblNumPendientesSocioeconomica">5 Pendientes</span>
+                                        <span class="d-inline-block" id="lblNumPendientesSocioeconomico">5 Pendientes</span>
                                     </li>
                                 </ul>
                             </div>
@@ -114,13 +114,13 @@
                 <div class="dt-card">
                     <div class="dt-card__body p-0">
                         <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" 
-                             id="div-content-evaluacion-socioeconomica">
+                             id="div-content-evaluacion-socioeconomico">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row" id="div-preguntas-evaluacion-socioconomica" style="display: none">
+        <div class="row" id="div-preguntas-evaluacion-socioeconomico" style="display: none">
             <div class="col-12" style="">
                 <div class="dt-card">
                     <div class="dt-card__header bg-primary pb-7 mb-0 rounded-top">
@@ -134,7 +134,7 @@
                     <div class="dt-card__body pb-3">
                         <div class="row mt-3">
                             <div class="col-12">
-                                <ul class="list-group list-group-flush" id="content-preguntas-evaluacion-socioconomica">
+                                <ul class="list-group list-group-flush" id="content-preguntas-evaluacion-socioeconomico">
                                     <!--li class="list-group-item">
                                         <div class="form-group mb-2">
                                             <label class="mb-2">1. ¿Como estas en todo este proceso de aprendizaje?</label>
@@ -179,11 +179,11 @@
                                 </ul>
                             </div>
                             <div class="col-12 text-right">
-                                <button class="btn btn-outline-primary" id="btn-cancelar-evaluation-socio">
+                                <button class="btn btn-outline-primary" id="btn-cancelar-evaluation-socioeconomico">
                                     <i class="icon icon-reply"></i>
                                     Salir
                                 </button>
-                                <button class="btn btn-primary" id="btn-finalizar-evaluation-socio">
+                                <button class="btn btn-primary" id="btn-finalizar-evaluation-socioeconomico">
                                     <i class="icon icon-double-arrow-right mb-1"></i>
                                     Finalizar
                                 </button>
@@ -194,7 +194,7 @@
             </div>
         </div>
     </div>
-    <div class="col-12 text-center" id="div-regresar-selected-evaluation-socio">
+    <div class="col-12 text-center" id="div-regresar-selected-evaluation-socioeconomico">
         <button class="btn btn-outline-primary btn-regresar-selected-evaluation">
             <i class="icon icon-reply"></i>
             Mis Evaluaciones
@@ -290,7 +290,7 @@
 </div>
 
 <!--MODALES CARGNADO-->
-<div class="modal" id="modalCargandoProcedimientoCicloSocioeconomica" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal" id="modalCargandoProcedimientoSocioeconomico" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -306,7 +306,7 @@
     </div>
 </div>
 
-<div class="modal" id="modalCargandoProcedimientoCicloPsico" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal" id="modalCargandoProcedimientoPsicologico" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -322,7 +322,7 @@
     </div>
 </div>
 
-<div class="modal" id="modalCargandoProcedimientoCicloObste" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal" id="modalCargandoProcedimientoObstetricia" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">

@@ -99,7 +99,7 @@ function navigateOptionEvaluation(option) {
         case "deportiva":
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
-            document.querySelector("#row-option-socioeconomica").style.display = "none";
+            document.querySelector("#row-option-socioeconomico").style.display = "none";
             document.querySelector("#row-option-deportiva").style.display = "flex";
             document.querySelector("#row-option-psicologica").style.display = "none";
             document.querySelector("#row-option-obstetricia").style.display = "none";
@@ -107,7 +107,7 @@ function navigateOptionEvaluation(option) {
         case "psicologica":
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
-            document.querySelector("#row-option-socioeconomica").style.display = "none";
+            document.querySelector("#row-option-socioeconomico").style.display = "none";
             document.querySelector("#row-option-deportiva").style.display = "none";
             document.querySelector("#row-option-psicologica").style.display = "flex";
             document.querySelector("#row-option-obstetricia").style.display = "none";
@@ -115,7 +115,7 @@ function navigateOptionEvaluation(option) {
         case "obstetricia":
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
-            document.querySelector("#row-option-socioeconomica").style.display = "none";
+            document.querySelector("#row-option-socioeconomico").style.display = "none";
             document.querySelector("#row-option-deportiva").style.display = "none";
             document.querySelector("#row-option-psicologica").style.display = "none";
             document.querySelector("#row-option-obstetricia").style.display = "flex";
@@ -124,12 +124,12 @@ function navigateOptionEvaluation(option) {
             //SOCIOECONOMICA
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
-            document.querySelector("#row-option-socioeconomica").style.display = "flex";
+            document.querySelector("#row-option-socioeconomico").style.display = "flex";
             document.querySelector("#row-option-deportiva").style.display = "none";
             document.querySelector("#row-option-psicologica").style.display = "none";
             document.querySelector("#row-option-obstetricia").style.display = "none";
 
-            $('#modalCargandoProcedimientoCicloSocie').modal('show');
+            $('#modalCargandoProcedimientoSocioeconomico').modal('show');
             break;
     }
 }
@@ -282,7 +282,7 @@ function getPreguntasProcedimiento(beanProcedimientoCiclo, procedimientoCicloSel
 
 function validateAlternativaInListAlternativas(idalternativa, beanProcedimientoCiclo) {
     let validate = false;
-    beanProcedimientoCiclo.forEach(alternativa => {
+    beanProcedimientoCiclo.alternativas.forEach(alternativa => {
         if (parseInt(alternativa.idalternativa) == parseInt(idalternativa)) {
             validate = true;
             return;
