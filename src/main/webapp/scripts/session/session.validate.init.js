@@ -1,7 +1,4 @@
 
-let list_url_ate = [];
-let list_url_ogbu = [];
-
 class BeanURL {
     constructor() {
         this.url = "";
@@ -10,8 +7,6 @@ class BeanURL {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-
-    loaderUrlAte();
 
     let user_session = Cookies.getJSON('sisbu_user');
     if (user_session != undefined) {
@@ -113,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+// NO UTILIZANDO
 function loaderUrlAte() {
     let url;
 
