@@ -8,6 +8,9 @@ var beanProcedimientoSocioeconomico;
 var procedimientoSocioeconomicoSelected;
 var beanRequestProcedimientoSocioeconomico = new BeanRequest();
 
+var fecha_inicioProcedimientoSocioeconomico;
+var fecha_finProcedimientoSocioeconomico;
+
 document.addEventListener("DOMContentLoaded", function () {
 
     //INICIALIZANDO VARIABLES DE SOLICITUD
@@ -233,6 +236,10 @@ function openPreguntas() {
     //AGREGAMOS LOS EVENTOS, A LOS CHECKS
     addEventsChecksPreguntas(preguntas_checkboxs);
     navigateProcedimientoSocioeconomico('preguntas');
+    //MANDAMOS A REGISTRAR UN INTENTO
+    fecha_inicioProcedimientoSocioeconomico = getTimesTampJavaScriptCurrent();
+    //MANDAMOS A REGISTRAR UN INTENTO
+    $("#modalCargandoIntentoEvaluacion").modal('show');
 }
 
 function setUpdateGraficaProcedimientoSocioeconomico() {
@@ -422,7 +429,6 @@ function validationQuestionForInputText(pregunta) {
 }
 
 //GET ALTERNATIVAS RESPONDIDA
-
 function getAlternativaQuestionForCheck(pregunta) {
     let alternativa;
     //VALIDACION POR CHECK, DEBE A VER AL MENOS UNO

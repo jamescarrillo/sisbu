@@ -337,3 +337,19 @@
         </div>
     </div>
 </div>
+
+<div class="modal" id="modalCargandoIntentoEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Configurando la evaluación para empezar. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

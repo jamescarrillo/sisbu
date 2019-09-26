@@ -40,7 +40,7 @@ function showAlertDelete(idmodal) {
             $('#' + idmodal).modal("show");
         }
     })
-    $('.swal2-confirm').css("margin-right", "15px");
+    //$('.swal2-confirm').css("margin-right", "15px");
 }
 
 function getTextHtmlFormat(text, count_palabras_for_row) {

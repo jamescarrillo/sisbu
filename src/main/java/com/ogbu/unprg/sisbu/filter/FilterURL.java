@@ -218,6 +218,7 @@ public class FilterURL implements Filter {
         resource.setPath("/views/subprojects/app/ate/evaluaciones/evaluaciones.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ate/evaluaciones/evaluaciones.js" + version_project,
+            "/views/subprojects/app/ate/evaluaciones/intento_evaluacion.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/evaluaciones_socieconomica.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/evaluaciones_deportiva.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/evaluaciones_psicologica.js" + version_project,
