@@ -35,6 +35,9 @@ var beanProcedimientoSelectedGlobal;
 
 var procedimiento_menu_selected;
 
+var fecha_inicioProcedimiento;
+var fecha_finProcedimiento;
+
 document.addEventListener("DOMContentLoaded", function () {
 
     // creating center text
@@ -326,7 +329,7 @@ function openPreguntas(idcontent_preguntas_evaluacion) {
     //VALIDAR PARA VER A QUE METODO LLAMAMOS
     navigateProcedimientoAndPreguntas('preguntas');
     //MANDAMOS A REGISTRAR UN INTENTO
-    fecha_inicioProcedimientoSocioeconomico = getTimesTampJavaScriptCurrent();
+    fecha_inicioProcedimiento = getTimesTampJavaScriptCurrent();
 }
 
 function navigateProcedimientoAndPreguntas(opcion) {
@@ -436,7 +439,7 @@ function loadRespuestasProcedimiento() {
         respuesta.pregunta = pregunta;
         //VALIDAMOS SI YA SE A RESPONDIDO ESA PREGUNTA
         let alternativa_temp;
-        if (procedimientoSocioeconomicoSelected.usa_alternativas_globales == 1) {
+        if (procedimientoSelectedGlobal.usa_alternativas_globales == 1) {
             alternativa_temp = getAlternativaQuestionForCheck(pregunta);
             if (alternativa_temp != undefined) {
                 respuesta.alternativa = alternativa_temp;
@@ -477,7 +480,7 @@ function loadRespuestasProcedimiento() {
         }
         list_respuestas_evaluacion.push(respuesta);
     }
-    return (list_respuestas_evaluacion.length == 0);
+    return (list_respuestas_evaluacion.length > 0);
 }
 
 //VALIDACIONES

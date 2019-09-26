@@ -6,8 +6,7 @@
 
 var beanRequestProcedimientoSocioeconomico = new BeanRequest();
 
-var fecha_inicioProcedimientoSocioeconomico;
-var fecha_finProcedimientoSocioeconomico;
+var beanEvaluacionAtendidoSocieconomico;
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -18,6 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#modalCargandoProcedimientoSocioeconomico").on('shown.bs.modal', function () {
         processAjaxProcedimientoSocioeconomico();
+    });
+
+    $("#modalCargandoEvaluacionAtendidoSocioeconomico").on('shown.bs.modal', function () {
+        processAjaxEvaluacionAtendidoSocieconomico();
     });
 
     document.querySelector("#btn-cancelar-evaluation-socioeconomico").onclick = function () {
@@ -56,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     //CARGAMOS LA LISTA DE RESPUESTAS
                     if (loadRespuestasProcedimiento()) {
                         //MANDAMOS A LA BD
-
+                        $('#modalCargandoEvaluacionAtendidoSocioeconomico').modal('show');
                     }
                 }
             }
@@ -214,4 +217,42 @@ function setUpdateGraficaProcedimientoSocioeconomico() {
             document.querySelector("#lblNumPendientesSocioeconomico").innerHTML += " Pendientes";
         }
     }
+}
+
+function processAjaxEvaluacionAtendidoSocieconomico() {
+    fecha_finProcedimiento = getTimesTampJavaScriptCurrent();
+    beanEvaluacionAtendidoSocieconomico = {
+        "evaluacion_atendido": {
+            "idevaluacion_atendido": 0,
+            "atendido": {
+                "usuario": {
+                    "idusuario": Cookies.getJSON('sisbu_user').idusuario
+                }
+            },
+            "procedimiento": procedimientoSelectedGlobal,
+            "fecha_inicio": fecha_inicioProcedimiento,
+            "fecha_fin": fecha_finProcedimiento,
+            "num_intentos": 0
+        },
+        "list_respuestas": list_respuestas_evaluacion
+    };
+    console.log(beanEvaluacionAtendidoSocieconomico);
+    let url_request = getHostAPI() + "/evaluacion/atendido/add";
+    $.ajax({
+        url: url_request,
+        type: "POST",
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        data: JSON.stringify(json),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (beanCrud) {
+        $('#modalCargandoEvaluacionAtendidoSocioeconomico').modal("hide");
+
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoEvaluacionAtendidoSocioeconomico').modal("hide");
+        showAlertTopEnd('error', 'Oh! A ocurrido un error interno, intentalo mas tarde :/');
+        //showAlertErrorRequest();
+    });
 }
