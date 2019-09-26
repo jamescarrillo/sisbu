@@ -469,12 +469,12 @@ function createHTML_OGBU(typeProfile) {
             <!-- /menu header -->
 
             <!-- Menu Item -->
-            <li class="dt-side-nav__item">
-                <a href="" class="dt-side-nav__link" title="Correo SISBU">
+            <!--li class="dt-side-nav__item">
+                <a href="${contextPah}app/ogbu/configuraciones/correo-sisbu" class="dt-side-nav__link" title="Correo SISBU">
                     <i class="icon icon-mail icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text">Correo SISBU</span>
                 </a>
-            </li>
+            </li-->
             <li class="dt-side-nav__item">
                 <a href="${contextPah}app/ogbu/configuraciones/cicloacademico" class="dt-side-nav__link" title="Ciclos Académicos">
                     <i class="icon icon-tag-o icon-fw icon-lg"></i>
