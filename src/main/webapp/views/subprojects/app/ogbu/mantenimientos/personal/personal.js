@@ -52,8 +52,8 @@ function processAjaxPersonal() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestPersonal.operation == "paginate") {
-        parameters_pagination = "?dni=" + document.querySelector("#txtFilterDniPersonal").value;
-        parameters_pagination += "&estado=" + document.querySelector("#txtFilterEstadoPersonal").value;
+        parameters_pagination = "?filter=" + document.querySelector("#txtFilterDniPersonal").value;
+        parameters_pagination += "&cargo=0&estado=" + document.querySelector("#txtFilterEstadoPersonal").value;
         parameters_pagination += "&page=" + document.querySelector("#pagePersonal").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePagePersonal").value;
 
