@@ -160,14 +160,19 @@ function toListPregunta(beanPagination) {
             if (evaluacionSelected.usa_alternativas_globales == 1) {
                 btn_edit_alternativas = "";
             } else {
-                btn_edit_alternativas =
-                        `
+                //VALIDAMOS QUE SEA DIFERENTE DE TEXTO
+                if (pregunta.tipo_respuesta != 1) {
+                    btn_edit_alternativas =
+                            `
                     <li class="dt-list__item">
                         <a idpregunta='${pregunta.idpregunta}' class="text-light-gray editar-alternativas-pregunta sisbu-cursor-mano" data-toggle="tooltip" title="Editar alternativas u opciones" data-placement="bottom">
                             <i class="icon icon-description "></i>
                         </a>
                     </li>
                 `;
+                } else {
+                    btn_edit_alternativas = "";
+                }
             }
             row = "<tr>";
             row += "<td class='align-middle'>" + pregunta.orden + "</td>";
