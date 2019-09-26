@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#FrmProcedimientoC').submit(function (event) {
         beanRequestProcedimientoC.operation = "paginate";
         beanRequestProcedimientoC.type_request = "GET";
-        $('#modalCargandoDetalleProcedimientoCiclo').modal('show');
+        $('#modalCargandoSelectedProcedimientoC').modal('show');
         event.preventDefault();
         event.stopPropagation();
     });

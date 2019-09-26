@@ -1128,7 +1128,7 @@
                             <input type="text" id="txtDescripcionAlternativa"
                                    class="form-control form-control-sm" placeholder="Ingrese descripción. . ." maxlength="100">
                         </div>
-                        <div class="col-lg-6 col-12 mb-2">
+                        <div class="col-12 mb-2">
                             <label for="txtValorAlternativa">Valor Numérico</label>
                             <input type="number" id="txtValorAlternativa"
                                    class="form-control form-control-sm" placeholder="Ingrese valor numérico. . ." maxlength="10">
