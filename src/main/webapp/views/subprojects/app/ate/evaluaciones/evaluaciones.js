@@ -328,8 +328,10 @@ function openPreguntas(idcontent_preguntas_evaluacion) {
     addEventsChecksPreguntas(preguntas_checkboxs);
     //VALIDAR PARA VER A QUE METODO LLAMAMOS
     navigateProcedimientoAndPreguntas('preguntas');
-    //MANDAMOS A REGISTRAR UN INTENTO
     fecha_inicioProcedimiento = getTimesTampJavaScriptCurrent();
+    //SHOW INSTRUCCIONES
+    document.querySelector('#html_instrucciones').innerHTML = procedimientoSelectedGlobal.instrucciones;
+    $('#ventanaModalInstruccionesProcedimiento').modal('show');
 }
 
 function navigateProcedimientoAndPreguntas(opcion) {

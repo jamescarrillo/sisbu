@@ -13,7 +13,7 @@
                 <br>
                 <h2 class="text-center">
                     ¡Felicidades por tu ingreso <span class="text-info" id="lblNameUserIndex">User</span>!
-                    Estamos encantados de recibirte en nuestra nuestra UNPRG. 
+                    Estamos encantados de recibirte en nuestra UNPRG. 
                 </h2>
                 <p class="text-center" style="font-size: 18px">
                     Tu información es importante
@@ -381,6 +381,32 @@
                         Finalizando. . .
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ventanaModalInstruccionesProcedimiento" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 2.5%; overflow-y: visible;background-color: rgba(0,0,0,.4)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #ffbc34; border-width: 4px;border-radius: 10px">
+            <div class="modal-header">
+                <h6 class="modal-title">INSTRUCCIONES</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12" id="html_instrucciones">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i
+                        class="fas fa-ban"></i>
+                    Cerrar</button>
             </div>
         </div>
     </div>
