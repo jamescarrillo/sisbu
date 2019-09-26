@@ -115,6 +115,8 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-deportiva").style.display = "none";
             document.querySelector("#row-option-psicologica").style.display = "flex";
             document.querySelector("#row-option-obstetricia").style.display = "none";
+            
+            $('#modalCargandoProcedimientoPsicologico').modal('show');
             break;
         case "obstetricia":
             document.querySelector("#row-options-evaluaciones").style.display = "none";
@@ -123,6 +125,8 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-deportiva").style.display = "none";
             document.querySelector("#row-option-psicologica").style.display = "none";
             document.querySelector("#row-option-obstetricia").style.display = "flex";
+            
+            $('#modalCargandoProcedimientoObstetricia').modal('show');
             break;
         default:
             //SOCIOECONOMICA
