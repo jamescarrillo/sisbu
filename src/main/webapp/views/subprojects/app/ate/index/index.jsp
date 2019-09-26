@@ -104,9 +104,9 @@
         <div class="dt-card sisbu-cursor-mano" id="icon-access-mi-perfil">
             <div class="dt-card__body d-flex flex-sm-column text-center">
                 <div class="mb-sm-7">
-                    <i class="icon icon-user dt-icon-bg text-primary"></i>
+                    <i class="icon icon-user-account dt-icon-bg text-primary"></i>
                 </div>
-                <a class="h2 mb-0 font-weight-500">Mi Perfil</a>
+                <a class="h2 mb-0 font-weight-500">Mis Datos</a>
             </div>
         </div>
     </div>

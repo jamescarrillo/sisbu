@@ -214,6 +214,33 @@ public class FilterURL implements Filter {
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ATENDIDO 
         //INDEX
         resource = new Resource();
+        resource.setUrl("/app/ate/index");
+        resource.setPath("/views/subprojects/app/ate/index/index.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ate/index/index.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //PERFIL
+        resource = new Resource();
+        resource.setUrl("/app/ate/perfil");
+        resource.setPath("/views/subprojects/app/ate/perfil/perfil.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ate/perfil/perfil.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //DATOS
+        resource = new Resource();
+        resource.setUrl("/app/ate/datos");
+        resource.setPath("/views/subprojects/app/ate/datos/datos.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ate/datos/datos.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //EVALUACIONES
+        resource = new Resource();
         resource.setUrl("/app/ate/evaluaciones");
         resource.setPath("/views/subprojects/app/ate/evaluaciones/evaluaciones.jsp");
         resource.setScripts(new String[]{
@@ -226,12 +253,39 @@ public class FilterURL implements Filter {
         });
         this.list_resources.add(resource);
 
-        //EVALUACIONES
+        //RESERVAS CITAS
         resource = new Resource();
-        resource.setUrl("/app/ate/index");
-        resource.setPath("/views/subprojects/app/ate/index/index.jsp");
+        resource.setUrl("/app/ate/reservas");
+        resource.setPath("/views/subprojects/app/ate/reservas/reservas.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ate/index/index.js" + version_project
+            "/views/subprojects/app/ate/reservas/reservas.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //MENU SEMANAL
+        resource = new Resource();
+        resource.setUrl("/app/ate/menu-semanal");
+        resource.setPath("/views/subprojects/app/ate/menu-semanal/menu-semanal.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ate/menu-semanal/menu-semanal.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //NOTICIAS Y EVENTOS
+        resource = new Resource();
+        resource.setUrl("/app/ate/noticias-eventos");
+        resource.setPath("/views/subprojects/app/ate/noticias-eventos/noticias-eventos.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ate/noticias-eventos/noticias-eventos.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //CONSTANCIAS
+        resource = new Resource();
+        resource.setUrl("/app/ate/constancias");
+        resource.setPath("/views/subprojects/app/ate/constancias/constancias.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ate/constancias/constancias.js" + version_project
         });
         this.list_resources.add(resource);
 

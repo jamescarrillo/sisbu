@@ -9,14 +9,16 @@ if (Cookies.get("sisbu_token") === undefined) {
     let user = Cookies.getJSON('sisbu_user');
     //SET DATOS USER
     document.querySelectorAll('.name-user-session').forEach(element => {
-        element.innerHTML = getStringCapitalize(user.usuario.toLowerCase());
+        element.innerHTML = getStringCapitalize(user.usuario.split(" ")[0].toLowerCase());
     });
     document.querySelectorAll('.name-type-user-session').forEach(element => {
         element.innerHTML = getStringTipoUsuario(user.tipo_usuario);
     });
-    if (document.querySelector("#title-welcome") != null) {
-        document.querySelector("#title-welcome").innerHTML = "¡Bienvenido " + getStringCapitalize(user.usuario.toLowerCase()) + "!";
-    }
+    /*
+     if (document.querySelector("#title-welcome") != null) {
+     document.querySelector("#title-welcome").innerHTML = "¡Bienvenido " + getStringCapitalize(user.usuario.toLowerCase()) + "!";
+     }
+     */
     //ADD ITEMS MENU AL SIDEBAR
     addMenus(user);
 } else {
@@ -57,6 +59,7 @@ function addMenus(usuario) {
 
 function createHTML_OGBU(typeProfile) {
     //INICIO PARA TODOS
+    document.querySelector("#a-mis-datos").style.display = "none";
     document.querySelector("#menus_sisbu").innerHTML =
             `
         <!-- Menu Header -->
@@ -155,19 +158,19 @@ function createHTML_OGBU(typeProfile) {
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/farmacia/pacientes" class="dt-side-nav__link" title="Pacientes">
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/pacientes" class="dt-side-nav__link" title="Pacientes">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Pacientes</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/farmacia/entradas" class="dt-side-nav__link" title="Entradas de Medicamentos">
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/entradas" class="dt-side-nav__link" title="Entradas de Medicamentos">
                             <i class="icon icon-arrow-left icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Entradas</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/farmacia/entradas" class="dt-side-nav__link" title="Salidas de Medicamentos">
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/entradas" class="dt-side-nav__link" title="Salidas de Medicamentos">
                             <i class="icon icon-arrow-right icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Salidas</span>
                         </a>
@@ -189,13 +192,13 @@ function createHTML_OGBU(typeProfile) {
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/odontologia/pacientes" class="dt-side-nav__link" title="Pacientes">
+                        <a href="${contextPah}app/ogbu/servicios/odontologia/pacientes" class="dt-side-nav__link" title="Pacientes">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Pacientes</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/odontologia/citas" class="dt-side-nav__link" title="Citas">
+                        <a href="${contextPah}app/ogbu/servicios/odontologia/citas" class="dt-side-nav__link" title="Citas">
                             <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Citas</span>
                         </a>
@@ -217,13 +220,19 @@ function createHTML_OGBU(typeProfile) {
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/obstetricia/pacientes" class="dt-side-nav__link" title="Pacientes">
+                        <a href="${contextPah}app/ogbu/servicios/obstetricia/evaluaciones" class="dt-side-nav__link" title="Evaluaciones">
+                            <i class="icon icon-assignment icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Evaluaciones</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/servicios/obstetricia/pacientes" class="dt-side-nav__link" title="Pacientes">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Pacientes</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/obstetricia/citas" class="dt-side-nav__link" title="Citas">
+                        <a href="${contextPah}app/ogbu/servicios/obstetricia/citas" class="dt-side-nav__link" title="Citas">
                             <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Citas</span>
                         </a>
@@ -285,31 +294,31 @@ function createHTML_OGBU(typeProfile) {
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/social/fichas" class="dt-side-nav__link" title="Fichas">
+                        <a href="${contextPah}app/ogbu/servicios/social/fichas" class="dt-side-nav__link" title="Fichas">
                             <i class="icon icon-list icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Fichas</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/social/usuarios" class="dt-side-nav__link" title="Pacientes">
+                        <a href="${contextPah}app/ogbu/servicios/social/usuarios" class="dt-side-nav__link" title="Pacientes">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Pacientes</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/social/citas" class="dt-side-nav__link" title="Citas">
+                        <a href="${contextPah}app/ogbu/servicios/social/citas" class="dt-side-nav__link" title="Citas">
                             <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Citas</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/social/reservas-cu" class="dt-side-nav__link" title="Reservas C.U">
+                        <a href="${contextPah}app/ogbu/servicios/social/reservas-cu" class="dt-side-nav__link" title="Reservas C.U">
                             <i class="icon icon-list icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Reservas C.U</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/social/convocatorias-cu" class="dt-side-nav__link" title="Convocatorias">
+                        <a href="${contextPah}app/ogbu/servicios/social/convocatorias-cu" class="dt-side-nav__link" title="Convocatorias">
                             <i class="icon icon-list icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Convocatorias C.U</span>
                         </a>
@@ -545,12 +554,21 @@ function createHTML_ATE(typeProfile) {
             </a>
         </li>
         <!-- /menu item -->
+       
+        <!-- Menu Item -->
+        <li class="dt-side-nav__item">
+            <a href="${contextPah}app/ate/perfil" class="dt-side-nav__link a-index-no" title="Mi Perfil">
+                <i class="icon icon-user icon-fw icon-lg"></i>
+                <span class="dt-side-nav__text">Mi Perfil</span>
+            </a>
+        </li>
+        <!-- /menu item -->
     
         <!-- Menu Item -->
         <li class="dt-side-nav__item">
-            <a href="${contextPah}app/ate/perfil" class="dt-side-nav__link a-index-no" title="Inicio">
-                <i class="icon icon-user icon-fw icon-lg"></i>
-                <span class="dt-side-nav__text">Mi Perfil</span>
+            <a href="${contextPah}app/ate/datos" class="dt-side-nav__link a-index-no" title="Mis Datos">
+                <i class="icon icon-user-account icon-fw icon-lg"></i>
+                <span class="dt-side-nav__text">Mis Datos</span>
             </a>
         </li>
         <!-- /menu item -->
@@ -561,7 +579,7 @@ function createHTML_ATE(typeProfile) {
                 `
              <!-- Menu Item -->
                 <li class="dt-side-nav__item">
-                    <a href="${contextPah}app/ate/evaluaciones" class="dt-side-nav__link a-index-no" title="Inicio">
+                    <a href="${contextPah}app/ate/evaluaciones" class="dt-side-nav__link a-index-no" title="Evaluaciones Virtuales">
                         <i class="icon icon-description icon-fw icon-lg"></i>
                         <span class="dt-side-nav__text">Evaluaciones<br> Virtuales</span>
                     </a>
@@ -582,7 +600,7 @@ function createHTML_ATE(typeProfile) {
     
         <!-- Menu Item -->
             <li class="dt-side-nav__item">
-                <a href="${contextPah}app/ate/iniciar" class="dt-side-nav__link a-index-no" title="Inicio">
+                <a href="${contextPah}app/ate/reservas" class="dt-side-nav__link a-index-no" title="Reservas de Citas">
                     <i class="icon icon-calendar icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text" style="text-transform: none">Reserva de Citas</span>
                 </a>
@@ -590,14 +608,14 @@ function createHTML_ATE(typeProfile) {
         <!-- /menu item -->
         <!-- Menu Item -->
             <li class="dt-side-nav__item">
-                <a href="${contextPah}app/ate/menu-semanal" class="dt-side-nav__link a-index-no" title="Inicio">
+                <a href="${contextPah}app/ate/menu-semanal" class="dt-side-nav__link a-index-no" title="Menú Semanal del Comedor">
                     <i class="icon icon-burger icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text" style="text-transform: none">Menu Semanal<br>del Comedor</span>
                 </a>
             </li>
         <!-- /menu item -->
     `;
-    
+
     //EXTRAS
     document.querySelector("#menus_sisbu").innerHTML +=
             `
@@ -609,23 +627,25 @@ function createHTML_ATE(typeProfile) {
     
         <!-- Menu Item -->
             <li class="dt-side-nav__item">
-                <a href="${contextPah}app/ate/iniciar" class="dt-side-nav__link a-index-no" title="Inicio">
+                <a href="${contextPah}app/ate/noticias-eventos" class="dt-side-nav__link a-index-no" title="Noticias y Eventos">
                     <i class="icon icon-attach-v icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text" style="text-transform: none">Noticias y Eventos</span>
                 </a>
             </li>
         <!-- /menu item -->
-        
+    `;
+
+    if (typeProfile == 1000) {
+        document.querySelector("#menus_sisbu").innerHTML +=
+                `
         <!-- Menu Item -->
             <li class="dt-side-nav__item">
-                <a href="${contextPah}app/ate/reserva-citas" class="dt-side-nav__link a-index-no" title="Inicio">
+                <a href="${contextPah}app/ate/constancias" class="dt-side-nav__link a-index-no" title="Constancias">
                     <i class="icon icon-assignment icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text" style="text-transform: none">Constancias</span>
                 </a>
             </li>
         <!-- /menu item -->
-    `;
-
-
-
+        `;
+    }
 }
