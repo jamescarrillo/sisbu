@@ -25,12 +25,12 @@
 
 <div class="row justify-content-center" id="row-options-evaluaciones" style="margin-top: 70px; display: none">
     <div class="col-xl-3 col-sm-6 col-lg-3">
-        <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="socieconomica">
+        <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="socioconomica">
             <div class="dt-card__body d-flex flex-sm-column text-center">
                 <div class="mb-sm-7">
                     <i class="icon icon-wallpage dt-icon-bg text-primary"></i>
                 </div>
-                <a class="h2 mb-0 font-weight-500">Evaluación Socieconómica</a>
+                <a class="h2 mb-0 font-weight-500">Evaluación<br>Socioeconómica</a>
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@
                 <div class="mb-sm-7">
                     <i class="icon icon-ripple dt-icon-bg text-primary"></i>
                 </div>
-                <a class="h2 mb-0 font-weight-500">Evaluación Deportiva</a>
+                <a class="h2 mb-0 font-weight-500">Evaluación<br>Deportiva</a>
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
                 <div class="mb-sm-7">
                     <i class="icon icon-heart-o dt-icon-bg text-primary"></i>
                 </div>
-                <a class="h2 mb-0 font-weight-500">Evaluación Psicológica</a>
+                <a class="h2 mb-0 font-weight-500">Evaluación<br>Psicológica</a>
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
                 <div class="mb-sm-7">
                     <i class="icon icon-link dt-icon-bg text-primary"></i>
                 </div>
-                <a class="h2 mb-0 font-weight-500">Evaluación Obstetricia</a>
+                <a class="h2 mb-0 font-weight-500">Evaluación<br>Obstetricia</a>
             </div>
         </div>
     </div>
@@ -74,7 +74,7 @@
 
 <div class="row" id="row-option-socioeconomica" style="display: none;">
     <div class="col-12">
-        <div class="row" id="div-evaluaciones-socieconomica">
+        <div class="row" id="div-evaluaciones-socioconomica">
             <div class="col-12">
                 <div class="dt-card dt-card__full-height">
                     <div class="dt-card__header mb-2 pt-4">
@@ -87,22 +87,22 @@
                             <div class="col-xl-4 col-md-12 col-sm-4">
                                 <!-- Chart -->
                                 <canvas class="mx-auto mb-5 mb-sm-0 mb-md-5 mb-xl-0"
-                                        id="estimation-socie" data-fill="0"
+                                        id="estimation-socio" data-fill="0"
                                         height="110" width="110"></canvas>
                             </div>
                             <div class="col-xl-8 col-md-12 col-sm-8">
                                 <div class="pb-3 mb-3 border-bottom">
-                                    <span class="display-4 d-inline-block mr-2 font-weight-500 text-dark" id="lblNumProcedimientosSocie">12</span><span
+                                    <span class="display-4 d-inline-block mr-2 font-weight-500 text-dark" id="lblNumProcedimientosSocioeconomica">12</span><span
                                         class="font-weight-light f-16">Fichas</span>
                                 </div>
                                 <ul class="dt-list dt-list-col-6">
                                     <li class="dt-list__item">
                                         <span class="dot-shape dot-shape-lg bg-light-green mr-2"></span>
-                                        <span class="d-inline-block" id="lblNumRespondidasSocie">0 Realizadas</span>
+                                        <span class="d-inline-block" id="lblNumRespondidasSocioeconomica">0 Realizadas</span>
                                     </li>
                                     <li class="dt-list__item">
                                         <span class="dot-shape dot-shape-lg bg-light-pink mr-2"></span>
-                                        <span class="d-inline-block" id="lblNumPendientesSocie">5 Pendientes</span>
+                                        <span class="d-inline-block" id="lblNumPendientesSocioeconomica">5 Pendientes</span>
                                     </li>
                                 </ul>
                             </div>
@@ -120,32 +120,22 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="div-preguntas-evaluacion-socieconomica" style="display: none">
+        <div class="row" id="div-preguntas-evaluacion-socioconomica" style="display: none">
             <div class="col-12" style="">
-
-                <!-- Card -->
                 <div class="dt-card">
-
-                    <!-- Card Header -->
                     <div class="dt-card__header bg-primary pb-7 mb-0 rounded-top">
-
-                        <!-- Card Heading -->
                         <div class="dt-card__heading">
                             <div class="d-flex align-items-center">
                                 <i class="icon icon-invoice-new icon-fw icon-2x text-white mr-2"></i>
                                 <h3 class="dt-card__title text-white" style="text-transform: none">Lista de Preguntas</h3>
                             </div>
                         </div>
-                        <!-- /card heading -->
                     </div>
-                    <!-- /card header -->
-
-                    <!-- Card Body -->
                     <div class="dt-card__body pb-3">
                         <div class="row mt-3">
                             <div class="col-12">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
+                                <ul class="list-group list-group-flush" id="content-preguntas-evaluacion-socioconomica">
+                                    <!--li class="list-group-item">
                                         <div class="form-group mb-2">
                                             <label class="mb-2">1. ¿Como estas en todo este proceso de aprendizaje?</label>
                                             <select class="form-control form-control-sm">
@@ -185,25 +175,29 @@
                                             <input type="checkbox" class="custom-control-input" id="checkbox-4">
                                             <label class="custom-control-label" for="checkbox-4">Nose xd</label>
                                         </div>
-                                    </li>
+                                    </li-->
                                 </ul>
+                            </div>
+                            <div class="col-12 text-right">
+                                <button class="btn btn-outline-primary" id="btn-cancelar-evaluation-socio">
+                                    <i class="icon icon-reply"></i>
+                                    Salir
+                                </button>
+                                <button class="btn btn-primary" id="btn-finalizar-evaluation-socio">
+                                    <i class="icon icon-double-arrow-right mb-1"></i>
+                                    Finalizar
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 text-center" id="div-cancelar-evaluation-socie" style="display: none">
-            <button class="btn btn-outline-primary" id="btn-cancelar-evaluation-socie">
-                <i class="icon icon-reply"></i>
-                Salir
-            </button>
-        </div>
     </div>
-    <div class="col-12 text-center" id="div-regresar-selected-evaluation-socie">
+    <div class="col-12 text-center" id="div-regresar-selected-evaluation-socio">
         <button class="btn btn-outline-primary btn-regresar-selected-evaluation">
             <i class="icon icon-reply"></i>
-            Regresar a seleccionar evaluación
+            Mis Evaluaciones
         </button>
     </div>
 </div>
@@ -296,7 +290,7 @@
 </div>
 
 <!--MODALES CARGNADO-->
-<div class="modal" id="modalCargandoProcedimientoCicloSocie" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal" id="modalCargandoProcedimientoCicloSocioeconomica" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
