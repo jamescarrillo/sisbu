@@ -95,7 +95,7 @@ function navigateOptionEvaluation(option) {
         case "home":
             document.querySelector("#row-options-evaluaciones").style.display = "flex";
 
-            document.querySelector("#row-option-socioeconomica").style.display = "none";
+            document.querySelector("#row-option-socioeconomico").style.display = "none";
             document.querySelector("#row-option-deportiva").style.display = "none";
             document.querySelector("#row-option-psicologica").style.display = "none";
             document.querySelector("#row-option-obstetricia").style.display = "none";
@@ -228,7 +228,7 @@ function getSelectPregunta(alternativas, pregunta) {
 }
 
 function getInputTextPregunta(pregunta) {
-    return `<input class="form-control form-control-sm" placeholder="${pregunta.placeholder}" id="input-text-${pregunta.idpregunta}" >`;
+    return `<input class="form-control form-control-sm" placeholder="${pregunta.placeholder}" id="input-text-${pregunta.idpregunta}" maxlength="500">`;
 }
 
 function getChecksPregunta(alternativas) {
@@ -351,6 +351,7 @@ function navigateProcedimientoAndPreguntas(opcion) {
                     document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "none";
                     document.querySelector("#div-regresar-selected-evaluation-socioeconomico").style.display = "block";
                     //VOLVEMOS A LISTAR
+                    $('#modalCargandoProcedimientoSocioeconomico').modal('show');
                     break;
             }
             break;

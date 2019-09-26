@@ -92,7 +92,7 @@
                             </div>
                             <div class="col-xl-8 col-md-12 col-sm-8">
                                 <div class="pb-3 mb-3 border-bottom">
-                                    <span class="display-4 d-inline-block mr-2 font-weight-500 text-dark" id="lblNumProcedimientosSocioeconomico">12</span><span
+                                    <span class="display-4 d-inline-block mr-2 font-weight-500 text-dark" id="lblNumProcedimientosSocioeconomico">0</span><span
                                         class="font-weight-light f-16">Fichas</span>
                                 </div>
                                 <ul class="dt-list dt-list-col-6">
@@ -102,7 +102,7 @@
                                     </li>
                                     <li class="dt-list__item">
                                         <span class="dot-shape dot-shape-lg bg-light-pink mr-2"></span>
-                                        <span class="d-inline-block" id="lblNumPendientesSocioeconomico">5 Pendientes</span>
+                                        <span class="d-inline-block" id="lblNumPendientesSocioeconomico">0 Pendientes</span>
                                     </li>
                                 </ul>
                             </div>

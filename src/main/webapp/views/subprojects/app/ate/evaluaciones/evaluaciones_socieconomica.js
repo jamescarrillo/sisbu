@@ -181,12 +181,12 @@ function setUpdateGraficaProcedimientoSocioeconomico() {
                 {
                     data: [beanProcedimientoSelectedGlobal.procedimientos_realizados.length, beanProcedimientoSelectedGlobal.procedimientos.length],
                     backgroundColor: [
-                        color(chartColors.blue).alpha(0.8).rgbString(),
-                        color(chartColors.pink).alpha(0.8).rgbString()
+                        color(chartColors.lightGreen).alpha(0.8).rgbString(),
+                        color(chartColors.orange).alpha(0.8).rgbString()
                     ],
                     hoverBackgroundColor: [
-                        color(chartColors.blue).alpha(0.8).rgbString(),
-                        color(chartColors.pink).alpha(0.8).rgbString()
+                        color(chartColors.lightGreen).alpha(0.8).rgbString(),
+                        color(chartColors.orange).alpha(0.8).rgbString()
                     ]
                 }
             ]
@@ -236,23 +236,34 @@ function processAjaxEvaluacionAtendidoSocieconomico() {
         },
         "list_respuestas": list_respuestas_evaluacion
     };
-    console.log(beanEvaluacionAtendidoSocieconomico);
-    let url_request = getHostAPI() + "/evaluacion/atendido/add";
+    //console.log(beanEvaluacionAtendidoSocieconomico);
+    let url_request = getHostAPI() + "api/evaluacion/atendido/add";
     $.ajax({
         url: url_request,
         type: "POST",
         headers: {
             'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
-        data: JSON.stringify(json),
+        data: JSON.stringify(beanEvaluacionAtendidoSocieconomico),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrud) {
         $('#modalCargandoEvaluacionAtendidoSocioeconomico').modal("hide");
-
+        console.log(beanCrud);
+        if (beanCrud.messageServer != undefined) {
+            if (beanCrud.messageServer.toLowerCase() == "ok") {
+                showAlertTopEnd('success', "Finalización exitosa!", 6000);
+                //REGRESAMOS A LAS EVALUACIONES
+                navigateProcedimientoAndPreguntas('home');
+            } else {
+                showAlertTopEnd('warning', beanCrud.messageServer, 6000);
+            }
+        } else {
+            showAlertTopEnd('warning', "No se completó la finalización, ocurrió un error interno. Inténtelo mas tarde :)", 6000);
+        }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoEvaluacionAtendidoSocioeconomico').modal("hide");
-        showAlertTopEnd('error', 'Oh! A ocurrido un error interno, intentalo mas tarde :/');
+        showAlertTopEnd('error', 'Oh! A ocurrido un error interno, intentalo mas tarde :/', 6000);
         //showAlertErrorRequest();
     });
 }
