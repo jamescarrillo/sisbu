@@ -255,54 +255,10 @@
 </div>
 
 <div class="row" id="row-option-psicologica" style="margin-top: 70px; display: none">
-    <div class="col-12">
-        <div class="row justify-content-center" id="div-content-evaluacion-psicologica">
-            <div class="col-xl-3 col-sm-6 col-lg-3">
-                <div class="dt-card sisbu-cursor-mano">
-                    <div class="dt-card__body d-flex flex-sm-column text-center">
-                        <div class="mb-sm-7">
-                            <i class="icon icon-assignment dt-icon-bg text-primary"></i>
-                        </div>
-                        <a class="h2 mb-0 font-weight-500">Test Baron Ice</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" id="div-preguntas-evaluacion-psicologica">
-
-        </div>
-    </div>
-    <div class="col-12 text-center">
-        <button class="btn btn-outline-primary btn-regresar-selected-evaluation">
-            <i class="icon icon-reply"></i>
-            Regresar a seleccionar evaluación
-        </button>
-    </div>
+    
 </div>
 <div class="row" id="row-option-obstetricia" style="margin-top: 70px; display: none">
-    <div class="col-12">
-        <div class="row justify-content-center" id="div-content-evaluacion-obstetricia">
-            <div class="col-xl-3 col-sm-6 col-lg-3">
-                <div class="dt-card sisbu-cursor-mano">
-                    <div class="dt-card__body d-flex flex-sm-column text-center">
-                        <div class="mb-sm-7">
-                            <i class="icon icon-assignment dt-icon-bg text-primary"></i>
-                        </div>
-                        <a class="h2 mb-0 font-weight-500">Examen Inicial</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" id="div-preguntas-evaluacion-obstetricia">
-
-        </div>
-    </div>
-    <div class="col-12 text-center">
-        <button class="btn btn-outline-primary btn-regresar-selected-evaluation">
-            <i class="icon icon-reply"></i>
-            Regresar a seleccionar evaluación
-        </button>
-    </div>
+    
 </div>
 
 <!--MODALES CARGNADO-->
@@ -371,6 +327,38 @@
 </div>
 
 <div class="modal" id="modalCargandoEvaluacionAtendidoSocioeconomico" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Finalizando. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoEvaluacionAtendidoPsicologico" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Finalizando. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoEvaluacionAtendidoObstetricia" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
