@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-var beanProcedimientoSocioeconomico;
-var procedimientoSocioeconomicoSelected;
 var beanRequestProcedimientoSocioeconomico = new BeanRequest();
 
 var fecha_inicioProcedimientoSocioeconomico;
@@ -88,8 +86,7 @@ function processAjaxProcedimientoSocioeconomico() {
     }).done(function (beanProcedimientoCiclo) {
         //console.log(beanProcedimientoCiclo);
         $('#modalCargandoProcedimientoSocioeconomico').modal("hide");
-        beanProcedimientoSocioeconomico = beanProcedimientoCiclo;
-        beanProcedimientoSelectedGlobal = beanProcedimientoSocioeconomico;
+        beanProcedimientoSelectedGlobal = beanProcedimientoCiclo;
         procedimiento_menu_selected = "socioeconomico";
         toListProcedimientoSocioeconomico();
     }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -100,11 +97,11 @@ function processAjaxProcedimientoSocioeconomico() {
 
 function toListProcedimientoSocioeconomico() {
     document.querySelector("#div-content-evaluacion-socioeconomico").innerHTML = "";
-    if (beanProcedimientoSocioeconomico.procedimientos.length > 0) {
+    if (beanProcedimientoSelectedGlobal.procedimientos.length > 0) {
         let card;
         let card_extra;
-        beanProcedimientoSocioeconomico.procedimientos.forEach(procedimiento => {
-            let validation_complete_evaluation = validateCompleteEvaluationSocioeconomico(procedimiento.idprocedimiento);
+        beanProcedimientoSelectedGlobal.procedimientos.forEach(procedimiento => {
+            let validation_complete_evaluation = validateCompleteProcedimiento(procedimiento.idprocedimiento);
             if (validation_complete_evaluation) {
                 card_extra =
                         `
@@ -144,19 +141,6 @@ function toListProcedimientoSocioeconomico() {
                         </p>
                     </div>
                     ${card_extra}
-                    <!--div class="dt-widget__extra text-right">
-                        <div class="show-content mt-2">
-                            <span class="d-block"><span class='${(validation_complete_evaluation == true ? "text-success" : "text-warning")}'>${(validation_complete_evaluation == true ? "Relizado" : "Por realizar")}</span></span>
-                        </div>
-                        <div class="hide-content">
-                            <div class="action-btn-group">
-                                <button class="btn btn-default text-primary dt-fab-btn btn btn-realizar-procedimiento" idprocedimiento="${procedimiento.idprocedimiento}"
-                                    title="Click para empezar :)" data-toggle="tooltip">
-                                    <i class="icon icon-assignment icon-xl"></i> <i class="icon icon-double-arrow-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div-->
                 </div>
             `;
             document.querySelector("#div-content-evaluacion-socioeconomico").innerHTML += card;
@@ -166,16 +150,15 @@ function toListProcedimientoSocioeconomico() {
         document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "none";
         setUpdateGraficaProcedimientoSocioeconomico();
     } else {
-        showAlertTopEnd('warning', 'Lo sentimos no hay ninguna evaluación configurada para este ciclo');
+        showAlertTopEnd('warning', 'Lo sentimos, no hay ninguna evaluación configurada para este ciclo');
     }
 }
 
 function addEventsProcedimientoSocioeconomico() {
     document.querySelectorAll(".btn-realizar-procedimiento").forEach(btn => {
         btn.onclick = function () {
-            procedimientoSocioeconomicoSelected = findProcedimientoSocioeconomicoForId(this.getAttribute('idprocedimiento'));
-            if (procedimientoSocioeconomicoSelected != undefined) {
-                procedimientoSelectedGlobal = procedimientoSocioeconomicoSelected;
+            procedimientoSelectedGlobal = findProcedimientoForId(this.getAttribute('idprocedimiento'));
+            if (procedimientoSelectedGlobal != undefined) {
                 $('#modalCargandoIntentoEvaluacion').modal("show");
             } else {
                 showAlertTopEnd('warning', 'No se encontró la evaluación para poder realizarlo. Vuelva a iniciar sesión');
@@ -184,31 +167,9 @@ function addEventsProcedimientoSocioeconomico() {
     });
 }
 
-function findProcedimientoSocioeconomicoForId(idprocedimiento) {
-    let procedimiento_;
-    beanProcedimientoSocioeconomico.procedimientos.forEach(procedimiento => {
-        if (parseInt(idprocedimiento) == parseInt(procedimiento.idprocedimiento)) {
-            procedimiento_ = procedimiento;
-            return;
-        }
-    });
-    return procedimiento_;
-}
-
-function validateCompleteEvaluationSocioeconomico(idprocedimiento) {
-    let res = false;
-    beanProcedimientoSocioeconomico.procedimientos_realizados.forEach(procedimiento => {
-        if (parseInt(idprocedimiento) == parseInt(procedimiento.idprocedimiento)) {
-            res = true;
-            return;
-        }
-    });
-    return res;
-}
-
 function setUpdateGraficaProcedimientoSocioeconomico() {
     if ($('#estimation-socioeconomico').length) {
-        document.querySelector("#estimation-socioeconomico").setAttribute('data-fill', beanProcedimientoSocioeconomico.procedimientos.length);
+        document.querySelector("#estimation-socioeconomico").setAttribute('data-fill', beanProcedimientoSelectedGlobal.procedimientos.length);
         var estimation_data = {
             labels: [
                 "Realizados",
@@ -216,7 +177,7 @@ function setUpdateGraficaProcedimientoSocioeconomico() {
             ],
             datasets: [
                 {
-                    data: [beanProcedimientoSocioeconomico.procedimientos_realizados.length, beanProcedimientoSocioeconomico.procedimientos.length],
+                    data: [beanProcedimientoSelectedGlobal.procedimientos_realizados.length, beanProcedimientoSelectedGlobal.procedimientos.length],
                     backgroundColor: [
                         color(chartColors.blue).alpha(0.8).rgbString(),
                         color(chartColors.pink).alpha(0.8).rgbString()
@@ -240,15 +201,15 @@ function setUpdateGraficaProcedimientoSocioeconomico() {
                 }
             }
         });
-        document.querySelector("#lblNumProcedimientosSocioeconomico").innerHTML = beanProcedimientoSocioeconomico.procedimientos.length;
-        document.querySelector("#lblNumRespondidasSocioeconomico").innerHTML = beanProcedimientoSocioeconomico.procedimientos_realizados.length;
-        if (beanProcedimientoSocioeconomico.procedimientos_realizados.length == 1) {
+        document.querySelector("#lblNumProcedimientosSocioeconomico").innerHTML = beanProcedimientoSelectedGlobal.procedimientos.length;
+        document.querySelector("#lblNumRespondidasSocioeconomico").innerHTML = beanProcedimientoSelectedGlobal.procedimientos_realizados.length;
+        if (beanProcedimientoSelectedGlobal.procedimientos_realizados.length == 1) {
             document.querySelector("#lblNumRespondidasSocioeconomico").innerHTML += " Realizada";
         } else {
             document.querySelector("#lblNumRespondidasSocioeconomico").innerHTML += " Realizadas";
         }
-        document.querySelector("#lblNumPendientesSocioeconomico").innerHTML = beanProcedimientoSocioeconomico.procedimientos.length - beanProcedimientoSocioeconomico.procedimientos_realizados.length;
-        if (beanProcedimientoSocioeconomico.procedimientos.length - beanProcedimientoSocioeconomico.procedimientos_realizados.length == 1) {
+        document.querySelector("#lblNumPendientesSocioeconomico").innerHTML = beanProcedimientoSelectedGlobal.procedimientos.length - beanProcedimientoSelectedGlobal.procedimientos_realizados.length;
+        if (beanProcedimientoSelectedGlobal.procedimientos.length - beanProcedimientoSelectedGlobal.procedimientos_realizados.length == 1) {
             document.querySelector("#lblNumPendientesSocioeconomico").innerHTML += " Pendiente";
         } else {
             document.querySelector("#lblNumPendientesSocioeconomico").innerHTML += " Pendientes";

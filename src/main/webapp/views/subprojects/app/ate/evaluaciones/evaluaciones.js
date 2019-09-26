@@ -354,6 +354,32 @@ function navigateProcedimientoAndPreguntas(opcion) {
     }
 }
 
+function validateCompleteProcedimiento(idprocedimiento) {
+    let res = false;
+    let procedimientos_realizados = beanProcedimientoSelectedGlobal.procedimientos_realizados;
+    for (var i = 0; i < procedimientos_realizados; i++) {
+        let procedimiento = procedimientos_realizados[i];
+        if (parseInt(idprocedimiento) == parseInt(procedimiento.idprocedimiento)) {
+            res = true;
+            break;
+        }
+    }
+    return res;
+}
+
+function findProcedimientoForId(idprocedimiento) {
+    let procedimiento_;
+    let procedimientos = beanProcedimientoSelectedGlobal.procedimientos;
+    for (var i = 0; i < procedimientos; i++) {
+        let procedimiento = procedimientos[i];
+        if (parseInt(idprocedimiento) == parseInt(procedimiento.idprocedimiento)) {
+            procedimiento_ = procedimiento;
+            break;
+        }
+    }
+    return procedimiento_;
+}
+
 function validateFinalizateProcedimiento() {
     let preguntas_procedimiento = getPreguntasProcedimiento();
     let validation_complete = true;
