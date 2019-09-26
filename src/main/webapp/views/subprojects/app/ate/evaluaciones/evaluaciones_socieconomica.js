@@ -84,7 +84,6 @@ function processAjaxProcedimientoSocioeconomico() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanProcedimientoCiclo) {
-        //console.log(beanProcedimientoCiclo);
         $('#modalCargandoProcedimientoSocioeconomico').modal("hide");
         beanProcedimientoSelectedGlobal = beanProcedimientoCiclo;
         procedimiento_menu_selected = "socioeconomico";

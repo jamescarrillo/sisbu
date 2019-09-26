@@ -12,10 +12,10 @@ function showAlertTop(type, message, timer_, position_) {
     });
 
     //8 PALABRAS COMO MAXIMO POR FILA
-    if (message.split(' ').length > 8) {
+    if (message.split(' ').length > 6) {
         Toast.fire({
             type: type,
-            title: getTextHtmlFormat(message, 8)
+            title: getTextHtmlFormat(message, 6)
         })
     } else {
         Toast.fire({
