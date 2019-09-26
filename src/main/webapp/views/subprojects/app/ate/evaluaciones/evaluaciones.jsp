@@ -3,15 +3,26 @@
     Created on : 21 set. 2019, 13:08:49
     Author     : James Carrillo
 --%>
-<div class="row justify-content-center" id="row-home-evaluaciones" style="margin-top: 70px">
-    <div class="col-lg-4 col-sm-6">
-        <h2 class="text-center">Hola <span class="text-info" id="lblNameUserIndex">User</span>, felicicidades por tu ingreso a nuestra UNPRG. 
-        </h2>
-        <p class="text-center" style="font-size: 18px">
-            Tu información es importante
-            para brindarte un mejor servicio. Agradecemos tu sinceridad al momento de 
-            responder las distintas evaluaciones virtuales.
-        </p>
+<div class="row justify-content-center" id="row-home-evaluaciones" style="margin-top: 30px">
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-lg-4 text-center">
+                <img src="<%=request.getContextPath()%>/resources/prod/custom_app/pedritojr_blanco_feliz.png" class="img-fluid" alt="Pedrito Jr.">
+            </div>
+            <div class="col-lg-8">
+                <br>
+                <h2 class="text-center">
+                    ¡Felicidades por tu ingreso <span class="text-info" id="lblNameUserIndex">User</span>!
+                    Estamos encantados de recibirte en nuestra nuestra UNPRG. 
+                </h2>
+                <p class="text-center" style="font-size: 18px">
+                    Tu información es importante
+                    para brindarte un mejor servicio. Agradecemos tu sinceridad al momento de 
+                    responder las distintas evaluaciones virtuales.
+                </p>
+
+            </div>
+        </div>
         <p class="text-center text-danger" style="font-size: 12px">
             ***Nota: Te sugerimos ver los videos tutoriales sobre como llenar correctamente las evaluaciones, 
             si aún no lo has hecho, dale click a este enlace 
@@ -202,8 +213,13 @@
     </div>
 </div>
 
-<div class="row" id="row-option-deportiva" style="margin-top: 70px; display: none">
+<div class="row" id="row-option-deportiva" style="display: none">
     <div class="col-12">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-8">
+                <img src="<%=request.getContextPath()%>/resources/prod/custom_app/deportes.gif" class="img-fluid" alt="Fam. Pedro Ruiz Gallo">
+            </div>
+        </div>
         <div class="row justify-content-center" id="div-evaluacion-deportiva-deportes">
             <div class="col-xl-3 col-sm-6 col-lg-3">
                 <div class="dt-card sisbu-cursor-mano" id="div-evaluacion-deportiva-deportes">
