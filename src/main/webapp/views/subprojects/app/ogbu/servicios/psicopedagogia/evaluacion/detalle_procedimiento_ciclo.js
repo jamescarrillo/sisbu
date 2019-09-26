@@ -34,12 +34,16 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#modalCargandoDetalleProcedimientoCiclo").on('shown.bs.modal', function () {
         processAjaxDetalleProcedimientoCiclo();
     });
-    
+
     $("#ventanaModalDetalleProcedimientoCiclo").on('hidden.bs.modal', function () {
         $("#modalCargandoProcedimientoCiclo").modal("show");
     });
 
     $("#ventanaModalDetalleProcedimientoCiclo").on('shown.bs.modal', function () {
+        procedimientoCSelected = undefined;
+        document.querySelector("#txtProcedimientoDetalleProcedimientoCiclo").value = "";
+        beanRequestDetalleProcedimientoCiclo.operation = "paginate";
+        beanRequestDetalleProcedimientoCiclo.type_request = "GET";
         $("#modalCargandoDetalleProcedimientoCiclo").modal("show");
     });
 

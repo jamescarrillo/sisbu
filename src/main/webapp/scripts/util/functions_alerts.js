@@ -12,10 +12,10 @@ function showAlertTop(type, message, timer_, position_) {
     });
 
     //8 PALABRAS COMO MAXIMO POR FILA
-    if (message.split(' ').length > 8) {
+    if (message.split(' ').length > 6) {
         Toast.fire({
             type: type,
-            title: getTextHtmlFormat(message, 8)
+            title: getTextHtmlFormat(message, 6)
         })
     } else {
         Toast.fire({
@@ -40,7 +40,7 @@ function showAlertDelete(idmodal) {
             $('#' + idmodal).modal("show");
         }
     })
-    $('.swal2-confirm').css("margin-right", "15px");
+    //$('.swal2-confirm').css("margin-right", "15px");
 }
 
 function getTextHtmlFormat(text, count_palabras_for_row) {

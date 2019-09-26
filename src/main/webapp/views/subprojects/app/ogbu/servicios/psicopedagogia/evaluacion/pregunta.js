@@ -82,7 +82,8 @@ function processAjaxPregunta() {
                 "placeholder": document.querySelector("#txtPlaceholderPregunta").value,
                 "tipo_respuesta": document.querySelector("#txtTipoRespuestaPregunta").value,
                 "item_negativo": document.querySelector("#txtItemNegativoPregunta").value,
-                "columnas": document.querySelector("#txtColumnasPregunta").value,
+                //"columnas": document.querySelector("#txtColumnasPregunta").value,
+                "columnas": 12,
                 "orden": document.querySelector("#txtOrdenPregunta").value,
                 "estado": document.querySelector("#txtEstadoPregunta").value,
                 "procedimiento": evaluacionSelected,
@@ -99,7 +100,8 @@ function processAjaxPregunta() {
                 "placeholder": document.querySelector("#txtPlaceholderPregunta").value,
                 "tipo_respuesta": document.querySelector("#txtTipoRespuestaPregunta").value,
                 "item_negativo": document.querySelector("#txtItemNegativoPregunta").value,
-                "columnas": document.querySelector("#txtColumnasPregunta").value,
+                //"columnas": document.querySelector("#txtColumnasPregunta").value,
+                "columnas": 12,
                 "orden": document.querySelector("#txtOrdenPregunta").value,
                 "estado": document.querySelector("#txtEstadoPregunta").value,
                 "procedimiento": evaluacionSelected,
@@ -267,10 +269,13 @@ function validateFormPregunta() {
         document.querySelector("#txtTipoRespuestaPregunta").focus();
         return false;
     }
-    if (document.querySelector("#txtColumnasPregunta").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese cantidad columnas');
-        document.querySelector("#txtColumnasPregunta").focus();
-        return false;
+    if (evaluacionSelected.usa_alternativas_globales != 1) {
+        //VERIFICAMOS QUE NO SEA 100 
+        if (document.querySelector("#txtTipoRespuestaPregunta").value == "100") {
+            showAlertTopEnd('warning', 'El tipo de respuesta seleccionado no es válido porque la evaluación no usa alternativas globales. Seleccione otro :)', 10000);
+            document.querySelector("#txtTipoRespuestaPregunta").focus();
+            return false;
+        }
     }
     let num_columas = parseInt(document.querySelector("#txtColumnasPregunta").value);
     if (num_columas > 2 && num_columas < 13) {
@@ -335,7 +340,8 @@ function clearPregunta() {
     document.querySelector("#txtTooltipPregunta").value = "";
     document.querySelector("#txtPlaceholderPregunta").value = "";
     document.querySelector("#txtTipoRespuestaPregunta").value = "-1";
-    document.querySelector("#txtColumnasPregunta").value = "";
+    document.querySelector("#txtColumnasPregunta").value = "12";
+    document.querySelector("#txtColumnasPregunta").disabled = true;
     document.querySelector("#txtSubAreaPregunta").value = "";
 }
 
@@ -355,7 +361,7 @@ function getTipoRepuestaPregunta(tipo_respuesta) {
             s_ = "LISTA DESPLEGABLE";
             break;
         default:
-            s_ = "TEXTO";
+            s_ = "OTRO";
             break;
     }
     return s_;
@@ -382,6 +388,7 @@ function openPregunta() {
         document.querySelector("#txtTipoRespuestaPregunta").disabled = false;
     }
     document.querySelector("#txtColumnasPregunta").value = preguntaSelected.columnas;
+    document.querySelector("#txtColumnasPregunta").disabled = true;
     document.querySelector("#txtItemNegativoPregunta").value = preguntaSelected.item_negativo == undefined ? "-1" : preguntaSelected.item_negativo;
     ;
     document.querySelector("#txtSubAreaPregunta").value = getSubAreaPregunta(preguntaSelected.subarea_psi);
@@ -436,7 +443,7 @@ function openNewPregunta(num_pregunta_actual) {
     //TRAEMOS LA CANTIDAD DE PREGUNTAS
     document.querySelector("#txtOrdenPregunta").value = num_pregunta_actual + 1;
     if (evaluacionSelected.usa_alternativas_globales == 1) {
-        document.querySelector("#txtTipoRespuestaPregunta").value = "4";
+        document.querySelector("#txtTipoRespuestaPregunta").value = "100";
         document.querySelector("#txtTipoRespuestaPregunta").disabled = true;
     } else {
         document.querySelector("#txtTipoRespuestaPregunta").disabled = false;

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
+    
     document.querySelectorAll('.a-index').forEach(a => {
         a.onclick = function () {
             sendIndex();
@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
             closeSession();
         };
     });
+    
+    
 
 });
 

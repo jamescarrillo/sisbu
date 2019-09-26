@@ -672,12 +672,19 @@
                         <option value="2">CHECK BOX</option>
                         <!--option value="3">TABLA</option-->
                         <option value="4">LISTA DESPLEGABLE</option>
+                        <option value="100">OTRO</option>
                     </select>
                 </div>
             </div>
             <div class="col-lg-6 col-12">
                 <div class="form-group">
-                    <label for="txtColumnasPregunta">Columnas</label>
+                    <label for="txtColumnasPregunta">Columnas
+                        <i class="icon icon-question-circle" aria-hidden="true" data-toggle="popover" 
+                           data-trigger="hover" data-placement="top" 
+                           title="" data-content="La versión 2.0 de Sisbu solo soporta 12 columnas, esto significa que ocupará todo el ancho de la pantalla" 
+                           style="cursor: pointer" data-original-title="">
+                        </i>
+                    </label>
                     <input type="number" class="form-control form-control-sm" id="txtColumnasPregunta" aria-describedby="nombre" placeholder="Ingrese n° columnas . . .">
                 </div>
             </div>
@@ -1128,7 +1135,7 @@
                             <input type="text" id="txtDescripcionAlternativa"
                                    class="form-control form-control-sm" placeholder="Ingrese descripción. . ." maxlength="100">
                         </div>
-                        <div class="col-lg-6 col-12 mb-2">
+                        <div class="col-12 mb-2">
                             <label for="txtValorAlternativa">Valor Numérico</label>
                             <input type="number" id="txtValorAlternativa"
                                    class="form-control form-control-sm" placeholder="Ingrese valor numérico. . ." maxlength="10">
@@ -1579,7 +1586,7 @@
                                                                                     aria-hidden="true"></i>AGREGAR EVALUACIÓN</button>
                                 <button type="button" id="btnBuscarDetalleProcedimientoCiclo" class="btn btn-primary btn-xs"
                                         data-toggle="tooltip" title="Buscar"><i class="icon icon-search"
-                                                                                    aria-hidden="true"></i></button>
+                                                                        aria-hidden="true"></i></button>
                             </div>
                         </div>
                         <div class="row pl-5 pr-5">

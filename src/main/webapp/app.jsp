@@ -39,6 +39,8 @@
 
         <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles_sisbu.css">
 
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/chart.js/dist/Chart.min.css">
+
     </head>
     <body class="dt-sidebar--fixed dt-header--fixed">
         <%
@@ -105,29 +107,22 @@
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-media">
                                             <!-- Dropdown Menu Header -->
                                             <div class="dropdown-menu-header">
-                                                <h4 class="title">Notifications (9)</h4>
+                                                <h4 class="title">Notificaciones (0)</h4>
 
                                                 <div class="ml-auto action-area">
-                                                    <a href="javascript:void(0)">Mark All Read</a> <a class="ml-2"
-                                                                                                      href="javascript:void(0)">
+                                                    <a href="javascript:void(0)">Marcar todos como leídos</a> <a class="ml-2"
+                                                                                                                 href="javascript:void(0)">
                                                         <i class="icon icon-settings icon-lg text-light-gray"></i> </a>
                                                 </div>
                                             </div>
                                             <!-- /dropdown menu header -->
 
                                             <!-- Dropdown Menu Body -->
-                                            <div class="dropdown-menu-body ps-custom-scrollbar">
-
+                                            <!--div class="dropdown-menu-body ps-custom-scrollbar">
                                                 <div class="h-auto">
-                                                    <!-- Media -->
                                                     <a href="javascript:void(0)" class="media">
-
-                                                        <!-- Avatar -->
                                                         <img class="dt-avatar mr-3" src="https://via.placeholder.com/150x150"
                                                              alt="User">
-                                                        <!-- avatar -->
-
-                                                        <!-- Media Body -->
                                                         <span class="media-body">
                                                             <span class="message">
                                                                 <span class="user-name">Stella Johnson</span> and <span class="user-name">Chris Harris</span>
@@ -135,84 +130,11 @@
                                                             </span>
                                                             <span class="meta-date">8 hours ago</span>
                                                         </span>
-                                                        <!-- /media body -->
-
                                                     </a>
-                                                    <!-- /media -->
-
-                                                    <!-- Media -->
-                                                    <a href="javascript:void(0)" class="media">
-
-                                                        <!-- Avatar -->
-                                                        <img class="dt-avatar mr-3" src="https://via.placeholder.com/150x150"
-                                                             alt="User">
-                                                        <!-- avatar -->
-
-                                                        <!-- Media Body -->
-                                                        <span class="media-body">
-                                                            <span class="message">
-                                                                <span class="user-name">Jonathan Madano</span> commented on your post.
-                                                            </span>
-                                                            <span class="meta-date">9 hours ago</span>
-                                                        </span>
-                                                        <!-- /media body -->
-
-                                                    </a>
-                                                    <!-- /media -->
-
-                                                    <!-- Media -->
-                                                    <a href="javascript:void(0)" class="media">
-
-                                                        <!-- Avatar -->
-                                                        <img class="dt-avatar mr-3" src="https://via.placeholder.com/150x150"
-                                                             alt="User">
-                                                        <!-- avatar -->
-
-                                                        <!-- Media Body -->
-                                                        <span class="media-body">
-                                                            <span class="message">
-                                                                <span class="user-name">Chelsea Brown</span> sent a video recomendation.
-                                                            </span>
-                                                            <span class="meta-date">
-                                                                <i class="icon icon-play-circle text-primary icon-fw mr-1"></i>
-                                                                13 hours ago
-                                                            </span>
-                                                        </span>
-                                                        <!-- /media body -->
-
-                                                    </a>
-                                                    <!-- /media -->
-
-                                                    <!-- Media -->
-                                                    <a href="javascript:void(0)" class="media">
-
-                                                        <!-- Avatar -->
-                                                        <img class="dt-avatar mr-3" src="https://via.placeholder.com/150x150"
-                                                             alt="User">
-                                                        <!-- avatar -->
-
-                                                        <!-- Media Body -->
-                                                        <span class="media-body">
-                                                            <span class="message">
-                                                                <span class="user-name">Alex Dolgove</span> and <span class="user-name">Chris Harris</span>
-                                                                like your post.
-                                                            </span>
-                                                            <span class="meta-date">
-                                                                <i class="icon icon-like text-light-blue icon-fw mr-1"></i>
-                                                                yesterday at 9:30
-                                                            </span>
-                                                        </span>
-                                                        <!-- /media body -->
-
-                                                    </a>
-                                                    <!-- /media -->
                                                 </div>
-
-                                            </div>
-                                            <!-- /dropdown menu body -->
-                                            <!-- Dropdown Menu Footer -->
+                                            </div-->
                                             <div class="dropdown-menu-footer">
-                                                <a href="javascript:void(0)" class="card-link"> See All <i
+                                                <a href="javascript:void(0)" class="card-link"> Ver todo <i
                                                         class="icon icon-arrow-right icon-fw"></i>
                                                 </a>
                                             </div>
@@ -245,10 +167,12 @@
                                                     <span class="f-12 name-type-user-session">Sistemas</span>
                                                 </span>
                                             </div>
-                                            <a class="dropdown-item a-perfil" href="javascript:void(0)"> <i
-                                                    class="icon icon-user icon-fw mr-2 mr-sm-1"></i>Mi Perfil
-                                            </a> <a class="dropdown-item" href="javascript:void(0)">
-                                                <i class="icon icon-settings icon-fw mr-2 mr-sm-1"></i>Ajustes </a>
+                                            <a class="dropdown-item" id="a-mi-perfil" href="javascript:void(0)">
+                                                <i class="icon icon-user icon-fw mr-2 mr-sm-1"></i>Mi Perfil
+                                            </a>
+                                            <a class="dropdown-item" id="a-mis-datos" href="javascript:void(0)"> 
+                                                <i class="icon icon-user-account icon-fw mr-2 mr-sm-1"></i>Mis Datos
+                                            </a> 
                                             <a class="dropdown-item a-close-session" href="javascript:void(0)"> <i
                                                     class="icon icon-arrow-right icon-fw mr-2 mr-sm-1"></i>Cerrar Sesión
                                             </a>
@@ -664,6 +588,7 @@
         <script src="<%out.print(request.getContextPath());%>/scripts/session/change.cookie.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/session/js.cookie.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.init.js"></script>
 
         <!-- Custom JavaScript -->
         <script src="<%=request.getContextPath()%>/plugins/chartist/dist/chartist.min.js"></script>
@@ -674,6 +599,7 @@
         <script src="<%=request.getContextPath()%>/assets/js/custom/charts/dashboard-listing.js"></script>
 
         <script src="<%=request.getContextPath()%>/plugins/jquery-pagination/jquery.Pagination.min.js"></script>
+        <script src="<%=request.getContextPath()%>/plugins/chart.js/dist/Chart.min.js"></script>
 
         <script src="<%out.print(request.getContextPath());%>/scripts/init_parameters.js"></script>
 

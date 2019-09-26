@@ -46,7 +46,7 @@
     //var current_path = window.location.href.split('/').pop();
     var current_path = window.location.href;
     current_path = current_path.substring(getHostAPP().length - 1, current_path.length);
-    console.log(current_path);
+    //console.log(current_path);
     if (current_path == '') {
         current_path = 'index.html';
     }
