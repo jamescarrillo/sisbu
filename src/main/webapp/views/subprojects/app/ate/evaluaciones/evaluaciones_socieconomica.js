@@ -54,9 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }).then((result) => {
             if (result.value) {
                 //VALIDAMOS
-                if (validateFinalizateProcedimientoSocioeconomico()) {
+                if (validateFinalizateProcedimiento()) {
                     //CARGAMOS LA LISTA DE RESPUESTAS
-                    if (loadRespuestasProcedimientoSocioeconomico()) {
+                    if (loadRespuestasProcedimiento()) {
                         //MANDAMOS A LA BD
 
                     }
@@ -64,8 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     };
-
-
 });
 
 function processAjaxProcedimientoSocioeconomico() {
@@ -171,6 +169,7 @@ function toListProcedimientoSocioeconomico() {
         showAlertTopEnd('warning', 'Lo sentimos no hay ninguna evaluación configurada para este ciclo');
     }
 }
+
 function addEventsProcedimientoSocioeconomico() {
     document.querySelectorAll(".btn-realizar-procedimiento").forEach(btn => {
         btn.onclick = function () {

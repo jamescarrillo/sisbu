@@ -352,5 +352,172 @@ function navigateProcedimientoAndPreguntas(opcion) {
             }
             break;
     }
+}
 
+function validateFinalizateProcedimiento() {
+    let preguntas_procedimiento = getPreguntasProcedimiento();
+    let validation_complete = true;
+    for (var i = 0; i < preguntas_procedimiento.length; i++) {
+        let pregunta = preguntas_procedimiento[i];
+        //VALIDAMOS SI YA SE A RESPONDIDO ESA PREGUNTA
+        if (procedimientoSelectedGlobal.usa_alternativas_globales == 1) {
+            if (!validationQuestionForCheck(pregunta)) {
+                showAlertTopEnd('warning', 'Por favor marque una casilla de la pregunta n° ' + pregunta.orden);
+                validation_complete = false;
+                break;
+            }
+        } else {
+            let val_temp = true;
+            switch (pregunta.tipo_respuesta) {
+                case 1:
+                    //TEXT
+                    if (!validationQuestionForInputText(pregunta)) {
+                        showAlertTopEnd('warning', 'Por favor ingrese un texto en la pregunta n° ' + pregunta.orden);
+                        val_temp = false;
+                    }
+                    break;
+                case 2:
+                    //CHECK BOX
+                    if (!validationQuestionForCheck(pregunta)) {
+                        showAlertTopEnd('warning', 'Por favor marque una casilla de la pregunta n° ' + pregunta.orden);
+                        val_temp = false;
+                    }
+                    break;
+                default:
+                    //SELECT - 4
+                    if (!validationQuestionForSelect(pregunta)) {
+                        showAlertTopEnd('warning', 'Por favor seleccione una opción de la pregunta n° ' + pregunta.orden);
+                        val_temp = false;
+                    }
+                    break;
+            }
+            if (!val_temp) {
+                validation_complete = false;
+                break;
+            }
+        }
+    }
+    return validation_complete;
+}
+
+function loadRespuestasProcedimiento() {
+    let preguntas_procedimiento = getPreguntasProcedimiento();
+    list_respuestas_evaluacion = [];
+    //CREAMOS LOS OBTEJOS DE RESPUESTA
+    for (var i = 0; i < preguntas_procedimiento.length; i++) {
+        let pregunta = preguntas_procedimiento[i];
+        respuesta = new RespuestaEvaluacion2();
+        respuesta.pregunta = pregunta;
+        //VALIDAMOS SI YA SE A RESPONDIDO ESA PREGUNTA
+        let alternativa_temp;
+        if (procedimientoSocioeconomicoSelected.usa_alternativas_globales == 1) {
+            alternativa_temp = getAlternativaQuestionForCheck(pregunta);
+            if (alternativa_temp != undefined) {
+                respuesta.alternativa = alternativa_temp;
+            } else {
+                showAlertTopEnd('warning', 'La respuesta de la pregunta n° ' + pregunta.orden + " es invalida");
+            }
+        } else {
+            switch (pregunta.tipo_respuesta) {
+                case 1:
+                    //TEXT
+                    respuesta.alternativa = null;
+                    respuesta.texto = getTextQuestionForInputText(pregunta);
+                    break;
+                case 2:
+                    //CHECK BOX
+                    alternativa_temp = getAlternativaQuestionForCheck(pregunta);
+                    if (alternativa_temp != undefined) {
+                        respuesta.alternativa = alternativa_temp;
+                    } else {
+                        showAlertTopEnd('warning', 'La respuesta de la pregunta n° ' + pregunta.orden + " es invalida");
+                    }
+                    break;
+                default:
+                    //SELECT - 4
+                    alternativa_temp = getAlternativaQuestionForSelect(pregunta);
+                    if (alternativa_temp != undefined) {
+                        respuesta.alternativa = alternativa_temp;
+                    } else {
+                        showAlertTopEnd('warning', 'La respuesta de la pregunta n° ' + pregunta.orden + " es invalida");
+                    }
+                    break;
+            }
+        }
+        if (respuesta.alternativa == undefined) {
+            if (pregunta.tipo_respuesta != 1) {
+                break;
+            }
+        }
+        list_respuestas_evaluacion.push(respuesta);
+    }
+    return (list_respuestas_evaluacion.length == 0);
+}
+
+//VALIDACIONES
+function validationQuestionForCheck(pregunta) {
+    let validate = false;
+    let checks = document.querySelectorAll(".check-" + pregunta.idpregunta);
+    //VALIDACION POR CHECK, DEBE A VER AL MENOS UNO
+    for (var i = 0; i < checks.length; i++) {
+        let check = checks[i];
+        if (check.checked) {
+            validate = true;
+            break;
+        }
+    }
+
+    return validate;
+}
+
+function validationQuestionForSelect(pregunta) {
+    let validate = false;
+    if (document.querySelector("#select-" + pregunta.idpregunta).value != "-1") {
+        validate = true;
+    }
+    return validate;
+}
+
+function validationQuestionForInputText(pregunta) {
+    return true;
+}
+
+//GET ALTERNATIVAS RESPONDIDA
+function getAlternativaQuestionForCheck(pregunta) {
+    let alternativa;
+    //VALIDACION POR CHECK, DEBE A VER AL MENOS UNO
+    let checks = document.querySelectorAll(".check-" + pregunta.idpregunta);
+    //VALIDACION POR CHECK, DEBE A VER AL MENOS UNO
+    for (var i = 0; i < checks.length; i++) {
+        let check = checks[i];
+        if (check.checked) {
+            alternativa = {
+                "idalternativa": check.getAttribute('id')
+            };
+            break;
+        }
+    }
+    //VALIDAMOS QUE ESTA ALTERNATIVA SEA VALIDA, EXISTA EN LA LISTA DE ALTERNATIVAS
+    if (!validateAlternativaInListAlternativas(alternativa.idalternativa)) {
+        alternativa = undefined;
+    }
+    return alternativa;
+}
+
+function getAlternativaQuestionForSelect(pregunta) {
+    let alternativa = false;
+    if (document.querySelector("#select-" + pregunta.idpregunta).value != "-1") {
+        alternativa = {
+            "idalternativa": document.querySelector("#select-" + pregunta.idpregunta).value
+        };
+    }
+    //VALIDAMOS QUE ESTA ALTERNATIVA SEA VALIDA, EXISTA EN LA LISTA DE ALTERNATIVAS
+    if (!validateAlternativaInListAlternativas(alternativa.idalternativa)) {
+        alternativa = undefined;
+    }
+    return alternativa;
+}
+
+function getTextQuestionForInputText(pregunta) {
+    return document.querySelector("#input-text-" + pregunta.idpregunta).value;
 }
