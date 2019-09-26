@@ -111,7 +111,7 @@ function toListProcedimientoPsicologico() {
                     <div class="dt-task mt-2">
                       <div class="dt-task__number text-success">Relizado</div>
                       <a class="dt-task__redirect" idprocedimiento="${procedimiento.idprocedimiento}"
-                        title="Ya has completado esta ficha :)" data-toggle="tooltip"
+                        title="Ya has completado este test :)" data-toggle="tooltip"
                         href="javascript:void(0)"><i class="icon icon-check"></i>
                       </a>
                     </div>

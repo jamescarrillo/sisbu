@@ -14,6 +14,16 @@ if (Cookies.get("sisbu_token") === undefined) {
     document.querySelectorAll('.name-type-user-session').forEach(element => {
         element.innerHTML = getStringTipoUsuario(user.tipo_usuario);
     });
+    let url_foto;
+    if (user.foto != "") {
+        url_foto = getHostAPI() + "resources/img/FOTOS/" + user.foto;
+    } else {
+        url_foto = getHostAPI() + "resources/img/150x150.png";
+    }
+    document.querySelectorAll(".dt-avatar").forEach(img => {
+        img.setAttribute('src', url_foto);
+    });
+
     /*
      if (document.querySelector("#title-welcome") != null) {
      document.querySelector("#title-welcome").innerHTML = "¡Bienvenido " + getStringCapitalize(user.usuario.toLowerCase()) + "!";

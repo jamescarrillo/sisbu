@@ -35,6 +35,9 @@
 </div>
 
 <div class="row justify-content-center" id="row-options-evaluaciones" style="margin-top: 70px; display: none">
+    <!--div class="col-12 text-center">
+        <img src="<%=request.getContextPath()%>/resources/prod/custom_app/evaluaciones.jpg" class="img-fluid" alt="Fam. Pedro Ruiz Gallo">
+    </div-->
     <div class="col-xl-3 col-sm-6 col-lg-3">
         <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="socioconomica">
             <div class="dt-card__body d-flex flex-sm-column text-center">
@@ -254,7 +257,7 @@
     </div>
 </div>
 
-<div class="row" id="row-option-psicologica" style="margin-top: 70px; display: none">
+<div class="row" id="row-option-psicologica" style="display: none">
     <div class="col-12">
         <div class="row" id="div-evaluaciones-psicologico">
             <div class="col-12">
@@ -275,7 +278,7 @@
                             <div class="col-xl-8 col-md-12 col-sm-8">
                                 <div class="pb-3 mb-3 border-bottom">
                                     <span class="display-4 d-inline-block mr-2 font-weight-500 text-dark" id="lblNumProcedimientosPsicologico">0</span><span
-                                        class="font-weight-light f-16">Fichas</span>
+                                        class="font-weight-light f-16">Test</span>
                                 </div>
                                 <ul class="dt-list dt-list-col-6">
                                     <li class="dt-list__item">
@@ -343,7 +346,7 @@
         </button>
     </div>
 </div>
-<div class="row" id="row-option-obstetricia" style="margin-top: 70px; display: none">
+<div class="row" id="row-option-obstetricia" style="display: none">
     <div class="col-12">
         <div class="row" id="div-evaluaciones-obstetricia">
             <div class="col-12">

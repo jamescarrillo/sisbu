@@ -152,7 +152,7 @@
                                         <a href="#" class="dt-nav__link dropdown-toggle no-arrow dt-avatar-wrapper"
                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <img class="dt-avatar size-30" src="https://via.placeholder.com/150x150"
-                                                 alt="Domnic Harris">
+                                                 alt="Foto User">
                                             <span class="dt-avatar-info d-none d-sm-block">
                                                 <span class="dt-avatar-name name-user-session">James Carrillo</span>
                                             </span> </a>
@@ -161,7 +161,7 @@
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <div class="dt-avatar-wrapper flex-nowrap p-6 mt-n2 bg-gradient-purple text-white rounded-top">
                                                 <img class="dt-avatar" src="https://via.placeholder.com/150x150"
-                                                     alt="Domnic Harris">
+                                                     alt="Foto User">
                                                 <span class="dt-avatar-info">
                                                     <span class="dt-avatar-name name-user-session">James Carrillo</span>
                                                     <span class="f-12 name-type-user-session">Sistemas</span>
