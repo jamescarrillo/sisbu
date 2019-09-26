@@ -30,6 +30,11 @@ class RespuestaEvaluacion2 {
 
 var list_respuestas_evaluacion;
 
+var procedimientoSelectedGlobal;
+var beanProcedimientoSelectedGlobal;
+
+var procedimiento_menu_selected;
+
 document.addEventListener("DOMContentLoaded", function () {
 
     // creating center text
@@ -38,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
             var width = chart.chart.width,
                     height = chart.chart.height,
                     ctx = chart.chart.ctx;
-
             var center_text = $(ctx.canvas).data('fill');
             if (center_text) {
                 var $dtTheme = localStorage.getItem('dt-theme');
@@ -46,14 +50,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 var fontSize = (height / 114).toFixed(2);
                 ctx.font = 3 + "rem Source Sans Pro";
                 ctx.textBaseline = "middle";
-
                 /*if ($dtTheme == 'dark') {
                  ctx.fillStyle = "#fff";
                  }*/
-
                 var textX = Math.round((width - ctx.measureText(center_text).width) / 2),
                         textY = height / 2;
-
                 ctx.fillText(center_text, textX, textY);
                 ctx.save();
             }
@@ -139,9 +140,9 @@ function navigateOptionEvaluation(option) {
  */
 
 
-function getAlternativasPregunta(pregunta, beanProcedimientoCiclo) {
+function getAlternativasPregunta(pregunta) {
     let alternativas_pregunta = [];
-    beanProcedimientoCiclo.alternativas.forEach(alternativa => {
+    beanProcedimientoSelectedGlobal.alternativas.forEach(alternativa => {
         if (parseInt(alternativa.pregunta.idpregunta) == parseInt(pregunta.idpregunta)) {
             alternativas_pregunta.push(alternativa);
         }
@@ -164,8 +165,8 @@ function createLiInputTextPregunta(pregunta) {
     return li;
 }
 
-function createLiSelectPregunta(pregunta, beanProcedimientoCiclo) {
-    let alternativas = getAlternativasPregunta(pregunta, beanProcedimientoCiclo);
+function createLiSelectPregunta(pregunta) {
+    let alternativas = getAlternativasPregunta(pregunta);
     let li =
             `
             <li class="list-group-item">
@@ -180,8 +181,8 @@ function createLiSelectPregunta(pregunta, beanProcedimientoCiclo) {
     return li;
 }
 
-function createLiCheckBoxPregunta(pregunta, beanProcedimientoCiclo) {
-    let alternativas = getAlternativasPregunta(pregunta, beanProcedimientoCiclo);
+function createLiCheckBoxPregunta(pregunta) {
+    let alternativas = getAlternativasPregunta(pregunta);
     let li =
             `
             <li class="list-group-item">
@@ -269,24 +270,87 @@ function addEventsChecksPreguntas(preguntas_checkboxs) {
     });
 }
 
-function getPreguntasProcedimiento(beanProcedimientoCiclo, procedimientoCicloSelected) {
+function getPreguntasProcedimiento() {
     //GET PREGUNTAS DEL PROCEDIMIENTO SELECTED
     let preguntas_procedimientoSelected = [];
-    beanProcedimientoCiclo.preguntas.forEach(pregunta => {
-        if (parseInt(procedimientoCicloSelected.idprocedimiento) == parseInt(pregunta.procedimiento.idprocedimiento)) {
+    beanProcedimientoSelectedGlobal.preguntas.forEach(pregunta => {
+        if (parseInt(procedimientoSelectedGlobal.idprocedimiento) == parseInt(pregunta.procedimiento.idprocedimiento)) {
             preguntas_procedimientoSelected.push(pregunta);
         }
     });
     return preguntas_procedimientoSelected;
 }
 
-function validateAlternativaInListAlternativas(idalternativa, beanProcedimientoCiclo) {
+function validateAlternativaInListAlternativas(idalternativa) {
     let validate = false;
-    beanProcedimientoCiclo.alternativas.forEach(alternativa => {
+    beanProcedimientoSelectedGlobal.alternativas.forEach(alternativa => {
         if (parseInt(alternativa.idalternativa) == parseInt(idalternativa)) {
             validate = true;
             return;
         }
     });
     return validate;
+}
+
+function openPreguntas(idcontent_preguntas_evaluacion) {
+    //GET PREGUNTAS DEL PROCEDIMIENTO SELECTED
+    let preguntas_procedimiento = getPreguntasProcedimiento();
+    //LISTAMOS LAS PREGUNTAS
+    document.querySelector("#" + idcontent_preguntas_evaluacion).innerHTML = "";
+    let preguntas_checkboxs = [];
+    preguntas_procedimiento.forEach(pregunta => {
+        if (procedimientoSelectedGlobal.usa_alternativas_globales == 1) {
+            preguntas_checkboxs.push(pregunta);
+            document.querySelector("#" + idcontent_preguntas_evaluacion).innerHTML += createLiCheckBoxPregunta(pregunta);
+        } else {
+            switch (pregunta.tipo_respuesta) {
+                case 1:
+                    document.querySelector("#" + idcontent_preguntas_evaluacion).innerHTML += createLiInputTextPregunta(pregunta);
+                    break;
+                case 2:
+                    //CHECK BOX
+                    preguntas_checkboxs.push(pregunta);
+                    document.querySelector("#" + idcontent_preguntas_evaluacion).innerHTML += createLiCheckBoxPregunta(pregunta);
+                    break;
+                default:
+                    //SELECT - 4
+                    document.querySelector("#" + idcontent_preguntas_evaluacion).innerHTML += createLiSelectPregunta(pregunta);
+                    break;
+            }
+        }
+    });
+    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle=popover]').popover();
+    //AGREGAMOS LOS EVENTOS, A LOS CHECKS
+    addEventsChecksPreguntas(preguntas_checkboxs);
+    //VALIDAR PARA VER A QUE METODO LLAMAMOS
+    navigateProcedimientoAndPreguntas('preguntas');
+    //MANDAMOS A REGISTRAR UN INTENTO
+    fecha_inicioProcedimientoSocioeconomico = getTimesTampJavaScriptCurrent();
+}
+
+function navigateProcedimientoAndPreguntas(opcion) {
+    switch (procedimiento_menu_selected) {
+        case "psicologia":
+
+            break;
+        default:
+            //socioeconomico
+            switch (opcion) {
+                case "preguntas":
+                    document.querySelector("#div-evaluaciones-socioeconomico").style.display = "none";
+                    document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "flex";
+                    document.querySelector("#div-regresar-selected-evaluation-socioeconomico").style.display = "none";
+                    break;
+                default:
+                    //HOME, LISTA DE EVALUACIONES
+                    document.querySelector("#div-evaluaciones-socioeconomico").style.display = "flex";
+                    document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "none";
+                    document.querySelector("#div-regresar-selected-evaluation-socioeconomico").style.display = "block";
+                    //VOLVEMOS A LISTAR
+                    break;
+            }
+            break;
+    }
+
 }

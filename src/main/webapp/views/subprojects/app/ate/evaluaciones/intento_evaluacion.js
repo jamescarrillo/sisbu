@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function processAjaxIntentoEvaluacion() {
     let json = "";
     let url_request = getHostAPI() + beanRequestIntentoEvaluacion.entity_api + "/" + beanRequestIntentoEvaluacion.operation;
+
     switch (beanRequestIntentoEvaluacion.operation) {
         case "add":
             json = {
@@ -28,7 +29,8 @@ function processAjaxIntentoEvaluacion() {
                     "usuario": {
                         "idusuario": Cookies.getJSON('sisbu_user').idusuario
                     }
-                }
+                },
+                "procedimiento": procedimientoSelectedGlobal
             };
             break;
     }
@@ -45,9 +47,20 @@ function processAjaxIntentoEvaluacion() {
         $('#modalCargandoIntentoEvaluacion').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
-                
+                switch (procedimiento_menu_selected) {
+                    case "psicologico":
+                        openPreguntas('content-preguntas-evaluacion-psicologico');
+                        break;
+                    case "obstetricia":
+                        openPreguntas('content-preguntas-evaluacion-obstetricia');
+                        break;
+                    default:
+                        //socioeconomico
+                        openPreguntas('content-preguntas-evaluacion-socioeconomico');
+                        break;
+                }
             } else {
-                
+                showAlertTopEnd('error', 'Ha ocurrido un error interno, vuelve a intentarlo mas tarde :)');
             }
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
