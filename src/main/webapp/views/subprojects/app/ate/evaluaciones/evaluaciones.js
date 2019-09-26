@@ -330,8 +330,10 @@ function openPreguntas(idcontent_preguntas_evaluacion) {
     navigateProcedimientoAndPreguntas('preguntas');
     fecha_inicioProcedimiento = getTimesTampJavaScriptCurrent();
     //SHOW INSTRUCCIONES
-    document.querySelector('#html_instrucciones').innerHTML = procedimientoSelectedGlobal.instrucciones;
-    $('#ventanaModalInstruccionesProcedimiento').modal('show');
+    if (procedimientoSelectedGlobal.instrucciones != "") {
+        document.querySelector('#html_instrucciones').innerHTML = procedimientoSelectedGlobal.instrucciones;
+        $('#ventanaModalInstruccionesProcedimiento').modal('show');
+    }
 }
 
 function navigateProcedimientoAndPreguntas(opcion) {
