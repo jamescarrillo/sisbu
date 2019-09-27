@@ -115,7 +115,7 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-deportiva").style.display = "none";
             document.querySelector("#row-option-psicologica").style.display = "flex";
             document.querySelector("#row-option-obstetricia").style.display = "none";
-            
+
             $('#modalCargandoProcedimientoPsicologico').modal('show');
             break;
         case "obstetricia":
@@ -125,7 +125,7 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-deportiva").style.display = "none";
             document.querySelector("#row-option-psicologica").style.display = "none";
             document.querySelector("#row-option-obstetricia").style.display = "flex";
-            
+
             $('#modalCargandoProcedimientoObstetricia').modal('show');
             break;
         default:
@@ -342,8 +342,39 @@ function openPreguntas(idcontent_preguntas_evaluacion) {
 
 function navigateProcedimientoAndPreguntas(opcion) {
     switch (procedimiento_menu_selected) {
-        case "psicologia":
-
+        case "obstetricia":
+            switch (opcion) {
+                case "preguntas":
+                    document.querySelector("#div-evaluaciones-obstetricia").style.display = "none";
+                    document.querySelector("#div-preguntas-evaluacion-obstetricia").style.display = "flex";
+                    document.querySelector("#div-regresar-selected-evaluation-obstetricia").style.display = "none";
+                    break;
+                default:
+                    //HOME, LISTA DE EVALUACIONES
+                    document.querySelector("#div-evaluaciones-obstetricia").style.display = "flex";
+                    document.querySelector("#div-preguntas-evaluacion-obstetricia").style.display = "none";
+                    document.querySelector("#div-regresar-selected-evaluation-obstetricia").style.display = "block";
+                    //VOLVEMOS A LISTAR
+                    $('#modalCargandoProcedimientoObstetricia').modal('show');
+                    break;
+            }
+            break;
+        case "psicologico":
+            switch (opcion) {
+                case "preguntas":
+                    document.querySelector("#div-evaluaciones-psicologico").style.display = "none";
+                    document.querySelector("#div-preguntas-evaluacion-psicologico").style.display = "flex";
+                    document.querySelector("#div-regresar-selected-evaluation-psicologico").style.display = "none";
+                    break;
+                default:
+                    //HOME, LISTA DE EVALUACIONES
+                    document.querySelector("#div-evaluaciones-psicologico").style.display = "flex";
+                    document.querySelector("#div-preguntas-evaluacion-psicologico").style.display = "none";
+                    document.querySelector("#div-regresar-selected-evaluation-psicologico").style.display = "block";
+                    //VOLVEMOS A LISTAR
+                    $('#modalCargandoProcedimientoPsicologico').modal('show');
+                    break;
+            }
             break;
         default:
             //socioeconomico

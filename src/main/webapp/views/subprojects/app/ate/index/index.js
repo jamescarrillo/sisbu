@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     document.querySelector("#icon-access-mi-perfil").onclick = function () {
-        window.location = "perfil";
+        window.location = "datos";
     };
     
     document.querySelector("#icon-access-mis-evaluaciones").onclick = function () {
