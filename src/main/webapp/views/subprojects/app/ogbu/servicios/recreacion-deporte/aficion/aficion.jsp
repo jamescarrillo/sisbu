@@ -27,10 +27,10 @@
                 <!-- Tables -->
                 <div class="table-responsive">
                     <table class="table mb-0 mt-2">
-                        <thead>
+                        <thead class="bg-primary" style="line-height: 0.4;">
                             <tr>
-                                 <th class="text-uppercase" scope="col" style="width: 10%">ACCION</th>
-                                <th class="text-uppercase" scope="col" >NOMBRE</th>
+                                 <th class="text-uppercase text-white" scope="col" style="width: 10%;font-weight: 500;">ACCION</th>
+                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">NOMBRE</th>
                             </tr>
                         </thead>
                         <tbody id="tbodyAficion">

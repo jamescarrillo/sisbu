@@ -209,13 +209,13 @@
 
                 <!-- Tab ANTECEDENTES -->
                 <div id="tab-pane-16" class="tab-pane ">
-                    <form id="FrmAntecedentePaciente">
+                    <form id="FrmAntecedentePaciente" autocomplete="off">
                         <div class="row">
 
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtHistoriaPaciente">N° HISTORIA</label>
-                                    <input disabled type="text" class="form-control form-control-sm" id="txtHistoriaPaciente" placeholder="N° HISTORIA">
+                                    <input disabled type="text" class="bg-primary text-white form-control form-control-sm" id="txtHistoriaPaciente" placeholder="N° HISTORIA">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">

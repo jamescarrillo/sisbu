@@ -14,7 +14,7 @@
 
                 <!-- Card Header -->
                 <div class="card-header card-nav bg-transparent mb-5">
-                    <ul class="card-header-links nav nav-underline text-uppercase"
+                    <ul class="card-header-links nav nav-underline text-uppercase border-bottom"
                         role="tablist">
                         <li class="nav-item">
                             <a class="nav-link" id="titleManagerDepartamento" data-toggle="tab" href="#tab-departamentos" role="tab"
@@ -60,12 +60,12 @@
                                 </div>
                             </form>
                             <!-- Tables -->
-                            <div class="table-responsive">
+                            <div class="table-responsive  pt-3">
                                 <table class="table mb-0">
-                                    <thead>
+                                    <thead class="bg-primary" style="line-height: 0.4;">
                                         <tr> 
-                                            <th class="text-uppercase text-center" scope="col" style="width: 10%">ACCION</th>
-                                            <th class="text-uppercase" scope="col" >DEPARTAMENTO</th>
+                                            <th class="text-uppercase text-center text-white" scope="col" style="width: 10%;font-weight: 500;">ACCION</th>
+                                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">DEPARTAMENTO</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyDepartamento">
@@ -116,12 +116,12 @@
                             </form>
 
                             <!-- Tables -->
-                            <div class="table-responsive">
+                            <div class="table-responsive  pt-3">
                                 <table class="table mb-0 ">
-                                    <thead >
+                                    <thead class="bg-primary" style="line-height: 0.4;">
                                         <tr >
-                                            <th class="text-uppercase  text-center" scope="col" style="width: 10%">ACCION</th>
-                                            <th class="text-uppercase " scope="col" >PROVINCIA</th>
+                                            <th class="text-uppercase  text-center text-white" scope="col" style="width: 10%;font-weight: 500;">ACCION</th>
+                                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">PROVINCIA</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyProvincia">
@@ -168,12 +168,12 @@
                                 </div>
                             </form>
                             <!-- Tables -->
-                            <div class="table-responsive">
+                            <div class="table-responsive pt-3">
                                 <table class="table mb-0">
-                                    <thead>
+                                    <thead class="bg-primary" style="line-height: 0.4;">
                                         <tr> 
-                                            <th class="text-uppercase text-center" scope="col"  style="width: 10%">ACCION</th>
-                                            <th class="text-uppercase" scope="col" >DISTRITO</th>
+                                            <th class="text-uppercase text-center text-white" scope="col"  style="width: 10%;font-weight: 500;">ACCION</th>
+                                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">DISTRITO</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyDistrito">

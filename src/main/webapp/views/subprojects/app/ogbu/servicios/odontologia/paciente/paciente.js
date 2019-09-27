@@ -66,14 +66,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $('#FrmAntecedentePaciente').submit(function (event) {
         if (validateFormHistoriaOdontologia()) {
-        $('#modalCargandoHistoria').modal('show');
+            $('#modalCargandoHistoria').modal('show');
         }
         event.preventDefault();
         event.stopPropagation();
     });
-    
-    listFilterOdontologia("#txtFilterMedicoOdontologia");
-    
+
+
+
     document.querySelector("#buttonAntecedente").onclick = function () {
         beanRequestHistoria.operation = "paginate";
         beanRequestHistoria.type_request = "GET";
@@ -86,16 +86,22 @@ document.addEventListener("DOMContentLoaded", function () {
         processAjaxHistoria(pacienteSelected.idatendido);
     });
 
+    document.querySelector("#txtFilterMedicoOdontologia").onclick = function () {
+        processAjaxDoctor("");
+    };
+    listFilterOdontologia("#txtFilterMedicoOdontologia");
+
 });
 
 function listFilterOdontologia(filterdni) {
     $(filterdni).change(function () {
-        var filter = $(this).val();
-        processAjaxDoctor(filter);
+
     }).keyup(function (e) {
         var txt = String.fromCharCode(e.which);
         if (txt.match(/[A-Za-z0-9]/)) {
-            $(this).change();
+            //$(this).change();
+            var filter = $(this).val();
+            processAjaxDoctor(filter);
         }
 
     });
@@ -200,9 +206,8 @@ function addEventsPacientes() {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
             doctorSelected = findByDoctor(btn.getAttribute('iddoctor'));
-            console.log(doctorSelected);
             document.querySelector("#txtFilterMedicoOdontologia").value = doctorSelected.apellido_pat +
-                    " " + doctorSelected.apellido_mat + " " +doctorSelected.nombre;
+                    " " + doctorSelected.apellido_mat + " " + doctorSelected.nombre;
             document.querySelector("#resultadoMedicoOdontologia").innerHTML = "";
         };
     });
@@ -328,7 +333,7 @@ function toListDoctor(beanPagination) {
 
 function processAjaxDoctor(filter) {
     $.ajax({
-        url: getHostAPI() + "api/personal/paginate?filter=" + filter + "&cargo=1&estado=1&page=1&size=20",
+        url: getHostAPI() + "api/personal/paginate?filter=" + filter + "&cargo=4&estado=1&page=1&size=20",
         type: "GET",
         headers: {
             //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
@@ -336,7 +341,6 @@ function processAjaxDoctor(filter) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
         $('#modalCargandoPaciente').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
@@ -386,7 +390,7 @@ function addInputHistoria(historiaSelected) {
 }
 
 function limpiarInputHistoria() {
-    document.querySelector("#txtHistoriaPaciente").value = "H" + pacienteSelected.dni + "-" + Math.floor(Math.random() * 10);
+    document.querySelector("#txtHistoriaPaciente").value = "HCO" + pacienteSelected.dni + "-" + Math.floor(Math.random() * 10);
     document.querySelector("#txtSaludGeneralPaciente").value = "";
     document.querySelector("#txtFilterMedicoOdontologia").value = "";
     document.querySelector("#txtAtmPaciente").value = "";
@@ -414,7 +418,6 @@ function processAjaxHistoria(idpaciente) {
             parameters_pagination = "/" + idpaciente
             json = {};
         } else {
-            console.log(doctorSelected.idpersonal);
             json = {
                 "num_historia": document.querySelector("#txtHistoriaPaciente").value,
                 "atm": document.querySelector("#txtAtmPaciente").value,
@@ -433,8 +436,6 @@ function processAjaxHistoria(idpaciente) {
             if (beanRequestHistoria.operation == "update") {
                 json.idhistoria_clinicao = historiaSelected.idhistoria_clinicao;
             }
-
-
         }
     }
     $.ajax({
@@ -449,22 +450,20 @@ function processAjaxHistoria(idpaciente) {
         dataType: 'json'
     }).done(function (beanCrudResponse) {
         $('#modalCargandoHistoria').modal("hide");
-        historiaSelected = beanCrudResponse.beanPagination.list[0];
+        
         if (beanRequestHistoria.type_request != "GET") {
             showAlertTopEnd('success', 'Acción realizada exitosamente');
         }
-        if (historiaSelected == undefined) {
+        if (beanCrudResponse.beanPagination.list.length == 0) {
             beanRequestHistoria.operation = "add";
             beanRequestHistoria.type_request = "POST";
             limpiarInputHistoria();
         } else {
+            historiaSelected = beanCrudResponse.beanPagination.list[0];
             beanRequestHistoria.operation = "update";
             beanRequestHistoria.type_request = "PUT";
             addInputHistoria(historiaSelected);
         }
-
-
-
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoPaciente').modal("hide");
         showAlertErrorRequest();
@@ -517,6 +516,6 @@ function validateFormHistoriaOdontologia() {
         showAlertTopEnd('warning', 'Por favor ingrese Diagnótico');
         document.querySelector("#txtDiagnosticoPaciente").focus();
         return false;
-    } 
+    }
     return true;
 }
