@@ -179,7 +179,7 @@ function setUpdateGraficaProcedimientoPsicologico() {
             ],
             datasets: [
                 {
-                    data: [beanProcedimientoSelectedGlobal.procedimientos_realizados.length, beanProcedimientoSelectedGlobal.procedimientos.length],
+                    data: [beanProcedimientoSelectedGlobal.procedimientos_realizados.length, beanProcedimientoSelectedGlobal.procedimientos.length - beanProcedimientoSelectedGlobal.procedimientos_realizados.length],
                     backgroundColor: [
                         color(chartColors.lightGreen).alpha(0.8).rgbString(),
                         color(chartColors.orange).alpha(0.8).rgbString()
@@ -191,7 +191,6 @@ function setUpdateGraficaProcedimientoPsicologico() {
                 }
             ]
         };
-
         new Chart(document.getElementById('estimation-psicologico'), {
             type: 'doughnut',
             data: estimation_data,

@@ -179,7 +179,7 @@ function setUpdateGraficaProcedimientoSocioeconomico() {
             ],
             datasets: [
                 {
-                    data: [beanProcedimientoSelectedGlobal.procedimientos_realizados.length, beanProcedimientoSelectedGlobal.procedimientos.length],
+                    data: [beanProcedimientoSelectedGlobal.procedimientos_realizados.length, beanProcedimientoSelectedGlobal.procedimientos.length - beanProcedimientoSelectedGlobal.procedimientos_realizados.length],
                     backgroundColor: [
                         color(chartColors.lightGreen).alpha(0.8).rgbString(),
                         color(chartColors.orange).alpha(0.8).rgbString()
