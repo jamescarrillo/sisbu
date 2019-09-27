@@ -304,9 +304,9 @@ public class FilterURL implements Filter {
         ///pacientes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/enfermeria/pacientes");
-        resource.setPath("/views/subprojects/app/servicios/enfermeria/paciente/paciente.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/enfermeria/paciente/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/enfermeria/paciente/paciente.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/enfermeria/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
         ///citas
@@ -340,9 +340,9 @@ public class FilterURL implements Filter {
         ///pacientes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/odontologia/pacientes");
-        resource.setPath("/views/subprojects/app/servicios/odontologia/paciente/paciente.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/odontologia/paciente/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/odontologia/paciente/paciente.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/odontologia/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
         ///citas

@@ -83,11 +83,6 @@
                            role="tab" aria-controls="tab-pane-16" aria-="false">
                             ANTECEDENTES CLÍNICOS</a>
                     </li>
-                    <li class="nav-item">
-                        <a id="buttonDiagnostico" class="nav-link" data-toggle="tab" href="#tab-pane-17" 
-                           role="tab" aria-controls="tab-pane-17" aria-="false">
-                            DIAGNÓSTICOS</a>
-                    </li>
                 </ul>
                 <!-- /tab navigation -->
             </div>
@@ -275,58 +270,6 @@
                 </div>
                 <!-- /tab pane-->
 
-                <!-- Tab DIAGNOSTICO -->
-                <div id="tab-pane-17" class="tab-pane ">
-                    <div class="form-group form-row">
-                        <div class="col-11 text-center">
-                            <label id="titleManagerDiagnostico" for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE DIAGNÓSTICOS</label>
-                            <input type="hidden" id="pageDiagnostico" value="1">
-                        </div>
-
-                        <div class="float-right">
-                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewDiagnosticoPaciente"><i class="icon icon-plus icon-fw"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="form-group col-12 ">
-                        <!-- Tables -->
-                        <div class="table-responsive">
-                            <table class="table mb-0">
-                                <thead>
-                                    <tr>
-                                        <th class="text-uppercase" scope="col" >ACCIÓN</th>
-                                        <th class="text-uppercase" scope="col" >ATENDIDO </th>
-                                        <th class="text-uppercase" scope="col" >FECHA </th>
-                                        <th class="text-uppercase" scope="col" >DIAGNÓSTICO</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody id="tbodyDiagnostico" class="overflow-auto" >
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /tables -->
-                    </div>
-
-                    <div class="mt-2">
-                        <div class="col-md-2 col-sm-3 col-4">
-                            <select id="sizePageDiagnostico" class="form-control form-control-sm select2-single">
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                            </select>
-                        </div>
-                        <div class="col-md-10 col-sm-9 col-8">
-                            <nav aria-label="Page navigation example">
-                                <ul id="paginationDiagnostico" class="pagination pagination-sm justify-content-end">
-                                </ul>
-                            </nav>  
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /tab pane-->
-
                 <div class="col-lg-12 text-left">
                     <button type="button" id="btnCerrar" class="btn btn-outline-primary btn-sm" > <i class="icon icon-reply icon-lg"></i> CANCELAR</button>
                 </div> 
@@ -338,152 +281,6 @@
     </div>
 </div>
 
-<div class="modal fade overflow-auto" id="ventanaModalPaciente" data-backdrop="static"
-     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h6  class="modal-title" id="txtTituloModalDiagnostico"></h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <form id="FrmDiagnosticoPaciente">
-                <div class="modal-body">
-
-                    <div class="row" >
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtPaPaciente">PA</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtPaPaciente" placeholder="PA">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtZonaControlPaciente">ZONA DE CONTROL</label>
-                                <select class="form-control form-control-sm " id="txtZonaControlPaciente">
-                                    <option value="-1">seleccione tipo...</option>
-                                    <option value="0">MSI</option>
-                                    <option value="1">MSD</option>
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtPosicionPaciente">POSICIÓN</label>
-                                <select class="form-control form-control-sm " id="txtPosicionPaciente">
-                                    <option value="-1">seleccione...</option>
-                                    <option value="1">DECÚBITO DORSAL</option>
-                                    <option value="3">SENTADO</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtFcPaciente">FC</label>
-                                <input type="text" class="form-control form-control-sm" id="txtFcPaciente" placeholder="FC">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtFrPaciente">FR</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtFrPaciente" placeholder="FR">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtTPaciente">T°</label>
-                                <input type="text" class="form-control form-control-sm" id="txtTPaciente" placeholder="T°">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtSo2Paciente">SO<sub>2</sub></label>
-                                <input type="text" class="form-control form-control-sm" id="txtSoPaciente" placeholder="S02">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtGlicemiaPaciente">GLICEMIA</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtGlicemiaPaciente" placeholder="GLICEMIA">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtAyunoPaciente">AYUNO</label>
-                                <select class="form-control form-control-sm " id="txtAyunoPaciente">
-                                    <option value="-1">seleccione...</option>
-                                    <option  value="1">SI</option>
-                                    <option value="0">NO</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtPesoPaciente">PESO</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtPesoPaciente" placeholder="PESO">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtTallaPaciente">TALLA (Metros)</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtTallaPaciente" placeholder="TALLA">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtImcPaciente">IMC</label>
-                                <input disabled type="text" class="form-control form-control-sm" id="txtImcPaciente" placeholder="IMC">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <label for="txtEnfermedadPaciente">ENF. ACTUAL</label>
-                            <div class="form-group">
-                                <textarea class="form-control " id="txtEnfermedadPaciente" rows="3" placeholder="ENFERMEDAD ACTUAL"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <label for="txtDxPaciente">Dx</label>
-                            <div class="form-group">
-                                <textarea class="form-control " id="txtDxPaciente" rows="3" placeholder="Dx"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <label for="txtTtoPaciente">Tto</label>
-                            <div class="form-group">
-                                <textarea class="form-control " id="txtTtoPaciente" rows="3" placeholder="Tto"></textarea>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" class="btn btn-outline-primary btn-sm" id="btnGuardarAddMenus">Guardar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 
 <div class="modal fade" id="modalCargandoPaciente" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
@@ -500,19 +297,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalCargandoDiagnostico" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                        Cargando Diagnosticos. . .
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="modal fade" id="modalCargandoHistoria" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
