@@ -5,6 +5,7 @@ var historiaSelected;
 var diagnosticoSelected;
 var beanRequestPaciente = new BeanRequest();
 var beanRequestTriaje = new BeanRequest();
+var beanRequestHistoria = new BeanRequest();
 var fechaActual = new Date(); //Fecha actual
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -31,8 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         event.stopPropagation();
     });
-
-
 
     document.querySelector("#btnCerrar").onclick = function () {
         document.querySelector("#openPaciente").style.display = "none";
@@ -70,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //LIMPIAR LOS CAMPOS
         limpiarInputTriaje();
         //SET TITLE MODAL
-        document.querySelector("#txtTituloModalTriaje").innerHTML = "REGISTRAR TRIAJE";
+        document.querySelector("#txtTituloModalTriaje").innerHTML = "HISTORIA CLINICA : " + historiaSelected.num_historia;
         //OPEN MODEL
         $('#ventanaModalPaciente').modal('show');
 
@@ -86,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#modalCargandoTriaje").on('shown.bs.modal', function () {
         processAjaxTriaje(historiaSelected.idhistoria_clinica);
     });
+    
     $('#FrmTriajePaciente').submit(function (event) {
         console.log("hola");
         //if (validateFormTriaje()) {
@@ -102,6 +102,22 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#sizePageTriaje").change(function () {
         $('#modalCargandoTriaje').modal('show');
     });
+    $("#txtPesoPaciente").change(function () {
+        document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
+    });
+    $("#txtTallaPaciente").change(function () {
+        document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
+    });
+
+
+    //HISTORIA
+
+    //INICIALIZANDO VARIABLES DE SOLICITUD HISTORIA
+    beanRequestHistoria.entity_api = "api/historiaclinica";
+    beanRequestHistoria.operation = "dato";
+    beanRequestHistoria.type_request = "GET";
+
+
 });
 
 
@@ -200,7 +216,7 @@ function toListPaciente(beanPagination) {
 }
 
 function addEventsPacientes() {
- 
+
     document.querySelectorAll('.historia-clinica').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
@@ -306,9 +322,33 @@ function subtipoPaciente(tipopersonal) {
 //historia
 
 function processAjaxHistoria(idpaciente) {
+    let parameters_pagination = "";
+    let json = "";
+    if (beanRequestHistoria.operation == "paginate") {
+        parameters_pagination += "?idhistoria=" + idpaciente;
+        parameters_pagination += "&page=" + 1;
+        parameters_pagination += "&size=" + 3;
+
+    } else {
+        parameters_pagination = "";
+        if (beanRequestHistoria.operation == "dato") {
+            parameters_pagination = "/" + idpaciente
+            json = {};
+        } else {
+            if (beanRequestHistoria.operation == "add") {
+                json = {
+                    "num_historia": H + pacienteSelected.dni + "-" + Math.floor(Math.random() * 10),
+                    "atendido": {"idatendido": pacienteSelected.idatendido}
+                };
+
+            }
+        }
+    }
     $.ajax({
-        url: getHostAPI() + "api/historiaclinica/dato/" + idpaciente,
-        type: "GET",
+        url: getHostAPI() + beanRequestHistoria.entity_api + "/" + beanRequestHistoria.operation + parameters_pagination,
+        type: beanRequestHistoria.type_request,
+        data: JSON.stringify(json),
+
         headers: {
             //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
@@ -318,7 +358,11 @@ function processAjaxHistoria(idpaciente) {
         console.log(beanCrudResponse);
         $('#modalCargandoPaciente').modal("hide");
         historiaSelected = beanCrudResponse;
-       
+        if (historiaSelected.num_historia == null) {
+            beanRequestHistoria.operation = "add";
+            beanRequestHistoria.type_request = "POST";
+            processAjaxHistoria(null);
+        }
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoPaciente').modal("hide");
@@ -387,6 +431,7 @@ function processAjaxTriaje(idhistoria) {
         $('#modalCargandoTriaje').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
+                $('#ventanaModalPaciente').modal("hide");
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
             } else {
                 showAlertTopEnd('warning', beanCrudResponse.messageServer);
@@ -408,7 +453,7 @@ function processAjaxTriaje(idhistoria) {
 function addInputTriaje(diagnosticoSelected) {
 
     document.querySelector("#txtPaPaciente").value = diagnosticoSelected.presiona;
-    document.querySelector("#txtZonaControlPaciente").selectedIndex = diagnosticoSelected.brazo+1;
+    document.querySelector("#txtZonaControlPaciente").selectedIndex = diagnosticoSelected.brazo + 1;
     document.querySelector("#txtPosicionPaciente").value = diagnosticoSelected.posicion;
     document.querySelector("#txtFcPaciente").value = diagnosticoSelected.frecuencia_cardiaca;
     document.querySelector("#txtFrPaciente").value = diagnosticoSelected.frecuencia_respiratoria;
@@ -425,7 +470,7 @@ function limpiarInputTriaje() {
 
     document.querySelector("#txtPaPaciente").value = "";
     document.querySelector("#txtZonaControlPaciente").value = "-1";
-    document.querySelector("#txtPosicionPaciente").value = "";
+    document.querySelector("#txtPosicionPaciente").value = "-1";
     document.querySelector("#txtFcPaciente").value = "";
     document.querySelector("#txtFrPaciente").value = "";
     document.querySelector("#txtTPaciente").value = "";
@@ -443,9 +488,9 @@ function toListTriaje(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(Triaje => {
-            let diag= (Triaje.diagnostico!=null) ? Triaje.diagnostico : "AÚN NO HAY DIAGNÓSTICO";
-            let aten= (Triaje.diagnostico!=null) ? "SI" : "NO";
-            let fecha= (Triaje.fecha_triaje!=null) ? Triaje.fecha_triaje : "PENDIENTE";
+            let diag = (Triaje.diagnostico != null) ? Triaje.diagnostico : "AÚN NO HAY DIAGNÓSTICO";
+            let aten = (Triaje.diagnostico != null) ? "SI" : "NO";
+            let fecha = (Triaje.fecha_triaje != null) ? Triaje.fecha_triaje : "PENDIENTE";
             row = "<tr ";
             row += "iddiagnostico='" + Triaje.iddiagnostico + "' ";
             row += ">";
@@ -455,9 +500,9 @@ function toListTriaje(beanPagination) {
             row += "<li class='dt-list__item eliminar-diagnostico' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
             row += "<i class='icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
-            row += "<td class='align-middle'>" +  aten + "</td>";
-            row += "<td class='align-middle'>" +  fecha+ "</td>";
-            row += "<td class='align-middle'>" +diag + "</td>";
+            row += "<td class='align-middle'>" + aten + "</td>";
+            row += "<td class='align-middle'>" + fecha + "</td>";
+            row += "<td class='align-middle'>" + diag + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyTriaje").innerHTML += row;
         });
@@ -500,8 +545,8 @@ function addEventsTriaje() {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
             diagnosticoSelected = findByTriaje(btn.parentElement.parentElement.parentElement.getAttribute('iddiagnostico'));
-            beanRequestPaciente.operation = "delete";
-            beanRequestPaciente.type_request = "DELETE";
+            beanRequestTriaje.operation = "delete";
+            beanRequestTriaje.type_request = "DELETE";
             $('#modalCargandoTriaje').modal('show');
         };
     });
