@@ -28,7 +28,7 @@
                     <table class="table mb-0 mt-2">
                         <thead>
                             <tr>
-                                <th class="text-uppercase" scope="col" style="width: 10%">H. CLÍNICA</th>
+                                <th class="text-uppercase" scope="col" style="width: 12%">H. CLÍNICA</th>
                                 <th class="text-uppercase" scope="col" >DNI</th>
                                 <th class="text-uppercase" scope="col" >NOMBRE COMPLETO</th>
                                 <th class="text-uppercase" scope="col" >TIPO USUARIO</th>
@@ -62,12 +62,6 @@
 
         <!-- Card -->
         <div class="card mb-0 " id="openPaciente">
-            <!-- Card Header -->
-            <div class="card-header bg-transparent">
-                <h4 class="modal-title text-center" id="txtTituloPaciente"></h4>
-            </div>
-            <!-- /card header -->
-
             <!-- Card Header -->
             <div class="card-header">
                 <!-- Tab Navigation -->
@@ -210,56 +204,86 @@
 
                 <!-- Tab ANTECEDENTES -->
                 <div id="tab-pane-16" class="tab-pane ">
-                    <form id="FrmAntecedentePaciente">
+                    <form id="FrmAntecedentePaciente" autocomplete="off">
                         <div class="row">
 
-                            <div class="col-lg-4 col-sm-6">
+                            <div class="col-lg-6 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtHistoriaPaciente">N° HISTORIA</label>
-                                    <input disabled type="text" class="form-control form-control-sm" id="txtHistoriaPaciente" placeholder="N° HISTORIA">
+                                    <input disabled type="text" class="bg-primary text-white form-control form-control-sm" id="txtHistoriaPaciente" placeholder="N° HISTORIA">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6 " >
+                                <label for="txtMedicoOdontologiaPaciente">MÉDICO</label>
+                                <div class="search-box " style="max-width: 100%;">
+                                    <div class="input-group">
+                                        <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterMedicoOdontologia"  type="search">
+                                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                                    </div>
+                                    <div id="resultadoMedicoOdontologia" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 " >
+                                <label for="txtSaludGeneralPaciente">ANTECEDENTES DE SALUD GENERAL</label>
+                                <div class="form-group">
+                                    <textarea class="form-control" id="txtSaludGeneralPaciente" rows="2" placeholder="ANTECEDENTES DE SALUD GENERAL"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label><strong>EXAMEN EXTRA ORAL</strong></label>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtAtmPaciente">ATM</label>
+                                    <input  type="text" class="form-control form-control-sm" id="txtAtmPaciente" placeholder="ATM">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtMusculoPaciente">MUSCULOS</label>
+                                    <input  type="text" class="form-control form-control-sm" id="txtMusculoPaciente" placeholder="MUSCULOS">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label><strong>EXAMEN INTRA ORAL</strong></label>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtLabiosPaciente">LABIOS</label>
+                                    <input  type="text" class="form-control form-control-sm" id="txtLabiosPaciente" placeholder="LABIOS">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
-                                    <label for="txtSeguroPaciente">TIPO SEGURO</label>
-                                    <select  class="form-control form-control-sm" id="txtSeguroPaciente">
-                                        <option  value="1">SIS</option>
-                                        <option  value="2">ESSALUD</option>
-                                        <option  value="3">OTRO</option>
-                                        <option   value="4">SIN DEFINIR</option>
-                                    </select>
+                                    <label for="txtLenguaPaciente">LENGUA</label>
+                                    <input  type="text" class="form-control form-control-sm" id="txtLenguaPaciente" placeholder="LENGUA">
                                 </div>
                             </div>
-
-                            <div class="col-lg-4 col-sm-6 " >
-                                <label for="txtMedicoPaciente">MÉDICO</label>
-                                <div class="search-box " style="max-width: 100%;">
-                                    <div class="input-group">
-                                        <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterMedico"  type="search">
-                                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                    </div>
-                                    <div id="resultadoMedico" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-sm-6" >
-                                <label for="txtAntFamiliPaciente">ANTECEDENTES FAMILIARES</label>
+                            <div class="col-lg-4 col-sm-12">
                                 <div class="form-group">
-                                    <textarea class="form-control" id="txtAntFamiliPaciente" rows="7" placeholder="ANTECEDENTES FAMILIARES"></textarea>
+                                    <label for="txtEnciasPaciente">ENCIAS</label>
+                                    <input  type="text" class="form-control form-control-sm" id="txtEnciasPaciente" placeholder="ENCIAS">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6" >
-                                <label for="txtAntPersonalPaciente">ANTECEDENTES PERSONALES</label>
+                                <label for="txtPiezasDentariasPaciente">PIEZAS DENTARIAS</label>
                                 <div class="form-group">
-                                    <textarea class="form-control" id="txtAntPersonalPaciente" rows="7" placeholder="ANTECEDENTES PERSONALES"></textarea>     
+                                    <textarea class="form-control" id="txtPiezasDentariasPaciente" rows="3" placeholder="PIEZAS DENTARIAS"></textarea>
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-sm-6" >
-                                <label for="txtAlergiaPaciente">ALERGIAS</label>
+                                <label for="txtObservacionPaciente">OBSERVACIONES</label>
                                 <div class="form-group">
-                                    <textarea class="form-control" id="txtAlergiaPaciente" rows="7" placeholder="ALERGIAS"></textarea>
+                                    <textarea class="form-control" id="txtObservacionPaciente" rows="3" placeholder="OBSERVACIONES"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-12" >
+                                <label for="txtDiagnosticoPaciente">DIAGNÓSTICO</label>
+                                <div class="form-group">
+                                    <textarea class="form-control" id="txtDiagnosticoPaciente" rows="3" placeholder="DIAGNÓSTICO"></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-12 text-center">

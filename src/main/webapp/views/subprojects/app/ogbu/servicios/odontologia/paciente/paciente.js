@@ -7,7 +7,6 @@ var beanRequestPaciente = new BeanRequest();
 var beanRequestHistoria = new BeanRequest();
 var fechaActual = new Date(); //Fecha actual
 document.addEventListener("DOMContentLoaded", function () {
-
     //INICIALIZANDO VARIABLES DE SOLICITUD ATENDIDO
     beanRequestPaciente.entity_api = "api/atendido";
     beanRequestPaciente.operation = "paginate";
@@ -22,8 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         event.stopPropagation();
     });
-
-    listFilter("#txtFilterMedico");
 
     $('#FrmPacienteModal').submit(function (event) {
         if (validateFormPaciente()) {
@@ -42,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
         processAjaxPaciente();
     });
 
-
     $("#modalCargandoPaciente").on('hidden.bs.modal', function () {
         beanRequestPaciente.operation = "paginate";
         beanRequestPaciente.type_request = "GET";
@@ -54,53 +50,51 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#modalCargandoPaciente').modal('show');
     });
 
-
     //HISTORIA
     //INICIALIZANDO VARIABLES DE SOLICITUD ATENDIDO
     beanRequestHistoria.entity_api = "api/historiaclinicao";
     beanRequestHistoria.operation = "paginate";
     beanRequestHistoria.type_request = "GET";
-    
+
     $("#txtPesoPaciente").change(function () {
         document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
     });
-    
+
     $("#txtTallaPaciente").change(function () {
         document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
     });
 
     $('#FrmAntecedentePaciente').submit(function (event) {
-        //if (validateFormDiagnostico()) {
+        if (validateFormHistoriaOdontologia()) {
         $('#modalCargandoHistoria').modal('show');
-        //}
+        }
         event.preventDefault();
         event.stopPropagation();
     });
-
+    
+    listFilterOdontologia("#txtFilterMedicoOdontologia");
+    
     document.querySelector("#buttonAntecedente").onclick = function () {
         beanRequestHistoria.operation = "paginate";
         beanRequestHistoria.type_request = "GET";
         $('#modalCargandoHistoria').modal('show');
 
+
     };
-    
+
     $("#modalCargandoHistoria").on('shown.bs.modal', function () {
         processAjaxHistoria(pacienteSelected.idatendido);
     });
-    
-  
 
 });
 
-function listFilter(filterdni) {
+function listFilterOdontologia(filterdni) {
     $(filterdni).change(function () {
         var filter = $(this).val();
-        console.log(filter);
         processAjaxDoctor(filter);
     }).keyup(function (e) {
         var txt = String.fromCharCode(e.which);
-        if (txt.match(/[A-Za-z0-9]/))
-        {
+        if (txt.match(/[A-Za-z0-9]/)) {
             $(this).change();
         }
 
@@ -172,7 +166,7 @@ function toListPaciente(beanPagination) {
             row += ">";
             row += "<td><ul class='dt-list dt-list-cm-0'>";
             row += "<li class='dt-list__item historia-clinica' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-editors'></i></a></li>";
+            row += "<i class='fa fa-file-text-o'></i></a></li>";
             row += "<li class='dt-list__item eliminar-paciente' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
             row += "<i class='icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
@@ -205,13 +199,11 @@ function addEventsPacientes() {
     document.querySelectorAll('.agregar-doctor').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            console.log(btn.getAttribute('iddoctor'));
-
             doctorSelected = findByDoctor(btn.getAttribute('iddoctor'));
             console.log(doctorSelected);
-            document.querySelector("#txtFilterMedico").value = doctorSelected.nombre + " " +
-                    doctorSelected.apellido_pat + " " + doctorSelected.apellido_mat;
-            document.querySelector("#resultadoMedico").innerHTML = "";
+            document.querySelector("#txtFilterMedicoOdontologia").value = doctorSelected.apellido_pat +
+                    " " + doctorSelected.apellido_mat + " " +doctorSelected.nombre;
+            document.querySelector("#resultadoMedicoOdontologia").innerHTML = "";
         };
     });
     document.querySelectorAll('.historia-clinica').forEach(btn => {
@@ -316,16 +308,15 @@ function subtipoPaciente(tipopersonal) {
 }
 
 //DOCTOR
-
 function toListDoctor(beanPagination) {
-    document.querySelector("#resultadoMedico").innerHTML = "";
+    document.querySelector("#resultadoMedicoOdontologia").innerHTML = "";
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(personal => {
             row = "<a iddoctor='" + personal.idpersonal + "' href='javascript:void(0)' ";
             row += "class='list-group-item list-group-item-action pt-1 pb-1 agregar-doctor'>" + personal.apellido_pat.toUpperCase() + " " + personal.apellido_mat.toUpperCase() + " " + personal.nombre.toUpperCase();
             row += "</a>";
-            document.querySelector("#resultadoMedico").innerHTML += row;
+            document.querySelector("#resultadoMedicoOdontologia").innerHTML += row;
         });
         addEventsPacientes();
     } else {
@@ -380,23 +371,33 @@ function findByDoctor(iddoctor) {
 function addInputHistoria(historiaSelected) {
 
     document.querySelector("#txtHistoriaPaciente").value = historiaSelected.num_historia;
-    document.querySelector("#txtSeguroPaciente").value = historiaSelected.tipo_seguro;
-    document.querySelector("#txtFilterMedico").value = historiaSelected.personal.apellido_pat + " " +
+    document.querySelector("#txtSaludGeneralPaciente").value = historiaSelected.antecedentes;
+    document.querySelector("#txtFilterMedicoOdontologia").value = historiaSelected.personal.apellido_pat + " " +
             historiaSelected.personal.apellido_mat + " " + historiaSelected.personal.nombre;
-    document.querySelector("#txtAntFamiliPaciente").value = historiaSelected.familiares;
-    document.querySelector("#txtAntPersonalPaciente").value = historiaSelected.personales;
-    document.querySelector("#txtAlergiaPaciente").value = historiaSelected.alergias;
+    document.querySelector("#txtAtmPaciente").value = historiaSelected.atm;
+    document.querySelector("#txtMusculoPaciente").value = historiaSelected.musculos_ex_orales;
+    document.querySelector("#txtLabiosPaciente").value = historiaSelected.labios;
+    document.querySelector("#txtLenguaPaciente").value = historiaSelected.lengua;
+    document.querySelector("#txtEnciasPaciente").value = historiaSelected.encias;
+    document.querySelector("#txtPiezasDentariasPaciente").value = historiaSelected.piezas_dentarias;
+    document.querySelector("#txtObservacionPaciente").value = historiaSelected.observaciones;
+    document.querySelector("#txtDiagnosticoPaciente").value = historiaSelected.ex_extra_oral;
     doctorSelected = historiaSelected.personal;
 }
 
 function limpiarInputHistoria() {
-
     document.querySelector("#txtHistoriaPaciente").value = "H" + pacienteSelected.dni + "-" + Math.floor(Math.random() * 10);
-    document.querySelector("#txtSeguroPaciente").value = "4";
-    document.querySelector("#txtFilterMedico").value = "";
-    document.querySelector("#txtAntFamiliPaciente").value = "";
-    document.querySelector("#txtAntPersonalPaciente").value = "";
-    document.querySelector("#txtAlergiaPaciente").value = "";
+    document.querySelector("#txtSaludGeneralPaciente").value = "";
+    document.querySelector("#txtFilterMedicoOdontologia").value = "";
+    document.querySelector("#txtAtmPaciente").value = "";
+    document.querySelector("#txtMusculoPaciente").value = "";
+    document.querySelector("#txtLabiosPaciente").value = "";
+    document.querySelector("#txtLenguaPaciente").value = "";
+    document.querySelector("#txtEnciasPaciente").value = "";
+    document.querySelector("#txtPiezasDentariasPaciente").value = "";
+    document.querySelector("#txtObservacionPaciente").value = "";
+    document.querySelector("#txtDiagnosticoPaciente").value = "";
+
 }
 
 function processAjaxHistoria(idpaciente) {
@@ -413,18 +414,27 @@ function processAjaxHistoria(idpaciente) {
             parameters_pagination = "/" + idpaciente
             json = {};
         } else {
+            console.log(doctorSelected.idpersonal);
             json = {
                 "num_historia": document.querySelector("#txtHistoriaPaciente").value,
-                "tipo_seguro": document.querySelector("#txtSeguroPaciente").value,
+                "atm": document.querySelector("#txtAtmPaciente").value,
                 "personal": {"idpersonal": doctorSelected.idpersonal},
-                "familiares": document.querySelector("#txtAntFamiliPaciente").value,
-                "personales": document.querySelector("#txtAntPersonalPaciente").value,
-                "alergias": document.querySelector("#txtAlergiaPaciente").value,
+                "encias": document.querySelector("#txtEnciasPaciente").value,
+                "ex_extra_oral": document.querySelector("#txtDiagnosticoPaciente").value,
+                "ex_intra_oral": " ",
+                "labios": document.querySelector("#txtLabiosPaciente").value,
+                "lengua": document.querySelector("#txtLenguaPaciente").value,
+                "musculos_ex_orales": document.querySelector("#txtMusculoPaciente").value,
+                "observaciones": document.querySelector("#txtObservacionPaciente").value,
+                "antecedentes": document.querySelector("#txtSaludGeneralPaciente").value,
+                "piezas_dentarias": document.querySelector("#txtPiezasDentariasPaciente").value,
                 "atendido": {"idatendido": pacienteSelected.idatendido}
             };
             if (beanRequestHistoria.operation == "update") {
-                json.idhistoria_clinica = historiaSelected.idhistoria_clinica;
+                json.idhistoria_clinicao = historiaSelected.idhistoria_clinicao;
             }
+
+
         }
     }
     $.ajax({
@@ -438,20 +448,19 @@ function processAjaxHistoria(idpaciente) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
-        console.log(beanCrudResponse.beanPagination.list[0]);
         $('#modalCargandoHistoria').modal("hide");
         historiaSelected = beanCrudResponse.beanPagination.list[0];
-        if (historiaSelected.num_historia == null) {
+        if (beanRequestHistoria.type_request != "GET") {
+            showAlertTopEnd('success', 'Acción realizada exitosamente');
+        }
+        if (historiaSelected == undefined) {
             beanRequestHistoria.operation = "add";
             beanRequestHistoria.type_request = "POST";
             limpiarInputHistoria();
         } else {
-
             beanRequestHistoria.operation = "update";
             beanRequestHistoria.type_request = "PUT";
             addInputHistoria(historiaSelected);
-            processAjaxDiagnostico(historiaSelected.idhistoria_clinica);
         }
 
 
@@ -461,4 +470,53 @@ function processAjaxHistoria(idpaciente) {
         showAlertErrorRequest();
 
     });
+}
+
+function validateFormHistoriaOdontologia() {
+
+    if (document.querySelector("#txtHistoriaPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Numero de Historia');
+        document.querySelector("#txtHistoriaPaciente").focus();
+        return false;
+    } else if (document.querySelector("#txtSaludGeneralPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Antecedentes');
+        document.querySelector("#txtSaludGeneralPaciente").focus();
+        return false;
+
+    } else if (document.querySelector("#txtFilterMedicoOdontologia").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Medico');
+        document.querySelector("#txtFilterMedicoOdontologia").focus();
+        return false;
+
+    } else if (document.querySelector("#txtAtmPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese ATM');
+        document.querySelector("#txtAtmPaciente").focus();
+        return false;
+
+    } else if (document.querySelector("#txtLabiosPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Labios');
+        document.querySelector("#txtLabiosPaciente").focus();
+        return false;
+    } else if (document.querySelector("#txtLenguaPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Lengua');
+        document.querySelector("#txtLenguaPaciente").focus();
+        return false;
+    } else if (document.querySelector("#txtEnciasPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Encias');
+        document.querySelector("#txtEnciasPaciente").focus();
+        return false;
+    } else if (document.querySelector("#txtPiezasDentariasPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Pa');
+        document.querySelector("#txtPiezasDentariasPaciente").focus();
+        return false;
+    } else if (document.querySelector("#txtObservacionPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Observación');
+        document.querySelector("#txtObservacionPaciente").focus();
+        return false;
+    } else if (document.querySelector("#txtDiagnosticoPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Diagnótico');
+        document.querySelector("#txtDiagnosticoPaciente").focus();
+        return false;
+    } 
+    return true;
 }
