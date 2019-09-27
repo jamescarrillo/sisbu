@@ -7,19 +7,26 @@
 var mostrar_pass = false;
 
 document.addEventListener("DOMContentLoaded", function () {
+
     document.querySelector('#fileImageFotoUser').value = null;
 
-    $('#idusuario').val(r_user.idusuario);
+    if (user_session != undefined) {
+        $('#idusuario').val(user_session.idusuario);
+    } else {
+        closeSession();
+    }
 
-    addEventsBtnsSelectedImages('btn-selected-image', $('#idusuario'));
+    addEventsBtnsSelectedImages('btn-selected-image');
 
     var fileExtensions = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
 
-    addEventsChangeInputsImagesGeneric('input-image', 'btn-upload', 'btn-delete-image', fileExtensions, '/workspace/_assets_redpos/images/users/1.jpg');
+    var src_default = getHostAPI() + "resources/img/150x150.png";
+
+    addEventsChangeInputsImagesGeneric('input-image', 'btn-upload', 'btn-delete-image', fileExtensions, src_default);
 
     addEventsUploadFilesGeneric('btn-upload', 'usuarios/upload-foto-user', $('#idusuario'));
 
-    addEventsRemoveFileGeneric('btn-delete-image', 'usuarios/delete-foto-user', $('#idusuario'), '/workspace/_assets_redpos/images/users/1.jpg', '1.png');
+    addEventsRemoveFileGeneric('btn-delete-image', 'usuarios/delete-foto-user', $('#idusuario'), src_default, '150x150.png');
 
     document.querySelector('#btnMostrarPass').onclick = function () {
         if (mostrar_pass) {
@@ -33,72 +40,129 @@ document.addEventListener("DOMContentLoaded", function () {
             addClass(document.querySelector('#icono_mostrar_pass'), "fas fa-eye");
             document.querySelector('#txtPassPerfil').setAttribute('type', 'text');
         }
-    }
+    };
+
+    $("#modalCargandoUpdatePerfil").on('shown.bs.modal', function () {
+        proccessAjaxUpdatePerfil();
+    });
+
+    document.querySelector("#txtUsuarioPerfil").onkeyup = function (e) {
+        if (e.keyCode == 13) {
+            document.querySelector("#txtPassPerfil").focus();
+        }
+    };
+
+    document.querySelector("#txtPassPerfil").onkeyup = function (e) {
+        if (e.keyCode == 13) {
+            document.querySelector("#btnActualizarDatos").dispatchEvent(new Event('click'));
+        }
+    };
+
+    document.querySelector("#btnActualizarDatos").onclick = function () {
+        if (document.querySelector("#txtUsuarioPerfil").value == "") {
+            showAlertTopEnd('warning', 'Por favor ingresa tu nombre completo');
+            document.querySelector("#txtUsuarioPerfil").focus();
+            return;
+        }
+        if (document.querySelector("#txtPassPerfil").value == "") {
+            showAlertTopEnd('warning', 'Por favor ingresa una contraseña');
+            document.querySelector("#txtPassPerfil").focus();
+            return;
+        }
+        let pass = document.querySelector("#txtPassPerfil").value;
+        if (pass.length < 6) {
+            showAlertTopEnd('warning', 'La contraseña debe tener al menos 6 caracteres');
+            document.querySelector("#txtPassPerfil").focus();
+            return;
+        }
+        if (pass.length > 20) {
+            showAlertTopEnd('warning', 'La contraseña no debe exceder los 20 caracteres');
+            document.querySelector("#txtPassPerfil").focus();
+            return;
+        }
+        if (isPassFacil(pass)) {
+            showAlertTopEnd('warning', 'Ha ingresado una contraseña fácil, ingrese otra por favor');
+            document.querySelector("#txtPassPerfil").focus();
+            return;
+        }
+        if (user_session.login == pass) {
+            showAlertTopEnd('warning', 'La contraseña ya no debe ser igual al Username. Por seguridad debes cambiarla');
+            document.querySelector("#txtPassPerfil").focus();
+            return;
+        }
+        $('#modalCargandoUpdatePerfil').modal('show');
+    };
+
+    loaderDataUser();
 
 });
 
-
-
-
-
-
-
-
-
-
-
-function addEventsBtnsSelectedImages(_class, $idbackend) {
-    $('.' + _class).click(function () {
-        if (parseInt($idbackend.val()) > 0) {
-            $('#' + $(this).attr('idinput')).trigger('click');
-        } else {
-            viewAlertTop('warning', 'Por favor registre primero para poder subir archivo de Imagen');
+function isPassFacil(pass) {
+    let pass_facil = false;
+    let pass_faciles = [
+        "123456",
+        "123123",
+        "111111",
+        "222222",
+        "333333",
+        "444444",
+        "555555",
+        "666666",
+        "121212"
+    ];
+    for (var i = 0; i < pass_faciles.length; i++) {
+        if (pass_faciles[i] == pass) {
+            pass_facil = true;
+            break;
         }
-    });
+    }
+    return pass_facil;
 }
 
-function addEventsChangeInputsImagesGeneric(_class, _classbtn_upload, _classbtn_remove, fileExtensions, src_default) {
-    $("." + _class).on('change', function () {
-        readImageSelectedGeneric(this, $(this).attr('idvisor'), _classbtn_upload, _classbtn_remove, fileExtensions, src_default);
-    });
-}
-;
-
-
-function readImageSelectedGeneric(input, idvisor, _classbtn_upload, _classbtn_remove,
-        fileExtensions, src_default = "/webapp/workspace/_assets_redpos/images/logos-redpos/icono-azul.png") {
-    if (input.files && input.files[0]) {
-        //VALIDAMOS SI ES EL FORMATO CORRECTO
-        if (validateFile(input, fileExtensions)) {
-            var btnUploads_remove = document.getElementsByClassName(_classbtn_upload);
-            for (let i = 0; i < btnUploads_remove.length; i++) {
-                if ($(btnUploads_remove[i]).attr("input") == $(input).attr('id')) {
-                    $(btnUploads_remove[i]).removeAttr("disabled");
-                }
-            }
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#' + idvisor).attr('src', e.target.result);
-            };
-            reader.readAsDataURL(input.files[0]);
-            //ACTIVAMOS EL REMOVE DE LA IMAGEN SELECCIONADA
-            btnUploads_remove = document.getElementsByClassName(_classbtn_remove);
-            for (let i = 0; i < btnUploads_remove.length; i++) {
-                if ($(btnUploads_remove[i]).attr("input") == $(input).attr('id')) {
-                    $(btnUploads_remove[i]).removeAttr("disabled");
-                }
-            }
-        } else {
-            viewAlertTop('warning', 'El archivo no tiene la extensión adecuada');
-        }
+function loaderDataUser() {
+    document.querySelector("#txtUsuarioPerfil").value = user_session.usuario;
+    document.querySelector("#txtUserNamePerfil").value = user_session.login;
+    document.querySelector("#txtUserNamePerfil").disabled = true;
+    document.querySelector("#txtPassPerfil").value = "";
+    document.querySelector("#txtPassPerfil").focus();
+    if (user_session.foto == "") {
+        document.querySelector("#btnEliminarFotoUser").disabled = true;
+        document.querySelector("#btnSubirFotoUser").disabled = true;
     } else {
-        $('#' + idvisor).attr('src', src_default);
-        $(input).val(null);
-        var btnUploads = document.getElementsByClassName(_classbtn_upload);
-        for (let i = 0; i < btnUploads.length; i++) {
-            if ($(btnUploads[i]).attr("input") == $(input).attr('id')) {
-                $(btnUploads[i]).attr("disabled", "disabled");
+        document.querySelector("#btnEliminarFotoUser").disabled = false;
+        document.querySelector("#btnSubirFotoUser").disabled = false;
+    }
+}
+
+function proccessAjaxUpdatePerfil() {
+    let json = "";
+    let url_request = getHostAPI() + "api/usuarios/update-perfil";
+    json = {
+        "idusuario": user_session.idusuario,
+        "usuario": document.querySelector("#txtUsuarioPerfil").value,
+        "pass": document.querySelector("#txtPassPerfil").value
+    };
+
+    $.ajax({
+        url: url_request,
+        type: "POST",
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        data: JSON.stringify(json),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (beanCrudResponse) {
+        $('#modalCargandoUpdatePerfil').modal("hide");
+        if (beanCrudResponse.messageServer !== undefined) {
+            if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
+                showAlertTopEnd('success', 'Datos actualizados exitosamente!');
+            } else {
+                showAlertTopEnd('error', 'Ha ocurrido un error interno, vuelve a intentarlo mas tarde :)');
             }
         }
-}
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoUpdatePerfil').modal("hide");
+        showAlertErrorRequest();
+    });
 }

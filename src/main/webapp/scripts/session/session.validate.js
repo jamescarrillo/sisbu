@@ -2,11 +2,13 @@
 //console.image("http://blogs.larioja.com/ganas-de-vivir/wp-content/uploads/sites/48/2018/03/stop.png");
 //console.meme("Seguro me quieres hackear!", "Y solo porque sabes programar.", "Not Sure Fry", 400, 300);
 let contextPah = getContextAPP();
+let user_session;
 if (Cookies.get("sisbu_token") === undefined) {
     location.href = contextPah + "auth/login";
 } else if (parseJwt(Cookies.get("sisbu_token"))) {
     //CARGAMOS LOS DATOS DEL USUARIO
-    let user = Cookies.getJSON('sisbu_user');
+    user_session = Cookies.getJSON('sisbu_user');
+    let user = user_session;
     //SET DATOS USER
     document.querySelectorAll('.name-user-session').forEach(element => {
         element.innerHTML = getStringCapitalize(user.usuario.split(" ")[0].toLowerCase());
@@ -20,9 +22,7 @@ if (Cookies.get("sisbu_token") === undefined) {
     } else {
         url_foto = getHostAPI() + "resources/img/150x150.png";
     }
-    document.querySelectorAll(".dt-avatar").forEach(img => {
-        img.setAttribute('src', url_foto);
-    });
+    setUrlFotoUserSession(url_foto);
 
     /*
      if (document.querySelector("#title-welcome") != null) {
@@ -547,6 +547,8 @@ function createHTML_OGBU(typeProfile) {
 }
 
 function createHTML_ATE(typeProfile) {
+    document.querySelector("#a-mi-perfil").setAttribute('href', `${contextPah}app/ate/perfil`);
+    document.querySelector("#a-mis-datos").setAttribute('href', `${contextPah}app/ate/datos`);
     //INICIO PARA TODOS
     document.querySelector("#menus_sisbu").innerHTML =
             `

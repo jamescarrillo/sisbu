@@ -20,6 +20,8 @@
         <!-- Font Icon Styles -->
         <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/flag-icon-css/css/flag-icon.min.css">
         <link rel="stylesheet" href="<%=request.getContextPath()%>/vendors/gaxon-icon/styles.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.0/css/all.min.css">
         <!-- /font icon Styles -->
 
         <!-- Perfect Scrollbar stylesheet -->
@@ -159,7 +161,7 @@
                                         <!-- /dropdown link -->
                                         <!-- Dropdown Option -->
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <div class="dt-avatar-wrapper flex-nowrap p-6 mt-n2 bg-gradient-purple text-white rounded-top">
+                                            <div class="dt-avatar-wrapper flex-nowrap p-6 mt-n2 bg-gradient-purple text-white rounded-top" style="background-image: linear-gradient(135deg, #1079a9, #b9abab);">
                                                 <img class="dt-avatar" src="https://via.placeholder.com/150x150"
                                                      alt="Foto User">
                                                 <span class="dt-avatar-info">
@@ -564,6 +566,8 @@
         <!-- /root -->
 
         <!-- Optional JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.0/js/all.min.js"></script>
+
         <script src="<%=request.getContextPath()%>/plugins/jquery/dist/jquery.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/moment/moment.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -571,11 +575,11 @@
         <script src="<%=request.getContextPath()%>/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
         <!-- /perfect scrollbar jQuery -->
 
-
         <!--JS COMPLEMENTS-->
         <script src="<%out.print(request.getContextPath());%>/scripts/util/functions.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_alerts.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_operational.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_file.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/util/configuration_api.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/util/shortcut.js"></script>
 

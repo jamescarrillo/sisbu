@@ -70,3 +70,9 @@ function getIdAreaUserSession() {
         return 7;
     }
 }
+
+function setUrlFotoUserSession(url_foto) {
+    document.querySelectorAll(".dt-avatar").forEach(img => {
+        img.setAttribute('src', url_foto);
+    });
+}
