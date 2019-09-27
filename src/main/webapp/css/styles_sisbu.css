@@ -10,3 +10,8 @@
 .icon-sisbu{
     display: initial !important;
 }
+
+
+.modal-lg-sisbu {
+    max-width: 1050px !important;
+}

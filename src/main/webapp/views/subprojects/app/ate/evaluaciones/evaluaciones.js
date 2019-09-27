@@ -341,6 +341,7 @@ function openPreguntas(idcontent_preguntas_evaluacion) {
 }
 
 function navigateProcedimientoAndPreguntas(opcion) {
+    //console.log("Opción evaluacion " + opcion);
     switch (procedimiento_menu_selected) {
         case "obstetricia":
             switch (opcion) {
