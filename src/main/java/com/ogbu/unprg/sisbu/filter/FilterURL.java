@@ -355,6 +355,26 @@ public class FilterURL implements Filter {
         this.list_resources.add(resource);
 
         //OBSTETRICIA
+        ///evaluaciones
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/obstetricia/evaluaciones");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/evaluacion.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/evaluacion.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/pregunta.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/pregunta_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/critico_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/inconsistencia_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/alternativa.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/procedimiento_ciclo.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/detalle_procedimiento_ciclo.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/procedimiento_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/area_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/subarea_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/alternativa_global.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/ciclo_academico.js" + version_project
+        });
+        this.list_resources.add(resource);
         ///pacientes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/obstetricia/pacientes");
@@ -456,9 +476,21 @@ public class FilterURL implements Filter {
         ///fichas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/social/fichas");
-        resource.setPath("/views/subprojects/app/servicios/social/ficha/ficha.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/evaluacion.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/social/ficha/ficha.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/social/fichas/evaluacion.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/fichas/pregunta.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/fichas/pregunta_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/fichas/critico_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/fichas/inconsistencia_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/fichas/alternativa.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/fichas/procedimiento_ciclo.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/fichas/detalle_procedimiento_ciclo.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/fichas/procedimiento_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/fichas/area_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/fichas/subarea_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/fichas/alternativa_global.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/fichas/ciclo_academico.js" + version_project
         });
         this.list_resources.add(resource);
         ///usuarios

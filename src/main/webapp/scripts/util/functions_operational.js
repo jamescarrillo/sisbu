@@ -138,3 +138,15 @@ function getTimesTampJavaScriptCurrent() {
     }
     return f_;
 }
+
+function addClass(element, class_) {
+    class_.split(" ").forEach(function (class_iterator) {
+        element.classList.add(class_iterator);
+    });
+}
+
+function removeClass(element, class_) {
+    class_.split(" ").forEach(function (class_iterator) {
+        element.classList.remove(class_iterator);
+    });
+}

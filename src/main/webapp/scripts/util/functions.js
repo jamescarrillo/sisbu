@@ -59,10 +59,20 @@ function sendIndex() {
 }
 
 function getIdAreaUserSession() {
-    let idarea = -1;
     let url = window.location.href;
-    if (url.includes('psicopedagogia')) {
-        idarea = 6;
+    if (url.includes('obstetricia')) {
+        return 4;
     }
-    return idarea;
+    if (url.includes('psicopedagogia')) {
+        return 6;
+    }
+    if (url.includes('social')) {
+        return 7;
+    }
+}
+
+function setUrlFotoUserSession(url_foto) {
+    document.querySelectorAll(".dt-avatar").forEach(img => {
+        img.setAttribute('src', url_foto);
+    });
 }

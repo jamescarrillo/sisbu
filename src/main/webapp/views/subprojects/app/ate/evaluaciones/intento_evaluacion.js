@@ -67,6 +67,5 @@ function processAjaxIntentoEvaluacion() {
         $('#ventanaModalManIntentoEvaluacion').modal("hide");
         $('#modalCargandoIntentoEvaluacion').modal("hide");
         showAlertErrorRequest();
-
     });
 }

@@ -20,6 +20,8 @@
         <!-- Font Icon Styles -->
         <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/flag-icon-css/css/flag-icon.min.css">
         <link rel="stylesheet" href="<%=request.getContextPath()%>/vendors/gaxon-icon/styles.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.0/css/all.min.css">
         <!-- /font icon Styles -->
 
         <!-- Perfect Scrollbar stylesheet -->
@@ -152,16 +154,16 @@
                                         <a href="#" class="dt-nav__link dropdown-toggle no-arrow dt-avatar-wrapper"
                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <img class="dt-avatar size-30" src="https://via.placeholder.com/150x150"
-                                                 alt="Domnic Harris">
+                                                 alt="Foto User">
                                             <span class="dt-avatar-info d-none d-sm-block">
                                                 <span class="dt-avatar-name name-user-session">James Carrillo</span>
                                             </span> </a>
                                         <!-- /dropdown link -->
                                         <!-- Dropdown Option -->
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <div class="dt-avatar-wrapper flex-nowrap p-6 mt-n2 bg-gradient-purple text-white rounded-top">
+                                            <div class="dt-avatar-wrapper flex-nowrap p-6 mt-n2 bg-gradient-purple text-white rounded-top" style="background-image: linear-gradient(135deg, #1079a9, #b9abab);">
                                                 <img class="dt-avatar" src="https://via.placeholder.com/150x150"
-                                                     alt="Domnic Harris">
+                                                     alt="Foto User">
                                                 <span class="dt-avatar-info">
                                                     <span class="dt-avatar-name name-user-session">James Carrillo</span>
                                                     <span class="f-12 name-type-user-session">Sistemas</span>
@@ -564,6 +566,8 @@
         <!-- /root -->
 
         <!-- Optional JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.0/js/all.min.js"></script>
+
         <script src="<%=request.getContextPath()%>/plugins/jquery/dist/jquery.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/moment/moment.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -571,11 +575,11 @@
         <script src="<%=request.getContextPath()%>/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
         <!-- /perfect scrollbar jQuery -->
 
-
         <!--JS COMPLEMENTS-->
         <script src="<%out.print(request.getContextPath());%>/scripts/util/functions.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_alerts.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_operational.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_file.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/util/configuration_api.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/util/shortcut.js"></script>
 

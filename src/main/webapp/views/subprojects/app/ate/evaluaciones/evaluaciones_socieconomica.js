@@ -73,7 +73,7 @@ function processAjaxProcedimientoSocioeconomico() {
     switch (beanRequestProcedimientoSocioeconomico.operation) {
         default:
             //7
-            parameters_pagination += "?idarea=6";
+            parameters_pagination += "?idarea=7";
             parameters_pagination += "&idusuario=" + Cookies.getJSON('sisbu_user').idusuario;
             url_request += parameters_pagination;
             break;
