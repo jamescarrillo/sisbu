@@ -26,13 +26,13 @@
                 <!-- Tables -->
                 <div class="table-responsive">
                     <table class="table mb-0 mt-2">
-                        <thead>
-                            <tr>
-                                <th class="text-uppercase" scope="col" style="width: 12%">H. CLÍNICA</th>
-                                <th class="text-uppercase" scope="col" >DNI</th>
-                                <th class="text-uppercase" scope="col" >NOMBRE COMPLETO</th>
-                                <th class="text-uppercase" scope="col" >TIPO USUARIO</th>
-                                <th class="text-uppercase" scope="col" >SUBTIPO USUARIO</th>
+                        <thead  class="bg-primary" style="line-height: 0.4;">
+                            <tr >
+                                <th class="text-uppercase  text-white" scope="col" style="width: 12%;font-weight: 500;">H. CLÍNICA</th>
+                                <th class="text-uppercase  text-white" scope="col" style="font-weight: 500;" >DNI</th>
+                                <th class="text-uppercase text-white" scope="col"  style="font-weight: 500;">NOMBRE COMPLETO</th>
+                                <th class="text-uppercase  text-white" scope="col" style="font-weight: 500;" >TIPO USUARIO</th>
+                                <th class="text-uppercase  text-white" scope="col"  style="font-weight: 500;">SUBTIPO USUARIO</th>
                             </tr>
                         </thead>
                         <tbody id="tbodyPaciente">
@@ -219,12 +219,12 @@
                         <!-- Tables -->
                         <div class="table-responsive">
                             <table class="table mb-0">
-                                <thead>
+                                <thead class="bg-primary" style="line-height: 0.4;">
                                     <tr>
-                                        <th class="text-uppercase" scope="col" >ACCIÓN</th>
-                                        <th class="text-uppercase" scope="col" >ATENDIDO</th>
-                                        <th class="text-uppercase" scope="col" >FECHA </th>
-                                        <th class="text-uppercase" scope="col" >DIAGNOSTICO</th>
+                                        <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">ACCIÓN</th>
+                                        <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">ATENDIDO</th>
+                                        <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">FECHA </th>
+                                        <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">DIAGNOSTICO</th>
 
                                     </tr>
                                 </thead>

@@ -85,12 +85,11 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#modalCargandoTriaje").on('shown.bs.modal', function () {
         processAjaxTriaje(historiaSelected.idhistoria_clinica);
     });
-    
+
     $('#FrmTriajePaciente').submit(function (event) {
-        console.log("hola");
-        //if (validateFormTriaje()) {
-        processAjaxTriaje(historiaSelected.idhistoria_clinica);
-        //}
+        if (validateFormTriaje()) {
+            processAjaxTriaje(historiaSelected.idhistoria_clinica);
+        }
         event.preventDefault();
         event.stopPropagation();
     });
@@ -185,10 +184,10 @@ function toListPaciente(beanPagination) {
             row += "idpaciente='" + paciente.idatendido + "' ";
             row += ">";
             row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item historia-clinica' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-editors'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-paciente' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "<li class='dt-list__item historia-clinica' data-toggle='tooltip' title='Ver Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='text-primary fa fa-file-alt '></i></a></li>";
+            row += "<li class='dt-list__item eliminar-paciente' data-toggle='tooltip' title='Descargar Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='text-danger fa fa-file-pdf'></i></a></li>";
             row += "</ul></td>";
             row += "<td class='align-middle'>" + paciente.dni + "</td>";
             row += "<td class='align-middle'>" + paciente.apellido_pat + " " + paciente.apellido_mat + " " + paciente.nombre + "</td>";
@@ -408,7 +407,10 @@ function processAjaxTriaje(idhistoria) {
                 "ayuna": document.querySelector("#txtAyunoPaciente").value,
                 "peso": document.querySelector("#txtPesoPaciente").value,
                 "talla": document.querySelector("#txtTallaPaciente").value,
-                "imc": (document.querySelector("#txtPesoPaciente").value) / (document.querySelector("#txtTallaPaciente").value),
+                "imc": (document.querySelector("#txtImcPaciente").value),
+                "enf_actual": "",
+                "diagnostico": "",
+                "tratamiento": "",
                 "fecha_triaje": dia + "/" + mes + "/" + fechaActual.getFullYear(),
                 "idhistoria_clinica": {"idhistoria_clinica": historiaSelected.idhistoria_clinica}
             };
@@ -488,21 +490,22 @@ function toListTriaje(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(Triaje => {
-            let diag = (Triaje.diagnostico != null) ? Triaje.diagnostico : "AÚN NO HAY DIAGNÓSTICO";
-            let aten = (Triaje.diagnostico != null) ? "SI" : "NO";
-            let fecha = (Triaje.fecha_triaje != null) ? Triaje.fecha_triaje : "PENDIENTE";
+            let diag = (Triaje.diagnostico != "") ? Triaje.diagnostico : "AÚN NO HAY DIAGNÓSTICO";
+            let aten = (Triaje.diagnostico != "") ? "SI" : "NO";
+            let fecha = (Triaje.diagnostico != "") ? Triaje.fecha_diagnostico : "PENDIENTE";
+            let color = (Triaje.diagnostico != "") ? "bg-info" : "bg-danger";
             row = "<tr ";
             row += "iddiagnostico='" + Triaje.iddiagnostico + "' ";
             row += ">";
             row += "<td><ul class='dt-list dt-list-cm-0'>";
             row += "<li class='dt-list__item editar-diagnostico'  title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-editors'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-diagnostico' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "<i class='text-info icon icon-editors'></i></a></li>";
+            row += "<li class='dt-list__item eliminar-diagnostico'  title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
-            row += "<td class='align-middle'>" + aten + "</td>";
-            row += "<td class='align-middle'>" + fecha + "</td>";
-            row += "<td class='align-middle'>" + diag + "</td>";
+            row += "<td class='" + color + " text-white align-middle'>" + aten + "</td>";
+            row += "<td class=' align-middle'>" + fecha + "</td>";
+            row += "<td class=' align-middle'>" + diag + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyTriaje").innerHTML += row;
         });
@@ -564,65 +567,53 @@ function findByTriaje(iddiagnostico) {
 }
 
 function validateFormTriaje() {
-
-    if (document.querySelector("#txtPaPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
+    console.log(document.querySelector("#txtPaPaciente").value);
+    if (document.querySelector("#txtPaPaciente").value  == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese PA');
+        document.querySelector("#txtPaPaciente").focus();
         return false;
-    } else if (document.querySelector("#txtZonaControlPaciente").value != "-1") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
+    } else if (document.querySelector("#txtZonaControlPaciente").value == "-1") {
+        showAlertTopEnd('warning', 'Por favor ingrese Zona de Control');
+        document.querySelector("#txtZonaControlPaciente").focus();
         return false;
 
-    } else if (document.querySelector("#txtPosicionPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
+    } else if (document.querySelector("#txtPosicionPaciente").value == "-1") {
+        showAlertTopEnd('warning', 'Por favor ingrese Posición');
+        document.querySelector("#txtPosicionPaciente").focus();
         return false;
 
     } else if (document.querySelector("#txtFcPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
+        showAlertTopEnd('warning', 'Por favor ingrese FC');
+        document.querySelector("#txtFcPaciente").focus();
         return false;
 
     } else if (document.querySelector("#txtFrPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
+        showAlertTopEnd('warning', 'Por favor ingrese FR');
+        document.querySelector("#txtFrPaciente").focus();
         return false;
     } else if (document.querySelector("#txtTPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
+        showAlertTopEnd('warning', 'Por favor ingrese Temperatura');
+        document.querySelector("#txtTPaciente").focus();
         return false;
     } else if (document.querySelector("#txtSoPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
+        showAlertTopEnd('warning', 'Por favor ingrese SO2');
+        document.querySelector("#txtSoPaciente").focus();
         return false;
     } else if (document.querySelector("#txtGlicemiaPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
+        showAlertTopEnd('warning', 'Por favor ingrese Glicemia');
+        document.querySelector("#txtGlicemiaPaciente").focus();
         return false;
     } else if (document.querySelector("#txtAyunoPaciente").value == "-1") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
+        showAlertTopEnd('warning', 'Por favor ingrese Ayuno');
+        document.querySelector("#txtAyunoPaciente").focus();
         return false;
     } else if (document.querySelector("#txtPesoPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
+        showAlertTopEnd('warning', 'Por favor ingrese Peso');
+        document.querySelector("#txtPesoPaciente").focus();
         return false;
     } else if (document.querySelector("#txtTallaPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
-        return false;
-    } else if (document.querySelector("#txtEnfermedadPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
-        return false;
-    } else if (document.querySelector("#txtDxPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
-        return false;
-    } else if (document.querySelector("#txtTtoPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Pa');
-        document.querySelector("#txtNombrenPaciente").focus();
+        showAlertTopEnd('warning', 'Por favor ingrese Talla');
+        document.querySelector("#txtTallaPaciente").focus();
         return false;
     }
 

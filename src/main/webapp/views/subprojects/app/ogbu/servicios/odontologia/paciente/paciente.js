@@ -165,10 +165,10 @@ function toListPaciente(beanPagination) {
             row += "idpaciente='" + paciente.idatendido + "' ";
             row += ">";
             row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item historia-clinica' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='fa fa-file-text-o'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-paciente' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "<li class='dt-list__item historia-clinica' data-toggle='tooltip' title='Ver Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='text-primary fa fa-file-alt'></i></a></li>";
+            row += "<li class='dt-list__item eliminar-paciente' data-toggle='tooltip' title='Descargar Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='text-danger fa fa-file-pdf'></i></a></li>";
             row += "</ul></td>";
             row += "<td class='align-middle'>" + paciente.dni + "</td>";
             row += "<td class='align-middle'>" + paciente.apellido_pat + " " + paciente.apellido_mat + " " + paciente.nombre + "</td>";

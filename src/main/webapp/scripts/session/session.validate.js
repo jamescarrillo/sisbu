@@ -111,13 +111,13 @@ function createHTML_OGBU(typeProfile) {
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/enfermeria/pacientes" class="dt-side-nav__link" title="Pacientes">
+                        <a href="${contextPah}app/ogbu/servicios/enfermeria/pacientes" class="dt-side-nav__link" title="Pacientes">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Pacientes</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/enfermeria/citas" class="dt-side-nav__link" title="Citas">
+                        <a href="${contextPah}app/ogbu/servicios/enfermeria/citas" class="dt-side-nav__link" title="Citas">
                             <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Citas</span>
                         </a>
@@ -140,13 +140,13 @@ function createHTML_OGBU(typeProfile) {
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/medicina/pacientes" class="dt-side-nav__link" title="Pacientes">
+                        <a href="${contextPah}app/ogbu/servicios/medicina/pacientes" class="dt-side-nav__link" title="Pacientes">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Pacientes</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/medicina/citas" class="dt-side-nav__link" title="Citas">
+                        <a href="${contextPah}app/ogbu/servicios/medicina/citas" class="dt-side-nav__link" title="Citas">
                             <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Citas</span>
                         </a>
