@@ -213,7 +213,9 @@
     </div>
 </div>
 
-<div id="ventanaModalDatosFaltantesAtendido" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); margin-top: 3%" aria-hidden="true">
+<div id="ventanaModalDatosFaltantesAtendido" class="modal" tabindex="-1" role="dialog" 
+     data-backdrop="static" data-keyboard="false" 
+     style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); margin-top: 1%" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-color: #2962FF; border-width: 3px;border-radius: 7px;">
             <div class="modal-header">
@@ -273,6 +275,22 @@
                 <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal">
                     <i class="fas fa-times"></i>
                     CERRAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoVDPOtrasPruebas" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Verificando datos personales. . .
+                    </div>
+                </div>
             </div>
         </div>
     </div>

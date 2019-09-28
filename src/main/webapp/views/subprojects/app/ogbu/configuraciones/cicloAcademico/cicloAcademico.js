@@ -8,6 +8,23 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestCicloAcademico.operation = "paginate";
     beanRequestCicloAcademico.type_request = "GET";
 
+    $('#txtFechaFinCicloAcademico').bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false,
+        format: 'DD/MM/YYYY',
+        lang: 'es'
+    }).on('change', function (e, date) {
+    });
+
+    $('#txtFechaInicioCicloAcademico').bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false,
+        format: 'DD/MM/YYYY',
+        lang: 'es'
+    }).on('change', function (e, date) {
+        $('#txtFechaFinCicloAcademico').bootstrapMaterialDatePicker('setMinDate', date);
+    });
+
     $('#FrmCicloAcademico').submit(function (event) {
         beanRequestCicloAcademico.operation = "paginate";
         beanRequestCicloAcademico.type_request = "GET";
@@ -17,9 +34,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $('#FrmCicloAcademicoModal').submit(function (event) {
-        if (validateFormCicloAcademico()) {
-            $('#modalCargandoCicloAcademico').modal('show');
+        try {
+            if (validateFormCicloAcademico()) {
+                $('#modalCargandoCicloAcademico').modal('show');
+            }
+        } catch (e) {
+            console.log(e);
         }
+
         event.preventDefault();
         event.stopPropagation();
     });
@@ -30,6 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestCicloAcademico.type_request = "POST";
         //LIMPIAR LOS CAMPOS
         document.querySelector("#txtNombreCicloAcademico").value = "";
+        document.querySelector("#txtFechaInicioCicloAcademico").value = "";
+        document.querySelector("#txtFechaFinCicloAcademico").value = "";
         //SET TITLE MODAL
         document.querySelector("#txtTituloModalMan").innerHTML = "REGISTRAR CICLO ACADÉMICO";
         //OPEN MODEL
@@ -197,17 +221,20 @@ function findByCicloAcademico(idcicloAcademico) {
 function validateFormCicloAcademico() {
     if (document.querySelector("#txtNombreCicloAcademico").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese nombre');
-        document.querySelector("#txtNombrenCicloAcademico").focus();
-        return false;
-    } else if (document.querySelector("#txtFechaInicioCicloAcademico").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Fecha Inicial');
-        document.querySelector("#txtFechaInicioCicloAcademico").focus();
-        return false;
-    } else if (document.querySelector("#txtFechaFinCicloAcademico").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Fecha Final');
-        document.querySelector("#txtFechaFinCicloAcademico").focus();
+        document.querySelector("#txtNombreCicloAcademico").focus();
         return false;
     }
+    /*
+     else if (document.querySelector("#txtFechaInicioCicloAcademico").value == "") {
+     showAlertTopEnd('warning', 'Por favor ingrese Fecha Inicial');
+     document.querySelector("#txtFechaInicioCicloAcademico").focus();
+     return false;
+     } else if (document.querySelector("#txtFechaFinCicloAcademico").value == "") {
+     showAlertTopEnd('warning', 'Por favor ingrese Fecha Final');
+     document.querySelector("#txtFechaFinCicloAcademico").focus();
+     return false;
+     }
+     */
     return true;
 }
 

@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (idarea_selected == "4") {
             repor_preguntas = "S";
             repor_familiares = "N";
-            $('#modalCargandoVE').modal('show');
+            $('#modalCargandoVDPOtrasPruebas').modal('show');
         } else {
             showAlertTopEnd('warning', 'No se pudo seleccionar correctamente la evaluación, algunos valores HTML han sido modificados.')
         }
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (idarea_selected == "6" || idarea_selected == "4") {
                 repor_preguntas = "N";
                 repor_familiares = "N";
-                $('#modalCargandoVE').modal('show');
+                $('#modalCargandoVDPOtrasPruebas').modal('show');
             } else {
                 showAlertTopEnd('warning', 'No se pudo seleccionar correctamente la evaluación, algunos valores HTML han sido modificados.')
             }
@@ -94,6 +94,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#modalCargandoVDP").on('shown.bs.modal', function () {
         processAjaxValidacionDatosPersonales();
+    });
+    
+    $("#modalCargandoVDPOtrasPruebas").on('shown.bs.modal', function () {
+        processAjaxValidacionDatosPersonalesOtrasEvaluaciones();
     });
 
     $("#modalCargandoVE").on('shown.bs.modal', function () {
@@ -294,5 +298,68 @@ function processAjaxValidacionDeportesAficiones() {
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoVDYA').modal("hide");
         showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+    });
+}
+
+function processAjaxValidacionDatosPersonalesOtrasEvaluaciones() {
+    let url_request = getHostAPI() + "api/atendido/usuario/" + user_session.idusuario;
+    $.ajax({
+        url: url_request,
+        type: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        //data: JSON.stringify(json),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (atendido) {
+        //console.log(atendido);
+        $('#modalCargandoVDPOtrasPruebas').modal("hide");
+        if (atendido !== undefined) {
+            let list_datos_faltantes = [];
+            //EMPEZAMOS A VALIDAR 
+            if (atendido.estado_civil == -1) {
+                list_datos_faltantes.push("Estado Civil");
+            }
+            if (atendido.modalidad_ingreso == 100) {
+                list_datos_faltantes.push("Modalidad de ingreso");
+            }
+            if (atendido.fecha_nacimiento == null) {
+                list_datos_faltantes.push("Fecha de Nacimiento");
+            }
+            if (atendido.email == "") {
+                list_datos_faltantes.push("Email");
+            }
+            if (atendido.direccion_procedencia == "") {
+                list_datos_faltantes.push("Dirección procedencia");
+            }
+            if (atendido.distrito_procedencia.iddistrito == 0) {
+                list_datos_faltantes.push("Distrito Procedencia");
+            }
+            if (atendido.direccion_actual == "") {
+                list_datos_faltantes.push("Dirección Actual");
+            }
+            if (atendido.distrito_actual.iddistrito == 0) {
+                list_datos_faltantes.push("Distrito Actual");
+            }
+            if (atendido.escuela.idescuela == 0) {
+                list_datos_faltantes.push("Escuela");
+            }
+            if (list_datos_faltantes.length > 0) {
+                document.querySelector("#datos-faltantes-atendido").innerHTML = "";
+                list_datos_faltantes.forEach(dato => {
+                    document.querySelector("#datos-faltantes-atendido").innerHTML += `<li class="list-group-item">${dato}</li>`;
+                });
+                $('#ventanaModalDatosFaltantesAtendido').modal('show');
+            } else {
+                //VALIDAMOS LA FICHA COMPLETADA
+                $('#modalCargandoVE').modal('show');
+            }
+        } else {
+            showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tus datos personales, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoVDPOtrasPruebas').modal("hide");
+        showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tus datos personales, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
     });
 }

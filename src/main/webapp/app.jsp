@@ -42,6 +42,8 @@
         <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles_sisbu.css">
 
         <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/chart.js/dist/Chart.min.css">
+        
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css">
 
     </head>
     <body class="dt-sidebar--fixed dt-header--fixed">
@@ -604,6 +606,8 @@
 
         <script src="<%=request.getContextPath()%>/plugins/jquery-pagination/jquery.Pagination.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/chart.js/dist/Chart.min.js"></script>
+        
+        <script src="<%=request.getContextPath()%>/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker-custom.js"></script>
 
         <script src="<%out.print(request.getContextPath());%>/scripts/init_parameters.js"></script>
 

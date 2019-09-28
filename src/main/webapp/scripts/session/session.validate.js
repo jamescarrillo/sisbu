@@ -522,13 +522,13 @@ function createHTML_OGBU(typeProfile) {
             </li>
             <!-- /menu header -->
             <li class="dt-side-nav__item">
-                <a href="" class="dt-side-nav__link" title="Reportes">
+                <a href="javascript:void(0)" class="dt-side-nav__link" title="Reportes">
                     <i class="icon icon-profilepage icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text">Reportes</span>
                 </a>
             </li>
             <li class="dt-side-nav__item">
-                <a href="" class="dt-side-nav__link" title="Estadísticas">
+                <a href="javascript:void(0)" class="dt-side-nav__link" title="Estadísticas">
                     <i class="icon icon-profilepage icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text">Estadísticas</span>
                 </a>
