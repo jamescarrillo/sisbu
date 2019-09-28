@@ -152,7 +152,7 @@ function toListProcedimientoSocioeconomico() {
         document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "none";
         setUpdateGraficaProcedimientoSocioeconomico();
     } else {
-        showAlertTopEnd('warning', 'Lo sentimos, no hay ninguna evaluación configurada para este ciclo');
+        showAlertTopEnd('warning', 'Lo sentimos, no hay ninguna evaluación configurada para este ciclo. Acerquese a la oficina correspondiente e indique el mensaje.', 10000);
     }
 }
 
@@ -179,7 +179,7 @@ function setUpdateGraficaProcedimientoSocioeconomico() {
             ],
             datasets: [
                 {
-                    data: [beanProcedimientoSelectedGlobal.procedimientos_realizados.length, beanProcedimientoSelectedGlobal.procedimientos.length],
+                    data: [beanProcedimientoSelectedGlobal.procedimientos_realizados.length, beanProcedimientoSelectedGlobal.procedimientos.length - beanProcedimientoSelectedGlobal.procedimientos_realizados.length],
                     backgroundColor: [
                         color(chartColors.lightGreen).alpha(0.8).rgbString(),
                         color(chartColors.orange).alpha(0.8).rgbString()
@@ -249,7 +249,7 @@ function processAjaxEvaluacionAtendidoSocieconomico() {
         dataType: 'json'
     }).done(function (beanCrud) {
         $('#modalCargandoEvaluacionAtendidoSocioeconomico').modal("hide");
-        console.log(beanCrud);
+        //console.log(beanCrud);
         if (beanCrud.messageServer != undefined) {
             if (beanCrud.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', "Finalización exitosa!", 6000);

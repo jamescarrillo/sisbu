@@ -6,7 +6,7 @@
 
 var beanRequestProcedimientoPsicologico = new BeanRequest();
 
-var beanEvaluacionAtendidoSocieconomico;
+var beanEvaluacionAtendidoPsicologico;
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $("#modalCargandoEvaluacionAtendidoPsicologico").on('shown.bs.modal', function () {
-        processAjaxEvaluacionAtendidoSocieconomico();
+        processAjaxEvaluacionAtendidoPsicologico();
     });
 
     document.querySelector("#btn-cancelar-evaluation-psicologico").onclick = function () {
@@ -152,7 +152,7 @@ function toListProcedimientoPsicologico() {
         document.querySelector("#div-preguntas-evaluacion-psicologico").style.display = "none";
         setUpdateGraficaProcedimientoPsicologico();
     } else {
-        showAlertTopEnd('warning', 'Lo sentimos, no hay ninguna evaluación configurada para este ciclo');
+        showAlertTopEnd('warning', 'Lo sentimos, no hay ninguna evaluación configurada para este ciclo. Acerquese a la oficina correspondiente e indique el mensaje.', 10000);
     }
 }
 
@@ -179,7 +179,7 @@ function setUpdateGraficaProcedimientoPsicologico() {
             ],
             datasets: [
                 {
-                    data: [beanProcedimientoSelectedGlobal.procedimientos_realizados.length, beanProcedimientoSelectedGlobal.procedimientos.length],
+                    data: [beanProcedimientoSelectedGlobal.procedimientos_realizados.length, beanProcedimientoSelectedGlobal.procedimientos.length - beanProcedimientoSelectedGlobal.procedimientos_realizados.length],
                     backgroundColor: [
                         color(chartColors.lightGreen).alpha(0.8).rgbString(),
                         color(chartColors.orange).alpha(0.8).rgbString()
@@ -191,7 +191,6 @@ function setUpdateGraficaProcedimientoPsicologico() {
                 }
             ]
         };
-
         new Chart(document.getElementById('estimation-psicologico'), {
             type: 'doughnut',
             data: estimation_data,
@@ -219,9 +218,9 @@ function setUpdateGraficaProcedimientoPsicologico() {
     }
 }
 
-function processAjaxEvaluacionAtendidoSocieconomico() {
+function processAjaxEvaluacionAtendidoPsicologico() {
     fecha_finProcedimiento = getTimesTampJavaScriptCurrent();
-    beanEvaluacionAtendidoSocieconomico = {
+    beanEvaluacionAtendidoPsicologico = {
         "evaluacion_atendido": {
             "idevaluacion_atendido": 0,
             "atendido": {
@@ -236,7 +235,7 @@ function processAjaxEvaluacionAtendidoSocieconomico() {
         },
         "list_respuestas": list_respuestas_evaluacion
     };
-    //console.log(beanEvaluacionAtendidoSocieconomico);
+    //console.log(beanEvaluacionAtendidoPsicologico);
     let url_request = getHostAPI() + "api/evaluacion/atendido/add";
     $.ajax({
         url: url_request,
@@ -244,12 +243,12 @@ function processAjaxEvaluacionAtendidoSocieconomico() {
         headers: {
             'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
-        data: JSON.stringify(beanEvaluacionAtendidoSocieconomico),
+        data: JSON.stringify(beanEvaluacionAtendidoPsicologico),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrud) {
         $('#modalCargandoEvaluacionAtendidoPsicologico').modal("hide");
-        console.log(beanCrud);
+        //console.log(beanCrud);
         if (beanCrud.messageServer != undefined) {
             if (beanCrud.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', "Finalización exitosa!", 6000);
