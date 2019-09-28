@@ -129,11 +129,9 @@
         <div class="modal-content" style="border-color: #2962FF; border-width: 3px;border-radius: 7px;">
             <form class="needs-validation" novalidate="">
                 <div class="modal-body pb-2">
-                    <div class="d-flex no-block align-items-center m-b-10 p-r-5 p-l-5 alert-redpos-secondary">
-                        <i class="mdi mdi-content-paste"></i> <strong id="titleModalPreviewReporte"></strong>
-                    </div>
+                    <h5 id="titleModalPreviewReporte"></h5>
                     <!--FRAME PARA EL PREVIEW DEL REPORTE-->
-                    <div class="row row-div-filtro" id="row_frame_report" style="display: none">
+                    <div class="row" id="row_frame_report" style="display: none">
                         <div class="col-12">
                             <!--div class="embed-responsive embed-responsive-1by1">
                             </div-->
@@ -175,7 +173,7 @@
                 <div class="progress" style="margin-bottom: 0px;height: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                        Verificando datos deportivos y aficiones. . .
+                        Verificando evaluación deportiva. . .
                     </div>
                 </div>
             </div>
@@ -247,7 +245,9 @@
     </div>
 </div>
 
-<div id="ventanaModalDatosFaltantesFamiliaresAtendido" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); margin-top: 3%" aria-hidden="true">
+<div id="ventanaModalDatosFaltantesFamiliaresAtendido" class="modal" tabindex="-1" role="dialog" 
+     data-backdrop="static" data-keyboard="false" 
+     style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); margin-top: 5%" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-color: #2962FF; border-width: 3px;border-radius: 7px;">
             <div class="modal-header">
@@ -259,7 +259,7 @@
                         <h5 class="text-danger mb-2">*Aún no has completado la lista de tus familiares. Recuerda registrar a todos 
                             los de primer orden: Papá, Mamá, hermanos</h5>
                         <h6 class="text-danger mb-2">
-                            Dale click al botón azúl y ve al apartado de Familiares y completa tu información
+                            *Dale click al botón azúl y ve al apartado Familiares y completa tu información.
                         </h6>
                     </div>
                     <div class="col-12 text-center mt-4 mb-2">

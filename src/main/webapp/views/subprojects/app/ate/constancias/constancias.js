@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (this.getAttribute('idarea') == "7") {
             //VERIFICAMOS LOS DATOS PERSONALES Y LISTA DE FAMILIARES
+            idarea_selected = this.getAttribute('idarea');
             $("#modalCargandoVDP").modal('show');
         } else {
             showAlertTopEnd('warning', 'No se pudo seleccionar correctamente la evaluación, algunos valores HTML han sido modificados.')
@@ -45,6 +46,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 showAlertTopEnd('warning', 'No se pudo seleccionar correctamente la evaluación, algunos valores HTML han sido modificados.')
             }
         };
+    });
+    
+    $("#modalCargandoVDYA").on('shown.bs.modal', function () {
+        processAjaxValidacionDeportesAficiones();
+    });
+    
+    $("#modalCargandoVDF").on('shown.bs.modal', function () {
+        processAjaxValidacionDatosFamiliares();
     });
 
     $("#modalCargandoVDP").on('shown.bs.modal', function () {
@@ -122,7 +131,7 @@ function processAjaxValidacionDatosPersonales() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (atendido) {
-        console.log(atendido);
+        //console.log(atendido);
         $('#modalCargandoVDP').modal("hide");
         if (atendido !== undefined) {
             let list_datos_faltantes = [];
@@ -162,7 +171,7 @@ function processAjaxValidacionDatosPersonales() {
                 $('#ventanaModalDatosFaltantesAtendido').modal('show');
             } else {
                 //VALIDAMOS LOS FAMILIARES
-                $('#modalCargandoVE').modal("show");
+                $('#modalCargandoVDF').modal("show");
             }
         } else {
             showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tus datos personales, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
@@ -200,5 +209,35 @@ function processAjaxValidacionDatosFamiliares() {
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoVDF').modal("hide");
         showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tus datos familiares, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+    });
+}
+
+function processAjaxValidacionDeportesAficiones() {
+    let json = "";
+    let url_request = getHostAPI() + "api/atendido/validate-evaluation-deport?idusuario=" + user_session.idusuario;
+    $.ajax({
+        url: url_request,
+        type: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        data: JSON.stringify(json),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (jsonResponse) {
+        $('#modalCargandoVDYA').modal("hide");
+        if (jsonResponse.messageServer !== undefined) {
+            if (jsonResponse.messageServer.toLowerCase() == "ok") {
+                //ABRIMOS EL REPORTE
+                
+            } else {
+                showAlertTopEnd('warning', jsonResponse.messageServer);
+            }
+        } else {
+            showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoVDYA').modal("hide");
+        showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
     });
 }
