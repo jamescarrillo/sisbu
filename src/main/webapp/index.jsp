@@ -63,7 +63,7 @@
                             <div class="dt-topbar__inner">
                                 <div class="d-flex align-items-center text-truncate mr-2">
                                     <i class="icon icon-megaphone icon-fw mr-3 icon-xl"></i>
-                                    <span class="text-truncate">Cronograma examenes médicos ingresantes 2019-II</span>
+                                    <span class="text-truncate">Bienvenidos Ingresantes 2019-II</span>
                                 </div>
 
                                 <ul class="dt-list dt-list-xl dt-list-bordered text-uppercase">
@@ -230,14 +230,14 @@
                                         <ul class="sub-menu">
                                             <!-- Nav Item -->
                                             <li class="nav-item">
-                                                <a href="page-blank.html?menu=search" class="nav-link"> <i
+                                                <a href="javascript:void(0)" class="nav-link"> <i
                                                         class="icon icon-question-circle icon-fw icon-xl"></i>
                                                     <span class="nav-text" style="text-transform: none">¿Que es?</span> </a>
                                             </li>
                                             <!-- /nav item -->
                                             <!-- Nav Item -->
                                             <li class="nav-item">
-                                                <a href="page-blank.html?menu=search" class="nav-link"> <i
+                                                <a href="javascript:void(0)" class="nav-link"> <i
                                                         class="icon icon-users icon-fw icon-xl"></i>
                                                     <span class="nav-text" style="text-transform: none">¿Quienes integran el equipo Sisbu?</span> </a>
                                             </li>
@@ -245,7 +245,7 @@
 
                                             <!-- Nav Item -->
                                             <li class="nav-item">
-                                                <a href="page-blank.html?menu=realtors-news" class="nav-link">
+                                                <a href="javascript:void(0)" class="nav-link">
                                                     <i class="icon icon-news icon-fw icon-xl"></i> <span class="nav-text" style="text-transform: none">¿Como ser parte?</span> </a>
                                             </li>
                                             <!-- /nav item -->
@@ -331,9 +331,17 @@
 
                                 <!-- Menu Item -->
                                 <li class="dt-side-nav__item">
-                                    <a href="<%=request.getContextPath()%>/index" class="dt-side-nav__link" title="Dashboard"> <i
+                                    <a href="<%=request.getContextPath()%>/index" class="dt-side-nav__link" title="Inicio"> <i
                                             class="icon icon-home icon-fw icon-lg"></i>
                                         <span class="dt-side-nav__text">Inicio</span> </a>
+                                </li>
+                                <!-- /menu item -->
+
+                                <!-- Menu Item -->
+                                <li class="dt-side-nav__item">
+                                    <a href="<%=request.getContextPath()%>/auth/login" class="dt-side-nav__link" title="Ingresar"> <i
+                                            class="icon icon-double-arrow-right icon-fw icon-lg"></i>
+                                        <span class="dt-side-nav__text">Iniciar Sesión</span> </a>
                                 </li>
                                 <!-- /menu item -->
 
@@ -377,7 +385,7 @@
                                     </ul>
                                     <!-- /sub-menu -->
                                 </li>
-                                
+
                                 <li class="dt-side-nav__item">
                                     <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Servicio Psicopedagógico">
                                         <i class="icon icon-heart-o icon-fw icon-lg"></i> <span class="dt-side-nav__text" style="text-transform: none">Servicio Psicopedagógico</span> </a>
@@ -391,7 +399,7 @@
                                     </ul>
                                     <!-- /sub-menu -->
                                 </li>
-                                
+
                                 <li class="dt-side-nav__item">
                                     <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Servicio Psicopedagógico">
                                         <i class="icon icon-users icon-fw icon-lg"></i> <span class="dt-side-nav__text" style="text-transform: none">Servicio Social</span> </a>
@@ -410,7 +418,7 @@
                                     </ul>
                                     <!-- /sub-menu -->
                                 </li>
-                                
+
                                 <li class="dt-side-nav__item">
                                     <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Educación, recreación y deporte">
                                         <i class="icon icon-ripple icon-fw icon-lg"></i> <span class="dt-side-nav__text" style="text-transform: none">Educación, recreación<br> y deporte</span> </a>
@@ -464,7 +472,7 @@
                         <div class="dt-content-wrapper">
 
                             <!-- Site Content -->
-                            <div class="dt-content">
+                            <div class="dt-content" style="padding-top: 20px">
 
                                 <!--INCLUDE HTML-->
                                 <div class="container-dinamic-sisbu-index">

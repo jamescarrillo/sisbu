@@ -34,7 +34,7 @@ class Atendido {
 class Usuario {
     constructor() {
         this.idusuario = 0;
-        
+
     }
 }
 
@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestUploadAlumno.entity_api = "api/upload";
     beanRequestUploadAlumno.operation = "paginate";
     beanRequestUploadAlumno.type_request = "GET";
+
     $('#FrmUploadAlumno').submit(function (event) {
         beanRequestUploadAlumno.operation = "paginate";
         beanRequestUploadAlumno.type_request = "GET";
@@ -129,7 +130,7 @@ function processAjaxUploadAlumno() {
                     "fecha": getTimesTampJavaScriptCurrent(),
                     "ciclo_academico": ciclo_academicoSelected,
                     "usuario": {
-                        "idusuario" : Cookies.getJSON('sisbu_user').idusuario
+                        "idusuario": Cookies.getJSON('sisbu_user').idusuario
                     }
                 },
                 "list_atendidos": list_atendidos
@@ -156,7 +157,10 @@ function processAjaxUploadAlumno() {
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
-                $('#FrmUploadAlumno').submit();
+                document.querySelector("#btnCancelarCargaUsuarios").dispatchEvent(new Event('click'));
+                setTimeout(() => {
+                    $('#FrmUploadAlumno').submit();
+                }, 2000);
             } else {
                 showAlertTopEnd('warning', beanCrudResponse.messageServer);
             }
@@ -332,8 +336,16 @@ function BindTable(jsondata, tableid) {
         atendido.apellido_mat = element.ApellidoMaterno;
         atendido.nombre = element.Nombres;
         atendido.sexo = (element.Sexo == "M" ? 1 : 2);
-        atendido.direccion_actual = element.Direccion;
-        atendido.celular = element.Telefono;
+        if (element.Direccion == undefined) {
+            atendido.direccion_actual = "";
+        } else {
+            atendido.direccion_actual = element.Direccion;
+        }
+        if (element.Telefono == undefined) {
+            atendido.celular = "";
+        } else {
+            atendido.celular = element.Telefono;
+        }
         list_atendidos.push(atendido);
     });
     tbody = tbody + "</tbody>";

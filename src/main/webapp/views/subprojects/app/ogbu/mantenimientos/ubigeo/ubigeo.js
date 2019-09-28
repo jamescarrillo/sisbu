@@ -210,7 +210,7 @@ function processAjaxDistrito() {
         url: getHostAPI() + beanRequestDistrito.entity_api + "/" + beanRequestDistrito.operation + parameters_pagination,
         type: beanRequestDistrito.type_request,
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
@@ -386,7 +386,7 @@ function processAjaxProvincia(ubicacion) {
         url: getHostAPI() + beanRequestProvincia.entity_api + "/" + beanRequestProvincia.operation + parameters_pagination,
         type: beanRequestProvincia.type_request,
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
@@ -588,7 +588,7 @@ function processAjaxDepartamento(ubicacion) {
         url: getHostAPI() + beanRequestDepartamento.entity_api + "/" + beanRequestDepartamento.operation + parameters_pagination,
         type: beanRequestDepartamento.type_request,
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',

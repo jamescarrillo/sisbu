@@ -80,7 +80,7 @@
                         <div class="form-group col-6">
                             <label for="txtFechaInicioCicloAcademico">FECHA INICIO</label>
                             <div class="input-group date" id="date-time-picker-1" data-target-input="nearest">
-                                <input id="txtFechaInicioCicloAcademico" type="text" class="form-control form-control-sm datetimepicker-input" data-target="#date-time-picker-1">
+                                <input id="txtFechaInicioCicloAcademico" placeholder="DD/MM/AAAA" type="text" class="form-control form-control-sm datetimepicker-input" data-target="#date-time-picker-1">
                                 <div class="input-group-append" data-target="#date-time-picker-1" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="icon icon-calendar"></i></div>
                                 </div>
@@ -89,7 +89,7 @@
                          <div class="form-group col-6">
                             <label for="txtFechaFinCicloAcademico">FECHA FIN</label>
                             <div class="input-group date" id="date-time-picker-1" data-target-input="nearest">
-                                <input id="txtFechaFinCicloAcademico" type="text" class="form-control form-control-sm datetimepicker-input" data-target="#date-time-picker-1">
+                                <input id="txtFechaFinCicloAcademico" placeholder="DD/MM/AAAA" type="text" class="form-control form-control-sm datetimepicker-input" data-target="#date-time-picker-1">
                                 <div class="input-group-append" data-target="#date-time-picker-1" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="icon icon-calendar"></i></div>
                                 </div>

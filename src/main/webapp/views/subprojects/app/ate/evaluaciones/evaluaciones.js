@@ -101,12 +101,15 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-obstetricia").style.display = "none";
             break;
         case "deportiva":
-            document.querySelector("#row-options-evaluaciones").style.display = "none";
-
-            document.querySelector("#row-option-socioeconomico").style.display = "none";
-            document.querySelector("#row-option-deportiva").style.display = "flex";
-            document.querySelector("#row-option-psicologica").style.display = "none";
-            document.querySelector("#row-option-obstetricia").style.display = "none";
+            /*
+             document.querySelector("#row-options-evaluaciones").style.display = "none";
+             
+             document.querySelector("#row-option-socioeconomico").style.display = "none";
+             document.querySelector("#row-option-deportiva").style.display = "flex";
+             document.querySelector("#row-option-psicologica").style.display = "none";
+             document.querySelector("#row-option-obstetricia").style.display = "none";
+             */
+            showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación. Ingresa a partir del 02/10/2019', 10000)
             break;
         case "psicologica":
             document.querySelector("#row-options-evaluaciones").style.display = "none";

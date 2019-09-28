@@ -148,7 +148,7 @@ function processAjaxPaciente() {
         type: beanRequestPaciente.type_request,
         data: JSON.stringify(json),
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
@@ -367,7 +367,7 @@ function processAjaxHistoria(idpaciente) {
         data: JSON.stringify(json),
 
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
@@ -442,7 +442,7 @@ function processAjaxTriaje(idhistoria) {
         type: beanRequestTriaje.type_request,
         data: JSON.stringify(json),
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'

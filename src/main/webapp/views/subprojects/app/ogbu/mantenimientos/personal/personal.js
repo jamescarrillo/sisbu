@@ -79,7 +79,7 @@ function processAjaxPersonal() {
         url: getHostAPI() + beanRequestPersonal.entity_api + "/" + beanRequestPersonal.operation + parameters_pagination,
         type: beanRequestPersonal.type_request,
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
