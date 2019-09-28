@@ -38,8 +38,8 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtTipoDocumentoPaciente">TIPO DE DOCUMENTO</label>
-                                    <select  class="form-control form-control-sm" id="txtTipoDocumentoPaciente">
-                                        <option   value="1">DNI</option>
+                                    <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtTipoDocumentoPaciente" disabled="">
+                                        <option  value="1">DNI</option>
                                         <option  value="2">CARNET DE EXTRANJERIA</option>
                                         <option  value="3">OTRO</option>
                                     </select>
@@ -48,7 +48,8 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtModalidadPaciente">MODALIDAD DE INGRESO</label>
-                                    <select  class="form-control form-control-sm" id="txtModalidadPaciente">
+                                    <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtModalidadPaciente">
+                                        <option   value="100">Seleccione. . .</option>
                                         <option   value="1">EXAMEN ORDINARIO</option>
                                         <option  value="2">DEPORTISTA CALIFICADO</option>
                                         <option  value="3">PRIMEROS PUESTOS</option>
@@ -56,23 +57,25 @@
                                         <option  value="5">CAMBIO DE UNIVERSIDAD</option>
                                         <option  value="6">GRADUADOS O TITULADOS</option>
                                         <option  value="7">5TO DE SECUNDARIA</option>
+                                        <option  value="8">OTRO</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtTipoColegioPaciente">TIPO DE COLEGIO</label>
-                                    <select  class="form-control form-control-sm" id="txtTipoColegioPaciente">
+                                    <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtTipoColegioPaciente">
+                                        <option   value="-1">Seleccione. . .</option>
                                         <option   value="1">NACIONAL</option>
                                         <option  value="2">PARTICULAR</option>
-                                        <option  value="3">NINGUNO</option>
+                                        <option  value="3">OTRO</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtEstadoPaciente">ESTADO CIVIL</label>
-                                    <select  class="form-control form-control-sm" id="txtEstadoPaciente">
+                                    <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtEstadoPaciente">
                                         <option  value="-1">Seleccionar...</option>
                                         <option  value="1">SOLTERO(A)</option>
                                         <option  value="2">CASADO(A)</option>
@@ -85,79 +88,65 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtCodigoPaciente">CÓDIGO</label>
-                                    <input  type="text" class="form-control form-control-sm" id="txtCodigoPaciente" placeholder="CODIGO">
+                                    <input  type="text" class="form-control form-control-sm" id="txtCodigoPaciente" placeholder="Ingrese Código. . ." maxlength="7">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtNumeroDocumentoPaciente">N° DOCUMENTO</label>
-                                    <input  type="text" class="form-control form-control-sm" id="txtNumeroDocumentoPaciente" placeholder="N° DOCUMENTO">
+                                    <input  type="text" class="form-control form-control-sm" id="txtNumeroDocumentoPaciente" placeholder="Ingrese n° documento. . ." maxlength="8">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtApPaternoPaciente">AP. PATERNO</label>
-                                    <input  type="text" class="form-control form-control-sm" id="txtApPaternoPaciente" placeholder="AP. PATERNO">
+                                    <input  type="text" class="form-control form-control-sm" id="txtApPaternoPaciente" placeholder="AP. PATERNO" maxlength="45">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtApMaternoPaciente">AP. MATERNO</label>
-                                    <input  type="text" class="form-control form-control-sm" id="txtApMaternoPaciente" placeholder="AP. MATERNO">
+                                    <input  type="text" class="form-control form-control-sm" id="txtApMaternoPaciente" placeholder="AP. MATERNO" maxlength="45">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtNombrePaciente">NOMBRES</label>
-                                    <input  type="text" class="form-control form-control-sm" id="txtNombrePaciente" placeholder="NOMBRES">
+                                    <input  type="text" class="form-control form-control-sm" id="txtNombrePaciente" placeholder="NOMBRES" maxlength="45">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtSexoPaciente">SEXO</label>
                                     <select  class="form-control form-control-sm" id="txtSexoPaciente">
+                                        <option value="-1">Seleccione. . .</option>
                                         <option value="1">MASCULINO</option>
                                         <option  value="2">FEMENINO</option>
+                                        <option  value="3">OTRO</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtFechaNacPaciente">FECHA DE NACIMIENTO</label>
-                                    <input  type="date" class="form-control form-control-sm" id="txtFechaNacPaciente" placeholder="Enter email">
+                                    <input  type="text" class="form-control form-control-sm" id="txtFechaNacPaciente" placeholder="DD/MM/AAAA">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtCelularPaciente">CELULAR</label>
-                                    <input  type="text" class="form-control form-control-sm" id="txtCelularPaciente" placeholder="CELULAR">
+                                    <input  type="number" class="form-control form-control-sm" id="txtCelularPaciente" placeholder="Ingrese celular. . ." maxlength="9">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12">
                                 <div class="form-group">
                                     <label for="txtEmailPaciente">EMAIL</label>
-                                    <input  type="email" class="form-control form-control-sm" id="txtEmailPaciente" placeholder="EMAIL">
+                                    <input  type="email" class="form-control form-control-sm" id="txtEmailPaciente" placeholder="EMAIL" maxlength="100">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-sm-12">
-                                <div class="form-group">
-                                    <label for="txtDireccionActualPaciente">DIRECCION ACTUAL
-                                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección donde vives actualmente. Si vives en un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS PINOS - SAN MARTÍN" style="cursor: pointer" data-original-title=""></i>
-                                    </label>
-                                    <input  type="text" class="form-control" id="txtDireccionActualPaciente" placeholder="DIRECCION ACTUAL">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-12">
-                                <div class="form-group">
-                                    <label for="txtDireccionProcePaciente">DIRECCION PROCEDENCIA
-                                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección de donde vienes. Si vienes de un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS ROSALES - SAN JUAN" style="cursor: pointer" data-original-title=""></i>
-                                    </label>
-                                    <input  type="text" class="form-control" id="txtDireccionProcePaciente" placeholder="DIRECCION PROCEDENCIA">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-12 " >
+                            <div class="col-lg-8 col-sm-12 mb-3" >
                                 <label for="txtEscuelaPaciente">ESCUELA
-                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Carrera profesional a la que ingresaste" style="cursor: pointer" data-original-title=""></i>
+                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Carrera profesional a la que ingresaste" style="cursor: pointer" data-original-title=""></i>
                                 </label>
                                 <div class="search-box " style="max-width: 100%;">
                                     <div class="input-group">
@@ -168,7 +157,24 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-sm-12 " >
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="txtDireccionActualPaciente">DIRECCION ACTUAL
+                                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección donde vives actualmente. Si vives en un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS PINOS - SAN MARTÍN" style="cursor: pointer" data-original-title=""></i>
+                                    </label>
+                                    <input  type="text" class="form-control" id="txtDireccionActualPaciente" placeholder="Ingrese dirección actual. . ." maxlength="80">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="txtDireccionProcePaciente">DIRECCION PROCEDENCIA
+                                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección de donde vienes. Si vienes de un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS ROSALES - SAN JUAN" style="cursor: pointer" data-original-title=""></i>
+                                    </label>
+                                    <input  type="text" class="form-control" id="txtDireccionProcePaciente" placeholder="Ingrese dirección de procedencia" maxlength="80">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-12 mb-3" >
                                 <label for="txtDistritoActualPaciente">DISTRITO ACTUAL
                                     <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Distrito donde vives actualmente. Busca tu distrito, de no encontrarlo selecciona el más cercano" style="cursor: pointer" data-original-title=""></i>
                                 </label>
@@ -181,9 +187,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-sm-12 " >
+                            <div class="col-lg-6 col-sm-12 mb-3" >
                                 <label for="txtDistritoProcedenciaPaciente">DISTRITO PROCEDENCIA
-                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Distrito de donde vienes. Busca tu distrito, de no encontrarlo selecciona el más cercano" style="cursor: pointer" data-original-title=""></i>
+                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Distrito de donde vienes. Busca tu distrito, de no encontrarlo selecciona el más cercano" style="cursor: pointer" data-original-title=""></i>
                                 </label>
                                 <div class="search-box " style="max-width: 100%;">
                                     <div class="input-group">
@@ -194,8 +200,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 text-left">
-                                <button type="submit" class="btn btn-outline-primary btn-sm" id="btnGuardarPersonales">Guardar</button>
+                            <div class="col-lg-12 text-left mt-3">
+                                <button type="submit" class="btn btn-outline-primary btn-sm" id="btnGuardarPersonales">ACTUALIZAR DATOS</button>
                             </div> 
 
                         </div>
@@ -268,15 +274,15 @@
                         <div class="col-lg-6 col-sm-6">
                             <div class="form-group ">
                                 <label for="txtNombreFamiliar">NOMBRE COMPLETO</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtNombreFamiliar" placeholder="PA">
+                                <input  type="text" class="form-control form-control-sm" id="txtNombreFamiliar" placeholder="Ingrese nombre completo. . ." maxlength="100">
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-sm-6">
                             <div class="form-group ">
                                 <label for="txtParentescoFamiliar">PARENTESCO</label>
-                                <select class="form-control form-control-sm " id="txtParentescoFamiliar">
-                                    <option value="-1">seleccione tipo...</option>
+                                <select class="form-control form-control-sm sisbu-cursor-mano" id="txtParentescoFamiliar">
+                                    <option value="-1">Seleccione. . .</option>
                                     <option value="1">PAPÁ</option>
                                     <option value="2">MAMÁ</option>
                                     <option value="3">HERMANO(A)</option>
@@ -289,14 +295,14 @@
                         <div class="col-lg-6 col-sm-6">
                             <div class="form-group ">
                                 <label for="txtFechaNaciFamiliar">FECHA NACIMIENTO</label>
-                                <input  type="date" class="form-control form-control-sm" id="txtFechaNaciFamiliar" placeholder="PA">
+                                <input  type="text" class="form-control form-control-sm" id="txtFechaNaciFamiliar" placeholder="DD/MM/AAAA">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-6">
                             <div class="form-group ">
                                 <label for="txtEstadoFamiliar">ESTADO CIVIL</label>
-                                <select class="form-control form-control-sm " id="txtEstadoFamiliar">
-                                    <option value="-1">seleccione...</option>
+                                <select class="form-control form-control-sm sisbu-cursor-mano" id="txtEstadoFamiliar">
+                                    <option value="-1">seleccione. . .</option>
                                     <option value="1">SOLTERO</option>
                                     <option value="2">CASADO</option>
                                     <option value="3">DIVORCIADO</option>
@@ -306,8 +312,8 @@
                         <div class="col-lg-6 col-sm-6">
                             <div class="form-group ">
                                 <label for="txtNivelInstFamiliar">NIVEL INSTRUCCIÓN</label>
-                                <select class="form-control form-control-sm " id="txtNivelInstFamiliar">
-                                    <option value="-1">seleccione...</option>
+                                <select class="form-control form-control-sm sisbu-cursor-mano" id="txtNivelInstFamiliar">
+                                    <option value="-1">seleccione. . .</option>
                                     <option value="1">SIN ESTUDIOS</option>
                                     <option value="2">PRIMARIA</option>
                                     <option value="3">SECUNDARIA</option>
@@ -325,7 +331,7 @@
                         </div>
 
 
-                        <div class="col-lg-6 col-sm-12 " >
+                        <div class="col-lg-6 col-sm-12 mb-2" >
                             <label for="txtOcupacionPaciente">OCUPACIÓN</label>
                             <div class="search-box " style="max-width: 100%;">
                                 <div class="input-group">
@@ -337,7 +343,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-sm-12 " >
+                        <div class="col-lg-6 col-sm-12 mb-2" >
                             <label for="txtDistritoPaciente">DISTRITO</label>
                             <div class="search-box " style="max-width: 100%;">
                                 <div class="input-group">

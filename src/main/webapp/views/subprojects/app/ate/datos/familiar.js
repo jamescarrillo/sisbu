@@ -11,6 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestFamiliar.operation = "paginate";
     beanRequestFamiliar.type_request = "GET";
 
+    $('#txtFechaNaciFamiliar').bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false,
+        format: 'DD/MM/YYYY',
+        lang: 'es'
+    }).on('change', function (e, date) {
+    });
+
     $('#FrmFamiliar').submit(function (event) {
         beanRequestFamiliar.operation = "paginate";
         beanRequestFamiliar.type_request = "GET";
@@ -22,14 +30,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $('#FrmFamiliarPaciente').submit(function (event) {
         if (validateFormFamiliar()) {
-        $('#modalCargandoFamiliar').modal('show');
+            $('#modalCargandoFamiliar').modal('show');
         }
         event.preventDefault();
         event.stopPropagation();
     });
+
     $("#modalCargandoFamiliar").on('shown.bs.modal', function () {
         processAjaxFamiliar();
     });
+
     document.querySelector("#btnOpenNewFamiliar").onclick = function () {
         //CONFIGURAMOS LA SOLICITUD
         beanRequestFamiliar.operation = "add";
@@ -68,8 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     document.querySelector("#txtFilterDistrito").onclick = function () {
-        processAjaxDistrito("", 1);
-        listFilterDistrito("#txtFilterDistrito", 1);
+        setTimeout(() => {
+            processAjaxDistrito("", 1);
+            listFilterDistrito("#txtFilterDistrito", 1);
+        }, 500);
     };
 
 });
@@ -77,13 +89,14 @@ document.addEventListener("DOMContentLoaded", function () {
 function listFilterOcupacion(filterdni) {
     $(filterdni).change(function () {
     }).keyup(function (e) {
-        var txt = String.fromCharCode(e.which);
-        if (txt.match(/[A-Za-z0-9]/))
-        {
-            var filter = $(this).val();
-            processAjaxOcupacion(filter);
-        }
-
+        setTimeout(() => {
+            var txt = String.fromCharCode(e.which);
+            if (txt.match(/[A-Za-z0-9]/))
+            {
+                var filter = $(this).val();
+                processAjaxOcupacion(filter);
+            }
+        }, 1500);
     });
 
 }
@@ -91,13 +104,14 @@ function listFilterOcupacion(filterdni) {
 function listFilterDistrito(filterdni, ubica) {
     $(filterdni).change(function () {
     }).keyup(function (e) {
-        var txt = String.fromCharCode(e.which);
-        if (txt.match(/[A-Za-z0-9]/))
-        {
-            var filter = $(this).val();
-            processAjaxDistrito(filter, ubica);
-        }
-
+        setTimeout(() => {
+            var txt = String.fromCharCode(e.which);
+            if (txt.match(/[A-Za-z0-9]/))
+            {
+                var filter = $(this).val();
+                processAjaxDistrito(filter, ubica);
+            }
+        }, 2000);
     });
 
 }
@@ -195,7 +209,7 @@ function toListFamiliar(beanPagination) {
         $('[data-toggle="tooltip"]').tooltip();
     } else {
 
-        showAlertTopEnd('warning', 'No se encontraron resultados');
+        showAlertTopEnd('warning', 'No se encontraron familiares');
         // document.querySelector("#txtFilterFamiliar").focus();
     }
 }
@@ -246,38 +260,31 @@ function validateFormFamiliar() {
         showAlertTopEnd('warning', 'Por favor ingrese nombre');
         document.querySelector("#txtNombreFamiliar").focus();
         return false;
-    }
-    else if (document.querySelector("#txtParentescoFamiliar").value == "-1") {
+    } else if (document.querySelector("#txtParentescoFamiliar").value == "-1") {
         showAlertTopEnd('warning', 'Por favor ingrese parentesco');
         document.querySelector("#txtParentescoFamiliar").focus();
         return false;
-    }
-    else if (document.querySelector("#txtFechaNaciFamiliar").value == "") {
+    } else if (document.querySelector("#txtFechaNaciFamiliar").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese fecha de nacimiento');
         document.querySelector("#txtFechaNaciFamiliar").focus();
         return false;
-    }
-    else if (document.querySelector("#txtEstadoFamiliar").value == "-1") {
+    } else if (document.querySelector("#txtEstadoFamiliar").value == "-1") {
         showAlertTopEnd('warning', 'Por favor ingrese Estado civil');
         document.querySelector("#txtEstadoFamiliar").focus();
         return false;
-    }
-    else if (document.querySelector("#txtNivelInstFamiliar").value == "-1") {
+    } else if (document.querySelector("#txtNivelInstFamiliar").value == "-1") {
         showAlertTopEnd('warning', 'Por favor ingrese Nivel de instrucción');
         document.querySelector("#txtNivelInstFamiliar").focus();
         return false;
-    }
-    else if (document.querySelector("#txtIngresosFamiliar").value == "") {
+    } else if (document.querySelector("#txtIngresosFamiliar").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese Ingreso');
         document.querySelector("#txtIngresosFamiliar").focus();
         return false;
-    }
-    else if (ocupacionSelected.length==0 ) {
+    } else if (ocupacionSelected.length == 0) {
         showAlertTopEnd('warning', 'Por favor ingrese ocupacion');
         document.querySelector("#txtFilterOcupacion").focus();
         return false;
-    }
-    else if (distritoSelected.length==0 ) {
+    } else if (distritoSelected.length == 0) {
         showAlertTopEnd('warning', 'Por favor ingrese distrito');
         document.querySelector("#txtFilterDistrito").focus();
         return false;
@@ -310,7 +317,7 @@ function limpiarInputFamiliar() {
 
     document.querySelector("#txtFilterOcupacion").value = "";
     document.querySelector("#txtFilterDistrito").value = "";
-  
+
 }
 
 function estadoCivil(estadocivil) {
