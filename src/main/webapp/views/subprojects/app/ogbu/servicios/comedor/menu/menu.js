@@ -197,7 +197,7 @@ function processAjaxMenuSemanal() {
         url: getHostAPI() + beanRequestMenuSemanal.entity_api + "/" + beanRequestMenuSemanal.operation + parameters_pagination,
         type: beanRequestMenuSemanal.type_request,
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
@@ -1013,7 +1013,7 @@ function processAjaxComida(filterTipo, filternombre) {
                 "&nombre=" + filternombre.toUpperCase() + "&page=1&size=20",
         type: "GET",
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'

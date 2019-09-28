@@ -79,7 +79,7 @@ function processAjaxMenuSemanal() {
         url: getHostAPI() + beanRequestMenuSemanal.entity_api + "/" + beanRequestMenuSemanal.operation + parameters_pagination,
         type: beanRequestMenuSemanal.type_request,
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',

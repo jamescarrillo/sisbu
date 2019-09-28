@@ -11,6 +11,6 @@
 
 <div class="row">
     <div class="col-12">
-        <h5>Hola estamos trabajando. . . </h5>
+        <!--h5>Hola estamos trabajando. . . </h5-->
     </div>
 </div>
