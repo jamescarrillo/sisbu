@@ -144,7 +144,7 @@ function processAjaxFamiliar() {
         url: getHostAPI() + beanRequestFamiliar.entity_api + "/" + beanRequestFamiliar.operation + parameters_pagination,
         type: beanRequestFamiliar.type_request,
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
@@ -417,7 +417,7 @@ function processAjaxDistrito(nombredistrito, ubica) {
         url: getHostAPI() + "api/distritos/paginate?nombre=" + nombredistrito + "&page=1&size=100",
         type: "GET",
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'

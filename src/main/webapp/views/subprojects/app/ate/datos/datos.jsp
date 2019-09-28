@@ -141,18 +141,24 @@
                             </div>
                             <div class="col-lg-4 col-sm-12">
                                 <div class="form-group">
-                                    <label for="txtDireccionActualPaciente">DIRECCION ACTUAL</label>
+                                    <label for="txtDireccionActualPaciente">DIRECCION ACTUAL
+                                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección donde vives actualmente. Si vives en un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS PINOS - SAN MARTÍN" style="cursor: pointer" data-original-title=""></i>
+                                    </label>
                                     <input  type="text" class="form-control" id="txtDireccionActualPaciente" placeholder="DIRECCION ACTUAL">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12">
                                 <div class="form-group">
-                                    <label for="txtDireccionProcePaciente">DIRECCION PROCEDENCIA</label>
+                                    <label for="txtDireccionProcePaciente">DIRECCION PROCEDENCIA
+                                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección de donde vienes. Si vienes de un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS ROSALES - SAN JUAN" style="cursor: pointer" data-original-title=""></i>
+                                    </label>
                                     <input  type="text" class="form-control" id="txtDireccionProcePaciente" placeholder="DIRECCION PROCEDENCIA">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-12 " >
-                                <label for="txtEscuelaPaciente">ESCUELA</label>
+                                <label for="txtEscuelaPaciente">ESCUELA
+                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Carrera profesional a la que ingresaste" style="cursor: pointer" data-original-title=""></i>
+                                </label>
                                 <div class="search-box " style="max-width: 100%;">
                                     <div class="input-group">
                                         <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterEscuela"  type="search">
@@ -163,27 +169,31 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-12 " >
-                            <label for="txtDistritoActualPaciente">DISTRITO ACTUAL</label>
-                            <div class="search-box " style="max-width: 100%;">
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterDistritoActual"  type="search">
-                                    <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                </div>
-                                <div id="resultadoDistritoActual" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                                <label for="txtDistritoActualPaciente">DISTRITO ACTUAL
+                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Distrito donde vives actualmente. Busca tu distrito, de no encontrarlo selecciona el más cercano" style="cursor: pointer" data-original-title=""></i>
+                                </label>
+                                <div class="search-box " style="max-width: 100%;">
+                                    <div class="input-group">
+                                        <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterDistritoActual"  type="search">
+                                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                                    </div>
+                                    <div id="resultadoDistritoActual" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                             <div class="col-lg-6 col-sm-12 " >
-                            <label for="txtDistritoProcedenciaPaciente">DISTRITO PROCEDENCIA</label>
-                            <div class="search-box " style="max-width: 100%;">
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterDistritoProcedencia"  type="search">
-                                    <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                </div>
-                                <div id="resultadoDistritoProcedencia" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                                <label for="txtDistritoProcedenciaPaciente">DISTRITO PROCEDENCIA
+                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Distrito de donde vienes. Busca tu distrito, de no encontrarlo selecciona el más cercano" style="cursor: pointer" data-original-title=""></i>
+                                </label>
+                                <div class="search-box " style="max-width: 100%;">
+                                    <div class="input-group">
+                                        <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterDistritoProcedencia"  type="search">
+                                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                                    </div>
+                                    <div id="resultadoDistritoProcedencia" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                             <div class="col-lg-12 text-left">
                                 <button type="submit" class="btn btn-outline-primary btn-sm" id="btnGuardarPersonales">Guardar</button>
                             </div> 

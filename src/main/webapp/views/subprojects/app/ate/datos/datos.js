@@ -124,7 +124,7 @@ function processAjaxAtendido() {
         url: getHostAPI() + beanRequestAtendido.entity_api + "/" + beanRequestAtendido.operation + parameters_pagination,
         type: beanRequestAtendido.type_request,
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
@@ -367,7 +367,7 @@ function processAjaxEscuela(nombreOcupacion) {
         url: getHostAPI() + "api/escuelas/paginate?nombre=" + nombreOcupacion + "&page=1&size=100",
         type: "GET",
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
