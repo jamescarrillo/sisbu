@@ -167,22 +167,6 @@
     </div>
 </div>
 
-<div class="modal" id="modalCargandoVDP" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="progress" style="margin-bottom: 0px;height: 15px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                        Verificando datos personales. . .
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="modal" id="modalCargandoVDYA" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog modal-sm">
@@ -199,3 +183,97 @@
     </div>
 </div>
 
+<div class="modal" id="modalCargandoVDP" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Verificando datos personales. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoVDF" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Verificando datos familiares. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ventanaModalDatosFaltantesAtendido" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); margin-top: 3%" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #2962FF; border-width: 3px;border-radius: 7px;">
+            <div class="modal-header">
+                <h3 class="modal-title mb-0"><i class="icon icon-assignment mb-1"></i> Validación de Datos Personales</h3>
+            </div>
+            <div class="modal-body pb-2">
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="text-danger mb-2">*Los siguientes datos aún no han sido ingresados. Dale click en el botón azul de abajo para completar tu información.</h5>
+                    </div>
+                    <div class="col-12">
+                        <ul class="list-group list-group-flush" id="datos-faltantes-atendido">
+                            <!--li class="list-group-item">Datos</li-->
+                        </ul>
+                    </div>
+                    <div class="col-12 text-center mt-4 mb-2">
+                        <a href="<%=request.getContextPath()%>/app/ate/datos" class="btn btn-primary btn-sm">
+                            <i class="icon icon-arrow-right"></i> ir a mis Mis Datos
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer pt-2 pb-2">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal">
+                    <i class="fas fa-times"></i>
+                    CERRAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ventanaModalDatosFaltantesFamiliaresAtendido" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); margin-top: 3%" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #2962FF; border-width: 3px;border-radius: 7px;">
+            <div class="modal-header">
+                <h3 class="modal-title mb-0"><i class="icon icon-assignment mb-1"></i> Validación de Datos Familiares</h3>
+            </div>
+            <div class="modal-body pb-2">
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="text-danger mb-2">*Aún no has completado la lista de tus familiares. Recuerda registrar a todos 
+                            los de primer orden: Papá, Mamá, hermanos</h5>
+                        <h6 class="text-danger mb-2">
+                            Dale click al botón azúl y ve al apartado de Familiares y completa tu información
+                        </h6>
+                    </div>
+                    <div class="col-12 text-center mt-4 mb-2">
+                        <a href="<%=request.getContextPath()%>/app/ate/datos" class="btn btn-primary btn-sm">
+                            <i class="icon icon-arrow-right"></i> ir a mis Mis Datos
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer pt-2 pb-2">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal">
+                    <i class="fas fa-times"></i>
+                    CERRAR</button>
+            </div>
+        </div>
+    </div>
+</div>
