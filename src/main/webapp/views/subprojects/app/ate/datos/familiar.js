@@ -419,7 +419,7 @@ function processAjaxOcupacion(nombreOcupacion) {
         url: getHostAPI() + "api/ocupaciones/paginate?nombre=" + nombreOcupacion + "&page=1&size=100",
         type: "GET",
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
@@ -447,6 +447,19 @@ function processAjaxOcupacion(nombreOcupacion) {
 
 
 function addEvents() {
+     document.querySelectorAll('.agregar-escuela').forEach(btn => {
+        //AGREGANDO EVENTO CLICK
+        btn.onclick = function () {
+            escuelaSelected = findByEscuela(btn.getAttribute('idescuela'));
+            if (escuelaSelected != undefined) {
+                document.querySelector("#resultadoEscuela").style.height = 0;
+                document.querySelector("#txtFilterEscuela").value = escuelaSelected.nombre;
+
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Familiar para poder editar');
+            }
+        };
+    }); 
     document.querySelectorAll('.agregar-distrito').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {

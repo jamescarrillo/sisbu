@@ -375,7 +375,6 @@ function toListEscuela(beanPagination) {
 }
 
 function addEventsEscuela() {
-
     document.querySelectorAll('.editar-escuela').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
