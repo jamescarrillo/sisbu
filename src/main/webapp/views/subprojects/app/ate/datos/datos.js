@@ -21,10 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
     });
 
-    $('#FrmAtendidoModal').submit(function (event) {
-        if (validateFormAtendido()) {
-            $('#modalCargandoAtendido').modal('show');
-        }
+    $('#FrmPersonalPaciente').submit(function (event) {
+        beanRequestAtendido.operation = "update";
+        beanRequestAtendido.type_request = "PUT";
+        // if (validateFormAtendido()) {
+        $('#modalCargandoDatos').modal('show');
+        //}
         event.preventDefault();
         event.stopPropagation();
     });
@@ -41,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $("#modalCargandoDatos").on('hide.bs.modal', function () {
-        beanRequestAtendido.operation = "usuario";
-        beanRequestAtendido.type_request = "GET";
+        beanRequestAtendido.operation = "update";
+        beanRequestAtendido.type_request = "PUT";
     });
     listFilterEscuela("#txtFilterEscuela");
     $("#sizePageAtendido").change(function () {
@@ -50,9 +52,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $('#modalCargandoDatos').modal('show');
+    document.querySelector("#txtFilterEscuela").onclick = function () {
+        processAjaxEscuela("");
+    };
+    document.querySelector("#txtFilterDistritoActual").onclick = function () {
+        processAjaxDistrito("", 2);
+ listFilterDistrito("#txtFilterDistritoActual", 2);
+    };
+   
+    document.querySelector("#txtFilterDistritoProcedencia").onclick = function () {
+        processAjaxDistrito("", 3);
+ listFilterDistrito("#txtFilterDistritoProcedencia", 3);
+    };
+   
 
-    listFilterDistrito("#txtFilterDistritoActual", 2);
-    listFilterDistrito("#txtFilterDistritoProcedencia", 3);
 });
 
 function listFilterEscuela(filterdni) {
@@ -82,13 +95,15 @@ function processAjaxAtendido() {
             json = {};
         } else {
             json = {
-                "nombre": document.querySelector("#txtNombreAtendido").value,
+                "nombre": document.querySelector("#txtNombrePaciente").value,
                 "apellido_mat": document.querySelector("#txtApMaternoPaciente").value,
                 "apellido_pat": document.querySelector("#txtApPaternoPaciente").value,
                 "celular": document.querySelector("#txtCelularPaciente").value,
                 "direccion_actual": document.querySelector("#txtDireccionActualPaciente").value,
                 "direccion_procedencia": document.querySelector("#txtDireccionProcePaciente").value,
-                "fecha_nacimiento": document.querySelector("#txtFechaNacPaciente").value,
+                "fecha_nacimiento": document.querySelector("#txtFechaNacPaciente").value.split("-")[2] + "/" +
+                        document.querySelector("#txtFechaNacPaciente").value.split("-")[1] +
+                        "/" + document.querySelector("#txtFechaNacPaciente").value.split("-")[0],
                 "estado_civil": document.querySelector("#txtEstadoPaciente").value,
                 "codigo": document.querySelector("#txtCodigoPaciente").value,
                 "dni": document.querySelector("#txtNumeroDocumentoPaciente").value,
@@ -116,11 +131,16 @@ function processAjaxAtendido() {
         dataType: 'json'
     }).done(function (beanCrudResponse) {
         console.log(beanCrudResponse);
-        if (beanCrudResponse.idatendido !== null) {
+        if (beanCrudResponse.messageServer == "ok") {
             showAlertTopEnd('success', 'Acción realizada exitosamente');
             $('#modalCargandoDatos').modal('hide');
-            atendidoSelected = beanCrudResponse;
-            addInputDatos(atendidoSelected);
+        } else {
+            if (beanCrudResponse.idatendido !== null) {
+                showAlertTopEnd('success', 'Acción realizada exitosamente');
+                $('#modalCargandoDatos').modal('hide');
+                atendidoSelected = beanCrudResponse;
+                addInputDatos(atendidoSelected);
+            }
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoAtendido').modal("hide");
@@ -207,9 +227,90 @@ function findByAtendido(idatendido) {
 }
 
 function validateFormAtendido() {
-    if (document.querySelector("#txtNombreAtendido").value == "") {
+    if (document.querySelector("#txtTipoDocumentoPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese tipo de documento');
+        document.querySelector("#txtTipoDocumentoPaciente").focus();
+        return false;
+    }
+    else if (document.querySelector("#txtEstadoPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese estado');
+        document.querySelector("#txtEstadoPaciente").focus();
+        return false;
+    }
+  
+    else if (document.querySelector("#txtNumeroDocumentoPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese dni');
+        document.querySelector("#txtNumeroDocumentoPaciente").focus();
+        return false;
+    }
+    else if (document.querySelector("#txtApPaternoPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese apellido paterno');
+        document.querySelector("#txtApPaternoPaciente").focus();
+        return false;
+    }
+    else if (document.querySelector("#txtApMaternoPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese apellido materno');
+        document.querySelector("#txtApMaternoPaciente").focus();
+        return false;
+    }
+    else if (document.querySelector("#txtNombrePaciente").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese nombre');
-        document.querySelector("#txtNombrenAtendido").focus();
+        document.querySelector("#txtNombrePaciente").focus();
+        return false;
+    }
+    else if (document.querySelector("#txtSexoPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese sexo');
+        document.querySelector("#txtSexoPaciente").focus();
+        return false;
+    }
+    else if (document.querySelector("#txtFechaNacPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese fecha de nacimiento');
+        document.querySelector("#txtFechaNacPaciente").focus();
+        return false;
+    }
+    else if (document.querySelector("#txtCelularPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese celular');
+        document.querySelector("#txtCelularPaciente").focus();
+        return false;
+    }
+    else if (document.querySelector("#txtEmailPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese email');
+        document.querySelector("#txtEmailPaciente").focus();
+        return false;
+    }
+    else if (document.querySelector("#txtModalidadPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese modalidad de ingreso');
+        document.querySelector("#txtModalidadPaciente").focus();
+        return false;
+    }
+    else if (document.querySelector("#txtTipoColegioPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Tipo de colegio');
+        document.querySelector("#txtTipoColegioPaciente").focus();
+        return false;
+    }
+    else if (document.querySelector("#txtDireccionActualPaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Direccion actual');
+        document.querySelector("#txtDireccionActualPaciente").focus();
+        return false;
+    }
+    else if (document.querySelector("#txtDireccionProcePaciente").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Direccion de Procedencia');
+        document.querySelector("#txtDireccionProcePaciente").focus();
+        return false;
+    }
+    else if (escuelaSelected.length == 0) {
+        showAlertTopEnd('warning', 'Por favor ingrese Escuela');
+        document.querySelector("#txtFilterEscuela").focus();
+        return false;
+    }
+    else if (distritoActualSelected.length == 0) {
+        showAlertTopEnd('warning', 'Por favor ingrese Distrito Actual');
+        document.querySelector("#txtFilterDistritoActual").focus();
+        return false;
+    }
+    else if (distritoProcedenciaSelected.length == 0) {
+        showAlertTopEnd('warning', 'Por favor ingrese Distrito de procedencia');
+        document.querySelector("#txtFilterDistritoProcedencia").focus();
         return false;
     }
     return true;
@@ -224,7 +325,8 @@ function addInputDatos(atendidoSelected) {
     document.querySelector("#txtApMaternoPaciente").value = atendidoSelected.apellido_mat;
     document.querySelector("#txtNombrePaciente").value = atendidoSelected.nombre;
     document.querySelector("#txtSexoPaciente").value = atendidoSelected.sexo;
-    document.querySelector("#txtFechaNacPaciente").value = atendidoSelected.fecha_nacimiento;
+    document.querySelector("#txtFechaNacPaciente").value = atendidoSelected.fecha_nacimiento.split("/")[2] + "-" +
+            atendidoSelected.fecha_nacimiento.split("/")[1] + "-" + atendidoSelected.fecha_nacimiento.split("/")[0];
     document.querySelector("#txtCelularPaciente").value = atendidoSelected.celular;
     document.querySelector("#txtEmailPaciente").value = atendidoSelected.email;
     document.querySelector("#txtModalidadPaciente").value = atendidoSelected.modalidad_ingreso;
@@ -232,6 +334,11 @@ function addInputDatos(atendidoSelected) {
     document.querySelector("#txtDireccionActualPaciente").value = atendidoSelected.direccion_actual;
     document.querySelector("#txtDireccionProcePaciente").value = atendidoSelected.direccion_procedencia;
     document.querySelector("#txtFilterEscuela").value = atendidoSelected.escuela.nombre;
+    document.querySelector("#txtFilterDistritoActual").value = atendidoSelected.distrito_actual.nombre;
+    document.querySelector("#txtFilterDistritoProcedencia").value = atendidoSelected.distrito_procedencia.nombre;
+    escuelaSelected = atendidoSelected.escuela;
+    distritoActualSelected = atendidoSelected.distrito_actual;
+    distritoProcedenciaSelected = atendidoSelected.distrito_procedencia;
 }
 
 

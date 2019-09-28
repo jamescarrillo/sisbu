@@ -33,7 +33,7 @@
 
                 <!-- Tab DATOS PERSONALES -->
                 <div id="tab-pane-15" class="tab-pane show active ">
-                    <form id="FrmPersonalPaciente">
+                    <form id="FrmPersonalPaciente" autocomplete="off">
                         <div class="row">
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
@@ -109,7 +109,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtNombrePaciente">NOMBRES</label>
-                                    <input  type="email" class="form-control" id="txtNombrePaciente" placeholder="NOMBRES">
+                                    <input  type="text" class="form-control" id="txtNombrePaciente" placeholder="NOMBRES">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
@@ -124,7 +124,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtFechaNacPaciente">FECHA DE NACIMIENTO</label>
-                                    <input  type="email" class="form-control" id="txtFechaNacPaciente" placeholder="Enter email">
+                                    <input  type="date" class="form-control" id="txtFechaNacPaciente" placeholder="Enter email">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
@@ -136,7 +136,7 @@
                             <div class="col-lg-4 col-sm-12">
                                 <div class="form-group">
                                     <label for="txtEmailPaciente">EMAIL</label>
-                                    <input  type="email" class="form-control" id="txtEmailPaciente" placeholder="Enter email">
+                                    <input  type="email" class="form-control" id="txtEmailPaciente" placeholder="EMAIL">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12">
