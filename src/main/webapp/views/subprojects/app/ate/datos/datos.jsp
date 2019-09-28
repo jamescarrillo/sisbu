@@ -45,7 +45,30 @@
                                     </select>
                                 </div>
                             </div>
-
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtModalidadPaciente">MODALIDAD DE INGRESO</label>
+                                    <select  class="form-control form-control-sm" id="txtModalidadPaciente">
+                                        <option   value="1">EXAMEN ORDINARIO</option>
+                                        <option  value="2">DEPORTISTA CALIFICADO</option>
+                                        <option  value="3">PRIMEROS PUESTOS</option>
+                                        <option  value="4">INGRESANTE CPU-(CICLO ACADÉMICO)</option>
+                                        <option  value="5">CAMBIO DE UNIVERSIDAD</option>
+                                        <option  value="6">GRADUADOS O TITULADOS</option>
+                                        <option  value="7">5TO DE SECUNDARIA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtTipoColegioPaciente">TIPO DE COLEGIO</label>
+                                    <select  class="form-control form-control-sm" id="txtTipoColegioPaciente">
+                                        <option   value="1">NACIONAL</option>
+                                        <option  value="2">PARTICULAR</option>
+                                        <option  value="3">NINGUNO</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtEstadoPaciente">ESTADO CIVIL</label>
@@ -118,10 +141,49 @@
                             </div>
                             <div class="col-lg-4 col-sm-12">
                                 <div class="form-group">
-                                    <label for="txtEscuelaPaciente">ESCUELA</label>
-                                    <input  type="text" class="form-control" id="txtEscuelaPaciente" placeholder="ESCUELA">
+                                    <label for="txtDireccionActualPaciente">DIRECCION ACTUAL</label>
+                                    <input  type="text" class="form-control" id="txtDireccionActualPaciente" placeholder="DIRECCION ACTUAL">
                                 </div>
                             </div>
+                            <div class="col-lg-4 col-sm-12">
+                                <div class="form-group">
+                                    <label for="txtDireccionProcePaciente">DIRECCION PROCEDENCIA</label>
+                                    <input  type="text" class="form-control" id="txtDireccionProcePaciente" placeholder="DIRECCION PROCEDENCIA">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12 " >
+                                <label for="txtEscuelaPaciente">ESCUELA</label>
+                                <div class="search-box " style="max-width: 100%;">
+                                    <div class="input-group">
+                                        <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterEscuela"  type="search">
+                                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                                    </div>
+                                    <div id="resultadoEscuela" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12 " >
+                            <label for="txtDistritoActualPaciente">DISTRITO ACTUAL</label>
+                            <div class="search-box " style="max-width: 100%;">
+                                <div class="input-group">
+                                    <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterDistritoActual"  type="search">
+                                    <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                                </div>
+                                <div id="resultadoDistritoActual" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-lg-6 col-sm-12 " >
+                            <label for="txtDistritoProcedenciaPaciente">DISTRITO PROCEDENCIA</label>
+                            <div class="search-box " style="max-width: 100%;">
+                                <div class="input-group">
+                                    <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterDistritoProcedencia"  type="search">
+                                    <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                                </div>
+                                <div id="resultadoDistritoProcedencia" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                                </div>
+                            </div>
+                        </div>
                             <div class="col-lg-12 text-left">
                                 <button type="submit" class="btn btn-outline-primary btn-sm" id="btnGuardarPersonales">Guardar</button>
                             </div> 
