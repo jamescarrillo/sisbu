@@ -152,7 +152,7 @@ function toListProcedimientoObstetricia() {
         document.querySelector("#div-preguntas-evaluacion-obstetricia").style.display = "none";
         setUpdateGraficaProcedimientoObstetricia();
     } else {
-        showAlertTopEnd('warning', 'Lo sentimos, no hay ninguna evaluación configurada para este ciclo. Acerquese a la oficin correspondiente e indique el mensaje.', 10000);
+        showAlertTopEnd('warning', 'Lo sentimos, no hay ninguna evaluación configurada para este ciclo. Acerquese a la oficina correspondiente e indique el mensaje.', 10000);
     }
 }
 

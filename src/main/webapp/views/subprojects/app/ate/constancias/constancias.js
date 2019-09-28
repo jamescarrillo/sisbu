@@ -18,15 +18,37 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestVE.operation = "validate-evaluacion-complete";
     beanRequestVE.type_request = "GET";
 
-    document.querySelectorAll(".btn-descargar-constancia").forEach(btn => {
+    document.querySelector("#btn-download-constancia-socioeconomica").onclick = function () {
+        if (user_session.foto == "") {
+            showAlertTopEnd('warning', "Aún no has subido tu foto. Si ya lo has hecho cierra sesión y vuelve a intentarlo.");
+            return;
+        }
+        if (this.getAttribute('idarea') == "7") {
+            //VERIFICAMOS LOS DATOS PERSONALES Y LISTA DE FAMILIARES
+            $("#modalCargandoVDP").modal('show');
+        } else {
+            showAlertTopEnd('warning', 'No se pudo seleccionar correctamente la evaluación, algunos valores HTML han sido modificados.')
+        }
+    };
+
+    document.querySelector("#btn-download-constancia-deportiva").onclick = function () {
+        //VERIFICAMOS LOS DEPORTES Y AFICIONES
+        $("#modalCargandoVDYA").modal('show');
+    };
+
+    document.querySelectorAll(".btn-download-constancia-directa").forEach(btn => {
         btn.onclick = function () {
             idarea_selected = this.getAttribute('idarea');
             if (idarea_selected == "7" || idarea_selected == "6" || idarea_selected == "4") {
                 $('#modalCargandoVE').modal('show');
             } else {
-                showAlertTopEnd('warning', 'No se pudo seleccionar correctamente la evaluación, algunos valores HTML han sido modificados')
+                showAlertTopEnd('warning', 'No se pudo seleccionar correctamente la evaluación, algunos valores HTML han sido modificados.')
             }
         };
+    });
+
+    $("#modalCargandoVDP").on('shown.bs.modal', function () {
+        processAjaxValidacionDatosPersonales()();
     });
 
     $("#modalCargandoVE").on('shown.bs.modal', function () {
@@ -83,5 +105,36 @@ function processAjaxVE() {
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoVE').modal("hide");
         showAlertTopEnd('error', 'Ha ocurrido un error interno, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+    });
+}
+
+function processAjaxValidacionDatosPersonales() {
+    let json = "";
+    let url_request = getHostAPI() + "api/atendido/validar-datos-personales";
+    url_request += "?idusuario=" + user_session.idusuario;
+    $.ajax({
+        url: url_request,
+        type: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        data: JSON.stringify(json),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (jsonResponse) {
+        $('#modalCargandoVDP').modal("hide");
+        if (jsonResponse.messageServer !== undefined) {
+            if (jsonResponse.messageServer.toLowerCase() == "ok") {
+
+                $('#modalCargandoVE').modal("show");
+            } else {
+                showAlertTopEnd('warning', jsonResponse.messageServer, 10000);
+            }
+        } else {
+            showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tus datos personales, vuelve a intentarlo mas tarde :)', 10000);
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoVDP').modal("hide");
+        showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tus datos personales, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
     });
 }
