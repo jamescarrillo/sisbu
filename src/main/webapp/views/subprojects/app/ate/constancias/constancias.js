@@ -142,16 +142,16 @@ function processAjaxValidacionDatosPersonales() {
             if (atendido.direccion_procedencia == "") {
                 list_datos_faltantes.push("Dirección procedencia");
             }
-            if (atendido.distrito_procedencia == null) {
+            if (atendido.distrito_procedencia.iddistrito == 0) {
                 list_datos_faltantes.push("Distrito Procedencia");
             }
             if (atendido.direccion_actual == "") {
                 list_datos_faltantes.push("Dirección Actual");
             }
-            if (atendido.distrito_actul == null) {
+            if (atendido.distrito_actual.iddistrito == 0) {
                 list_datos_faltantes.push("Distrito Actual");
             }
-            if (atendido.escuela.nombre == null) {
+            if (atendido.escuela.idescuela == 0) {
                 list_datos_faltantes.push("Escuela");
             }
             if (list_datos_faltantes.length > 0) {
