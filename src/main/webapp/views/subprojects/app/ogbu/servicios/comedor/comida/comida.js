@@ -122,9 +122,9 @@ function toListComida(beanPagination) {
             row += ">";
              row += "<td><ul class='dt-list dt-list-cm-0'>";
             row += "<li class='dt-list__item editar-comida' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-editors'></i></a></li>";
+            row += "<i class='text-primary icon icon-editors'></i></a></li>";
             row += "<li class='dt-list__item eliminar-comida' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
             row += "<td class='align-middle'>" + tipoComida(comida.tipo) + "</td>";
             row += "<td class='align-middle'>" + comida.descripcion + "</td>";

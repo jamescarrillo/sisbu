@@ -119,10 +119,10 @@ function toListAficion(beanPagination) {
             row += "idaficion='" + aficion.idaficion + "' ";
             row += ">";
            row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item editar-aficion'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-editors'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-aficion'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "<li class='dt-list__item editar-aficion' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='text-primary  icon icon-editors'></i></a></li>";
+            row += "<li class='dt-list__item eliminar-aficion'data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
             row += "<td class='align-middle'>" + aficion.descripcion + "</td>";
               row += "</tr>";

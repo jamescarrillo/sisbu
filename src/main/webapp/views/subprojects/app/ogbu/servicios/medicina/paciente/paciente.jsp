@@ -26,13 +26,13 @@
                 <!-- Tables -->
                 <div class="table-responsive">
                     <table class="table mb-0 mt-2">
-                        <thead>
+                        <thead style="line-height: 0.4; " class="bg-primary ">
                             <tr>
-                                <th class="text-uppercase" scope="col" style="width: 10%">H. CLÍNICA</th>
-                                <th class="text-uppercase" scope="col" >DNI</th>
-                                <th class="text-uppercase" scope="col" >NOMBRE COMPLETO</th>
-                                <th class="text-uppercase" scope="col" >TIPO USUARIO</th>
-                                <th class="text-uppercase" scope="col" >SUBTIPO USUARIO</th>
+                                <th class="text-uppercase text-white" scope="col" style="width: 12%;font-weight: 500;">H. CLÍNICA</th>
+                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">DNI</th>
+                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">NOMBRE COMPLETO</th>
+                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">TIPO USUARIO</th>
+                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">SUBTIPO USUARIO</th>
                             </tr>
                         </thead>
                         <tbody id="tbodyPaciente">
@@ -62,12 +62,6 @@
 
         <!-- Card -->
         <div class="card mb-0 " id="openPaciente">
-            <!-- Card Header -->
-            <div class="card-header bg-transparent">
-                <h4 class="modal-title text-center" id="txtTituloPaciente"></h4>
-            </div>
-            <!-- /card header -->
-
             <!-- Card Header -->
             <div class="card-header">
                 <!-- Tab Navigation -->
@@ -215,13 +209,13 @@
 
                 <!-- Tab ANTECEDENTES -->
                 <div id="tab-pane-16" class="tab-pane ">
-                    <form id="FrmAntecedentePaciente">
+                    <form id="FrmAntecedentePaciente" autocomplete="off">
                         <div class="row">
 
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtHistoriaPaciente">N° HISTORIA</label>
-                                    <input disabled type="text" class="form-control form-control-sm" id="txtHistoriaPaciente" placeholder="N° HISTORIA">
+                                    <input disabled type="text" class="bg-primary text-white form-control form-control-sm" id="txtHistoriaPaciente" placeholder="N° HISTORIA">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
@@ -292,12 +286,12 @@
                         <!-- Tables -->
                         <div class="table-responsive">
                             <table class="table mb-0">
-                                <thead>
+                                <thead style="line-height: 0.4;" class="bg-primary ">
                                     <tr>
-                                        <th class="text-uppercase" scope="col" >ACCIÓN</th>
-                                        <th class="text-uppercase" scope="col" >ATENDIDO </th>
-                                        <th class="text-uppercase" scope="col" >FECHA </th>
-                                        <th class="text-uppercase" scope="col" >DIAGNÓSTICO</th>
+                                        <th class="text-uppercase text-white" scope="col"  style="font-weight: 500;">ACCIÓN</th>
+                                        <th class="text-uppercase text-white" scope="col" style="font-weight: 500;" >ATENDIDO </th>
+                                        <th class="text-uppercase text-white" scope="col" style="font-weight: 500;" >FECHA </th>
+                                        <th class="text-uppercase text-white" scope="col" style="font-weight: 500;" >DIAGNÓSTICO</th>
 
                                     </tr>
                                 </thead>

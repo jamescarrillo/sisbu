@@ -18,7 +18,7 @@
             <div class="card-body pt-0">
                 <form id="FrmComida">
                     <div class="input-group">
-                        <select class=" form-control form-control-sm " id="txtFilterTipoComida">
+                        <select class=" form-control form-control-sm col-lg-2 col-sm-3" id="txtFilterTipoComida">
                             <option selected  value="-1">seleccione tipo...</option>
                             <option value="1">SEGUNDO</option>
                             <option value="2">BEBIDA</option>
@@ -31,13 +31,13 @@
                     </div>
                 </form>
                 <!-- Tables -->
-                <div class="table-responsive">
+                <div class="table-responsive pt-3">
                     <table class="table mb-0">
-                        <thead>
+                        <thead class="bg-primary" style="line-height: 0.4;">
                             <tr>
-                                <th class="text-uppercase" scope="col" style="width: 10%">ACCION</th>
-                                <th class="text-uppercase" scope="col" >TIPO</th>
-                                <th class="text-uppercase" scope="col" >DESCRIPCION</th>
+                                <th class="text-uppercase text-white" scope="col" style="width: 10%;font-weight: 500;">ACCION</th>
+                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">TIPO</th>
+                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">DESCRIPCION</th>
                             </tr>
                         </thead>
                         <tbody id="tbodyComida">
