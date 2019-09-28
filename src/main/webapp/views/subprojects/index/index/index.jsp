@@ -3,8 +3,48 @@
     Created on : 24 ago. 2019, 15:08:53
     Author     : James Carrillo
 --%>
+<!--div class="row">
+    <div class="col-xl-12">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="<%=request.getContextPath()%>/resources/prod/index/diapo1.jpg"
+                         alt="Primer slide" height="100%">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://redpos.app//assets_root/images/custom-app/diapos/diapo2_.jpg"
+                         alt="Segundo slide" height="100%">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://redpos.app//assets_root/images/custom-app/diapos/diapo3_.jpg"
+                         alt="Tercer slide" height="100%">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://redpos.app//assets_root/images/custom-app/diapos/diapo4_.jpg"
+                         alt="Cuarto slide" height="100%">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
+</div-->
+
 <!-- Page Header -->
-<div class="dt-page__header">
+<div class="dt-page__header" style="margin-top: 30px">
     <h1 class="dt-page__title">Últimas Noticias</h1>
 </div>
 <!-- /page header -->
@@ -21,28 +61,23 @@
             <div class="col-12">
                 <!-- Card -->
                 <div class="dt-card">
-
                     <!-- Card Body -->
-                    <div class="dt-card__body d-flex flex-sm-column">
-                        <div class="mb-sm-7 mr-7 mr-sm-0">
-                            <h3 class="font-weight-500"><i class="icon icon-users dt-icon-bg bg-primary text-primary"></i> Aprendiendo a iniciar sesión en Sisbu</h3>
-                        </div>
-                        <div class="flex-1">
-                            <div class="d-flex align-items-center mb-2">
+                    <div class="dt-card__body d-flex">
+                        <div class="row">
+                            <div class="col-12 text-center mb-4">
+                                <h3 class="font-weight-500"><i class="icon icon-users dt-icon-bg bg-primary text-primary"></i> Aprendiendo a iniciar sesión en Sisbu</h3>
                                 <span class="h4 mb-0 font-weight-500 mr-2">Tutorial para</span>
                                 <span class="d-inline-flex text-success">
                                     <i class="icon icon-profit icon-fw"></i>+Ingresantes 2019-II
                                 </span>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
+                            <div class="col-lg-6 col-12">
                                 <img class="img-fluid" src="<%=request.getContextPath()%>/resources/prod/news/tutorial_inicio_sesion.png">
                             </div>
-                            <div class="col-6">
+                            <div class="col-lg-6 col-12">
                                 <h4>¿Como iniciar sesión en sisbu por primera vez?</h4>
                                 <p>Si eres un alumno ingresante del presente ciclo, lo único que tienes
-                                    que hacer es irte al botón donde dice "iniciar sesión" ubicado en la parte 
+                                    que hacer es ir al botón donde dice "iniciar sesión" ubicado en la parte 
                                     superior derecha de esta página y darle click.</p>
                                 <p>Enseguida te aparecerá una página con una interfáz similár a la de la parte izquiera 
                                     de este tutorial, donde tienes que ingresar tus credenciales y listo.</p>
@@ -73,17 +108,251 @@
 </div>
 <!-- /grid -->
 
-
 <!-- Page Header -->
 <div class="dt-page__header">
-    <h1 class="dt-page__title">Nuevas Descargas</h1>
+    <h1 class="dt-page__title">Team Sisbu</h1>
 </div>
 <!-- /page header -->
 
-<h5>No hay nuevas descargas. . .</h5>
+<!-- Grid -->
+<div class="row">
 
-<br>
-<br>
+    <!-- Grid Item -->
+    <div class="col-xl-12 order-xl-2">
+        <!-- Card -->
+        <div class="dt-card dt-contact-card">
+
+            <!-- Card Header -->
+            <div class="dt-card__header mb-3 header-sm-inline">
+
+                <!-- Card Heading -->
+                <div class="dt-card__heading">
+                    <h3 class="dt-card__title">Egresados 2019-I UNPRG</h3>
+                </div>
+                <!-- /card heading -->
+
+                <!-- Card Tools -->
+                <div class="dt-card__tools">
+                    <ul class="nav nav-sm nav-underline nav-underline-none" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#lider-proyecto"
+                               role="tab"
+                               aria-controls="marketing"
+                               aria-selected="true">Lider de Proyecto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#colaborador-principal" role="tab"
+                               aria-controls="account"
+                               aria-selected="true">Colaborador Principal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#otros-colaboradores" role="tab"
+                               aria-controls="account"
+                               aria-selected="true">Otros Colaboradores</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /card tools -->
+
+            </div>
+            <!-- /card header -->
+
+            <!-- Card Body -->
+            <div class="dt-card__body pb-4">
+
+                <!-- Tab Content-->
+                <div class="tab-content">
+
+                    <!-- Tab panel -->
+                    <div id="lider-proyecto" class="tab-pane active">
+                        <!-- Grid -->
+                        <div class="row no-gutters">
+
+                            <!-- Grid Item -->
+                            <div class="col-12">
+
+                                <!-- Contact Short Info -->
+                                <div class="dt-contact-info-short">
+
+                                    <!-- Avatar Wrapper -->
+                                    <div class="dt-avatar-wrapper">
+                                        <!-- Avatar -->
+                                        <img class="dt-avatar"
+                                             src="https://via.placeholder.com/150x150"
+                                             alt="Harriet Boone">
+                                        <!-- /avatar -->
+
+                                        <!-- Info -->
+                                        <div class="dt-avatar-info">
+                                            <a href="https://www.facebook.com/carrilloc.james"
+                                               class="dt-avatar-name text-dark">James Carrillo</a>
+                                            <span class="f-12 text-light-gray">jamescarrilloc@gmail.com</span>
+                                        </div>
+                                        <!-- /info -->
+                                    </div>
+                                    <!-- /avatar wrapper -->
+
+                                </div>
+                                <!-- /contact short info -->
+
+                            </div>
+                            <!-- /grid item -->
+
+                        </div>
+                        <!-- /grid -->
+                    </div>
+                    <!-- /tab panel -->
+
+                    <div id="colaborador-principal" class="tab-pane">
+                        <div class="row no-gutters">
+                            <!-- Grid Item -->
+                            <div class="col-md-4 col-sm-6 col-12">
+
+                                <!-- Contact Short Info -->
+                                <div class="dt-contact-info-short">
+
+                                    <!-- Avatar Wrapper -->
+                                    <div class="dt-avatar-wrapper">
+                                        <!-- Avatar -->
+                                        <img class="dt-avatar"
+                                             src="https://via.placeholder.com/150x150"
+                                             alt="Lily Jennings">
+                                        <!-- /avatar -->
+
+                                        <!-- Info -->
+                                        <div class="dt-avatar-info">
+                                            <a href="https://www.facebook.com/Andres.enginner.systems"
+                                               class="dt-avatar-name text-dark">Andrés Llontop</a>
+                                            <span class="f-12 text-light-gray">llontopdiazandres@gmail.com</span>
+                                        </div>
+                                        <!-- /info -->
+                                    </div>
+                                    <!-- /avatar wrapper -->
+
+                                </div>
+                                <!-- /contact short info -->
+
+                            </div>
+                            <!-- /grid item -->
+                        </div>
+                    </div>
+
+                    <!-- Tab panel -->
+                    <div id="otros-colaboradores" class="tab-pane">
+                        <!-- Grid -->
+                        <div class="row no-gutters">
+
+                            <!-- Grid Item -->
+                            <div class="col-md-4 col-sm-6 col-12">
+
+                                <!-- Contact Short Info -->
+                                <div class="dt-contact-info-short">
+
+                                    <!-- Avatar Wrapper -->
+                                    <div class="dt-avatar-wrapper">
+                                        <!-- Avatar -->
+                                        <img class="dt-avatar"
+                                             src="https://via.placeholder.com/150x150"
+                                             alt="Pearl Cooper">
+                                        <!-- /avatar -->
+
+                                        <!-- Info -->
+                                        <div class="dt-avatar-info">
+                                            <a href="https://www.facebook.com/Lizet.Cv.Hn"
+                                               class="dt-avatar-name text-dark">Lizet Cueva</a>
+                                            <span class="f-12 text-light-gray">-</span>
+                                        </div>
+                                        <!-- /info -->
+                                    </div>
+                                    <!-- /avatar wrapper -->
+
+                                </div>
+                                <!-- /contact short info -->
+
+                            </div>
+                            <!-- /grid item -->
+
+                            <!-- Grid Item -->
+                            <div class="col-md-4 col-sm-6 col-12">
+
+                                <!-- Contact Short Info -->
+                                <div class="dt-contact-info-short">
+
+                                    <!-- Avatar Wrapper -->
+                                    <div class="dt-avatar-wrapper">
+                                        <!-- Avatar -->
+                                        <img class="dt-avatar"
+                                             src="https://via.placeholder.com/150x150"
+                                             alt="Johanna Terry">
+                                        <!-- /avatar -->
+
+                                        <!-- Info -->
+                                        <div class="dt-avatar-info">
+                                            <a href="https://www.facebook.com/Agresivo5000"
+                                               class="dt-avatar-name text-dark">Juan Barrantes</a>
+                                            <span class="f-12 text-light-gray">-</span>
+                                        </div>
+                                        <!-- /info -->
+                                    </div>
+                                    <!-- /avatar wrapper -->
+
+                                </div>
+                                <!-- /contact short info -->
+
+                            </div>
+                            <!-- /grid item -->
+
+                            <!-- Grid Item -->
+                            <div class="col-md-4 col-sm-6 col-12">
+
+                                <!-- Contact Short Info -->
+                                <div class="dt-contact-info-short">
+
+                                    <!-- Avatar Wrapper -->
+                                    <div class="dt-avatar-wrapper">
+                                        <!-- Avatar -->
+                                        <img class="dt-avatar"
+                                             src="https://via.placeholder.com/150x150"
+                                             alt="Johanna Terry">
+                                        <!-- /avatar -->
+
+                                        <!-- Info -->
+                                        <div class="dt-avatar-info">
+                                            <a href="https://www.facebook.com/juanjose.alarconsanches"
+                                               class="dt-avatar-name text-dark">Juan Alarcón</a>
+                                            <span class="f-12 text-light-gray">-</span>
+                                        </div>
+                                        <!-- /info -->
+                                    </div>
+                                    <!-- /avatar wrapper -->
+
+                                </div>
+                                <!-- /contact short info -->
+
+                            </div>
+                            <!-- /grid item -->
+
+
+                        </div>
+                        <!-- /grid -->
+                    </div>
+                    <!-- /tab panel -->
+
+                </div>
+                <!-- /tab content-->
+
+            </div>
+            <!-- /card body -->
+
+        </div>
+        <!-- /card -->
+    </div>
+    <!-- /grid item -->
+
+</div>
+<!-- /grid -->
+
+
 <!-- Page Header -->
 <div class="dt-page__header">
     <h1 class="dt-page__title">Redes Sociales</h1>
@@ -111,7 +380,7 @@
                 <ul class="dt-list dt-list-bordered dt-list-cm-0 flex-nowrap">
                     <!-- List Item -->
                     <li class="dt-list__item text-truncate">
-                        <span><span class="text-dark">2.5k </span>Likes</span>
+                        <span><span class="text-dark">10.5k </span>Likes</span>
                     </li>
                     <!-- /list item -->
 
@@ -238,1050 +507,6 @@
         </div>
         <!-- /card -->
 
-    </div>
-    <!-- /grid item -->
-
-</div>
-<!-- /grid -->
-
-<!-- Page Header -->
-<div class="dt-page__header">
-    <h1 class="dt-page__title">Team OGBU</h1>
-</div>
-<!-- /page header -->
-
-<!-- Grid -->
-<div class="row">
-
-    <!-- Grid Item -->
-    <div class="col-xl-12 order-xl-2">
-        <!-- Card -->
-        <div class="dt-card dt-contact-card">
-
-            <!-- Card Header -->
-            <div class="dt-card__header mb-3 header-sm-inline">
-
-                <!-- Card Heading -->
-                <div class="dt-card__heading">
-                    <h3 class="dt-card__title">Our Team</h3>
-                </div>
-                <!-- /card heading -->
-
-                <!-- Card Tools -->
-                <div class="dt-card__tools">
-                    <ul class="nav nav-sm nav-underline nav-underline-none" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#marketing"
-                               role="tab"
-                               aria-controls="marketing"
-                               aria-selected="true">Marketing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#account" role="tab"
-                               aria-controls="account"
-                               aria-selected="true">Account</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#development" role="tab"
-                               aria-controls="development"
-                               aria-selected="true">Development</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /card tools -->
-
-            </div>
-            <!-- /card header -->
-
-            <!-- Card Body -->
-            <div class="dt-card__body pb-4">
-
-                <!-- Tab Content-->
-                <div class="tab-content">
-
-                    <!-- Tab panel -->
-                    <div id="marketing" class="tab-pane active">
-                        <!-- Grid -->
-                        <div class="row no-gutters">
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Harriet Boone">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Harriet
-                                                Boone</a>
-                                            <span class="f-12 text-light-gray">955-384-0512</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Lily Jennings">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Lily
-                                                Jennings</a>
-                                            <span class="f-12 text-light-gray">260-952-0777</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Elnora Leonard">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Elnora
-                                                Leonard</a>
-                                            <span class="f-12 text-light-gray">470-678-8308</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Noah Fitzgerald">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Noah
-                                                Fitzgerald</a>
-                                            <span class="f-12 text-light-gray">053-164-2804</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Tyler Guerrero">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Tyler
-                                                Guerrero</a>
-                                            <span class="f-12 text-light-gray">430-692-9493</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Mattie Mendez">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Mattie
-                                                Mendez</a>
-                                            <span class="f-12 text-light-gray">449-300-7495</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Violet Jimenez">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Violet
-                                                Jimenez</a>
-                                            <span class="f-12 text-light-gray">550-057-3282</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Pearl Cooper">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Pearl Cooper</a>
-                                            <span class="f-12 text-light-gray">217-984-9876</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Garry Sobars">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Garry Sobars</a>
-                                            <span class="f-12 text-light-gray">240-407-1929</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Johanna Terry">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Johanna
-                                                Terry</a>
-                                            <span class="f-12 text-light-gray">168-887-6077</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-12">
-                                <a class="border border-dashed py-3 px-4 rounded h-100 text-light-gray d-flex align-items-center justify-content-center"
-                                   href="javascript:void(0)">Add New</a>
-                            </div>
-                            <!-- /grid item -->
-
-                        </div>
-                        <!-- /grid -->
-                    </div>
-                    <!-- /tab panel -->
-
-                    <!-- Tab panel -->
-                    <div id="account" class="tab-pane">
-                        <!-- Grid -->
-                        <div class="row no-gutters">
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Pearl Cooper">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Pearl Cooper</a>
-                                            <span class="f-12 text-light-gray">217-984-9876</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Johanna Terry">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Johanna
-                                                Terry</a>
-                                            <span class="f-12 text-light-gray">168-887-6077</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Elnora Leonard">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Elnora
-                                                Leonard</a>
-                                            <span class="f-12 text-light-gray">470-678-8308</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Noah Fitzgerald">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Noah
-                                                Fitzgerald</a>
-                                            <span class="f-12 text-light-gray">053-164-2804</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Harriet Boone">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Harriet
-                                                Boone</a>
-                                            <span class="f-12 text-light-gray">955-384-0512</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Tyler Guerrero">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Tyler
-                                                Guerrero</a>
-                                            <span class="f-12 text-light-gray">430-692-9493</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Mattie Mendez">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Mattie
-                                                Mendez</a>
-                                            <span class="f-12 text-light-gray">449-300-7495</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Lily Jennings">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Lily
-                                                Jennings</a>
-                                            <span class="f-12 text-light-gray">260-952-0777</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Violet Jimenez">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Violet
-                                                Jimenez</a>
-                                            <span class="f-12 text-light-gray">550-057-3282</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Garry Sobars">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Garry Sobars</a>
-                                            <span class="f-12 text-light-gray">240-407-1929</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-12">
-                                <a class="border border-dashed py-3 px-4 rounded h-100 text-light-gray d-flex align-items-center justify-content-center"
-                                   href="javascript:void(0)">Add New</a>
-                            </div>
-                            <!-- /grid item -->
-
-                        </div>
-                        <!-- /grid -->
-                    </div>
-                    <!-- /tab panel -->
-
-                    <!-- Tab panel -->
-                    <div id="development" class="tab-pane">
-                        <!-- Grid -->
-                        <div class="row no-gutters">
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Violet Jimenez">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Violet
-                                                Jimenez</a>
-                                            <span class="f-12 text-light-gray">550-057-3282</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Pearl Cooper">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Pearl Cooper</a>
-                                            <span class="f-12 text-light-gray">217-984-9876</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Garry Sobars">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Garry Sobars</a>
-                                            <span class="f-12 text-light-gray">240-407-1929</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Noah Fitzgerald">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Noah
-                                                Fitzgerald</a>
-                                            <span class="f-12 text-light-gray">053-164-2804</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Tyler Guerrero">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Tyler
-                                                Guerrero</a>
-                                            <span class="f-12 text-light-gray">430-692-9493</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Mattie Mendez">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Mattie
-                                                Mendez</a>
-                                            <span class="f-12 text-light-gray">449-300-7495</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Harriet Boone">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Harriet
-                                                Boone</a>
-                                            <span class="f-12 text-light-gray">955-384-0512</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Lily Jennings">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Lily
-                                                Jennings</a>
-                                            <span class="f-12 text-light-gray">260-952-0777</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Elnora Leonard">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Elnora
-                                                Leonard</a>
-                                            <span class="f-12 text-light-gray">470-678-8308</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-sm-6 col-12">
-
-                                <!-- Contact Short Info -->
-                                <div class="dt-contact-info-short">
-
-                                    <!-- Avatar Wrapper -->
-                                    <div class="dt-avatar-wrapper">
-                                        <!-- Avatar -->
-                                        <img class="dt-avatar"
-                                             src="https://via.placeholder.com/150x150"
-                                             alt="Johanna Terry">
-                                        <!-- /avatar -->
-
-                                        <!-- Info -->
-                                        <div class="dt-avatar-info">
-                                            <a href="page-profile.html"
-                                               class="dt-avatar-name text-dark">Johanna
-                                                Terry</a>
-                                            <span class="f-12 text-light-gray">168-887-6077</span>
-                                        </div>
-                                        <!-- /info -->
-                                    </div>
-                                    <!-- /avatar wrapper -->
-
-                                </div>
-                                <!-- /contact short info -->
-
-                            </div>
-                            <!-- /grid item -->
-
-                            <!-- Grid Item -->
-                            <div class="col-md-4 col-12">
-                                <a class="border border-dashed py-3 px-4 rounded h-100 text-light-gray d-flex align-items-center justify-content-center"
-                                   href="javascript:void(0)">Add New</a>
-                            </div>
-                            <!-- /grid item -->
-
-                        </div>
-                        <!-- /grid -->
-                    </div>
-                    <!-- /tab panel -->
-
-                </div>
-                <!-- /tab content-->
-
-            </div>
-            <!-- /card body -->
-
-        </div>
-        <!-- /card -->
     </div>
     <!-- /grid item -->
 

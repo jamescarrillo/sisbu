@@ -105,12 +105,18 @@
                                     <!-- /form group -->
 
                                     <!-- Form Group -->
-                                    <div class="dt-checkbox d-block mb-6">
+                                    <h6 class="text-danger">
+                                        **Los estudiantes cachimbos de la sede Lambayeque ingresan con su DNI como Username y Password.
+                                    </h6>
+                                    <h6 class="text-danger">
+                                        **Los estudiantes de la sede Cutervo ingresan con su Código como Username y Password.
+                                    </h6>
+                                    <!--div class="dt-checkbox d-block mb-6">
                                         <input type="checkbox" id="checkbox-1">
                                         <label class="dt-checkbox-content" for="checkbox-1">
                                             Mantenerme conectado en este dispositivo
                                         </label>
-                                    </div>
+                                    </div-->
                                     <!-- /form group -->
 
                                     <!-- Form Group -->
@@ -130,7 +136,7 @@
                                         <ul class="dt-list dt-list-sm dt-list-cm-0 ml-auto">
                                             <li class="dt-list__item">
                                                 <!-- Fab Button -->
-                                                <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                <a href="https://www.facebook.com/BienestarUNPRG/" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
                                                     <i class="icon icon-facebook icon-xl"></i>
                                                 </a>
                                                 <!-- /fab button -->
@@ -138,7 +144,7 @@
 
                                             <li class="dt-list__item">
                                                 <!-- Fab Button -->
-                                                <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                <a href="https://www.youtube.com/channel/UCDpJg58pfAXwHxLCr6zUmbw" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
                                                     <i class="icon icon-youtube icon-xl"></i>
                                                 </a>
                                                 <!-- /fab button -->
@@ -225,11 +231,11 @@
         <script src="<%=request.getContextPath()%>/plugins/sweetalert2/dist/sweetalert2.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/functions.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/customizer.js"></script>
-        
+
         <script src="<%out.print(request.getContextPath());%>/scripts/session/change.cookie.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/session/js.cookie.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.login.js"></script>
-        
+
         <!-- Custom JavaScript -->
         <script src="<%=request.getContextPath()%>/assets/js/script.js"></script>
         <%

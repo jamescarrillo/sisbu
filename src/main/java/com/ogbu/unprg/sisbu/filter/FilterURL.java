@@ -76,17 +76,23 @@ public class FilterURL implements Filter {
 
             }
              */
-            String subProject = getSubProject(URL);
-            //LOG.info(subProject);
-            int pos_resource = getResource(URL);
-            if (pos_resource != -1) {
-                //ENCONTRÓ MANDAMOS ESOS PARAMETROS
-                //LOG.info(this.list_resources.get(pos_resource).toString());
-                req.setAttribute("resource", this.list_resources.get(pos_resource));
-                req.getRequestDispatcher(subProject).forward(request, response);
+            if (URL.equals("/login")) {
+                //REDIRECCIONAMOS AL LOGIN
+                //res.sendRedirect(req.getContextPath() + "/auth/login");
+                res.sendRedirect(req.getContextPath() + "/index");
             } else {
-                //MANDAMOS AL 404
-                req.getRequestDispatcher("/zerror_pages/404.jsp").forward(request, response);
+                String subProject = getSubProject(URL);
+                //LOG.info(subProject);
+                int pos_resource = getResource(URL);
+                if (pos_resource != -1) {
+                    //ENCONTRÓ MANDAMOS ESOS PARAMETROS
+                    //LOG.info(this.list_resources.get(pos_resource).toString());
+                    req.setAttribute("resource", this.list_resources.get(pos_resource));
+                    req.getRequestDispatcher(subProject).forward(request, response);
+                } else {
+                    //MANDAMOS AL 404
+                    req.getRequestDispatcher("/zerror_pages/404.jsp").forward(request, response);
+                }
             }
         }
     }
@@ -217,7 +223,8 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ate/index");
         resource.setPath("/views/subprojects/app/ate/index/index.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ate/index/index.js" + version_project
+            "/views/subprojects/app/ate/index/index.js" + version_project,
+            "/views/subprojects/app/ate/index/video_tutorial.js" + version_project
         });
         this.list_resources.add(resource);
 

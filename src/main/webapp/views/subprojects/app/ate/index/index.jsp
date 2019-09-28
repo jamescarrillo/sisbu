@@ -31,70 +31,52 @@
 </div>
 
 <div class="row" id="row-videos-tutoriales" style="margin-top: 40px; display: none">
-    <div class="col-md-6 dt-masonry__item">
-        <!-- Card -->
+    <!--div class="col-md-6 dt-masonry__item">
         <div class="card">
-            <!-- Card Body -->
             <div class="card-body">
                 <h2 class="card-title">Como cambiar clave y subir foto a SISBU</h2>
                 <h4 class="card-subtitle">¡No olvides subir tu foto! Recuerda que es obligatorio para sacar tu constancia de la evaluación socieconómica.</h4>
-                <!-- 16:9 aspect ratio -->
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3y1KP-q37Bw" allowfullscreen></iframe>
                 </div>
             </div>
-            <!-- /card body -->
         </div>
-        <!-- /card -->
     </div>
     <div class="col-md-6 dt-masonry__item">
-        <!-- Card -->
         <div class="card">
-            <!-- Card Body -->
             <div class="card-body">
                 <h2 class="card-title">¿Como llenar la evaluación socieconómica?</h2>
                 <h4 class="card-subtitle">Video instructivo para llenar nuestra evaluación socieconómica. No olvides de sacar tu constancia al culminar.</h4>
-                <!-- 16:9 aspect ratio -->
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3y1KP-q37Bw" allowfullscreen></iframe>
                 </div>
             </div>
-            <!-- /card body -->
         </div>
-        <!-- /card -->
     </div>
     <div class="col-md-6 dt-masonry__item">
-        <!-- Card -->
         <div class="card">
-            <!-- Card Body -->
             <div class="card-body">
                 <h2 class="card-title">¿Como llenar la evaluación deportiva?</h2>
                 <h4 class="card-subtitle">Video instructivo para llenar nuestra evaluación deportiva. No olvides de sacar tu constancia al culminar.</h4>
-                <!-- 16:9 aspect ratio -->
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3y1KP-q37Bw" allowfullscreen></iframe>
                 </div>
             </div>
-            <!-- /card body -->
         </div>
-        <!-- /card -->
     </div>
     <div class="col-md-6 dt-masonry__item">
-        <!-- Card -->
         <div class="card">
-            <!-- Card Body -->
             <div class="card-body">
                 <h2 class="card-title">¿Como llenar la evaluación psicológica?</h2>
                 <h4 class="card-subtitle">Video instructivo para llenar nuestra evaluación psicológica. No olvides de sacar tu constancia al culminar.</h4>
-                <!-- 16:9 aspect ratio -->
                 <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3y1KP-q37Bw" allowfullscreen></iframe>
                 </div>
             </div>
-            <!-- /card body -->
         </div>
-        <!-- /card -->
-    </div>
+    </div-->
+</div>
+<div class="row justify-content-center" id="row-pregunta-empiezo" style="margin-top: 20px; display: none">
     <div class="col-12 text-center" style="margin-top: 30px">
         <h3>¿Por donde quieres empezar <span class="text-info" id="lblNameUserIndex2">User</span>?</h3>
     </div>
