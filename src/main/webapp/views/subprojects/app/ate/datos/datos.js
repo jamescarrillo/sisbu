@@ -51,7 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $('#modalCargandoDatos').modal('show');
 
-listFilterDistrito("#txtFilterDistrito");
+    listFilterDistrito("#txtFilterDistritoActual", 2);
+    listFilterDistrito("#txtFilterDistritoProcedencia", 3);
 });
 
 function listFilterEscuela(filterdni) {
@@ -95,9 +96,9 @@ function processAjaxAtendido() {
                 "sexo": document.querySelector("#txtSexoPaciente").value,
                 "tipo_colegio": document.querySelector("#txtTipoColegioPaciente").value,
                 "tipo_documento": document.querySelector("#txtTipoDocumentoPaciente").value,
-                "escuela":{"idescuela":escuelaSelected.idescuela},
-                "distrito_actual":{"iddistrito":distritoActualSelected.iddistrito},
-                "distrito_procedencia":{"iddistrito": distritoProcedenciaSelected.iddistrito},
+                "escuela": {"idescuela": escuelaSelected.idescuela},
+                "distrito_actual": {"iddistrito": distritoActualSelected.iddistrito},
+                "distrito_procedencia": {"iddistrito": distritoProcedenciaSelected.iddistrito},
             };
             if (beanRequestAtendido.operation == "update") {
                 json.idatendido = atendidoSelected.idatendido;
@@ -226,11 +227,11 @@ function addInputDatos(atendidoSelected) {
     document.querySelector("#txtFechaNacPaciente").value = atendidoSelected.fecha_nacimiento;
     document.querySelector("#txtCelularPaciente").value = atendidoSelected.celular;
     document.querySelector("#txtEmailPaciente").value = atendidoSelected.email;
-     document.querySelector("#txtModalidadPaciente").value=atendidoSelected.modalidad_ingreso;
-     document.querySelector("#txtTipoColegioPaciente").value=atendidoSelected.tipo_colegio;
-     document.querySelector("#txtDireccionActualPaciente").value=atendidoSelected.direccion_actual;
-     document.querySelector("#txtDireccionProcePaciente").value=atendidoSelected.direccion_procedencia;
-     document.querySelector("#txtFilterEscuela").value=atendidoSelected.escuela.nombre;
+    document.querySelector("#txtModalidadPaciente").value = atendidoSelected.modalidad_ingreso;
+    document.querySelector("#txtTipoColegioPaciente").value = atendidoSelected.tipo_colegio;
+    document.querySelector("#txtDireccionActualPaciente").value = atendidoSelected.direccion_actual;
+    document.querySelector("#txtDireccionProcePaciente").value = atendidoSelected.direccion_procedencia;
+    document.querySelector("#txtFilterEscuela").value = atendidoSelected.escuela.nombre;
 }
 
 
