@@ -85,31 +85,31 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtCodigoPaciente">CÓDIGO</label>
-                                    <input  type="text" class="form-control" id="txtCodigoPaciente" placeholder="CODIGO">
+                                    <input  type="text" class="form-control form-control-sm" id="txtCodigoPaciente" placeholder="CODIGO">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtNumeroDocumentoPaciente">N° DOCUMENTO</label>
-                                    <input  type="text" class="form-control" id="txtNumeroDocumentoPaciente" placeholder="N° DOCUMENTO">
+                                    <input  type="text" class="form-control form-control-sm" id="txtNumeroDocumentoPaciente" placeholder="N° DOCUMENTO">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtApPaternoPaciente">AP. PATERNO</label>
-                                    <input  type="text" class="form-control" id="txtApPaternoPaciente" placeholder="AP. PATERNO">
+                                    <input  type="text" class="form-control form-control-sm" id="txtApPaternoPaciente" placeholder="AP. PATERNO">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtApMaternoPaciente">AP. MATERNO</label>
-                                    <input  type="text" class="form-control" id="txtApMaternoPaciente" placeholder="AP. MATERNO">
+                                    <input  type="text" class="form-control form-control-sm" id="txtApMaternoPaciente" placeholder="AP. MATERNO">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtNombrePaciente">NOMBRES</label>
-                                    <input  type="text" class="form-control" id="txtNombrePaciente" placeholder="NOMBRES">
+                                    <input  type="text" class="form-control form-control-sm" id="txtNombrePaciente" placeholder="NOMBRES">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
@@ -124,19 +124,19 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtFechaNacPaciente">FECHA DE NACIMIENTO</label>
-                                    <input  type="date" class="form-control" id="txtFechaNacPaciente" placeholder="Enter email">
+                                    <input  type="date" class="form-control form-control-sm" id="txtFechaNacPaciente" placeholder="Enter email">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtCelularPaciente">CELULAR</label>
-                                    <input  type="text" class="form-control" id="txtCelularPaciente" placeholder="CELULAR">
+                                    <input  type="text" class="form-control form-control-sm" id="txtCelularPaciente" placeholder="CELULAR">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12">
                                 <div class="form-group">
                                     <label for="txtEmailPaciente">EMAIL</label>
-                                    <input  type="email" class="form-control" id="txtEmailPaciente" placeholder="EMAIL">
+                                    <input  type="email" class="form-control form-control-sm" id="txtEmailPaciente" placeholder="EMAIL">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12">
@@ -164,7 +164,7 @@
                                         <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterEscuela"  type="search">
                                         <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
                                     </div>
-                                    <div id="resultadoEscuela" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                                    <div id="resultadoEscuela" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:6;max-height: 85px;"> 
                                     </div>
                                 </div>
                             </div>
@@ -332,7 +332,7 @@
                                     <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterOcupacion"  type="search">
                                     <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
                                 </div>
-                                <div id="resultadoOcupacion" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                                <div id="resultadoOcupacion" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:6;max-height: 85px;"> 
                                 </div>
                             </div>
                         </div>
@@ -344,7 +344,7 @@
                                     <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterDistrito"  type="search">
                                     <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
                                 </div>
-                                <div id="resultadoDistrito" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                                <div id="resultadoDistrito" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:6;max-height: 85px;"> 
                                 </div>
                             </div>
                         </div>

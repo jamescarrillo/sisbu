@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#FrmPersonalPaciente').submit(function (event) {
         beanRequestAtendido.operation = "update";
         beanRequestAtendido.type_request = "PUT";
-        // if (validateFormAtendido()) {
+       if (validateFormAtendido()) {
         $('#modalCargandoDatos').modal('show');
-        //}
+        }
         event.preventDefault();
         event.stopPropagation();
     });
@@ -232,8 +232,8 @@ function validateFormAtendido() {
         document.querySelector("#txtTipoDocumentoPaciente").focus();
         return false;
     }
-    else if (document.querySelector("#txtEstadoPaciente").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese estado');
+    else if (document.querySelector("#txtEstadoPaciente").value == "-1") {
+        showAlertTopEnd('warning', 'Por favor ingrese estado civil');
         document.querySelector("#txtEstadoPaciente").focus();
         return false;
     }

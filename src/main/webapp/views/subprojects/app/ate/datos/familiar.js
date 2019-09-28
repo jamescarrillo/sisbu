@@ -19,18 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
     });
 
-    $('#FrmFamiliarModal').submit(function (event) {
-        if (validateFormFamiliar()) {
-            $('#modalCargandoFamiliar').modal('show');
-        }
-        event.preventDefault();
-        event.stopPropagation();
-    });
 
     $('#FrmFamiliarPaciente').submit(function (event) {
-        //if (validateFormFamiliar()) {
+        if (validateFormFamiliar()) {
         $('#modalCargandoFamiliar').modal('show');
-        //}
+        }
         event.preventDefault();
         event.stopPropagation();
     });
@@ -174,7 +167,7 @@ function processAjaxFamiliar() {
 
 function toListFamiliar(beanPagination) {
     document.querySelector("#tbodyDatosFamiliares").innerHTML = "";
-    document.querySelector("#titleManagerFamiliar").innerHTML = "[ " + beanPagination.count_filter + " ] FAMILIARES";
+    document.querySelector("#titleManagerFamiliar").innerHTML = "  FAMILIARES";
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(familiar => {
@@ -251,42 +244,42 @@ function findByFamiliar(idfamiliar) {
 function validateFormFamiliar() {
     if (document.querySelector("#txtNombreFamiliar").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese nombre');
-        document.querySelector("#txtNombreFamiliar").value.focus();
+        document.querySelector("#txtNombreFamiliar").focus();
         return false;
     }
-    else if (document.querySelector("#txtParentescoFamiliar").value == "") {
+    else if (document.querySelector("#txtParentescoFamiliar").value == "-1") {
         showAlertTopEnd('warning', 'Por favor ingrese parentesco');
-        document.querySelector("#txtParentescoFamiliar").value.focus();
+        document.querySelector("#txtParentescoFamiliar").focus();
         return false;
     }
     else if (document.querySelector("#txtFechaNaciFamiliar").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese fecha de nacimiento');
-        document.querySelector("#txtFechaNaciFamiliar").value.focus();
+        document.querySelector("#txtFechaNaciFamiliar").focus();
         return false;
     }
-    else if (document.querySelector("#txtEstadoFamiliar").value == "") {
+    else if (document.querySelector("#txtEstadoFamiliar").value == "-1") {
         showAlertTopEnd('warning', 'Por favor ingrese Estado civil');
-        document.querySelector("#txtEstadoFamiliar").value.focus();
+        document.querySelector("#txtEstadoFamiliar").focus();
         return false;
     }
-    else if (document.querySelector("#txtNivelInstFamiliar").value == "") {
+    else if (document.querySelector("#txtNivelInstFamiliar").value == "-1") {
         showAlertTopEnd('warning', 'Por favor ingrese Nivel de instrucción');
-        document.querySelector("#txtNivelInstFamiliar").value.focus();
+        document.querySelector("#txtNivelInstFamiliar").focus();
         return false;
     }
     else if (document.querySelector("#txtIngresosFamiliar").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese Ingreso');
-        document.querySelector("#txtIngresosFamiliar").value.focus();
+        document.querySelector("#txtIngresosFamiliar").focus();
         return false;
     }
     else if (ocupacionSelected.length==0 ) {
         showAlertTopEnd('warning', 'Por favor ingrese ocupacion');
-        document.querySelector("#txtFilterOcupacion").value.focus();
+        document.querySelector("#txtFilterOcupacion").focus();
         return false;
     }
     else if (distritoSelected.length==0 ) {
         showAlertTopEnd('warning', 'Por favor ingrese distrito');
-        document.querySelector("#txtFilterDistrito").value.focus();
+        document.querySelector("#txtFilterDistrito").focus();
         return false;
     }
     return true;
@@ -305,6 +298,19 @@ function addInputFamiliar(atendidoSelected) {
     document.querySelector("#txtFilterDistrito").value = atendidoSelected.distrito.nombre;
     ocupacionSelected = atendidoSelected.ocupacion;
     distritoSelected = atendidoSelected.distrito;
+}
+
+function limpiarInputFamiliar() {
+    document.querySelector("#txtNombreFamiliar").value = "";
+    document.querySelector("#txtParentescoFamiliar").value = "-1";
+    document.querySelector("#txtFechaNaciFamiliar").value = "";
+    document.querySelector("#txtEstadoFamiliar").value = "-1";
+    document.querySelector("#txtNivelInstFamiliar").value = "-1";
+    document.querySelector("#txtIngresosFamiliar").value = "";
+
+    document.querySelector("#txtFilterOcupacion").value = "";
+    document.querySelector("#txtFilterDistrito").value = "";
+  
 }
 
 function estadoCivil(estadocivil) {
