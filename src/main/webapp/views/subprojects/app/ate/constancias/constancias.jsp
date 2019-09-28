@@ -33,10 +33,10 @@
                                     <button class="btn btn-default text-success dt-fab-btn" id="btn-download-constancia-socioeconomica" idarea='7' title="Click para descargar constancia" data-toggle="tooltip">
                                         <i class="icon icon-assignment icon-1x"></i>
                                     </button>
-                                    <button class="btn btn-default text-danger dt-fab-btn btn-download-preguntas" idarea='7' title="Click para descargar mis respuestas" data-toggle="tooltip">
+                                    <button class="btn btn-default text-danger dt-fab-btn" id="btn-download-preguntas-socioeconomica" idarea='7' title="Click para descargar mis respuestas" data-toggle="tooltip">
                                         <i class="icon icon-assignment icon-xl"></i>
                                     </button>
-                                    <button class="btn btn-default text-primary dt-fab-btn btn-download-familiares" title="Click para descargar mis familiares" data-toggle="tooltip">
+                                    <button class="btn btn-default text-primary dt-fab-btn" id="btn-download-familiares-socioeconomica" title="Click para descargar mis familiares" data-toggle="tooltip">
                                         <i class="icon icon-assignment icon-xl"></i>
                                     </button>
                                 </div>
@@ -62,7 +62,7 @@
                                     <button class="btn btn-default text-success dt-fab-btn" id="btn-download-constancia-deportiva" title="Click para descargar constancia" data-toggle="tooltip">
                                         <i class="icon icon-assignment icon-1x"></i>
                                     </button>
-                                    <button class="btn btn-default text-danger dt-fab-btn btn-download-preguntas" title="Click para descargar mis deportes y aficiones" data-toggle="tooltip">
+                                    <button class="btn btn-default text-danger dt-fab-btn" id="btn-download-deportes-aficiones"  title="Click para descargar mis deportes y aficiones" data-toggle="tooltip">
                                         <i class="icon icon-assignment icon-xl"></i>
                                     </button>
                                 </div>
@@ -111,7 +111,7 @@
                                     <button class="btn btn-default text-success dt-fab-btn btn-download-constancia-directa" idarea='4' title="Click para descargar constancia" data-toggle="tooltip">
                                         <i class="icon icon-assignment icon-1x"></i>
                                     </button>
-                                    <button class="btn btn-default text-danger dt-fab-btn btn-download-preguntas" idarea='4' title="Click para descargar mis respuestas" data-toggle="tooltip">
+                                    <button class="btn btn-default text-danger dt-fab-btn" id="btn-download-preguntas-obstetricia" idarea='4' title="Click para descargar mis respuestas" data-toggle="tooltip">
                                         <i class="icon icon-assignment icon-xl"></i>
                                     </button>
                                 </div>
