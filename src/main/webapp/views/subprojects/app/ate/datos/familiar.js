@@ -167,7 +167,7 @@ function processAjaxFamiliar() {
 
 function toListFamiliar(beanPagination) {
     document.querySelector("#tbodyDatosFamiliares").innerHTML = "";
-    document.querySelector("#titleManagerFamiliar").innerHTML = "[ " + beanPagination.count_filter + " ] FAMILIARES";
+    document.querySelector("#titleManagerFamiliar").innerHTML = "  FAMILIARES";
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(familiar => {
