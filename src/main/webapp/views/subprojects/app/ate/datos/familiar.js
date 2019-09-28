@@ -1,9 +1,11 @@
 var beanPaginationFamiliar;
+var beanPaginationOcupacion;
 var beanPaginationDistrito;
 var familiarSelected;
+var ocupacionSelected;
+var distritoSelected;
 var beanRequestFamiliar = new BeanRequest();
 document.addEventListener("DOMContentLoaded", function () {
-    console.log(user_session.idusuario);
     //INICIALIZANDO VARIABLES DE SOLICITUD
     beanRequestFamiliar.entity_api = "api/familiares";
     beanRequestFamiliar.operation = "paginate";
@@ -25,9 +27,20 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
     });
 
+    $('#FrmFamiliarPaciente').submit(function (event) {
+        //if (validateFormFamiliar()) {
+        $('#modalCargandoFamiliar').modal('show');
+        //}
+        event.preventDefault();
+        event.stopPropagation();
+    });
+    $("#modalCargandoFamiliar").on('shown.bs.modal', function () {
+        processAjaxFamiliar();
+    });
     document.querySelector("#btnOpenNewFamiliar").onclick = function () {
-        processAjaxDistrito("");
+
         listFilterDistrito("#txtFilterDistrito");
+        listFilterOcupacion("#txtFilterOcupacion");
         //CONFIGURAMOS LA SOLICITUD
         beanRequestFamiliar.operation = "add";
         beanRequestFamiliar.type_request = "POST";
@@ -57,6 +70,14 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestFamiliar.operation = "paginate";
         beanRequestFamiliar.type_request = "GET";
         $('#modalCargandoFamiliar').modal('show');
+    };
+
+    document.querySelector("#txtFilterOcupacion").onclick = function () {
+        processAjaxOcupacion("");
+    };
+
+    document.querySelector("#txtFilterDistrito").onclick = function () {
+        processAjaxDistrito("");
     };
 });
 
@@ -102,7 +123,14 @@ function processAjaxFamiliar() {
             json = {};
         } else {
             json = {
-                "nombre": document.querySelector("#txtNombreFamiliar").value,
+                "estado_civil": document.querySelector("#txtEstadoPaciente").value,
+                "fecha_nacimiento": document.querySelector("#txtFechaNaciPaciente").value,
+                "ingresos": document.querySelector("#txtIngresosPaciente").value,
+                "nivel_instruccion": document.querySelector("#txtNivelInstPaciente").value,
+                "nombre_completo": document.querySelector("#txtNombrePaciente").value,
+                "parentesco": document.querySelector("#txtParentescoPaciente").value,
+                "ocupacion": {"idocupacion": ocupacionSelected.idocupacion},
+                "distrito": {"iddistrito": distritoSelected.iddistrito}
             };
             if (beanRequestFamiliar.operation == "update") {
                 json.idfamiliar = familiarSelected.idfamiliar;
@@ -155,7 +183,10 @@ function toListFamiliar(beanPagination) {
             row += "<li class='dt-list__item eliminar-familiar' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
             row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
-            row += "<td class='align-middle'>" + familiar.nombre + "</td>";
+            row += "<td class='align-middle'>" + parentesco(familiar.parentesco) + "<br>" + familiar.nombre_completo + "</td>";
+            row += "<td class='align-middle'>" + familiar.fecha_nacimiento + "</td>";
+            row += "<td class='align-middle'>" + estadoCivil(familiar.estado_civil) + "<br>" + nivelInstruccion(familiar.nivel_instruccion) + "</td>";
+            row += "<td class='align-middle'>" + familiar.ingresos + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyDatosFamiliares").innerHTML += row;
         });
@@ -232,6 +263,75 @@ function addInputFamiliar(atendidoSelected) {
     // document.querySelector("#").value=;
 }
 
+function estadoCivil(estadocivil) {
+    switch (estadocivil) {
+        case 1:
+            return "SOLTERO(A)";
+            break;
+        case 2:
+            return "CASADO(A)";
+            break;
+        case 3:
+            return "DIVORSIADO(A)";
+            break;
+        case 4:
+            return "VIUDO(A)";
+            break;
+
+        default:
+            return "";
+            break;
+    }
+}
+
+function nivelInstruccion(nivel) {
+    switch (nivel) {
+        case 1:
+
+            return "SIN ESTUDIOOS";
+            break;
+        case 2:
+            return "PRIMARIA";
+            break;
+        case 3:
+            return "SECUNDARIA";
+            break;
+        case 4:
+            return "TÉCNICO";
+            break;
+        case 4:
+            return "UNIVERSIDAD";
+            break;
+
+        default:
+            return "";
+            break;
+    }
+}
+
+function parentesco(nivel) {
+    switch (nivel) {
+        case 1:
+            return "PAPÁ";
+            break;
+        case 2:
+            return "MAMÁ";
+            break;
+        case 3:
+            return "HERMANO(A)";
+            break;
+        case 4:
+            return "TÍO(A)";
+            break;
+        case 5:
+            return "OTRO";
+            break;
+        default:
+            return "";
+            break;
+    }
+}
+
 //DISTRITO
 
 function toListDistrito(beanPagination) {
@@ -240,11 +340,11 @@ function toListDistrito(beanPagination) {
         let row;
         beanPagination.list.forEach(distrito => {
             row = "<a iddistrito='" + distrito.iddistrito + "' href='javascript:void(0)' ";
-            row += "class='list-group-item list-group-item-action pt-1 pb-1 agregar-doctor'>" + personal.apellido_pat.toUpperCase() + " " + personal.apellido_mat.toUpperCase() + " " + personal.nombre.toUpperCase();
+            row += "class='list-group-item list-group-item-action pt-1 pb-1 agregar-distrito'>" + distrito.nombre.toUpperCase();
             row += "</a>";
             document.querySelector("#resultadoDistrito").innerHTML += row;
         });
-        addEventsPacientes();
+        addEvents();
     } else {
         //destroyPagination($('#paginationComida'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -283,6 +383,17 @@ function processAjaxDistrito(nombredistrito) {
     });
 }
 
+function findByDistrito(iddistrito) {
+    let distrito_;
+    beanPaginationDistrito.list.forEach(distrito => {
+        if (iddistrito == distrito.iddistrito) {
+            distrito_ = distrito;
+            return;
+        }
+    });
+    return distrito_;
+}
+
 //OCUPACION
 
 function toListOcupacion(beanPagination) {
@@ -290,12 +401,12 @@ function toListOcupacion(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(Ocupacion => {
-            row = "<a idocupacion='" + Ocupacion.idOcupacion + "' href='javascript:void(0)' ";
-            row += "class='list-group-item list-group-item-action pt-1 pb-1 agregar-doctor'>" + Ocupacion.apellido_pat.toUpperCase() + " " + Ocupacion.apellido_mat.toUpperCase() + " " + Ocupacion.nombre.toUpperCase();
+            row = "<a idocupacion='" + Ocupacion.idocupacion + "' href='javascript:void(0)' ";
+            row += "class='list-group-item list-group-item-action pt-1 pb-1 agregar-ocupacion'>" + Ocupacion.nombre.toUpperCase();
             row += "</a>";
             document.querySelector("#resultadoOcupacion").innerHTML += row;
         });
-        addEventsPacientes();
+        addEvents();
     } else {
         //destroyPagination($('#paginationComida'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -305,7 +416,7 @@ function toListOcupacion(beanPagination) {
 
 function processAjaxOcupacion(nombreOcupacion) {
     $.ajax({
-        url: getHostAPI() + "api/ocupacion/paginate?nombre="+nombreOcupacion+"&page=1&size=100",
+        url: getHostAPI() + "api/ocupaciones/paginate?nombre=" + nombreOcupacion + "&page=1&size=100",
         type: "GET",
         headers: {
             //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
@@ -324,12 +435,52 @@ function processAjaxOcupacion(nombreOcupacion) {
             }
         }
         if (beanCrudResponse.beanPagination !== undefined) {
-            beanPaginationFamiliar = beanCrudResponse.beanPagination;
-            toListFamiliar(beanPaginationFamiliar);
+            beanPaginationOcupacion = beanCrudResponse.beanPagination;
+            toListOcupacion(beanPaginationOcupacion);
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoFamiliar').modal("hide");
         showAlertErrorRequest();
 
     });
+}
+
+
+function addEvents() {
+    document.querySelectorAll('.agregar-distrito').forEach(btn => {
+        //AGREGANDO EVENTO CLICK
+        btn.onclick = function () {
+            distritoSelected = findByDistrito(btn.getAttribute('iddistrito'));
+            if (distritoSelected != undefined) {
+                document.querySelector("#resultadoDistrito").style.height = 0;
+                document.querySelector("#txtFilterDistrito").value = distritoSelected.nombre;
+
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Familiar para poder editar');
+            }
+        };
+    });
+    document.querySelectorAll('.agregar-ocupacion').forEach(btn => {
+        //AGREGANDO EVENTO CLICK
+        btn.onclick = function () {
+            ocupacionSelected = findByOcupacion(btn.getAttribute('idocupacion'));
+            if (ocupacionSelected != undefined) {
+                document.querySelector("#resultadoOcupacion").style.height = 0;
+                document.querySelector("#txtFilterOcupacion").value = ocupacionSelected.nombre;
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Familiar para poder editar');
+            }
+        };
+    });
+}
+
+function findByOcupacion(idocupacion) {
+    let ocupacion_;
+    beanPaginationOcupacion.list.forEach(ocupacion => {
+        if (idocupacion == ocupacion.idocupacion) {
+            ocupacion_ = ocupacion;
+            return;
+        }
+    });
+    return ocupacion_;
 }

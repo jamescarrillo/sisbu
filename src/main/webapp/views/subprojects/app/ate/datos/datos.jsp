@@ -33,96 +33,101 @@
 
                 <!-- Tab DATOS PERSONALES -->
                 <div id="tab-pane-15" class="tab-pane show active ">
-                    <div class="row">
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="txtTipoDocumentoPaciente">TIPO DE DOCUMENTO</label>
-                                <select  class="form-control form-control-sm" id="txtTipoDocumentoPaciente">
-                                    <option   value="1">DNI</option>
-                                    <option  value="2">CARNET DE EXTRANJERIA</option>
-                                    <option  value="3">OTRO</option>
-                                </select>
+                    <form id="FrmPersonalPaciente">
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtTipoDocumentoPaciente">TIPO DE DOCUMENTO</label>
+                                    <select  class="form-control form-control-sm" id="txtTipoDocumentoPaciente">
+                                        <option   value="1">DNI</option>
+                                        <option  value="2">CARNET DE EXTRANJERIA</option>
+                                        <option  value="3">OTRO</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="txtEstadoPaciente">ESTADO CIVIL</label>
-                                <select  class="form-control form-control-sm" id="txtEstadoPaciente">
-                                    <option  value="-1">Seleccionar...</option>
-                                    <option  value="1">SOLTERO(A)</option>
-                                    <option  value="2">CASADO(A)</option>
-                                    <option  value="3">DIVORSIADO(A)</option>
-                                    <option  value="4">VIUDO(A)</option>
-                                </select>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtEstadoPaciente">ESTADO CIVIL</label>
+                                    <select  class="form-control form-control-sm" id="txtEstadoPaciente">
+                                        <option  value="-1">Seleccionar...</option>
+                                        <option  value="1">SOLTERO(A)</option>
+                                        <option  value="2">CASADO(A)</option>
+                                        <option  value="3">DIVORSIADO(A)</option>
+                                        <option  value="4">VIUDO(A)</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="txtCodigoPaciente">CÓDIGO</label>
-                                <input  type="text" class="form-control" id="txtCodigoPaciente" placeholder="CODIGO">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtCodigoPaciente">CÓDIGO</label>
+                                    <input  type="text" class="form-control" id="txtCodigoPaciente" placeholder="CODIGO">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="txtNumeroDocumentoPaciente">N° DOCUMENTO</label>
-                                <input  type="text" class="form-control" id="txtNumeroDocumentoPaciente" placeholder="N° DOCUMENTO">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtNumeroDocumentoPaciente">N° DOCUMENTO</label>
+                                    <input  type="text" class="form-control" id="txtNumeroDocumentoPaciente" placeholder="N° DOCUMENTO">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="txtApPaternoPaciente">AP. PATERNO</label>
-                                <input  type="text" class="form-control" id="txtApPaternoPaciente" placeholder="AP. PATERNO">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtApPaternoPaciente">AP. PATERNO</label>
+                                    <input  type="text" class="form-control" id="txtApPaternoPaciente" placeholder="AP. PATERNO">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="txtApMaternoPaciente">AP. MATERNO</label>
-                                <input  type="text" class="form-control" id="txtApMaternoPaciente" placeholder="AP. MATERNO">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtApMaternoPaciente">AP. MATERNO</label>
+                                    <input  type="text" class="form-control" id="txtApMaternoPaciente" placeholder="AP. MATERNO">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="txtNombrePaciente">NOMBRES</label>
-                                <input  type="email" class="form-control" id="txtNombrePaciente" placeholder="NOMBRES">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtNombrePaciente">NOMBRES</label>
+                                    <input  type="email" class="form-control" id="txtNombrePaciente" placeholder="NOMBRES">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="txtSexoPaciente">SEXO</label>
-                                <select  class="form-control form-control-sm" id="txtSexoPaciente">
-                                    <option value="1">MASCULINO</option>
-                                    <option  value="2">FEMENINO</option>
-                                </select>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtSexoPaciente">SEXO</label>
+                                    <select  class="form-control form-control-sm" id="txtSexoPaciente">
+                                        <option value="1">MASCULINO</option>
+                                        <option  value="2">FEMENINO</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="txtFechaNacPaciente">FECHA DE NACIMIENTO</label>
-                                <input  type="email" class="form-control" id="txtFechaNacPaciente" placeholder="Enter email">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtFechaNacPaciente">FECHA DE NACIMIENTO</label>
+                                    <input  type="email" class="form-control" id="txtFechaNacPaciente" placeholder="Enter email">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="form-group">
-                                <label for="txtCelularPaciente">CELULAR</label>
-                                <input  type="text" class="form-control" id="txtCelularPaciente" placeholder="CELULAR">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtCelularPaciente">CELULAR</label>
+                                    <input  type="text" class="form-control" id="txtCelularPaciente" placeholder="CELULAR">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-12">
-                            <div class="form-group">
-                                <label for="txtEmailPaciente">EMAIL</label>
-                                <input  type="email" class="form-control" id="txtEmailPaciente" placeholder="Enter email">
+                            <div class="col-lg-4 col-sm-12">
+                                <div class="form-group">
+                                    <label for="txtEmailPaciente">EMAIL</label>
+                                    <input  type="email" class="form-control" id="txtEmailPaciente" placeholder="Enter email">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-12">
-                            <div class="form-group">
-                                <label for="txtEscuelaPaciente">ESCUELA</label>
-                                <input  type="text" class="form-control" id="txtEscuelaPaciente" placeholder="ESCUELA">
+                            <div class="col-lg-4 col-sm-12">
+                                <div class="form-group">
+                                    <label for="txtEscuelaPaciente">ESCUELA</label>
+                                    <input  type="text" class="form-control" id="txtEscuelaPaciente" placeholder="ESCUELA">
+                                </div>
                             </div>
-                        </div>
+                            <div class="col-lg-12 text-left">
+                                <button type="submit" class="btn btn-outline-primary btn-sm" id="btnGuardarPersonales">Guardar</button>
+                            </div> 
 
-                    </div>
+                        </div>
+                    </form>
                 </div> 
                 <!-- /tab pane-->
 
@@ -165,9 +170,7 @@
                 </div>
                 <!-- /tab pane-->
 
-                <div class="col-lg-12 text-left">
-                    <button type="button" id="btnCerrar" class="btn btn-outline-primary btn-sm" > <i class="icon icon-reply icon-lg"></i> CANCELAR</button>
-                </div> 
+
             </div>
             <!-- /tab content -->
 
@@ -187,7 +190,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form id="FrmTriajePaciente">
+            <form id="FrmFamiliarPaciente" autocomplete="off">
                 <div class="modal-body">
                     <div class="row" >
                         <div class="col-lg-6 col-sm-6">
@@ -250,7 +253,7 @@
                         </div>
 
 
-                        <div class="col-lg-4 col-sm-6 " >
+                        <div class="col-lg-6 col-sm-12 " >
                             <label for="txtOcupacionPaciente">OCUPACIÓN</label>
                             <div class="search-box " style="max-width: 100%;">
                                 <div class="input-group">
@@ -262,7 +265,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-sm-6 " >
+                        <div class="col-lg-6 col-sm-12 " >
                             <label for="txtDistritoPaciente">DISTRITO</label>
                             <div class="search-box " style="max-width: 100%;">
                                 <div class="input-group">
