@@ -312,7 +312,7 @@ function processAjaxEscuela() {
         url: getHostAPI() + beanRequestEscuela.entity_api + "/" + beanRequestEscuela.operation + parameters_pagination,
         type: beanRequestEscuela.type_request,
         headers: {
-            //'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
