@@ -33,7 +33,7 @@
 
                 <!-- Tab DATOS PERSONALES -->
                 <div id="tab-pane-15" class="tab-pane show active ">
-                    <form id="FrmPersonalPaciente">
+                    <form id="FrmPersonalPaciente" autocomplete="off">
                         <div class="row">
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
@@ -109,7 +109,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtNombrePaciente">NOMBRES</label>
-                                    <input  type="email" class="form-control" id="txtNombrePaciente" placeholder="NOMBRES">
+                                    <input  type="text" class="form-control" id="txtNombrePaciente" placeholder="NOMBRES">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
@@ -124,7 +124,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtFechaNacPaciente">FECHA DE NACIMIENTO</label>
-                                    <input  type="email" class="form-control" id="txtFechaNacPaciente" placeholder="Enter email">
+                                    <input  type="date" class="form-control" id="txtFechaNacPaciente" placeholder="Enter email">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
@@ -136,7 +136,7 @@
                             <div class="col-lg-4 col-sm-12">
                                 <div class="form-group">
                                     <label for="txtEmailPaciente">EMAIL</label>
-                                    <input  type="email" class="form-control" id="txtEmailPaciente" placeholder="Enter email">
+                                    <input  type="email" class="form-control" id="txtEmailPaciente" placeholder="EMAIL">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12">
@@ -257,15 +257,15 @@
                     <div class="row" >
                         <div class="col-lg-6 col-sm-6">
                             <div class="form-group ">
-                                <label for="txtNombrePaciente">NOMBRE COMPLETO</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtNombrePaciente" placeholder="PA">
+                                <label for="txtNombreFamiliar">NOMBRE COMPLETO</label>
+                                <input  type="text" class="form-control form-control-sm" id="txtNombreFamiliar" placeholder="PA">
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-sm-6">
                             <div class="form-group ">
-                                <label for="txtParentescoPaciente">PARENTESCO</label>
-                                <select class="form-control form-control-sm " id="txtParentescoPaciente">
+                                <label for="txtParentescoFamiliar">PARENTESCO</label>
+                                <select class="form-control form-control-sm " id="txtParentescoFamiliar">
                                     <option value="-1">seleccione tipo...</option>
                                     <option value="1">PAPÁ</option>
                                     <option value="2">MAMÁ</option>
@@ -278,14 +278,14 @@
                         </div>
                         <div class="col-lg-6 col-sm-6">
                             <div class="form-group ">
-                                <label for="txtFechaNaciPaciente">FECHA NACIMIENTO</label>
-                                <input  type="date" class="form-control form-control-sm" id="txtFechaNaciPaciente" placeholder="PA">
+                                <label for="txtFechaNaciFamiliar">FECHA NACIMIENTO</label>
+                                <input  type="date" class="form-control form-control-sm" id="txtFechaNaciFamiliar" placeholder="PA">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-6">
                             <div class="form-group ">
-                                <label for="txtEstadoPaciente">ESTADO CIVIL</label>
-                                <select class="form-control form-control-sm " id="txtEstadoPaciente">
+                                <label for="txtEstadoFamiliar">ESTADO CIVIL</label>
+                                <select class="form-control form-control-sm " id="txtEstadoFamiliar">
                                     <option value="-1">seleccione...</option>
                                     <option value="1">SOLTERO</option>
                                     <option value="2">CASADO</option>
@@ -295,8 +295,8 @@
                         </div>
                         <div class="col-lg-6 col-sm-6">
                             <div class="form-group ">
-                                <label for="txtNivelInstPaciente">NIVEL INSTRUCCIÓN</label>
-                                <select class="form-control form-control-sm " id="txtNivelInstPaciente">
+                                <label for="txtNivelInstFamiliar">NIVEL INSTRUCCIÓN</label>
+                                <select class="form-control form-control-sm " id="txtNivelInstFamiliar">
                                     <option value="-1">seleccione...</option>
                                     <option value="1">SIN ESTUDIOS</option>
                                     <option value="2">PRIMARIA</option>
@@ -309,8 +309,8 @@
 
                         <div class="col-lg-6 col-sm-6">
                             <div class="form-group ">
-                                <label for="txtIngresosPaciente">INGRESOS</label>
-                                <input type="text" class="form-control form-control-sm" id="txtIngresosPaciente" placeholder="INGRESOS">
+                                <label for="txtIngresosFamiliar">INGRESOS</label>
+                                <input type="text" class="form-control form-control-sm" id="txtIngresosFamiliar" placeholder="INGRESOS">
                             </div>
                         </div>
 
