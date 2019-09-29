@@ -54,7 +54,7 @@
                                         <option   value="1">EXAMEN ORDINARIO</option>
                                         <option  value="2">DEPORTISTA CALIFICADO</option>
                                         <option  value="3">PRIMEROS PUESTOS</option>
-                                        <option  value="4">INGRESANTE CPU-(CICLO ACADÉMICO)</option>
+                                        <option  value="4">INGRESANTE CPU</option>
                                         <option  value="5">CAMBIO DE UNIVERSIDAD</option>
                                         <option  value="6">GRADUADOS O TITULADOS</option>
                                         <option  value="7">5TO DE SECUNDARIA</option>
@@ -517,7 +517,7 @@
                                 <table class="table mb-0 table-fluid">
                                     <thead>
                                         <tr>
-                                            <th class="align-middle text-left">Distrito</th>
+                                            <th class="align-middle text-left">Escuela</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyEscuelaC">
@@ -607,7 +607,7 @@
                                 <table class="table mb-0 table-fluid">
                                     <thead>
                                         <tr>
-                                            <th class="align-middle text-left">Distrito</th>
+                                            <th class="align-middle text-left">Ocupación</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyOcupacionC">

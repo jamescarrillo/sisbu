@@ -27,8 +27,6 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-        <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
-
         <!-- /font icon Styles -->
 
         <!-- Perfect Scrollbar stylesheet -->
@@ -600,9 +598,9 @@
         <script src="<%=request.getContextPath()%>/assets/js/customizer.js"></script>
 
         <script src="<%out.print(request.getContextPath());%>/scripts/session/change.cookie.js"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/session/js.cookie.js"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.js"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.init.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/session/js.cookie.js?v=0.02"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.js?v=0.02"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.init.js?v=0.02"></script>
 
         <!-- Custom JavaScript -->
         <script src="<%=request.getContextPath()%>/plugins/chartist/dist/chartist.min.js"></script>

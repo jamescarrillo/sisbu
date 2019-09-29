@@ -126,11 +126,13 @@ function loaderDataUser() {
     document.querySelector("#txtPassPerfil").value = "";
     document.querySelector("#txtPassPerfil").focus();
     if (user_session.foto == "") {
+        document.querySelector("#div-row-pasos-subir-foto").style.display = "block";
         document.querySelector("#btnEliminarFotoUser").disabled = true;
         document.querySelector("#btnSubirFotoUser").disabled = true;
     } else {
         document.querySelector("#btnEliminarFotoUser").disabled = false;
         document.querySelector("#btnSubirFotoUser").disabled = false;
+        document.querySelector("#div-row-pasos-subir-foto").style.display = "none";
     }
 }
 

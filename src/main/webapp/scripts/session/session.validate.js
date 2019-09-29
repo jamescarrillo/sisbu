@@ -591,7 +591,7 @@ function createHTML_ATE(typeProfile) {
                 `
              <!-- Menu Item -->
                 <li class="dt-side-nav__item">
-                    <a href="${contextPah}app/ate/evaluaciones" class="dt-side-nav__link a-index-no" title="Evaluaciones Virtuales">
+                    <a href="${contextPah}app/ate/evaluaciones" class="dt-side-nav__link" title="Evaluaciones Virtuales">
                         <i class="icon icon-description icon-fw icon-lg"></i>
                         <span class="dt-side-nav__text">Evaluaciones<br> Virtuales</span>
                     </a>
@@ -612,7 +612,7 @@ function createHTML_ATE(typeProfile) {
     
         <!-- Menu Item -->
             <li class="dt-side-nav__item">
-                <a href="${contextPah}app/ate/reservas" class="dt-side-nav__link a-index-no" title="Reservas de Citas">
+                <a href="${contextPah}app/ate/reservas" class="dt-side-nav__link" title="Reservas de Citas">
                     <i class="icon icon-calendar icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text" style="text-transform: none">Reserva de Citas</span>
                 </a>
@@ -620,7 +620,7 @@ function createHTML_ATE(typeProfile) {
         <!-- /menu item -->
         <!-- Menu Item -->
             <li class="dt-side-nav__item">
-                <a href="${contextPah}app/ate/menu-semanal" class="dt-side-nav__link a-index-no" title="Menú Semanal del Comedor">
+                <a href="${contextPah}app/ate/menu-semanal" class="dt-side-nav__link" title="Menú Semanal del Comedor">
                     <i class="icon icon-burger icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text" style="text-transform: none">Menu Semanal<br>del Comedor</span>
                 </a>
@@ -639,7 +639,7 @@ function createHTML_ATE(typeProfile) {
     
         <!-- Menu Item -->
             <li class="dt-side-nav__item">
-                <a href="${contextPah}app/ate/noticias-eventos" class="dt-side-nav__link a-index-no" title="Noticias y Eventos">
+                <a href="${contextPah}app/ate/noticias-eventos" class="dt-side-nav__link" title="Noticias y Eventos">
                     <i class="icon icon-attach-v icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text" style="text-transform: none">Noticias y Eventos</span>
                 </a>
@@ -652,7 +652,7 @@ function createHTML_ATE(typeProfile) {
                 `
         <!-- Menu Item -->
             <li class="dt-side-nav__item">
-                <a href="${contextPah}app/ate/constancias" class="dt-side-nav__link a-index-no" title="Constancias">
+                <a href="${contextPah}app/ate/constancias" class="dt-side-nav__link" title="Constancias">
                     <i class="icon icon-assignment icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text" style="text-transform: none">Constancias</span>
                 </a>
@@ -660,4 +660,16 @@ function createHTML_ATE(typeProfile) {
         <!-- /menu item -->
         `;
     }
+    //icon icon-arrow-right icon-fw mr-2 mr-sm-1
+    document.querySelector("#menus_sisbu").innerHTML +=
+            `
+        <!-- Menu Item -->
+            <li class="dt-side-nav__item">
+                <a href="javascript:void(0)" class="dt-side-nav__link a-close-session" title="Cerrar Sessión">
+                    <i class="icon icon-arrow-right icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text" style="text-transform: none">Cerrar Sesión</span>
+                </a>
+            </li>
+        <!-- /menu item -->
+        `;
 }

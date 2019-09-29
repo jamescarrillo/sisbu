@@ -15,19 +15,29 @@
                         </div>
                         <h6 class="text-danger text-center mt-1 mb-1">Tam. Máximo de archivo 1MB</h6>
                         <div class="button-group text-center mt-2">
-                            <button id="btnEliminarFotoUser" type="button" class="btn btn-danger btn-sm btn-delete-image" idvisor="visorImagenFotoUser" idinput="fileImageFotoUser">
+                            <button id="btnEliminarFotoUser" type="button" title="Click para eliminar tu foto" data-toggle="tooltip"
+                                    class="btn btn-danger btn-sm btn-delete-image" idvisor="visorImagenFotoUser" idinput="fileImageFotoUser">
                                 <i class="fa fa-trash"></i>
                             </button>
                             <div style="display: inline">
-                                <input id="fileImageFotoUser" name="fileImageFotoUser" class="input-image" idvisor="visorImagenFotoUser" type="file" style="display: none">
-                                <button type="button" class="btn btn-warning btn-sm btn-selected-image" idvisor="visorImagenFotoUser" idinput="fileImageFotoUser">
+                                <input id="fileImageFotoUser" name="fileImageFotoUser"
+                                       class="input-image" idvisor="visorImagenFotoUser" type="file" style="display: none">
+                                <button type="button" class="btn btn-warning btn-sm btn-selected-image" title="Click para seleccionar una foto" data-toggle="tooltip"
+                                        idvisor="visorImagenFotoUser" idinput="fileImageFotoUser">
                                     <i class="fa fa-folder-open"></i>
                                 </button>
                             </div>
-                            <button id="btnSubirFotoUser" type="button" class="btn btn-primary btn-sm btn-upload" input="fileImageFotoUser">
+                            <button id="btnSubirFotoUser" type="button" title="Click para subir tu foto" data-toggle="tooltip"
+                                    class="btn btn-primary btn-sm btn-upload" input="fileImageFotoUser">
                                 <i class="fa fa-upload"></i>
                             </button>
                         </div>
+                    </div>
+                    <div class="col-12 mb-3" id="div-row-pasos-subir-foto" style="display: none">
+                        <h5 class="mb-1 text-danger">Pasos para subir tu foto:</h5>
+                        <h6 class="mb-0"><i class="fa fa-check"></i> Click en el <strong>botón anaranjado</strong> para seleccionar una foto.</h6>
+                        <h6 class="mb-0"><i class="fa fa-check"></i> Click en el <strong>botón azúl</strong> para subir tu foto.</h6>
+                        <h6 class="mb-0"><i class="fa fa-check"></i> Cierra sesión y vuelve a ingresar.</h6>
                     </div>
                     <div class="col-12">
                         <div class="form-group">

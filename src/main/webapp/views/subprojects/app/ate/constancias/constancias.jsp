@@ -3,10 +3,10 @@
     Created on : 26 set. 2019, 12:40:25
     Author     : James Carrillo
 --%>
-<div class="row justify-content-center" id="row-options-evaluaciones" style="margin-top: 40px; display: flex">
-    <div class="col-12 mt-4">
+<div class="row justify-content-center" id="row-options-evaluaciones" style="margin-top: 0px; display: flex">
+    <div class="col-12">
         <!--i class="fa fa-barcode"></i--> 
-        <h3 class="text-warning text-center">***Nota: Cada constancia tiene un código de barra para verificar la autenticidad del documento.</h3>
+        <h3 class="text-warning text-center">***Nota: Cada constancia tiene un código de barras para verificar la autenticidad del documento.</h3>
         <!--h6 class="text-danger text-center">Nota: Cada constancia tiene un <i class="fa fa-barcode"></i> (código de barras) , para verificar la autenticidad del documento.</h6-->
     </div>
     <div class="col-12">
@@ -20,7 +20,7 @@
                                 EVALUACIÓN SOCIOECONOMICA
                             </div>
                             <p class="mb-0 text-truncate text-light-gray">
-                                Debes haber completado las fichas de la evaluación antes de descargar
+                                Entregarás 3 documentos: Constancia (Botón verde) + Respuestas (Botón Rojo) + Lista de Familiares (Botón Azúl)
                             </p>
                         </div>
                         <div class="dt-widget__extra text-right">
@@ -49,7 +49,7 @@
                                 EVALUACIÓN DEPORTIVA
                             </div>
                             <p class="mb-0 text-truncate text-light-gray">
-                                Debes haber completado los deportes y aficiones de tu interés
+                                Entregarás 2 documentos: Constancia (Botón verde) + Lista de deportes y aficiones (Botón Rojo)
                             </p>
                         </div>
                         <div class="dt-widget__extra text-right">
@@ -75,7 +75,7 @@
                                 EVALUACIÓN PSICOLOGICA
                             </div>
                             <p class="mb-0 text-truncate text-light-gray">
-                                Debes haber completado los test de la evaluación antes de descargar
+                                Entregarás 1 documentos: Constancia (Botón verde)
                             </p>
                         </div>
                         <div class="dt-widget__extra text-right">
@@ -98,7 +98,7 @@
                                 EVALUACIÓN OBSTETRICIA
                             </div>
                             <p class="mb-0 text-truncate text-light-gray">
-                                Debes haber completado las fichas de la evaluación antes de descargar
+                                Entregarás 2 documentos: Constancia (Botón verde) + Respuestas (Botón Rojo)
                             </p>
                         </div>
                         <div class="dt-widget__extra text-right">
@@ -121,6 +121,10 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="col-12">
+        <h3 class="text-primary mb-0">Información Adicional:</h3>
+        <h4 class="mb-0 text-danger">Debes entregar los documentos según el cronograma establecido.</h4>
     </div>
 </div>
 

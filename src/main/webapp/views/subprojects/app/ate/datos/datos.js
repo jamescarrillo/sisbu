@@ -95,7 +95,7 @@ function processAjaxAtendido() {
                 "sexo": document.querySelector("#txtSexoPaciente").value,
                 "tipo_colegio": document.querySelector("#txtTipoColegioPaciente").value,
                 "tipo_documento": document.querySelector("#txtTipoDocumentoPaciente").value,
-                "modalidad_ingreso": document.querySelector("#txtTipoDocumentoPaciente").value,
+                "modalidad_ingreso": document.querySelector("#txtModalidadPaciente").value,
                 "escuela": {"idescuela": escuelaSelected.idescuela},
                 "distrito_actual": {"iddistrito": distritoActualSelected.iddistrito},
                 "distrito_procedencia": {"iddistrito": distritoProcedenciaSelected.iddistrito},
@@ -117,7 +117,7 @@ function processAjaxAtendido() {
     }).done(function (beanCrudResponse) {
         //console.log(beanCrudResponse);
         if (beanCrudResponse.messageServer == "ok") {
-            showAlertTopEnd('success', 'Datos guardados exitosamente');
+            showAlertTopEnd('success', 'Datos actualizados exitosamente');
             $('#modalCargandoDatos').modal('hide');
         } else {
             if (beanCrudResponse.idatendido !== null) {
