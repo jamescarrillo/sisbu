@@ -88,7 +88,9 @@
 
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
-                                    <label for="txtCodigoPaciente">CÓDIGO</label>
+                                    <label for="txtCodigoPaciente">CÓDIGO
+                                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Es el código único de estudiante. Si aún no sabes cual es tu código, deja la caja de texto en blanco" style="cursor: pointer" data-original-title=""></i>
+                                    </label>
                                     <input  type="text" class="form-control form-control-sm" id="txtCodigoPaciente" placeholder="Ingrese Código. . ." maxlength="7">
                                 </div>
                             </div>

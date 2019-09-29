@@ -22,6 +22,13 @@
         <link rel="stylesheet" href="<%=request.getContextPath()%>/vendors/gaxon-icon/styles.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.0/css/all.min.css">
+
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/picker/css/bootstrap-material-datetimepicker.css" />
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+
         <!-- /font icon Styles -->
 
         <!-- Perfect Scrollbar stylesheet -->
@@ -42,8 +49,9 @@
         <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles_sisbu.css">
 
         <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/chart.js/dist/Chart.min.css">
-        
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css">
+
+<!--link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"-->
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/picker/css/bootstrap-material-datetimepicker.css">
 
     </head>
     <body class="dt-sidebar--fixed dt-header--fixed">
@@ -578,11 +586,11 @@
         <!-- /perfect scrollbar jQuery -->
 
         <!--JS COMPLEMENTS-->
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions.js"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_alerts.js"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_operational.js"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_file.js"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/configuration_api.js"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions.js?v=0.02"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_alerts.js?v=0.02"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_operational.js?v=0.02"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_file.js?v=0.02"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/configuration_api.js?v=0.02"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/util/shortcut.js"></script>
 
         <!-- masonry script -->
@@ -606,8 +614,7 @@
 
         <script src="<%=request.getContextPath()%>/plugins/jquery-pagination/jquery.Pagination.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/chart.js/dist/Chart.min.js"></script>
-        
-        <script src="<%=request.getContextPath()%>/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker-custom.js"></script>
+        <script src="<%=request.getContextPath()%>/plugins/picker/js/bootstrap-material-datetimepicker.js"></script>
 
         <script src="<%out.print(request.getContextPath());%>/scripts/init_parameters.js"></script>
 
