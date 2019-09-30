@@ -615,6 +615,14 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/mantenimientos/cargo/cargo.js" + version_project
         });
         this.list_resources.add(resource);
+        //NOTICIAS
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/mantenimientos/noticias");
+        resource.setPath("/views/subprojects/app/ogbu/mantenimientos/noticia/noticia.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/mantenimientos/noticia/noticia.js" + version_project
+        });
+        this.list_resources.add(resource);
         //PERSONAL
         resource = new Resource();
         resource.setUrl("/app/ogbu/mantenimientos/personal");
