@@ -455,6 +455,12 @@ function createHTML_OGBU(typeProfile) {
                     <span class="dt-side-nav__text">Ubigeo</span>
                 </a>
             </li>
+            <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ogbu/mantenimientos/noticias" class="dt-side-nav__link" title="Noticias">
+                    <i class="icon icon-maps icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Noticias</span>
+                </a>
+            </li>
             <!-- /menu item -->
         
             <!-- Menu Header -->

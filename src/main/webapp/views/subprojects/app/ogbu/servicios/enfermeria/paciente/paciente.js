@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $('#FrmTriajePaciente').submit(function (event) {
         if (validateFormTriaje()) {
-            processAjaxTriaje(historiaSelected.idhistoria_clinica);
+            $('#modalCargandoTriaje').modal('show');
         }
         event.preventDefault();
         event.stopPropagation();
