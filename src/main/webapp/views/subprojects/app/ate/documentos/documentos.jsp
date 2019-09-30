@@ -3,10 +3,11 @@
     Created on : 26 set. 2019, 12:40:25
     Author     : James Carrillo
 --%>
-<div class="row justify-content-center" id="row-options-evaluaciones" style="margin-top: 0px; display: flex">
+<div class="row justify-content-center" id="row-options-evaluaciones" style="display: flex">
     <div class="col-12">
+        <h2 class="text-center text-primary mb-4">Mis Documentos</h2>
         <!--i class="fa fa-barcode"></i--> 
-        <h3 class="text-warning text-center">***Nota: Cada constancia tiene un código de barras para verificar la autenticidad del documento.</h3>
+        <h5 class="text-warning">***Nota: Cada constancia tiene un código de barras para verificar la autenticidad del documento.</h5>
         <!--h6 class="text-danger text-center">Nota: Cada constancia tiene un <i class="fa fa-barcode"></i> (código de barras) , para verificar la autenticidad del documento.</h6-->
     </div>
     <div class="col-12">
@@ -122,9 +123,24 @@
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <h3 class="text-primary mb-0">Información Adicional:</h3>
-        <h4 class="mb-0 text-danger">Debes entregar los documentos según el cronograma establecido.</h4>
+    <div class="col-12 text-center mb-4">
+        <a href="<%=request.getContextPath()%>/app/ate/perfil" class="btn btn-warning text-white mr-4 mb-2">
+            <i class="icon icon-send"></i>
+            Ir a mi perfil
+        </a>
+        <a href="<%=request.getContextPath()%>/app/ate/datos" class="btn btn-success mr-4 mb-2">
+            <i class="icon icon-send"></i>
+            Ir a mis Datos
+        </a>
+        <a href="<%=request.getContextPath()%>/app/ate/evaluaciones" class="btn btn-primary mb-2"
+           >
+            <i class="icon icon-send"></i>
+            Ir a mis evaluaciones
+        </a>
+    </div>
+    <div class="col-12 mt-4">
+        <h4 class="text-primary mb-0">Información Adicional:</h4>
+        <h5 class="mb-0 text-danger">Descarga e imprime los documentos. Llévalos a dejar a la oficina de bienestar según el cronograma establecido.</h5>
     </div>
 </div>
 

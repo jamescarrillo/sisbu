@@ -652,9 +652,9 @@ function createHTML_ATE(typeProfile) {
                 `
         <!-- Menu Item -->
             <li class="dt-side-nav__item">
-                <a href="${contextPah}app/ate/constancias" class="dt-side-nav__link" title="Constancias">
+                <a href="${contextPah}app/ate/documentos" class="dt-side-nav__link" title="Documentos">
                     <i class="icon icon-assignment icon-fw icon-lg"></i>
-                    <span class="dt-side-nav__text" style="text-transform: none">Constancias</span>
+                    <span class="dt-side-nav__text" style="text-transform: none">Documentos</span>
                 </a>
             </li>
         <!-- /menu item -->

@@ -74,5 +74,7 @@ function toListVideoTutorial(beanPagination) {
             document.querySelector("#row-videos-tutoriales").innerHTML += card;
         });
         //$('[data-toggle="tooltip"]').tooltip();
-    } 
+    } else {
+        showAlertTopEnd('warning', 'Lo sentimos aún no se han publicado videos tutoriales', 7000);
+    }
 }

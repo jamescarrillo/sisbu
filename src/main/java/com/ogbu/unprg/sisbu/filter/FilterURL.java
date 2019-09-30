@@ -113,7 +113,8 @@ public class FilterURL implements Filter {
     private void loaderResources() {
         String version_project = "?v=";
         //version_project += "0.01"; // 
-        version_project += "0.02";
+        //version_project += "0.02";
+        version_project += "0.03";
         /*
             0.01 -> 01/08/19
          */
@@ -257,6 +258,8 @@ public class FilterURL implements Filter {
         resource.setPath("/views/subprojects/app/ate/evaluaciones/evaluaciones.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ate/evaluaciones/evaluaciones.js" + version_project,
+            "/views/subprojects/app/ate/evaluaciones/deporte_c.js" + version_project,
+            "/views/subprojects/app/ate/evaluaciones/aficion_c.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/intento_evaluacion.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/evaluaciones_socieconomica.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/evaluaciones_deportiva.js" + version_project,
@@ -292,12 +295,21 @@ public class FilterURL implements Filter {
         });
         this.list_resources.add(resource);
 
-        //CONSTANCIAS
+        //DOCUMENTOS
         resource = new Resource();
-        resource.setUrl("/app/ate/constancias");
-        resource.setPath("/views/subprojects/app/ate/constancias/constancias.jsp");
+        resource.setUrl("/app/ate/documentos");
+        resource.setPath("/views/subprojects/app/ate/documentos/documentos.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ate/constancias/constancias.js" + version_project
+            "/views/subprojects/app/ate/documentos/documentos.js" + version_project
+        });
+        this.list_resources.add(resource);
+
+        //VIDEOS-TUTORIALES
+        resource = new Resource();
+        resource.setUrl("/app/ate/videos-tutoriales");
+        resource.setPath("/views/subprojects/app/ate/videos-tutoriales/video-tutorial.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ate/videos-tutoriales/video-tutorial.js" + version_project
         });
         this.list_resources.add(resource);
 

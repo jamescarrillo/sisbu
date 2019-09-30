@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#row-videos-tutoriales").style.display = "flex";
         document.querySelector("#row-access-direct").style.display = "flex";
         document.querySelector("#row-pregunta-empiezo").style.display = "flex";
-
+        if (beanPaginationVideoTutorial.count_filter == 0) {
+            showAlertTopEnd('warning', 'Lo sentimos aún no se han publicado videos tutoriales', 7000);
+        }
     };
 
     document.querySelector("#icon-access-mi-perfil").onclick = function () {

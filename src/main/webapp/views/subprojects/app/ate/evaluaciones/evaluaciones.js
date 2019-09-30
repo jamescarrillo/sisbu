@@ -40,6 +40,7 @@ var fecha_finProcedimiento;
 
 document.addEventListener("DOMContentLoaded", function () {
 
+
     // creating center text
     Chart.pluginService.register({
         beforeDraw: function (chart) {
@@ -88,6 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     });
 
+    $('[data-toggle="popover"]').popover();
+
 });
 
 function navigateOptionEvaluation(option) {
@@ -101,15 +104,21 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-obstetricia").style.display = "none";
             break;
         case "deportiva":
-            /*
-             document.querySelector("#row-options-evaluaciones").style.display = "none";
-             
-             document.querySelector("#row-option-socioeconomico").style.display = "none";
-             document.querySelector("#row-option-deportiva").style.display = "flex";
-             document.querySelector("#row-option-psicologica").style.display = "none";
-             document.querySelector("#row-option-obstetricia").style.display = "none";
-             */
-            showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación. Ingresa a partir del 02/10/2019', 10000)
+
+            document.querySelector("#row-options-evaluaciones").style.display = "none";
+
+            document.querySelector("#row-option-socioeconomico").style.display = "none";
+            document.querySelector("#row-option-deportiva").style.display = "flex";
+            document.querySelector("#row-option-psicologica").style.display = "none";
+            document.querySelector("#row-option-obstetricia").style.display = "none";
+
+            //AFICIONALES DE DEPORTES
+            document.querySelector("#div-content-ev-deportes").style.display = "none";
+            document.querySelector("#div-content-ev-aficiones").style.display = "none";
+            document.querySelector("#div-regresar-selected-option-ed").style.display = "none";
+
+
+            //showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación. Ingresa a partir del 02/10/2019', 10000)
             break;
         case "psicologica":
             document.querySelector("#row-options-evaluaciones").style.display = "none";

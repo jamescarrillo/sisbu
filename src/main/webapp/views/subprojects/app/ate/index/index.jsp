@@ -13,20 +13,30 @@
                 <h2 class="text-center">¡Bienvenido(a) <span class="text-info" id="lblNameUserIndex">User</span>!
                 </h2>
                 <p class="text-center" style="font-size: 18px">
-                    Mira los videos tutoriales para llenar correctamente tus evaluaciones virtuales. Dale click en el botón azul de abajo.
+                    Mira los videos tutoriales para llenar correctamente tus evaluaciones virtuales. Dale click en el botón que dice ¡Mirar los videos!
                 </p>
                 <p class="text-center text-danger" style="font-size: 12px">
                     ***Nota: Si tienes algún inconveniente escribemos a
-                    <a href="mailto:sisbu.ogbu.unprg@gmail.com">
+                    <a href="mailto:sisbuapp.unprg@gmail.com">
                         <i class="icon icon-message icon-fw"></i>
-                        sisbu.ogbu.unprg@gmail.com
+                        sisbuapp.unprg@gmail.com
                     </a>,o si no acércate a la oficina de bienestar.
                 </p>
             </div>
         </div>
     </div>
     <div class="col-12 text-center" style="margin-top: 30px;margin-bottom: 60px">
-        <button class="btn btn-primary" id="btnMirarVideosSisbu">¡Mirar los videos!</button>
+        <button class="btn btn-light mb-2 mr-4" id="btnMirarVideosSisbu"><i class="icon icon-youtube"></i> ¡Ver los videos!</button>
+        <a href="<%=request.getContextPath()%>/app/ate/evaluaciones" class="btn btn-primary mr-4 mb-2" 
+           data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="¿Ya te sientes preparado?. Si es así dale click para ir a tus evaluaciones virtuales."data-original-title="">
+            <i class="icon icon-send"></i>
+            Ir a mis evaluaciones
+        </a>
+        <a href="<%=request.getContextPath()%>/app/ate/documentos" class="btn btn-success mb-2"
+           data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="¿Ya has completado todas tus evaluaciones virtuales?. Si es así dale click para ir a tus documentos. Ahí es donde encontrarás tus constancias."data-original-title="">
+            <i class="icon icon-send"></i>
+            Ir a mis documentos
+        </a>
     </div>
 </div>
 

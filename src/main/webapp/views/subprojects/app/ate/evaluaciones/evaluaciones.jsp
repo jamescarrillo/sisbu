@@ -26,11 +26,18 @@
         <p class="text-center text-danger" style="font-size: 12px">
             ***Nota: Te sugerimos ver los videos tutoriales sobre como llenar correctamente las evaluaciones, 
             si aún no lo has hecho, dale click a este enlace 
-            <a href="<%=request.getContextPath()%>/app/ate/tutoriales-sisbu-cachimbo"><i class="icon icon-arrow-right icon-fw mr-2 mr-sm-1"></i> Videos Tutoriales</a>
+            <a href="<%=request.getContextPath()%>/app/ate/videos-tutoriales">
+                <i class="icon icon-arrow-right icon-fw mr-2 mr-sm-1"></i> Videos Tutoriales
+            </a>
+            o dale click al boton que dice ¡Mirar Videos Tutoriales!
         </p>
     </div>
     <div class="col-12 text-center">
-        <button class="btn btn-primary" id="btnEmpezarEvaluaciones">Empezar</button>
+        <button class="btn btn-primary mr-4 mb-2" id="btnEmpezarEvaluaciones"><i class="icon icon-send"></i> ¡Empezar Ahora!</button>
+        <a href="<%=request.getContextPath()%>/app/ate/videos-tutoriales" class="btn btn-light mb-2" >
+            <i class="icon icon-youtube"></i>
+            ¡Ver Videos Tutoriales!
+        </a>
     </div>
 </div>
 
@@ -79,10 +86,19 @@
         </div>
     </div>
     <div class="col-12 text-center">
-        <button class="btn btn-outline-primary" id="btnRegresarHome">
-            <i class="icon icon-home"></i>
-            Inicio
+        <button class="btn btn-primary mr-4 mb-2" id="btnRegresarHome">
+            <i class="icon icon-reply"></i>
+            Regresar Saludo Inicial
         </button>
+        <a href="<%=request.getContextPath()%>/app/ate/videos-tutoriales" class="btn btn-light mr-4 mb-2" >
+            <i class="icon icon-youtube"></i>
+            ¡Ver Videos Tutoriales!
+        </a>
+        <a href="<%=request.getContextPath()%>/app/ate/documentos" class="btn btn-success mb-2"
+           data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="¿Ya has completado todas tus evaluaciones virtuales?. Si es así dale click para ir a tus documentos. Ahí es donde encontrarás tus constancias." style="cursor: pointer" data-original-title="">
+            <i class="icon icon-send"></i>
+            Ir a mis documentos
+        </a>
     </div>
 </div>
 
@@ -211,21 +227,21 @@
     <div class="col-12 text-center" id="div-regresar-selected-evaluation-socioeconomico">
         <button class="btn btn-outline-primary btn-regresar-selected-evaluation">
             <i class="icon icon-reply"></i>
-            Mis Evaluaciones
+            Seleccionar otra evaluación
         </button>
     </div>
 </div>
 
 <div class="row" id="row-option-deportiva" style="display: none">
     <div class="col-12">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" id="div-imagen-general-ed">
             <div class="col-lg-4 col-md-6 col-sm-8">
                 <img src="<%=request.getContextPath()%>/resources/prod/custom_app/deportes.gif" class="img-fluid" alt="Fam. Pedro Ruiz Gallo">
             </div>
         </div>
-        <div class="row justify-content-center" id="div-evaluacion-deportiva-deportes">
+        <div class="row justify-content-center" id="div-evaluacion-deportiva">
             <div class="col-xl-3 col-sm-6 col-lg-3">
-                <div class="dt-card sisbu-cursor-mano" id="div-evaluacion-deportiva-deportes">
+                <div class="dt-card sisbu-cursor-mano" id="div-ed-option-deportes">
                     <div class="dt-card__body d-flex flex-sm-column text-center">
                         <div class="mb-sm-7">
                             <i class="icon icon-assignment dt-icon-bg text-primary"></i>
@@ -235,7 +251,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 col-lg-3">
-                <div class="dt-card sisbu-cursor-mano" id="div-evaluacion-deportiva-aficiones">
+                <div class="dt-card sisbu-cursor-mano" id="div-ed-option-aficiones">
                     <div class="dt-card__body d-flex flex-sm-column text-center">
                         <div class="mb-sm-7">
                             <i class="icon icon-assignment dt-icon-bg text-primary"></i>
@@ -245,11 +261,22 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="div-content-evaluacion-deportiva">
-
+        <div class="row" id="div-content-ev-deportes" style="display: none">
+            hola estamos en deportes
+        </div>
+        <div class="row" id="div-content-ev-aficiones" style="display: none">
+            hola estamos en aficiones
+        </div>
+        <div class="row" id="div-regresar-selected-option-ed" style="display: none">
+            <div class="col-12 text-center">
+                <button class="btn btn-outline-primary" id="btnRegresarSelectedOptionED">
+                    <i class="icon icon-reply"></i>
+                    Regresar a seleccionar otra opción
+                </button>
+            </div>
         </div>
     </div>
-    <div class="col-12 text-center">
+    <div class="col-12 text-center" id="div-regresar-selected-evaluation-deporte">
         <button class="btn btn-outline-primary btn-regresar-selected-evaluation">
             <i class="icon icon-reply"></i>
             Regresar a seleccionar evaluación
@@ -342,7 +369,7 @@
     <div class="col-12 text-center" id="div-regresar-selected-evaluation-psicologico">
         <button class="btn btn-outline-primary btn-regresar-selected-evaluation">
             <i class="icon icon-reply"></i>
-            Mis Evaluaciones
+            Seleccionar otra evaluación
         </button>
     </div>
 </div>
@@ -431,7 +458,7 @@
     <div class="col-12 text-center" id="div-regresar-selected-evaluation-obstetricia">
         <button class="btn btn-outline-primary btn-regresar-selected-evaluation">
             <i class="icon icon-reply"></i>
-            Mis Evaluaciones
+            Seleccionar otra evaluación
         </button>
     </div>
 </div>
@@ -570,6 +597,184 @@
                 <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i
                         class="fas fa-ban"></i>
                     Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--T: DEPORTE SELECTED-->
+<div id="ventanaModalSelectedDeporteC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerDeporteC"><strong>[ 0 ]
+                        DEPORTES</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageDeporteC"
+                               value="1">
+                        <form id="FrmDeporteC">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterDeporteC"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarDeporteC"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5 mb-2">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Deporte</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyDeporteC">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2" style="display: none">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePageDeporteC"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="5">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationDeporteC"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionDeporteC"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-deportec" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoDeporteC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando deportes. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--T: DEPORTE SELECTED-->
+<div id="ventanaModalSelectedAficionC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerAficionC"><strong>[ 0 ]
+                        DEPORTES</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageAficionC"
+                               value="1">
+                        <form id="FrmAficionC">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterAficionC"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarAficionC"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5 mb-2">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Afición</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyAficionC">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2" style="display: none">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePageAficionC"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="5">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationAficionC"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionAficionC"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-aficionc" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoAficionC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando aficiones. . .
+                    </div>
+                </div>
             </div>
         </div>
     </div>
