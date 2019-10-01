@@ -262,10 +262,10 @@
             </div>
         </div>
         <div class="row" id="div-content-ev-deportes" style="display: none">
-            hola estamos en deportes
+            Lo sentimos, aún no se ha publicado esta evaluación
         </div>
         <div class="row" id="div-content-ev-aficiones" style="display: none">
-            hola estamos en aficiones
+            Lo sentimos, aún no se ha publicado esta evaluación
         </div>
         <div class="row" id="div-regresar-selected-option-ed" style="display: none">
             <div class="col-12 text-center">
