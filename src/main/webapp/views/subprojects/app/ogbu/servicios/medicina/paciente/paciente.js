@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //LIMPIAR LOS CAMPOS
         limpiarInputDiagnostico();
         //SET TITLE MODAL
-        document.querySelector("#txtTituloModalDiagnostico").innerHTML = "HISTORIA CLINICA : "+historiaSelected.num_historia;
+        document.querySelector("#txtTituloModalDiagnostico").innerHTML = "HISTORIA CLINICA : " + historiaSelected.num_historia;
         //OPEN MODEL
         $('#ventanaModalPaciente').modal('show');
 
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     $("#modalCargandoDiagnostico").on('shown.bs.modal', function () {
-       processAjaxHistoria(pacienteSelected.idatendido);
+        processAjaxHistoria(pacienteSelected.idatendido);
 
     });
 
@@ -113,13 +113,13 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#modalCargandoDiagnostico').modal('show');
     });
 
-    $("#txtPesoPaciente").change(function () {
+    document.querySelector("#txtPesoPaciente").onkeyup = function () {
         document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
-    });
+    };
 
-    $("#txtTallaPaciente").change(function () {
+    document.querySelector("#txtTallaPaciente").onkeyup = function () {
         document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
-    });
+    };
 
     $('#FrmAntecedentePaciente').submit(function (event) {
         //if (validateFormDiagnostico()) {
@@ -520,7 +520,7 @@ function processAjaxHistoria(idpaciente) {
             beanRequestHistoria.operation = "update";
             beanRequestHistoria.type_request = "PUT";
             addInputHistoria(historiaSelected);
-           processAjaxDiagnostico(historiaSelected.idhistoria_clinica);
+            processAjaxDiagnostico(historiaSelected.idhistoria_clinica);
         }
 
 
@@ -708,7 +708,7 @@ function addEventsDiagnostico() {
             beanRequestDiagnostico.operation = "update";
             beanRequestDiagnostico.type_request = "PUT";
             // DNI PRUEBA 75231069
-          
+
             //OPEN MODEL
             $('#ventanaModalPaciente').modal('show');
         };

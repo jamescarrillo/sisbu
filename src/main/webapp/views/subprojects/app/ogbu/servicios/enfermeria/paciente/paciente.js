@@ -101,12 +101,14 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#sizePageTriaje").change(function () {
         $('#modalCargandoTriaje').modal('show');
     });
-    $("#txtPesoPaciente").change(function () {
+    
+      document.querySelector("#txtPesoPaciente").onkeyup = function () {
         document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
-    });
-    $("#txtTallaPaciente").change(function () {
+    };
+
+    document.querySelector("#txtTallaPaciente").onkeyup = function () {
         document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
-    });
+    };
 
 
     //HISTORIA

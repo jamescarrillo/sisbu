@@ -520,9 +520,11 @@ public class FilterURL implements Filter {
         ///usuarios
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/social/usuarios");
-        resource.setPath("/views/subprojects/app/servicios/social/usuario/usuario.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/social/atendido/atendido.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/social/usuario/usuario.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/social/atendido/atendido.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/atendido/usuario.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/atendido/familiar.js" + version_project
         });
         this.list_resources.add(resource);
 
@@ -621,6 +623,13 @@ public class FilterURL implements Filter {
         resource.setPath("/views/subprojects/app/ogbu/mantenimientos/noticia/noticia.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/mantenimientos/noticia/noticia.js" + version_project
+        });
+        //NOTICIAS
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/mantenimientos/video/tutorial");
+        resource.setPath("/views/subprojects/app/ogbu/mantenimientos/videoTutorial/videoTutorial.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/mantenimientos/videoTutorial/videoTutorial.js" + version_project
         });
         this.list_resources.add(resource);
         //PERSONAL

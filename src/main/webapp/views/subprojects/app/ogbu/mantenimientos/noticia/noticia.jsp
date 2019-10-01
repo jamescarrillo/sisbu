@@ -22,7 +22,8 @@
                             <div class="input-group-append">
                                 <button type="button" id="btnEliminarFilterNoticia" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
                             </div>
-                            <input type="text" id="txtFilterNoticia" class="form-control form-control-sm" placeholder="DD/MM/AAAA">
+                            <input type="text" id="txtFilterInicialNoticia" class="form-control form-control-sm" placeholder="DD/MM/AAAA">
+                            <input type="text" id="txtFilterFinalNoticia" class="form-control form-control-sm" placeholder="DD/MM/AAAA">
                         </div>
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
@@ -31,21 +32,58 @@
                     </div>
                 </form>
                 <!-- Tables -->
-                <div class="table-responsive">
-                    <table class="table mb-0 mt-2">
-                        <thead class="bg-primary" style="line-height: 0.4;">
-                            <tr>
-                                <th class="text-uppercase text-white" scope="col" style="width: 10%;font-weight: 500;">ACCIÓN</th>
-                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">TÍTULO</th>
-                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">DESCRIPCIÓN</th>
-                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">FECHA DE PUBLICACIÓN</th>
-                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">FUENTE</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbodyNoticia">
-                        </tbody>
-                    </table>
+                <!-- Card -->
+                <div class=" pb-4 ">
+
+                    <!-- Card Header -->
+                    <div class="dt-card__header mb-3">
+
+                        <!-- Card Heading -->
+                        <div class="dt-card__heading">
+
+                            <!-- Widget Item -->
+                            <div class="dt-widget__item border-bottom" >
+
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <h3 class="dt-card__title">FUENTE /<br>FECHA PUBLICACIÓN</h3>
+                                </div>
+                                <!-- /widget info -->
+
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <h3 class="dt-card__title">TÍTULO</h3>
+                                </div>
+                                <!-- /widget info -->
+
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <h3 class="dt-card__title">DESCRIPCIÓN</h3>
+                                </div>
+                                <!-- /widget info -->
+                            </div>
+                            <!-- /widgets item -->
+
+                        </div>
+                        <!-- /card heading -->
+
+                    </div>
+                    <!-- /card header -->
+
+                    <!-- Card Body -->
+                    <div class="dt-card__body p-0  " >
+                        <!-- Widget -->
+                        <div class="dt-widget dt-widget-hover ps-custom-scrollbar ps ps--active-y" id="tbodyNoticia">
+
+                        </div>
+                        <!-- /widget -->
+                        <!-- /card body -->
+
+                    </div>
+                    <!-- /card -->
+
                 </div>
+
                 <!-- /tables -->
                 <div class="row mt-2">
                     <div class="col-md-2 col-sm-3 col-4">
