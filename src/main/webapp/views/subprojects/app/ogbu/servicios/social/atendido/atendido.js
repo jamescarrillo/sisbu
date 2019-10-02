@@ -116,24 +116,24 @@ function processAjaxAtendido() {
 
 function toListAtendido(beanPagination) {
     document.querySelector("#tbodyAtendido").innerHTML = "";
-    document.querySelector("#titleManagerAtendido").innerHTML = "[ " + beanPagination.count_filter + " ] VIDEO TUTORIALES";
+    document.querySelector("#titleManagerAtendido").innerHTML = "[ " + beanPagination.count_filter + " ] USUARIOS";
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(atendido => {
             row = "<div class='dt-widget__item border-bottom'>";
             row += "<div class='dt-extra animate-slide align-self-center mr-5' idatendido='" + atendido.idatendido + "'>";
             row += "<span class='badge badge-info badge-circle-animate badge-pill badge-sm align-text-top mr-2'>"
-            row += "<a class='text-light-gray editar-atendido' data-toggle='tooltip' title='Editar' href='javascript:void(0)'>";
+            row += "<a class='text-light-gray editar-atendido' data-toggle='tooltip' title='Editar Datos' href='javascript:void(0)'>";
             row += "<i class='text-white icon icon-editors'></i></a>";
             row += "</span>";
             row += "<div class='slide-content'>";
-            row += "<a idusuario='" + atendido.usuario.idusuario + "' class='text-light-gray usuario-atendido' data-toggle='tooltip' title='Datos Usuario' href='javascript:void(0)'>";
+            row += "<a idusuario='" + atendido.usuario.idusuario + "' class='text-light-gray usuario-atendido' data-toggle='tooltip' title='Editar Perfil' href='javascript:void(0)'>";
             row += "<i class='text-success fa fa-user-circle'></i></a></div>";
             row += "<div class='slide-content'>";
-            row += "<a class='text-light-gray familiar-atendido' data-toggle='tooltip' title='Lista de Familiares'' href='javascript:void(0)'>";
+            row += "<a class='text-light-gray familiar-atendido' data-toggle='tooltip' title='Familiares'' href='javascript:void(0)'>";
             row += "<i class='text-primary fa fa-users'></i></a></div>";
             row += "<div class='slide-content'>";
-            row += "<a class='text-info text-light-gray fichas-atendido' data-toggle='tooltip' title='Fichas'' href='javascript:void(0)'>";
+            row += "<a class='text-info text-light-gray fichas-atendido' data-toggle='tooltip' title='Fichas' href='javascript:void(0)'>";
             row += "<i class='text-warning fa fa-list-ol'></i></a></div>";
             row += "</div>";
 
@@ -178,7 +178,7 @@ function toListAtendido(beanPagination) {
 }
 
 function addEventsAtendidoes() {
-    document.querySelectorAll('.editar-atendido').forEach(btn => {
+    document.querySelectorAll('.editar-atendido-').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
             atendidoSelected = findByAtendido(btn.parentElement.parentElement.getAttribute('idatendido'));
@@ -211,13 +211,9 @@ function addEventsAtendidoes() {
                 document.querySelector("#btnOpenUsuario").style.display = 'block';
                 $('#modalCargandoUsuario').modal('show');
             }
-
-
-
-
         };
     });
-    document.querySelectorAll('.familiar-atendido').forEach(btn => {
+    document.querySelectorAll('.familiar-atendido--').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
             atendidoSelected = findByAtendido(btn.parentElement.parentElement.getAttribute('idatendido'));

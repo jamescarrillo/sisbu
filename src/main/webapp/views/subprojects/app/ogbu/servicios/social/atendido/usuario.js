@@ -77,13 +77,13 @@ function processAjaxUsuario() {
         dataType: 'json'
     }).done(function (beanCrudResponse) {
         $('#modalCargandoUsuario').modal("hide");
-        showAlertTopEnd('success', 'Acción realizada exitosamente');
         if (beanRequestUsuario.operation == "get-user") {
             usuarioSelected = beanCrudResponse;
             agregarInputUsuario(beanCrudResponse);
+        } else {
+            showAlertTopEnd('success', 'Acción realizada exitosamente');
+            document.querySelector("#btnRegresarUsuario").dispatchEvent(new Event('click'));
         }
-
-
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoUsuario').modal("hide");
         showAlertErrorRequest();
@@ -209,7 +209,11 @@ function validateFormUsuario() {
         document.querySelector("#txtLoginUsuario").focus();
         return false;
     }
-
+    if (document.querySelector("#txtPassUsuario").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese contraseña');
+        document.querySelector("#txtEstadoUsuario").focus();
+        return false;
+    }
     if (document.querySelector("#txtEstadoUsuario").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese Estado');
         document.querySelector("#txtEstadoUsuario").focus();
@@ -235,7 +239,10 @@ function agregarInputUsuario(bean) {
     document.querySelector("#txtNombreUsuario").value = bean.usuario;
     //document.querySelector("#txtPassUsuario").value = bean.pass;
     document.querySelector("#txtLoginUsuario").value = bean.login;
+    document.querySelector("#txtLoginUsuario").disabled = true;
     document.querySelector("#txtEstadoUsuario").value = bean.estado;
     document.querySelector("#txtTipoPefilUsuario").value = bean.tipo_perfil;
+    document.querySelector("#txtPassUsuario").value = "";
+    document.querySelector("#txtPassUsuario").focus();
 }
 

@@ -46,12 +46,12 @@
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">NOMBRE</h3>
+                                    <h3 class="dt-card__title">USUARIO</h3>
                                 </div>
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">FECHA NACIMIENTO</h3>
+                                    <h3 class="dt-card__title">F. NACIMIENTO</h3>
                                 </div>
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
@@ -147,17 +147,16 @@
         <!-- Card -->
         <div class="card overflow-hidden p-5">
             <div class="card-header bg-transparent">
-                <h4 class="mb-0 text-center" id="txtTituloUsuario"> USUARIO</h4>
-
+                <h4 class="mb-0 text-center" id="txtTituloUsuario"> DATOS DE ACCESO</h4>
             </div>
             <form id="FrmUsuarioModal"> 
                 <div class="row">
                     <div class="form-group col-6">
-                        <label for="txtNombreUsuario">USUARIO</label>
+                        <label for="txtNombreUsuario">NOMBRE COMPLETO</label>
                         <input class="form-control form-control-sm" id="txtNombreUsuario" type="text" placeholder="TÍTULO">
                     </div>
                     <div class="form-group col-6">
-                        <label for="txtLoginUsuario">LOGIN</label>
+                        <label for="txtLoginUsuario">NOMBRE DE USUARIO</label>
                         <input class="form-control form-control-sm" id="txtLoginUsuario" type="text" placeholder="LOGIN">
                     </div>
                     <div class="form-group col-6">
@@ -184,15 +183,15 @@
                         <label for="txtTipoPefilUsuario">TIPO PERFIL</label>
                         <select class="form-control form-control-sm" id="txtTipoPefilUsuario">
                             <option selected value="1000">CACHIMBOS</option>
-                            <option value="1100">NORMAL</option>
+                            <option value="1100">NO CACHIMBO</option>
                             <option value="1110">OTRO</option>
 
                         </select>
                     </div>
 
                     <div class="form-group col-12 text-center">
-                        <button type="button" id="btnRegresarUsuario" class="btn btn-outline-secondary btn-sm" >CANCELAR</button>
-                        <button type="submit" id="btnGuardarUsuario" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
+                        <button type="button" id="btnRegresarUsuario" class="btn btn-outline-primary btn-sm" >CANCELAR</button>
+                        <button type="submit" id="btnGuardarUsuario" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> GUARDAR</button>
 
                     </div>
                 </div>
