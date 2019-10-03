@@ -261,12 +261,13 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="div-content-ev-deportes" style="display: none">
+
+        <div class="row " id="div-content-ev-deportes" style="display: none">
             <!-- Tab DATOS ATENDIDO -->
             <!-- Card -->
             <div class="card overflow-hidden col-12" id="OpenListaDeporteDetalle">
 
-                <div class="form-row pt-5">
+                <div class="form-row pt-5 ">
                     <div class="col-11 text-center">
                         <label  for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE DEPORTES</label>
                         <input type="hidden" id="pageDeporteDetalle" value="1">
@@ -335,51 +336,60 @@
             </div>
             <!-- /card -->
 
-            <!-- Card -->
-            <div class="card overflow-hidden col-12" id="OpenDeporteDetalle" style="display:none">
-                <!-- Card Header -->
-                <div class="card-header bg-transparent">
-                    <form id="FrmDeporteDetalleModal">
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label for="txtEstadoDeporteDetalle">ESTADO</label>
-                                <div class="input-group">
-                                    <select class="form-control form-control-sm" id="txtEstadoDeporteDetalle">
-                                        <option value="-1">seleccione...</option>
-                                        <option value="1">LO PRACTICO</option>
-                                        <option value="2">ME GUSTARÍA APRENDER</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group col-12">
-                                <label for="txtDeporteDetalle">DEPORTE
-                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Deporte que practicas " style="cursor: pointer" data-original-title=""></i>
-                                </label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control form-control-sm" id="txtDeporteDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
-                                    <div class="input-group-append">
-                                        <button type="button" id="btnSeleccionarDeporte" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-12">
-                                <button type="button" id="btnCancelarDeporteDetalle" class="ml-5 btn btn-outline-primary btn-sm">CANCELAR</button>
-                                <button type="submit" id="btnGuardarDeporteDetalle" class="ml-5 btn btn-primary btn-sm">GUARDAR</button>
-                            </div>  
-                        </div>
-                    </form>
+            <div class=" col-12" id="OpenDeporteDetalle" style="display:none"> 
+                <!-- Card -->
+                <div class="col-12 text-center">
+                    <label id="tittleDeporteDetalle" for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">DEPORTE</label>
                 </div>
-                <!-- /card header -->
-            </div>
-            <!-- /card -->
+                <div class="form-row">
+                    <div class="col-lg-3 col-sm-2"></div>
+                    <div class="card overflow-hidden col-lg-6 col-sm-8"  >
+                        <!-- Card Header -->
+                        <div class="card-header bg-transparent">
+                            <form id="FrmDeporteDetalleModal">
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <label for="txtEstadoDeporteDetalle">ESTADO</label>
+                                        <div class="input-group">
+                                            <select class="form-control form-control-sm" id="txtEstadoDeporteDetalle">
+                                                <option value="-1">seleccione...</option>
+                                                <option value="1">LO PRACTICO</option>
+                                                <option value="2">ME GUSTARÍA APRENDER</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label for="txtDeporteDetalle">DEPORTE
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Deporte que practicas " style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-sm" id="txtDeporteDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                            <div class="input-group-append">
+                                                <button type="button" id="btnSeleccionarDeporte" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-12 text-center">
+                                        <button type="button" id="btnCancelarDeporteDetalle" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-reply"></i> CANCELAR</button>
+                                        <button type="submit" id="btnGuardarDeporteDetalle" class="ml-5 btn btn-primary btn-sm">GUARDAR</button>
+                                    </div>  
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /card header -->
+                    </div>
+                </div>
+                <!-- /card -->
+            </div> 
         </div>
+
         <div class="row" id="div-content-ev-aficiones" style="display: none">
             <!-- Tab DATOS ATENDIDO -->
             <!-- Card -->
             <div class="card overflow-hidden col-12" id="OpenListaAficionDetalle">
 
-                <div class="form-row">
+                <div class="form-row  pt-5">
                     <div class="col-11 text-center">
                         <label  for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE AFICIONES</label>
                         <input type="hidden" id="pageAficionDetalle" value="1">
@@ -389,7 +399,7 @@
                     </div>
                 </div>
                 <!-- /card header -->
- 
+
                 <!-- Card Body -->
                 <div class="card-body pt-0 ">
                     <!-- Tables -->
@@ -432,7 +442,7 @@
                     <div class="row mt-2">
                         <div class="col-md-2 col-sm-3 col-4">
                             <select id="sizePageAficionDetalle" class="form-control form-control-sm select2-single">
-                               <option value="5">5</option>
+                                <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
                             </select>
@@ -450,45 +460,54 @@
             <!-- /card -->
 
             <!-- Card -->
-            <div class="card overflow-hidden col-12" id="OpenAficionDetalle" style="display:none">
-                <!-- Card Header -->
-                <div class="card-header bg-transparent">
-                    <form id="FrmAficionDetalleModal">
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label for="txtEstadoAficionDetalle">ESTADO</label>
-                                <div class="input-group">
-                                    <select class="form-control form-control-sm" id="txtEstadoAficionDetalle">
-                                        <option value="-1">seleccione...</option>
-                                        <option value="1">LO PRACTICO</option>
-                                        <option value="2">ME GUSTARÍA APRENDER</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group col-12">
-                                <label for="txtAficionDetalle">AFICION
-                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
-                                </label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control form-control-sm" id="txtAficionDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
-                                    <div class="input-group-append">
-                                        <button type="button" id="btnSeleccionarAficiones" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-12">
-                                <button type="button" id="btnCancelarAficionDetalle" class="ml-5 btn btn-outline-primary btn-sm">CANCELAR</button>
-                                <button type="submit" id="btnGuardarAficionDetalle" class="ml-5 btn btn-primary btn-sm">GUARDAR</button>
-                            </div>  
-                        </div>
-                    </form>
-
+            <div class="col-12" id="OpenAficionDetalle" style="display:none"> 
+                <div class="col-12 text-center">
+                    <label id="tittleAficionDetalle" for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">AFICION</label>
                 </div>
-                <!-- /card header -->
+                <div class="form-row">
+                    <div class="col-lg-3 col-sm-2"></div>
+                    <div class="card overflow-hidden col-lg-6 col-sm-8" >
+                        <!-- Card Header -->
+                        <div class="card-header bg-transparent">
+                            <form id="FrmAficionDetalleModal">
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <label for="txtEstadoAficionDetalle">ESTADO</label>
+                                        <div class="input-group">
+                                            <select class="form-control form-control-sm" id="txtEstadoAficionDetalle">
+                                                <option value="-1">seleccione...</option>
+                                                <option value="1">LO PRACTICO</option>
+                                                <option value="2">ME GUSTARÍA APRENDER</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label for="txtAficionDetalle">AFICION
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-sm" id="txtAficionDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                            <div class="input-group-append">
+                                                <button type="button" id="btnSeleccionarAficiones" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <div class="form-group text-center col-12">
+                                        <button type="button" id="btnCancelarAficionDetalle" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-reply"></i> CANCELAR</button>
+                                        <button type="submit" id="btnGuardarAficionDetalle" class="ml-5 btn btn-primary btn-sm">GUARDAR</button>
+                                    </div>  
+                                </div>
+                            </form>
+
+                        </div>
+                        <!-- /card header -->
+
+                    </div>
+                    <!-- /card -->
+                </div>
             </div>
-            <!-- /card -->
+
         </div>
         <div class="row" id="div-regresar-selected-option-ed" style="display: none">
             <div class="col-12 text-center">

@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnOpenDeporteDetalle").onclick = function () {
         beanRequestProcedimientoDeporte.operation = "add";
         beanRequestProcedimientoDeporte.type_request = "POST";
+        document.querySelector("#tittleDeporteDetalle").innerHTML= "AGREGAR DEPORTE";
         document.querySelector("#txtEstadoDeporteDetalle").value = "-1";
         document.querySelector("#txtDeporteDetalle").value = "";
         deporteSelected = null;
@@ -114,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnOpenAficionDetalle").onclick = function () {
         beanRequestProcedimientoAficion.operation = "add";
         beanRequestProcedimientoAficion.type_request = "POST";
+        document.querySelector("#tittleAficionDetalle").innerHTML= "AGREGAR AFICIÓN";
         document.querySelector("#txtEstadoAficionDetalle").value = "-1";
         document.querySelector("#txtAficionDetalle").value = "";
         aficionSelected = null;
@@ -247,9 +249,11 @@ function addEventsProcedimientoDeporte() {
             if (deporteDetalleSelected != undefined) {
                 beanRequestProcedimientoDeporte.operation = "update";
                 beanRequestProcedimientoDeporte.type_request = "PUT";
+                document.querySelector("#tittleDeporteDetalle").innerHTML= "EDITAR DEPORTE";
                 document.querySelector("#txtEstadoDeporteDetalle").value = deporteDetalleSelected.estado;
                 document.querySelector("#txtDeporteDetalle").value = deporteDetalleSelected.deporte.nombre;
                 deporteSelected = deporteDetalleSelected.deporte;
+                
                 document.querySelector("#OpenListaDeporteDetalle").style.display = "none";
                 document.querySelector("#OpenDeporteDetalle").style.display = "block";
                 $('[data-toggle="popover"]').popover();
@@ -411,6 +415,7 @@ function addEventsProcedimientoAficion() {
             if (aficionDetalleSelected != undefined) {
                 beanRequestProcedimientoAficion.operation = "update";
                 beanRequestProcedimientoAficion.type_request = "PUT";
+                document.querySelector("#tittleAficionDetalle").innerHTML= "EDITAR AFICIÓN";
                 document.querySelector("#txtEstadoAficionDetalle").value = aficionDetalleSelected.estado;
                 document.querySelector("#txtAficionDetalle").value = aficionDetalleSelected.aficion.descripcion;
                 aficionSelected = aficionDetalleSelected.aficion;
