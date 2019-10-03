@@ -221,10 +221,10 @@
         <!-- /perfect scrollbar jQuery -->
 
         <!--JS COMPLEMENTS-->
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions.js?v=0.03"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_alerts.js?v=0.03"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_operational.js?v=0.03"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/configuration_api.js?v=0.03"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions.js?v=0.04"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_alerts.js?v=0.04"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_operational.js?v=0.04"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/configuration_api.js?v=0.04"></script>
 
         <!-- masonry script -->
         <script src="<%=request.getContextPath()%>/plugins/masonry-layout/dist/masonry.pkgd.min.js"></script>
