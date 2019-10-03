@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }).on('change', function (e, date) {
     });
 
-    //document.querySelector('#btnEliminarFechaNacFamiliar').onclick = function () {
-    //   document.querySelector('#txtFechaNaciFamiliar').value = '';
-    //};
+    document.querySelector('#btnEliminarFechaNacFamiliar').onclick = function () {
+       document.querySelector('#txtFechaNaciFamiliar').value = '';
+    };
 
     $('#FrmFamiliar').submit(function (event) {
         beanRequestFamiliar.operation = "paginate";
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
     });
 
-    $('#FrmFamiliarPaciente').submit(function (event) {
+    $('#FrmFamiliarAtendido').submit(function (event) {
         try {
             if (validateFormFamiliar()) {
                 $('#modalCargandoFamiliar').modal('show');
@@ -74,7 +74,13 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestFamiliar.type_request = "GET";
     });
 
-  
+   document.querySelector("#btnRegresarFamiliar").onclick = function () {
+        beanRequestAtendido.operation = "paginate";
+        beanRequestAtendido.type_request = "GET";
+        $('#modalCargandoAtendido').modal('show');
+        document.querySelector("#btnOpenFamiliar").style.display = 'none';
+        document.querySelector("#btnListaAtendido").style.display = 'block';
+    };
 
 });
 
@@ -259,8 +265,8 @@ function addInputFamiliar(familiar) {
     document.querySelector("#txtNivelInstFamiliar").value = familiar.nivel_instruccion;
     document.querySelector("#txtIngresosFamiliar").value = familiar.ingresos;
 
-    document.querySelector("#txtOcupacionPaciente").value = familiar.ocupacion.nombre;
-    document.querySelector("#txtDistritoPaciente").value = familiar.distrito.nombre;
+    document.querySelector("#txtOcupacionAtendido").value = familiar.ocupacion.nombre;
+    document.querySelector("#txtDistritoAtendido").value = familiar.distrito.nombre;
     ocupacionSelected = familiar.ocupacion;
     distritoSelected = familiar.distrito;
     $('[data-toggle="popover"]').popover();
@@ -274,8 +280,8 @@ function limpiarInputFamiliar() {
     document.querySelector("#txtNivelInstFamiliar").value = "-1";
     document.querySelector("#txtIngresosFamiliar").value = "";
 
-    document.querySelector("#txtOcupacionPaciente").value = "";
-    document.querySelector("#txtDistritoPaciente").value = "";
+    document.querySelector("#txtOcupacionAtendido").value = "";
+    document.querySelector("#txtDistritoAtendido").value = "";
 
 }
 

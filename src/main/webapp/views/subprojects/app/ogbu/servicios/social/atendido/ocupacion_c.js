@@ -46,14 +46,14 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
         ocupacionSelected = ocupacionCSelected;
-        document.querySelector("#txtOcupacionPaciente").value = ocupacionCSelected.nombre.toUpperCase();
+        document.querySelector("#txtOcupacionAtendido").value = ocupacionCSelected.nombre.toUpperCase();
         $('#ventanaModalSelectedOcupacionC').modal('hide');
     };
 
     document.querySelector("#btnCancelSelectionOcupacionC").onclick = function () {
         ocupacionCSelected = undefined;
         ocupacionSelected = ocupacionCSelected;
-        document.querySelector("#txtOcupacionPaciente").value = "";
+        document.querySelector("#txtOcupacionAtendido").value = "";
     };
 
     $("#sizePageOcupacionC").change(function () {
@@ -127,15 +127,19 @@ function toListOcupacionC(beanPagination) {
 function addEventsOcupacionCes() {
     document.querySelectorAll('.click-selection-ocupacion').forEach(function (element) {
         element.onclick = function () {
-            if (this.classList.contains('row-selected-celeste-claro')) {
-                this.classList.remove('row-selected-celeste-claro');
+            if (this.classList.contains('bg-info')) {
+                this.classList.remove('bg-info');
+                this.classList.remove('text-white');
+                 
                 ocupacionCSelected = undefined;
             } else {
                 ocupacionCSelected = findByOcupacionC(this.getAttribute('idocupacion'));
                 this.parentElement.childNodes.forEach(function (element) {
-                    element.classList.remove('row-selected-celeste-claro');
+                    element.classList.remove('bg-info');
+                     element.classList.remove('text-white');
                 });
-                this.classList.add('row-selected-celeste-claro');
+                this.classList.add('bg-info');
+                this.classList.add('text-white');
             }
         };
     });

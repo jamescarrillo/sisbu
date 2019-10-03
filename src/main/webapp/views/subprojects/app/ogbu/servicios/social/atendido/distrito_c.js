@@ -5,7 +5,8 @@
  */
 var beanPaginationDistritoC;
 var distritoCSelected;
-
+var distritoActualSelected;
+var distritoProcedenciaSelected;
 var beanRequestDistritoC = new BeanRequest();
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -59,16 +60,16 @@ document.addEventListener("DOMContentLoaded", function () {
         switch (distrito_option) {
             case "procedencia":
                 distritoProcedenciaSelected = distritoCSelected;
-                document.querySelector("#txtDistritoProcedenciaPaciente").value = distritoCSelected.nombre.toUpperCase();
+                document.querySelector("#txtDistritoProcedenciaAtendido").value = distritoCSelected.nombre.toUpperCase();
                 break;
             case "familiar":
                 distritoSelected = distritoCSelected;
-                document.querySelector("#txtDistritoPaciente").value = distritoCSelected.nombre.toUpperCase();
+                document.querySelector("#txtDistritoAtendido").value = distritoCSelected.nombre.toUpperCase();
                 break;
             default:
                 //actual
                 distritoActualSelected = distritoCSelected;
-                document.querySelector("#txtDistritoActualPaciente").value = distritoCSelected.nombre.toUpperCase();
+                document.querySelector("#txtDistritoActualAtendido").value = distritoCSelected.nombre.toUpperCase();
                 break;
         }
         $('#ventanaModalSelectedDistritoC').modal('hide');
@@ -79,16 +80,16 @@ document.addEventListener("DOMContentLoaded", function () {
         switch (distrito_option) {
             case "procedencia":
                 distritoActualSelected = distritoCSelected;
-                document.querySelector("#txtDistritoProcedenciaPaciente").value = "";
+                document.querySelector("#txtDistritoProcedenciaAtendido").value = "";
                 break;
             case "familiar":
                 distritoSelected = distritoCSelected;
-                document.querySelector("#txtDistritoPaciente").value = "";
+                document.querySelector("#txtDistritoAtendido").value = "";
                 break;
             default:
                 //actual
                 distritoActualSelected = distritoCSelected;
-                document.querySelector("#txtDistritoActualPaciente").value = "";
+                document.querySelector("#txtDistritoActualAtendido").value = "";
                 break;
         }
     };
@@ -164,15 +165,18 @@ function toListDistritoC(beanPagination) {
 function addEventsDistritoCes() {
     document.querySelectorAll('.click-selection-distrito').forEach(function (element) {
         element.onclick = function () {
-            if (this.classList.contains('row-selected-celeste-claro')) {
-                this.classList.remove('row-selected-celeste-claro');
+            if (this.classList.contains('bg-info')) {
+                this.classList.remove('bg-info');
+                this.classList.remove('text-white');
                 distritoCSelected = undefined;
             } else {
                 distritoCSelected = findByDistritoC(this.getAttribute('iddistrito'));
                 this.parentElement.childNodes.forEach(function (element) {
-                    element.classList.remove('row-selected-celeste-claro');
+                    element.classList.remove('bg-info');
+                    element.classList.remove('text-white');
                 });
-                this.classList.add('row-selected-celeste-claro');
+                this.classList.add('bg-info');
+                this.classList.add('text-white');
             }
         };
     });
