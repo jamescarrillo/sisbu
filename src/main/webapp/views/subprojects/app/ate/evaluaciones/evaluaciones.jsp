@@ -265,10 +265,15 @@
             <!-- Tab DATOS ATENDIDO -->
             <!-- Card -->
             <div class="card overflow-hidden col-12" id="OpenListaDeporteDetalle">
-                <!-- Card Header -->
-                <div class="card-header bg-transparent">
-                    <button type="button" id="btnOpenDeporteDetalle" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
-                    <input type="hidden" id="pageDeporte" value="1">
+
+                <div class="form-row">
+                    <div class="col-11 text-center">
+                        <label  for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE DEPORTES</label>
+                        <input type="hidden" id="pageDeporte" value="1">
+                    </div>
+                    <div class="float-right">
+                        <button type="button" id="btnOpenDeporteDetalle" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Agregar Deporte" ><i class="icon icon-plus icon-fw"></i></button>
+                    </div>
                 </div>
                 <!-- /card header -->
                 <!-- Card Body -->
@@ -368,13 +373,24 @@
 
         </div>
         <div class="row" id="div-content-ev-aficiones" style="display: none">
-             <!-- Tab DATOS ATENDIDO -->
+            <!-- Tab DATOS ATENDIDO -->
             <!-- Card -->
             <div class="card overflow-hidden col-12" id="OpenListaAficionDetalle">
+
+                <div class="form-row">
+                    <div class="col-11 text-center">
+                        <label  for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE AFICIONES</label>
+                        <input type="hidden" id="pageAficion" value="1">
+                    </div>
+                    <div class="float-right">
+                        <button type="button" id="btnOpenAficionDetalle" class="btn btn-primary btn-sm"data-toggle="tooltip" title="Agregar Aficion" ><i class="icon icon-plus icon-fw"></i></button>
+                    </div>
+                </div>
+                <!-- /card header -->
                 <!-- Card Header -->
                 <div class="card-header bg-transparent">
-                    <button type="button" id="btnOpenAficionDetalle" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
-                    <input type="hidden" id="pageAficion" value="1">
+
+
                 </div>
                 <!-- /card header -->
                 <!-- Card Body -->

@@ -145,8 +145,6 @@ function processAjaxAtendido() {
 
 function toListAtendido(beanPagination) {
     document.querySelector("#tbodyAtendido").innerHTML = "";
-
-
     document.querySelector("#titleManagerAtendido").innerHTML = "[ " + beanPagination.count_filter + " ] USUARIOS";
 
     if (beanPagination.count_filter > 0) {
@@ -210,17 +208,16 @@ function toListAtendido(beanPagination) {
 }
 
 function addEventsAtendidoes() {
-    document.querySelectorAll('.editar-atendido-').forEach(btn => {
+    document.querySelectorAll('.editar-atendido').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
+            console.log(btn.parentElement.parentElement.getAttribute('idatendido'));
             atendidoSelected = findByAtendido(btn.parentElement.parentElement.getAttribute('idatendido'));
             if (atendidoSelected != undefined) {
                 beanRequestAtendido.operation = "update";
                 beanRequestAtendido.type_request = "PUT";
-
                 document.querySelector("#btnListaAtendido").style.display = 'none';
                 document.querySelector("#btnOpenAtendido").style.display = 'block';
-
                 //SET VALUES MODAL
                 document.querySelector("#txtTipoDocumentoAtendido").value = atendidoSelected.tipo_documento;
                 document.querySelector("#txtModalidadAtendido").value = atendidoSelected.modalidad_ingreso;
@@ -280,7 +277,7 @@ function addEventsAtendidoes() {
             }
         };
     });
-    document.querySelectorAll('.familiar-atendido--').forEach(btn => {
+    document.querySelectorAll('.familiar-atendido').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
             atendidoSelected = findByAtendido(btn.parentElement.parentElement.getAttribute('idatendido'));

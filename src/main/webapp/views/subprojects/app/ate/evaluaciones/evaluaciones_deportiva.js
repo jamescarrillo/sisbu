@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         deporteSelected = null;
         document.querySelector("#OpenListaDeporteDetalle").style.display = "none";
         document.querySelector("#OpenDeporteDetalle").style.display = "block";
+          $('[data-toggle="popover"]').popover();
 
     };
     document.querySelector("#btnCancelarDeporteDetalle").onclick = function () {
@@ -111,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
         aficionSelected = null;
         document.querySelector("#OpenListaAficionDetalle").style.display = "none";
         document.querySelector("#OpenAficionDetalle").style.display = "block";
+          $('[data-toggle="popover"]').popover();
 
     };
     document.querySelector("#btnCancelarAficionDetalle").onclick = function () {
@@ -243,6 +245,7 @@ function addEventsProcedimientoDeporte() {
                 deporteSelected = deporteDetalleSelected.deporte;
                 document.querySelector("#OpenListaDeporteDetalle").style.display = "none";
                 document.querySelector("#OpenDeporteDetalle").style.display = "block";
+                  $('[data-toggle="popover"]').popover();
             } else {
                 showAlertTopEnd('warning', 'No se encontró la evaluación para poder realizarlo. Vuelva a iniciar sesión');
             }
@@ -408,6 +411,7 @@ function addEventsProcedimientoAficion() {
                 aficionSelected = aficionDetalleSelected.aficion;
                 document.querySelector("#OpenListaAficionDetalle").style.display = "none";
                 document.querySelector("#OpenAficionDetalle").style.display = "block";
+                  $('[data-toggle="popover"]').popover();
             } else {
                 showAlertTopEnd('warning', 'No se encontró la evaluación para poder realizarlo. Vuelva a iniciar sesión');
             }
