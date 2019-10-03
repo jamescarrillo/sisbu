@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#div-regresar-selected-option-ed").style.display = "flex";
         document.querySelector("#div-regresar-selected-evaluation-deporte").style.display = "none";
         document.querySelector("#div-imagen-general-ed").style.display = "none";
-         $('#modalCargandoAficionDetalle').modal('show');
+        $('#modalCargandoAficionDetalle').modal('show');
     };
 
     document.querySelector("#btnRegresarSelectedOptionED").onclick = function () {
@@ -46,16 +46,16 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#div-regresar-selected-option-ed").style.display = "none";
         document.querySelector("#div-regresar-selected-evaluation-deporte").style.display = "block";
         document.querySelector("#div-imagen-general-ed").style.display = "flex";
-        
+
 
     };
     $('#FrmDeporteDetalleModal').submit(function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (validarProcedimientoDeporte) {
+
+        if (validarProcedimientoDeporte()) {
             $('#modalCargandoDeporteDetalle').modal('show');
         }
-        
+        event.preventDefault();
+        event.stopPropagation();
 
 
     });
@@ -67,6 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnOpenDeporteDetalle").onclick = function () {
         beanRequestProcedimientoDeporte.operation = "add";
         beanRequestProcedimientoDeporte.type_request = "POST";
+        document.querySelector("#txtEstadoDeporteDetalle").value = "-1";
+        document.querySelector("#txtDeporteDetalle").value = "";
+        deporteSelected = null;
         document.querySelector("#OpenListaDeporteDetalle").style.display = "none";
         document.querySelector("#OpenDeporteDetalle").style.display = "block";
 
@@ -78,16 +81,16 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#OpenListaDeporteDetalle").style.display = "block";
         $('#modalCargandoDeporteDetalle').modal('show');
     };
-    
+
     //  AFICION
-     //INICIALIZANDO VARIABLES DE SOLICITUD
+    //INICIALIZANDO VARIABLES DE SOLICITUD
     beanRequestProcedimientoAficion.entity_api = "api/detalle-aficiones";
     beanRequestProcedimientoAficion.operation = "paginate";
     beanRequestProcedimientoAficion.type_request = "GET";
 
-    
+
     $('#FrmAficionDetalleModal').submit(function (event) {
-        if (validarProcedimientoAficion) {
+        if (validarProcedimientoAficion()) {
             $('#modalCargandoAficionDetalle').modal('show');
         }
         event.preventDefault();
@@ -103,6 +106,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnOpenAficionDetalle").onclick = function () {
         beanRequestProcedimientoAficion.operation = "add";
         beanRequestProcedimientoAficion.type_request = "POST";
+        document.querySelector("#txtEstadoAficionDetalle").value = "-1";
+        document.querySelector("#txtAficionDetalle").value = "";
+        aficionSelected = null;
         document.querySelector("#OpenListaAficionDetalle").style.display = "none";
         document.querySelector("#OpenAficionDetalle").style.display = "block";
 
@@ -114,8 +120,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#OpenListaAficionDetalle").style.display = "block";
         $('#modalCargandoAficionDetalle').modal('show');
     };
-    
-    
+
+
 });
 
 function processAjaxProcedimientoDeporte() {
@@ -154,8 +160,12 @@ function processAjaxProcedimientoDeporte() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
         $('#modalCargandoDeporteDetalle').modal("hide");
+        if (beanRequestProcedimientoDeporte.operation == "add") {
+            document.querySelector("#txtEstadoDeporteDetalle").value = "-1";
+            document.querySelector("#txtDeporteDetalle").value = "";
+            deporteSelected = null;
+        }
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
@@ -196,10 +206,10 @@ function toListProcedimientoDeporte(beanPagination) {
             row += "<div class='dt-widget__info text-truncate mr-5' >";
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
             row += detalle.deporte.nombre + "</p></div>";
-            
-              row += "<div class='dt-widget__info text-truncate mr-5' >";
+
+            row += "<div class='dt-widget__info text-truncate mr-5' >";
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row +=  estadoGeneralDeporte(detalle.estado)+ "</p></div>";
+            row += estadoGeneralDeporte(detalle.estado) + "</p></div>";
 
             row += "</div>";
 
@@ -226,12 +236,11 @@ function addEventsProcedimientoDeporte() {
         btn.onclick = function () {
             deporteDetalleSelected = findDetalleDeporteForId(btn.parentElement.parentElement.getAttribute('idrelacion'));
             if (deporteDetalleSelected != undefined) {
-                console.log(deporteDetalleSelected);
                 beanRequestProcedimientoDeporte.operation = "update";
                 beanRequestProcedimientoDeporte.type_request = "PUT";
                 document.querySelector("#txtEstadoDeporteDetalle").value = deporteDetalleSelected.estado;
                 document.querySelector("#txtDeporteDetalle").value = deporteDetalleSelected.deporte.nombre;
-                deporteSelected = deporteDetalleSelected.aficion;
+                deporteSelected = deporteDetalleSelected.deporte;
                 document.querySelector("#OpenListaDeporteDetalle").style.display = "none";
                 document.querySelector("#OpenDeporteDetalle").style.display = "block";
             } else {
@@ -293,7 +302,7 @@ function processAjaxProcedimientoAficion() {
             json = {};
         } else {
             json = {
-                "estado": document.querySelector("#txtEstadoDeporteDetalle").value,
+                "estado": document.querySelector("#txtEstadoAficionDetalle").value,
                 "aficion": {"idaficion": aficionSelected.idaficion},
                 "atendido": {
                     "usuario": {"idusuario": Cookies.getJSON('sisbu_user').idusuario}
@@ -314,8 +323,12 @@ function processAjaxProcedimientoAficion() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
         $('#modalCargandoAficionDetalle').modal("hide");
+        if (beanRequestProcedimientoAficion.operation == "add") {
+            document.querySelector("#txtEstadoAficionDetalle").value = "-1";
+            document.querySelector("#txtAficionDetalle").value = "";
+            aficionSelected = null;
+        }
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
@@ -356,10 +369,10 @@ function toListProcedimientoAficion(beanPagination) {
             row += "<div class='dt-widget__info text-truncate mr-5' >";
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
             row += detalle.aficion.descripcion + "</p></div>";
-            
+
             row += "<div class='dt-widget__info text-truncate mr-5' >";
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row +=  estadoGeneralDeporte(detalle.estado)+ "</p></div>";
+            row += estadoGeneralDeporte(detalle.estado) + "</p></div>";
 
 
 
@@ -374,7 +387,7 @@ function toListProcedimientoAficion(beanPagination) {
                 document.querySelector("#pageAficion"),
                 $('#modalCargandoAficion'),
                 $('#paginationAficion'));
-        addEventsProcedimientoAficions();
+        addEventsProcedimientoAficion();
 
 
     } else {
@@ -386,13 +399,12 @@ function toListProcedimientoAficion(beanPagination) {
 function addEventsProcedimientoAficion() {
     document.querySelectorAll(".editar-aficion-detalle").forEach(btn => {
         btn.onclick = function () {
-            aficionDetalleSelected = findDetalleDeporteForId(btn.parentElement.parentElement.getAttribute('idrelacion'));
+            aficionDetalleSelected = findDetalleAficionForId(btn.parentElement.parentElement.getAttribute('idrelacion'));
             if (aficionDetalleSelected != undefined) {
-                console.log(aficionDetalleSelected);
                 beanRequestProcedimientoAficion.operation = "update";
                 beanRequestProcedimientoAficion.type_request = "PUT";
                 document.querySelector("#txtEstadoAficionDetalle").value = aficionDetalleSelected.estado;
-                document.querySelector("#txtAficionDetalle").value = aficionDetalleSelected.aficion.nombre;
+                document.querySelector("#txtAficionDetalle").value = aficionDetalleSelected.aficion.descripcion;
                 aficionSelected = aficionDetalleSelected.aficion;
                 document.querySelector("#OpenListaAficionDetalle").style.display = "none";
                 document.querySelector("#OpenAficionDetalle").style.display = "block";
@@ -421,7 +433,7 @@ function validarProcedimientoAficion() {
         document.querySelector("#txtEstadoAficionDetalle").focus();
         return false;
     } else if (document.querySelector("#txtAficionDetalle").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Deporte ');
+        showAlertTopEnd('warning', 'Por favor ingrese Afcion ');
         document.querySelector("#txtAficionDetalle").focus();
         return false;
     }
@@ -440,7 +452,7 @@ function findDetalleAficionForId(idrelacion) {
 }
 
 
-function estadoGeneralDeporte(idestado){
+function estadoGeneralDeporte(idestado) {
     switch (idestado) {
         case 1:
             return 'LO PRACTICO';
@@ -448,7 +460,7 @@ function estadoGeneralDeporte(idestado){
         case 2:
             return 'ME GUSTARÍA APRENDER';
             break;
-            
+
         default:
             return '';
             break;

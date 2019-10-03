@@ -281,10 +281,10 @@
                             <!-- Card Heading -->
                             <div class="dt-card__heading pt-0">
                                 <!-- Widget Item -->
-                                <div class="dt-widget__item border bg-primary text-white" >
+                                <div class="dt-widget__item border bg-primary " >
                                     <!-- Widget Info -->
                                     <div class="dt-widget__info text-truncate">
-                                        <h3 class="dt-card__title">DEPORTE</h3>
+                                        <h3 class="dt-card__title text-white">DEPORTE</h3>
                                     </div>
                                     <!-- /widget info -->
 
@@ -387,10 +387,10 @@
                             <!-- Card Heading -->
                             <div class="dt-card__heading pt-0">
                                 <!-- Widget Item -->
-                                <div class="dt-widget__item border bg-primary text-white" >
+                                <div class="dt-widget__item border bg-primary " >
                                     <!-- Widget Info -->
                                     <div class="dt-widget__info text-truncate">
-                                        <h3 class="dt-card__title">Aficion</h3>
+                                        <h3 class="dt-card__title text-white">AFICION</h3>
                                     </div>
                                     <!-- /widget info -->
 
@@ -448,13 +448,13 @@
                                 </div>
                             </div>
                             <div class="form-group col-12">
-                                <label for="txtAficionDetalle">DEPORTE
+                                <label for="txtAficionDetalle">AFICION
                                     <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
                                 </label>
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-sm" id="txtAficionDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
                                     <div class="input-group-append">
-                                        <button type="button" id="btnSeleccionarAficion" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                        <button type="button" id="btnSeleccionarAficiones" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -935,7 +935,7 @@
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
                 <h5 class="mb-0" id="titleManagerAficionC"><strong>[ 0 ]
-                        DEPORTES</strong></h5>
+                        AFICIONES</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1001,7 +1001,7 @@
     </div>
 </div>
 
-<div class="modal" id="modalCargandoAficionC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal" id="modalCargandoSelectedAficionC" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">

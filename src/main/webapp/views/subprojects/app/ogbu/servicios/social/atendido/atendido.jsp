@@ -302,15 +302,13 @@
             <form id="FrmUsuarioModal"> 
                 <div class="row">
                     <div class="form-group col-6">
-<<<<<<< HEAD
-                        <label for="txtNombreUsuario">ACTUALIZAR USUARIO</label>
-=======
-                        <label for="txtNombreUsuario">NOMBRE COMPLETO</label>
->>>>>>> origin/master
+
+                        <label for="txtNombreUsuario">NOMBRE USUARIO</label>
+
                         <input class="form-control form-control-sm" id="txtNombreUsuario" type="text" placeholder="TÍTULO">
                     </div>
                     <div class="form-group col-6">
-                        <label for="txtLoginUsuario">NOMBRE DE USUARIO</label>
+                        <label for="txtLoginUsuario">LOGIN </label>
                         <input class="form-control form-control-sm" id="txtLoginUsuario" type="text" placeholder="LOGIN">
                     </div>
                     <div class="form-group col-6">
@@ -342,16 +340,9 @@
 
                         </select>
                     </div>
-
                     <div class="form-group col-12 text-center">
-<<<<<<< HEAD
                         <button type="button" id="btnRegresarUsuario" class="btn btn-outline-primary btn-sm" ><i class="icon icon-reply"></i> CANCELAR</button>
                         <button type="submit" id="btnGuardarUsuario" class="btn btn-primary btn-sm">ACTUALIZAR</button>
-=======
-                        <button type="button" id="btnRegresarUsuario" class="btn btn-outline-primary btn-sm" >CANCELAR</button>
-                        <button type="submit" id="btnGuardarUsuario" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> GUARDAR</button>
->>>>>>> origin/master
-
                     </div>
                 </div>
             </form>
