@@ -189,7 +189,7 @@ function toListProcedimientoDeporte(beanPagination) {
             row += "</span>";
             row += "<span class='badge badge-danger badge-circle-animate badge-pill badge-sm align-text-top mr-2'>"
             row += "<a class='text-light-gray eliminar-deporte-detalle' data-toggle='tooltip' title='Eliminar' href='javascript:void(0)'>";
-            row += "<i class='text-white icon icon-editors'></i></a>";
+            row += "<i class='text-white icon icon-trash-filled'></i></a>";
             row += "</span>";
             row += "</div>";
 
@@ -349,7 +349,7 @@ function toListProcedimientoAficion(beanPagination) {
             row += "</span>";
             row += "<span class='badge badge-danger badge-circle-animate badge-pill badge-sm align-text-top mr-2'>"
             row += "<a class='text-light-gray eliminar-aficion-detalle' data-toggle='tooltip' title='Eliminar' href='javascript:void(0)'>";
-            row += "<i class='text-white icon icon-editors'></i></a>";
+            row += "<i class='text-white icon icon-trash-filled'></i></a>";
             row += "</span>";
             row += "</div>";
 
