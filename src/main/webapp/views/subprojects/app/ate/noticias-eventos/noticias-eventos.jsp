@@ -6,6 +6,6 @@
 <div class="row justify-content-center">
     <div class="col-lg-6">
         <img src="<%=request.getContextPath()%>/resources/prod/custom_app/estamos_trabajando.png" class="img-fluid" alt="Estamos Trabajando">
-        <h5 class="text-danger mt-3">*Nota: Podrás ver las últimas noticias y eventos por aquí a partir del 02/10/2019</h5>
+        <h5 class="text-danger mt-3">*Aún no esta disponible este módulo</h5>
     </div>
 </div>

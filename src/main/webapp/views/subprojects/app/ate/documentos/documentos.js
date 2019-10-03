@@ -27,11 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
          repor_familiares = "N";
          $("#modalCargandoVDYA").modal('show');
          */
-        showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación. Ingresa a partir del 02/10/2019', 10000)
+        showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación', 10000)
     };
 
     document.querySelector("#btn-download-deportes-aficiones").onclick = function () {
-        showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación. Ingresa a partir del 02/10/2019', 10000)
+        showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación', 10000)
     };
 
     document.querySelector("#btn-download-constancia-socioeconomica").onclick = function () {
