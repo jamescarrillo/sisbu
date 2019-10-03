@@ -266,10 +266,10 @@
             <!-- Card -->
             <div class="card overflow-hidden col-12" id="OpenListaDeporteDetalle">
 
-                <div class="form-row">
+                <div class="form-row pt-5">
                     <div class="col-11 text-center">
                         <label  for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE DEPORTES</label>
-                        <input type="hidden" id="pageDeporte" value="1">
+                        <input type="hidden" id="pageDeporteDetalle" value="1">
                     </div>
                     <div class="float-right">
                         <button type="button" id="btnOpenDeporteDetalle" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Agregar Deporte" ><i class="icon icon-plus icon-fw"></i></button>
@@ -288,8 +288,13 @@
                                 <!-- Widget Item -->
                                 <div class="dt-widget__item border bg-primary " >
                                     <!-- Widget Info -->
-                                    <div class="dt-widget__info text-truncate">
-                                        <h3 class="dt-card__title text-white">DEPORTE</h3>
+                                    <div class="dt-widget__info text-truncate ml-5">
+                                        <h3 class="dt-card__title text-white ">DEPORTE</h3>
+                                    </div>
+                                    <!-- /widget info -->
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info text-truncate ml-5">
+                                        <h3 class="dt-card__title text-white ">ESTADO</h3>
                                     </div>
                                     <!-- /widget info -->
 
@@ -312,15 +317,15 @@
                     <!-- /tables -->
                     <div class="row mt-2">
                         <div class="col-md-2 col-sm-3 col-4">
-                            <select id="sizePageDeporte" class="form-control form-control-sm select2-single">
+                            <select id="sizePageDeporteDetalle" class="form-control form-control-sm select2-single">
+                                <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
-                                <option value="20">20</option>
                             </select>
                         </div>
                         <div class="col-md-10 col-sm-9 col-8">
                             <nav aria-label="Page navigation example">
-                                <ul id="paginationDeporte" class="pagination pagination-sm justify-content-end">
+                                <ul id="paginationDeporteDetalle" class="pagination pagination-sm justify-content-end">
                                 </ul>
                             </nav>  
                         </div>
@@ -364,13 +369,10 @@
                             </div>  
                         </div>
                     </form>
-
                 </div>
                 <!-- /card header -->
-
             </div>
             <!-- /card -->
-
         </div>
         <div class="row" id="div-content-ev-aficiones" style="display: none">
             <!-- Tab DATOS ATENDIDO -->
@@ -380,19 +382,14 @@
                 <div class="form-row">
                     <div class="col-11 text-center">
                         <label  for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE AFICIONES</label>
-                        <input type="hidden" id="pageAficion" value="1">
+                        <input type="hidden" id="pageAficionDetalle" value="1">
                     </div>
                     <div class="float-right">
                         <button type="button" id="btnOpenAficionDetalle" class="btn btn-primary btn-sm"data-toggle="tooltip" title="Agregar Aficion" ><i class="icon icon-plus icon-fw"></i></button>
                     </div>
                 </div>
                 <!-- /card header -->
-                <!-- Card Header -->
-                <div class="card-header bg-transparent">
-
-
-                </div>
-                <!-- /card header -->
+ 
                 <!-- Card Body -->
                 <div class="card-body pt-0 ">
                     <!-- Tables -->
@@ -407,6 +404,11 @@
                                     <!-- Widget Info -->
                                     <div class="dt-widget__info text-truncate">
                                         <h3 class="dt-card__title text-white">AFICION</h3>
+                                    </div>
+                                    <!-- /widget info -->
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info text-truncate">
+                                        <h3 class="dt-card__title text-white">ESTADO</h3>
                                     </div>
                                     <!-- /widget info -->
 
@@ -429,15 +431,15 @@
                     <!-- /tables -->
                     <div class="row mt-2">
                         <div class="col-md-2 col-sm-3 col-4">
-                            <select id="sizePageAficion" class="form-control form-control-sm select2-single">
+                            <select id="sizePageAficionDetalle" class="form-control form-control-sm select2-single">
+                               <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
-                                <option value="20">20</option>
                             </select>
                         </div>
                         <div class="col-md-10 col-sm-9 col-8">
                             <nav aria-label="Page navigation example">
-                                <ul id="paginationAficion" class="pagination pagination-sm justify-content-end">
+                                <ul id="paginationAficionDetalle" class="pagination pagination-sm justify-content-end">
                                 </ul>
                             </nav>  
                         </div>

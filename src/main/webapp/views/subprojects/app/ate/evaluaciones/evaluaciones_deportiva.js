@@ -14,6 +14,18 @@ var aficionDetalleSelected;
 var beanPaginationDetalleAficion;
 var beanRequestProcedimientoAficion = new BeanRequest();
 document.addEventListener("DOMContentLoaded", function () {
+    
+     document.querySelector("#btnRegresarSelectedOptionED").onclick = function () {
+        document.querySelector("#div-content-ev-deportes").style.display = "none";
+        document.querySelector("#div-content-ev-aficiones").style.display = "none";
+        document.querySelector("#div-evaluacion-deportiva").style.display = "flex";
+        document.querySelector("#div-regresar-selected-option-ed").style.display = "none";
+        document.querySelector("#div-regresar-selected-evaluation-deporte").style.display = "block";
+        document.querySelector("#div-imagen-general-ed").style.display = "flex";
+
+
+    };
+    //DEPORTE
     //INICIALIZANDO VARIABLES DE SOLICITUD
     beanRequestProcedimientoDeporte.entity_api = "api/detalle-deportes";
     beanRequestProcedimientoDeporte.operation = "paginate";
@@ -28,27 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#div-imagen-general-ed").style.display = "none";
         $('#modalCargandoDeporteDetalle').modal('show');
     };
-
-    document.querySelector("#div-ed-option-aficiones").onclick = function () {
-        document.querySelector("#div-content-ev-deportes").style.display = " none";
-        document.querySelector("#div-content-ev-aficiones").style.display = "flex";
-        document.querySelector("#div-evaluacion-deportiva").style.display = "none";
-        document.querySelector("#div-regresar-selected-option-ed").style.display = "flex";
-        document.querySelector("#div-regresar-selected-evaluation-deporte").style.display = "none";
-        document.querySelector("#div-imagen-general-ed").style.display = "none";
-        $('#modalCargandoAficionDetalle').modal('show');
-    };
-
-    document.querySelector("#btnRegresarSelectedOptionED").onclick = function () {
-        document.querySelector("#div-content-ev-deportes").style.display = "none";
-        document.querySelector("#div-content-ev-aficiones").style.display = "none";
-        document.querySelector("#div-evaluacion-deportiva").style.display = "flex";
-        document.querySelector("#div-regresar-selected-option-ed").style.display = "none";
-        document.querySelector("#div-regresar-selected-evaluation-deporte").style.display = "block";
-        document.querySelector("#div-imagen-general-ed").style.display = "flex";
-
-
-    };
+   
     $('#FrmDeporteDetalleModal').submit(function (event) {
 
         if (validarProcedimientoDeporte()) {
@@ -63,7 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#modalCargandoDeporteDetalle").on('shown.bs.modal', function () {
         processAjaxProcedimientoDeporte();
     });
-
+    $("#sizePageDeporteDetalle").change(function () {
+        $('#modalCargandoDeporteDetalle').modal('show');
+    });
     document.querySelector("#btnOpenDeporteDetalle").onclick = function () {
         beanRequestProcedimientoDeporte.operation = "add";
         beanRequestProcedimientoDeporte.type_request = "POST";
@@ -72,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         deporteSelected = null;
         document.querySelector("#OpenListaDeporteDetalle").style.display = "none";
         document.querySelector("#OpenDeporteDetalle").style.display = "block";
-          $('[data-toggle="popover"]').popover();
+        $('[data-toggle="popover"]').popover();
 
     };
     document.querySelector("#btnCancelarDeporteDetalle").onclick = function () {
@@ -88,7 +82,20 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestProcedimientoAficion.entity_api = "api/detalle-aficiones";
     beanRequestProcedimientoAficion.operation = "paginate";
     beanRequestProcedimientoAficion.type_request = "GET";
+    
+     document.querySelector("#div-ed-option-aficiones").onclick = function () {
+        document.querySelector("#div-content-ev-deportes").style.display = " none";
+        document.querySelector("#div-content-ev-aficiones").style.display = "flex";
+        document.querySelector("#div-evaluacion-deportiva").style.display = "none";
+        document.querySelector("#div-regresar-selected-option-ed").style.display = "flex";
+        document.querySelector("#div-regresar-selected-evaluation-deporte").style.display = "none";
+        document.querySelector("#div-imagen-general-ed").style.display = "none";
+        $('#modalCargandoAficionDetalle').modal('show');
+    };
 
+    $("#sizePageAficionDetalle").change(function () {
+        $('#modalCargandoAficionDetalle').modal('show');
+    });
 
     $('#FrmAficionDetalleModal').submit(function (event) {
         if (validarProcedimientoAficion()) {
@@ -112,9 +119,10 @@ document.addEventListener("DOMContentLoaded", function () {
         aficionSelected = null;
         document.querySelector("#OpenListaAficionDetalle").style.display = "none";
         document.querySelector("#OpenAficionDetalle").style.display = "block";
-          $('[data-toggle="popover"]').popover();
+        $('[data-toggle="popover"]').popover();
 
     };
+
     document.querySelector("#btnCancelarAficionDetalle").onclick = function () {
         beanRequestProcedimientoAficion.operation = "paginate";
         beanRequestProcedimientoAficion.type_request = "GET";
@@ -123,7 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#modalCargandoAficionDetalle').modal('show');
     };
 
-
 });
 
 function processAjaxProcedimientoDeporte() {
@@ -131,8 +138,8 @@ function processAjaxProcedimientoDeporte() {
     let json = "";
     if (beanRequestProcedimientoDeporte.operation == "paginate") {
         parameters_pagination += "?idusuario=" + Cookies.getJSON('sisbu_user').idusuario;
-        parameters_pagination += "&page=1";
-        parameters_pagination += "&size=4";
+        parameters_pagination += "&page=" +document.querySelector("#pageDeporteDetalle").value;
+        parameters_pagination += "&size="+document.querySelector("#sizePageDeporteDetalle").value;
 
     } else {
         parameters_pagination = "";
@@ -220,10 +227,10 @@ function toListProcedimientoDeporte(beanPagination) {
         });
         buildPagination(
                 beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageDeporte").value),
-                document.querySelector("#pageDeporte"),
-                $('#modalCargandoDeporte'),
-                $('#paginationDeporte'));
+                parseInt(document.querySelector("#sizePageDeporteDetalle").value),
+                document.querySelector("#pageDeporteDetalle"),
+                $('#modalCargandoDeporteDetalle'),
+                $('#paginationDeporteDetalle'));
         addEventsProcedimientoDeporte();
 
 
@@ -245,7 +252,7 @@ function addEventsProcedimientoDeporte() {
                 deporteSelected = deporteDetalleSelected.deporte;
                 document.querySelector("#OpenListaDeporteDetalle").style.display = "none";
                 document.querySelector("#OpenDeporteDetalle").style.display = "block";
-                  $('[data-toggle="popover"]').popover();
+                $('[data-toggle="popover"]').popover();
             } else {
                 showAlertTopEnd('warning', 'No se encontró la evaluación para poder realizarlo. Vuelva a iniciar sesión');
             }
@@ -295,8 +302,8 @@ function processAjaxProcedimientoAficion() {
     let json = "";
     if (beanRequestProcedimientoAficion.operation == "paginate") {
         parameters_pagination += "?idusuario=" + Cookies.getJSON('sisbu_user').idusuario;
-        parameters_pagination += "&page=1";
-        parameters_pagination += "&size=4";
+        parameters_pagination += "&page="+document.querySelector("#pageAficionDetalle").value;
+        parameters_pagination += "&size="+document.querySelector("#sizePageAficionDetalle").value;
 
     } else {
         parameters_pagination = "";
@@ -377,8 +384,6 @@ function toListProcedimientoAficion(beanPagination) {
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
             row += estadoGeneralDeporte(detalle.estado) + "</p></div>";
 
-
-
             row += "</div>";
 
             document.querySelector("#tbodyAficion").innerHTML += row;
@@ -386,10 +391,10 @@ function toListProcedimientoAficion(beanPagination) {
         });
         buildPagination(
                 beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageAficion").value),
-                document.querySelector("#pageAficion"),
-                $('#modalCargandoAficion'),
-                $('#paginationAficion'));
+                parseInt(document.querySelector("#sizePageAficionDetalle").value),
+                document.querySelector("#pageAficionDetalle"),
+                $('#modalCargandoAficionDetalle'),
+                $('#paginationAficionDetalle'));
         addEventsProcedimientoAficion();
 
 
@@ -411,7 +416,7 @@ function addEventsProcedimientoAficion() {
                 aficionSelected = aficionDetalleSelected.aficion;
                 document.querySelector("#OpenListaAficionDetalle").style.display = "none";
                 document.querySelector("#OpenAficionDetalle").style.display = "block";
-                  $('[data-toggle="popover"]').popover();
+                $('[data-toggle="popover"]').popover();
             } else {
                 showAlertTopEnd('warning', 'No se encontró la evaluación para poder realizarlo. Vuelva a iniciar sesión');
             }
@@ -454,7 +459,6 @@ function findDetalleAficionForId(idrelacion) {
     });
     return Aficion_;
 }
-
 
 function estadoGeneralDeporte(idestado) {
     switch (idestado) {
