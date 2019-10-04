@@ -158,6 +158,7 @@ function processAjaxProcedimientoDeporte() {
             };
             if (beanRequestProcedimientoDeporte.operation == "update") {
                 json.idrelacion = deporteDetalleSelected.idrelacion;
+                json.atendido.idatendido=deporteDetalleSelected.atendido.idatendido;
             }
         }
     }
@@ -324,6 +325,7 @@ function processAjaxProcedimientoAficion() {
             };
             if (beanRequestProcedimientoAficion.operation == "update") {
                 json.idrelacion = aficionDetalleSelected.idrelacion;
+                json.atendido.idatendido=aficionDetalleSelected.atendido.idatendido;
             }
         }
     }

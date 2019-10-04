@@ -194,208 +194,163 @@
     </div>
 </div>
 
-<div class="modal fade overflow-auto" id="ventanaModalMenuSemanal" data-backdrop="static"
-     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
+<!-- Card -->
+<div class="card pt-5" id="OpenComidaDiaria" style="display:none">
 
-            <div class="modal-header">
-                <h6 class="modal-title" id="txtTituloModalMan"></h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row" >
+    <h3 id="title-comida-diaria" class="text-center text-info">DIA ACTUAL</h3>
 
-                    <div class="form-group col-lg-12">
-                        <label >DIA ACTUAL</label>
-                        <input class="form-control form-control-sm" placeholder="Filter..." id="txtMenuSemanalFecha"  type="date">
-                    </div>
-                </div>
-                <!-- Card -->
-                <div class="card mb-0">
-
-                    <!-- Card Header -->
-                    <div class="card-header">
-                        <!-- Tab Navigation -->
-                        <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
-                            <li class="nav-item">
-                                <a id="buttonDesayuno" class="nav-link show active" data-toggle="tab" 
-                                   href="#tab-pane-15" role="tab" aria-controls="tab-pane-15"
-                                   aria-selected="true">
-                                    <i class="icon icon-plus icon-fw"></i> DESAYUNO</a>
-                            </li>
-                            <li class="nav-item">
-                                <a id="buttonAlmuerzo" class="nav-link" data-toggle="tab" href="#tab-pane-16" 
-                                   role="tab" aria-controls="tab-pane-16" aria-selected="false">
-                                    <i class="icon icon-plus icon-fw"></i> ALMUERZO</a>
-                            </li>
-                            <li class="nav-item">
-                                <a id="buttonCena" class="nav-link" data-toggle="tab" href="#tab-pane-17" 
-                                   role="tab" aria-controls="tab-pane-17" aria-selected="false">
-                                    <i class="icon icon-plus icon-fw"></i> CENA</a>
-                            </li>
-                            <input type="hidden" id="IndexMenuSemanal" value="0">
-                        </ul>
-                        <!-- /tab navigation -->
-                    </div>
-                    <!-- /card header -->
-
-                    <!-- Tab Content -->
-                    <div class="tab-content ">
-
-                        <!-- Tab DESAYUNO -->
-                        <div id="tab-pane-15" class="tab-pane show active">
-                            <div class="pt-4 pr-1 pl-1">
-                               
-                                    <div class="col-lg-12">
-                                        <div class="form-group ">
-                                            <select class="form-control form-control-sm" id="txtFilterTipoComidaDesayuno">
-                                                <option value="-1">seleccione tipo...</option>
-                                                <option selected  value="1">SEGUNDO</option>
-                                                <option value="2">BEBIDA</option>
-                                                <option value="3">POSTRE</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 " >
-                                        <div class="search-box " style="max-width: 100%;">
-                                            <div class="input-group">
-                                                <input class="form-control form-control-sm" placeholder="Filter..." id="txtFilterComidaDesayuno"  type="search">
-                                                <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                            </div>
-                                            <div id="ResultadoComidaDesayuno" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-12 ">
-                                        <!-- Tables -->
-                                        <div class="table-responsive">
-                                            <table class="table mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="text-uppercase" scope="col" >TIPO</th>
-                                                        <th class="text-uppercase" scope="col" >DESCRIPCION</th>
-                                                        <th class="text-uppercase" scope="col" >ACCIÓN</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="tbodyComidaDesayuno overflow-auto " style="height: 139px;">
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- /tables -->
-                                    </div>
-
-                              
-                            </div>
-                        </div>
-                        <!-- /tab pane-->
-
-                        <!-- Tab ALMUERZO -->
-                        <div id="tab-pane-16" class="tab-pane">
-                            <div class="pt-4 pr-1 pl-1">
-                                <div class="col-lg-12">
-                                    <div class="form-group ">
-                                        <select class="form-control form-control-sm" id="txtFilterTipoComidaAlmuerzo">
-                                            <option value="-1">seleccione tipo...</option>
-                                            <option selected  value="1">SEGUNDO</option>
-                                            <option value="2">BEBIDA</option>
-                                            <option value="3">POSTRE</option>
-                                            <option value="4">SOPA</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 " >
-                                    <div class="search-box " style="max-width: 100%;">
-                                        <div class="input-group">
-                                            <input class="form-control form-control-sm" placeholder="Filter..." id="txtFilterComidaAlmuerzo"  type="search">
-                                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                        </div>
-                                        <div id="ResultadoComidaAlmuerzo" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-12 ">
-                                    <!-- Tables -->
-                                    <div class="table-responsive">
-                                        <table class="table mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-uppercase" scope="col" >TIPO</th>
-                                                    <th class="text-uppercase" scope="col" >DESCRIPCION</th>
-                                                    <th class="text-uppercase" scope="col" >ACCIÓN</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="tbodyComidaAlmuerzo overflow-auto" style="height: 139px;">
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /tables -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /tab pane-->
-
-                        <!-- Tab CENA -->
-                        <div id="tab-pane-17" class="tab-pane">
-                            <div class="pt-4 pr-1 pl-1">
-                                <div class="col-lg-12">
-                                    <div class="form-group ">
-                                        <select class="form-control form-control-sm " id="txtFilterTipoComidaCena">
-                                            <option value="-1">seleccione tipo...</option>
-                                            <option selected  value="1">SEGUNDO</option>
-                                            <option value="2">BEBIDA</option>
-                                            <option value="3">POSTRE</option>
-                                            <option value="4">SOPA</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 " >
-                                    <div class="search-box " style="max-width: 100%;">
-                                        <div class="input-group">
-                                            <input class="form-control form-control-sm" placeholder="Filter..." id="txtFilterComidaCena"  type="search">
-                                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                        </div>
-                                        <div id="ResultadoComidaCena" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-12 ">
-                                    <!-- Tables -->
-                                    <div class="table-responsive">
-                                        <table class="table mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-uppercase" scope="col" >TIPO</th>
-                                                    <th class="text-uppercase" scope="col" >DESCRIPCION</th>
-                                                    <th class="text-uppercase" scope="col" >ACCIÓN</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="tbodyComidaCena overflow-auto" style="height: 139px;">
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /tables -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /tab pane-->
-
-                    </div>
-                    <!-- /tab content -->
-
-                </div>
-                <!-- /card -->
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary btn-sm" id="btnGuardarAddMenus">Guardar</button>
-            </div>
-
-        </div>
+    <!-- Card Header -->
+    <div class="card-header">
+        <!-- Tab Navigation -->
+        <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
+            <li class="nav-item">
+                <a id="buttonDesayuno" class="nav-link show active" data-toggle="tab" 
+                   href="#tab-pane-15" role="tab" aria-controls="tab-pane-15"
+                   aria-selected="true">
+                    <i class="icon icon-plus icon-fw"></i> DESAYUNO</a>
+            </li>
+            <li class="nav-item">
+                <a id="buttonAlmuerzo" class="nav-link" data-toggle="tab" href="#tab-pane-16" 
+                   role="tab" aria-controls="tab-pane-16" aria-selected="false">
+                    <i class="icon icon-plus icon-fw"></i> ALMUERZO</a>
+            </li>
+            <li class="nav-item">
+                <a id="buttonCena" class="nav-link" data-toggle="tab" href="#tab-pane-17" 
+                   role="tab" aria-controls="tab-pane-17" aria-selected="false">
+                    <i class="icon icon-plus icon-fw"></i> CENA</a>
+            </li>
+        </ul>
+        <!-- /tab navigation -->
     </div>
+    <!-- /card header -->
+
+    <!-- Tab Content -->
+    <div class="tab-content ">
+
+        <!-- Tab DESAYUNO -->
+        <div id="tab-pane-15" class="tab-pane show active">
+            <div class="pt-4 pr-1 pl-1">
+                <div class="form-group col-12">
+                    <label for="txtComidaDetalle">COMIDA
+                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
+                    </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtComidaDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                        <div class="input-group-append">
+                            <button type="button" id="btnSeleccionarComida" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                            <button type="button" id="btnAgregarComida" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-12 ">
+                    <!-- Tables -->
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase" scope="col" >TIPO</th>
+                                    <th class="text-uppercase" scope="col" >DESCRIPCION</th>
+                                    <th class="text-uppercase" scope="col" >ACCIÓN</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tbodyComidaDesayuno overflow-auto " style="height: 139px;">
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /tables -->
+                </div>
+
+
+            </div>
+        </div>
+        <!-- /tab pane-->
+
+        <!-- Tab ALMUERZO -->
+        <div id="tab-pane-16" class="tab-pane">
+            <div class="pt-4 pr-1 pl-1">
+                <div class="form-group col-12">
+                    <label for="txtComidaAlmuerzoDetalle">COMIDA
+                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
+                    </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtComidaAlmuerzoDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                        <div class="input-group-append">
+                            <button type="button" id="btnSeleccionarComidaAlmuerzo" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                            <button type="button" id="btnAgregarComidaAlmuerzo" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-12 ">
+                    <!-- Tables -->
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase" scope="col" >TIPO</th>
+                                    <th class="text-uppercase" scope="col" >DESCRIPCION</th>
+                                    <th class="text-uppercase" scope="col" >ACCIÓN</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tbodyComidaAlmuerzo overflow-auto" style="height: 139px;">
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /tables -->
+                </div>
+            </div>
+        </div>
+        <!-- /tab pane-->
+
+        <!-- Tab CENA -->
+        <div id="tab-pane-17" class="tab-pane">
+            <div class="pt-4 pr-1 pl-1">
+                <div class="form-group col-12">
+                    <label for="txtComidaCenaDetalle">COMIDA
+                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
+                    </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtComidaCenaDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                        <div class="input-group-append">
+                            <button type="button" id="btnSeleccionarComidaCena" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                            <button type="button" id="btnAgregarComidaCena" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-12 ">
+                    <!-- Tables -->
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase" scope="col" >TIPO</th>
+                                    <th class="text-uppercase" scope="col" >DESCRIPCION</th>
+                                    <th class="text-uppercase" scope="col" >ACCIÓN</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tbodyComidaCena overflow-auto" style="height: 139px;">
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /tables -->
+                </div>
+            </div>
+        </div>
+        <!-- /tab pane-->
+
+    </div>
+    <!-- /tab content -->
+
+    <div class="form-group col-lg-12 text-center">
+         <button type="button" class="btn btn-outline-primary btn-sm" id="btnRegresarMenu"><i class="icon icon-reply"></i> CANCELAR</button>
+        <button type="button" class="btn btn-primary btn-sm" id="btnGuardarAddMenus">Guardar</button>
+    </div>  
+
 </div>
+<!-- /card -->
+
+
+
+
 
 
 
@@ -420,6 +375,103 @@
                 <div class="progress" style="margin-bottom: 0px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Cargando Comida. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--T: COMIDA SELECTED-->
+<div id="ventanaModalSelectedComidac" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerComidac"><strong>[ 0 ]
+                        COMIDAS</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageComidac"
+                               value="1">
+                        <form id="FrmComidac">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <select class="form-control form-control-sm " id="txtFilterTipoComida">
+                                        <option value="-1">seleccione tipo...</option>
+                                        <option selected  value="1">SEGUNDO</option>
+                                        <option value="2">BEBIDA</option>
+                                        <option value="3">POSTRE</option>
+                                        <option value="4">SOPA</option>
+                                    </select>
+                                    <input type="text" id="txtFilterComidac"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarComidac"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5 mb-2">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Comida</th>
+                                            <th class="align-middle text-left">Tipo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyComidac">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2" >
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePageComidac"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="5">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationComidac"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionComidac"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-comidac" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoSelectedComidac" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando comidas. . .
                     </div>
                 </div>
             </div>

@@ -547,7 +547,8 @@ public class FilterURL implements Filter {
         resource.setPath("/views/subprojects/app/ogbu/servicios/comedor/menu/menu.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/servicios/comedor/menu/menu.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/comedor/menu/class.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/comedor/menu/class.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/comedor/menu/comida_c.js" + version_project
         });
         this.list_resources.add(resource);
         ///asistencia
