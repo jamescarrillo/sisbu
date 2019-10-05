@@ -22,7 +22,7 @@
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewVideoTutorial"><i class="icon icon-plus icon-fw"></i></button>
+                        <button data-toggle='tooltip' title='Agregar Video' type="button" class="btn btn-primary btn-sm" id="btnOpenNewVideoTutorial"><i class="icon icon-plus icon-fw"></i></button>
                     </div>
                 </form>
                 <!-- Tables -->
@@ -121,15 +121,10 @@
                         <label for="txtDescripcionVideoTutorial">Descripción</label>
                         <textarea class="form-control" id="txtDescripcionVideoTutorial" rows="3" placeholder="DESCRIPCIÓN"></textarea>
                     </div>
-
-
                     <div class="form-group col-12 text-center">
-                        <button type="button" id="btnRegresar" class="btn btn-outline-secondary btn-sm" >CANCELAR</button>
-                        <button type="submit" id="btnGuardar" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
-
+                        <button type="button" id="btnRegresar" class="btn btn-outline-primary btn-sm" >CANCELAR</button>
+                        <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm"><i class="fas fa-check"></i> GUARDAR</button>
                     </div>
-
-
                 </div>
             </form>
 

@@ -525,7 +525,10 @@ public class FilterURL implements Filter {
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/servicios/social/atendido/atendido.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/usuario.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/atendido/familiar.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/social/atendido/familiar.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/atendido/distrito_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/atendido/escuela_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/atendido/ocupacion_c.js" + version_project
         });
         this.list_resources.add(resource);
 
@@ -545,7 +548,8 @@ public class FilterURL implements Filter {
         resource.setPath("/views/subprojects/app/ogbu/servicios/comedor/menu/menu.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/servicios/comedor/menu/menu.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/comedor/menu/class.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/comedor/menu/class.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/comedor/menu/comida_c.js" + version_project
         });
         this.list_resources.add(resource);
         ///asistencia
@@ -625,7 +629,8 @@ public class FilterURL implements Filter {
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/mantenimientos/noticia/noticia.js" + version_project
         });
-        //NOTICIAS
+        this.list_resources.add(resource);
+        //vIDEO TUTORIAL
         resource = new Resource();
         resource.setUrl("/app/ogbu/mantenimientos/video/tutorial");
         resource.setPath("/views/subprojects/app/ogbu/mantenimientos/videoTutorial/videoTutorial.jsp");

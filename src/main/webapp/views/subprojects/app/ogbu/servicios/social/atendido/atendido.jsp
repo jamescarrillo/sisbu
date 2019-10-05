@@ -5,6 +5,8 @@
 --%>
 
 <div class="row">
+
+    <!-- Tab DATOS ATENDIDO -->
     <div class="col-xl-12" id="btnListaAtendido">
         <!-- Card -->
         <div class="card overflow-hidden">
@@ -22,7 +24,7 @@
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewAtendido"><i class="icon icon-plus icon-fw"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewAtendido" data-toggle="tooltip" title="Agregar " ><i class="icon icon-plus icon-fw"></i></button>
                     </div>
                 </form>
                 <!-- Tables -->
@@ -114,35 +116,183 @@
         <!-- Card -->
         <div class="card overflow-hidden p-5">
             <div class="card-header bg-transparent">
-                <h4 class="mb-0 text-center" id="txtTituloModalMan"> VIDEO TUTORIALES</h4>
+                <h4 class="mb-0 text-center" id="txtTituloModalMan"> ATENDIDO</h4>
 
             </div>
-            <form id="FrmAtendidoModal"> 
+            <form id="FrmAtendidoModal" autocomplete="off"> 
+
                 <div class="row">
-                    <div class="form-group col-6">
-                        <label for="txtTituloAtendido">Título</label>
-                        <input class="form-control form-control-sm" id="txtTituloAtendido" type="text" placeholder="TÍTULO">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="txtTipoDocumentoAtendido">TIPO DE DOCUMENTO</label>
+                            <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtTipoDocumentoAtendido" disabled="">
+                                <option  value="1">DNI</option>
+                                <option  value="2">CARNET DE EXTRANJERIA</option>
+                                <option  value="3">OTRO</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group col-6">
-                        <label for="txtLinkAtendido">Link</label>
-                        <input class="form-control form-control-sm" id="txtLinkAtendido" type="text" placeholder="LINK">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="txtModalidadAtendido">MODALIDAD DE INGRESO</label>
+                            <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtModalidadAtendido">
+                                <option   value="100">Seleccione. . .</option>
+                                <option   value="1">EXAMEN ORDINARIO</option>
+                                <option  value="2">DEPORTISTA CALIFICADO</option>
+                                <option  value="3">PRIMEROS PUESTOS</option>
+                                <option  value="4">INGRESANTE CPU</option>
+                                <option  value="5">CAMBIO DE UNIVERSIDAD</option>
+                                <option  value="6">GRADUADOS O TITULADOS</option>
+                                <option  value="7">5TO DE SECUNDARIA</option>
+                                <option  value="8">OTRO</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group col-12">
-                        <label for="txtDescripcionAtendido">Descripción</label>
-                        <textarea class="form-control" id="txtDescripcionAtendido" rows="3" placeholder="DESCRIPCIÓN"></textarea>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="txtTipoColegioAtendido">TIPO DE COLEGIO</label>
+                            <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtTipoColegioAtendido">
+                                <option   value="-1">Seleccione. . .</option>
+                                <option   value="1">NACIONAL</option>
+                                <option  value="2">PARTICULAR</option>
+                                <option  value="3">OTRO</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="txtEstadoAtendido">ESTADO CIVIL</label>
+                            <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtEstadoAtendido">
+                                <option  value="-1">Seleccionar...</option>
+                                <option  value="1">SOLTERO(A)</option>
+                                <option  value="2">CASADO(A)</option>
+                                <option  value="3">DIVORSIADO(A)</option>
+                                <option  value="4">VIUDO(A)</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="form-group col-12 text-center">
-                        <button type="button" id="btnRegresar" class="btn btn-outline-secondary btn-sm" >CANCELAR</button>
-                        <button type="submit" id="btnGuardar" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
-
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="txtCodigoAtendido">CÓDIGO
+                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Es el código único de estudiante. Si aún no sabes cual es tu código, deja la caja de texto en blanco" style="cursor: pointer" data-original-title=""></i>
+                            </label>
+                            <input  type="text" class="form-control form-control-sm" id="txtCodigoAtendido" placeholder="Ingrese Código. . ." maxlength="7">
+                        </div>
                     </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="txtNumeroDocumentoAtendido">N° DOCUMENTO</label>
+                            <input  type="text" class="form-control form-control-sm" id="txtNumeroDocumentoAtendido" placeholder="Ingrese n° documento. . ." maxlength="8">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="txtApPaternoAtendido">AP. PATERNO</label>
+                            <input  type="text" class="form-control form-control-sm" id="txtApPaternoAtendido" placeholder="AP. PATERNO" maxlength="45">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="txtApMaternoAtendido">AP. MATERNO</label>
+                            <input  type="text" class="form-control form-control-sm" id="txtApMaternoAtendido" placeholder="AP. MATERNO" maxlength="45">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="txtNombreAtendido">NOMBRES</label>
+                            <input  type="text" class="form-control form-control-sm" id="txtNombreAtendido" placeholder="NOMBRES" maxlength="45">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="txtSexoAtendido">SEXO</label>
+                            <select  class="form-control form-control-sm" id="txtSexoAtendido">
+                                <option value="-1">Seleccione. . .</option>
+                                <option value="1">MASCULINO</option>
+                                <option  value="2">FEMENINO</option>
+                                <option  value="3">OTRO</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-3">
+                        <label for="txtFechaNacAtendido">FECHA DE NACIMIENTO</label>
+                        <div class="input-group">
+                            <input  type="text" class="form-control form-control-sm " id="txtFechaNacAtendido" placeholder="DD/MM/AAAA">
+                            <div class="input-group-append">
+                                <button type="button" id="btnEliminarFechaNacAtendido" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="form-group">
+                            <label for="txtCelularAtendido">CELULAR</label>
+                            <input  type="number" class="form-control form-control-sm" id="txtCelularAtendido" placeholder="Ingrese celular. . ." maxlength="9">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <div class="form-group">
+                            <label for="txtEmailAtendido">EMAIL</label>
+                            <input  type="email" class="form-control form-control-sm" id="txtEmailAtendido" placeholder="EMAIL" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-12 mb-3">
+                        <label for="txtEscuelaAtendido">ESCUELA
+                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Carrera profesional a la que ingresaste" style="cursor: pointer" data-original-title=""></i>
+                        </label>
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" id="txtEscuelaAtendido" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                            <div class="input-group-append">
+                                <button type="button" id="btnSeleccionarEscuela" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="txtDireccionActualAtendido">DIRECCION ACTUAL
+                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección donde vives actualmente. Si vives en un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS PINOS - SAN MARTÍN" style="cursor: pointer" data-original-title=""></i>
+                            </label>
+                            <input  type="text" class="form-control form-control-sm" id="txtDireccionActualAtendido" placeholder="Ingrese dirección actual. . ." maxlength="80">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="txtDireccionProceAtendido">DIRECCION PROCEDENCIA
+                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección de donde vienes. Si vienes de un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS ROSALES - SAN JUAN" style="cursor: pointer" data-original-title=""></i>
+                            </label>
+                            <input  type="text" class="form-control form-control-sm" id="txtDireccionProceAtendido" placeholder="Ingrese dirección de procedencia" maxlength="80">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12 mb-3">
+                        <label for="txtDistritoActualAtendido">DISTRITO ACTUAL</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" id="txtDistritoActualAtendido" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                            <div class="input-group-append">
+                                <button type="button" id="btnSeleccionarDistritoActual" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12 mb-3">
+                        <label for="txtDistritoProcedenciaAtendido">DISTRITO PROCEDENCIA</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" id="txtDistritoProcedenciaAtendido" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                            <div class="input-group-append">
+                                <button type="button" id="btnSeleccionarDistritoProcedencia" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 text-left mt-3">
+                        <button type="button" id="btnRegresar" class="btn btn-outline-primary btn-sm" ><i class="icon icon-reply"></i> CANCELAR</button>
+                        <button type="submit" class="btn btn-outline-primary btn-sm" id="btnGuardarPersonales">ACTUALIZAR DATOS</button>
+                    </div> 
+
                 </div>
             </form>
         </div>
         <!-- /card -->
     </div>
 
+    <!-- Tab DATOS USUARIO -->
     <div class="col-xl-12" id="btnOpenUsuario" style="display:none;">
         <!-- Card -->
         <div class="card overflow-hidden p-5">
@@ -152,11 +302,13 @@
             <form id="FrmUsuarioModal"> 
                 <div class="row">
                     <div class="form-group col-6">
-                        <label for="txtNombreUsuario">NOMBRE COMPLETO</label>
+
+                        <label for="txtNombreUsuario">NOMBRE USUARIO</label>
+
                         <input class="form-control form-control-sm" id="txtNombreUsuario" type="text" placeholder="TÍTULO">
                     </div>
                     <div class="form-group col-6">
-                        <label for="txtLoginUsuario">NOMBRE DE USUARIO</label>
+                        <label for="txtLoginUsuario">LOGIN </label>
                         <input class="form-control form-control-sm" id="txtLoginUsuario" type="text" placeholder="LOGIN">
                     </div>
                     <div class="form-group col-6">
@@ -165,7 +317,7 @@
                             <input class="form-control form-control-sm" id="txtPassUsuario" type="text" placeholder="Ingrese password. . .">
                             <div class="input-group-append">
                                 <button type="button" class="btn btn-sm btn-primary" id="btnMostrarPass">
-                                      <i id="icono_mostrar_pass" class="fas fa-eye-slash"></i>
+                                    <i id="icono_mostrar_pass" class="fas fa-eye-slash"></i>
                                 </button>
                             </div>
                         </div>
@@ -188,11 +340,9 @@
 
                         </select>
                     </div>
-
                     <div class="form-group col-12 text-center">
-                        <button type="button" id="btnRegresarUsuario" class="btn btn-outline-primary btn-sm" >CANCELAR</button>
-                        <button type="submit" id="btnGuardarUsuario" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> GUARDAR</button>
-
+                        <button type="button" id="btnRegresarUsuario" class="btn btn-outline-primary btn-sm" ><i class="icon icon-reply"></i> CANCELAR</button>
+                        <button type="submit" id="btnGuardarUsuario" class="btn btn-primary btn-sm">ACTUALIZAR</button>
                     </div>
                 </div>
             </form>
@@ -209,7 +359,7 @@
             </div>
 
             <div class="float-right">
-                <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewFamiliar"><i class="icon icon-plus icon-fw"></i></button>
+                <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewFamiliar" data-toggle="tooltip" title="Agregar Familiar" ><i class="icon icon-plus icon-fw"></i></button>
             </div>
         </div>
 
@@ -234,7 +384,10 @@
             <!-- /tables -->
         </div>
 
+        <div class="form-group col-12 text-center">
+            <button type="button" id="btnRegresarFamiliar" class="btn btn-outline-primary btn-sm" ><i class="icon icon-reply"></i> REGRESAR</button>
 
+        </div>
 
     </div>
     <!-- /tab pane-->
@@ -281,7 +434,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form id="FrmFamiliarPaciente" autocomplete="off">
+            <form id="FrmFamiliarAtendido" autocomplete="off">
                 <div class="modal-body">
                     <div class="row" >
                         <div class="col-lg-6">
@@ -350,22 +503,22 @@
                             </div>
                         </div>
                         <div class="col-lg-6 mb-3">
-                            <label for="txtOcupacionPaciente">OCUPACIÓN
+                            <label for="txtOcupacionAtendido">OCUPACIÓN
                                 <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Es a lo que se dedica tu familiar" style="cursor: pointer" data-original-title=""></i>
                             </label>
                             <div class="input-group">
-                                <input type="text" class="form-control form-control-sm" id="txtOcupacionPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                <input type="text" class="form-control form-control-sm" id="txtOcupacionAtendido" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
                                 <div class="input-group-append">
                                     <button type="button" id="btnSeleccionarOcupacion" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 mb-3">
-                            <label for="txtDistritoPaciente">DISTRITO PROCEDENCIA
+                            <label for="txtDistritoAtendido">DISTRITO PROCEDENCIA
                                 <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Es el distrito donde nacio tu familiar" style="cursor: pointer" data-original-title=""></i>
                             </label>
                             <div class="input-group">
-                                <input type="text" class="form-control form-control-sm" id="txtDistritoPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                <input type="text" class="form-control form-control-sm" id="txtDistritoAtendido" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
                                 <div class="input-group-append">
                                     <button type="button" id="btnSeleccionarDistritoFamiliar" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
                                 </div>

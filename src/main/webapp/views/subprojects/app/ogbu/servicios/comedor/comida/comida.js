@@ -8,42 +8,25 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestComida.operation = "paginate";
     beanRequestComida.type_request = "GET";
 
-    $('#FrmComida').submit(function (event) {
-        beanRequestComida.operation = "paginate";
-        beanRequestComida.type_request = "GET";
-        $('#modalCargandoComida').modal('show');
-        event.preventDefault();
-        event.stopPropagation();
-    });
-
-    $('#FrmComidaModal').submit(function (event) {
-        if (validateFormComida()) {
-            $('#modalCargandoComida').modal('show');
-        }
-        event.preventDefault();
-        event.stopPropagation();
-    });
-
     document.querySelector("#btnOpenNewComida").onclick = function () {
         //CONFIGURAMOS LA SOLICITUD
         beanRequestComida.operation = "add";
         beanRequestComida.type_request = "POST";
+
+        //SET TITLE MODAL
+        //document.querySelector("#txtTituloModalMan").innerHTML = "REGISTRAR COMIDA";
+        //OPEN MODEL
+        document.querySelector("#ListaOpenComida").style.display = "none";
+        document.querySelector("#FormularioOpenComida").innerHTML = viewFormulario();
+        document.querySelector("#txtTituloModalMan").innerHTML = "AGREGAR COMIDA";
         //LIMPIAR LOS CAMPOS
         document.querySelector("#txtDescripcionComida").value = "";
-        document.querySelector("#txtTipoComida").options[0].selected = 'selected';
-        //SET TITLE MODAL
-        document.querySelector("#txtTituloModalMan").innerHTML = "REGISTRAR COMIDA";
-        //OPEN MODEL
-        $('#ventanaModalComida').modal('show');
+        document.querySelector("#txtTipoComida").value = "-1";
+        addViewFormulario();
     };
 
     $("#modalCargandoComida").on('shown.bs.modal', function () {
         processAjaxComida();
-    });
-
-    $("#modalCargandoComida").on('hide.bs.modal', function () {
-        beanRequestComida.operation = "paginate";
-        beanRequestComida.type_request = "GET";
     });
 
     $('#modalCargandoComida').modal('show');
@@ -90,8 +73,12 @@ function processAjaxComida() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
         $('#modalCargandoComida').modal("hide");
+        if (beanRequestComida.operation == "add") {
+            //LIMPIAR LOS CAMPOS
+            document.querySelector("#txtDescripcionComida").value = "";
+            document.querySelector("#txtTipoComida").value = "-1";
+        }
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
@@ -120,7 +107,7 @@ function toListComida(beanPagination) {
             row = "<tr ";
             row += "idcomida='" + comida.idcomida + "' ";
             row += ">";
-             row += "<td><ul class='dt-list dt-list-cm-0'>";
+            row += "<td><ul class='dt-list dt-list-cm-0'>";
             row += "<li class='dt-list__item editar-comida' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
             row += "<i class='text-primary icon icon-editors'></i></a></li>";
             row += "<li class='dt-list__item eliminar-comida' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
@@ -128,7 +115,7 @@ function toListComida(beanPagination) {
             row += "</ul></td>";
             row += "<td class='align-middle'>" + tipoComida(comida.tipo) + "</td>";
             row += "<td class='align-middle'>" + comida.descripcion + "</td>";
-             row += "</tr>";
+            row += "</tr>";
             document.querySelector("#tbodyComida").innerHTML += row;
         });
         buildPagination(
@@ -157,13 +144,14 @@ function addEventsComidaes() {
             if (comidaSelected != undefined) {
                 beanRequestComida.operation = "update";
                 beanRequestComida.type_request = "PUT";
+                document.querySelector("#ListaOpenComida").style.display = "none";
+                document.querySelector("#FormularioOpenComida").innerHTML = viewFormulario();
+                addViewFormulario();
                 //SET VALUES MODAL
                 console.log(comidaSelected.descripcion);
                 document.querySelector("#txtDescripcionComida").value = comidaSelected.descripcion;
-                document.querySelector("#txtTipoComida").options[comidaSelected.tipo].selected = 'selected';
+                document.querySelector("#txtTipoComida").value = comidaSelected.tipo;
                 document.querySelector("#txtTituloModalMan").innerHTML = "EDITAR COMIDA";
-                $('#ventanaModalComida').modal("show");
-                document.querySelector("#txtDecripcionComida").focus();
             } else {
                 showAlertTopEnd('warning', 'No se encontró el Comida para poder editar');
             }
@@ -223,4 +211,70 @@ function tipoComida(tipocomida) {
             break;
 
     }
+}
+
+function viewFormulario() {
+    return `
+            <div class=" bg-transparent text-center mb-5">
+                 <h4 class="mb-0 text-info" id="txtTituloModalMan"></h4>
+            </div>
+         <div class="card overflow-hidden ">
+                <div class="card-body ">
+                    <form id="FrmComidaModal">
+                   <div class="row" >
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="txtDescripcionComida">DESCRIPCION</label>
+                            <input class="form-control form-control-sm" id="txtDescripcionComida" type="text" placeholder="DESCRIPCION">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="txtTipoComida">TIPO</label>
+                            <select class="form-control form-control-sm" id="txtTipoComida">
+                                <option value="-1">seleccione...</option>
+                                <option value="1">SEGUNDO</option>
+                                <option value="2">BEBIDA</option>
+                                <option value="3">POSTRE</option>
+                                <option value="4">SOPA</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <button type="button" class="btn btn-outline-primary btn-sm" id="btnRegresarComida"><i class="icon icon-reply"></i> CANCELAR</button>
+                        <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm"> GUARDAR</button>
+                    </div></div>
+                 </form>
+
+                </div>
+
+            </div>
+            `;
+}
+
+function addViewFormulario() {
+    $('#FrmComida').submit(function (event) {
+        beanRequestComida.operation = "paginate";
+        beanRequestComida.type_request = "GET";
+        $('#modalCargandoComida').modal('show');
+        event.preventDefault();
+        event.stopPropagation();
+    });
+
+    $('#FrmComidaModal').submit(function (event) {
+        if (validateFormComida()) {
+            $('#modalCargandoComida').modal('show');
+        }
+        event.preventDefault();
+        event.stopPropagation();
+    });
+    document.querySelector("#btnRegresarComida").onclick = function () {
+        document.querySelector("#FormularioOpenComida").innerHTML = "";
+        document.querySelector("#ListaOpenComida").style.display = "block";
+        beanRequestComida.operation = "paginate";
+        beanRequestComida.type_request = "GET";
+        $('#modalCargandoComida').modal('show');
+
+
+    };
 }

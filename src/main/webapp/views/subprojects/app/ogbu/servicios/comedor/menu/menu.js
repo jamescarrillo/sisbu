@@ -1,7 +1,7 @@
 var beanPaginationMenuSemanal;
 var beanPaginationComida;
-
-var fechaActual = new Date(); //Fecha actual
+var tipoDiaComida;
+var fechaActual; //Fecha actual
 var ListaDetalleComida = [],
         ListaComidaCena = [],
         ListaComidaAlmuerzo = [],
@@ -26,13 +26,64 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestMenuSemanal.entity_api = "api/menusemanal";
     beanRequestMenuSemanal.operation = "paginate";
     beanRequestMenuSemanal.type_request = "GET";
-    
-    $("#txtFilterTipoComida").change(function () {
-        var op = $("#txtFilterTipoComida option:selected").val();
-        $('#ventanaModalComida').modal('show');
-        processAjaxComida();
-    });
-    
+
+    document.querySelector("#txtMenuSemanalFechaI").onchange = function () {
+        fechaActual = new Date(document.querySelector("#txtMenuSemanalFechaI").value);
+
+        if (fechaActual.getUTCDay() == 1) {
+            console.log("LUNES");
+
+            if (document.querySelector("#txtMenuSemanalFechaF").value != "") {
+                fechaActual = new Date(document.querySelector("#txtMenuSemanalFechaF").value);
+
+                if (fechaActual.getUTCDay() == 5) {
+                    let dia = document.querySelector("#txtMenuSemanalFechaI").value.split("-")[2];
+                    let mes = document.querySelector("#txtMenuSemanalFechaI").value.split("-")[1];
+                    let anio = document.querySelector("#txtMenuSemanalFechaI").value.split("-")[0];
+
+                    for (var i = 0; i < 5; i++) {
+                        dms = new DetalleCronogramaCu();
+                        dms.fecha = dia + "/" + mes + "/" + anio;
+                        listDMS.push(dms);
+                        dia++;
+                    }
+                    console.log(listDMS);
+                    toListSemanal(listDMS);
+                }
+
+            }
+        }
+
+
+    };
+    document.querySelector("#txtMenuSemanalFechaF").onchange = function () {
+        fechaActual = new Date(document.querySelector("#txtMenuSemanalFechaF").value);
+        if (fechaActual.getUTCDay() == 5) {
+            console.log("VIERNES");
+            if (document.querySelector("#txtMenuSemanalFechaI").value != "") {
+                fechaActual = new Date(document.querySelector("#txtMenuSemanalFechaI").value);
+                if (fechaActual.getUTCDay() == 1) {
+                    console.log(document.querySelector("#txtMenuSemanalFechaI").value);
+                    let dia = document.querySelector("#txtMenuSemanalFechaI").value.split("-")[2];
+                    let mes = document.querySelector("#txtMenuSemanalFechaI").value.split("-")[1];
+                    let anio = document.querySelector("#txtMenuSemanalFechaI").value.split("-")[0];
+
+                    for (var i = 0; i < 5; i++) {
+                        dms = new DetalleCronogramaCu();
+                        dms.fecha = dia + "/" + mes + "/" + anio;
+                        listDMS.push(dms);
+                        dia++;
+                    }
+                    console.log(listDMS);
+                    toListSemanal(listDMS);
+                }
+
+
+            }
+        }
+
+    };
+
     $('#FrmMenuSemanal').submit(function (event) {
         beanRequestMenuSemanal.operation = "paginate";
         beanRequestMenuSemanal.type_request = "GET";
@@ -49,29 +100,29 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
     });
 
-//document.querySelector("#txtFilterComidaDesayuno").onfocusout =function () {
-    //document.querySelector("#ResultadoComidaDesayuno").style.height = "0px";
 
-//};
+    //document.querySelector("#txtFilterComidaDesayuno").onfocusout =function () {
+    //document.querySelector("#ResultadoComidaDesayuno").style.height = "0px";
+    //};
     document.querySelector("#regresar-central").onclick = function () {
         document.querySelector("#tab-pane-OpenNewMenuSemanal").classList.remove("active");
         document.querySelector("#module-header-content").style.display = "block";
 
     };
-    
+
     document.querySelector("#regresar-central2").onclick = function () {
         document.querySelector("#tab-pane-OpenBuscaMenuSemanal").classList.remove("active");
         document.querySelector("#module-header-content").style.display = "block";
 
     };
-    
+
     document.querySelector("#btnOpenBuscaMenuSemanal").onclick = function () {
 
         document.querySelector("#module-header-content").style.display = "none";
         document.querySelector("#tab-pane-OpenBuscaMenuSemanal").classList.add("active");
 
     };
-    
+
     document.querySelector("#btnOpenNewMenuSemanal").onclick = function () {
         document.querySelector("#module-header-content").style.display = "none";
         document.querySelector("#tab-pane-OpenNewMenuSemanal").classList.add("active");
@@ -87,37 +138,17 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     document.querySelector("#buttonAlmuerzo").onclick = function () {
-        document.querySelector("#IndexMenuSemanal").value = 1;
-    };
-
-    document.querySelector("#txtFilterComidaAlmuerzo").onclick = function () {
-        document.querySelector("#ResultadoComidaAlmuerzo").style.height = "auto";
-        $('#ventanaModalComida').modal('show');
-        processAjaxComida(document.querySelector("#txtFilterTipoComidaAlmuerzo").value, document.querySelector("#txtFilterComidaAlmuerzo").value);
-        listFilter(document.querySelector("#txtFilterTipoComidaAlmuerzo").value, "#txtFilterComidaAlmuerzo");
+        tipoDiaComida = 1;
     };
 
     document.querySelector("#buttonDesayuno").onclick = function () {
-        document.querySelector("#IndexMenuSemanal").value = 0;
-    };
-
-    document.querySelector("#txtFilterComidaDesayuno").onclick = function () {
-        document.querySelector("#ResultadoComidaDesayuno").style.height = "auto";
-        $('#ventanaModalComida').modal('show');
-        processAjaxComida(document.querySelector("#txtFilterTipoComidaDesayuno").value, document.querySelector("#txtFilterComidaDesayuno").value);
-        listFilter(document.querySelector("#txtFilterTipoComidaDesayuno").value, "#txtFilterComidaDesayuno");
+        tipoDiaComida = 0;
     };
 
     document.querySelector("#buttonCena").onclick = function () {
-        document.querySelector("#IndexMenuSemanal").value = 2;
+        tipoDiaComida = 2;
     };
 
-    document.querySelector("#txtFilterComidaCena").onclick = function () {
-        document.querySelector("#ResultadoComidaCena").style.height = "auto";
-        $('#ventanaModalComida').modal('show');
-        processAjaxComida(document.querySelector("#txtFilterTipoComidaCena").value, document.querySelector("#txtFilterComidaCena").value);
-        listFilter(document.querySelector("#txtFilterTipoComidaCena").value, "#txtFilterComidaCena");
-    };
 
     $("#modalCargandoMenuSemanal").on('shown.bs.modal', function () {
         processAjaxMenuSemanal();
@@ -147,9 +178,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $('#modalCargandoMenuSemanal').modal('show');
+    document.querySelector("#btnRegresarMenu").onclick = function () {
+        document.querySelector("#OpenComidaDiaria").style.display = "none";
+        document.querySelector("#tab-pane-OpenNewMenuSemanal").style.display = "block";
+    };
+    //DESAYUNO
+
+    //ALMUERZO
+
+    //CENA
+
+
+
+
+
+
 
 });
 function inicializaValorMenuSemanal() {
+
     var mes = fechaActual.getMonth() + 1; //obteniendo mes
     var dia = fechaActual.getDate(); //obteniendo dia
     var ano = fechaActual.getFullYear(); //obteniendo año
@@ -189,7 +236,7 @@ function processAjaxMenuSemanal() {
             json.menu_semanal = dms.menu_semanal;
             if (beanRequestMenuSemanal.operation === "update") {
                 json.list.iddetalle_cronogramacu = beanPaginationMenuSemanal.list[0].iddetalle_cronogramacu;
-                json.menu_semanal.idmenu_semanal=beanPaginationMenuSemanal.list[0].menu_semanal.idmenu_semanal;
+                json.menu_semanal.idmenu_semanal = beanPaginationMenuSemanal.list[0].menu_semanal.idmenu_semanal;
             }
         }
     }
@@ -226,96 +273,49 @@ function processAjaxMenuSemanal() {
     });
 }
 
-function listFilter(filterTipo, filternombre) {
-    $(filternombre).change(function () {
-        var filter = $(this).val();
-        $('#ventanaModalComida').modal('show');
-        processAjaxComida(filterTipo, filter);
-    }).keyup(function (e) {
-        var txt = String.fromCharCode(e.which);
-        if (txt.match(/[A-Za-z]/))
-        {
-            $(this).change();
-        }
-
-    });
-
-}
-
-function toListSemanal() {
+function toListSemanal(beanPagination) {
     ordenarComida();
     document.querySelector("#tbodyCronograma").innerHTML = "";
     let row;
     var desayuno, almuerzo, cena;
-    for (var i = 1; i < 6; i++) {
-        switch (i) {
-            case 1:
-                desayuno = ListaComidaDesayuno;
-                almuerzo = ListaComidaAlmuerzo;
-                cena = ListaComidaCena;
-                break;
-            case 2:
-                desayuno = ListaComidaDesayunoMa;
-                almuerzo = ListaComidaAlmuerzoMa;
-                cena = ListaComidaCenaMa;
-                break;
-            case 3:
-                desayuno = ListaComidaDesayunoMi;
-                almuerzo = ListaComidaAlmuerzoMi;
-                cena = ListaComidaCenaMi;
-                break;
-            case 4:
-                desayuno = ListaComidaDesayunoJu;
-                almuerzo = ListaComidaAlmuerzoJu;
-                cena = ListaComidaCenaJu;
-                break;
-            case 5:
-                desayuno = ListaComidaDesayunoVi;
-                almuerzo = ListaComidaAlmuerzoVi;
-                cena = ListaComidaCenaVi;
-                break;
-
-            default:
-                desayuno = [];
-                almuerzo = [];
-                cena = [];
-                break;
-        }
+    beanPagination.forEach(detallecronogramacu => {
+        diasemana = new Date(detallecronogramacu.fecha.split('/')[1] + ' ' +
+                detallecronogramacu.fecha.split('/')[0] + ', ' + detallecronogramacu.fecha.split('/')[2]);
 
         row = `
                                             <div class="dt-widget__item">
                                                 <div class="dt-widget__info text-truncate"  style="margin-right: -13%;">
                                                     <div class="dt-widget__title text-truncate">
                                                          <p class="dt-widget__subtitle text-truncate">
-                                                        ${diaSemana(i)}</p>
+                                                        ${ diaSemana(diasemana.getUTCDay()) }</p>
                                                     </div>
                                                 </div>
                                                 <div class="dt-widget__info text-truncate">
                                                     <div class="dt-widget__title text-truncate">
                                                         <ul style="list-style:none;">
-                                                            <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-block">${desayuno[0] == undefined ? "" : desayuno[0].descripcion}</span></li>
-                                                            <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-block">${desayuno[1] == undefined ? "" : desayuno[1].descripcion}</span></li>
-                                                            <li><span class="badge badge-sm badge-pill badge-info  d-sm-inline-block">${desayuno[2] == undefined ? "" : desayuno[2].descripcion}</span></li>
+                                                            <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-block">${ detallecronogramacu.comida_dsegundo.descripcion == undefined ? "" : detallecronogramacu.comida_dsegundo.descripcion }</span></li>
+                                                            <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-block">${detallecronogramacu.comida_dpostre.descripcion == undefined ? "" : detallecronogramacu.comida_dpostre.descripcion}</span></li>
+                                                            <li><span class="badge badge-sm badge-pill badge-info  d-sm-inline-block">${detallecronogramacu.comida_dbebida.descripcion == undefined ? "" : detallecronogramacu.comida_dbebida.descripcion}</span></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <div class="dt-widget__info text-truncate">
                                                     <div class="dt-widget__title text-truncate">
                                                             <ul style="list-style:none;">
-                                                                <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-block">${almuerzo[0] == undefined ? "" : almuerzo[0].descripcion}</span></li>
-                                                                <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-block">${almuerzo[1] == undefined ? "" : almuerzo[1].descripcion}</span></li>
-                                                                <li><span class="badge badge-sm badge-pill badge-info  d-sm-inline-block">${almuerzo[2] == undefined ? "" : almuerzo[2].descripcion}</span></li>
-                                                                <li><span class="badge badge-sm badge-pill badge-warning  d-sm-inline-block">${almuerzo[3] == undefined ? "" : almuerzo[3].descripcion}</span></li>
+                                                                <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-block">${detallecronogramacu.comida_asegundo.descripcion == undefined ? "" : detallecronogramacu.comida_asegundo.descripcion}</span></li>
+                                                                <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-block">${detallecronogramacu.comida_asopa.descripcion == undefined ? "" : detallecronogramacu.comida_asopa.descripcion}</span></li>
+                                                                <li><span class="badge badge-sm badge-pill badge-info  d-sm-inline-block">${detallecronogramacu.comida_apostre.descripcion == undefined ? "" : detallecronogramacu.comida_apostre.descripcion}</span></li>
+                                                                <li><span class="badge badge-sm badge-pill badge-warning  d-sm-inline-block">${detallecronogramacu.comida_abebida.descripcion == undefined ? "" : detallecronogramacu.comida_abebida.descripcion}</span></li>
                                                             </ul>
                                                     </div>
                                                 </div>
                                                 <div class="dt-widget__info text-truncate">
                                                     <div class="dt-widget__title text-truncate">
                                                             <ul style="list-style:none;">
-                                                                <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-block">${cena[0] == undefined ? "" : cena[0].descripcion}</span></li>
-                                                                <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-block">${cena[1] == undefined ? "" : cena[1].descripcion}</span></li>
-                                                                <li><span class="badge badge-sm badge-pill badge-info  d-sm-inline-block">${cena[2] == undefined ? "" : cena[2].descripcion}</span></li>
-                                                                <li><span class="badge badge-sm badge-pill badge-warning  d-sm-inline-block">${cena[3] == undefined ? "" : cena[3].descripcion}</span></li>
+                                                                <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-block">${detallecronogramacu.comida_csegundo.descripcion == undefined ? "" : detallecronogramacu.comida_csegundo.descripcion}</span></li>
+                                                                <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-block">${detallecronogramacu.comida_csopa.descripcion == undefined ? "" : detallecronogramacu.comida_csopa.descripcion }</span></li>
+                                                                <li><span class="badge badge-sm badge-pill badge-info  d-sm-inline-block">${detallecronogramacu.comida_cpostre.descripcion == undefined ? "" : detallecronogramacu.comida_cpostre.descripcion.descripcion}</span></li>
+                                                                <li><span class="badge badge-sm badge-pill badge-warning  d-sm-inline-block">${detallecronogramacu.comida_cbebida.descripcion == undefined ? "" : detallecronogramacu.comida_cbebida.descripcion}</span></li>
                                                             </ul>
                                                     </div>
                                                 </div>
@@ -323,7 +323,7 @@ function toListSemanal() {
                                                 <div class="dt-widget__extra">
                                                     <div class="hide-content">
                                                         <div class="action-btn-group" >
-                                                            <button  type="button"class="btn btn-outline-primary dt-fab-btn agregar-menu-${diaSemana(i)}">
+                                                            <button  type="button"class="btn btn-outline-primary dt-fab-btn agregar-menu-${diaSemana(diasemana.getUTCDay()) }">
                                                                 <i class="icon icon-plus icon-1x"></i>
                                                             </button>
                                                         </div>
@@ -335,7 +335,7 @@ function toListSemanal() {
                 `;
         document.querySelector("#tbodyCronograma").innerHTML += row;
 
-    }
+    });
 
     addEventsMenuSemanales();
 }
@@ -345,62 +345,56 @@ function toListMenuSemanal(beanPagination) {
     document.querySelector("#tbodyMenuSemanal").innerHTML = "";
     document.querySelector("#theadMenuSemanal").innerHTML = "";
 
-    if (beanPagination.count_filter > 0) {
-        let row;
-        let head;
-        head = "<tr class='bg-primary '>";
-        head += "<th scope='col'> ";
-        head += "<div class='dt-card__tools'><button type='button' class='btn btn-success mr-4 dt-fab-btn shadow-lg mt-n2 toggle-button editar-menu-semanal'  data-toggle='tooltip' data-original-title='Editar'><i class='icon icon-editors icon-1x'></i></button>";
-        head += "<button type='button' class='btn btn-danger dt-fab-btn shadow-lg mt-n2 toggle-button eliminar-menu'  data-toggle='tooltip' data-original-title='Eliminar'><i class='icon icon-trash icon-1x'></i></button></div></th>";
-        head += "<th class='text-uppercase text-white' scope='col' >DESAYUNO</th>";
-        head += "<th class='text-uppercase text-white' scope='col' >ALMUERZO</th>";
-        head += "<th class='text-uppercase text-white ' scope='col' >CENA</th>";
-        head += "</tr>";
-        document.querySelector("#theadMenuSemanal").innerHTML = head;
-        beanPagination.list.forEach(detallecronogramacu => {
-            diasemana = new Date(detallecronogramacu.fecha.split('/')[1] + ' ' +
-                    detallecronogramacu.fecha.split('/')[0] + ', ' + detallecronogramacu.fecha.split('/')[2])
-            row = "<tr ";
-            row += "idcronograma='" + detallecronogramacu.iddetalle_cronogramacu + "' ";
-            row += ">";
-            row += "<td class='align-middle'>" + diaSemana(diasemana.getUTCDay()) + "</td>";
-            row += "<td class='align-middle'><ul class='pl-0 dt-widget__subtitle dt-list-cm-0 flex-nowrap'>";
-            row += "<li class='dt-list__item text-truncate text-success'>" + detallecronogramacu.comida_dsegundo.descripcion + "</li>";
-            row += "<li class='dt-list__item text-truncate text-warning'>" + detallecronogramacu.comida_dpostre.descripcion + "</li>";
-            row += "<li class='dt-list__item text-truncate text-info'>" + detallecronogramacu.comida_dbebida.descripcion + "</li>";
-            row += "</ul></td>";
-            row += "<td class='align-middle'><ul class='pl-0 dt-widget__subtitle  dt-list-cm-0 flex-nowrap'>";
-            row += "<li class='dt-list__item text-truncate text-success'>" + detallecronogramacu.comida_asegundo.descripcion + "</li>";
-            row += "<li class='dt-list__item text-truncate text-primary'>" + detallecronogramacu.comida_asopa.descripcion + "</li>";
-            row += "<li class='dt-list__item text-truncate text-warning'>" + detallecronogramacu.comida_apostre.descripcion + "</li>";
-            row += "<li class='dt-list__item text-truncate text-info'>" + detallecronogramacu.comida_abebida.descripcion + "</li>";
-            row += "</ul></td>";
-            row += "<td class='align-middle'><ul class='pl-0 dt-widget__subtitle  dt-list-cm-0 flex-nowrap'>";
-            row += "<li class='dt-list__item text-truncate text-success'>" + detallecronogramacu.comida_csegundo.descripcion + "</li>";
-            row += "<li class='dt-list__item text-truncate text-primary'>" + detallecronogramacu.comida_csopa.descripcion + "</li>";
-            row += "<li class='dt-list__item text-truncate text-warning'>" + detallecronogramacu.comida_cpostre.descripcion + "</li>";
-            row += "<li class='dt-list__item text-truncate text-info'>" + detallecronogramacu.comida_cbebida.descripcion + "</li>";
-            row += "</ul></td>";
-            row += "</tr>";
-            document.querySelector("#tbodyMenuSemanal").innerHTML += row;
-        });
-        buildPagination(
-                beanPagination.count_filter,
-                parseInt(7),
-                1,
-                $('#modalCargandoMenuSemanal'),
-                $('#paginationMenuSemanal'));
-        addEventsMenuSemanales();
-        if (beanRequestMenuSemanal.operation === "paginate") {
-            document.querySelector("#txtFilterFechaI").focus();
-        }
-        $('[data-toggle="tooltip"]').tooltip();
-    } else {
-        destroyPagination($('#paginationMenuSemanal'));
-        showAlertTopEnd('warning', 'No se encontraron resultados');
-
+    let row;
+    let head;
+    head = "<tr class='bg-primary '>";
+    head += "<th scope='col'> ";
+    head += "<div class='dt-card__tools'><button type='button' class='btn btn-success mr-4 dt-fab-btn shadow-lg mt-n2 toggle-button editar-menu-semanal'  data-toggle='tooltip' data-original-title='Editar'><i class='icon icon-editors icon-1x'></i></button>";
+    head += "<button type='button' class='btn btn-danger dt-fab-btn shadow-lg mt-n2 toggle-button eliminar-menu'  data-toggle='tooltip' data-original-title='Eliminar'><i class='icon icon-trash icon-1x'></i></button></div></th>";
+    head += "<th class='text-uppercase text-white' scope='col' >DESAYUNO</th>";
+    head += "<th class='text-uppercase text-white' scope='col' >ALMUERZO</th>";
+    head += "<th class='text-uppercase text-white ' scope='col' >CENA</th>";
+    head += "</tr>";
+    document.querySelector("#theadMenuSemanal").innerHTML = head;
+    beanPagination.forEach(detallecronogramacu => {
+        diasemana = new Date(detallecronogramacu.fecha.split('/')[1] + ' ' +
+                detallecronogramacu.fecha.split('/')[0] + ', ' + detallecronogramacu.fecha.split('/')[2]);
+        row = "<tr ";
+        row += "idcronograma='" + detallecronogramacu.iddetalle_cronogramacu + "' ";
+        row += ">";
+        row += "<td class='align-middle'>" + diaSemana(diasemana.getUTCDay()) + "</td>";
+        row += "<td class='align-middle'><ul class='pl-0 dt-widget__subtitle dt-list-cm-0 flex-nowrap'>";
+        row += "<li class='dt-list__item text-truncate text-success'>" + detallecronogramacu.comida_dsegundo.descripcion + "</li>";
+        row += "<li class='dt-list__item text-truncate text-warning'>" + detallecronogramacu.comida_dpostre.descripcion + "</li>";
+        row += "<li class='dt-list__item text-truncate text-info'>" + detallecronogramacu.comida_dbebida.descripcion + "</li>";
+        row += "</ul></td>";
+        row += "<td class='align-middle'><ul class='pl-0 dt-widget__subtitle  dt-list-cm-0 flex-nowrap'>";
+        row += "<li class='dt-list__item text-truncate text-success'>" + detallecronogramacu.comida_asegundo.descripcion + "</li>";
+        row += "<li class='dt-list__item text-truncate text-primary'>" + detallecronogramacu.comida_asopa.descripcion + "</li>";
+        row += "<li class='dt-list__item text-truncate text-warning'>" + detallecronogramacu.comida_apostre.descripcion + "</li>";
+        row += "<li class='dt-list__item text-truncate text-info'>" + detallecronogramacu.comida_abebida.descripcion + "</li>";
+        row += "</ul></td>";
+        row += "<td class='align-middle'><ul class='pl-0 dt-widget__subtitle  dt-list-cm-0 flex-nowrap'>";
+        row += "<li class='dt-list__item text-truncate text-success'>" + detallecronogramacu.comida_csegundo.descripcion + "</li>";
+        row += "<li class='dt-list__item text-truncate text-primary'>" + detallecronogramacu.comida_csopa.descripcion + "</li>";
+        row += "<li class='dt-list__item text-truncate text-warning'>" + detallecronogramacu.comida_cpostre.descripcion + "</li>";
+        row += "<li class='dt-list__item text-truncate text-info'>" + detallecronogramacu.comida_cbebida.descripcion + "</li>";
+        row += "</ul></td>";
+        row += "</tr>";
+        document.querySelector("#tbodyMenuSemanal").innerHTML += row;
+    });
+    buildPagination(
+            beanPagination.count_filter,
+            parseInt(7),
+            1,
+            $('#modalCargandoMenuSemanal'),
+            $('#paginationMenuSemanal'));
+    addEventsMenuSemanales();
+    if (beanRequestMenuSemanal.operation === "paginate") {
         document.querySelector("#txtFilterFechaI").focus();
     }
+    $('[data-toggle="tooltip"]').tooltip();
+
 }
 
 function index(LisComidaDesayuno, LisComidaAlmuerzo, LisComidaCena) {
@@ -539,27 +533,9 @@ function addEventsMenuSemanales() {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
 
-            if (listDMS.length != 0) {
-                listDMS.forEach(detallecu => {
-                    if (diaSemanaFecha(detallecu.fecha) != "LUNES") {
-                        document.querySelector("#txtTituloModalMan").innerHTML = "LUNES";
-                        dms = new DetalleCronogramaCu();
-                        index(ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComidaCena);
-                        $('#ventanaModalMenuSemanal').modal("show");
-                        return;
-                    } else {
-                        console.log("si es lunes");
-                        showAlertTopEnd('warning', 'Ya se registró el menu del LUNES');
-                    }
-                });
-            } else {
-
-                document.querySelector("#txtTituloModalMan").innerHTML = "LUNES";
-                dms = new DetalleCronogramaCu();
-                index(ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComidaCena);
-                $('#ventanaModalMenuSemanal').modal("show");
-            }
-
+            document.querySelector("#title-comida-diaria").innerHTML = "REGISTRAR MENU DEL LUNES";
+            document.querySelector("#tab-pane-OpenNewMenuSemanal").style.display = "none";
+            document.querySelector("#OpenComidaDiaria").style.display = "block";
 
 
         };
@@ -567,7 +543,9 @@ function addEventsMenuSemanales() {
     document.querySelectorAll('.agregar-menu-MARTES').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-
+            document.querySelector("#title-comida-diaria").innerHTML = "REGISTRAR MENU DEL MARTES";
+            document.querySelector("#tab-pane-OpenNewMenuSemanal").style.display = "none";
+            document.querySelector("#OpenComidaDiaria").style.display = "block";
             if (listDMS.length != 0) {
                 listDMS.forEach(detallecu => {
                     if (diaSemanaFecha(detallecu.fecha) != "MARTES") {
@@ -596,6 +574,9 @@ function addEventsMenuSemanales() {
     document.querySelectorAll('.agregar-menu-MIERCOLES').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
+            document.querySelector("#title-comida-diaria").innerHTML = "REGISTRAR MENU DEL MIÉRCOLES";
+            document.querySelector("#tab-pane-OpenNewMenuSemanal").style.display = "none";
+            document.querySelector("#OpenComidaDiaria").style.display = "block";
             if (listDMS.length != 0) {
                 listDMS.forEach(detallecu => {
                     if (diaSemanaFecha(detallecu.fecha) != "MIERCOLES") {
@@ -625,6 +606,9 @@ function addEventsMenuSemanales() {
     document.querySelectorAll('.agregar-menu-JUEVES').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
+            document.querySelector("#title-comida-diaria").innerHTML = "REGISTRAR MENU DEL JUEVES";
+            document.querySelector("#tab-pane-OpenNewMenuSemanal").style.display = "none";
+            document.querySelector("#OpenComidaDiaria").style.display = "block";
             if (listDMS.length != 0) {
                 listDMS.forEach(detallecu => {
                     if (diaSemanaFecha(detallecu.fecha) != "JUEVES") {
@@ -653,6 +637,9 @@ function addEventsMenuSemanales() {
     document.querySelectorAll('.agregar-menu-VIERNES').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
+            document.querySelector("#title-comida-diaria").innerHTML = "REGISTRAR MENU DEL VIERNES";
+            document.querySelector("#tab-pane-OpenNewMenuSemanal").style.display = "none";
+            document.querySelector("#OpenComidaDiaria").style.display = "block";
             if (listDMS.length != 0) {
                 listDMS.forEach(detallecu => {
                     if (diaSemanaFecha(detallecu.fecha) != "VIERNES") {
@@ -764,7 +751,7 @@ function addEventsMenuSemanales() {
 }
 
 function comidaSelectedTipoPush(comidaSelected) {
-    switch (document.querySelector("#IndexMenuSemanal").value) {
+    switch (tipoDiaComida) {
         case '0':
             switch (comidaSelected.tipo) {
                 case 1:
@@ -974,7 +961,6 @@ function diaSemanaFecha(fechaw) {
 }
 
 
-
 //COMIDA
 
 
@@ -1031,7 +1017,7 @@ function processAjaxComida(filterTipo, filternombre) {
         }
         if (beanCrudResponse.beanPagination !== undefined) {
             beanPaginationComida = beanCrudResponse.beanPagination;
-            switch (document.querySelector("#IndexMenuSemanal").value) {
+            switch (tipoDiaComida) {
                 case '0':
                     toListComida(beanPaginationComida, "#ResultadoComidaDesayuno");
                     break;
@@ -1151,7 +1137,7 @@ function diaComida(diacomida) {
 
 function AgregarComidaTabla(ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComidaCena) {
     if (comidaSelected !== undefined) {
-        switch (document.querySelector("#IndexMenuSemanal").value) {
+        switch (tipoDiaComida) {
             case '0':
                 if (ListaComidaDesayuno.find(comida => comida.tipo === comidaSelected.tipo) === undefined) {
                     if (ListaComidaDesayuno.length < 3) {
@@ -1207,7 +1193,7 @@ function AgregarComidaTabla(ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComid
 
 function QuitarComidaTabla(ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComidaCena, idarraycomida) {
     var i;
-    switch (document.querySelector("#IndexMenuSemanal").value) {
+    switch (tipoDiaComida) {
         case '0':
             for (i in ListaComidaDesayuno) {
                 if (ListaComidaDesayuno[i]['idcomida'] == idarraycomida) {
@@ -1288,3 +1274,7 @@ function QuitarComidaTabla(ListaComidaDesayuno, ListaComidaAlmuerzo, ListaComida
             break;
     }
 }
+
+
+
+//ACTUAL

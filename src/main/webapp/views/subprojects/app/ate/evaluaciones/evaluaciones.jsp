@@ -261,11 +261,253 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="div-content-ev-deportes" style="display: none">
-            Lo sentimos, aún no se ha publicado esta evaluación
+
+        <div class="row " id="div-content-ev-deportes" style="display: none">
+            <!-- Tab DATOS ATENDIDO -->
+            <!-- Card -->
+            <div class="card overflow-hidden col-12" id="OpenListaDeporteDetalle">
+
+                <div class="form-row pt-5 ">
+                    <div class="col-11 text-center">
+                        <label  for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE DEPORTES</label>
+                        <input type="hidden" id="pageDeporteDetalle" value="1">
+                    </div>
+                    <div class="float-right">
+                        <button type="button" id="btnOpenDeporteDetalle" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Agregar Deporte" ><i class="icon icon-plus icon-fw"></i></button>
+                    </div>
+                </div>
+                <!-- /card header -->
+                <!-- Card Body -->
+                <div class="card-body pt-0 ">
+                    <!-- Tables -->
+                    <!-- Card -->
+                    <div class=" pb-4 ">
+                        <!-- Card Header -->
+                        <div class="dt-card__header mb-3 p-0">
+                            <!-- Card Heading -->
+                            <div class="dt-card__heading pt-0">
+                                <!-- Widget Item -->
+                                <div class="dt-widget__item border bg-primary " >
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info text-truncate ml-5">
+                                        <h3 class="dt-card__title text-white ">DEPORTE</h3>
+                                    </div>
+                                    <!-- /widget info -->
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info text-truncate ml-5">
+                                        <h3 class="dt-card__title text-white ">ESTADO</h3>
+                                    </div>
+                                    <!-- /widget info -->
+
+                                </div>
+                            </div>
+                            <!-- /card heading -->
+                        </div>
+                        <!-- /card header -->
+
+                        <div class="dt-card__body p-0" >
+                            <!-- Widget -->
+                            <div class="dt-widget dt-widget-hover ps-custom-scrollbar ps ps--active-y" id="tbodyDeporte">
+
+                            </div>
+                            <!-- /widget -->
+                        </div>
+                        <!-- /card -->
+                    </div>
+
+                    <!-- /tables -->
+                    <div class="row mt-2">
+                        <div class="col-md-2 col-sm-3 col-4">
+                            <select id="sizePageDeporteDetalle" class="form-control form-control-sm select2-single">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                            </select>
+                        </div>
+                        <div class="col-md-10 col-sm-9 col-8">
+                            <nav aria-label="Page navigation example">
+                                <ul id="paginationDeporteDetalle" class="pagination pagination-sm justify-content-end">
+                                </ul>
+                            </nav>  
+                        </div>
+                    </div>
+                </div>
+                <!-- /card body -->
+            </div>
+            <!-- /card -->
+
+            <div class=" col-12" id="OpenDeporteDetalle" style="display:none"> 
+                <!-- Card -->
+                <div class="col-12 text-center">
+                    <label id="tittleDeporteDetalle" for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">DEPORTE</label>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-3 col-sm-2"></div>
+                    <div class="card overflow-hidden col-lg-6 col-sm-8"  >
+                        <!-- Card Header -->
+                        <div class="card-header bg-transparent">
+                            <form id="FrmDeporteDetalleModal">
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <label for="txtEstadoDeporteDetalle">ESTADO</label>
+                                        <div class="input-group">
+                                            <select class="form-control form-control-sm" id="txtEstadoDeporteDetalle">
+                                                <option value="-1">seleccione...</option>
+                                                <option value="1">LO PRACTICO</option>
+                                                <option value="2">ME GUSTARÍA APRENDER</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label for="txtDeporteDetalle">DEPORTE
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Deporte que practicas " style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-sm" id="txtDeporteDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                            <div class="input-group-append">
+                                                <button type="button" id="btnSeleccionarDeporte" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-12 text-center">
+                                        <button type="button" id="btnCancelarDeporteDetalle" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-reply"></i> CANCELAR</button>
+                                        <button type="submit" id="btnGuardarDeporteDetalle" class="ml-5 btn btn-primary btn-sm">GUARDAR</button>
+                                    </div>  
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /card header -->
+                    </div>
+                </div>
+                <!-- /card -->
+            </div> 
         </div>
+
         <div class="row" id="div-content-ev-aficiones" style="display: none">
-            Lo sentimos, aún no se ha publicado esta evaluación
+            <!-- Tab DATOS ATENDIDO -->
+            <!-- Card -->
+            <div class="card overflow-hidden col-12" id="OpenListaAficionDetalle">
+
+                <div class="form-row  pt-5">
+                    <div class="col-11 text-center">
+                        <label  for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE AFICIONES</label>
+                        <input type="hidden" id="pageAficionDetalle" value="1">
+                    </div>
+                    <div class="float-right">
+                        <button type="button" id="btnOpenAficionDetalle" class="btn btn-primary btn-sm"data-toggle="tooltip" title="Agregar Aficion" ><i class="icon icon-plus icon-fw"></i></button>
+                    </div>
+                </div>
+                <!-- /card header -->
+
+                <!-- Card Body -->
+                <div class="card-body pt-0 ">
+                    <!-- Tables -->
+                    <!-- Card -->
+                    <div class=" pb-4 ">
+                        <!-- Card Header -->
+                        <div class="dt-card__header mb-3 p-0">
+                            <!-- Card Heading -->
+                            <div class="dt-card__heading pt-0">
+                                <!-- Widget Item -->
+                                <div class="dt-widget__item border bg-primary " >
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info text-truncate">
+                                        <h3 class="dt-card__title text-white">AFICION</h3>
+                                    </div>
+                                    <!-- /widget info -->
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info text-truncate">
+                                        <h3 class="dt-card__title text-white">ESTADO</h3>
+                                    </div>
+                                    <!-- /widget info -->
+
+                                </div>
+                            </div>
+                            <!-- /card heading -->
+                        </div>
+                        <!-- /card header -->
+
+                        <div class="dt-card__body p-0" >
+                            <!-- Widget -->
+                            <div class="dt-widget dt-widget-hover ps-custom-scrollbar ps ps--active-y" id="tbodyAficion">
+
+                            </div>
+                            <!-- /widget -->
+                        </div>
+                        <!-- /card -->
+                    </div>
+
+                    <!-- /tables -->
+                    <div class="row mt-2">
+                        <div class="col-md-2 col-sm-3 col-4">
+                            <select id="sizePageAficionDetalle" class="form-control form-control-sm select2-single">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                            </select>
+                        </div>
+                        <div class="col-md-10 col-sm-9 col-8">
+                            <nav aria-label="Page navigation example">
+                                <ul id="paginationAficionDetalle" class="pagination pagination-sm justify-content-end">
+                                </ul>
+                            </nav>  
+                        </div>
+                    </div>
+                </div>
+                <!-- /card body -->
+            </div>
+            <!-- /card -->
+
+            <!-- Card -->
+            <div class="col-12" id="OpenAficionDetalle" style="display:none"> 
+                <div class="col-12 text-center">
+                    <label id="tittleAficionDetalle" for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">AFICION</label>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-3 col-sm-2"></div>
+                    <div class="card overflow-hidden col-lg-6 col-sm-8" >
+                        <!-- Card Header -->
+                        <div class="card-header bg-transparent">
+                            <form id="FrmAficionDetalleModal">
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <label for="txtEstadoAficionDetalle">ESTADO</label>
+                                        <div class="input-group">
+                                            <select class="form-control form-control-sm" id="txtEstadoAficionDetalle">
+                                                <option value="-1">seleccione...</option>
+                                                <option value="1">LO PRACTICO</option>
+                                                <option value="2">ME GUSTARÍA APRENDER</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label for="txtAficionDetalle">AFICION
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-sm" id="txtAficionDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                            <div class="input-group-append">
+                                                <button type="button" id="btnSeleccionarAficiones" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group text-center col-12">
+                                        <button type="button" id="btnCancelarAficionDetalle" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-reply"></i> CANCELAR</button>
+                                        <button type="submit" id="btnGuardarAficionDetalle" class="ml-5 btn btn-primary btn-sm">GUARDAR</button>
+                                    </div>  
+                                </div>
+                            </form>
+
+                        </div>
+                        <!-- /card header -->
+
+                    </div>
+                    <!-- /card -->
+                </div>
+            </div>
+
         </div>
         <div class="row" id="div-regresar-selected-option-ed" style="display: none">
             <div class="col-12 text-center">
@@ -602,6 +844,38 @@
     </div>
 </div>
 
+<div class="modal" id="modalCargandoDeporteDetalle" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando deportes que practicas. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoAficionDetalle" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando deportes que practicas. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--T: DEPORTE SELECTED-->
 <div id="ventanaModalSelectedDeporteC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
      data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
@@ -675,7 +949,7 @@
     </div>
 </div>
 
-<div class="modal" id="modalCargandoDeporteC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal" id="modalCargandoSelectedDeporteC" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -691,14 +965,14 @@
     </div>
 </div>
 
-<!--T: DEPORTE SELECTED-->
+<!--T: AFICION SELECTED-->
 <div id="ventanaModalSelectedAficionC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
      data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
                 <h5 class="mb-0" id="titleManagerAficionC"><strong>[ 0 ]
-                        DEPORTES</strong></h5>
+                        AFICIONES</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -764,7 +1038,7 @@
     </div>
 </div>
 
-<div class="modal" id="modalCargandoAficionC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal" id="modalCargandoSelectedAficionC" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">

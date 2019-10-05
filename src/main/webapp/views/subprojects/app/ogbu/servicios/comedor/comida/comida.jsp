@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-xl-12">
         <!-- Card -->
-        <div class="card overflow-hidden">
+        <div class="card overflow-hidden" id="ListaOpenComida">
             <!-- Card Header -->
             <div class="card-header bg-transparent">
                 <h4 class="mb-0" id="titleManagerComida">[ 0 ] COMIDAS</h4>
@@ -64,44 +64,19 @@
             <!-- /card body -->
         </div>
         <!-- /card -->
-    </div>
-</div>
-<div class="modal fade" id="ventanaModalComida" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form id="FrmComidaModal">
-                <div class="modal-header">
-                    <h6 class="modal-title" id="txtTituloModalMan"></h6>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="form-group col-12">
-                            <label for="txtDescripcionComida">DESCRIPCION</label>
-                            <input class="form-control form-control-sm" id="txtDescripcionComida" type="text" placeholder="DESCRIPCION">
-                        </div>
-                        <div class="form-group col-12">
-                            <label for="txtTipoComida">TIPO</label>
-                            <select class="custom-select" id="txtTipoComida">
-                                <option selected="0" value="0">seleccione...</option>
-                                <option value="1">SEGUNDO</option>
-                                <option value="2">BEBIDA</option>
-                                <option value="3">POSTRE</option>
-                                <option value="4">SOPA</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" id="btnGuardar" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
-                </div>
-            </form>
+
+        <div class="form-row">
+            <div class="col-lg-3 col-sm-2">
+            </div>
+            <!-- Card -->
+            <div class="col-lg-6 col-sm-8"  id="FormularioOpenComida">
+            </div>
+            <!-- /card -->
         </div>
+
     </div>
 </div>
+
 <div class="modal fade" id="modalCargandoComida" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -115,3 +90,4 @@
         </div>
     </div>
 </div>
+

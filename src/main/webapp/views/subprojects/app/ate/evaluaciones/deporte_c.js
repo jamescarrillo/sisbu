@@ -35,25 +35,25 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestDeporteC.operation = "paginate";
         beanRequestDeporteC.type_request = "GET";
     });
-/*
+
     document.querySelector("#btnSeleccionarDeporte").onclick = function () {
         $('#ventanaModalSelectedDeporteC').modal('show');
     };
-*/
+
     document.querySelector("#btn-selecionar-deportec").onclick = function () {
         if (deporteCSelected == undefined) {
             showAlertTopEnd('warning', 'Por favor seleccione un deporte');
             return;
         }
         deporteSelected = deporteCSelected;
-        document.querySelector("#txtEscuelaPaciente").value = deporteCSelected.nombre.toUpperCase();
+        document.querySelector("#txtDeporteDetalle").value = deporteCSelected.nombre.toUpperCase();
         $('#ventanaModalSelectedDeporteC').modal('hide');
     };
 
     document.querySelector("#btnCancelSelectionDeporteC").onclick = function () {
         deporteCSelected = undefined;
         deporteSelected = deporteCSelected;
-        document.querySelector("#txtEscuelaPaciente").value = "";
+        document.querySelector("#txtDeporteDetalle").value = "";
     };
 
     $("#sizePageDeporteC").change(function () {
@@ -84,6 +84,7 @@ function processAjaxDeporteC() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
+        console.log(beanCrudResponse);
         $('#modalCargandoSelectedDeporteC').modal("hide");
         if (beanCrudResponse.beanPagination !== undefined) {
             beanPaginationDeporteC = beanCrudResponse.beanPagination;

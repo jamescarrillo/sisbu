@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $("#modalCargandoSelectedAficionC").on('shown.bs.modal', function () {
+        
         processAjaxAficionC();
     });
 
@@ -35,25 +36,26 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestAficionC.operation = "paginate";
         beanRequestAficionC.type_request = "GET";
     });
-/*
-    document.querySelector("#btnSeleccionarAficion").onclick = function () {
+
+    document.querySelector("#btnSeleccionarAficiones").onclick = function () {
+       
         $('#ventanaModalSelectedAficionC').modal('show');
     };
-*/
+
     document.querySelector("#btn-selecionar-aficionc").onclick = function () {
         if (aficionCSelected == undefined) {
             showAlertTopEnd('warning', 'Por favor seleccione un aficion');
             return;
         }
         aficionSelected = aficionCSelected;
-        document.querySelector("#txtEscuelaPaciente").value = aficionCSelected.nombre.toUpperCase();
+        document.querySelector("#txtAficionDetalle").value = aficionCSelected.descripcion.toUpperCase();
         $('#ventanaModalSelectedAficionC').modal('hide');
     };
 
     document.querySelector("#btnCancelSelectionAficionC").onclick = function () {
         aficionCSelected = undefined;
         aficionSelected = aficionCSelected;
-        document.querySelector("#txtEscuelaPaciente").value = "";
+        document.querySelector("#txtAficionDetalle").value = "";
     };
 
     $("#sizePageAficionC").change(function () {
@@ -63,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function processAjaxAficionC() {
+    
     let parameters_pagination = "";
     let json = "";
     let url_request = getHostAPI() + beanRequestAficionC.entity_api + "/" + beanRequestAficionC.operation;
@@ -84,6 +87,7 @@ function processAjaxAficionC() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
+        console.log(beanCrudResponse);
         $('#modalCargandoSelectedAficionC').modal("hide");
         if (beanCrudResponse.beanPagination !== undefined) {
             beanPaginationAficionC = beanCrudResponse.beanPagination;
@@ -97,12 +101,12 @@ function processAjaxAficionC() {
 
 function toListAficionC(beanPagination) {
     document.querySelector("#tbodyAficionC").innerHTML = "";
-    document.querySelector("#titleManagerAficionC").innerHTML = "[ " + beanPagination.count_filter + " ] DEPORTES";
+    document.querySelector("#titleManagerAficionC").innerHTML = "[ " + beanPagination.count_filter + " ] AFICIONES";
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(aficion => {
             row = "<tr class='click-selection-aficion sisbu-cursor-mano' idaficion='" + aficion.idaficion + "'>";
-            row += "<td class='align-middle text-left'>" + aficion.nombre.toUpperCase() + "</td>";
+            row += "<td class='align-middle text-left'>" + aficion.descripcion.toUpperCase() + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyAficionC").innerHTML += row;
         });
