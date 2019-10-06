@@ -266,16 +266,20 @@
             <!-- Tab DATOS ATENDIDO -->
             <!-- Card -->
             <div class="card overflow-hidden col-12" id="OpenListaDeporteDetalle">
-
-                <div class="form-row pt-5 ">
-                    <div class="col-11 text-center">
-                        <label  for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE DEPORTES</label>
+                <div class="dt-card__header mb-0 pt-5 pb-5">
+                    <!-- Card Heading -->
+                    <div class="dt-card__heading">
+                        <h3 class="dt-card__title  text-primary text-center" >LISTA DE DEPORTES</h3>
                         <input type="hidden" id="pageDeporteDetalle" value="1">
                     </div>
-                    <div class="float-right">
-                        <button type="button" id="btnOpenDeporteDetalle" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Agregar Deporte" ><i class="icon icon-plus icon-fw"></i></button>
+                    <!-- /card heading -->
+                    <!-- Card Tools -->
+                    <div class="dt-card__tools">
+                        <button type="button" id="btnOpenDeporteDetalle" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Agregar Deporte" ><i class="icon icon-addnew"></i> AGREGAR</button>
                     </div>
+                    <!-- /card tools -->
                 </div>
+
                 <!-- /card header -->
                 <!-- Card Body -->
                 <div class="card-body pt-0 ">
@@ -371,7 +375,7 @@
                                     </div>
 
                                     <div class="form-group col-12 text-center">
-                                        <button type="button" id="btnCancelarDeporteDetalle" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-reply"></i> CANCELAR</button>
+                                        <button type="button" id="btnCancelarDeporteDetalle" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-reply"></i> LISTA DE DEPORTES</button>
                                         <button type="submit" id="btnGuardarDeporteDetalle" class="ml-5 btn btn-primary btn-sm">GUARDAR</button>
                                     </div>  
                                 </div>
@@ -388,15 +392,18 @@
             <!-- Tab DATOS ATENDIDO -->
             <!-- Card -->
             <div class="card overflow-hidden col-12" id="OpenListaAficionDetalle">
-
-                <div class="form-row  pt-5">
-                    <div class="col-11 text-center">
-                        <label  for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE AFICIONES</label>
+                <div class="dt-card__header mb-0 pt-5 pb-5">
+                    <!-- Card Heading -->
+                    <div class="dt-card__heading">
+                        <h3 class="dt-card__title  text-primary text-center" >LISTA DE AFICIONES</h3>
                         <input type="hidden" id="pageAficionDetalle" value="1">
                     </div>
-                    <div class="float-right">
-                        <button type="button" id="btnOpenAficionDetalle" class="btn btn-primary btn-sm"data-toggle="tooltip" title="Agregar Aficion" ><i class="icon icon-plus icon-fw"></i></button>
+                    <!-- /card heading -->
+                    <!-- Card Tools -->
+                    <div class="dt-card__tools">
+                        <button type="button" id="btnOpenAficionDetalle" class="btn btn-primary btn-sm"data-toggle="tooltip" title="Agregar Aficion" ><i class="icon icon-addnew"></i> AGREGAR</button>
                     </div>
+                    <!-- /card tools -->
                 </div>
                 <!-- /card header -->
 
@@ -494,7 +501,7 @@
                                     </div>
 
                                     <div class="form-group text-center col-12">
-                                        <button type="button" id="btnCancelarAficionDetalle" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-reply"></i> CANCELAR</button>
+                                        <button type="button" id="btnCancelarAficionDetalle" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-reply"></i> LISTA DE AFICIONES</button>
                                         <button type="submit" id="btnGuardarAficionDetalle" class="ml-5 btn btn-primary btn-sm">GUARDAR</button>
                                     </div>  
                                 </div>

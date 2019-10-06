@@ -25,14 +25,14 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#txtFilterInicialNoticia').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false,
-        format: 'DD/MM/YYYY',
+        format: 'YYYY-MM-DD',
         lang: 'es'
     }).on('change', function (e, date) {
     });
     $('#txtFilterFinalNoticia').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false,
-        format: 'DD/MM/YYYY',
+        format: 'YYYY-MM-DD',
         lang: 'es'
     }).on('change', function (e, date) {
     });
