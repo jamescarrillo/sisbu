@@ -19,18 +19,21 @@
                 <form id="FrmCargo">
                     <div class="input-group search-box" style="max-width: 100%;">
                         <input type="search" id="txtFilterCargo" class="form-control form-control-sm" placeholder="FILTRO. . .">
-                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                        <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                        <div class="input-group-append">
+                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                        </div>
                         <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewCargo"><i class="icon icon-plus icon-fw"></i></button>
                     </div>
+
                 </form>
                 <!-- Tables -->
                 <div class="table-responsive">
                     <table class="table mb-0 mt-2">
-                        <thead>
+                        <thead class="bg-primary ">
                             <tr>
-                                 <th class="text-uppercase" scope="col" style="width: 10%">ACCION</th>
-                                <th class="text-uppercase" scope="col" >NOMBRE</th>
+                                <th class="text-uppercase pt-4 pb-2 text-white" scope="col" style="width: 10%">ACCION</th>
+                                <th class="text-uppercase pt-4 pb-2 text-white" scope="col" >NOMBRE</th>
                             </tr>
                         </thead>
                         <tbody id="tbodyCargo">
@@ -79,8 +82,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" id="btnGuardar" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">CANCELAR</button>
+                    <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm">GUARDAR</button>
                 </div>
             </form>
         </div>

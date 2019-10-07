@@ -114,9 +114,13 @@ public class FilterURL implements Filter {
         String version_project = "?v=";
         //version_project += "0.01"; // 
         //version_project += "0.02";
-        version_project += "0.03";
+        //version_project += "0.03";
+        version_project += "0.04";
         /*
             0.01 -> 01/08/19
+         */
+        /*
+            0.04 -> 07/10/19
          */
         this.list_resources = new ArrayList<>();
         Resource resource;
@@ -348,7 +352,8 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/medicina/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/servicios/medicina/paciente/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/servicios/medicina/paciente/paciente.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/medicina/paciente/paciente.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/medicina/paciente/doctor_c.js" + version_project
         });
         this.list_resources.add(resource);
         ///citas

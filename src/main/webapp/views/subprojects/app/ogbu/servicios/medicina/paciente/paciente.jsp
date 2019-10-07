@@ -19,8 +19,10 @@
                 <form id="FrmPaciente">
                     <div class="input-group search-box" style="max-width: 100%;">
                         <input type="search" id="txtFilterPaciente" class="form-control form-control-sm" placeholder="FILTRO. . .">
-                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                        <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                        <div class="input-group-append">
+                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                        </div>
                     </div>
                 </form>
                 <!-- Tables -->
@@ -229,15 +231,13 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="col-lg-4 col-sm-6 " >
-                                <label for="txtMedicoPaciente">MÉDICO</label>
-                                <div class="search-box " style="max-width: 100%;">
-                                    <div class="input-group">
-                                        <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterMedico"  type="search">
-                                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                    </div>
-                                    <div id="resultadoMedico" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                            <div class="col-lg-4 col-sm-6 ">
+                                <label for="txtMedicoPaciente">MÉDICO
+                                </label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control form-control-sm" id="txtMedicoPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                    <div class="input-group-append">
+                                        <button type="button" id="btnSeleccionarDoctor" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -262,7 +262,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 text-center">
-                                <button type="submit" id="btnGuardarPaciente" class="btn btn-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
+                                <button type="submit" id="btnGuardarPaciente" class="btn btn-primary btn-sm">GUARDAR</button>
                             </div>  
                         </div>   
                     </form>
@@ -471,8 +471,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" class="btn btn-outline-primary btn-sm" id="btnGuardarAddMenus">Guardar</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">CANCELAR</button>
+                    <button type="submit" class="btn btn-primary btn-sm" id="btnGuardarAddMenus">GUARDAR</button>
                 </div>
             </form>
         </div>
@@ -514,6 +514,96 @@
                 <div class="progress" style="margin-bottom: 0px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Cargando Historia. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--T: DOCTOR SELECTED-->
+<div id="ventanaModalSelectedDoctorC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerDoctorC"><strong>[ 0 ]
+                        MÉDICO</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageDoctorC"
+                               value="1">
+                        <form id="FrmDoctorC">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterDoctorC"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarDoctorC"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5 mb-2">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Doctor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyDoctorC">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2" style="display: none">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePageDoctorC"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="5">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationDoctorC"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionDoctorC"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-doctorc" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoSelectedDoctorC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando doctores. . .
                     </div>
                 </div>
             </div>

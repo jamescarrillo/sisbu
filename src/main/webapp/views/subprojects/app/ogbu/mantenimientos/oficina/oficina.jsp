@@ -20,31 +20,60 @@
             <!-- Card Body -->
             <div class="card-body pt-0">
                 <form id="FrmOficina">
-                    <div class="input-group">
-                        <input type="text" id="txtFilterOficina" class="form-control form-control-sm" placeholder="FILTRO. . .">
-                        <div class="input-group-prepend">
+                    <div class="input-group  search-box" style="max-width: 100%;">
+                        <input type="search" id="txtFilterOficina" class="form-control form-control-sm" placeholder="FILTRO. . .">
+                        <div class="input-group-append">
+                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-sisbu"></i> BUSCAR</button>
-                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewOficina"><i class="icon icon-plus icon-sisbu"></i></button>
                         </div>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewOficina"><i class="icon icon-plus icon-sisbu"></i></button>
                     </div>
                 </form>
-                <div class="row mt-2">
-                    <div class="col-12">
-                        <!-- Tables -->
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-sm mb-0">
-                                <thead class="bg-primary">
-                                    <tr>
-                                        <th class="text-uppercase text-white" scope="col" >NOMBRE</th>
-                                        <th class="text-uppercase text-white text-center" scope="col" colspan="2" style="width: 20%">ACCION</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbodyOficina">
-                                </tbody>
-                            </table>
+                  <!-- Card -->
+                <div class=" pb-4 ">
+
+                    <!-- Card Header -->
+                    <div class="dt-card__header mb-3 p-0 pt-3 ">
+
+                        <!-- Card Heading -->
+                        <div class="dt-card__heading">
+
+                            <!-- Widget Item -->
+                            <div class="dt-widget__item border-bottom bg-primary" >
+
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <h3 class="dt-card__title text-white">ACCIÓN</h3>
+                                </div>
+                                <!-- /widget info -->
+
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <h3 class="dt-card__title text-white">NOMBRE</h3>
+                                </div>
+                                <!-- /widget info -->
+
+                            </div>
+                            <!-- /widgets item -->
+
                         </div>
-                        <!-- /tables -->
+                        <!-- /card heading -->
+
                     </div>
+                    <!-- /card header -->
+
+                    <!-- Card Body -->
+                    <div class="dt-card__body p-0  " >
+                        <!-- Widget -->
+                        <div class="dt-widget dt-widget-hover ps-custom-scrollbar ps ps--active-y" id="tbodyOficina">
+
+                        </div>
+                        <!-- /widget -->
+                        <!-- /card body -->
+
+                    </div>
+                    <!-- /card -->
+
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-2 col-sm-3 col-4">
@@ -90,8 +119,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" id="btnGuardar" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">CANCELAR</button>
+                    <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm">GUARDAR</button>
                 </div>
             </form>
         </div>

@@ -182,9 +182,9 @@ function toListFacultad(beanPagination) {
             row += ">";
             row += "<td><ul class='dt-list dt-list-cm-0'>";
             row += "<li class='dt-list__item editar-facultad' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-editors'></i></a></li>";
+            row += "<i class='text-info icon icon-editors'></i></a></li>";
             row += "<li class='dt-list__item eliminar-facultad' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
             row += "<td class='align-middle'>" + facultad.nombre + "</td>";
             row += "<td class='align-middle'>" + facultad.abreviado + "</td>";
@@ -353,9 +353,9 @@ function toListEscuela(beanPagination) {
             row += ">";
             row += "<td><ul class='dt-list dt-list-cm-0'>";
             row += "<li class='dt-list__item editar-escuela' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-editors'></i></a></li>";
+            row += "<i class='text-info icon icon-editors'></i></a></li>";
             row += "<li class='dt-list__item eliminar-escuela' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
             row += "<td class='align-middle'>" + escuela.nombre + "</td>";
             row += "<td class='align-middle'>" + escuela.abreviado + "</td>";

@@ -15,94 +15,94 @@
             </div>
             <!-- /card header -->
             <!-- Card Body -->
-            <div class=" pt-0">
-                <form id="FrmPersonal" class="card-body">
+            <div class=" card-body pt-0">
+                <form id="FrmPersonal" >
                     <div class="input-group search-box" style="max-width: 100%;">
                         <input type="search" id="txtFilterDniPersonal" class="form-control form-control-sm" placeholder="FILTRO DNI">
-                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                        <select class="form-control form-control-sm col-2" id="txtFilterEstadoPersonal">
-                            <option selected value="1">ACTIVOS</option>
-                            <option value="0">INACTIVOS</option>
-                            <option value="-1">TODOS</option>
-                        </select>
-                        <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewPersonal"><i class="icon icon-plus icon-fw"></i></button>
+                        <div class="input-group-append">
+                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                            <select class="form-control form-control-sm col-6" id="txtFilterEstadoPersonal">
+                                <option selected value="1">ACTIVOS</option>
+                                <option value="0">INACTIVOS</option>
+                                <option value="-1">TODOS</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" style="display:none" id="btnOpenNewPersonal"><i class="icon icon-plus icon-fw"></i></button>
                     </div>
                 </form>
 
-                <div class="order-xl-1 ">
+                <!-- Card -->
+                <div class=" pb-4 ">
 
-                    <!-- Card -->
-                    <div class=" pb-4 ">
+                    <!-- Card Header -->
+                    <div class="dt-card__header mb-3 p-0 pt-3">
 
-                        <!-- Card Header -->
-                        <div class="dt-card__header mb-3">
+                        <!-- Card Heading -->
+                        <div class="dt-card__heading">
 
-                            <!-- Card Heading -->
-                            <div class="dt-card__heading">
+                            <!-- Widget Item -->
+                            <div class="dt-widget__item border-bottom bg-primary" >
 
-                                <!-- Widget Item -->
-                                <div class="dt-widget__item border-bottom" >
-
-                                    <!-- Widget Info -->
-                                    <div class="dt-widget__info text-truncate">
-                                        <h3 class="dt-card__title">DNI</h3>
-                                    </div>
-                                    <!-- /widget info -->
-
-                                    <!-- Widget Info -->
-                                    <div class="dt-widget__info text-truncate">
-                                        <h3 class="dt-card__title">NOMBRE</h3>
-                                    </div>
-                                    <!-- /widget info -->
-
-                                    <!-- Widget Info -->
-                                    <div class="dt-widget__info text-truncate">
-                                        <h3 class="dt-card__title">ÁREA</h3>
-                                    </div>
-                                    <!-- /widget info -->
-
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <h3 class="dt-card__title text-white">DNI</h3>
                                 </div>
-                                <!-- /widgets item -->
+                                <!-- /widget info -->
+
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <h3 class="dt-card__title text-white">NOMBRE /<br>CARGO</h3>
+                                </div>
+                                <!-- /widget info -->
+
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <h3 class="dt-card__title text-white">ÁREA</h3>
+                                </div>
+                                <!-- /widget info -->
 
                             </div>
-                            <!-- /card heading -->
+                            <!-- /widgets item -->
 
                         </div>
-                        <!-- /card header -->
-
-                        <!-- Card Body -->
-                        <div class="dt-card__body p-0  " >
-                            <!-- Widget -->
-                            <div class="dt-widget dt-widget-hover ps-custom-scrollbar ps ps--active-y" id="tbodyPersonal">
-
-                            </div>
-                            <!-- /widget -->
-                            <!-- /card body -->
-
-                        </div>
-                        <!-- /card -->
+                        <!-- /card heading -->
 
                     </div>
+                    <!-- /card header -->
 
+                    <!-- Card Body -->
+                    <div class="dt-card__body p-0  " >
+                        <!-- Widget -->
+                        <div class="dt-widget dt-widget-hover ps-custom-scrollbar ps ps--active-y" id="tbodyPersonal">
 
-
-                    <div class="row mt-2">
-                        <div class="col-md-2 col-sm-3 col-4">
-                            <select id="sizePagePersonal" class="form-control form-control-sm select2-single">
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                            </select>
                         </div>
-                        <div class="col-md-10 col-sm-9 col-8">
-                            <nav aria-label="Page navigation example">
-                                <ul id="paginationPersonal" class="pagination pagination-sm justify-content-end">
-                                </ul>
-                            </nav>  
-                        </div>
+                        <!-- /widget -->
+                        <!-- /card body -->
+
+                    </div>
+                    <!-- /card -->
+
+                </div>
+
+
+
+                <div class="row mt-2">
+                    <div class="col-md-2 col-sm-3 col-4">
+                        <select id="sizePagePersonal" class="form-control form-control-sm select2-single">
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                    <div class="col-md-10 col-sm-9 col-8">
+                        <nav aria-label="Page navigation example">
+                            <ul id="paginationPersonal" class="pagination pagination-sm justify-content-end">
+                            </ul>
+                        </nav>  
                     </div>
                 </div>
+
                 <!-- /card body -->
             </div>
             <!-- /card -->
@@ -271,9 +271,9 @@
                                         <div class="row">
                                             <div class="form-group col-12">
                                                 <label for="txtUserPersonal">USUARIO</label>
-                                               
-                                                    <input type="text" class="form-control" id="txtUserPersonal" placeholder="USUARIO" aria-label="Small" >
-                                                
+
+                                                <input type="text" class="form-control" id="txtUserPersonal" placeholder="USUARIO" aria-label="Small" >
+
                                             </div>
                                             <div class="form-group col-6">
                                                 <label for="txtLoginPersonal">lOGIN</label>

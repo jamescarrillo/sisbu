@@ -18,8 +18,9 @@
             <div class="card-body pt-0">
                 <form id="FrmVideoTutorial">
                     <div class="input-group search-box" style="max-width: 100%;">
-                        <input type="text" id="txtFilterVideoTutorial" class="form-control form-control-sm" placeholder="Filter...">
+                        <input type="search" id="txtFilterVideoTutorial" class="form-control form-control-sm" placeholder="Filter Título...">
                         <div class="input-group-append">
+                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
                         <button data-toggle='tooltip' title='Agregar Video' type="button" class="btn btn-primary btn-sm" id="btnOpenNewVideoTutorial"><i class="icon icon-plus icon-fw"></i></button>
@@ -30,28 +31,28 @@
                 <div class=" pb-4 ">
 
                     <!-- Card Header -->
-                    <div class="dt-card__header mb-3">
+                    <div class="dt-card__header mb-3 p-0 pt-3">
 
                         <!-- Card Heading -->
                         <div class="dt-card__heading">
 
                             <!-- Widget Item -->
-                            <div class="dt-widget__item border-bottom" >
+                            <div class="dt-widget__item border-bottom bg-primary" >
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">TÍTULO</h3>
+                                    <h3 class="dt-card__title text-white">TÍTULO</h3>
                                 </div>
                                 <!-- /widget info -->
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">DESCRIPCIÓN</h3>
+                                    <h3 class="dt-card__title text-white">DESCRIPCIÓN</h3>
                                 </div>
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">LINK</h3>
+                                    <h3 class="dt-card__title text-white">LINK</h3>
                                 </div>
                                 <!-- /widget info -->
                             </div>

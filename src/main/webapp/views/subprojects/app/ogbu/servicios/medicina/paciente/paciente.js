@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
     });
 
-    listFilter("#txtFilterMedico");
 
     $('#FrmPacienteModal').submit(function (event) {
         if (validateFormPaciente()) {
@@ -54,6 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#modalCargandoPaciente').modal('show');
 
     $("#sizePagePaciente").change(function () {
+        beanRequestPaciente.operation = "paginate";
+        beanRequestPaciente.type_request = "GET";
         $('#modalCargandoPaciente').modal('show');
     });
 
@@ -110,6 +111,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $("#sizePageDiagnostico").change(function () {
+        beanRequestDiagnostico.operation = "paginate";
+        beanRequestDiagnostico.type_request = "GET";
         $('#modalCargandoDiagnostico').modal('show');
     });
 
@@ -144,25 +147,10 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestDiagnostico.operation = "paginate";
         beanRequestDiagnostico.type_request = "GET";
     });
-    document.querySelector("#txtFilterMedico").onclick = function () {
-        processAjaxDoctor("");
-    };
-    listFilter("#txtFilterMedico");
+  
+   
 });
 
-function listFilter(filterdni) {
-    $(filterdni).change(function () {
-    }).keyup(function (e) {
-        var txt = String.fromCharCode(e.which);
-        if (txt.match(/[A-Za-z0-9]/))
-        {
-            var filter = $(this).val();
-            processAjaxDoctor(filter);
-        }
-
-    });
-
-}
 
 function processAjaxPaciente() {
     let parameters_pagination = "";
@@ -258,15 +246,7 @@ function toListPaciente(beanPagination) {
 }
 
 function addEventsPacientes() {
-    document.querySelectorAll('.agregar-doctor').forEach(btn => {
-        //AGREGANDO EVENTO CLICK
-        btn.onclick = function () {
-            doctorSelected = findByDoctor(btn.getAttribute('iddoctor'));
-            document.querySelector("#txtFilterMedico").value = doctorSelected.nombre + " " +
-                    doctorSelected.apellido_pat + " " + doctorSelected.apellido_mat;
-            document.querySelector("#resultadoMedico").innerHTML = "";
-        };
-    });
+  
     document.querySelectorAll('.historia-clinica').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
@@ -370,73 +350,13 @@ function subtipoPaciente(tipopersonal) {
     }
 }
 
-//DOCTOR
-
-function toListDoctor(beanPagination) {
-    document.querySelector("#resultadoMedico").innerHTML = "";
-    if (beanPagination.count_filter > 0) {
-        let row;
-        beanPagination.list.forEach(personal => {
-            row = "<a iddoctor='" + personal.idpersonal + "' href='javascript:void(0)' ";
-            row += "class='list-group-item list-group-item-action pt-1 pb-1 agregar-doctor'>" + personal.apellido_pat.toUpperCase() + " " + personal.apellido_mat.toUpperCase() + " " + personal.nombre.toUpperCase();
-            row += "</a>";
-            document.querySelector("#resultadoMedico").innerHTML += row;
-        });
-        addEventsPacientes();
-    } else {
-        //destroyPagination($('#paginationComida'));
-        showAlertTopEnd('warning', 'No se encontraron resultados');
-
-    }
-}
-
-function processAjaxDoctor(filter) {
-    $.ajax({
-        url: getHostAPI() + "api/personal/paginate?filter=" + filter + "&cargo=1&estado=1&page=1&size=20",
-        type: "GET",
-        headers: {
-            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
-        },
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json'
-    }).done(function (beanCrudResponse) {
-        $('#modalCargandoPaciente').modal("hide");
-        if (beanCrudResponse.messageServer !== undefined) {
-            if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
-                $
-                showAlertTopEnd('success', 'Acción realizada exitosamente');
-            } else {
-                showAlertTopEnd('warning', beanCrudResponse.messageServer);
-            }
-        }
-        if (beanCrudResponse.beanPagination !== undefined) {
-            beanPaginationDoctor = beanCrudResponse.beanPagination;
-            toListDoctor(beanPaginationDoctor);
-        }
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        $('#modalCargandoPaciente').modal("hide");
-        showAlertErrorRequest();
-
-    });
-}
-
-function findByDoctor(iddoctor) {
-    let doctor_;
-    beanPaginationDoctor.list.forEach(doctor => {
-        if (iddoctor == doctor.idpersonal) {
-            doctor_ = doctor;
-            return;
-        }
-    });
-    return doctor_;
-}
 
 //historia
 function addInputHistoria(historiaSelected) {
 
     document.querySelector("#txtHistoriaPaciente").value = historiaSelected.num_historia;
     document.querySelector("#txtSeguroPaciente").value = historiaSelected.tipo_seguro;
-    document.querySelector("#txtFilterMedico").value = historiaSelected.personal.apellido_pat + " " +
+    document.querySelector("#txtMedicoPaciente").value = historiaSelected.personal.apellido_pat + " " +
             historiaSelected.personal.apellido_mat + " " + historiaSelected.personal.nombre;
     document.querySelector("#txtAntFamiliPaciente").value = historiaSelected.familiares;
     document.querySelector("#txtAntPersonalPaciente").value = historiaSelected.personales;
@@ -448,7 +368,7 @@ function limpiarInputHistoria() {
 
     document.querySelector("#txtHistoriaPaciente").value = "HC" + pacienteSelected.dni + "-" + Math.floor(Math.random() * 10);
     document.querySelector("#txtSeguroPaciente").value = "4";
-    document.querySelector("#txtFilterMedico").value = "";
+    document.querySelector("#txtMedicoPaciente").value = "";
     document.querySelector("#txtAntFamiliPaciente").value = "";
     document.querySelector("#txtAntPersonalPaciente").value = "";
     document.querySelector("#txtAlergiaPaciente").value = "";
@@ -668,10 +588,10 @@ function toListDiagnostico(beanPagination) {
             row = "<tr ";
             row += "iddiagnostico='" + Diagnostico.iddiagnostico + "' ";
             row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item editar-diagnostico'  title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<td class='pt-0 pb-0'><ul class='dt-list dt-list-cm-0'>";
+            row += "<li class='dt-list__item editar-diagnostico p-4'  title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
             row += "<i class='text-info icon icon-editors'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-diagnostico'  title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<li class='dt-list__item eliminar-diagnostico p-4' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
             row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
             row += "<td class='" + color + " text-white align-middle'>" + aten + "</td>";
