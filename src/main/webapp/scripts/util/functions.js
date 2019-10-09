@@ -21,6 +21,7 @@ function getContextAPP() {
 function getHostAPP() {
     //return "/";
     return "http://localhost:8080/";
+    //return "http://apps.unprg.edu.pe/";
 }
 
 function parseJwt(token) {

@@ -23,7 +23,7 @@
                             <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewCargo"><i class="icon icon-plus icon-fw"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewCargo"data-toggle="tooltip" title="Agregar Cargo" ><i class="icon icon-addnew"></i></button>
                     </div>
 
                 </form>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">CANCELAR</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">i class="icon icon-reply"></i> CANCELAR</button>
                     <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm">GUARDAR</button>
                 </div>
             </form>

@@ -23,7 +23,7 @@
                             <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
-                        <button data-toggle='tooltip' title='Agregar Video' type="button" class="btn btn-primary btn-sm" id="btnOpenNewVideoTutorial"><i class="icon icon-plus icon-fw"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewVideoTutorial"data-toggle="tooltip" title="Agregar Video" ><i class="icon icon-addnew"></i></button>
                     </div>
                 </form>
                 <!-- Tables -->
@@ -123,7 +123,7 @@
                         <textarea class="form-control" id="txtDescripcionVideoTutorial" rows="3" placeholder="DESCRIPCIÓN"></textarea>
                     </div>
                     <div class="form-group col-12 text-center">
-                        <button type="button" id="btnRegresar" class="btn btn-outline-primary btn-sm" >CANCELAR</button>
+                        <button type="button" id="btnRegresar" class="btn btn-outline-primary btn-sm" ><i class="icon icon-reply"></i> CANCELAR</button>
                         <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm"><i class="fas fa-check"></i> GUARDAR</button>
                     </div>
                 </div>

@@ -75,15 +75,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     };
 
-    document.querySelector("#buttonTriaje").onclick = function () {
-        beanRequestTriaje.operation = "paginate";
-        beanRequestTriaje.type_request = "GET";
-        $('#modalCargandoTriaje').modal('show');
-
-    };
-
     $("#modalCargandoTriaje").on('shown.bs.modal', function () {
-        processAjaxTriaje(historiaSelected.idhistoria_clinica);
+        processAjaxTriaje();
     });
 
     $('#FrmTriajePaciente').submit(function (event) {
@@ -98,25 +91,42 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestTriaje.operation = "paginate";
         beanRequestTriaje.type_request = "GET";
     });
+
     $("#sizePageTriaje").change(function () {
         $('#modalCargandoTriaje').modal('show');
     });
-    
-      document.querySelector("#txtPesoPaciente").onkeyup = function () {
+
+    document.querySelector("#txtPesoPaciente").onkeyup = function () {
         document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
     };
 
     document.querySelector("#txtTallaPaciente").onkeyup = function () {
         document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
     };
+    
+    document.querySelector("#buttonTriaje").onclick = function () {
+        beanRequestTriaje.operation = "paginate";
+        beanRequestTriaje.type_request = "GET";
+        $('#modalCargandoHistoria').modal('show');
 
+    };
 
     //HISTORIA
 
     //INICIALIZANDO VARIABLES DE SOLICITUD HISTORIA
     beanRequestHistoria.entity_api = "api/historiaclinica";
-    beanRequestHistoria.operation = "paginate";
+    beanRequestHistoria.operation = "dato";
     beanRequestHistoria.type_request = "GET";
+
+    $("#modalCargandoHistoria").on('shown.bs.modal', function () {
+        processAjaxHistoria();
+    });
+
+    $("#modalCargandoHistoria").on('hidden.bs.modal', function () {
+        beanRequestHistoria.operation = "dato";
+        beanRequestHistoria.type_request = "GET";
+    });
+
 
 
 });
@@ -132,7 +142,7 @@ function processAjaxPaciente() {
         parameters_pagination += "&size=" + document.querySelector("#sizePagePaciente").value;
 
     } else {
-        parameters_pagination = "";
+
         if (beanRequestPaciente.operation == "delete") {
             parameters_pagination = "/" + pacienteSelected.idpaciente;
             json = {};
@@ -156,6 +166,7 @@ function processAjaxPaciente() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
+        console.log(beanCrudResponse);
         $('#modalCargandoPaciente').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
@@ -227,19 +238,18 @@ function addEventsPacientes() {
             document.querySelector("#tab-pane-15").classList.add("active");
             pacienteSelected = findByPaciente(btn.parentElement.parentElement.parentElement.getAttribute('idpaciente'));
             if (pacienteSelected != undefined) {
-                console.log(pacienteSelected.idatendido);
-                processAjaxHistoria(pacienteSelected.idatendido);
+
                 //SET VALUES MODAL
                 document.querySelector("#txtTipoDocumentoPaciente").value = pacienteSelected.tipo_documento;
                 document.querySelector("#txtUsuarioPaciente").value = pacienteSelected.tipo_atendido;
-                document.querySelector("#txtSubusuarioPaciente").value = pacienteSelected.subtipo_atendido ;
+                document.querySelector("#txtSubusuarioPaciente").value = pacienteSelected.subtipo_atendido;
                 document.querySelector("#txtEstadoPaciente").value = pacienteSelected.estado_civil;
                 document.querySelector("#txtCodigoPaciente").value = pacienteSelected.codigo;
                 document.querySelector("#txtNumeroDocumentoPaciente").value = pacienteSelected.dni;
                 document.querySelector("#txtApPaternoPaciente").value = pacienteSelected.apellido_pat;
                 document.querySelector("#txtApMaternoPaciente").value = pacienteSelected.apellido_mat;
                 document.querySelector("#txtNombrePaciente").value = pacienteSelected.nombre;
-                document.querySelector("#txtSexoPaciente").value = pacienteSelected.sexo ;
+                document.querySelector("#txtSexoPaciente").value = pacienteSelected.sexo;
                 document.querySelector("#txtFechaNacPaciente").value = pacienteSelected.fecha_nacimiento;
                 document.querySelector("#txtCelularPaciente").value = pacienteSelected.celular;
                 document.querySelector("#txtEmailPaciente").value = pacienteSelected.email;
@@ -253,7 +263,7 @@ function addEventsPacientes() {
             }
         };
     });
-    document.querySelectorAll('.eliminar-paciente').forEach(btn => {
+    document.querySelectorAll('.paciente').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
             pacienteSelected = findByPaciente(btn.parentElement.parentElement.parentElement.getAttribute('idpaciente'));
@@ -323,46 +333,27 @@ function subtipoPaciente(tipopersonal) {
 
 //historia
 
-function processAjaxHistoria(idpaciente) {
+function processAjaxHistoria() {
     let parameters_pagination = "";
+
     let json = "";
-    if (beanRequestHistoria.operation == "paginate") {
-        parameters_pagination += "?idpaciente=" + idpaciente;
-        parameters_pagination += "&page=" + 1;
-        parameters_pagination += "&size=" + 3;
+    if (beanRequestHistoria.operation == "dato") {
+        parameters_pagination += "/" + pacienteSelected.idatendido;
 
     } else {
-        parameters_pagination = "";
-        if (beanRequestHistoria.operation == "dato") {
-            parameters_pagination = "/" + idpaciente
-            json = {};
-        } else {
-            if (beanRequestHistoria.operation == "update") {
-                json = {
-                    "idhistoria_clinica": historiaSelected.idhistoria_clinica,
-                    "num_historia": document.querySelector("#txtHistoriaPaciente").value,
-                    "tipo_seguro": document.querySelector("#txtSeguroPaciente").value,
-                    "personal": {"idpersonal": doctorSelected.idpersonal},
-                    "familiares": document.querySelector("#txtAntFamiliPaciente").value,
-                    "personales": document.querySelector("#txtAntPersonalPaciente").value,
-                    "alergias": document.querySelector("#txtAlergiaPaciente").value,
-                    "atendido": {"idatendido": pacienteSelected.idatendido}
-                };
 
-            } else {
-                json = {
-                    "idhistoria_clinica": "",
-                    "num_historia": "HC" + pacienteSelected.dni + "-" + Math.floor(Math.random() * 10),
-                    "tipo_seguro": 4,
-                    "personal": {"idpersonal": 1},
-                    "familiares": " ",
-                    "personales": " ",
-                    "alergias": " ",
-                    "atendido": {"idatendido": pacienteSelected.idatendido}
-                };
-            }
-        }
+        json = {
+            "num_historia": "HC" + pacienteSelected.dni + "-" + Math.floor(Math.random() * 10),
+            "tipo_seguro": 4,
+            "personal": {"idpersonal": 1},
+            "familiares": " ",
+            "personales": " ",
+            "alergias": " ",
+            "atendido": {"idatendido": pacienteSelected.idatendido}
+        };
+
     }
+
     $.ajax({
         url: getHostAPI() + beanRequestHistoria.entity_api + "/" + beanRequestHistoria.operation + parameters_pagination,
         type: beanRequestHistoria.type_request,
@@ -374,14 +365,20 @@ function processAjaxHistoria(idpaciente) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse.beanPagination.list[0]);
-        $('#modalCargandoPaciente').modal("hide");
-        historiaSelected = beanCrudResponse.beanPagination.list[0];
-        if (beanCrudResponse.beanPagination.list.length == 0) {
-            beanRequestHistoria.operation = "add";
-            beanRequestHistoria.type_request = "POST";
-            processAjaxHistoria(pacienteSelected.idatendido);
+        console.log(beanCrudResponse);
+        if (beanCrudResponse.messageServer == undefined) {
+            if (beanCrudResponse.idhistoria_clinica == null) {
+                beanRequestHistoria.operation = "add";
+                beanRequestHistoria.type_request = "POST";
+                processAjaxHistoria();
+            }
+        } else {
+            showAlertTopEnd('warning', beanCrudResponse.messageServer);
         }
+        $('#modalCargandoHistoria').modal("hide");
+
+        historiaSelected = beanCrudResponse;
+        $('#modalCargandoTriaje').modal("show");
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoPaciente').modal("hide");
@@ -390,9 +387,8 @@ function processAjaxHistoria(idpaciente) {
     });
 }
 
-
 //TRIAJE
-function processAjaxTriaje(idhistoria) {
+function processAjaxTriaje() {
     var mes = fechaActual.getMonth() + 1; //obteniendo mes
     var dia = fechaActual.getDate(); //obteniendo dia
     if (dia < 10)
@@ -402,7 +398,7 @@ function processAjaxTriaje(idhistoria) {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestTriaje.operation == "paginate") {
-        parameters_pagination += "?idhistoria=" + idhistoria;
+        parameters_pagination += "?idhistoria=" + historiaSelected.idhistoria_clinica;
         parameters_pagination += "&page=" + 1;
         parameters_pagination += "&size=" + 3;
 
@@ -588,7 +584,7 @@ function findByTriaje(iddiagnostico) {
 
 function validateFormTriaje() {
     console.log(document.querySelector("#txtPaPaciente").value);
-    if (document.querySelector("#txtPaPaciente").value  == "") {
+    if (document.querySelector("#txtPaPaciente").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese PA');
         document.querySelector("#txtPaPaciente").focus();
         return false;

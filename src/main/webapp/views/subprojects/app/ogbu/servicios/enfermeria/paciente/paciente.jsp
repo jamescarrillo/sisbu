@@ -21,7 +21,7 @@
                         <input type="search" id="txtFilterPaciente" class="form-control form-control-sm" placeholder="FILTRO. . .">
                         <div class="input-group-append">
                             <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                            <button type="submit" class="btn btn-primary btn-sm "><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
                     </div>
                 </form>
@@ -68,6 +68,10 @@
             <div class="card-header">
                 <!-- Tab Navigation -->
                 <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
+                     <li class="pr-2">
+                    <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar" class="btn btn-outline-primary btn-sm dt-avatar" > <i class="icon icon-reply icon-lg"></i></button>
+                    </li>
+                                       
                     <li class="nav-item">
                         <a id="buttonFiliacion" class="nav-link show active" data-toggle="tab" 
                            href="#tab-pane-15" role="tab" aria-controls="tab-pane-15"
@@ -208,12 +212,12 @@
                 <div id="tab-pane-17" class="tab-pane ">
                     <div class="form-group form-row">
                         <div class="col-11 text-center">
-                            <label id="titleManagerTriaje" for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE DIAGNÓSTICOS</label>
+                            <label id="titleManagerTriaje" for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE TRIAJES</label>
                             <input type="hidden" id="pageTriaje" value="1">
                         </div>
 
                         <div class="float-right">
-                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewTriajePaciente"><i class="icon icon-plus icon-fw"></i></button>
+                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewTriajePaciente"data-toggle="tooltip" title="Agregar Triaje"><i class="icon icon-addnew"></i> </button>
                         </div>
                     </div>
 
@@ -256,9 +260,7 @@
                 </div>
                 <!-- /tab pane-->
 
-                <div class="col-lg-12 text-left">
-                    <button type="button" id="btnCerrar" class="btn btn-outline-primary btn-sm" > <i class="icon icon-reply icon-lg"></i> CANCELAR</button>
-                </div> 
+                
             </div>
             <!-- /tab content -->
 
@@ -381,8 +383,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" class="btn btn-outline-primary btn-sm" id="btnGuardarAddMenus">Guardar</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal"><i class="icon icon-reply"></i> CANCELAR</button>
+                    <button type="submit" class="btn btn-primary btn-sm" id="btnGuardarAddMenus">Guardar</button>
                 </div>
             </form>
         </div>
@@ -411,6 +413,20 @@
                 <div class="progress" style="margin-bottom: 0px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Cargando Triajes. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCargandoHistoria" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Cargando Historias. . .
                     </div>
                 </div>
             </div>

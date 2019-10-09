@@ -21,7 +21,7 @@
                         <input type="search" id="txtFilterPaciente" class="form-control form-control-sm" placeholder="FILTRO. . .">
                         <div class="input-group-append">
                             <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                            <button type="submit" class="btn btn-primary btn-sm "><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
                     </div>
                 </form>
@@ -68,6 +68,10 @@
             <div class="card-header">
                 <!-- Tab Navigation -->
                 <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
+                    <li class="pr-2">
+                        <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar" class="btn btn-outline-primary btn-sm dt-avatar" > 
+                            <i class="icon icon-reply icon-lg" ></i></button>
+                    </li>
                     <li class="nav-item">
                         <a id="buttonFiliacion" class="nav-link show active" data-toggle="tab" 
                            href="#tab-pane-15" role="tab" aria-controls="tab-pane-15"
@@ -217,7 +221,12 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtHistoriaPaciente">N° HISTORIA</label>
-                                    <input disabled type="text" class="bg-primary text-white form-control form-control-sm" id="txtHistoriaPaciente" placeholder="N° HISTORIA">
+                                    <div class="input-group">
+                                        <div class="input-group-append">
+                                            <button type="button"  class="btn btn-primary btn-sm"><i class="fa fa-file-alt"></i></button>
+                                        </div>
+                                        <input disabled type="text" class="form-control form-control-sm" id="txtHistoriaPaciente" placeholder="N° HISTORIA">
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
@@ -271,18 +280,20 @@
 
                 <!-- Tab DIAGNOSTICO -->
                 <div id="tab-pane-17" class="tab-pane ">
-                    <div class="form-group form-row">
-                        <div class="col-11 text-center">
-                            <label id="titleManagerDiagnostico" for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE DIAGNÓSTICOS</label>
+                    <div class="dt-card__header mb-0 p-0 pt-5 pb-5">
+                        <!-- Card Heading -->
+                        <div class="dt-card__heading">
+                            <h3 id="titleManagerDiagnostico"  class="dt-card__title  text-primary text-center">LISTA DE DIAGNÓSTICOS</h3>
                             <input type="hidden" id="pageDiagnostico" value="1">
                         </div>
-
-                        <div class="float-right">
-                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewDiagnosticoPaciente"><i class="icon icon-plus icon-fw"></i></button>
+                        <!-- /card heading -->
+                        <!-- Card Tools -->
+                        <div class="dt-card__tools">
+                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewDiagnosticoPaciente" data-toggle="tooltip" title="Agregar Diagnóstico"><i class="icon icon-addnew"></i> </button>
                         </div>
+                        <!-- /card tools -->
                     </div>
-
-                    <div class="form-group col-12 ">
+                    <div class="form-group ">
                         <!-- Tables -->
                         <div class="table-responsive">
                             <table class="table mb-0">
@@ -321,9 +332,7 @@
                 </div>
                 <!-- /tab pane-->
 
-                <div class="col-lg-12 text-left">
-                    <button type="button" id="btnCerrar" class="btn btn-outline-primary btn-sm" > <i class="icon icon-reply icon-lg"></i> CANCELAR</button>
-                </div> 
+                 
             </div>
             <!-- /tab content -->
 
@@ -464,14 +473,10 @@
                                 <textarea class="form-control " id="txtTtoPaciente" rows="3" placeholder="Tto"></textarea>
                             </div>
                         </div>
-
-
                     </div>
-
                 </div>
-
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">CANCELAR</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal"><i class="icon icon-reply"></i> CANCELAR</button>
                     <button type="submit" class="btn btn-primary btn-sm" id="btnGuardarAddMenus">GUARDAR</button>
                 </div>
             </form>

@@ -26,9 +26,9 @@
                             <input type="text" id="txtFilterFinalNoticia" class="form-control form-control-sm" placeholder="Filter fecha Final...DD/MM/AAAA">
                         </div>
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                            <button type="submit" class="btn btn-primary btn-sm mr-5"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewNoticia"><i class="icon icon-plus icon-fw"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewNoticia"data-toggle="tooltip" title="Agregar Noticia" ><i class="icon icon-addnew"></i></button>
                     </div>
                 </form>
                 <!-- Tables -->
@@ -143,8 +143,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" id="btnGuardar" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal"><i class="icon icon-reply"></i> CANCELAR</button>
+                    <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm"><i class="fas fa-check"></i> GUARDAR</button>
                 </div>
             </form>
         </div>

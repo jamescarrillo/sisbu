@@ -12,14 +12,94 @@ var beanRequestDepartamento = new BeanRequest();
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    document.querySelector("#titleManagerDistrito").onclick = function () {
+        beanRequestDistrito.operation = "paginate";
+        beanRequestDistrito.type_request = "GET";
+
+        document.querySelector("#OpenProvinciaDetalle").style.display = "none";
+        document.querySelector("#OpenDistritoDetalle").style.display = "none";
+        document.querySelector("#OpenDepartamentoDetalle").style.display = "none";
+
+        document.querySelector("#titleManagerProvincia").classList.remove("active");
+        document.querySelector("#titleManagerDepartamento").classList.remove("active");
+        document.querySelector("#titleManagerDistrito").classList.add("active");
+
+        document.querySelector("#tab-provincias").style.display = "none";
+        document.querySelector("#tab-departamentos").style.display = "none";
+        document.querySelector("#tab-distritos").style.display = "block";
+
+        $('#modalCargandoDistrito').modal('show');
+    };
+    document.querySelector("#titleManagerProvincia").onclick = function () {
+        beanRequestProvincia.operation = "paginate";
+        beanRequestProvincia.type_request = "GET";
+
+        document.querySelector("#OpenProvinciaDetalle").style.display = "none";
+        document.querySelector("#OpenDistritoDetalle").style.display = "none";
+        document.querySelector("#OpenDepartamentoDetalle").style.display = "none";
+
+        document.querySelector("#titleManagerDistrito").classList.remove("active");
+        document.querySelector("#titleManagerDepartamento").classList.remove("active");
+        document.querySelector("#titleManagerProvincia").classList.add("active");
+
+        document.querySelector("#tab-distritos").style.display = "none";
+        document.querySelector("#tab-departamentos").style.display = "none";
+        document.querySelector("#tab-provincias").style.display = "block";
+
+        $('#modalCargandoProvincia').modal('show');
+    };
+    document.querySelector("#titleManagerDepartamento").onclick = function () {
+
+        beanRequestDepartamento.operation = "paginate";
+        beanRequestDepartamento.type_request = "GET";
+
+        document.querySelector("#OpenProvinciaDetalle").style.display = "none";
+        document.querySelector("#OpenDistritoDetalle").style.display = "none";
+        document.querySelector("#OpenDepartamentoDetalle").style.display = "none";
+
+        document.querySelector("#titleManagerDistrito").classList.remove("active");
+        document.querySelector("#titleManagerProvincia").classList.remove("active");
+        document.querySelector("#titleManagerDepartamento").classList.add("active");
+
+        document.querySelector("#tab-provincias").style.display = "none";
+        document.querySelector("#tab-distritos").style.display = "none";
+        document.querySelector("#tab-departamentos").style.display = "block";
+
+
+        $('#modalCargandoDepartamento').modal('show');
+    };
+
+    document.querySelector("#btnCancelarDistrito").onclick = function () {
+        beanRequestDistrito.operation = "paginate";
+        beanRequestDistrito.type_request = "GET";
+
+        document.querySelector("#OpenDistritoDetalle").style.display = "none";
+        document.querySelector("#tab-distritos").style.display = "block";
+        $('#modalCargandoDepartamento').modal('show');
+    };
+    document.querySelector("#btnCancelarProvincia").onclick = function () {
+        beanRequestProvincia.operation = "paginate";
+        beanRequestProvincia.type_request = "GET";
+
+        document.querySelector("#OpenProvinciaDetalle").style.display = "none";
+        document.querySelector("#tab-provincias").style.display = "block";
+        $('#modalCargandoProvincia').modal('show');
+    };
+    document.querySelector("#btnCancelarDepartamento").onclick = function () {
+        beanRequestDepartamento.operation = "paginate";
+        beanRequestDepartamento.type_request = "GET";
+
+        document.querySelector("#OpenDepartamentoDetalle").style.display = "none";
+        document.querySelector("#tab-departamentos").style.display = "block";
+        $('#modalCargandoDepartamento').modal('show');
+    };
+
+
     //INICIALIZANDO VARIABLES DE SOLICITUD
     beanRequestDistrito.entity_api = "api/distritos";
     beanRequestDistrito.operation = "paginate";
     beanRequestDistrito.type_request = "GET";
 
-    document.querySelector("#titleManagerProvincia").onclick = function () {
-        //$('#modalCargandoDistrito').modal('show');
-    };
 
     $('#modalCargandoDistrito').modal('show');
 
@@ -32,38 +112,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $('#FrmDistritoModal').submit(function (event) {
+        event.preventDefault();
+        event.stopPropagation();
         if (validateFormDistrito()) {
             $('#modalCargandoDistrito').modal('show');
         }
-        event.preventDefault();
-        event.stopPropagation();
+
     });
 
     document.querySelector("#btnOpenNewDistrito").onclick = function () {
-        $('#modalCargandoProvincia').modal('show');
         //CONFIGURAMOS LA SOLICITUD
         beanRequestDistrito.operation = "add";
         beanRequestDistrito.type_request = "POST";
         //LIMPIAR LOS CAMPOS
-        document.querySelector("#ResultadoTablaProvincia").style.height = "139px";
-        beanRequestProvincia.operation = "paginate";
-        beanRequestProvincia.type_request = "GET";
-        processAjaxProvincia(0);
-        listFilterProvincia();
         document.querySelector("#txtNombreDistrito").value = "";
-        document.querySelector("#txtFilterProvinciaER").value = "";
+        document.querySelector("#txtProvinciaDistrito").value = "";
+        provinciaSelected = null;
+
         //SET TITLE MODAL
         document.querySelector("#txtTituloModalDistrito").innerHTML = "REGISTRAR DISTRITO";
         //OPEN MODEL
-        $('#ventanaModalDistrito').modal('show');
+        document.querySelector("#tab-distritos").style.display = "none";
+        document.querySelector("#OpenDistritoDetalle").style.display = "block";
     };
 
     $("#modalCargandoDistrito").on('shown.bs.modal', function () {
-        if (!$('#ventanaModalDistrito').hasClass("show")) {
-            beanRequestDistrito.operation = "paginate";
-            beanRequestDistrito.type_request = "GET";
-            console.log("cerrado");
-        }
         processAjaxDistrito();
     });
 
@@ -77,8 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestProvincia.operation = "paginate";
     beanRequestProvincia.type_request = "GET";
 
-    $('#modalCargandoProvincia').modal('show');
-
     $('#FrmProvincia').submit(function (event) {
         beanRequestProvincia.operation = "paginate";
         beanRequestProvincia.type_request = "GET";
@@ -91,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (validateFormProvincia()) {
             $('#modalCargandoProvincia').modal('show');
         }
-        console.log("accion");
         event.preventDefault();
         event.stopPropagation();
     });
@@ -102,24 +172,19 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestProvincia.operation = "add";
         beanRequestProvincia.type_request = "POST";
         //LIMPIAR LOS CAMPOS
-        document.querySelector("#ResultadoTablaDepartamento").style.height = "139px";
-        processAjaxDepartamento(0);
-        listFilterDepartamento();
         document.querySelector("#txtNombreProvincia").value = "";
-        document.querySelector("#txtFilterDepartamentoER").value = "";
+        document.querySelector("#txtDepartamentoProvincia").value = "";
+        departamentoSelected = null;
         //SET TITLE MODAL
         document.querySelector("#txtTituloModalProvincia").innerHTML = "REGISTRAR PROVINCIA";
         //OPEN MODEL
-        $('#ventanaModalProvincia').modal('show');
+
+        document.querySelector("#tab-provincias").style.display = "none";
+        document.querySelector("#OpenProvinciaDetalle").style.display = "block";
     };
 
     $("#modalCargandoProvincia").on('shown.bs.modal', function () {
-        if (!$('#ventanaModalProvincia').hasClass("show")) {
-            beanRequestProvincia.operation = "paginate";
-            beanRequestProvincia.type_request = "GET";
-            console.log("cerrado");
-        }
-        processAjaxProvincia();
+         processAjaxProvincia();
     });
 
     $("#sizePageProvincia").change(function () {
@@ -132,8 +197,6 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestDepartamento.entity_api = "api/departamentos";
     beanRequestDepartamento.operation = "paginate";
     beanRequestDepartamento.type_request = "GET";
-
-    $('#modalCargandoDepartamento').modal('show');
 
     $('#FrmDepartamento').submit(function (event) {
         beanRequestDepartamento.operation = "paginate";
@@ -160,16 +223,12 @@ document.addEventListener("DOMContentLoaded", function () {
         //SET TITLE MODAL
         document.querySelector("#txtTituloModalDepartamento").innerHTML = "REGISTRAR DEPARTAMENTO";
         //OPEN MODEL
-        $('#ventanaModalDepartamento').modal('show');
+        document.querySelector("#tab-departamentos").style.display = "none";
+        document.querySelector("#OpenDepartamentoDetalle").style.display = "block";
     };
 
     $("#modalCargandoDepartamento").on('shown.bs.modal', function () {
-        if (!$('#ventanaModalDepartamento').hasClass("show")) {
-            beanRequestDepartamento.operation = "paginate";
-            beanRequestDepartamento.type_request = "GET";
-            console.log("cerrado");
-        }
-        processAjaxDepartamento(1);
+            processAjaxDepartamento();
     });
 
     $("#sizePageDepartamento").change(function () {
@@ -203,8 +262,6 @@ function processAjaxDistrito() {
                 json.iddistrito = distritoSelected.iddistrito;
             }
         }
-
-
     }
     $.ajax({
         url: getHostAPI() + beanRequestDistrito.entity_api + "/" + beanRequestDistrito.operation + parameters_pagination,
@@ -220,9 +277,6 @@ function processAjaxDistrito() {
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
-                beanRequestDistrito.operation = "paginate";
-                beanRequestDistrito.type_request = "GET";
-                $('#ventanaModalDistrito').modal('hide');
             } else {
                 showAlertTopEnd('warning', beanCrudResponse.messageServer);
             }
@@ -254,6 +308,7 @@ function toListDistrito(beanPagination) {
             row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
             row += "<td class='align-middle'>" + distrito.nombre + "</td>";
+            row += "<td class='align-middle'>" + distrito.idprovincia.nombre + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyDistrito").innerHTML += row;
         });
@@ -276,30 +331,10 @@ function toListDistrito(beanPagination) {
 }
 
 function addEventsDistritoes() {
-    document.querySelectorAll('.agregar-provincia').forEach(btn => {
-        //AGREGANDO EVENTO CLICK
-        btn.onclick = function () {
-            console.log(btn.parentElement.getAttribute('idprovincia'));
-            provinciaSelected = findByProvincia(btn.parentElement.getAttribute('idprovincia'));
-            console.log(provinciaSelected);
-            if (provinciaSelected != undefined) {
-                //SET VALUES MODAL
-                document.querySelector("#txtFilterProvinciaER").value = provinciaSelected.nombre;
-                document.querySelector("#ResultadoTablaProvincia").style.height = "0px";
-                document.querySelector("#ResultadoTablaProvincia").innerHTML = "";
 
-            } else {
-                showAlertTopEnd('warning', 'No se encontró el Provincia para poder editar');
-            }
-        };
-    });
     document.querySelectorAll('.editar-distrito').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            $('#modalCargandoProvincia').modal('show');
-            document.querySelector("#ResultadoTablaProvincia").style.height = "139px";
-            processAjaxProvincia(0);
-            listFilterProvincia();
             distritoSelected = findByDistrito(btn.parentElement.parentElement.parentElement.getAttribute('iddistrito'));
             console.log(distritoSelected);
             if (distritoSelected != undefined) {
@@ -307,9 +342,11 @@ function addEventsDistritoes() {
                 beanRequestDistrito.type_request = "PUT";
                 //SET VALUES MODAL
                 document.querySelector("#txtNombreDistrito").value = distritoSelected.nombre;
-                document.querySelector("#txtFilterProvinciaER").value = distritoSelected.idprovincia.nombre;
+                document.querySelector("#txtProvinciaDistrito").value = distritoSelected.idprovincia.nombre;
+                provinciaSelected = distritoSelected.idprovincia;
                 document.querySelector("#txtTituloModalDistrito").innerHTML = "EDITAR DISTRITO";
-                $('#ventanaModalDistrito').modal("show");
+                document.querySelector("#tab-distritos").style.display = "none";
+                document.querySelector("#OpenDistritoDetalle").style.display = "block";
                 document.querySelector("#txtNombreDistrito").focus();
             } else {
                 showAlertTopEnd('warning', 'No se encontró la Distrito para poder editar');
@@ -344,20 +381,18 @@ function validateFormDistrito() {
         showAlertTopEnd('warning', 'Por favor ingrese nombre');
         document.querySelector("#txtNombreDistrito").focus();
         return false;
-    } else if (document.querySelector("#txtAbreviadoDistrito").value == 0) {
+    } else if (document.querySelector("#txtProvinciaDistrito").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese abreviatura ');
-        document.querySelector("#txtAbreviadoDistrito").focus();
+        document.querySelector("#txtProvinciaDistrito").focus();
         return false;
     }
     return true;
 }
 
 //PROVINCIA
-function processAjaxProvincia(ubicacion) {
+function processAjaxProvincia() {
     let parameters_pagination = "";
     let json = "";
-    console.log("depa id");
-    console.log(departamentoSelected);
     if (beanRequestProvincia.operation == "paginate") {
         parameters_pagination = "?nombre=" + document.querySelector("#txtFilterNombreProvincia").value;
         parameters_pagination += "&page=" + document.querySelector("#pageProvincia").value;
@@ -396,7 +431,6 @@ function processAjaxProvincia(ubicacion) {
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
-                $('#ventanaModalProvincia').modal('hide');
             } else {
                 showAlertTopEnd('warning', beanCrudResponse.messageServer);
             }
@@ -404,11 +438,7 @@ function processAjaxProvincia(ubicacion) {
         if (beanCrudResponse.beanPagination !== undefined) {
             beanPaginationProvincia = beanCrudResponse.beanPagination;
             toListProvincia(beanPaginationProvincia);
-            if (ubicacion == 0) {
-                toListTablaProvincia(beanPaginationProvincia);
-            } else {
-                toListProvincia(beanPaginationProvincia);
-            }
+            toListProvincia(beanPaginationProvincia);
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoProvincia').modal("hide");
@@ -434,6 +464,7 @@ function toListProvincia(beanPagination) {
             row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
             row += "<td class='align-middle'>" + provincia.nombre + "</td>";
+            row += "<td class='align-middle'>" + provincia.iddepartamento.nombre + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyProvincia").innerHTML += row;
         });
@@ -460,10 +491,6 @@ function addEventsProvincia() {
     document.querySelectorAll('.editar-provincia').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            $('#modalCargandoDepartamento').modal('show');
-            document.querySelector("#ResultadoTablaDepartamento").style.height = "139px";
-            processAjaxDepartamento(0);
-            listFilterDepartamento();
             provinciaSelected = findByProvincia(btn.parentElement.parentElement.parentElement.getAttribute('idprovincia'));
             console.log(provinciaSelected);
             if (provinciaSelected != undefined) {
@@ -471,9 +498,11 @@ function addEventsProvincia() {
                 beanRequestProvincia.type_request = "PUT";
                 //SET VALUES MODAL
                 document.querySelector("#txtNombreProvincia").value = provinciaSelected.nombre;
-                document.querySelector("#txtFilterDepartamentoER").value = provinciaSelected.iddepartamento.nombre;
+                document.querySelector("#txtDepartamentoProvincia").value = provinciaSelected.iddepartamento.nombre;
+                departamentoSelected = provinciaSelected.iddepartamento;
                 document.querySelector("#txtTituloModalProvincia").innerHTML = "EDITAR PROVINCIA";
-                $('#ventanaModalProvincia').modal("show");
+                document.querySelector("#tab-provincias").style.display = "none";
+                document.querySelector("#OpenProvinciaDetalle").style.display = "block";
                 document.querySelector("#txtNombreProvincia").focus();
             } else {
                 showAlertTopEnd('warning', 'No se encontró la Provincia para poder editar');
@@ -509,58 +538,17 @@ function validateFormProvincia() {
         showAlertTopEnd('warning', 'Por favor ingrese nombre');
         document.querySelector("#txtNombreProvincia").focus();
         return false;
-    } else if (document.querySelector("#txtFilterDepartamentoER").value == "") {
+    } else if (document.querySelector("#txtDepartamentoProvincia").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese Departamento');
-        document.querySelector("#txtFilterDepartamentoER").focus();
+        document.querySelector("#txtDepartamentoProvincia").focus();
         return false;
     }
     return true;
 }
 
-function listFilterProvincia() {
-
-    $("#txtFilterProvinciaER").change(function () {
-        document.querySelector("#ResultadoTablaProvincia").style.height = "139px";
-        var filter = $(this).val();
-        console.log(filter);
-        document.querySelector("#txtFilterNombreProvincia").value = filter;
-        $('#modalCargandoProvincia').modal('show');
-        processAjaxProvincia(0);
-    }).keyup(function (e) {
-        var txt = String.fromCharCode(e.which);
-        if (txt.match(/[A-Za-z]/))
-        {
-            $(this).change();
-        }
-
-    });
-
-}
-
-function toListTablaProvincia(beanPagination) {
-    document.querySelector("#ResultadoTablaProvincia").innerHTML = "";
-    if (beanPagination.count_filter > 0) {
-        let row;
-        beanPagination.list.forEach(provincia => {
-            row = "<li class='p-1' idprovincia='" + provincia.idprovincia + "'>" + provincia.nombre.toUpperCase() + "&NonBreakingSpace;&NonBreakingSpace; ";
-            row += "<small class='btn btn-primary btn-sm pt-1 pb-1 float-right agregar-provincia'>Agregar a la Lista</small>";
-            row += "</li>";
-            document.querySelector("#ResultadoTablaProvincia").innerHTML += row;
-        });
-        addEventsDistritoes();
-        if (beanRequestProvincia.operation == "paginate") {
-            document.querySelector("#txtFilterProvinciaER").focus();
-        }
-        $('[data-toggle="tooltip"]').tooltip();
-    } else {
-        destroyPagination($('#paginationProvincia'));
-        showAlertTopEnd('warning', 'No se encontraron resultados');
-        document.querySelector("#txtFilterNombreProvincia").focus();
-    }
-}
 
 //DEPARTAMENTO
-function processAjaxDepartamento(ubicacion) {
+function processAjaxDepartamento() {
 
     let parameters_pagination = "";
     let json = "";
@@ -594,27 +582,19 @@ function processAjaxDepartamento(ubicacion) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-
         $('#modalCargandoDepartamento').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
-                $('#ventanaModalDepartamento').modal('hide');
             } else {
                 showAlertTopEnd('warning', beanCrudResponse.messageServer);
             }
         }
         if (beanCrudResponse.beanPagination !== undefined) {
             beanPaginationDepartamento = beanCrudResponse.beanPagination;
-            if (ubicacion == 0) {
-                toListTablaDepartamento(beanPaginationDepartamento);
-            } else {
-                toListDepartamento(beanPaginationDepartamento);
-            }
+            toListDepartamento(beanPaginationDepartamento);
 
         }
-
-        console.log(beanRequestDepartamento.operation);
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoDepartamento').modal("hide");
         showAlertErrorRequest();
@@ -659,45 +639,8 @@ function toListDepartamento(beanPagination) {
     }
 }
 
-function toListTablaDepartamento(beanPagination) {
-    document.querySelector("#ResultadoTablaDepartamento").innerHTML = "";
-    if (beanPagination.count_filter > 0) {
-        let row;
-        beanPagination.list.forEach(departamento => {
-            row = "<li class='p-1' iddepartamento='" + departamento.iddepartamento + "'>" + departamento.nombre.toUpperCase() + "&NonBreakingSpace;&NonBreakingSpace; ";
-            row += "<small class='btn btn-primary btn-sm pt-1 pb-1 float-right agregar-departamento'>Agregar a la Lista</small>";
-            row += "</li>";
-            document.querySelector("#ResultadoTablaDepartamento").innerHTML += row;
-        });
-        addEventsDepartamento();
-        if (beanRequestDepartamento.operation == "paginate") {
-            document.querySelector("#txtFilterDepartamentoER").focus();
-        }
-        $('[data-toggle="tooltip"]').tooltip();
-    } else {
-        destroyPagination($('#paginationDepartamento'));
-        showAlertTopEnd('warning', 'No se encontraron resultados');
-        document.querySelector("#txtFilterNombreDepartamento").focus();
-    }
-}
-
 function addEventsDepartamento() {
-    document.querySelectorAll('.agregar-departamento').forEach(btn => {
-        //AGREGANDO EVENTO CLICK
-        btn.onclick = function () {
-            console.log(btn.parentElement.getAttribute('iddepartamento'));
-            departamentoSelected = findByDepartamento(btn.parentElement.getAttribute('iddepartamento'));
-            if (departamentoSelected != undefined) {
-                //SET VALUES MODAL
-                document.querySelector("#txtFilterDepartamentoER").value = departamentoSelected.nombre;
-                document.querySelector("#ResultadoTablaDepartamento").style.height = "0px";
-                document.querySelector("#ResultadoTablaDepartamento").innerHTML = "";
 
-            } else {
-                showAlertTopEnd('warning', 'No se encontró el Departamento para poder editar');
-            }
-        };
-    });
     document.querySelectorAll('.editar-departamento').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
@@ -708,7 +651,8 @@ function addEventsDepartamento() {
                 //SET VALUES MODAL
                 document.querySelector("#txtNombreDepartamento").value = departamentoSelected.nombre;
                 document.querySelector("#txtTituloModalDepartamento").innerHTML = "EDITAR DEPARTAMENTO";
-                $('#ventanaModalDepartamento').modal("show");
+                document.querySelector("#tab-departamentos").style.display = "none";
+                document.querySelector("#OpenDepartamentoDetalle").style.display = "block";
                 document.querySelector("#txtNombreDepartamento").focus();
             } else {
                 showAlertTopEnd('warning', 'No se encontró la Departamento para poder editar');
@@ -721,7 +665,7 @@ function addEventsDepartamento() {
             departamentoSelected = findByDepartamento(btn.parentElement.parentElement.parentElement.getAttribute('iddepartamento'));
             beanRequestDepartamento.operation = "delete";
             beanRequestDepartamento.type_request = "DELETE";
-            processAjaxDepartamento(1);
+            processAjaxDepartamento();
         };
     });
 }
@@ -746,21 +690,3 @@ function validateFormDepartamento() {
     return true;
 }
 
-function listFilterDepartamento() {
-
-    $("#txtFilterDepartamentoER").change(function () {
-        document.querySelector("#ResultadoTablaDepartamento").style.height = "139px";
-        var filter = $(this).val();
-        console.log(filter);
-        document.querySelector("#txtFilterNombreDepartamento").value = filter;
-        processAjaxDepartamento(0);
-    }).keyup(function (e) {
-        var txt = String.fromCharCode(e.which);
-        if (txt.match(/[A-Za-z]/))
-        {
-            $(this).change();
-        }
-
-    });
-
-}

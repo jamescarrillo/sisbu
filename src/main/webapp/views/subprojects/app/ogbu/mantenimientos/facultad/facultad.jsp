@@ -174,7 +174,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">CANCELAR</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">i class="icon icon-reply"></i> CANCELAR</button>
                     <button type="submit" id="btnGuardarEscuela" class="btn btn-primary btn-sm">GUARDAR</button>
                 </div>
             </form>

@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-xl-12">
         <!-- Card -->
-        <div class="card overflow-hidden">
+        <div class="card overflow-hidden" id="btnListaPersonal">
             <!-- Card Header -->
             <div class="card-header bg-transparent">
                 <h4 class="mb-0" id="titleManagerPersonal">[ 0 ] PERSONAL</h4>
@@ -28,7 +28,7 @@
                             </select>
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" style="display:none" id="btnOpenNewPersonal"><i class="icon icon-plus icon-fw"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewPersonal"><i class="icon icon-plus icon-fw"></i></button>
                     </div>
                 </form>
 
@@ -75,17 +75,12 @@
                     <div class="dt-card__body p-0  " >
                         <!-- Widget -->
                         <div class="dt-widget dt-widget-hover ps-custom-scrollbar ps ps--active-y" id="tbodyPersonal">
-
                         </div>
                         <!-- /widget -->
                         <!-- /card body -->
-
                     </div>
                     <!-- /card -->
-
                 </div>
-
-
 
                 <div class="row mt-2">
                     <div class="col-md-2 col-sm-3 col-4">
@@ -107,222 +102,565 @@
             </div>
             <!-- /card -->
         </div>
-    </div>
-    <div class="modal fade" id="ventanaModalPersonal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form id="FrmPersonalModal">
-                    <div class="modal-header">
-                        <h6 class="modal-title" id="txtTituloModalMan"></h6>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body p-0">
-                        <div class="tabs-container">
-                            <!-- Card Header -->
-                            <div class="card-header">
-                                <!-- Tab Navigation -->
-                                <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link show active" data-toggle="tab" href="#tab-pane-15" role="tab" aria-controls="tab-pane-15" aria-selected="true">DATOS GENERALES</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#tab-pane-16" role="tab" aria-controls="tab-pane-16" aria-selected="false">DATOS LABORALES</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#tab-pane-17" role="tab" aria-controls="tab-pane-17" aria-selected="false">USUARIO ACCESO</a>
-                                    </li>
-                                </ul>
-                                <!-- /tab navigation -->
-                            </div>
-                            <!-- /card header -->
 
-                            <!-- Tab Content -->
-                            <div class="tab-content">
 
-                                <!-- Tab Pane -->
-                                <div id="tab-pane-15" class="tab-pane show active">
-                                    <div class="card-body pr-3 pl-3">
-                                        <div class="row">
-                                            <div class="form-group col-6">
-                                                <label for="txtTipoDocumento">TIPO</label>
-                                                <select class="form-control form-control-sm" id="txtTipoDocumento">
-                                                    <option selected="0" value="1">DNI</option>
-                                                    <option value="2">CARNET DE EXTRANJERIA</option>
-                                                    <option value="3">OTRO</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-6">
-                                                <label for="txtDniPersonal">N° DNI</label>
-                                                <input class="form-control form-control-sm" id="txtDniPersonal" type="text" placeholder="DESCRIPCION">
-                                            </div>
-                                            <div class="form-group col-6">
-                                                <label for="txtApPaternoPersonal">AP. PATERNO</label>
-                                                <input class="form-control form-control-sm" id="txtApPaternoPersonal" type="text" placeholder="AP. PATERNO">
-                                            </div>
-                                            <div class="form-group col-6">
-                                                <label for="txtApMaternoPersonal">AP. MATERNO</label>
-                                                <input class="form-control form-control-sm" id="txtApMaternoPersonal" type="text" placeholder="AP. MATERNO">
-                                            </div>
-                                            <div class="form-group col-6">
-                                                <label for="txtNombrePersonal">NOMBRES</label>
-                                                <input class="form-control form-control-sm" id="txtNombrePersonal" type="text" placeholder="NOMBRES">
-                                            </div>
-                                            <div class="form-group col-6">
-                                                <label for="txtSexoPersonal">SEXO</label>
-                                                <select class="form-control form-control-sm" id="txtSexoPersonal">
-                                                    <option selected="0" value="-1">seleccione...</option>
-                                                    <option value="1">MASCULINO</option>
-                                                    <option value="0">FEMENINO</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-6">
-                                                <label for="txtFechaNaciPersonal">FECHA NACIMIENTO</label>
-                                                <div class="input-group date" id="date-time-picker-1" data-target-input="nearest">
-                                                    <input id="txtFechaNaciaPersonal" type="text" class="form-control form-control-sm datetimepicker-input" data-target="#date-time-picker-1">
-                                                    <div class="input-group-append" data-target="#date-time-picker-1" data-toggle="datetimepicker">
-                                                        <div class="input-group-text"><i class="icon icon-calendar"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+        <!-- Card -->
+        <div class="card " id="btnOpenPersonalDetalle" style="display:none">
+            <!-- Card Header -->
+            <div class="dt-card__header mb-0 p-0 pt-5 pb-5">
+                <!-- Card Tools -->
+                <div class="dt-card__tools">
+                    <button type="button" class="btn btn-primary btn-sm dt-avatar" id="btnRegresarLista" data-toggle="tooltip" title="Regresar a la Lista">
+                        <i class="icon icon-reply icon-lg" ></i></button>
+                </div>
+                <!-- /card tools -->
+                <!-- Card Heading -->
+                <div class="dt-card__heading">
+                    <h4 class="dt-card__title text-primary text-center" id="txtTituloModalPersonal">[ 0 ] PERSONAL</h4>
+                </div>
+                <!-- /card heading -->
 
-                                            <div class="form-group col-6">
-                                                <label for="txtEstadoPersonal">ESTADO</label>
-                                                <select class="form-control form-control-sm" id="txtEstadoPersonal">
-                                                    <option selected="1"  value="1">ACTIVO</option>
-                                                    <option value="0">INACTIVO</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /tab pane-->
-
-                                <!-- Tab Pane -->
-                                <div id="tab-pane-16" class="tab-pane">
-                                    <div class="card-body pr-3 pl-3">
-                                        <div class="search-box " style="max-width: 100%;">
-                                            <div class="row">
-                                                <div class="form-group col-12">
-                                                    <label for="txtAreaPersonal">AREA</label>
-                                                    <div class="input-group">
-                                                        <input class="form-control form-control-sm" placeholder="Filter..." id="txtFilterArea"  type="search">
-                                                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                                    </div>
-                                                    <div id="ResultadoArea" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-12">
-                                                    <label for="txtCargoPersonal">CARGO</label>
-                                                    <div class="input-group">
-                                                        <input class="form-control form-control-sm" placeholder="Filter..." id="txtFilterCargo"  type="search">
-                                                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                                    </div>
-                                                    <div id="ResultadoCargo" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-6">
-                                                    <label for="txtTipoPersonal">TIPO DE PERSONAL</label>
-                                                    <select class="form-control form-control-sm" id="txtTipoPersonal">
-                                                        <option selected="1"  value="-1">Seleccione...</option>
-                                                        <option value="1">NOMBRADO</option>
-                                                        <option value="2">CONTRATADO</option>
-                                                        <option value="3">PRACTICANTE</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-6">
-                                                    <label for="txtCelularPersonal">Celular</label>
-                                                    <div class="input-group input-group-sm mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" ><i class="icon icon-phone-o"></i></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" id="txtCelularPersonal" aria-label="Small" >
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-12">
-                                                    <label for="txtEmailPersonal">EMAIL</label>
-                                                    <div class="input-group input-group-sm mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" ><i class="icon icon-mail"></i></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" id="txtEmailPersonal" aria-label="Small" >
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-12">
-                                                    <label for="txtDireccionPersonal">DIRECCIÓN</label>
-
-                                                    <textarea class="form-control" id="textDireccionPersonal" rows="3" placeholder="Textarea"></textarea>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /tab pane-->
-
-                                <!-- /tab pane-->
-
-                                <!-- Tab Pane -->
-                                <div id="tab-pane-17" class="tab-pane">
-                                    <div class="card-body ">
-                                        <div class="row">
-                                            <div class="form-group col-12">
-                                                <label for="txtUserPersonal">USUARIO</label>
-
-                                                <input type="text" class="form-control" id="txtUserPersonal" placeholder="USUARIO" aria-label="Small" >
-
-                                            </div>
-                                            <div class="form-group col-6">
-                                                <label for="txtLoginPersonal">lOGIN</label>
-                                                <div class="input-group input-group-sm mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" ><i class="icon icon-user"></i></span>
-                                                    </div>
-                                                    <input type="text" class="form-control" id="txtLoginPersonal" placeholder="LOGIN" aria-label="Small" >
-                                                </div>
-                                            </div>
-                                            <div class="form-group col-6">
-                                                <label for="txtPassUPersonal">PASS</label>
-                                                <div class="input-group input-group-sm mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" >*</span>
-                                                    </div>
-                                                    <input type="text" class="form-control" id="txtPassUPersonal" placeholder="PASSWORD"aria-label="Small" >
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /tab pane-->
-
-                            </div>
-                            <!-- /tab content -->
-
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                        <button type="submit" id="btnGuardar" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
-                    </div>
-                </form>
             </div>
+
+            <!-- /card header -->
+            <!-- Card Body -->
+            <div class=" card-body p-0">
+
+                <div class="tabs-container">
+                    <!-- Card Header -->
+                    <div class="card-header">
+                        <!-- Tab Navigation -->
+                        <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link  active" id="btnDatosGenerales" data-toggle="tab" 
+                                   href="#tab-datos-generales" role="tab" aria-controls="tab-datos-generales"
+                                   aria-="true">DATOS GENERALES</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="btnDatosLaborales" data-toggle="tab" 
+                                   href="#tab-datos-generales" role="tab" aria-controls="tab-datos-laborales"
+                                   aria-="true">DATOS LABORALES</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="btnDatosAcceso" data-toggle="tab" 
+                                   href="#tab-datos-acceso" role="tab" aria-controls="tab-datos-acceso"
+                                   aria-="true">DATOS DE ACCESO</a>
+                            </li>
+                        </ul>
+                        <!-- /tab navigation -->
+                    </div>
+                    <!-- /card header -->
+
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+                        <form id="FrmPersonalModal"> 
+                            <!-- Tab Pane DATOS GENERALES-->
+                            <div id="tab-datos-generales" >
+                                <div class="card-body p-3">
+                                    <div class="row">
+                                        <div class="form-group col-lg-4 col-sm-6">
+                                            <label for="txtTipoDocumento">TIPO</label>
+                                            <select class="form-control form-control-sm" id="txtTipoDocumento">
+                                                <option selected value="1">DNI</option>
+                                                <option value="2">CARNET DE EXTRANJERIA</option>
+                                                <option value="3">OTRO</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-lg-4 col-sm-6">
+                                            <label for="txtDniPersonal">N° DOCUMENTO</label>
+                                            <input class="form-control form-control-sm" id="txtDniPersonal" type="text" placeholder="N° DOCUMENTO">
+                                        </div>
+
+                                        <div class="form-group col-lg-4 col-sm-6 mb-3">
+                                            <label for="txtFechaNaciPersonal">Fecha de Nacimiento</label>
+                                            <div class="input-group">
+                                                <input  type="text" class="form-control form-control-sm" id="txtFechaNaciPersonal" placeholder="DD/MM/AAAA">
+                                                <div class="input-group-append">
+                                                    <button type="button" id="btnEliminarFechaNoticia" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-4 col-sm-6 ">
+                                            <label for="txtApPaternoPersonal">AP. PATERNO</label>
+                                            <input class="form-control form-control-sm" id="txtApPaternoPersonal" type="text" placeholder="AP. PATERNO">
+                                        </div>
+                                        <div class="form-group col-lg-4 col-sm-6 ">
+                                            <label for="txtApMaternoPersonal">AP. MATERNO</label>
+                                            <input class="form-control form-control-sm" id="txtApMaternoPersonal" type="text" placeholder="AP. MATERNO">
+                                        </div>
+                                        <div class="form-group col-lg-4 col-sm-6 ">
+                                            <label for="txtNombrePersonal">NOMBRES</label>
+                                            <input class="form-control form-control-sm" id="txtNombrePersonal" type="text" placeholder="NOMBRES">
+                                        </div>
+                                        <div class="form-group col-lg-4 col-sm-6 ">
+                                            <label for="txtSexoPersonal">SEXO</label>
+                                            <select class="form-control form-control-sm" id="txtSexoPersonal">
+                                                <option selected value="-1">seleccione...</option>
+                                                <option value="1">MASCULINO</option>
+                                                <option value="0">FEMENINO</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-lg-4 col-sm-6 ">
+                                            <label for="txtCelularPersonal">CELULAR</label>
+                                            <div class="input-group input-group-sm mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-primary" ><i class="text-white icon icon-phone-o"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" id="txtCelularPersonal" aria-label="Small" placeholder="CELULAR">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-4 col-sm-6">
+                                            <label for="txtEmailPersonal">EMAIL</label>
+                                            <div class="input-group input-group-sm mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-primary" ><i class="text-white icon icon-mail"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" id="txtEmailPersonal" aria-label="Small" placeholder="EMAIL">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-12 col-sm-6 ">
+                                            <label for="txtDireccionPersonal">DIRECCIÓN</label>
+                                            <input class="form-control form-control-sm" id="txtDireccionPersonal" type="text" placeholder="DIRECCIÓN">
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /tab pane-->
+
+                            <!-- Tab Pane DATOS LABORALES-->
+                            <div id="tab-datos-laborales" style="display:none">
+                                <div class="card-body p-3 ">
+
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-sm-6 ">
+                                            <label for="txtAreaPersonal">ÁREA
+                                            </label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control form-control-sm" id="txtAreaPersonal" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                                <div class="input-group-append">
+                                                    <button type="button" id="btnSeleccionarArea" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-sm-6 ">
+                                            <label for="txtCargoPersonal">CARGO
+                                            </label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control form-control-sm" id="txtCargoPersonal" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                                <div class="input-group-append">
+                                                    <button type="button" id="btnSeleccionarCargo" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="txtTipoPersonal">TIPO DE PERSONAL</label>
+                                            <select class="form-control form-control-sm" id="txtTipoPersonal">
+                                                <option selected value="-1">Seleccione...</option>
+                                                <option value="1">NOMBRADO</option>
+                                                <option value="2">CONTRATADO</option>
+                                                <option value="3">PRACTICANTE</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-6">
+                                            <label for="txtEstadoPersonal">ESTADO</label>
+                                            <select class="form-control form-control-sm" id="txtEstadoPersonal">
+                                                <option selected value="-1">ACTIVO</option>
+                                                <option value="1">ACTIVO</option>
+                                                <option value="0">INACTIVO</option>
+                                            </select>
+                                        </div>
+
+                                      
+                                        <div class="form-group col-12 text-center">
+                                            <button type="submit" id="btnGuardarUsuario" class="btn btn-primary btn-sm">GUARDAR</button>
+                                        </div>
+                                        
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!-- /tab pane-->
+                        </form>
+                        <!-- Tab Pane DATOS ACCESO-->
+                        <div id="tab-datos-acceso" style="display:none">
+                            <div class="card-body ">
+                                <form id="FrmUsuarioModal"> 
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label for="txtNombreUsuario">NOMBRE USUARIO</label>
+                                            <input class="form-control form-control-sm" id="txtNombreUsuario" type="text" placeholder="NOMBRE USUARIO">
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="txtLoginUsuario">LOGIN </label>
+                                            <div class="input-group input-group-sm mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-primary" ><i class="text-white icon icon-user"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control form-control-sm" id="txtLoginUsuario" placeholder="LOGIN" aria-label="Small" >
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="txtPassUsuario">CONTRASEÑA</label>
+                                            <div class="input-group">
+                                                <input class="form-control form-control-sm" id="txtPassUsuario" type="text" placeholder="Ingrese password. . .">
+                                                <div class="input-group-append">
+                                                    <button type="button" class="btn btn-sm btn-primary" id="btnMostrarPass">
+                                                        <i id="icono_mostrar_pass" class="fas fa-eye-slash"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="txtEstadoUsuario">ESTADO</label>
+                                            <select class="form-control form-control-sm" id="txtEstadoUsuario">
+                                                <option selected value="1">HABILITADO</option>
+                                                <option value="2">DESHABILITADO</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-sm-6 ">
+                                            <label for="txtPerfilUsuario">PERFIL
+                                            </label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control form-control-sm" id="txtPerfilUsuario" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                                <div class="input-group-append">
+                                                    <button type="button" id="btnSeleccionarPerfil" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="txtTipoPerfilUsuario">TIPO PERFIL</label>
+                                            <select class="form-control form-control-sm" id="txtTipoPerfilUsuario">
+                                                <option selected value="-1">Seleccione...</option>
+                                                <option style="display:none" value="0">SISTEMAS</option>
+                                                <option value="1">ADMIN</option>
+                                                <option value="2">FARMACIA</option>
+                                                <option value="3">ODONTOLOGÍA</option>
+                                                <option value="4">OBSTETRÍCIA</option>
+                                                <option value="5">SOCIAL</option>
+                                                <option value="6">COMEDOR</option>
+                                                <option value="7">DEPORTE</option>
+                                                <option value="100">Invitado(solo el inicio)</option>
+                                                <option value="10">Todo el Servicio Médico(enfermeria, medicina, farmacia, obstetricia))</option>
+                                                <option value="11">Psicopedagogia (medicina, psicopedagogia, social)</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-12 text-center">
+                                            <button type="submit" id="btnGuardarUsuario" class="btn btn-primary btn-sm">ACTUALIZAR</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- /tab pane-->
+                    </div>
+                    <!-- /tab content -->
+                </div>
+                <!-- /card body -->
+            </div>
+            <!-- /card -->
         </div>
     </div>
-    <div class="modal fade" id="modalCargandoPersonal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="progress" style="margin-bottom: 0px;">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                            Cargando Personals. . .
-                        </div>
+</div>
+
+<div class="modal fade" id="modalCargandoPersonal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Cargando Personales. . .
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="modalCargandoUsuario" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Cargando usuarios. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--T: AREA SELECTED-->
+<div id="ventanaModalSelectedAreaC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerAreaC"><strong>[ 0 ]
+                        ÁREAS</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageAreaC"
+                               value="1">
+                        <form id="FrmAreaC">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterAreaC"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarAreaC"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5 mb-2">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Área</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyAreaC">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2" style="display: none">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePageAreaC"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="5">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationAreaC"
+                                        class="pagination justify-content-end">
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionAreaC"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-areac" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoSelectedAreaC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando Áreas. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--T: CARGO SELECTED-->
+<div id="ventanaModalSelectedCargoC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerCargoC"><strong>[ 0 ]
+                        CARGOS</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageCargoC"
+                               value="1">
+                        <form id="FrmCargoC">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterCargoC"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarCargoC"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5 mb-2">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Cargos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyCargoC">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2" style="display: none">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePageCargoC"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="5">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationCargoC"
+                                        class="pagination justify-content-end">
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionCargoC"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-cargoc" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoSelectedCargoC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando Cargos. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--T: PERFIL SELECTED-->
+<div id="ventanaModalSelectedPerfilC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerPerfilC"><strong>[ 0 ]
+                        PERFIL</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pagePerfilC"
+                               value="1">
+                        <form id="FrmPerfilC">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterPerfilC"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarPerfilC"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5 mb-2">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Perfil</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyPerfilC">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2" style="display: none">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePagePerfilC"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="5">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationPerfilC"
+                                        class="pagination justify-content-end">
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionPerfilC"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-perfilc" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoSelectedPerfilC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando Perfiles. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
