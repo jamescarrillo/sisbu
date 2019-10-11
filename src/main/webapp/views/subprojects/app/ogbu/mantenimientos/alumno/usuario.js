@@ -1,24 +1,25 @@
 var beanPaginationUsuario;
 var usuarioSelected;
 var mostrar_pass = false;
+let tipoPerfil;
 var beanRequestUsuario = new BeanRequest();
 document.addEventListener("DOMContentLoaded", function () {
     //INICIALIZANDO VARIABLES DE SOLICITUD
     beanRequestUsuario.entity_api = "api/usuarios";
     beanRequestUsuario.operation = "get-user";
     beanRequestUsuario.type_request = "GET";
-
-
+    
+    
     $('#FrmUsuarioModal').submit(function (event) {
         event.preventDefault();
         event.stopPropagation();
         if (validateFormUsuario()) {
             $('#modalCargandoUsuario').modal('show');
         }
-
+        
     });
-
-
+    
+    
     document.querySelector('#btnMostrarPass').onclick = function () {
         if (mostrar_pass) {
             mostrar_pass = false;
@@ -39,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestUsuario.operation = "update";
         beanRequestUsuario.type_request = "PUT";
     });
-
+    
 });
 
 function processAjaxUsuario() {
@@ -48,12 +49,18 @@ function processAjaxUsuario() {
     if (beanRequestUsuario.operation == "get-user") {
         parameters_pagination += "?idusuario=" + usuarioSelected.idusuario;
     } else {
+        
+        if (document.querySelector("#txtTipoPersonaAlumno").value != "1") {
+            tipoPerfil="1110";
+        }else{
+            tipoPerfil=document.querySelector("#txtTipoPerfilUsuario").value;
+        }
         json = {
             "estado": document.querySelector("#txtEstadoUsuario").value,
             "usuario": document.querySelector("#txtNombreUsuario").value,
             "pass": document.querySelector("#txtPassUsuario").value,
             "login": document.querySelector("#txtLoginUsuario").value,
-            "tipo_perfil": document.querySelector("#txtTipoPerfilUsuario").value,
+            "tipo_perfil": tipoPerfil,
             "tipo_usuario": "1"
         };
         if (beanRequestUsuario.operation == "update") {
@@ -63,7 +70,7 @@ function processAjaxUsuario() {
             json.foto = " ";
         }
     }
-
+    
     $.ajax({
         url: getHostAPI() + beanRequestUsuario.entity_api + "/" + beanRequestUsuario.operation + parameters_pagination,
         type: beanRequestUsuario.type_request,
@@ -75,41 +82,41 @@ function processAjaxUsuario() {
         dataType: 'json'
     }).done(function (beanCrudResponse) {
         console.log(beanCrudResponse);
-
+        
         if (beanCrudResponse.beanPagination !== undefined) {
             usuarioSelected = beanCrudResponse.beanPagination.list[0];
         }
-
+        
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 if (beanRequestUsuario.operation == "add") {
                     
-                        processAjaxAlumno();                   
+                    processAjaxAlumno();                   
                 } else {
                     showAlertTopEnd('success', 'Acción realizada exitosamente');
                 }
-
+                
             } else {
                 showAlertTopEnd('warning', beanCrudResponse.messageServer);
                 $('#modalCargandoAlumno').modal("hide");
             }
-
+            
         } else {
             if (beanRequestUsuario.operation == "get-user") {
                 usuarioSelected = beanCrudResponse;
                 agregarInputUsuario(beanCrudResponse);
             } else {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
-
+                
             }
         }
         $('#modalCargandoUsuario').modal("hide");
-
+        
     }).fail(function (jqXHR, textStatus, errorThrown) {
         console.log(textStatus);
         $('#modalCargandoUsuario').modal("hide");
         showAlertErrorRequest();
-
+        
     });
 }
 
@@ -135,7 +142,7 @@ function addEventsUsuarioes() {
             }
         };
     });
-
+    
 }
 
 function findByUsuario(idusuario) {
@@ -184,7 +191,7 @@ function limpiarInputUsuario() {
     document.querySelector("#txtLoginUsuario").value = "";
     document.querySelector("#txtEstadoUsuario").value = "1";
     document.querySelector("#txtTipoPerfilUsuario").value = "-1"
-
+    
 }
 
 function agregarInputUsuario(bean) {
@@ -196,6 +203,6 @@ function agregarInputUsuario(bean) {
     document.querySelector("#txtTipoPerfilUsuario").value = bean.tipo_perfil;
     document.querySelector("#txtPassUsuario").value = "";
     document.querySelector("#txtPassUsuario").focus();
-
+    
 }
 

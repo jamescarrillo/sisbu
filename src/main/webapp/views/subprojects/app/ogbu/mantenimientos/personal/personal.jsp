@@ -174,7 +174,7 @@
                                         </div>
                                         <div class="form-group col-lg-3 col-sm-4 col-6">
                                             <label for="txtDniPersonal">N° DOCUMENTO</label>
-                                            <input class="form-control form-control-sm" id="txtDniPersonal" type="text" placeholder="N° DOCUMENTO">
+                                            <input maxlength="8" class="form-control form-control-sm" id="txtDniPersonal" type="text" placeholder="N° DOCUMENTO">
                                         </div>
 
                                         <div class="form-group col-lg-3 col-sm-4 col-6 mb-3">
@@ -213,7 +213,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-primary" ><i class="text-white icon icon-phone-o"></i></span>
                                                 </div>
-                                                <input type="text" class="form-control form-control-sm" id="txtCelularPersonal" aria-label="Small" placeholder="CELULAR">
+                                                <input  type="text"  maxlength="9" class="form-control form-control-sm soloNumeros" id="txtCelularPersonal" aria-label="Small" placeholder="CELULAR">
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-6 col-sm-4">

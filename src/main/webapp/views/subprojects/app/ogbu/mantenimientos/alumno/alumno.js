@@ -35,9 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.preventDefault();
         event.stopPropagation();
-        if (validateFormAlumno()) {
-            $('#modalCargandoAlumno').modal('show');
+        if (beanRequestAlumno.operation == "add") {
+            if (validateFormAddAlumno()) {
+                $('#modalCargandoAlumno').modal('show');
+            }
+        } else {
+            if (validateFormAlumno()) {
+                $('#modalCargandoAlumno').modal('show');
+            }
         }
+
 
     });
 
@@ -121,14 +128,17 @@ function processAjaxAlumno() {
             parameters_pagination = "/" + alumnoSelected.idatendido;
 
         } else {
-            if (usuarioSelected == undefined) {
-                usuarioSelected = {"idusuario": 0};
-            }
             if (escuelaSelected == undefined) {
                 escuelaSelected = {"idescuela": 0};
             }
             if (cicloSelected == undefined) {
                 cicloSelected = {"idciclo_academico": 0};
+            }
+            if (distritoActualSelected == undefined) {
+                distritoActualSelected = {"iddistrito": 0};
+            }
+            if (distritoProcedenciaSelected == undefined) {
+                distritoProcedenciaSelected = {"iddistrito": 0};
             }
             json = {
                 "nombre": document.querySelector("#txtNombreAlumno").value,
@@ -178,6 +188,10 @@ function processAjaxAlumno() {
         $('#modalCargandoAlumno').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
+                if (beanRequestAlumno.operation == "add") {
+                    limpiarInput();
+                    limpiarInputUsuario();
+                }
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
                 $('#ventanaModalAlumno').modal('hide');
             } else {
@@ -419,8 +433,6 @@ function validateFormAlumno() {
             return false;
         }
     }
-
-
     if (document.querySelector("#txtTipoDocumentoAlumno").value != "1") {
         showAlertTopEnd('warning', 'Por favor seleccione tipo de documento válido');
         document.querySelector("#txtTipoDocumentoAlumno").focus();
@@ -473,10 +485,10 @@ function validateFormAlumno() {
         showAlertTopEnd('warning', 'Por favor ingrese email');
         document.querySelector("#txtEmailAlumno").focus();
         return false;
-    } else if (distritoActualSelected == null) {
+    } else if (distritoActualSelected == undefined) {
         showAlertTopEnd('warning', 'Por favor seleccione distrito actual');
         return false;
-    } else if (distritoProcedenciaSelected == null) {
+    } else if (distritoProcedenciaSelected == undefined) {
         showAlertTopEnd('warning', 'Por favor seleccione distrito de procedencia');
         return false;
     } else if (document.querySelector("#txtDireccionActualAlumno").value == "") {
@@ -521,6 +533,35 @@ function validateFormAlumno() {
     return true;
 }
 
+function validateFormAddAlumno() {
+    if (document.querySelector("#txtTipoDocumentoAlumno").value != "1") {
+        showAlertTopEnd('warning', 'Por favor seleccione Tipo de Documento válido');
+        document.querySelector("#txtTipoDocumentoAlumno").focus();
+        return false;
+    } else if (document.querySelector("#txtNumeroDocumentoAlumno").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese DNI');
+        document.querySelector("#txtNumeroDocumentoAlumno").focus();
+        return false;
+    } else if (document.querySelector("#txtApPaternoAlumno").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Apellido Paterno');
+        document.querySelector("#txtApPaternoAlumno").focus();
+        return false;
+    } else if (document.querySelector("#txtApMaternoAlumno").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Apellido Materno');
+        document.querySelector("#txtApMaternoAlumno").focus();
+        return false;
+    } else if (document.querySelector("#txtNombreAlumno").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese Nombre');
+        document.querySelector("#txtNombreAlumno").focus();
+        return false;
+    } else if (document.querySelector("#txtTipoPersonaAlumno").value == "-1") {
+        showAlertTopEnd('warning', 'Por favor ingrese Tipo de Usuario');
+        document.querySelector("#txtTipoPersonaAlumno").focus();
+        return false;
+    }
+    return true;
+}
+
 function addInputDatos(atendidoSelected) {
     //general
     document.querySelector("#txtTipoDocumentoAlumno").value = atendidoSelected.tipo_documento;
@@ -555,12 +596,12 @@ function addInputDatos(atendidoSelected) {
         escuelaSelected = atendidoSelected.escuela;
     }
     if (atendidoSelected.distrito_actual.iddistrito == 0) {
-        distritoActualSelected = null;
+        distritoActualSelected = undefined;
     } else {
         distritoActualSelected = atendidoSelected.distrito_actual;
     }
     if (atendidoSelected.distrito_procedencia.iddistrito == 0) {
-        distritoProcedenciaSelected = null;
+        distritoProcedenciaSelected = undefined;
     } else {
         distritoProcedenciaSelected = atendidoSelected.distrito_procedencia;
     }

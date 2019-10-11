@@ -6,6 +6,8 @@ var cargoSelected;
 var perfilSelected;
 var beanRequestPersonal = new BeanRequest();
 document.addEventListener("DOMContentLoaded", function () {
+
+
     $('#txtFechaNaciPersonal').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false,
@@ -80,8 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('#btnListaPersonal').style.display = 'block';
         beanRequestPersonal.operation = "paginate";
         beanRequestPersonal.type_request = "GET";
-        beanRequestUsuario.operation="get-user";
-         beanRequestUsuario.type_request = "GET";
+        beanRequestUsuario.operation = "get-user";
+        beanRequestUsuario.type_request = "GET";
         $('#modalCargandoPersonal').modal('show');
     };
 
@@ -109,8 +111,8 @@ function processAjaxPersonal() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestPersonal.operation == "paginate") {
-        if (document.querySelector("#txtFilterDniPersonal").value!="") {
-           document.querySelector("#pagePersonal").value=1; 
+        if (document.querySelector("#txtFilterDniPersonal").value != "") {
+            document.querySelector("#pagePersonal").value = 1;
         }
         parameters_pagination = "?filter=" + document.querySelector("#txtFilterDniPersonal").value;
         parameters_pagination += "&cargo=0&estado=" + document.querySelector("#txtFilterEstadoPersonal").value;
@@ -122,7 +124,7 @@ function processAjaxPersonal() {
         parameters_pagination = "";
         if (beanRequestPersonal.operation == "delete") {
             parameters_pagination = "/" + personalSelected.idpersonal;
-           
+
         } else {
             json = {
                 "apellido_pat": document.querySelector("#txtApPaternoPersonal").value,
@@ -161,6 +163,9 @@ function processAjaxPersonal() {
         $('#modalCargandoPersonal').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
+                if (beanRequestPersonal.operation == "add") {
+                    limpiarInput();
+                }
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
                 $('#ventanaModalPersonal').modal('hide');
             } else {
