@@ -42,7 +42,7 @@
                         <div class="dt-card__heading">
 
                             <!-- Widget Item -->
-                            <div class="dt-widget__item border-bottom bg-primary" >
+                            <div class="dt-widget__item border-bottom bg-primary pb-2" >
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
@@ -107,7 +107,7 @@
         <!-- Card -->
         <div class="card " id="btnOpenPersonalDetalle" style="display:none">
             <!-- Card Header -->
-            <div class="dt-card__header mb-0 p-0 pt-5 pb-5">
+            <div class="dt-card__header mb-0 p-0 pt-5 pb-3">
                 <!-- Card Tools -->
                 <div class="dt-card__tools">
                     <button type="button" class="btn btn-primary btn-sm dt-avatar" id="btnRegresarLista" data-toggle="tooltip" title="Regresar a la Lista">
@@ -131,21 +131,27 @@
                     <div class="card-header">
                         <!-- Tab Navigation -->
                         <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
+                            <div class="col-6"> 
                             <li class="nav-item">
                                 <a class="nav-link  active" id="btnDatosGenerales" data-toggle="tab" 
                                    href="#tab-datos-generales" role="tab" aria-controls="tab-datos-generales"
                                    aria-="true">DATOS GENERALES</a>
                             </li>
+                            </div>
+                            <div class="col-6"> 
                             <li class="nav-item">
                                 <a class="nav-link" id="btnDatosLaborales" data-toggle="tab" 
                                    href="#tab-datos-generales" role="tab" aria-controls="tab-datos-laborales"
                                    aria-="true">DATOS LABORALES</a>
                             </li>
-                            <li class="nav-item">
+                            </div>
+                            <div class="col-12"> 
+                            <li class="nav-item" >
                                 <a class="nav-link" id="btnDatosAcceso" data-toggle="tab" 
                                    href="#tab-datos-acceso" role="tab" aria-controls="tab-datos-acceso"
                                    aria-="true">DATOS DE ACCESO</a>
                             </li>
+                            </div>
                         </ul>
                         <!-- /tab navigation -->
                     </div>
@@ -158,7 +164,7 @@
                             <div id="tab-datos-generales" >
                                 <div class="card-body p-3">
                                     <div class="row">
-                                        <div class="form-group col-lg-4 col-sm-6">
+                                        <div class="form-group col-lg-3 col-sm-4 col-6">
                                             <label for="txtTipoDocumento">TIPO</label>
                                             <select class="form-control form-control-sm" id="txtTipoDocumento">
                                                 <option selected value="1">DNI</option>
@@ -166,12 +172,12 @@
                                                 <option value="3">OTRO</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-lg-4 col-sm-6">
+                                        <div class="form-group col-lg-3 col-sm-4 col-6">
                                             <label for="txtDniPersonal">N° DOCUMENTO</label>
                                             <input class="form-control form-control-sm" id="txtDniPersonal" type="text" placeholder="N° DOCUMENTO">
                                         </div>
 
-                                        <div class="form-group col-lg-4 col-sm-6 mb-3">
+                                        <div class="form-group col-lg-3 col-sm-4 col-6 mb-3">
                                             <label for="txtFechaNaciPersonal">Fecha de Nacimiento</label>
                                             <div class="input-group">
                                                 <input  type="text" class="form-control form-control-sm" id="txtFechaNaciPersonal" placeholder="DD/MM/AAAA">
@@ -180,19 +186,19 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group col-lg-4 col-sm-6 ">
+                                        <div class="form-group col-lg-3 col-sm-4 col-6">
                                             <label for="txtApPaternoPersonal">AP. PATERNO</label>
                                             <input class="form-control form-control-sm" id="txtApPaternoPersonal" type="text" placeholder="AP. PATERNO">
                                         </div>
-                                        <div class="form-group col-lg-4 col-sm-6 ">
+                                        <div class="form-group col-lg-3 col-sm-4 col-6">
                                             <label for="txtApMaternoPersonal">AP. MATERNO</label>
                                             <input class="form-control form-control-sm" id="txtApMaternoPersonal" type="text" placeholder="AP. MATERNO">
                                         </div>
-                                        <div class="form-group col-lg-4 col-sm-6 ">
+                                        <div class="form-group col-lg-3 col-sm-4 col-6">
                                             <label for="txtNombrePersonal">NOMBRES</label>
                                             <input class="form-control form-control-sm" id="txtNombrePersonal" type="text" placeholder="NOMBRES">
                                         </div>
-                                        <div class="form-group col-lg-4 col-sm-6 ">
+                                        <div class="form-group col-lg-3 col-sm-4 col-6">
                                             <label for="txtSexoPersonal">SEXO</label>
                                             <select class="form-control form-control-sm" id="txtSexoPersonal">
                                                 <option selected value="-1">seleccione...</option>
@@ -201,25 +207,25 @@
                                             </select>
                                         </div>
 
-                                        <div class="form-group col-lg-4 col-sm-6 ">
+                                        <div class="form-group col-lg-3 col-sm-4 col-6 mb-3">
                                             <label for="txtCelularPersonal">CELULAR</label>
                                             <div class="input-group input-group-sm mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-primary" ><i class="text-white icon icon-phone-o"></i></span>
                                                 </div>
-                                                <input type="text" class="form-control" id="txtCelularPersonal" aria-label="Small" placeholder="CELULAR">
+                                                <input type="text" class="form-control form-control-sm" id="txtCelularPersonal" aria-label="Small" placeholder="CELULAR">
                                             </div>
                                         </div>
-                                        <div class="form-group col-lg-4 col-sm-6">
+                                        <div class="form-group col-lg-6 col-sm-4">
                                             <label for="txtEmailPersonal">EMAIL</label>
                                             <div class="input-group input-group-sm mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-primary" ><i class="text-white icon icon-mail"></i></span>
                                                 </div>
-                                                <input type="text" class="form-control" id="txtEmailPersonal" aria-label="Small" placeholder="EMAIL">
+                                                <input type="text" class="form-control form-control-sm" id="txtEmailPersonal" aria-label="Small" placeholder="EMAIL">
                                             </div>
                                         </div>
-                                        <div class="form-group col-lg-12 col-sm-6 ">
+                                        <div class="form-group col-lg-6 col-sm-12 ">
                                             <label for="txtDireccionPersonal">DIRECCIÓN</label>
                                             <input class="form-control form-control-sm" id="txtDireccionPersonal" type="text" placeholder="DIRECCIÓN">
                                         </div>
@@ -231,9 +237,10 @@
 
                             <!-- Tab Pane DATOS LABORALES-->
                             <div id="tab-datos-laborales" style="display:none">
+                               
                                 <div class="card-body p-3 ">
 
-                                    <div class="row">
+                                    <div class="row ml-5 mr-5 pr-5 pl-5">
                                         <div class="form-group col-lg-6 col-sm-6 ">
                                             <label for="txtAreaPersonal">ÁREA
                                             </label>
@@ -254,7 +261,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group col-6">
+                                        <div class="form-group col-lg-6 col-sm-6 ">
                                             <label for="txtTipoPersonal">TIPO DE PERSONAL</label>
                                             <select class="form-control form-control-sm" id="txtTipoPersonal">
                                                 <option selected value="-1">Seleccione...</option>
@@ -264,10 +271,10 @@
                                             </select>
                                         </div>
 
-                                        <div class="form-group col-6">
+                                        <div class="form-group col-lg-6 col-sm-6 ">
                                             <label for="txtEstadoPersonal">ESTADO</label>
                                             <select class="form-control form-control-sm" id="txtEstadoPersonal">
-                                                <option selected value="-1">ACTIVO</option>
+                                                <option selected value="-1">Seleccione...</option>
                                                 <option value="1">ACTIVO</option>
                                                 <option value="0">INACTIVO</option>
                                             </select>
@@ -291,11 +298,11 @@
                             <div class="card-body ">
                                 <form id="FrmUsuarioModal"> 
                                     <div class="row">
-                                        <div class="form-group col-6">
+                                        <div class="form-group col-lg-4 col-sm-6">
                                             <label for="txtNombreUsuario">NOMBRE USUARIO</label>
                                             <input class="form-control form-control-sm" id="txtNombreUsuario" type="text" placeholder="NOMBRE USUARIO">
                                         </div>
-                                        <div class="form-group col-6">
+                                        <div class="form-group col-lg-4 col-sm-6 col-6 ">
                                             <label for="txtLoginUsuario">LOGIN </label>
                                             <div class="input-group input-group-sm mb-3">
                                                 <div class="input-group-prepend">
@@ -305,7 +312,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="form-group col-6">
+                                        <div class="form-group col-lg-4 col-sm-6 col-6">
                                             <label for="txtPassUsuario">CONTRASEÑA</label>
                                             <div class="input-group">
                                                 <input class="form-control form-control-sm" id="txtPassUsuario" type="text" placeholder="Ingrese password. . .">
@@ -317,15 +324,8 @@
                                             </div>
 
                                         </div>
-                                        <div class="form-group col-6">
-                                            <label for="txtEstadoUsuario">ESTADO</label>
-                                            <select class="form-control form-control-sm" id="txtEstadoUsuario">
-                                                <option selected value="1">HABILITADO</option>
-                                                <option value="2">DESHABILITADO</option>
-
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-lg-6 col-sm-6 ">
+                                     
+                                        <div class="form-group col-lg-4 col-sm-6 ">
                                             <label for="txtPerfilUsuario">PERFIL
                                             </label>
                                             <div class="input-group">
@@ -335,7 +335,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group col-6">
+                                        <div class="form-group col-lg-4 col-sm-6">
                                             <label for="txtTipoPerfilUsuario">TIPO PERFIL</label>
                                             <select class="form-control form-control-sm" id="txtTipoPerfilUsuario">
                                                 <option selected value="-1">Seleccione...</option>
@@ -350,6 +350,14 @@
                                                 <option value="100">Invitado(solo el inicio)</option>
                                                 <option value="10">Todo el Servicio Médico(enfermeria, medicina, farmacia, obstetricia))</option>
                                                 <option value="11">Psicopedagogia (medicina, psicopedagogia, social)</option>
+
+                                            </select>
+                                        </div>
+                                           <div class="form-group col-lg-4 col-sm-6">
+                                            <label for="txtEstadoUsuario">ESTADO</label>
+                                            <select class="form-control form-control-sm" id="txtEstadoUsuario">
+                                                <option selected value="1">HABILITADO</option>
+                                                <option value="2">DESHABILITADO</option>
 
                                             </select>
                                         </div>

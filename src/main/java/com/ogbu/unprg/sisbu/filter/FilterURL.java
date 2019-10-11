@@ -120,7 +120,7 @@ public class FilterURL implements Filter {
             0.01 -> 01/08/19
          */
         /*
-            0.04 -> 08/10/19
+            0.04 -> 09/10/19
          */
         this.list_resources = new ArrayList<>();
         Resource resource;
@@ -619,6 +619,19 @@ public class FilterURL implements Filter {
         this.list_resources.add(resource);
 
         //MANTENIMIENTOS
+        //ALUMNO
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/mantenimientos/alumnos");
+        resource.setPath("/views/subprojects/app/ogbu/mantenimientos/alumno/alumno.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/mantenimientos/alumno/alumno.js" + version_project,
+            "/views/subprojects/app/ogbu/mantenimientos/alumno/usuario.js" + version_project,
+            "/views/subprojects/app/ogbu/mantenimientos/alumno/escuela_c.js" + version_project,
+            "/views/subprojects/app/ogbu/mantenimientos/alumno/distrito_c.js" + version_project,
+            "/views/subprojects/app/ogbu/mantenimientos/alumno/ciclo_c.js" + version_project
+            
+        });
+        this.list_resources.add(resource);
         //CARGOS
         resource = new Resource();
         resource.setUrl("/app/ogbu/mantenimientos/cargos");

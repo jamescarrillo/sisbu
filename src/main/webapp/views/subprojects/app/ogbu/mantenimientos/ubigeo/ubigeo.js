@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     $("#modalCargandoProvincia").on('shown.bs.modal', function () {
-         processAjaxProvincia();
+        processAjaxProvincia();
     });
 
     $("#sizePageProvincia").change(function () {
@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     $("#modalCargandoDepartamento").on('shown.bs.modal', function () {
-            processAjaxDepartamento();
+        processAjaxDepartamento();
     });
 
     $("#sizePageDepartamento").change(function () {
@@ -242,6 +242,9 @@ function processAjaxDistrito() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestDistrito.operation == "paginate") {
+        if (document.querySelector("#txtFilterNombreDistrito").value != "") {
+            document.querySelector("#pageDistrito").value = 1;
+        }
         parameters_pagination = "?nombre=" + document.querySelector("#txtFilterNombreDistrito").value;
         parameters_pagination += "&page=" + document.querySelector("#pageDistrito").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageDistrito").value;
@@ -394,6 +397,9 @@ function processAjaxProvincia() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestProvincia.operation == "paginate") {
+        if (document.querySelector("#txtFilterNombreProvincia").value != "") {
+            document.querySelector("#pageProvincia").value = 1;
+        }
         parameters_pagination = "?nombre=" + document.querySelector("#txtFilterNombreProvincia").value;
         parameters_pagination += "&page=" + document.querySelector("#pageProvincia").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageProvincia").value;
@@ -553,6 +559,9 @@ function processAjaxDepartamento() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestDepartamento.operation == "paginate") {
+        if (document.querySelector("#txtFilterNombreDepartamento").value != "") {
+            document.querySelector("#pageDepartamento").value = 1;
+        }
         parameters_pagination = "?nombre=" + document.querySelector("#txtFilterNombreDepartamento").value;
         parameters_pagination += "&page=" + document.querySelector("#pageDepartamento").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageDepartamento").value;

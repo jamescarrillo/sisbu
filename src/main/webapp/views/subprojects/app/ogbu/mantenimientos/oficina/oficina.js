@@ -55,6 +55,9 @@ function processAjaxOficina() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestOficina.operation === "paginate") {
+        if (document.querySelector("#txtFilterOficina").value != "") {
+            document.querySelector("#pageOficina").value = 1;
+        }
         parameters_pagination = "?nombre=" + document.querySelector("#txtFilterOficina").value.toUpperCase();
         parameters_pagination += "&page=" + document.querySelector("#pageOficina").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageOficina").value;

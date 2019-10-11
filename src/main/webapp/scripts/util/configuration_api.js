@@ -5,6 +5,6 @@ function getHostAPI(){
 }
 
 function getHostAndContextAPI(){
-   return "http://localhost:8080/sisbu-backend/api/";
-   // return "http://apps.unprg.edu.pe/sisbu-backend/api/";
+    return "http://localhost:8080/sisbu-backend/api/";
+  //return "http://apps.unprg.edu.pe/sisbu-backend/api/";
 }

@@ -2,6 +2,7 @@ var beanPaginationPersonal;
 var personalSelected;
 var areaSelected;
 var cargoSelected;
+
 var perfilSelected;
 var beanRequestPersonal = new BeanRequest();
 document.addEventListener("DOMContentLoaded", function () {
@@ -39,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#btnOpenNewPersonal").onclick = function () {
+        document.querySelector('#btnDatosLaborales').style.display = 'block';
+        document.querySelector('#btnDatosGenerales').style.display = 'block';
+        document.querySelector('#btnDatosAcceso').style.display = 'none';
         //CONFIGURAMOS LA SOLICITUD
         beanRequestPersonal.operation = "add";
         beanRequestPersonal.type_request = "POST";
@@ -46,6 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestUsuario.type_request = "POST";
         //LIMPIAR LOS CAMPOS
         limpiarInput();
+        limpiarInputUsuario();
+        viewDatosGenerales();
         //SET TITLE MODAL
         document.querySelector("#txtTituloModalPersonal").innerHTML = "REGISTRAR DATOS";
         //OPEN MODEL
@@ -55,7 +61,12 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     $("#modalCargandoPersonal").on('shown.bs.modal', function () {
-        processAjaxPersonal();
+        if (beanRequestUsuario.operation == "add") {
+            processAjaxUsuario();
+        }
+        if (beanRequestPersonal.operation != "add") {
+            processAjaxPersonal();
+        }
     });
 
     $('#modalCargandoPersonal').modal('show');
@@ -67,28 +78,26 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('#btnRegresarLista').onclick = function () {
         document.querySelector('#btnOpenPersonalDetalle').style.display = 'none';
         document.querySelector('#btnListaPersonal').style.display = 'block';
+        beanRequestPersonal.operation = "paginate";
+        beanRequestPersonal.type_request = "GET";
+        beanRequestUsuario.operation="get-user";
+         beanRequestUsuario.type_request = "GET";
+        $('#modalCargandoPersonal').modal('show');
     };
 
-    
 
     document.querySelector('#btnDatosGenerales').onclick = function () {
         viewDatosGenerales();
 
     };
-    document.querySelector('#btnDatosAcceso').onclick = function () {
-         $('#modalCargandoUsuario').modal('show');
-        viewDatosAcceso();
 
-    };
     document.querySelector('#btnDatosLaborales').onclick = function () {
         viewDatosLaborales();
     };
-
     document.querySelector("#txtDniPersonal").onkeyup = function () {
         document.querySelector("#txtLoginUsuario").value = document.querySelector("#txtDniPersonal").value;
         document.querySelector("#txtPassUsuario").value = document.querySelector("#txtDniPersonal").value;
     };
-
     document.querySelector("#txtNombrePersonal").onkeyup = function () {
         document.querySelector("#txtNombreUsuario").value = document.querySelector("#txtNombrePersonal").value;
     };
@@ -100,6 +109,9 @@ function processAjaxPersonal() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestPersonal.operation == "paginate") {
+        if (document.querySelector("#txtFilterDniPersonal").value!="") {
+           document.querySelector("#pagePersonal").value=1; 
+        }
         parameters_pagination = "?filter=" + document.querySelector("#txtFilterDniPersonal").value;
         parameters_pagination += "&cargo=0&estado=" + document.querySelector("#txtFilterEstadoPersonal").value;
         parameters_pagination += "&page=" + document.querySelector("#pagePersonal").value;
@@ -110,7 +122,7 @@ function processAjaxPersonal() {
         parameters_pagination = "";
         if (beanRequestPersonal.operation == "delete") {
             parameters_pagination = "/" + personalSelected.idpersonal;
-            json = {};
+           
         } else {
             json = {
                 "apellido_pat": document.querySelector("#txtApPaternoPersonal").value,
@@ -126,7 +138,8 @@ function processAjaxPersonal() {
                 "tipo_documento": document.querySelector("#txtTipoDocumento").value,
                 "tipo_personal": document.querySelector("#txtTipoPersonal").value,
                 "cargo": cargoSelected,
-                "area": areaSelected
+                "area": areaSelected,
+                "usuario": {"idusuario": usuarioSelected.idusuario}
             };
             if (beanRequestPersonal.operation == "update") {
                 json.idpersonal = personalSelected.idpersonal;
@@ -165,47 +178,6 @@ function processAjaxPersonal() {
     });
 }
 
-function toListPersonalER(beanPagination) {
-    document.querySelector("#tbodyPersonal").innerHTML = "";
-    document.querySelector("#titleManagerPersonal").innerHTML = "[ " + beanPagination.count_filter + " ] PERSONAL";
-    if (beanPagination.count_filter > 0) {
-        let row;
-        beanPagination.list.forEach(personal => {
-            row = "<tr ";
-            row += "idpersonal='" + personal.idpersonal + "' ";
-            row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item editar-personal' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-info icon icon-editors'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-personal' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class=' text-danger icon icon-trash-filled'></i></a></li>";
-            row += "</ul></td>";
-            row += "<td class='align-middle'>" + personal.dni + "</td>";
-            row += "<td class='align-middle'>" + personal.apellido_pat + " " + personal.apellido_mat + " " + personal.nombre + "</td>";
-            row += "<td class='align-middle'>" + personal.cargo.nombre + "</td>";
-            row += "<td class='align-middle'>" + personal.area.nombre + "</td>";
-            row += "<td class='align-middle " + tipoPersonalColor(personal.tipo_personal) + "'>" + tipoPersonal(personal.tipo_personal) + "</td>";
-            row += "</tr>";
-            document.querySelector("#tbodyPersonal").innerHTML += row;
-        });
-        buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePagePersonal").value),
-                document.querySelector("#pagePersonal"),
-                $('#modalCargandoPersonal'),
-                $('#paginationPersonal'));
-        addEventsPersonales();
-        if (beanRequestPersonal.operation == "paginate") {
-            document.querySelector("#txtFilterDniPersonal").focus();
-        }
-        $('[data-toggle="tooltip"]').tooltip();
-    } else {
-        destroyPagination($('#paginationPersonal'));
-        showAlertTopEnd('warning', 'No se encontraron resultados');
-        document.querySelector("#txtFilterDniPersonal").focus();
-    }
-}
-
 function toListPersonal(beanPagination) {
     document.querySelector("#tbodyPersonal").innerHTML = "";
     document.querySelector("#titleManagerPersonal").innerHTML = "[ " + beanPagination.count_filter + " ] PERSONAL";
@@ -219,7 +191,10 @@ function toListPersonal(beanPagination) {
             row += "<a class='text-light-gray editar-personal' data-toggle='tooltip' title='Editar' href='javascript:void(0)'>";
             row += "<i class='text-info icon icon-editors'></i></a></div>";
             row += "<div class='slide-content'>";
-            row += "<a class='text-light-gray editar-personal' data-toggle='tooltip' title='Eliminar'' href='javascript:void(0)'>";
+            row += "<a class='text-light-gray acceso-personal' data-toggle='tooltip' title='Restaurar Contraseña de Usuario' href='javascript:void(0)'>";
+            row += "<i class='text-primary icon icon-user'></i></a></div>";
+            row += "<div class='slide-content'>";
+            row += "<a class='text-light-gray eliminar-personal' data-toggle='tooltip' title='Eliminar' href='javascript:void(0)'>";
             row += "<i class='text-danger icon icon-trash-filled'></i></a></div></div>";
 
             row += "<div class='text-truncate mr-2' style='min-width:50px;width:15%;'>";
@@ -263,31 +238,68 @@ function addEventsPersonales() {
             if (personalSelected != undefined) {
                 beanRequestPersonal.operation = "update";
                 beanRequestPersonal.type_request = "PUT";
-               
+                beanRequestUsuario.operation = "get-user";
+                beanRequestUsuario.type_request = "GET";
+
+
                 //SET VALUES MODAL
                 agregarInput(personalSelected);
-                usuarioSelected=personalSelected.usuario;
-              
-                
+                usuarioSelected = personalSelected.usuario;
+                document.querySelector('#btnDatosLaborales').style.display = 'block';
+                document.querySelector('#btnDatosGenerales').style.display = 'block';
+                document.querySelector('#btnDatosAcceso').style.display = 'none';
+                viewDatosGenerales();
                 //SET TITLE MODAL
                 document.querySelector("#txtTituloModalPersonal").innerHTML = "ACTUALIZAR DATOS";
                 //OPEN MODEL
                 document.querySelector("#btnListaPersonal").style.display = "none";
                 document.querySelector("#btnOpenPersonalDetalle").style.display = "block";
 
-                //document.querySelector("#txtDecripcionPersonal").focus();
+                document.querySelector("#txtTipoDocumento").focus();
             } else {
                 showAlertTopEnd('warning', 'No se encontró el Personal para poder editar');
             }
+        };
+    });
+    document.querySelectorAll('.acceso-personal').forEach(btn => {
+        //AGREGANDO EVENTO CLICK
+        btn.onclick = function () {
+            personalSelected = findByPersonal(btn.parentElement.parentElement.getAttribute('idpersonal'));
+            if (personalSelected != undefined) {
+                usuarioSelected = personalSelected.usuario;
+                console.log(usuarioSelected);
+                beanRequestUsuario.operation = "get-user";
+                beanRequestUsuario.type_request = "GET";
+                console.log(beanRequestUsuario);
+                $('#modalCargandoUsuario').modal('show');
+                viewDatosAcceso();
+                document.querySelector('#btnDatosLaborales').style.display = 'none';
+                document.querySelector('#btnDatosGenerales').style.display = 'none';
+                document.querySelector('#btnDatosAcceso').style.display = 'block';
+                //SET TITLE MODAL
+                document.querySelector("#txtTituloModalPersonal").innerHTML = "ACTUALIZAR DATOS DE USUARIO";
+                //OPEN MODEL
+                document.querySelector("#btnListaPersonal").style.display = "none";
+                document.querySelector("#btnOpenPersonalDetalle").style.display = "block";
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Personal para poder editar');
+            }
+
         };
     });
     document.querySelectorAll('.eliminar-personal').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
             personalSelected = findByPersonal(btn.parentElement.parentElement.getAttribute('idpersonal'));
-            beanRequestPersonal.operation = "delete";
-            beanRequestPersonal.type_request = "DELETE";
-            $('#modalCargandoPersonal').modal('show');
+            if (personalSelected != undefined) {
+                beanRequestPersonal.operation = "delete";
+                beanRequestPersonal.type_request = "DELETE";
+                $('#modalCargandoPersonal').modal('show');
+
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Personal para poder eliminar');
+            }
+
         };
     });
 }
@@ -453,27 +465,28 @@ function agregarInput(personal) {
 }
 
 function viewDatosGenerales() {
-    document.querySelector('#btnDatosLaborales').classList.remove = 'active';
-    document.querySelector('#btnDatosAcceso').classList.remove = 'active';
-    document.querySelector('#btnDatosGenerales').classList.add = 'active';
+    document.querySelector('#btnDatosAcceso').classList.remove('active');
+    document.querySelector('#btnDatosLaborales').classList.remove('active');
+    document.querySelector('#btnDatosGenerales').classList.add('active');
 
     document.querySelector('#tab-datos-laborales').style.display = 'none';
     document.querySelector('#tab-datos-acceso').style.display = 'none';
     document.querySelector('#tab-datos-generales').style.display = 'block';
 }
 function viewDatosLaborales() {
-    document.querySelector('#btnDatosAcceso').classList.remove = 'active';
-    document.querySelector('#btnDatosGenerales').classList.remove = 'active';
-    document.querySelector('#btnDatosLaborales').classList.add = 'active';
+    document.querySelector('#btnDatosAcceso').classList.remove('active');
+    document.querySelector('#btnDatosGenerales').classList.remove('active');
+    ;
+    document.querySelector('#btnDatosLaborales').classList.add('active');
 
     document.querySelector('#tab-datos-acceso').style.display = 'none';
     document.querySelector('#tab-datos-generales').style.display = 'none';
     document.querySelector('#tab-datos-laborales').style.display = 'block';
 }
 function viewDatosAcceso() {
-    document.querySelector('#btnDatosLaborales').classList.remove = 'active';
-    document.querySelector('#btnDatosGenerales').classList.remove = 'active';
-    document.querySelector('#btnDatosAcceso').classList.add = 'active';
+    document.querySelector('#btnDatosLaborales').classList.remove('active');
+    document.querySelector('#btnDatosGenerales').classList.remove('active');
+    document.querySelector('#btnDatosAcceso').classList.add('active');
 
     document.querySelector('#tab-datos-generales').style.display = 'none';
     document.querySelector('#tab-datos-laborales').style.display = 'none';

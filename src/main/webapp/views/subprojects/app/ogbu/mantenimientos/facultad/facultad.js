@@ -118,6 +118,9 @@ function processAjaxFacultad() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestFacultad.operation == "paginate") {
+          if (document.querySelector("#txtFilterNombreFacultad").value!="") {
+           document.querySelector("#pageFacultad").value=1; 
+        }
         parameters_pagination = "?nombre=" + document.querySelector("#txtFilterNombreFacultad").value;
         parameters_pagination += "&page=" + document.querySelector("#pageFacultad").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageFacultad").value;
