@@ -67,29 +67,54 @@
                 <div class="tab-content">
                     <!-- Tab OPENMENU -->
                     <div id="tab-pane-OpenNewMenuSemanal" class="tab-pane ">
-
-                        <div class="dt-card__tools text-center pt-2">
-                            <!-- Toggle Button -->
-                            <a href="javascript:void(0)"  class="btn btn-primary dt-fab-btn shadow-lg mt-n2"id="regresar-central">
-                                <span class="show"><i class="icon icon-chevrolet-left"></i></span>
-                            </a>
-                            <!-- /toggle button -->
-                        </div>
                         <form id="FrmMenuSemanalModal">
                             <div class="row  pt-5 mt-2 ">
-                                <div class="form-group col-lg-6 col-sm-6">
-                                    <label for="txtTipoMenuSemanal">DÍA DE LA SEMANA INICIAL (LUNES)</label>
-                                    <input class="form-control btn-sm" placeholder="Filter..." id="txtMenuSemanalFechaI"  type="date">
+                                <div class="dt-card__header col-12 mb-3 pt-0">
+                                    <!-- Card Tools -->
+                                    <div class="dt-card__tools">
+                                        <button data-toggle="tooltip" title="Regresar" type="button" id="regresar-central" class="btn btn-outline-primary btn-sm dt-avatar" > 
+                                            <i class="icon icon-reply icon-lg"></i></button>
+                                    </div>
+                                    <!-- /card tools -->
+                                    <!-- Card Heading -->
+                                    <div class="dt-card__heading ">
+                                        <h3 id="titleManagerMenu"   class="dt-card__title  text-primary text-center">MENU SEMANAL</h3>
+                                    </div>
+                                    <!-- /card heading -->
+                                     <!-- Card Tools -->
+                                    <div class="dt-card__tools">
+                                        <button data-toggle="tooltip" title="Eliminar Menu Semanal" 
+                                                type="button" id="btneliminar-menu" style="display: none"
+                                                class="btn btn-danger btn-sm dt-avatar eliminar-menu" > 
+                                            <i class="icon icon-trash-filled icon-lg"></i></button>
+                                    </div>
+                                    <!-- /card tools -->
                                 </div>
-
-                                <div class="form-group col-lg-6 col-sm-6">
-                                    <label for="txtTipoMenuSemanal">DÍA DE LA SEMANA FINAL (VIERNES)</label>
-                                    <input class="form-control btn-sm" placeholder="Filter..." id="txtMenuSemanalFechaF"  type="date">
-                                </div>
-                                <div class="form-group col-lg-12 col-xs-12">
-                                    <label for="txtTipoMenuSemanal">OBSERVACIÓN</label>
+                                <div class="form-group col-lg-12 col-xs-12"id="borrarObservacion">
+                                    <label for="txtMenuSemanalObservacion" >OBSERVACIÓN</label>
                                     <input class="form-control btn-sm" placeholder="OBSERVACION" id="txtMenuSemanalObservacion"  type="text">
                                 </div>
+                                <div class="form-group col-lg-6 col-sm-6">
+                                    <label for="txtMenuSemanalFechaI">DÍA DE LA SEMANA FINAL (VIERNES)</label>
+                                    <div class="input-group">
+                                        <input  type="text" class="form-control form-control-sm" id="txtMenuSemanalFechaI" placeholder="DD/MM/AAAA">
+                                        <div class="input-group-append">
+                                            <button type="button" id="btnEliminarFechaI" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6 col-sm-6">
+                                    <label for="txtMenuSemanalFechaF">DÍA DE LA SEMANA FINAL (VIERNES)</label>
+                                    <div class="input-group">
+                                        <input  type="text" class="form-control form-control-sm" id="txtMenuSemanalFechaF" placeholder="DD/MM/AAAA">
+                                        <div class="input-group-append">
+                                            <button type="button" id="btnEliminarFechaF" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
 
                             </div>
 
@@ -98,29 +123,8 @@
                                 <!-- Card Body -->
                                 <div class="dt-card__body p-0 ps ps--active-y">
                                     <!-- Widget -->
-                                    <div class="dt-widget  text-light-gray">
-                                        <div class="dt-widget__item bg-primary ">
-                                            <div class="dt-widget__info "  style="margin-right: -20%;">
-                                                <div class="dt-widget__title text-white">
-                                                    FECHA
-                                                </div>
-                                            </div>
-                                            <div class="dt-widget__info ">
-                                                <div class="dt-widget__title text-white">
-                                                    DESAYUNO
-                                                </div>
-                                            </div>
-                                            <div class="dt-widget__info ">
-                                                <div class="dt-widget__title text-white">
-                                                    ALMUERZO
-                                                </div>
-                                            </div>
-                                            <div class="dt-widget__info ">
-                                                <div class="dt-widget__title text-white">
-                                                    CENA
-                                                </div>
-                                            </div>
-
+                                    <div class="dt-widget  text-light-gray" >
+                                        <div class="" id="theadMenuSemanal">
                                         </div>
 
                                         <div id="tbodyCronograma" class="dt-widget dt-widget-hover-bg text-light-gray">
@@ -139,53 +143,6 @@
                     </div>
                     <!-- /tab pane-->
 
-                    <!-- Tab OPENLISTA-->
-                    <div id="tab-pane-OpenBuscaMenuSemanal" class="tab-pane ">
-                        <div class="dt-card__tools text-center pt-2 mb-4">
-                            <!-- Toggle Button -->
-                            <a href="javascript:void(0)"  class="btn btn-primary dt-fab-btn shadow-lg mt-n2 " id="regresar-central2">
-                                <span class="show"><i class="icon icon-chevrolet-left"></i></span>
-                            </a>
-                            <!-- /toggle button -->
-                        </div>
-
-                        <form id="FrmMenuSemanal">
-                            <div class="input-group">
-                                <input class="form-control btn-sm" placeholder="Filter..." id="txtFilterFechaI"  type="date">
-                                <input class="form-control btn-sm" placeholder="Filter..." id="txtFilterFechaF"  type="date">
-                                <button type="submit" class="btn btn-primary btn-sm mr-1 mb-0"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-
-                            </div>
-                        </form>
-
-                        <!-- /tab pane-->
-                        <div class="dt-card dt-card__full-height mt-5">
-                            <!-- Card Body -->
-                            <div class="dt-card__body p-0 ">
-                                <!-- Widget -->
-                                <div class="dt-widget dt-widget-hover-bg text-light-gray ">
-                                    <!-- Tables -->
-                                    <div class="table-responsive ps-custom-scrollbar ps ps--active-y">
-
-                                        <table class="table mb-0">
-                                            <thead id="theadMenuSemanal">
-
-                                            </thead>
-                                            <tbody id="tbodyMenuSemanal">
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /tables -->
-
-                                </div>
-                                <!-- /widget -->
-                                <!-- /card body -->
-                            </div>
-                        </div>
-                        <!-- /tab pane-->
-
-                    </div>
-                    <!-- /tab content -->
                 </div>
             </div>
             <!-- fin -->
@@ -196,9 +153,7 @@
 
 <!-- Card -->
 <div class="card pt-5" id="OpenComidaDiaria" style="display:none">
-
     <h3 id="title-comida-diaria" class="text-center text-info">DIA ACTUAL</h3>
-
     <!-- Card Header -->
     <div class="card-header">
         <!-- Tab Navigation -->
@@ -226,7 +181,6 @@
 
     <!-- Tab Content -->
     <div class="tab-content ">
-
         <!-- Tab DESAYUNO -->
         <div id="tab-pane-15" class="tab-pane show active">
             <div class="pt-4 pr-1 pl-1">
@@ -341,17 +295,12 @@
     <!-- /tab content -->
 
     <div class="form-group col-lg-12 text-center">
-         <button type="button" class="btn btn-outline-primary btn-sm" id="btnRegresarMenu"><i class="icon icon-reply"></i> CANCELAR</button>
-        <button type="button" class="btn btn-primary btn-sm" id="btnGuardarAddMenus">Guardar</button>
+        <button type="button" class="btn btn-outline-primary btn-sm" id="btnRegresarMenu"><i class="icon icon-reply"></i> CANCELAR</button>
+
     </div>  
 
 </div>
 <!-- /card -->
-
-
-
-
-
 
 
 <div class="modal fade" id="modalCargandoMenuSemanal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">

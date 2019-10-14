@@ -254,6 +254,7 @@ function addEventsPersonales() {
                 document.querySelector('#btnDatosGenerales').style.display = 'block';
                 document.querySelector('#btnDatosAcceso').style.display = 'none';
                 viewDatosGenerales();
+               
                 //SET TITLE MODAL
                 document.querySelector("#txtTituloModalPersonal").innerHTML = "ACTUALIZAR DATOS";
                 //OPEN MODEL

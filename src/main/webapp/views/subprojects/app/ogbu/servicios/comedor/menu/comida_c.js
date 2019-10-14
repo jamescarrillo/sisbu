@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function processAjaxComidac() {
-    console.log("jodete");
+    
     let parameters_pagination = "";
     let json = "";
     let url_request = getHostAPI() + beanRequestComidac.entity_api + "/" + beanRequestComidac.operation;
@@ -123,7 +123,6 @@ function processAjaxComidac() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
         $('#modalCargandoSelectedComidac').modal("hide");
         if (beanCrudResponse.beanPagination !== undefined) {
             beanPaginationComidac = beanCrudResponse.beanPagination;
