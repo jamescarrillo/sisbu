@@ -145,7 +145,7 @@ function processAjaxAtendido() {
 
 function toListAtendido(beanPagination) {
     document.querySelector("#tbodyAtendido").innerHTML = "";
-    document.querySelector("#titleManagerAtendido").innerHTML = "[ " + beanPagination.count_filter + " ] USUARIOS";
+    document.querySelector("#titleManagerAtendido").innerHTML = "[ " + beanPagination.count_filter + " ] ATENDIDOS";
 
     if (beanPagination.count_filter > 0) {
         let row;
@@ -183,7 +183,7 @@ function toListAtendido(beanPagination) {
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
             row += atendido.email + "</p></div>";
 
-            row += "<div class='text-truncate' style='min-width:60px; max-width:15%;'>";
+            row += "<div class='text-truncate' style='min-width:60px; max-width:20%;'>";
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
             row += atendido.escuela.nombre + "</p></div>";
 

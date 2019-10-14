@@ -27,14 +27,14 @@
                     </div>
                 </form>
                 <!-- Tables -->
-                <div class="table-responsive">
+                <div class="table-responsive mt-3">
                     <table class="table mb-0">
-                        <thead>
+                        <thead class="bg-primary ">
                             <tr> 
-                                <th class="text-uppercase text-center" scope="col"  style="width: 10%">ACCION</th>
-                                <th class="text-uppercase" scope="col" >FACULTAD</th>
-                                <th class="text-uppercase" scope="col" >ABREVIADO</th>
-                                <th class="text-uppercase text-center" scope="col" >ESCUELA</th>
+                                <th class="text-uppercase text-center text-white pt-4 pb-2" scope="col"  style="width: 10%">ACCION</th>
+                                <th class="text-uppercase text-white pt-4 pb-2" scope="col" >FACULTAD</th>
+                                <th class="text-uppercase text-white pt-4 pb-2" scope="col" >ABREVIADO</th>
+                                <th class="text-uppercase text-center text-white pt-4 pb-2" scope="col" >ESCUELA</th>
                             </tr>
                         </thead>
                         <tbody id="tbodyFacultad">
@@ -87,8 +87,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" id="btnGuardar" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">CANCELAR</button>
+                    <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm">GUARDAR</button>
                 </div>
             </form>
         </div>
@@ -144,7 +144,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">CANCELAR</button>
             </div>
         </div>
     </div>
@@ -174,8 +174,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" id="btnGuardarEscuela" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">i class="icon icon-reply"></i> CANCELAR</button>
+                    <button type="submit" id="btnGuardarEscuela" class="btn btn-primary btn-sm">GUARDAR</button>
                 </div>
             </form>
         </div>

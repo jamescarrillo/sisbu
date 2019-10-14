@@ -20,11 +20,11 @@
             <div class="card-body pt-0">
                 <form id="FrmAtendido">
                     <div class="input-group search-box" style="max-width: 100%;">
-                        <input type="text" id="txtFilterAtendido" class="form-control form-control-sm" placeholder="Filter...">
+                        <input type="text" id="txtFilterAtendido" class="form-control form-control-sm" placeholder="Filter DNI...">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewAtendido" data-toggle="tooltip" title="Agregar " ><i class="icon icon-plus icon-fw"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm " style="display:none" id="btnOpenNewAtendido" data-toggle="tooltip" title="Agregar " ><i class="icon icon-plus icon-fw"></i></button>
                     </div>
                 </form>
                 <!-- Tables -->
@@ -32,38 +32,38 @@
                 <div class=" pb-4 ">
 
                     <!-- Card Header -->
-                    <div class="dt-card__header mb-3">
+                    <div class="dt-card__header p-0 pt-3 mb-3">
 
                         <!-- Card Heading -->
                         <div class="dt-card__heading">
 
                             <!-- Widget Item -->
-                            <div class="dt-widget__item border-bottom" >
+                            <div class="dt-widget__item border-bottom bg-primary " >
 
                                 <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">DNI</h3>
+                                <div class="dt-widget__info text-truncate  pl-5">
+                                    <h3 class="dt-card__title text-white">DNI</h3>
                                 </div>
                                 <!-- /widget info -->
 
                                 <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">USUARIO</h3>
+                                <div class="dt-widget__info text-truncate ">
+                                    <h3 class="dt-card__title text-white">NOMBRE COMPLETO</h3>
                                 </div>
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">F. NACIMIENTO</h3>
+                                    <h3 class="dt-card__title text-white">F. NACIMIENTO</h3>
                                 </div>
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">EMAIL</h3>
+                                    <h3 class="dt-card__title text-white">EMAIL</h3>
                                 </div>
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">ESCUELA</h3>
+                                    <h3 class="dt-card__title text-white">ESCUELA</h3>
                                 </div>
                                 <!-- /widget info -->
                             </div>
@@ -281,9 +281,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 text-left mt-3">
+                    <div class="col-lg-12 text-center mt-3">
                         <button type="button" id="btnRegresar" class="btn btn-outline-primary btn-sm" ><i class="icon icon-reply"></i> CANCELAR</button>
-                        <button type="submit" class="btn btn-outline-primary btn-sm" id="btnGuardarPersonales">ACTUALIZAR DATOS</button>
+                        <button type="submit" class="btn btn-primary btn-sm" id="btnGuardarPersonales">ACTUALIZAR DATOS</button>
                     </div> 
 
                 </div>

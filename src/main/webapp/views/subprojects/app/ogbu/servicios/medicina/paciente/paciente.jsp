@@ -19,8 +19,10 @@
                 <form id="FrmPaciente">
                     <div class="input-group search-box" style="max-width: 100%;">
                         <input type="search" id="txtFilterPaciente" class="form-control form-control-sm" placeholder="FILTRO. . .">
-                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                        <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                        <div class="input-group-append">
+                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                            <button type="submit" class="btn btn-primary btn-sm "><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                        </div>
                     </div>
                 </form>
                 <!-- Tables -->
@@ -66,6 +68,10 @@
             <div class="card-header">
                 <!-- Tab Navigation -->
                 <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
+                    <li class="pr-2">
+                        <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar" class="btn btn-outline-primary btn-sm dt-avatar" > 
+                            <i class="icon icon-reply icon-lg" ></i></button>
+                    </li>
                     <li class="nav-item">
                         <a id="buttonFiliacion" class="nav-link show active" data-toggle="tab" 
                            href="#tab-pane-15" role="tab" aria-controls="tab-pane-15"
@@ -215,7 +221,12 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtHistoriaPaciente">N° HISTORIA</label>
-                                    <input disabled type="text" class="bg-primary text-white form-control form-control-sm" id="txtHistoriaPaciente" placeholder="N° HISTORIA">
+                                    <div class="input-group">
+                                        <div class="input-group-append">
+                                            <button type="button"  class="btn btn-primary btn-sm"><i class="fa fa-file-alt"></i></button>
+                                        </div>
+                                        <input disabled type="text" class="form-control form-control-sm" id="txtHistoriaPaciente" placeholder="N° HISTORIA">
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6">
@@ -229,15 +240,13 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="col-lg-4 col-sm-6 " >
-                                <label for="txtMedicoPaciente">MÉDICO</label>
-                                <div class="search-box " style="max-width: 100%;">
-                                    <div class="input-group">
-                                        <input class="form-control form-control-sm" placeholder="Seleccione ..." id="txtFilterMedico"  type="search">
-                                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                    </div>
-                                    <div id="resultadoMedico" class="list-group position-absolute w-100 bg-light overflow-auto" style="z-index:2;max-height: 85px;"> 
+                            <div class="col-lg-4 col-sm-6 ">
+                                <label for="txtMedicoPaciente">MÉDICO
+                                </label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control form-control-sm" id="txtMedicoPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                    <div class="input-group-append">
+                                        <button type="button" id="btnSeleccionarDoctor" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -262,7 +271,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 text-center">
-                                <button type="submit" id="btnGuardarPaciente" class="btn btn-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
+                                <button type="submit" id="btnGuardarPaciente" class="btn btn-primary btn-sm">GUARDAR</button>
                             </div>  
                         </div>   
                     </form>
@@ -271,18 +280,20 @@
 
                 <!-- Tab DIAGNOSTICO -->
                 <div id="tab-pane-17" class="tab-pane ">
-                    <div class="form-group form-row">
-                        <div class="col-11 text-center">
-                            <label id="titleManagerDiagnostico" for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE DIAGNÓSTICOS</label>
+                    <div class="dt-card__header mb-0 p-0 pt-5 pb-5">
+                        <!-- Card Heading -->
+                        <div class="dt-card__heading">
+                            <h3 id="titleManagerDiagnostico"  class="dt-card__title  text-primary text-center">LISTA DE DIAGNÓSTICOS</h3>
                             <input type="hidden" id="pageDiagnostico" value="1">
                         </div>
-
-                        <div class="float-right">
-                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewDiagnosticoPaciente"><i class="icon icon-plus icon-fw"></i></button>
+                        <!-- /card heading -->
+                        <!-- Card Tools -->
+                        <div class="dt-card__tools">
+                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewDiagnosticoPaciente" data-toggle="tooltip" title="Agregar Diagnóstico"><i class="icon icon-addnew"></i> </button>
                         </div>
+                        <!-- /card tools -->
                     </div>
-
-                    <div class="form-group col-12 ">
+                    <div class="form-group ">
                         <!-- Tables -->
                         <div class="table-responsive">
                             <table class="table mb-0">
@@ -321,9 +332,7 @@
                 </div>
                 <!-- /tab pane-->
 
-                <div class="col-lg-12 text-left">
-                    <button type="button" id="btnCerrar" class="btn btn-outline-primary btn-sm" > <i class="icon icon-reply icon-lg"></i> CANCELAR</button>
-                </div> 
+                 
             </div>
             <!-- /tab content -->
 
@@ -464,15 +473,11 @@
                                 <textarea class="form-control " id="txtTtoPaciente" rows="3" placeholder="Tto"></textarea>
                             </div>
                         </div>
-
-
                     </div>
-
                 </div>
-
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" class="btn btn-outline-primary btn-sm" id="btnGuardarAddMenus">Guardar</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal"><i class="icon icon-reply"></i> CANCELAR</button>
+                    <button type="submit" class="btn btn-primary btn-sm" id="btnGuardarAddMenus">GUARDAR</button>
                 </div>
             </form>
         </div>
@@ -514,6 +519,96 @@
                 <div class="progress" style="margin-bottom: 0px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Cargando Historia. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--T: DOCTOR SELECTED-->
+<div id="ventanaModalSelectedDoctorC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerDoctorC"><strong>[ 0 ]
+                        MÉDICO</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageDoctorC"
+                               value="1">
+                        <form id="FrmDoctorC">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterDoctorC"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarDoctorC"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5 mb-2">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Doctor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyDoctorC">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2" style="display: none">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePageDoctorC"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="5">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationDoctorC"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionDoctorC"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-doctorc" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoSelectedDoctorC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando doctores. . .
                     </div>
                 </div>
             </div>

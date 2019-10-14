@@ -40,7 +40,13 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#modalCargandoOficina").on('shown.bs.modal', function () {
         processAjaxOficina();
     });
-
+    $("#ventanaModalOficina").on('hidden.bs.modal', function () {
+        beanRequestOficina.operation = "paginate";
+        beanRequestOficina.type_request = "GET";
+    });
+    $("#sizePageOficina").change(function () {
+        $('#modalCargandoOficina').modal('show');
+    });
     $('#modalCargandoOficina').modal('show');
 
 });
@@ -49,16 +55,24 @@ function processAjaxOficina() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestOficina.operation === "paginate") {
+        if (document.querySelector("#txtFilterOficina").value != "") {
+            document.querySelector("#pageOficina").value = 1;
+        }
         parameters_pagination = "?nombre=" + document.querySelector("#txtFilterOficina").value.toUpperCase();
         parameters_pagination += "&page=" + document.querySelector("#pageOficina").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageOficina").value;
     } else {
         parameters_pagination = "";
-        json = {
-            "nombre": document.querySelector("#txtNombreOficinaER").value
-        };
-        if (beanRequestOficina.operation === "update") {
-            json.idoficina = oficinaSelected.idoficina
+        if (beanRequestOficina.operation == "delete") {
+            parameters_pagination = "/" + oficinaSelected.idoficina;
+            json = {};
+        } else {
+            json = {
+                "nombre": document.querySelector("#txtNombreOficinaER").value
+            };
+            if (beanRequestOficina.operation === "update") {
+                json.idoficina = oficinaSelected.idoficina;
+            }
         }
     }
     $.ajax({
@@ -98,13 +112,23 @@ function toListOficina(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(oficina => {
-            row = "<tr ";
-            row += "idoficina='" + oficina.idoficina + "' ";
-            row += ">";
-            row += "<td class='align-middle'>" + oficina.nombre + "</td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-primary btn-xs editar-oficina' data-toggle='tooltip' title='Editar'><i class='icon icon-editors icon-sisbu'></i></button></td>";
-            row += "<td class='text-center align-middle'><button class='btn btn-outline-primary btn-xs eliminar-oficina' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-sisbu'></i></button></td>";
-            row += "</tr>";
+            row = "<div class='dt-widget__item border-bottom'>";
+            row += "<div class='dt-extra animate-slide align-self-center mr-5' idoficina='" + oficina.idoficina + "'>";
+            row += "<span class='badge badge-info badge-circle-animate badge-pill badge-sm align-text-top mr-2'>"
+            row += "<a class='text-light-gray editar-oficina' data-toggle='tooltip' title='Editar' href='javascript:void(0)'>";
+            row += "<i class='text-white icon icon-editors'></i></a>";
+            row += "</span>";
+            row += "<span class='badge badge-danger badge-circle-animate badge-pill badge-sm align-text-top'>";
+            row += "<a class='text-light-gray eliminar-oficina' data-toggle='tooltip' title='ELiminar' href='javascript:void(0)'>";
+            row += "<i class='text-white icon icon-trash-filled'></i></a>";
+            row += "</span>";
+            row += "</div>";
+
+            row += "<div class=' text-truncate '  style='min-width:230px; max-width:50%;'>";
+            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
+            row += oficina.nombre + "</p></div>";
+
+            row += "</div>";
             document.querySelector("#tbodyOficina").innerHTML += row;
         });
         buildPagination(
@@ -138,6 +162,21 @@ function addEventsOficinaes() {
                 document.querySelector("#txtTituloModalMan").innerHTML = "EDITAR ÁREA DE ATENCIÓN";
                 $('#ventanaModalOficina').modal("show");
                 document.querySelector("#txtNombreOficinaER").focus();
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Oficina para poder editar');
+            }
+        };
+    });
+    document.querySelectorAll('.eliminar-oficina').forEach(btn => {
+        //AGREGANDO EVENTO CLICK
+        btn.onclick = function () {
+            oficinaSelected = findByOficina(btn.parentElement.parentElement.getAttribute('idoficina'));
+            if (oficinaSelected != undefined) {
+                beanRequestOficina.operation = "delete";
+                beanRequestOficina.type_request = "DELETE";
+                //SET VALUES MODAL
+
+                $('#modalCargandoOficina').modal("show");
             } else {
                 showAlertTopEnd('warning', 'No se encontró el Oficina para poder editar');
             }

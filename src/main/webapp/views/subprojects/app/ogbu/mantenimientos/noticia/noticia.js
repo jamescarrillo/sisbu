@@ -25,14 +25,14 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#txtFilterInicialNoticia').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false,
-        format: 'DD/MM/YYYY',
+        format: 'YYYY-MM-DD',
         lang: 'es'
     }).on('change', function (e, date) {
     });
     $('#txtFilterFinalNoticia').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false,
-        format: 'DD/MM/YYYY',
+        format: 'YYYY-MM-DD',
         lang: 'es'
     }).on('change', function (e, date) {
     });
@@ -88,6 +88,9 @@ function processAjaxNoticia() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestNoticia.operation == "paginate") {
+            if (document.querySelector("#txtFilterInicialNoticia").value!="" || document.querySelector("#txtFilterFinalNoticia").value!="") {
+           document.querySelector("#pageNoticia").value=1; 
+        }
         parameters_pagination += "?fechai=" + document.querySelector("#txtFilterInicialNoticia").value;
         parameters_pagination += "&fechaf=" + document.querySelector("#txtFilterFinalNoticia").value;
         parameters_pagination += "&page=" + document.querySelector("#pageNoticia").value;

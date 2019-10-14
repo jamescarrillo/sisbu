@@ -22,13 +22,13 @@
                             <div class="input-group-append">
                                 <button type="button" id="btnEliminarFilterNoticia" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
                             </div>
-                            <input type="text" id="txtFilterInicialNoticia" class="form-control form-control-sm" placeholder="DD/MM/AAAA">
-                            <input type="text" id="txtFilterFinalNoticia" class="form-control form-control-sm" placeholder="DD/MM/AAAA">
+                            <input type="text" id="txtFilterInicialNoticia" class="form-control form-control-sm" placeholder="Filter fecha Inicial...DD/MM/AAAA">
+                            <input type="text" id="txtFilterFinalNoticia" class="form-control form-control-sm" placeholder="Filter fecha Final...DD/MM/AAAA">
                         </div>
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                            <button type="submit" class="btn btn-primary btn-sm mr-5"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewNoticia"><i class="icon icon-plus icon-fw"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewNoticia"data-toggle="tooltip" title="Agregar Noticia" ><i class="icon icon-addnew"></i></button>
                     </div>
                 </form>
                 <!-- Tables -->
@@ -36,29 +36,29 @@
                 <div class=" pb-4 ">
 
                     <!-- Card Header -->
-                    <div class="dt-card__header mb-3">
+                    <div class="dt-card__header mb-3 p-0 pt-3 ">
 
                         <!-- Card Heading -->
                         <div class="dt-card__heading">
 
                             <!-- Widget Item -->
-                            <div class="dt-widget__item border-bottom" >
+                            <div class="dt-widget__item border-bottom bg-primary" >
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">FUENTE /<br>FECHA PUBLICACIÓN</h3>
+                                    <h3 class="dt-card__title text-white">FUENTE /<br>FECHA PUBLICACIÓN</h3>
                                 </div>
                                 <!-- /widget info -->
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">TÍTULO</h3>
+                                    <h3 class="dt-card__title text-white">TÍTULO</h3>
                                 </div>
                                 <!-- /widget info -->
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title">DESCRIPCIÓN</h3>
+                                    <h3 class="dt-card__title text-white">DESCRIPCIÓN</h3>
                                 </div>
                                 <!-- /widget info -->
                             </div>
@@ -143,8 +143,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" id="btnGuardar" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal"><i class="icon icon-reply"></i> CANCELAR</button>
+                    <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm"><i class="fas fa-check"></i> GUARDAR</button>
                 </div>
             </form>
         </div>

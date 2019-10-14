@@ -426,6 +426,13 @@ function createHTML_OGBU(typeProfile) {
 
             <!-- Menu Item -->
             <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ogbu/mantenimientos/alumnos" class="dt-side-nav__link" title="Alumnos">
+                    <i class="icon icon-task-manager icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Alumnos</span>
+                </a>
+            </li>
+            <!-- Menu Item -->
+            <li class="dt-side-nav__item">
                 <a href="${contextPah}app/ogbu/mantenimientos/cargos" class="dt-side-nav__link" title="Cargos">
                     <i class="icon icon-task-manager icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text">Cargos</span>

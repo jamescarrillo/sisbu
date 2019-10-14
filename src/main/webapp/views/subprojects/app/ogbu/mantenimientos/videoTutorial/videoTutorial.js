@@ -59,6 +59,9 @@ function processAjaxVideoTutorial() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestVideoTutorial.operation == "paginate") {
+        if (document.querySelector("#txtFilterVideoTutorial").value != "") {
+            document.querySelector("#pageVideoTutorial").value = 1;
+        }
         parameters_pagination += "?filter=" + document.querySelector("#txtFilterVideoTutorial").value;
         parameters_pagination += "&page=" + document.querySelector("#pageVideoTutorial").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageVideoTutorial").value;
