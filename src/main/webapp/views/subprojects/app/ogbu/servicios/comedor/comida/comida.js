@@ -183,7 +183,7 @@ function validateFormComida() {
         showAlertTopEnd('warning', 'Por favor ingrese descripcion');
         document.querySelector("#txtDescripcionComida").focus();
         return false;
-    } else if (document.querySelector("#txtTipoComida").value == 0) {
+    } else if (document.querySelector("#txtTipoComida").value == "-1") {
         showAlertTopEnd('warning', 'Por favor ingrese tipo ');
         document.querySelector("#txtTipoComida").focus();
         return false;
