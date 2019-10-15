@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#modalCargandoDeporteDetalle').modal('show');
     });
     document.querySelector("#btnOpenDeporteDetalle").onclick = function () {
+        document.querySelector("#btnRegresarSelectedOptionED").style.display = "none";
         beanRequestProcedimientoDeporte.operation = "add";
         beanRequestProcedimientoDeporte.type_request = "POST";
         document.querySelector("#tittleDeporteDetalle").innerHTML = "AGREGAR DEPORTE";
@@ -83,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     };
     document.querySelector("#btnCancelarDeporteDetalle").onclick = function () {
+         document.querySelector("#btnRegresarSelectedOptionED").style.display = "initial";
         beanRequestProcedimientoDeporte.operation = "paginate";
         beanRequestProcedimientoDeporte.type_request = "GET";
         document.querySelector("#OpenDeporteDetalle").style.display = "none";
@@ -125,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#btnOpenAficionDetalle").onclick = function () {
+         document.querySelector("#btnRegresarSelectedOptionED").style.display = "none";
         beanRequestProcedimientoAficion.operation = "add";
         beanRequestProcedimientoAficion.type_request = "POST";
         document.querySelector("#tittleAficionDetalle").innerHTML = "AGREGAR AFICIÓN";
@@ -138,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     document.querySelector("#btnCancelarAficionDetalle").onclick = function () {
+         document.querySelector("#btnRegresarSelectedOptionED").style.display = "initial";
         beanRequestProcedimientoAficion.operation = "paginate";
         beanRequestProcedimientoAficion.type_request = "GET";
         document.querySelector("#OpenAficionDetalle").style.display = "none";
@@ -260,6 +264,7 @@ function addEventsProcedimientoDeporte() {
         btn.onclick = function () {
             deporteDetalleSelected = findDetalleDeporteForId(btn.parentElement.parentElement.getAttribute('idrelacion'));
             if (deporteDetalleSelected != undefined) {
+                 document.querySelector("#btnRegresarSelectedOptionED").style.display = "none";
                 beanRequestProcedimientoDeporte.operation = "update";
                 beanRequestProcedimientoDeporte.type_request = "PUT";
                 document.querySelector("#tittleDeporteDetalle").innerHTML = "EDITAR DEPORTE";
@@ -427,6 +432,7 @@ function addEventsProcedimientoAficion() {
         btn.onclick = function () {
             aficionDetalleSelected = findDetalleAficionForId(btn.parentElement.parentElement.getAttribute('idrelacion'));
             if (aficionDetalleSelected != undefined) {
+                 document.querySelector("#btnRegresarSelectedOptionED").style.display = "none";
                 beanRequestProcedimientoAficion.operation = "update";
                 beanRequestProcedimientoAficion.type_request = "PUT";
                 document.querySelector("#tittleAficionDetalle").innerHTML = "EDITAR AFICIÓN";

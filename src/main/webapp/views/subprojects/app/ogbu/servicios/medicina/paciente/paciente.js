@@ -155,6 +155,9 @@ function processAjaxPaciente() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestPaciente.operation == "paginate") {
+           if (document.querySelector("#txtFilterPaciente").value!="") {
+           document.querySelector("#pagePaciente").value ="1";
+        }
         parameters_pagination += "?filter=" + document.querySelector("#txtFilterPaciente").value.toUpperCase();
         parameters_pagination += "&page=" + document.querySelector("#pagePaciente").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePagePaciente").value;

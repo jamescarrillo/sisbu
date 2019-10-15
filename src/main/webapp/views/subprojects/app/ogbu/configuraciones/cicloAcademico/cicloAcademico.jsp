@@ -19,20 +19,22 @@
                 <form id="FrmCicloAcademico">
                     <div class="input-group search-box" style="max-width: 100%;">
                         <input type="search" id="txtFilterCicloAcademico" class="form-control form-control-sm" placeholder="FILTRO. . .">
-                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                        <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewCicloAcademico"><i class="icon icon-plus icon-fw"></i></button>
+                        <div class="input-group-append">
+                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewCicloAcademico"data-toggle="tooltip" title="Agregar Ciclo Académico" ><i class="icon icon-addnew"></i></button>
                     </div>
                 </form>
                 <!-- Tables -->
                 <div class="table-responsive">
                     <table class="table mb-0 mt-2">
-                        <thead>
+                        <thead class="bg-primary ">
                             <tr>
-                                <th class="text-uppercase" scope="col" style="width: 10%">ACCION</th>
-                                <th class="text-uppercase" scope="col" >NOMBRE</th>
-                                <th class="text-uppercase" scope="col" >FECHA INICIAL</th>
-                                <th class="text-uppercase" scope="col" >FECHA FINAL</th>
+                                <th class="text-uppercase text-white pb-2 pt-3" scope="col" style="width: 10%">ACCION</th>
+                                <th class="text-uppercase text-white pb-2 pt-3" scope="col" >NOMBRE</th>
+                                <th class="text-uppercase text-white pb-2 pt-3" scope="col" >FECHA INICIAL</th>
+                                <th class="text-uppercase text-white pb-2 pt-3" scope="col" >FECHA FINAL</th>
                             </tr>
                         </thead>
                         <tbody id="tbodyCicloAcademico">
@@ -79,28 +81,31 @@
                         </div>
                         <div class="form-group col-6">
                             <label for="txtFechaInicioCicloAcademico">FECHA INICIO</label>
-                            <div class="input-group date" id="date-time-picker-1" data-target-input="nearest">
-                                <input id="txtFechaInicioCicloAcademico" placeholder="DD/MM/AAAA" type="text" class="form-control form-control-sm datetimepicker-input" data-target="#date-time-picker-1">
-                                <div class="input-group-append" data-target="#date-time-picker-1" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="icon icon-calendar"></i></div>
+
+                            <div class="input-group">
+                                <input  type="text" class="form-control form-control-sm" id="txtFechaInicioCicloAcademico" placeholder="DD/MM/AAAA">
+                                <div class="input-group-append">
+                                    <button type="button" id="btnEliminarFechaI" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
                                 </div>
                             </div>
+
                         </div>
-                         <div class="form-group col-6">
+                        <div class="form-group col-6">
                             <label for="txtFechaFinCicloAcademico">FECHA FIN</label>
-                            <div class="input-group date" id="date-time-picker-1" data-target-input="nearest">
-                                <input id="txtFechaFinCicloAcademico" placeholder="DD/MM/AAAA" type="text" class="form-control form-control-sm datetimepicker-input" data-target="#date-time-picker-1">
-                                <div class="input-group-append" data-target="#date-time-picker-1" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="icon icon-calendar"></i></div>
+                            <div class="input-group">
+                                <input  type="text" class="form-control form-control-sm" id="txtFechaFinCicloAcademico" placeholder="DD/MM/AAAA">
+                                <div class="input-group-append">
+                                    <button type="button" id="btnEliminarFechaF" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
                                 </div>
                             </div>
+
                         </div>
 
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" id="btnGuardar" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">CANCELAR</button>
+                    <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm">GUARDAR</button>
                 </div>
             </form>
         </div>

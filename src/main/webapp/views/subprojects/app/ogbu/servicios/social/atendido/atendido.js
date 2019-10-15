@@ -37,18 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
     });
 
-    document.querySelector("#btnOpenNewAtendido").onclick = function () {
-        //CONFIGURAMOS LA SOLICITUD
-        beanRequestAtendido.operation = "add";
-        beanRequestAtendido.type_request = "POST";
-        //LIMPIAR LOS CAMPOS
-        limpiarInput();
-        //SET TITLE MODAL
-        document.querySelector("#txtTituloModalMan").innerHTML = "REGISTRAR ATENDIDO";
-        //OPEN MODEL
-        document.querySelector("#btnListaAtendido").style.display = 'none';
-        document.querySelector("#btnOpenAtendido").style.display = 'block';
-    };
 
     document.querySelector("#btnRegresar").onclick = function () {
         beanRequestAtendido.operation = "paginate";
@@ -73,6 +61,9 @@ function processAjaxAtendido() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestAtendido.operation == "paginate") {
+        if (document.querySelector("#txtFilterAtendido").value!="") {
+           document.querySelector("#pageAtendido").value ="1";
+        }
         parameters_pagination += "?filter=" + document.querySelector("#txtFilterAtendido").value;
         parameters_pagination += "&page=" + document.querySelector("#pageAtendido").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageAtendido").value;
@@ -84,6 +75,11 @@ function processAjaxAtendido() {
             json = {};
         } else {
             json = {
+                "ciclo_academico_ingreso": atendidoSelected.ciclo_academico_ingreso.idciclo_academico,
+                "subtipo_atendido": atendidoSelected.subtipo_atendido,
+                "tipo_atendido": atendidoSelected.tipo_atendido,
+                "cachimbo": atendidoSelected.cachimbo,
+                "comensal": atendidoSelected.comensal,
                 "nombre": document.querySelector("#txtNombreAtendido").value,
                 "apellido_mat": document.querySelector("#txtApMaternoAtendido").value,
                 "apellido_pat": document.querySelector("#txtApPaternoAtendido").value,
@@ -173,17 +169,13 @@ function toListAtendido(beanPagination) {
 
             row += "<div class='text-truncate mr-5' style='min-width:60px; width:25%;'>";
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += atendido.apellido_pat + " " + atendido.apellido_mat + " " + atendido.nombre + "</p></div>";
+            row += atendido.apellido_pat + " " + atendido.apellido_mat + " " + atendido.nombre + "<br>"+ atendido.fecha_nacimiento +"</p></div>";
 
-            row += "<div class=' text-truncate mr-5'  style='min-width:60px; max-width:18%;'>";
-            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += atendido.fecha_nacimiento + "</p></div>";
-
-            row += "<div class='text-truncate mr-5' style='min-width:60px; max-width:15%;'>";
+            row += "<div class='text-truncate mr-5' style='min-width:60px; max-width:25%;'>";
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
             row += atendido.email + "</p></div>";
 
-            row += "<div class='text-truncate' style='min-width:60px; max-width:20%;'>";
+            row += "<div class='text-truncate' style='min-width:60px; max-width:25%;'>";
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
             row += atendido.escuela.nombre + "</p></div>";
 

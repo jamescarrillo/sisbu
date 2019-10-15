@@ -24,7 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }).on('change', function (e, date) {
         $('#txtFechaFinCicloAcademico').bootstrapMaterialDatePicker('setMinDate', date);
     });
-
+    document.querySelector('#btnEliminarFechaI').onclick = function () {
+        document.querySelector('#txtFechaInicioCicloAcademico').value = '';
+    };
+    document.querySelector('#btnEliminarFechaF').onclick = function () {
+        document.querySelector('#txtFechaFinCicloAcademico').value = '';
+    };
     $('#FrmCicloAcademico').submit(function (event) {
         beanRequestCicloAcademico.operation = "paginate";
         beanRequestCicloAcademico.type_request = "GET";
@@ -87,6 +92,9 @@ function processAjaxCicloAcademico() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestCicloAcademico.operation == "paginate") {
+        if (document.querySelector("#txtFilterCicloAcademico").value != "") {
+            document.querySelector("#pageCicloAcademico").value = "1";
+        }
         parameters_pagination += "?nombre=" + document.querySelector("#txtFilterCicloAcademico").value.toUpperCase();
         parameters_pagination += "&page=" + document.querySelector("#pageCicloAcademico").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageCicloAcademico").value;
@@ -94,14 +102,16 @@ function processAjaxCicloAcademico() {
     } else {
         parameters_pagination = "";
         if (beanRequestCicloAcademico.operation == "delete") {
-            parameters_pagination = "/" + cicloAcademicoSelected.idcicloAcademico;
+            parameters_pagination = "/" + cicloAcademicoSelected.idciclo_academico;
             json = {};
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombreCicloAcademico").value,
+                "fechaf": document.querySelector("#txtFechaFinCicloAcademico").value,
+                "fechai": document.querySelector("#txtFechaInicioCicloAcademico").value,
             };
             if (beanRequestCicloAcademico.operation == "update") {
-                json.idcicloAcademico = cicloAcademicoSelected.idcicloAcademico;
+                json.idciclo_academico = cicloAcademicoSelected.idciclo_academico;
             }
         }
     }
@@ -148,9 +158,9 @@ function toListCicloAcademico(beanPagination) {
             row += ">";
             row += "<td><ul class='dt-list dt-list-cm-0'>";
             row += "<li class='dt-list__item editar-cicloAcademico' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-editors'></i></a></li>";
+            row += "<i class='text-info icon icon-editors'></i></a></li>";
             row += "<li class='dt-list__item eliminar-cicloAcademico' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='icon icon-trash-filled'></i></a></li>";
+            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
             row += "<td class='align-middle'>" + cicloAcademico.nombre + "</td>";
             row += "<td class='align-middle'>" + fechai + "</td>";
@@ -224,17 +234,7 @@ function validateFormCicloAcademico() {
         document.querySelector("#txtNombreCicloAcademico").focus();
         return false;
     }
-    /*
-     else if (document.querySelector("#txtFechaInicioCicloAcademico").value == "") {
-     showAlertTopEnd('warning', 'Por favor ingrese Fecha Inicial');
-     document.querySelector("#txtFechaInicioCicloAcademico").focus();
-     return false;
-     } else if (document.querySelector("#txtFechaFinCicloAcademico").value == "") {
-     showAlertTopEnd('warning', 'Por favor ingrese Fecha Final');
-     document.querySelector("#txtFechaFinCicloAcademico").focus();
-     return false;
-     }
-     */
+
     return true;
 }
 

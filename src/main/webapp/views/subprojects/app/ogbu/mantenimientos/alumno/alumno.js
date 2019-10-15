@@ -5,7 +5,9 @@ var distritoSelected;
 var cicloSelected;
 
 var beanRequestAlumno = new BeanRequest();
+
 document.addEventListener("DOMContentLoaded", function () {
+
     $('#txtFechaNacAlumno').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false,
@@ -47,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     });
-
     document.querySelector("#btnOpenNewAlumno").onclick = function () {
         //CONFIGURAMOS LA SOLICITUD
         beanRequestAlumno.operation = "add";
@@ -55,9 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestUsuario.operation = "add";
         beanRequestUsuario.type_request = "POST";
         //LIMPIAR LOS CAMPOS
+
         limpiarInput();
         limpiarInputUsuario();
         viewDatosGenerales();
+
+
         //SET TITLE MODAL
         document.querySelector("#txtTituloModalAlumno").innerHTML = "REGISTRAR DATOS";
         //OPEN MODEL

@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
         //CONFIGURAMOS LA SOLICITUD
         beanRequestComida.operation = "add";
         beanRequestComida.type_request = "POST";
-
         //SET TITLE MODAL
         //document.querySelector("#txtTituloModalMan").innerHTML = "REGISTRAR COMIDA";
         //OPEN MODEL
@@ -184,7 +183,7 @@ function validateFormComida() {
         showAlertTopEnd('warning', 'Por favor ingrese descripcion');
         document.querySelector("#txtDescripcionComida").focus();
         return false;
-    } else if (document.querySelector("#txtTipoComida").value == 0) {
+    } else if (document.querySelector("#txtTipoComida").value == "-1") {
         showAlertTopEnd('warning', 'Por favor ingrese tipo ');
         document.querySelector("#txtTipoComida").focus();
         return false;
@@ -240,14 +239,12 @@ function viewFormulario() {
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-12">
-                        <button type="button" class="btn btn-outline-primary btn-sm" id="btnRegresarComida"><i class="icon icon-reply"></i> CANCELAR</button>
+                    <div class="form-group col-12 text-center">
+                        <button type="button" class="btn btn-outline-primary btn-sm" id="btnRegresarComida"><i class="icon icon-reply"></i> REGRESAR</button>
                         <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm"> GUARDAR</button>
                     </div></div>
                  </form>
-
                 </div>
-
             </div>
             `;
 }

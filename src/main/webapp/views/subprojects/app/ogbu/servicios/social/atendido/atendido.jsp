@@ -20,11 +20,10 @@
             <div class="card-body pt-0">
                 <form id="FrmAtendido">
                     <div class="input-group search-box" style="max-width: 100%;">
-                        <input type="text" id="txtFilterAtendido" class="form-control form-control-sm" placeholder="Filter DNI...">
+                        <input type="text" id="txtFilterAtendido" class="form-control form-control-sm" placeholder="FILTER DNI ...">
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                            <button type="submit" class="btn btn-primary btn-sm"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm " style="display:none" id="btnOpenNewAtendido" data-toggle="tooltip" title="Agregar " ><i class="icon icon-plus icon-fw"></i></button>
                     </div>
                 </form>
                 <!-- Tables -->
@@ -48,12 +47,7 @@
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate ">
-                                    <h3 class="dt-card__title text-white">NOMBRE COMPLETO</h3>
-                                </div>
-                                <!-- /widget info -->
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">F. NACIMIENTO</h3>
+                                    <h3 class="dt-card__title text-white">NOMBRE COMPLETO/<br>F. NACIMIENTO</h3>
                                 </div>
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
