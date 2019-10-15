@@ -181,7 +181,6 @@
                 <div class="col-lg-6 col-sm-6 col-12">
                     <div class="form-group col-12">
                         <label for="txtComidaDetalle">COMIDA
-                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtComidaDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
@@ -225,7 +224,6 @@
                 <div class="col-lg-6 col-sm-6  col-12 ">
                     <div class="form-group col-12">
                         <label for="txtComidaAlmuerzoDetalle">COMIDA
-                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtComidaAlmuerzoDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
@@ -265,7 +263,6 @@
                 <div class="col-lg-6 col-sm-6 col-12">
                     <div class="form-group col-12">
                         <label for="txtComidaCenaDetalle">COMIDA
-                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtComidaCenaDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">

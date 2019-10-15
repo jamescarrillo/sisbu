@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#btnSeleccionarComida").onclick = function () {
-        
+
         $('#ventanaModalSelectedComidac').modal('show');
     };
 
@@ -91,12 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     //almuerzo
     document.querySelector("#btnSeleccionarComidaAlmuerzo").onclick = function () {
-       
+
         $('#ventanaModalSelectedComidac').modal('show');
     };
     //cena
     document.querySelector("#btnSeleccionarComidaCena").onclick = function () {
-        
+
         $('#ventanaModalSelectedComidac').modal('show');
     };
 
@@ -109,7 +109,11 @@ function processAjaxComidac() {
     let url_request = getHostAPI() + beanRequestComidac.entity_api + "/" + beanRequestComidac.operation;
     switch (beanRequestComidac.operation) {
         default:
-            parameters_pagination += "?tipo=-1";
+            if ( document.querySelector("#txtFilterTipoComida").value > 0 ||
+                    document.querySelector("#txtFilterComidac").value != "") {
+                document.querySelector("#pageComidac").value = "1";
+            }
+            parameters_pagination += "?tipo=" + document.querySelector("#txtFilterTipoComida").value;
             parameters_pagination += "&nombre=" + document.querySelector("#txtFilterComidac").value.toUpperCase();
             parameters_pagination += "&page=" + document.querySelector("#pageComidac").value;
             parameters_pagination += "&size=" + document.querySelector("#sizePageComidac").value;
