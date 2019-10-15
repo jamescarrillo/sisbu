@@ -81,7 +81,7 @@
                                         <h3 id="titleManagerMenu"   class="dt-card__title  text-primary text-center">MENU SEMANAL</h3>
                                     </div>
                                     <!-- /card heading -->
-                                     <!-- Card Tools -->
+                                    <!-- Card Tools -->
                                     <div class="dt-card__tools">
                                         <button data-toggle="tooltip" title="Eliminar Menu Semanal" 
                                                 type="button" id="btneliminar-menu" style="display: none"
@@ -95,7 +95,7 @@
                                     <input class="form-control btn-sm" placeholder="OBSERVACION" id="txtMenuSemanalObservacion"  type="text">
                                 </div>
                                 <div class="form-group col-lg-6 col-sm-6">
-                                    <label for="txtMenuSemanalFechaI">DÍA DE LA SEMANA FINAL (VIERNES)</label>
+                                    <label for="txtMenuSemanalFechaI">DÍA DE LA SEMANA INICIAL (LUNES)</label>
                                     <div class="input-group">
                                         <input  type="text" class="form-control form-control-sm" id="txtMenuSemanalFechaI" placeholder="DD/MM/AAAA">
                                         <div class="input-group-append">
@@ -110,14 +110,9 @@
                                         <div class="input-group-append">
                                             <button type="button" id="btnEliminarFechaF" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
                                         </div>
-
                                     </div>
-
                                 </div>
-
-
                             </div>
-
                             <!-- /tab pane-->
                             <div class="dt-card dt-card__full-height mt-5">
                                 <!-- Card Body -->
@@ -126,10 +121,8 @@
                                     <div class="dt-widget  text-light-gray" >
                                         <div class="" id="theadMenuSemanal">
                                         </div>
-
                                         <div id="tbodyCronograma" class="dt-widget dt-widget-hover-bg text-light-gray">
                                         </div>
-
                                     </div>
                                     <!-- /widget -->
                                     <!-- /card body -->
@@ -137,7 +130,7 @@
                             </div>
                             <!-- /tab pane-->
                             <div class="col-12 text-center">
-                                <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
+                                <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm"> GUARDAR</button>
                             </div>
                         </form>
                     </div>
@@ -183,36 +176,42 @@
     <div class="tab-content ">
         <!-- Tab DESAYUNO -->
         <div id="tab-pane-15" class="tab-pane show active">
-            <div class="pt-4 pr-1 pl-1">
-                <div class="form-group col-12">
-                    <label for="txtComidaDetalle">COMIDA
-                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
-                    </label>
-                    <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="txtComidaDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
-                        <div class="input-group-append">
-                            <button type="button" id="btnSeleccionarComida" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
-                            <button type="button" id="btnAgregarComida" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-plus"></i></button>
+            <div class="pt-4 pr-1 pl-1 form-row">
+                <div class="col-lg-3 col-sm-3 col-12"></div>
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="form-group col-12">
+                        <label for="txtComidaDetalle">COMIDA
+                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
+                        </label>
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" id="txtComidaDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                            <div class="input-group-append">
+                                <button type="button" id="btnSeleccionarComida" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                <button type="button" id="btnAgregarComida" class="ml-5 btn btn-outline-primary btn-sm"data-toggle="tooltip" title="Agregar Comida" ><i class="icon icon-addnew"></i></button>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="form-group col-12 ">
+                        <!-- Tables -->
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead class="bg-primary">
+                                    <tr>
+                                        <th class="text-uppercase text-white pb-2 pt-3" scope="col" >TIPO</th>
+                                        <th class="text-uppercase text-white pb-2 pt-3" scope="col" >DESCRIPCION</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbodyComidaDesayuno overflow-auto " style="height: 139px;">
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /tables -->
+                    </div>  
+
                 </div>
-                <div class="form-group col-12 ">
-                    <!-- Tables -->
-                    <div class="table-responsive">
-                        <table class="table mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase" scope="col" >TIPO</th>
-                                    <th class="text-uppercase" scope="col" >DESCRIPCION</th>
-                                    <th class="text-uppercase" scope="col" >ACCIÓN</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tbodyComidaDesayuno overflow-auto " style="height: 139px;">
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /tables -->
-                </div>
+
+
 
 
             </div>
@@ -221,72 +220,80 @@
 
         <!-- Tab ALMUERZO -->
         <div id="tab-pane-16" class="tab-pane">
-            <div class="pt-4 pr-1 pl-1">
-                <div class="form-group col-12">
-                    <label for="txtComidaAlmuerzoDetalle">COMIDA
-                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
-                    </label>
-                    <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="txtComidaAlmuerzoDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
-                        <div class="input-group-append">
-                            <button type="button" id="btnSeleccionarComidaAlmuerzo" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
-                            <button type="button" id="btnAgregarComidaAlmuerzo" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-plus"></i></button>
+            <div class="pt-4 pr-1 pl-1 form-row">
+                <div class="col-lg-3 col-sm-3  col-12 "></div>
+                <div class="col-lg-6 col-sm-6  col-12 ">
+                    <div class="form-group col-12">
+                        <label for="txtComidaAlmuerzoDetalle">COMIDA
+                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
+                        </label>
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" id="txtComidaAlmuerzoDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                            <div class="input-group-append">
+                                <button type="button" id="btnSeleccionarComidaAlmuerzo" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                <button type="button" id="btnAgregarComidaAlmuerzo" class="ml-5 btn btn-outline-primary btn-sm"data-toggle="tooltip" title="Agregar Comida" ><i class="icon icon-addnew"></i></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group col-12 ">
-                    <!-- Tables -->
-                    <div class="table-responsive">
-                        <table class="table mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase" scope="col" >TIPO</th>
-                                    <th class="text-uppercase" scope="col" >DESCRIPCION</th>
-                                    <th class="text-uppercase" scope="col" >ACCIÓN</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tbodyComidaAlmuerzo overflow-auto" style="height: 139px;">
-                            </tbody>
-                        </table>
+                    <div class="form-group col-12 ">
+                        <!-- Tables -->
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead class="bg-primary">
+                                    <tr>
+                                        <th class="text-uppercase text-white pb-2 pt-3" scope="col" >TIPO</th>
+                                        <th class="text-uppercase text-white pb-2 pt-3" scope="col" >DESCRIPCION</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbodyComidaAlmuerzo overflow-auto" style="height: 139px;">
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /tables -->
                     </div>
-                    <!-- /tables -->
+
                 </div>
+
             </div>
         </div>
         <!-- /tab pane-->
 
         <!-- Tab CENA -->
         <div id="tab-pane-17" class="tab-pane">
-            <div class="pt-4 pr-1 pl-1">
-                <div class="form-group col-12">
-                    <label for="txtComidaCenaDetalle">COMIDA
-                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
-                    </label>
-                    <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="txtComidaCenaDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
-                        <div class="input-group-append">
-                            <button type="button" id="btnSeleccionarComidaCena" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
-                            <button type="button" id="btnAgregarComidaCena" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-plus"></i></button>
+            <div class="pt-4 pr-1 pl-1 form-row">
+                <div class="col-lg-3 col-sm-3 col-12"></div>
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="form-group col-12">
+                        <label for="txtComidaCenaDetalle">COMIDA
+                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
+                        </label>
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" id="txtComidaCenaDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                            <div class="input-group-append">
+                                <button type="button" id="btnSeleccionarComidaCena" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                <button type="button" id="btnAgregarComidaCena" class="ml-5 btn btn-outline-primary btn-sm"data-toggle="tooltip" title="Agregar Comida" ><i class="icon icon-addnew"></i></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group col-12 ">
-                    <!-- Tables -->
-                    <div class="table-responsive">
-                        <table class="table mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase" scope="col" >TIPO</th>
-                                    <th class="text-uppercase" scope="col" >DESCRIPCION</th>
-                                    <th class="text-uppercase" scope="col" >ACCIÓN</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tbodyComidaCena overflow-auto" style="height: 139px;">
-                            </tbody>
-                        </table>
+                    <div class="form-group col-12 ">
+                        <!-- Tables -->
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead class="bg-primary">
+                                    <tr>
+                                        <th class="text-uppercase text-white pb-2 pt-3" scope="col" >TIPO</th>
+                                        <th class="text-uppercase text-white pb-2 pt-3" scope="col" >DESCRIPCION</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbodyComidaCena overflow-auto" style="height: 139px;">
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /tables -->
                     </div>
-                    <!-- /tables -->
+
                 </div>
+
             </div>
         </div>
         <!-- /tab pane-->
@@ -295,7 +302,7 @@
     <!-- /tab content -->
 
     <div class="form-group col-lg-12 text-center">
-        <button type="button" class="btn btn-outline-primary btn-sm" id="btnRegresarMenu"><i class="icon icon-reply"></i> CANCELAR</button>
+        <button type="button" class="btn btn-outline-primary btn-sm" id="btnRegresarMenu"><i class="icon icon-reply"></i> REGRESAR</button>
 
     </div>  
 

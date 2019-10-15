@@ -12,6 +12,7 @@ var beanRequestVE = new BeanRequest();
 var idarea_selected = 7;
 var repor_preguntas = "N";
 var repor_familiares = "N";
+var repor_deportes = "N";
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -21,17 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestVE.type_request = "GET";
 
     document.querySelector("#btn-download-constancia-deportiva").onclick = function () {
-        /*
-         //VERIFICAMOS LOS DEPORTES Y AFICIONES
-         repor_preguntas = "N";
-         repor_familiares = "N";
-         $("#modalCargandoVDYA").modal('show');
-         */
+
+        //VERIFICAMOS LOS DEPORTES Y AFICIONES
+        repor_deportes = "C";
+        $("#modalCargandoVDYA").modal('show');
+
         showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación', 10000)
     };
 
     document.querySelector("#btn-download-deportes-aficiones").onclick = function () {
-        showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación', 10000)
+        //VERIFICAMOS LOS DEPORTES Y AFICIONES
+        repor_deportes = "D";
+        $("#modalCargandoVDYA").modal('show');
     };
 
     document.querySelector("#btn-download-constancia-socioeconomica").onclick = function () {
@@ -95,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#modalCargandoVDP").on('shown.bs.modal', function () {
         processAjaxValidacionDatosPersonales();
     });
-    
+
     $("#modalCargandoVDPOtrasPruebas").on('shown.bs.modal', function () {
         processAjaxValidacionDatosPersonalesOtrasEvaluaciones();
     });
@@ -288,6 +290,22 @@ function processAjaxValidacionDeportesAficiones() {
         if (jsonResponse.messageServer !== undefined) {
             if (jsonResponse.messageServer.toLowerCase() == "ok") {
                 //ABRIMOS EL REPORTE
+                //ABRIMOS EL REPORTE
+                if (repor_deportes == "C") {
+                    let url_constancia = getHostAPI() + "api/constancias/deporte";
+                    url_constancia += "?idusuario=" + user_session.idusuario;
+                    document.querySelector("#titleModalPreviewReporte").innerHTML = "VISTA PREVIA"
+                    document.querySelector('#idframe_reporte').setAttribute('src', url_constancia);
+                    document.querySelector('#row_frame_report').style.display = "block";
+                    $('#ventanaModalPreviewReporte').modal('show');
+                } else if (repor_deportes == "D") {
+                    let url_constancia = getHostAPI() + "api/constancias/lista-deportes-aficiones";
+                    url_constancia += "?idusuario=" + user_session.idusuario;
+                    document.querySelector("#titleModalPreviewReporte").innerHTML = "VISTA PREVIA"
+                    document.querySelector('#idframe_reporte').setAttribute('src', url_constancia);
+                    document.querySelector('#row_frame_report').style.display = "block";
+                    $('#ventanaModalPreviewReporte').modal('show');
+                }
 
             } else {
                 showAlertTopEnd('warning', jsonResponse.messageServer);

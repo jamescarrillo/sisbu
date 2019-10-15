@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#btnSeleccionarComida").onclick = function () {
+        
         $('#ventanaModalSelectedComidac').modal('show');
     };
 
@@ -48,20 +49,20 @@ document.addEventListener("DOMContentLoaded", function () {
         comidaSelected = comidacSelected;
         switch (tipoDiaComida) {
             case 0:
-                  document.querySelector("#txtComidaDetalle").value = comidaSelected.descripcion.toUpperCase();
+                document.querySelector("#txtComidaDetalle").value = comidaSelected.descripcion.toUpperCase();
                 break;
             case 1:
-                  document.querySelector("#txtComidaAlmuerzoDetalle").value = comidaSelected.descripcion.toUpperCase();
+                document.querySelector("#txtComidaAlmuerzoDetalle").value = comidaSelected.descripcion.toUpperCase();
                 break;
             case 2:
-                  document.querySelector("#txtComidaCenaDetalle").value = comidaSelected.descripcion.toUpperCase();
+                document.querySelector("#txtComidaCenaDetalle").value = comidaSelected.descripcion.toUpperCase();
                 break;
-                
+
             default:
-                
+
                 break;
         }
-      
+
         $('#ventanaModalSelectedComidac').modal('hide');
     };
 
@@ -70,17 +71,17 @@ document.addEventListener("DOMContentLoaded", function () {
         comidaSelected = comidacSelected;
         switch (tipoDiaComida) {
             case 0:
-                  document.querySelector("#txtComidaDetalle").value = "";
+                document.querySelector("#txtComidaDetalle").value = "";
                 break;
             case 1:
-                  document.querySelector("#txtComidaAlmuerzoDetalle").value = "";
+                document.querySelector("#txtComidaAlmuerzoDetalle").value = "";
                 break;
             case 2:
-                  document.querySelector("#txtComidaCenaDetalle").value = "";
+                document.querySelector("#txtComidaCenaDetalle").value = "";
                 break;
-                
+
             default:
-                
+
                 break;
         }
     };
@@ -90,17 +91,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     //almuerzo
     document.querySelector("#btnSeleccionarComidaAlmuerzo").onclick = function () {
+       
         $('#ventanaModalSelectedComidac').modal('show');
     };
     //cena
     document.querySelector("#btnSeleccionarComidaCena").onclick = function () {
+        
         $('#ventanaModalSelectedComidac').modal('show');
     };
 
 });
 
 function processAjaxComidac() {
-    
+
     let parameters_pagination = "";
     let json = "";
     let url_request = getHostAPI() + beanRequestComidac.entity_api + "/" + beanRequestComidac.operation;

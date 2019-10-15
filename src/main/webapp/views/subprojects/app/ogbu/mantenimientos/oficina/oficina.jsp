@@ -26,7 +26,7 @@
                             <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-sisbu"></i> BUSCAR</button>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewOficina"><i class="icon icon-plus icon-sisbu"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewOficina"data-toggle="tooltip" title="Agregar Oficina" ><i class="icon icon-addnew"></i></button>
                     </div>
                 </form>
                   <!-- Card -->

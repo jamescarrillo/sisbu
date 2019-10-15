@@ -23,7 +23,7 @@
                             <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewAlumno"><i class="icon icon-plus icon-fw"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewAlumno"data-toggle="tooltip" title="Agregar Alumno" ><i class="icon icon-addnew"></i></button>
                     </div>
                 </form>
 

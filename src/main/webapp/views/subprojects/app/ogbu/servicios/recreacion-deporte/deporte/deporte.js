@@ -61,6 +61,9 @@ function processAjaxDeporte() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestDeporte.operation == "paginate") {
+          if (document.querySelector("#txtFilterDeporte").value!="") {
+           document.querySelector("#pageDeporte").value ="1";
+        }
         parameters_pagination += "?nombre=" + document.querySelector("#txtFilterDeporte").value.toUpperCase();
         parameters_pagination += "&page=" + document.querySelector("#pageDeporte").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageDeporte").value;

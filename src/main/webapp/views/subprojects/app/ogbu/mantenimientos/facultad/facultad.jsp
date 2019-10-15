@@ -22,7 +22,7 @@
                         <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
                         <div class="input-group-prepend">
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewFacultad"><i class="icon icon-plus icon-fw"></i></button>
+                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewFacultad"data-toggle="tooltip" title="Agregar Facultad" ><i class="icon icon-addnew"></i></button>
                         </div>
                     </div>
                 </form>

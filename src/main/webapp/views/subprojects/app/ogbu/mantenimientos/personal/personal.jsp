@@ -28,7 +28,7 @@
                             </select>
                             <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewPersonal"><i class="icon icon-plus icon-fw"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewPersonal"data-toggle="tooltip" title="Agregar Personal" ><i class="icon icon-addnew"></i></button>
                     </div>
                 </form>
 
