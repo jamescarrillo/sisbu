@@ -37,7 +37,7 @@
                         <div class="dt-card__heading">
 
                             <!-- Widget Item -->
-                            <div class="dt-widget__item border-bottom bg-primary " >
+                            <div class="dt-widget__item pt-2 pb-2 bg-primary " >
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate  pl-5">
@@ -360,18 +360,18 @@
         <div class="form-group col-12 ">
             <!-- Tables -->
             <div class="table-responsive">
-                <table class="table mb-0">
-                    <thead class="bg-primary" style="line-height: 1.0;">
+                <table class="table mb-0 ">
+                    <thead class="bg-primary " style="line-height: 1.0;">
                         <tr>
-                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;width: 10%">ACCIÓN</th>
-                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">NOMBRE COMPLETO</th>
-                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;width: 10%">FECHA NACIMIENTO</th>
-                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;width: 20%">ESTADO CIVIL/<br>NIVEL INSTRUCCIÓN</th>
-                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;width: 10%">INGRESOS</th>
+                            <th class="text-uppercase text-white pt-2 pb-2" scope="col" style="font-weight: 500;width: 10%">ACCIÓN</th>
+                            <th class="text-uppercase text-white pt-2 pb-2" scope="col" style="font-weight: 500;">NOMBRE COMPLETO</th>
+                            <th class="text-uppercase text-white pt-2 pb-2" scope="col" style="font-weight: 500;width: 10%">FECHA NACIMIENTO</th>
+                            <th class="text-uppercase text-white pt-2 pb-2" scope="col" style="font-weight: 500;width: 20%">ESTADO CIVIL/<br>NIVEL INSTRUCCIÓN</th>
+                            <th class="text-uppercase text-white pt-2 pb-2" scope="col" style="font-weight: 500;width: 10%">INGRESOS</th>
 
                         </tr>
                     </thead>
-                    <tbody id="tbodyDatosFamiliares" class="overflow-auto" >
+                    <tbody id="tbodyDatosFamiliares" class="overflow-auto " >
                     </tbody>
                 </table>
             </div>
@@ -805,6 +805,46 @@
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                         Cargando ocupaciones. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="ventanaModalPreviewReporte" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg-sisbu" role="document">
+        <div class="modal-content" style="border-color: #2962FF; border-width: 3px;border-radius: 7px;">
+            <form class="needs-validation" novalidate="">
+                <div class="modal-body pb-2">
+                    <h5 id="titleModalPreviewReporte"></h5>
+                    <!--FRAME PARA EL PREVIEW DEL REPORTE-->
+                    <div class="row" id="row_frame_report" style="display: none">
+                        <div class="col-12">
+                            <!--div class="embed-responsive embed-responsive-1by1">
+                            </div-->
+                            <iframe class="embed-responsive-item" src="" id="idframe_reporte" height="480" width="100%"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer pt-2 pb-2">
+                    <button type="button" class="btn btn-primary btn-xs" id="btn-cerrar-printer-comprobante" data-dismiss="modal">
+                        <i class="fas fa-times"></i>
+                        CERRAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoVDYA" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Verificando Historia Clinica del Atendido. . .
                     </div>
                 </div>
             </div>

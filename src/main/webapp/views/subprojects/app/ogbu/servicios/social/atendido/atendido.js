@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestAtendido.operation = "paginate";
     beanRequestAtendido.type_request = "GET";
 
-
+    $("#modalCargandoVDYA").on('shown.bs.modal', function () {
+        processAjaxValidacionHistoria();
+    });
     $('#txtFechaNacAtendido').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false,
@@ -61,8 +63,8 @@ function processAjaxAtendido() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestAtendido.operation == "paginate") {
-        if (document.querySelector("#txtFilterAtendido").value!="") {
-           document.querySelector("#pageAtendido").value ="1";
+        if (document.querySelector("#txtFilterAtendido").value != "") {
+            document.querySelector("#pageAtendido").value = "1";
         }
         parameters_pagination += "?filter=" + document.querySelector("#txtFilterAtendido").value;
         parameters_pagination += "&page=" + document.querySelector("#pageAtendido").value;
@@ -169,7 +171,7 @@ function toListAtendido(beanPagination) {
 
             row += "<div class='text-truncate mr-5' style='min-width:60px; width:25%;'>";
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += atendido.apellido_pat + " " + atendido.apellido_mat + " " + atendido.nombre + "<br>"+ atendido.fecha_nacimiento +"</p></div>";
+            row += atendido.apellido_pat + " " + atendido.apellido_mat + " " + atendido.nombre + "<br>" + atendido.fecha_nacimiento + "</p></div>";
 
             row += "<div class='text-truncate mr-5' style='min-width:60px; max-width:25%;'>";
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
@@ -283,6 +285,14 @@ function addEventsAtendidoes() {
 
         };
     });
+    document.querySelectorAll('.ficha-atendido').forEach(btn => {
+        //AGREGANDO EVENTO CLICK
+        btn.onclick = function () {
+
+
+        };
+    });
+
 }
 
 function findByAtendido(idatendido) {
@@ -416,5 +426,43 @@ function limpiarInput() {
     document.querySelector("#txtDireccionProceAtendido").value = "";
     document.querySelector("#txtDistritoActualAtendido").value = "";
     document.querySelector("#txtDistritoProcedenciaAtendido").value = "";
+}
+
+function processAjaxValidacionHistoria() {
+    let url_request = getHostAPI() + "api/historiaclinica/validate-historia?idatendido=" + atendidoSelected.idatendido;
+    $.ajax({
+        url: url_request,
+        type: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        //data: JSON.stringify(json),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (jsonResponse) {
+        $('#modalCargandoVDYA').modal("hide");
+        if (jsonResponse.messageServer !== undefined) {
+            if (jsonResponse.messageServer.toLowerCase() == "ok") {
+                //ABRIMOS EL REPORTE
+                //ABRIMOS EL REPORTE
+
+                let url_constancia = getHostAPI() + "api/historiaclinica/reporte";
+                url_constancia += "?idatendido=" + user_session.idusuario;
+                document.querySelector("#titleModalPreviewReporte").innerHTML = "VISTA PREVIA"
+                document.querySelector('#idframe_reporte').setAttribute('src', url_constancia);
+                document.querySelector('#row_frame_report').style.display = "block";
+                $('#ventanaModalPreviewReporte').modal('show');
+
+
+            } else {
+                showAlertTopEnd('warning', jsonResponse.messageServer);
+            }
+        } else {
+            showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoVDYA').modal("hide");
+        showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+    });
 }
 

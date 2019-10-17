@@ -18,7 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestPaciente.type_request = "GET";
 
     document.querySelector("#openPaciente").style.display = "none";
-
+    $("#modalCargandoVDYA").on('shown.bs.modal', function () {
+        processAjaxValidacionHistoria();
+    });
     $('#FrmPaciente').submit(function (event) {
         beanRequestPaciente.operation = "paginate";
         beanRequestPaciente.type_request = "GET";
@@ -155,8 +157,8 @@ function processAjaxPaciente() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestPaciente.operation == "paginate") {
-           if (document.querySelector("#txtFilterPaciente").value!="") {
-           document.querySelector("#pagePaciente").value ="1";
+        if (document.querySelector("#txtFilterPaciente").value != "") {
+            document.querySelector("#pagePaciente").value = "1";
         }
         parameters_pagination += "?filter=" + document.querySelector("#txtFilterPaciente").value.toUpperCase();
         parameters_pagination += "&page=" + document.querySelector("#pagePaciente").value;
@@ -219,7 +221,7 @@ function toListPaciente(beanPagination) {
             row += "<td><ul class='dt-list dt-list-cm-0'>";
             row += "<li class='dt-list__item historia-clinica' data-toggle='tooltip' title='Ver Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
             row += "<i class='text-primary fa fa-file-alt '></i></a></li>";
-            row += "<li class='dt-list__item eliminar-paciente' data-toggle='tooltip' title='Descargar Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
+            row += "<li class='dt-list__item reporte-paciente' data-toggle='tooltip' title='Descargar Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
             row += "<i class='text-danger fa fa-file-pdf'></i></a></li>";
             row += "</ul></td>";
             row += "<td class='align-middle'>" + paciente.dni + "</td>";
@@ -284,13 +286,15 @@ function addEventsPacientes() {
             }
         };
     });
-    document.querySelectorAll('.paciente').forEach(btn => {
+    document.querySelectorAll('.reporte-paciente').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
             pacienteSelected = findByPaciente(btn.parentElement.parentElement.parentElement.getAttribute('idpaciente'));
-            beanRequestPaciente.operation = "delete";
-            beanRequestPaciente.type_request = "DELETE";
-            processAjaxPaciente();
+            if (pacienteSelected != undefined) {
+                $("#modalCargandoVDYA").modal('show');
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Paciente ');
+            }
         };
     });
 }
@@ -728,4 +732,41 @@ function validateFormDiagnostico() {
     }
 
     return true;
+}
+function processAjaxValidacionHistoria() {
+    let url_request = getHostAPI() + "api/historiaclinica/validate-historia?idatendido=" + pacienteSelected.idatendido;
+    $.ajax({
+        url: url_request,
+        type: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        //data: JSON.stringify(json),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (jsonResponse) {
+        $('#modalCargandoVDYA').modal("hide");
+        if (jsonResponse.messageServer !== undefined) {
+            if (jsonResponse.messageServer.toLowerCase() == "ok") {
+                //ABRIMOS EL REPORTE
+                //ABRIMOS EL REPORTE
+
+                let url_constancia = getHostAPI() + "api/constancias/historia-clinica";
+                url_constancia += "?idatendido=" + pacienteSelected.idatendido;
+                document.querySelector("#titleModalPreviewReporte").innerHTML = "VISTA PREVIA";
+                document.querySelector('#idframe_reporte').setAttribute('src', url_constancia);
+                document.querySelector('#row_frame_report').style.display = "block";
+                $('#ventanaModalPreviewReporte').modal('show');
+
+
+            } else {
+                showAlertTopEnd('warning', jsonResponse.messageServer);
+            }
+        } else {
+            showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoVDYA').modal("hide");
+        showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+    });
 }
