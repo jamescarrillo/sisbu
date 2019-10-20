@@ -28,13 +28,13 @@
                 <!-- Tables -->
                 <div class="table-responsive">
                     <table class="table mb-0 mt-2">
-                        <thead  class="bg-primary" style="line-height: 0.4;">
+                        <thead  class="bg-primary"style="    border-bottom-style: hidden;">
                             <tr >
-                                <th class="text-uppercase  text-white" scope="col" style="width: 12%;font-weight: 500;">H. CLÍNICA</th>
-                                <th class="text-uppercase  text-white" scope="col" style="font-weight: 500;" >DNI</th>
-                                <th class="text-uppercase text-white" scope="col"  style="font-weight: 500;">NOMBRE COMPLETO</th>
-                                <th class="text-uppercase  text-white" scope="col" style="font-weight: 500;" >TIPO USUARIO</th>
-                                <th class="text-uppercase  text-white" scope="col"  style="font-weight: 500;">SUBTIPO USUARIO</th>
+                                <th class="text-uppercase  text-white pt-3 pb-2" scope="col" style="width: 12%;font-weight: 500;">H. CLÍNICA</th>
+                                <th class="text-uppercase  text-white pt-3 pb-2" scope="col" style="font-weight: 500;" >DNI</th>
+                                <th class="text-uppercase text-white pt-3 pb-2" scope="col"  style="font-weight: 500;">NOMBRE COMPLETO</th>
+                                <th class="text-uppercase  text-white pt-3 pb-2" scope="col" style="font-weight: 500;" >TIPO USUARIO</th>
+                                <th class="text-uppercase  text-white pt-3 pb-2" scope="col"  style="font-weight: 500;">SUBTIPO USUARIO</th>
                             </tr>
                         </thead>
                         <tbody id="tbodyPaciente">
@@ -68,10 +68,10 @@
             <div class="card-header">
                 <!-- Tab Navigation -->
                 <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
-                     <li class="pr-2">
-                    <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar" class="btn btn-outline-primary btn-sm dt-avatar" > <i class="icon icon-reply icon-lg"></i></button>
+                    <li class="pr-2">
+                        <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar" class="btn btn-outline-primary btn-sm dt-avatar" > <i class="icon icon-reply icon-lg"></i></button>
                     </li>
-                                       
+
                     <li class="nav-item">
                         <a id="buttonFiliacion" class="nav-link show active" data-toggle="tab" 
                            href="#tab-pane-15" role="tab" aria-controls="tab-pane-15"
@@ -143,31 +143,31 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtCodigoPaciente">CÓDIGO</label>
-                                <input disabled type="text" class="form-control" id="txtCodigoPaciente" placeholder="CODIGO">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtCodigoPaciente" placeholder="CODIGO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtNumeroDocumentoPaciente">N° DOCUMENTO</label>
-                                <input disabled type="text" class="form-control" id="txtNumeroDocumentoPaciente" placeholder="N° DOCUMENTO">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtNumeroDocumentoPaciente" placeholder="N° DOCUMENTO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtApPaternoPaciente">AP. PATERNO</label>
-                                <input disabled type="text" class="form-control" id="txtApPaternoPaciente" placeholder="AP. PATERNO">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtApPaternoPaciente" placeholder="AP. PATERNO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtApMaternoPaciente">AP. MATERNO</label>
-                                <input disabled type="text" class="form-control" id="txtApMaternoPaciente" placeholder="AP. MATERNO">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtApMaternoPaciente" placeholder="AP. MATERNO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtNombrePaciente">NOMBRES</label>
-                                <input disabled type="email" class="form-control" id="txtNombrePaciente" placeholder="NOMBRES">
+                                <input disabled type="email" class="form-control form-control-sm" id="txtNombrePaciente" placeholder="NOMBRES">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
@@ -182,25 +182,25 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtFechaNacPaciente">FECHA DE NACIMIENTO</label>
-                                <input disabled type="email" class="form-control" id="txtFechaNacPaciente" placeholder="Enter email">
+                                <input disabled type="email" class="form-control form-control-sm" id="txtFechaNacPaciente" placeholder="Enter email">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtCelularPaciente">CELULAR</label>
-                                <input disabled type="text" class="form-control" id="txtCelularPaciente" placeholder="CELULAR">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtCelularPaciente" placeholder="CELULAR">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-12">
                             <div class="form-group">
                                 <label for="txtEmailPaciente">EMAIL</label>
-                                <input disabled type="email" class="form-control" id="txtEmailPaciente" placeholder="Enter email">
+                                <input disabled type="email" class="form-control form-control-sm" id="txtEmailPaciente" placeholder="Enter email">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-12">
                             <div class="form-group">
                                 <label for="txtEscuelaPaciente">ESCUELA</label>
-                                <input disabled type="text" class="form-control" id="txtEscuelaPaciente" placeholder="ESCUELA">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtEscuelaPaciente" placeholder="ESCUELA">
                             </div>
                         </div>
 
@@ -225,7 +225,7 @@
                         <!-- Tables -->
                         <div class="table-responsive">
                             <table class="table mb-0">
-                                <thead class="bg-primary" style="line-height: 0.4;">
+                                <thead class="bg-primary" style="line-height: 0.4;border-bottom-style: hidden;">
                                     <tr>
                                         <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">ACCIÓN</th>
                                         <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">ATENDIDO</th>
@@ -241,7 +241,7 @@
                         <!-- /tables -->
                     </div>
 
-                    <div class="mt-2">
+                    <div class="mt-2 form-row">
                         <div class="col-md-2 col-sm-3 col-4">
                             <select id="sizePageTriaje" class="form-control form-control-sm select2-single">
                                 <option value="10">10</option>
@@ -258,139 +258,123 @@
                     </div>
 
                 </div>
-                <!-- /tab pane-->
+                <div id="newOpenTriaje" class="tab-pane ">
+                    <div class="card-header bg-transparent pl-0 ">
+                        <h4  class="mb-0 text-primary" id="txtTituloModalTriaje"></h4>
+                    </div>
+                    <form id="FrmTriajePaciente">
+                        <div class="row" >
 
-                
+                            <div class="col-lg-4 col-sm-4">
+                                <div class="form-group ">
+                                    <label for="txtPosicionPaciente">POSICIÓN</label>
+                                    <select class="form-control form-control-sm " id="txtPosicionPaciente">
+                                        <option value="-1">seleccione...</option>
+                                        <option value="1">DECÚBITO DORSAL</option>
+                                        <option value="3">SENTADO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4">
+                                <div class="form-group ">
+                                    <label for="txtZonaControlPaciente">ZONA DE CONTROL</label>
+                                    <select class="form-control form-control-sm " id="txtZonaControlPaciente">
+                                        <option value="-1">seleccione tipo...</option>
+                                        <option value="0">MSI</option>
+                                        <option value="1">MSD</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4 col-sm-4">
+                                <div class="form-group ">
+                                    <label for="txtAyunoPaciente">AYUNO</label>
+                                    <select class="form-control form-control-sm " id="txtAyunoPaciente">
+                                        <option value="-1">seleccione...</option>
+                                        <option  value="1">SI</option>
+                                        <option value="0">NO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-4">
+                                <div class="form-group ">
+                                    <label for="txtPaPaciente">PA</label>
+                                    <input  type="text" class="form-control form-control-sm" id="txtPaPaciente" placeholder="PA">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-4">
+                                <div class="form-group ">
+                                    <label for="txtFcPaciente">FC</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtFcPaciente" placeholder="FC">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-4">
+                                <div class="form-group ">
+                                    <label for="txtFrPaciente">FR</label>
+                                    <input  type="text" class="form-control form-control-sm" id="txtFrPaciente" placeholder="FR">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-4">
+                                <div class="form-group ">
+                                    <label for="txtTPaciente">T°</label>
+                                    <input type="text" class="form-control form-control-sm" id="txtTPaciente" placeholder="T°">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-4">
+                                <div class="form-group ">
+                                    <label for="txtSo2Paciente">SO<sub>2</sub></label>
+                                    <input type="text" class="form-control form-control-sm" id="txtSoPaciente" placeholder="S02">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-4">
+                                <div class="form-group ">
+                                    <label for="txtGlicemiaPaciente">GLICEMIA</label>
+                                    <input  type="text" class="form-control form-control-sm" id="txtGlicemiaPaciente" placeholder="GLICEMIA">
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-3 col-sm-4">
+                                <div class="form-group ">
+                                    <label for="txtPesoPaciente">PESO</label>
+                                    <input  type="text" class="form-control form-control-sm" id="txtPesoPaciente" placeholder="PESO">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-4">
+                                <div class="form-group ">
+                                    <label for="txtTallaPaciente">TALLA (Metros)</label>
+                                    <input  type="text" class="form-control form-control-sm" id="txtTallaPaciente" placeholder="TALLA">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-4">
+                                <div class="form-group ">
+                                    <label for="txtImcPaciente">IMC</label>
+                                    <input disabled type="text" class="form-control form-control-sm" id="txtImcPaciente" placeholder="IMC">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-sm-12 text-center">
+                                <button id="btnCancelarTriaje" type="button" class="btn btn-outline-primary btn-sm" ><i class="icon icon-reply"></i> CANCELAR</button>
+                                <button type="submit" class="btn btn-primary btn-sm" id="btnGuardarAddMenus">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /tab pane-->
             </div>
             <!-- /tab content -->
-
         </div>
         <!-- /card --> 
     </div>
 </div>
-
-<div class="modal fade overflow-auto" id="ventanaModalPaciente" data-backdrop="static"
-     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h6  class="modal-title" id="txtTituloModalTriaje"></h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <form id="FrmTriajePaciente">
-                <div class="modal-body">
-                    <div class="row" >
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtPaPaciente">PA</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtPaPaciente" placeholder="PA">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtZonaControlPaciente">ZONA DE CONTROL</label>
-                                <select class="form-control form-control-sm " id="txtZonaControlPaciente">
-                                    <option value="-1">seleccione tipo...</option>
-                                    <option value="0">MSI</option>
-                                    <option value="1">MSD</option>
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtPosicionPaciente">POSICIÓN</label>
-                                <select class="form-control form-control-sm " id="txtPosicionPaciente">
-                                    <option value="-1">seleccione...</option>
-                                    <option value="1">DECÚBITO DORSAL</option>
-                                    <option value="3">SENTADO</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtFcPaciente">FC</label>
-                                <input type="text" class="form-control form-control-sm" id="txtFcPaciente" placeholder="FC">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtFrPaciente">FR</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtFrPaciente" placeholder="FR">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtTPaciente">T°</label>
-                                <input type="text" class="form-control form-control-sm" id="txtTPaciente" placeholder="T°">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtSo2Paciente">SO<sub>2</sub></label>
-                                <input type="text" class="form-control form-control-sm" id="txtSoPaciente" placeholder="S02">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtGlicemiaPaciente">GLICEMIA</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtGlicemiaPaciente" placeholder="GLICEMIA">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtAyunoPaciente">AYUNO</label>
-                                <select class="form-control form-control-sm " id="txtAyunoPaciente">
-                                    <option value="-1">seleccione...</option>
-                                    <option  value="1">SI</option>
-                                    <option value="0">NO</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtPesoPaciente">PESO</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtPesoPaciente" placeholder="PESO">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtTallaPaciente">TALLA (Metros)</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtTallaPaciente" placeholder="TALLA">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="form-group ">
-                                <label for="txtImcPaciente">IMC</label>
-                                <input disabled type="text" class="form-control form-control-sm" id="txtImcPaciente" placeholder="IMC">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal"><i class="icon icon-reply"></i> CANCELAR</button>
-                    <button type="submit" class="btn btn-primary btn-sm" id="btnGuardarAddMenus">Guardar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 
 <div class="modal fade" id="modalCargandoPaciente" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">

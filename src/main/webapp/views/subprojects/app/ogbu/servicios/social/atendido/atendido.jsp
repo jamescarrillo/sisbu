@@ -20,7 +20,7 @@
             <div class="card-body pt-0">
                 <form id="FrmAtendido">
                     <div class="input-group search-box" style="max-width: 100%;">
-                        <input type="text" id="txtFilterAtendido" class="form-control form-control-sm" placeholder="FILTER DNI ...">
+                        <input type="search" id="txtFilterAtendido" class="form-control form-control-sm" placeholder="FILTER DNI ...">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary btn-sm"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
@@ -28,59 +28,17 @@
                 </form>
                 <!-- Tables -->
                 <!-- Card -->
-                <div class=" pb-4 ">
-
-                    <!-- Card Header -->
-                    <div class="dt-card__header p-0 pt-3 mb-3">
-
-                        <!-- Card Heading -->
-                        <div class="dt-card__heading">
-
-                            <!-- Widget Item -->
-                            <div class="dt-widget__item pt-2 pb-2 bg-primary " >
-
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate  pl-5">
-                                    <h3 class="dt-card__title text-white">DNI</h3>
-                                </div>
-                                <!-- /widget info -->
-
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate ">
-                                    <h3 class="dt-card__title text-white">NOMBRE COMPLETO/<br>F. NACIMIENTO</h3>
-                                </div>
-                                <!-- /widget info -->
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">EMAIL</h3>
-                                </div>
-                                <!-- /widget info -->
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">ESCUELA</h3>
-                                </div>
-                                <!-- /widget info -->
-                            </div>
-                            <!-- /widgets item -->
-
-                        </div>
-                        <!-- /card heading -->
-
-                    </div>
-                    <!-- /card header -->
-
+                <div class="dt-card mt-4 ">
                     <!-- Card Body -->
                     <div class="dt-card__body p-0  " >
                         <!-- Widget -->
-                        <div class="dt-widget dt-widget-hover ps-custom-scrollbar ps ps--active-y" id="tbodyAtendido">
-
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                             id="tbodyAtendido">
                         </div>
                         <!-- /widget -->
                         <!-- /card body -->
-
                     </div>
                     <!-- /card -->
-
                 </div>
 
                 <!-- /tables -->
@@ -346,38 +304,34 @@
 
     <!-- Tab DATOS FAMILIARES -->
     <div class="col-xl-12" id="btnOpenFamiliar" style="display:none;">
-        <div class="form-row">
-            <div class="col-11 text-center">
+        <div class="dt-card__header mb-0 p-0">
+            <!-- Card Heading -->
+            <div class="dt-card__heading text-center">
                 <label id="titleManagerFamiliar" for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE FAMILIARES</label>
                 <input type="hidden" id="pageTriaje" value="1">
             </div>
-
-            <div class="float-right">
-                <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewFamiliar" data-toggle="tooltip" title="Agregar Familiar" ><i class="icon icon-plus icon-fw"></i></button>
+            <!-- /card heading -->
+            <!-- Card Tools -->
+            <div class="dt-card__tools">
+                <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewFamiliar" data-toggle="tooltip" title="Agregar Familiar" ><i class="icon icon-addnew"></i></button>
+                <button type="button" class="btn btn-danger btn-sm " id="btnReporteFamiliar" data-toggle="tooltip" title="Reporte de Familiares" ><i class="icon icon-assignment "></i></button>
             </div>
+            <!-- /card tools -->
         </div>
 
-        <div class="form-group col-12 ">
-            <!-- Tables -->
-            <div class="table-responsive">
-                <table class="table mb-0 ">
-                    <thead class="bg-primary " style="line-height: 1.0;">
-                        <tr>
-                            <th class="text-uppercase text-white pt-2 pb-2" scope="col" style="font-weight: 500;width: 10%">ACCIÓN</th>
-                            <th class="text-uppercase text-white pt-2 pb-2" scope="col" style="font-weight: 500;">NOMBRE COMPLETO</th>
-                            <th class="text-uppercase text-white pt-2 pb-2" scope="col" style="font-weight: 500;width: 10%">FECHA NACIMIENTO</th>
-                            <th class="text-uppercase text-white pt-2 pb-2" scope="col" style="font-weight: 500;width: 20%">ESTADO CIVIL/<br>NIVEL INSTRUCCIÓN</th>
-                            <th class="text-uppercase text-white pt-2 pb-2" scope="col" style="font-weight: 500;width: 10%">INGRESOS</th>
-
-                        </tr>
-                    </thead>
-                    <tbody id="tbodyDatosFamiliares" class="overflow-auto " >
-                    </tbody>
-                </table>
+        <!-- Card -->
+        <div class="dt-card mt-4 ">
+            <!-- Card Body -->
+            <div class="dt-card__body p-0  " >
+                <!-- Widget -->
+                <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                     id="tbodyDatosFamiliares">
+                </div>
+                <!-- /widget -->
+                <!-- /card body -->
             </div>
-            <!-- /tables -->
+            <!-- /card -->
         </div>
-
         <div class="form-group col-12 text-center">
             <button type="button" id="btnRegresarFamiliar" class="btn btn-outline-primary btn-sm" ><i class="icon icon-reply"></i> REGRESAR</button>
 
@@ -386,6 +340,68 @@
     </div>
     <!-- /tab pane-->
 
+
+    <!-- Tab EVALUACIONES -->
+    <div class="col-12 row" id="row-evaluaciones" style="display: none">
+        <!-- Grid Item -->
+        <div class="col-12 order-xl-3">
+            <!-- Card Header EVALUACIONES -->
+            <!-- /card heading -->
+            <div class="dt-card__header ">
+                <!-- Card Tools -->
+                <div class="dt-card__tools">
+                    <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar" class="btn btn-outline-primary btn-sm dt-avatar" > 
+                        <i class="icon icon-reply icon-lg"></i></button>
+                </div>
+                <!-- /card tools -->
+                <!-- Card Heading -->
+                <div class="dt-card__heading">
+                    <h3  class="dt-card__title  text-primary text-center">EVALUACIONES</h3>
+
+                </div>
+                <!-- /card heading -->
+            </div>
+
+            <!-- /card header -->
+            <!-- Card -->
+            <div class="dt-card ">
+
+                <!-- Card Body -->
+                <div class="dt-card__body p-0">
+                    <!-- Widget -->
+                    <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" 
+                         id="div-container-evaluaciones">
+
+                    </div>
+                    <!-- /widget -->
+                </div>
+                <!-- /card body -->
+            </div>
+            <!-- /card -->
+        </div>
+        <!-- /grid item -->
+    </div>
+    <!-- Tab RESPUESTAS -->
+    <div class="col-12">
+        <!-- Card Header -->
+        <div class="dt-card__header mb-0">
+
+            <!-- Card Heading -->
+            <div class="dt-card__heading ">
+                <h3 class="dt-card__title" id="titleManagerRespuestaEvaluacion" style="display: none">PREGUNTAS SOCIOECONÓMICAS</h3>
+            </div>
+            <!-- /card heading -->
+
+        </div>
+        <!-- /card header -->
+
+        <!-- Card Body -->
+        <div class="dt-card__body" id="content-preguntas-evaluacion-socioeconomico">
+
+        </div>
+
+        <!-- /card body -->
+    </div>
 </div>
 
 <div class="modal fade" id="modalCargandoAtendido" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
@@ -454,7 +470,6 @@
                         </div>
                         <div class="col-lg-6 mb-3">
                             <label for="txtFechaNaciFamiliar">FECHA NACIMIENTO
-                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Si no sabes puedes dejar la caja de texto en blanco" style="cursor: pointer" data-original-title=""></i>
                             </label>
                             <div class="input-group ">
                                 <input  type="text" class="form-control form-control-sm" id="txtFechaNaciFamiliar" placeholder="DD/MM/AAAA">
@@ -491,14 +506,12 @@
                         <div class="col-lg-6">
                             <div class="form-group ">
                                 <label for="txtIngresosFamiliar">INGRESOS
-                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Coloca el monto mensual que tiene de ingresos tu familiar" style="cursor: pointer" data-original-title=""></i>
                                 </label>
                                 <input type="number" class="form-control form-control-sm" id="txtIngresosFamiliar" placeholder="INGRESOS">
                             </div>
                         </div>
                         <div class="col-lg-6 mb-3">
                             <label for="txtOcupacionAtendido">OCUPACIÓN
-                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Es a lo que se dedica tu familiar" style="cursor: pointer" data-original-title=""></i>
                             </label>
                             <div class="input-group">
                                 <input type="text" class="form-control form-control-sm" id="txtOcupacionAtendido" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
@@ -509,7 +522,6 @@
                         </div>
                         <div class="col-lg-6 mb-3">
                             <label for="txtDistritoAtendido">DISTRITO PROCEDENCIA
-                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Es el distrito donde nacio tu familiar" style="cursor: pointer" data-original-title=""></i>
                             </label>
                             <div class="input-group">
                                 <input type="text" class="form-control form-control-sm" id="txtDistritoAtendido" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
@@ -844,7 +856,59 @@
                 <div class="progress" style="margin-bottom: 0px;height: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                        Verificando Historia Clinica del Atendido. . .
+                        Verificando Procedimiento del Ciclo. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalCargandoEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalCargandoRespuestaEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando Respuestas. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalCargandoProcedimientoSocioeconomico" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando Respuestas. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalCargandoEvaluacionAtendidoSocioeconomico" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando Evaluacion del Atendido. . .
                     </div>
                 </div>
             </div>

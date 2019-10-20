@@ -7,9 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestAtendido.operation = "paginate";
     beanRequestAtendido.type_request = "GET";
 
-    $("#modalCargandoVDYA").on('shown.bs.modal', function () {
-        processAjaxValidacionHistoria();
-    });
+   
     $('#txtFechaNacAtendido').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false,
@@ -141,47 +139,115 @@ function processAjaxAtendido() {
     });
 }
 
+
 function toListAtendido(beanPagination) {
     document.querySelector("#tbodyAtendido").innerHTML = "";
     document.querySelector("#titleManagerAtendido").innerHTML = "[ " + beanPagination.count_filter + " ] ATENDIDOS";
 
     if (beanPagination.count_filter > 0) {
         let row;
+        row =
+                    `
+                <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           DNI
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           NOMBRE COMPLETO /
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           FECHA DE NACIMIENTO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           EMAIL
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ESCUELA PROFESIONAL
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
+        document.querySelector("#tbodyAtendido").innerHTML += row;
         beanPagination.list.forEach(atendido => {
-            row = "<div class='dt-widget__item border-bottom'>";
-            row += "<div class='dt-extra animate-slide align-self-center mr-5' idatendido='" + atendido.idatendido + "'>";
-            row += "<span class='badge badge-info badge-circle-animate badge-pill badge-sm align-text-top mr-2'>"
-            row += "<a class='text-light-gray editar-atendido' data-toggle='tooltip' title='Editar Datos' href='javascript:void(0)'>";
-            row += "<i class='text-white icon icon-editors'></i></a>";
-            row += "</span>";
-            row += "<div class='slide-content'>";
-            row += "<a idusuario='" + atendido.usuario.idusuario + "' class='text-light-gray usuario-atendido' data-toggle='tooltip' title='Editar Perfil' href='javascript:void(0)'>";
-            row += "<i class='text-success fa fa-user-circle'></i></a></div>";
-            row += "<div class='slide-content'>";
-            row += "<a class='text-light-gray familiar-atendido' data-toggle='tooltip' title='Familiares'' href='javascript:void(0)'>";
-            row += "<i class='text-primary fa fa-users'></i></a></div>";
-            row += "<div class='slide-content'>";
-            row += "<a class='text-info text-light-gray fichas-atendido' data-toggle='tooltip' title='Fichas' href='javascript:void(0)'>";
-            row += "<i class='text-warning fa fa-list-ol'></i></a></div>";
-            row += "</div>";
-
-            row += "<div class='dt-widget__info text-truncate mr-5' style='min-width:50px; max-width:10%'>";
-            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += atendido.dni + "</p></div>";
-
-            row += "<div class='text-truncate mr-5' style='min-width:60px; width:25%;'>";
-            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += atendido.apellido_pat + " " + atendido.apellido_mat + " " + atendido.nombre + "<br>" + atendido.fecha_nacimiento + "</p></div>";
-
-            row += "<div class='text-truncate mr-5' style='min-width:60px; max-width:25%;'>";
-            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += atendido.email + "</p></div>";
-
-            row += "<div class='text-truncate' style='min-width:60px; max-width:25%;'>";
-            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += atendido.escuela.nombre + "</p></div>";
-
-            row += "</div>";
+            row =
+                    `
+                <div class="dt-widget__item border-success pl-5 ">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-atendido" idatendido='${atendido.idatendido}' title="Editar Datos" data-toggle="tooltip">
+                                    <i class="icon icon-editors icon-1x"></i>
+                                </button>
+                                <button class="btn btn-default text-success dt-fab-btn usuario-atendido" idusuario='${atendido.usuario.idusuario}' title="Editar Perfil" data-toggle="tooltip">
+                                    <i class="fa fa-user-circle "></i>
+                                </button>
+                                <button class="btn btn-default text-info dt-fab-btn familiar-atendido" idatendido='${atendido.idatendido}' title="Familiares" data-toggle="tooltip">
+                                    <i class="fa fa-users"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn fichas-atendido" idatendido='${atendido.idatendido}' title="Fichas" data-toggle="tooltip">
+                                    <i class="fa fa-list-ol"></i>
+                                </button>
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.dni}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.apellido_pat} ${atendido.apellido_mat} ${atendido.nombre}
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.fecha_nacimiento}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.email}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.escuela.nombre}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
 
             document.querySelector("#tbodyAtendido").innerHTML += row;
             $('[data-toggle="tooltip"]').tooltip();
@@ -205,8 +271,8 @@ function addEventsAtendidoes() {
     document.querySelectorAll('.editar-atendido').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            console.log(btn.parentElement.parentElement.getAttribute('idatendido'));
-            atendidoSelected = findByAtendido(btn.parentElement.parentElement.getAttribute('idatendido'));
+            
+            atendidoSelected = findByAtendido(btn.getAttribute('idatendido'));
             if (atendidoSelected != undefined) {
                 beanRequestAtendido.operation = "update";
                 beanRequestAtendido.type_request = "PUT";
@@ -274,7 +340,7 @@ function addEventsAtendidoes() {
     document.querySelectorAll('.familiar-atendido').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            atendidoSelected = findByAtendido(btn.parentElement.parentElement.getAttribute('idatendido'));
+            atendidoSelected = findByAtendido(btn.getAttribute('idatendido'));
             if (atendidoSelected != undefined) {
                 beanRequestFamiliar.operation = "paginate";
                 beanRequestFamiliar.type_request = "GET";
@@ -285,11 +351,20 @@ function addEventsAtendidoes() {
 
         };
     });
-    document.querySelectorAll('.ficha-atendido').forEach(btn => {
+    document.querySelectorAll('.fichas-atendido').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-
-
+            atendidoSelected = findByAtendido(btn.getAttribute('idatendido'));
+            if (atendidoSelected != undefined) {
+                if (atendidoSelected.ciclo_academico_ingreso.idciclo_academico>12) {
+                    $('#modalCargandoEvaluacion').modal('show');
+                }else{
+                  showAlertTopEnd('warning', 'El Atendido no pertenece al ciclo superior 2019-II');   
+                }
+                
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Atendido ');
+            }
         };
     });
 
@@ -426,43 +501,5 @@ function limpiarInput() {
     document.querySelector("#txtDireccionProceAtendido").value = "";
     document.querySelector("#txtDistritoActualAtendido").value = "";
     document.querySelector("#txtDistritoProcedenciaAtendido").value = "";
-}
-
-function processAjaxValidacionHistoria() {
-    let url_request = getHostAPI() + "api/historiaclinica/validate-historia?idatendido=" + atendidoSelected.idatendido;
-    $.ajax({
-        url: url_request,
-        type: "GET",
-        headers: {
-            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
-        },
-        //data: JSON.stringify(json),
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json'
-    }).done(function (jsonResponse) {
-        $('#modalCargandoVDYA').modal("hide");
-        if (jsonResponse.messageServer !== undefined) {
-            if (jsonResponse.messageServer.toLowerCase() == "ok") {
-                //ABRIMOS EL REPORTE
-                //ABRIMOS EL REPORTE
-
-                let url_constancia = getHostAPI() + "api/historiaclinica/reporte";
-                url_constancia += "?idatendido=" + user_session.idusuario;
-                document.querySelector("#titleModalPreviewReporte").innerHTML = "VISTA PREVIA"
-                document.querySelector('#idframe_reporte').setAttribute('src', url_constancia);
-                document.querySelector('#row_frame_report').style.display = "block";
-                $('#ventanaModalPreviewReporte').modal('show');
-
-
-            } else {
-                showAlertTopEnd('warning', jsonResponse.messageServer);
-            }
-        } else {
-            showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
-        }
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        $('#modalCargandoVDYA').modal("hide");
-        showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
-    });
 }
 

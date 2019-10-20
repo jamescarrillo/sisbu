@@ -39,6 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnCerrar").onclick = function () {
         document.querySelector("#openPaciente").style.display = "none";
         document.querySelector("#ListaPaciente").style.display = "block";
+        document.querySelector("#tab-pane-15").style.display = "initial";
+        document.querySelector("#tab-pane-17").style.display = "none";
+        document.querySelector("#newOpenTriaje").style.display = "none";
     };
 
     $("#modalCargandoPaciente").on('shown.bs.modal', function () {
@@ -72,10 +75,10 @@ document.addEventListener("DOMContentLoaded", function () {
         //LIMPIAR LOS CAMPOS
         limpiarInputTriaje();
         //SET TITLE MODAL
-        document.querySelector("#txtTituloModalTriaje").innerHTML = "HISTORIA CLINICA : " + historiaSelected.num_historia;
+        document.querySelector("#txtTituloModalTriaje").innerHTML = "REGISTRAR TRIAJE<small class='pl-5 text-dark'>N° HISTORIA : " + historiaSelected.num_historia + "</small>";
         //OPEN MODEL
-        $('#ventanaModalPaciente').modal('show');
-
+        document.querySelector("#tab-pane-17").style.display = "none";
+        document.querySelector("#newOpenTriaje").style.display = "initial";
     };
 
     $("#modalCargandoTriaje").on('shown.bs.modal', function () {
@@ -108,6 +111,8 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     document.querySelector("#buttonTriaje").onclick = function () {
+        document.querySelector("#tab-pane-15").style.display = "none";
+        document.querySelector("#tab-pane-17").style.display = "initial";
         beanRequestTriaje.operation = "paginate";
         beanRequestTriaje.type_request = "GET";
         $('#modalCargandoHistoria').modal('show');
@@ -129,8 +134,16 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestHistoria.operation = "dato";
         beanRequestHistoria.type_request = "GET";
     });
+    document.querySelector("#btnCancelarTriaje").onclick = function () {
+        document.querySelector("#newOpenTriaje").style.display = "none";
+        document.querySelector("#tab-pane-17").style.display = "block";
 
-
+    };
+    document.querySelector("#buttonFiliacion").onclick = function () {
+        document.querySelector("#tab-pane-15").style.display = "initial";
+        document.querySelector("#tab-pane-17").style.display = "none";
+        document.querySelector("#newOpenTriaje").style.display = "none";
+    };
 
 });
 
@@ -168,7 +181,6 @@ function processAjaxPaciente() {
         headers: {
             'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
-        data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
@@ -242,6 +254,9 @@ function addEventsPacientes() {
             document.querySelector("#buttonFiliacion").classList.add("active");
             document.querySelector("#tab-pane-17").classList.remove("active");
             document.querySelector("#tab-pane-15").classList.add("active");
+            document.querySelector("#tab-pane-17").style.display = "none";
+            document.querySelector("#newOpenTriaje").style.display = "none";
+            document.querySelector("#tab-pane-15").style.display = "initial";
             pacienteSelected = findByPaciente(btn.parentElement.parentElement.parentElement.getAttribute('idpaciente'));
             if (pacienteSelected != undefined) {
 
@@ -383,9 +398,12 @@ function processAjaxHistoria() {
         } else {
             showAlertTopEnd('warning', beanCrudResponse.messageServer);
         }
-        $('#modalCargandoHistoria').modal("hide");
-
         historiaSelected = beanCrudResponse;
+        if (beanCrudResponse.beanPagination != undefined) {
+            console.log(beanCrudResponse.beanPagination.list);
+            historiaSelected = beanCrudResponse.beanPagination.list[0];
+        }
+        $('#modalCargandoHistoria').modal("hide");
         $('#modalCargandoTriaje').modal("show");
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -419,6 +437,31 @@ function processAjaxTriaje() {
             parameters_pagination = "/" + idhistoria;
             json = {};
         } else {
+            if (beanRequestTriaje.operation == "add") {
+                diagnosticoSelected = undefined;
+            }
+            if (diagnosticoSelected != undefined) {
+                if (diagnosticoSelected.diagnostico == null || diagnosticoSelected.diagnostico == "") {
+                    diagnosticoSelected.diagnostico = "";
+                }
+                if (diagnosticoSelected.enf_actual == null || diagnosticoSelected.enf_actual == "") {
+                    diagnosticoSelected.enf_actual = "";
+                }
+                if (diagnosticoSelected.tratamiento == null || diagnosticoSelected.tratamiento == "") {
+                    diagnosticoSelected.tratamiento = "";
+                }
+                if (diagnosticoSelected.fecha_diagnostico == null || diagnosticoSelected.fecha_diagnostico == "") {
+                    diagnosticoSelected.fecha_diagnostico = "";
+                }
+            } else {
+                diagnosticoSelected = [];
+                diagnosticoSelected.fecha_diagnostico = "";
+                diagnosticoSelected.diagnostico = ""
+                diagnosticoSelected.tratamiento = "";
+                diagnosticoSelected.enf_actual = "";
+            }
+
+
             json = {
                 "presiona": document.querySelector("#txtPaPaciente").value,
                 "brazo": document.querySelector("#txtZonaControlPaciente").value,
@@ -432,9 +475,10 @@ function processAjaxTriaje() {
                 "peso": document.querySelector("#txtPesoPaciente").value,
                 "talla": document.querySelector("#txtTallaPaciente").value,
                 "imc": (document.querySelector("#txtImcPaciente").value),
-                "enf_actual": "",
-                "diagnostico": "",
-                "tratamiento": "",
+                "fecha_diagnostico": diagnosticoSelected.fecha_diagnostico,
+                "enf_actual": diagnosticoSelected.enf_actual,
+                "diagnostico": diagnosticoSelected.diagnostico,
+                "tratamiento": diagnosticoSelected.tratamiento,
                 "fecha_triaje": dia + "/" + mes + "/" + fechaActual.getFullYear(),
                 "idhistoria_clinica": {"idhistoria_clinica": historiaSelected.idhistoria_clinica}
             };
@@ -457,7 +501,7 @@ function processAjaxTriaje() {
         $('#modalCargandoTriaje').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
-                $('#ventanaModalPaciente').modal("hide");
+
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
             } else {
                 showAlertTopEnd('warning', beanCrudResponse.messageServer);
@@ -517,19 +561,19 @@ function toListTriaje(beanPagination) {
             let diag = (Triaje.diagnostico != "") ? Triaje.diagnostico : "AÚN NO HAY DIAGNÓSTICO";
             let aten = (Triaje.diagnostico != "") ? "SI" : "NO";
             let fecha = (Triaje.diagnostico != "") ? Triaje.fecha_diagnostico : "PENDIENTE";
-            let color = (Triaje.diagnostico != "") ? "bg-info" : "bg-danger";
+            let color = (Triaje.diagnostico != "") ? "bg-success" : "bg-danger";
             row = "<tr ";
             row += "iddiagnostico='" + Triaje.iddiagnostico + "' ";
             row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
+            row += "<td class='pb-2'><ul class='dt-list dt-list-cm-0'>";
             row += "<li class='dt-list__item editar-diagnostico'  title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
             row += "<i class='text-info icon icon-editors'></i></a></li>";
             row += "<li class='dt-list__item eliminar-diagnostico'  title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
             row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
-            row += "<td class='" + color + " text-white align-middle'>" + aten + "</td>";
-            row += "<td class=' align-middle'>" + fecha + "</td>";
-            row += "<td class=' align-middle'>" + diag + "</td>";
+            row += "<td class='" + color + " text-white align-middle text-center pb-2' style='width:10%'>" + aten + "</td>";
+            row += "<td class=' align-middle pb-2'>" + fecha + "</td>";
+            row += "<td class=' align-middle pb-2'>" + diag + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyTriaje").innerHTML += row;
         });
@@ -562,9 +606,11 @@ function addEventsTriaje() {
             beanRequestTriaje.type_request = "PUT";
             // DNI PRUEBA 75231069
             //SET TITLE MODAL
-            document.querySelector("#txtTituloModalTriaje").innerHTML = "EDITAR TRIAJE";
+            document.querySelector("#txtTituloModalTriaje").innerHTML = "ACTUALIZAR TRIAJE<small class='pl-5 text-dark'>N° HISTORIA : " + historiaSelected.num_historia + "</small>";
             //OPEN MODEL
-            $('#ventanaModalPaciente').modal('show');
+
+            document.querySelector("#tab-pane-17").style.display = "none";
+            document.querySelector("#newOpenTriaje").style.display = "initial";
         };
     });
 

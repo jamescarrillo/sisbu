@@ -126,7 +126,6 @@ function processAjaxPaciente() {
         headers: {
             'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
-        data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
@@ -299,7 +298,23 @@ function subtipoPaciente(tipopersonal) {
 
 //historia
 function addInputHistoria(historiaSelected) {
-
+    if (historiaSelected.personal.apellido_pat == null) {
+        historiaSelected.personal.apellido_pat = "";
+    }
+    if (historiaSelected.personal.apellido_mat == null) {
+        historiaSelected.personal.apellido_mat = "";
+    }
+    if (historiaSelected.personal.nombre == null) {
+        historiaSelected.personal.nombre = "";
+    }
+    if (historiaSelected.personal.cargo.idcargo == 4) {
+        doctorSelected = historiaSelected.personal;
+    } else {
+        historiaSelected.personal.nombre = "";
+        historiaSelected.personal.apellido_mat = "";
+        historiaSelected.personal.apellido_pat = "";
+        doctorSelected = undefined;
+    }
     document.querySelector("#txtHistoriaPaciente").value = historiaSelected.num_historia;
     document.querySelector("#txtSaludGeneralPaciente").value = historiaSelected.antecedentes;
     document.querySelector("#txtMedicoPaciente").value = historiaSelected.personal.apellido_pat + " " +
@@ -312,7 +327,6 @@ function addInputHistoria(historiaSelected) {
     document.querySelector("#txtPiezasDentariasPaciente").value = historiaSelected.piezas_dentarias;
     document.querySelector("#txtObservacionPaciente").value = historiaSelected.observaciones;
     document.querySelector("#txtDiagnosticoPaciente").value = historiaSelected.ex_extra_oral;
-    doctorSelected = historiaSelected.personal;
 }
 
 function limpiarInputHistoria() {
@@ -435,7 +449,7 @@ function validateFormHistoriaOdontologia() {
         document.querySelector("#txtSaludGeneralPaciente").focus();
         return false;
 
-    } else if (document.querySelector("#txtMedicoPaciente").value == "") {
+    } else if (doctorSelected==undefined) {
         showAlertTopEnd('warning', 'Por favor ingrese Odontólogo(a)');
         document.querySelector("#txtMedicoPaciente").focus();
         return false;

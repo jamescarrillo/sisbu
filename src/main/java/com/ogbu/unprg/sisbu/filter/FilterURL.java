@@ -532,6 +532,9 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/social/atendido/usuario.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/familiar.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/distrito_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/atendido/evaluacion.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/atendido/evaluaciones_socieconomica.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/atendido/respuesta_evaluacion2.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/escuela_c.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/ocupacion_c.js" + version_project
         });
