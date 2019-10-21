@@ -314,7 +314,7 @@
             <!-- Card Tools -->
             <div class="dt-card__tools">
                 <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewFamiliar" data-toggle="tooltip" title="Agregar Familiar" ><i class="icon icon-addnew"></i></button>
-                <button type="button" class="btn btn-danger btn-sm " id="btnReporteFamiliar" data-toggle="tooltip" title="Reporte de Familiares" ><i class="icon icon-assignment "></i></button>
+                <button type="button" class="btn btn-danger btn-sm " id="btnReporteFamiliar" data-toggle="tooltip" title="Descargar Lista de Familiares" ><i class="icon icon-assignment "></i></button>
             </div>
             <!-- /card tools -->
         </div>

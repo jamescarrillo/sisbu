@@ -26,23 +26,20 @@
                     </div>
                     
                 </form>
-                <!-- Tables -->
-                <div class="table-responsive">
-                    <table class="table mb-0 mt-2">
-                        <thead class="bg-primary" style="border-bottom-style: hidden;">
-                            <tr>
-                                <th class="text-uppercase text-white pt-3 pb-2" scope="col" style="width: 12%;font-weight: 500;">H. CLÍNICA</th>
-                                <th class="text-uppercase text-white pt-3 pb-2" scope="col" style="font-weight: 500;">DNI</th>
-                                <th class="text-uppercase text-white pt-3 pb-2" scope="col" style="font-weight: 500;">NOMBRE COMPLETO</th>
-                                <th class="text-uppercase text-white pt-3 pb-2" scope="col" style="font-weight: 500;">TIPO USUARIO</th>
-                                <th class="text-uppercase text-white pt-3 pb-2" scope="col" style="font-weight: 500;">SUBTIPO USUARIO</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbodyPaciente">
-                        </tbody>
-                    </table>
+                   <!-- Card -->
+                <div class="dt-card mt-4">
+                    <!-- Card Body -->
+                    <div class="dt-card__body p-0  " >
+                        <!-- Widget -->
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                             id="tbodyPaciente">
+                        </div>
+                        <!-- /widget -->
+                        <!-- /card body -->
+                    </div>
+                    
                 </div>
-                <!-- /tables -->
+              <!-- /card -->
                 <div class="row mt-2">
                     <div class="col-md-2 col-sm-3 col-4">
                         <select id="sizePagePaciente" class="form-control form-control-sm select2-single">

@@ -154,22 +154,105 @@ function toListPaciente(beanPagination) {
     document.querySelector("#titleManagerPaciente").innerHTML = "[ " + beanPagination.count_filter + " ] PACIENTES";
     if (beanPagination.count_filter > 0) {
         let row;
-        beanPagination.list.forEach(paciente => {
-            row = "<tr ";
-            row += "idpaciente='" + paciente.idatendido + "' ";
-            row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item historia-clinica' data-toggle='tooltip' title='Ver Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-primary fa fa-file-alt'></i></a></li>";
-            row += "<li class='dt-list__item reporte-paciente' data-toggle='tooltip' title='Reporte Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-danger fa fa-file-pdf'></i></a></li>";
-            row += "</ul></td>";
-            row += "<td class='align-middle'>" + paciente.dni + "</td>";
-            row += "<td class='align-middle'>" + paciente.apellido_pat + " " + paciente.apellido_mat + " " + paciente.nombre + "</td>";
-            row += "<td class='align-middle'>" + tipoPaciente(paciente.tipo_atendido) + "</td>";
-            row += "<td class='align-middle'>" + subtipoPaciente(paciente.subtipo_atendido) + "</td>";
-            row += "</tr>";
+        row =
+                `
+               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           DNI
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           NOMBRE COMPLETO /
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           FECHA DE NACIMIENTO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate" style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           TIPO DE PACIENTE
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ESCUELA PROFESIONAL
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
+        document.querySelector("#tbodyPaciente").innerHTML += row;
+        beanPagination.list.forEach(atendido => {
+            row =
+                    `
+                 <div class="dt-widget__item border-success pl-5 ">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn historia-clinica" idpaciente='${atendido.idatendido}' title="Ver Diagnótico" data-toggle="tooltip">
+                                    <i class="fa fa-file-alt"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn reporte-paciente" idpaciente='${atendido.idatendido}' title="Descargar Historia Clínica" data-toggle="tooltip">
+                                    <i class="fa fa-file-pdf"></i>
+                                </button>
+                               
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.dni}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.apellido_pat} ${atendido.apellido_mat} ${atendido.nombre}
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.fecha_nacimiento}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate" style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           ${tipoPaciente(atendido.tipo_atendido)}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+            ${atendido.tipo_atendido == 1 ? (atendido.escuela.nombre == null ? "" : atendido.escuela.nombre) : subtipoPaciente(atendido.subtipo_atendido)}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
             document.querySelector("#tbodyPaciente").innerHTML += row;
+            $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
                 beanPagination.count_filter,
@@ -181,7 +264,7 @@ function toListPaciente(beanPagination) {
         if (beanRequestPaciente.operation == "paginate") {
             document.querySelector("#txtFilterPaciente").focus();
         }
-        $('[data-toggle="tooltip"]').tooltip();
+
     } else {
         destroyPagination($('#paginationPaciente'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -198,7 +281,7 @@ function addEventsPacientes() {
             document.querySelector("#buttonFiliacion").classList.add("active");
             document.querySelector("#tab-pane-16").classList.remove("active");
             document.querySelector("#tab-pane-15").classList.add("active");
-            pacienteSelected = findByPaciente(btn.parentElement.parentElement.parentElement.getAttribute('idpaciente'));
+            pacienteSelected = findByPaciente(btn.getAttribute('idpaciente'));
             if (pacienteSelected != undefined) {
                 //SET VALUES MODAL
                 document.querySelector("#txtTipoDocumentoPaciente").value = pacienteSelected.tipo_documento;
@@ -227,7 +310,7 @@ function addEventsPacientes() {
     document.querySelectorAll('.reporte-paciente').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            pacienteSelected = findByPaciente(btn.parentElement.parentElement.parentElement.getAttribute('idpaciente'));
+            pacienteSelected = findByPaciente(btn.getAttribute('idpaciente'));
             if (pacienteSelected != undefined) {
                 $("#modalCargandoVDYA").modal('show');
             } else {
@@ -414,7 +497,7 @@ function processAjaxHistoria() {
 
         if (beanCrudResponse.messageServer == undefined) {
             if (beanCrudResponse.idhistoria_clinicao == null) {
-                console.log("agregar historia");
+
                 beanRequestHistoria.operation = "add";
                 beanRequestHistoria.type_request = "POST";
                 processAjaxHistoria();
@@ -423,12 +506,21 @@ function processAjaxHistoria() {
                 addInputHistoria(beanCrudResponse);
             }
         } else {
-            if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
-                showAlertTopEnd('success', 'Acción realizada exitosamente');
-            } else {
-                showAlertTopEnd('warning', beanCrudResponse.messageServer);
+            if (beanRequestHistoria.operation == "update") {
+                if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
+                    showAlertTopEnd('success', 'Acción realizada exitosamente');
+                } else {
+                    showAlertTopEnd('warning', beanCrudResponse.messageServer);
+                }
             }
+
         }
+
+        if (beanCrudResponse.beanPagination != undefined) {
+            historiaSelected = beanCrudResponse.beanPagination.list[0];
+            addInputHistoria(historiaSelected);
+        }
+
         $('#modalCargandoHistoria').modal("hide");
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -449,7 +541,7 @@ function validateFormHistoriaOdontologia() {
         document.querySelector("#txtSaludGeneralPaciente").focus();
         return false;
 
-    } else if (doctorSelected==undefined) {
+    } else if (doctorSelected == undefined) {
         showAlertTopEnd('warning', 'Por favor ingrese Odontólogo(a)');
         document.querySelector("#txtMedicoPaciente").focus();
         return false;

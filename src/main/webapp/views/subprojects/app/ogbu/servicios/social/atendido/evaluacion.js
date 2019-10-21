@@ -6,25 +6,17 @@
 var beanRequestEvaluacion = new BeanRequest();
 var beanPaginationEvaluacion;
 var evaluacionSelected;
-var repor_preguntas = "N";
-var repor_familiares = "N";
+
 document.addEventListener("DOMContentLoaded", function () {
     beanRequestEvaluacion.entity_api = "api/evaluacion/atendido";
     beanRequestEvaluacion.operation = "paginate";
     beanRequestEvaluacion.type_request = "GET";
 
-    $("#modalCargandoVDYA").on('shown.bs.modal', function () {
-        processAjaxVE();
-    });
+
     document.querySelector("#btnCerrar").onclick = function () {
         document.querySelector("#row-evaluaciones").style.display = "none";
         document.querySelector("#btnListaAtendido").style.display = "initial";
 
-    };
-    document.querySelector("#btnReporteFamiliar").onclick = function () {
-        repor_preguntas = "N";
-        repor_familiares = "S";
-        $('#modalCargandoVDYA').modal("show");
     };
 
     $("#modalCargandoEvaluacion").on('shown.bs.modal', function () {
@@ -160,53 +152,3 @@ function getEvaluacionForId(idevaluacion_atendido) {
     return eva_;
 }
 
-function processAjaxVE() {
-    let url_request = getHostAPI() + "api/detalle-procedimiento-ciclo/validate-evaluacion-complete";
-    url_request += "?idusuario=" + atendidoSelected.usuario.idusuario;
-    url_request += "&idarea=7";
-    $.ajax({
-        url: url_request,
-        type: "GET",
-        headers: {
-            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
-        },
-        //data: JSON.stringify(json),
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json'
-    }).done(function (jsonResponse) {
-        $('#modalCargandoVDYA').modal("hide");
-        if (jsonResponse.messageServer !== undefined) {
-            if (jsonResponse.messageServer.toLowerCase() == "ok") {
-                let url_constancia = getHostAPI() + "api/constancias/";
-                document.querySelector("#titleModalPreviewReporte").innerHTML = "VISTA PREVIA"
-                if (repor_preguntas == "S") {
-                    document.querySelector("#titleModalPreviewReporte").innerHTML = "VISTA PREVIA"
-                    url_constancia += "respuestas";
-                    url_constancia += "?idusuario=" + atendidoSelected.usuario.idusuario;
-                    url_constancia += "&idarea=7";
-                    document.querySelector('#idframe_reporte').setAttribute('src', url_constancia);
-                    document.querySelector('#row_frame_report').style.display = "block";
-                    $('#ventanaModalPreviewReporte').modal('show');
-                    repor_preguntas = "N";
-                    repor_familiares = "N";
-                } else if (repor_familiares == "S") {
-                    document.querySelector("#titleModalPreviewReporte").innerHTML = "VISTA PREVIA FAMILIARES"
-                    url_constancia += "familiares";
-                    url_constancia += "?idusuario=" + atendidoSelected.usuario.idusuario;
-                    document.querySelector('#idframe_reporte').setAttribute('src', url_constancia);
-                    document.querySelector('#row_frame_report').style.display = "block";
-                    $('#ventanaModalPreviewReporte').modal('show');
-                    repor_preguntas = "N";
-                    repor_familiares = "N";
-                }
-            } else {
-                showAlertTopEnd('warning', jsonResponse.messageServer, 10000);
-            }
-        } else {
-            showAlertTopEnd('error', 'Ha ocurrido un error interno, vuelve a intentarlo mas tarde :)', 10000);
-        }
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        $('#modalCargandoVE').modal("hide");
-        showAlertTopEnd('error', 'Ha ocurrido un error interno, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
-    });
-}

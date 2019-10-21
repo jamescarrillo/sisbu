@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestAtendido.operation = "paginate";
     beanRequestAtendido.type_request = "GET";
 
-   
+
     $('#txtFechaNacAtendido').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false,
@@ -147,7 +147,7 @@ function toListAtendido(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                    `
+                `
                 <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
@@ -198,14 +198,17 @@ function toListAtendido(beanPagination) {
                                 <button class="btn btn-default text-primary dt-fab-btn editar-atendido" idatendido='${atendido.idatendido}' title="Editar Datos" data-toggle="tooltip">
                                     <i class="icon icon-editors icon-1x"></i>
                                 </button>
-                                <button class="btn btn-default text-success dt-fab-btn usuario-atendido" idusuario='${atendido.usuario.idusuario}' title="Editar Perfil" data-toggle="tooltip">
+                                <button class="btn btn-default text-success dt-fab-btn usuario-atendido" idusuario='${atendido.usuario.idusuario}' title="Retaurar Contraseña" data-toggle="tooltip">
                                     <i class="fa fa-user-circle "></i>
                                 </button>
                                 <button class="btn btn-default text-info dt-fab-btn familiar-atendido" idatendido='${atendido.idatendido}' title="Familiares" data-toggle="tooltip">
                                     <i class="fa fa-users"></i>
                                 </button>
-                                <button class="btn btn-default text-danger dt-fab-btn fichas-atendido" idatendido='${atendido.idatendido}' title="Fichas" data-toggle="tooltip">
+                                <button class="btn btn-default text-warning dt-fab-btn fichas-atendido" idatendido='${atendido.idatendido}' title="Fichas" data-toggle="tooltip">
                                     <i class="fa fa-list-ol"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn constancia-atendido" idatendido='${atendido.idatendido}' title="Descargar Constancia" data-toggle="tooltip">
+                                    <i class="fa fa-file-pdf"></i>
                                 </button>
                               
                             </div>
@@ -271,7 +274,7 @@ function addEventsAtendidoes() {
     document.querySelectorAll('.editar-atendido').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            
+
             atendidoSelected = findByAtendido(btn.getAttribute('idatendido'));
             if (atendidoSelected != undefined) {
                 beanRequestAtendido.operation = "update";
@@ -356,12 +359,26 @@ function addEventsAtendidoes() {
         btn.onclick = function () {
             atendidoSelected = findByAtendido(btn.getAttribute('idatendido'));
             if (atendidoSelected != undefined) {
-                if (atendidoSelected.ciclo_academico_ingreso.idciclo_academico>12) {
+                if (atendidoSelected.ciclo_academico_ingreso.idciclo_academico > 12) {
                     $('#modalCargandoEvaluacion').modal('show');
-                }else{
-                  showAlertTopEnd('warning', 'El Atendido no pertenece al ciclo superior 2019-II');   
+                } else {
+                    showAlertTopEnd('warning', 'El Atendido no pertenece al ciclo superior 2019-II');
                 }
-                
+
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Atendido ');
+            }
+        };
+    });
+
+    document.querySelectorAll('.constancia-atendido').forEach(btn => {
+        //AGREGANDO EVENTO CLICK
+        btn.onclick = function () {
+            atendidoSelected = findByAtendido(btn.getAttribute('idatendido'));
+            if (atendidoSelected != undefined) {
+                repor_preguntas = "N";
+                repor_familiares = "N";
+                $('#modalCargandoVDYA').modal("show");
             } else {
                 showAlertTopEnd('warning', 'No se encontró el Atendido ');
             }
