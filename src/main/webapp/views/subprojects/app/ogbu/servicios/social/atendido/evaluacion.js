@@ -23,7 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
         processAjaxEvaluacion();
     });
 
+    $("#modalCargandoRemoveEvaluacion").on('shown.bs.modal', function () {
+        processAjaxRemoveEvaluacion();
+    });
+
 });
+
 function processAjaxEvaluacion() {
     let parameters_pagination = "?idatendido=" + atendidoSelected.idatendido + "&idprocedimiento=1&page=1&size=20";
     $.ajax({
@@ -51,7 +56,35 @@ function processAjaxEvaluacion() {
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoEvaluacion').modal("hide");
         showAlertErrorRequest();
+    });
+}
 
+function processAjaxRemoveEvaluacion() {
+    let parameters_pagination = "?idevaluacion_atendido=" + evaluacionSelected.idevaluacion_atendido;
+    $.ajax({
+        url: getHostAPI() + beanRequestEvaluacion.entity_api + "/" + "delete" + parameters_pagination,
+        type: "DELETE",
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (beanCrudResponse) {
+        $('#modalCargandoRemoveEvaluacion').modal("hide");
+        if (beanCrudResponse.messageServer !== undefined) {
+            if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
+                showAlertTopEnd('success', 'Acción realizada exitosamente');
+                //CARGAMOS NUEVAENTE LAS EVALUACIONES
+                setTimeout(() => {
+                    $("#modalCargandoEvaluacion").modal('show');
+                }, 2000);
+            } else {
+                showAlertTopEnd('warning', beanCrudResponse.messageServer);
+            }
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoRemoveEvaluacion').modal("hide");
+        showAlertErrorRequest();
     });
 }
 
@@ -93,7 +126,9 @@ function toListEvaluacion(beanPagination) {
                                 <button class="btn btn-default text-danger dt-fab-btn btn-reporte-preguntas" idevaluacion='${evaluacion.idevaluacion_atendido}' title="Reporte de Respuestas" data-toggle="tooltip">
                                     <i class="icon icon-assignment icon-xl"></i>
                                 </button>
-                              
+                                <button class="btn btn-default text-danger dt-fab-btn btn-remove-evaluacion" idevaluacion='${evaluacion.idevaluacion_atendido}' title="Eliminar evaluación" data-toggle="tooltip">
+                                    <i class="icon icon-circle-remove-o icon-xl"></i>
+                                </button>
                             </div>
                             <!-- /action button group -->
                         </div>
@@ -133,6 +168,18 @@ function addEventsEvaluaciones() {
             evaluacionSelected = getEvaluacionForId(this.getAttribute('idevaluacion'));
             if (evaluacionSelected != undefined) {
                 $('#modalCargandoRespuestaEvaluacion').modal("show");
+            } else {
+                showAlertTopEnd('warnign', 'No se encontró el registro para editar');
+            }
+        };
+    });
+
+    document.querySelectorAll(".btn-remove-evaluacion").forEach(btn => {
+        btn.onclick = function () {
+            evaluacionSelected = getEvaluacionForId(this.getAttribute('idevaluacion'));
+            if (evaluacionSelected != undefined) {
+                showAlertDelete('modalCargandoRemoveEvaluacion');
+                //$('#modalCargandoRemoveEvaluacion').modal("show");
             } else {
                 showAlertTopEnd('warnign', 'No se encontró el registro para editar');
             }

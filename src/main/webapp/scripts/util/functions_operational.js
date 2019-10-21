@@ -112,7 +112,7 @@ function getTimesTampJavaScriptCurrent() {
         f_ += f.getDate();
     }
     f_ += "/";
-    if (f.getMonth() < 10) {
+    if (f.getMonth() < 9) {
         f_ += "0" + (f.getMonth() + 1);
     } else {
         f_ += f.getMonth() + 1;
