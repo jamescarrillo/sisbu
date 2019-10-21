@@ -77,14 +77,14 @@ function processAjaxUsuario() {
     } else {
 
         if (beanRequestUsuario.operation == "delete") {
-            parameters_pagination = "/" + usuarioSelected.idusuario;
+            parameters_pagination = "/" + usuarioSelected.idatendido;
             json = {};
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombreUsuario").value,
             };
             if (beanRequestUsuario.operation == "update") {
-                json.idusuario = usuarioSelected.idusuario;
+                json.idusuario = usuarioSelected.idatendido;
             }
         }
     }
@@ -177,11 +177,15 @@ function toListUsuario(beanPagination) {
                                 <button class="btn btn-default text-primary dt-fab-btn detalle-deporte" idusuario='${atendido.idatendido}' title="Lista de Deportes" data-toggle="tooltip">
                                     <i class="fa fa-file-alt"></i>
                                 </button>
-                                <button class="btn btn-default text-danger dt-fab-btn detalle-aficion" idusuario='${atendido.idatendido}' title="Lista de Aficiones" data-toggle="tooltip">
+                                <button class="btn btn-default text-success dt-fab-btn detalle-aficion" idusuario='${atendido.idatendido}' title="Lista de Aficiones" data-toggle="tooltip">
                                     <i class="fa fa-file-alt"></i>
                                 </button>
-                               
-                              
+                                <button class="btn btn-default text-warning dt-fab-btn reporte-constancia" idusuario='${atendido.idatendido}' title="Descargar Constancia" data-toggle="tooltip">
+                                    <i class="fa fa-file-pdf"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn reporte-deportes" idusuario='${atendido.idatendido}' title="Descarga Lista de Deportes y Aficiones" data-toggle="tooltip">
+                                    <i class="fa fa-file-pdf"></i>
+                                </button>
                             </div>
                             <!-- /action button group -->
                         </div>
@@ -257,6 +261,7 @@ function addEventsUsuarios() {
             }
         };
     });
+
     document.querySelectorAll('.detalle-aficion').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
@@ -264,6 +269,32 @@ function addEventsUsuarios() {
             usuarioSelected = findByUsuario(btn.getAttribute('idusuario'));
             if (usuarioSelected != undefined) {
                 $('#modalCargandoAficionDetalle').modal('show');
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Usuario para poder editar');
+            }
+        };
+    });
+    document.querySelectorAll('.reporte-constancia').forEach(btn => {
+        //AGREGANDO EVENTO CLICK
+        btn.onclick = function () {
+
+            usuarioSelected = findByUsuario(btn.getAttribute('idusuario'));
+            if (usuarioSelected != undefined) {
+                repor_deportes = "C";
+                $("#modalCargandoVDYA").modal('show');
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Usuario para poder editar');
+            }
+        };
+    });
+    document.querySelectorAll('.reporte-deportes').forEach(btn => {
+        //AGREGANDO EVENTO CLICK
+        btn.onclick = function () {
+
+            usuarioSelected = findByUsuario(btn.getAttribute('idusuario'));
+            if (usuarioSelected != undefined) {
+                repor_deportes = "D";
+                $("#modalCargandoVDYA").modal('show');
             } else {
                 showAlertTopEnd('warning', 'No se encontró el Usuario para poder editar');
             }

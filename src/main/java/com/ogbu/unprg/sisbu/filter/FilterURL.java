@@ -586,6 +586,7 @@ public class FilterURL implements Filter {
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/servicios/recreacion-deporte/usuario/aficion.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/recreacion-deporte/usuario/aficion_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/recreacion-deporte/usuario/documentos.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/recreacion-deporte/usuario/deporte.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/recreacion-deporte/usuario/deporte_c.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/recreacion-deporte/usuario/usuario.js" + version_project
