@@ -13,7 +13,10 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestPaciente.entity_api = "api/atendido";
     beanRequestPaciente.operation = "paginate";
     beanRequestPaciente.type_request = "GET";
-
+    document.querySelector("#openPaciente").style.display = "none";
+    $("#modalCargandoVDYA").on('shown.bs.modal', function () {
+        processAjaxValidacionHistoria();
+    });
     document.querySelector("#openPaciente").style.display = "none";
 
     $('#FrmPaciente').submit(function (event) {
@@ -36,6 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnCerrar").onclick = function () {
         document.querySelector("#openPaciente").style.display = "none";
         document.querySelector("#ListaPaciente").style.display = "block";
+        document.querySelector("#tab-pane-15").style.display = "initial";
+        document.querySelector("#tab-pane-17").style.display = "none";
+        document.querySelector("#newOpenTriaje").style.display = "none";
     };
 
     $("#modalCargandoPaciente").on('shown.bs.modal', function () {
@@ -69,10 +75,10 @@ document.addEventListener("DOMContentLoaded", function () {
         //LIMPIAR LOS CAMPOS
         limpiarInputTriaje();
         //SET TITLE MODAL
-        document.querySelector("#txtTituloModalTriaje").innerHTML = "HISTORIA CLINICA : " + historiaSelected.num_historia;
+        document.querySelector("#txtTituloModalTriaje").innerHTML = "REGISTRAR TRIAJE<small class='pl-5 text-dark'>N° HISTORIA : " + historiaSelected.num_historia + "</small>";
         //OPEN MODEL
-        $('#ventanaModalPaciente').modal('show');
-
+        document.querySelector("#tab-pane-17").style.display = "none";
+        document.querySelector("#newOpenTriaje").style.display = "initial";
     };
 
     $("#modalCargandoTriaje").on('shown.bs.modal', function () {
@@ -103,8 +109,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#txtTallaPaciente").onkeyup = function () {
         document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
     };
-    
+
     document.querySelector("#buttonTriaje").onclick = function () {
+        document.querySelector("#tab-pane-15").style.display = "none";
+        document.querySelector("#tab-pane-17").style.display = "initial";
         beanRequestTriaje.operation = "paginate";
         beanRequestTriaje.type_request = "GET";
         $('#modalCargandoHistoria').modal('show');
@@ -126,8 +134,16 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestHistoria.operation = "dato";
         beanRequestHistoria.type_request = "GET";
     });
+    document.querySelector("#btnCancelarTriaje").onclick = function () {
+        document.querySelector("#newOpenTriaje").style.display = "none";
+        document.querySelector("#tab-pane-17").style.display = "block";
 
-
+    };
+    document.querySelector("#buttonFiliacion").onclick = function () {
+        document.querySelector("#tab-pane-15").style.display = "initial";
+        document.querySelector("#tab-pane-17").style.display = "none";
+        document.querySelector("#newOpenTriaje").style.display = "none";
+    };
 
 });
 
@@ -137,8 +153,8 @@ function processAjaxPaciente() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestPaciente.operation == "paginate") {
-           if (document.querySelector("#txtFilterPaciente").value!="") {
-           document.querySelector("#pagePaciente").value ="1";
+        if (document.querySelector("#txtFilterPaciente").value != "") {
+            document.querySelector("#pagePaciente").value = "1";
         }
         parameters_pagination += "?filter=" + document.querySelector("#txtFilterPaciente").value.toUpperCase();
         parameters_pagination += "&page=" + document.querySelector("#pagePaciente").value;
@@ -165,7 +181,6 @@ function processAjaxPaciente() {
         headers: {
             'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
-        data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
@@ -190,27 +205,111 @@ function processAjaxPaciente() {
     });
 }
 
+
 function toListPaciente(beanPagination) {
     document.querySelector("#tbodyPaciente").innerHTML = "";
     document.querySelector("#titleManagerPaciente").innerHTML = "[ " + beanPagination.count_filter + " ] PACIENTES";
     if (beanPagination.count_filter > 0) {
         let row;
-        beanPagination.list.forEach(paciente => {
-            row = "<tr ";
-            row += "idpaciente='" + paciente.idatendido + "' ";
-            row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item historia-clinica' data-toggle='tooltip' title='Ver Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-primary fa fa-file-alt '></i></a></li>";
-            row += "<li class='dt-list__item eliminar-paciente' data-toggle='tooltip' title='Descargar Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-danger fa fa-file-pdf'></i></a></li>";
-            row += "</ul></td>";
-            row += "<td class='align-middle'>" + paciente.dni + "</td>";
-            row += "<td class='align-middle'>" + paciente.apellido_pat + " " + paciente.apellido_mat + " " + paciente.nombre + "</td>";
-            row += "<td class='align-middle'>" + tipoPaciente(paciente.tipo_atendido) + "</td>";
-            row += "<td class='align-middle'>" + subtipoPaciente(paciente.subtipo_atendido) + "</td>";
-            row += "</tr>";
+        row =
+                `
+               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           DNI
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           NOMBRE COMPLETO /
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           FECHA DE NACIMIENTO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate" style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           TIPO DE PACIENTE
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ESCUELA PROFESIONAL
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
+        document.querySelector("#tbodyPaciente").innerHTML += row;
+        beanPagination.list.forEach(atendido => {
+            row =
+                    `
+                 <div class="dt-widget__item border-success pl-5 ">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn historia-clinica" idpaciente='${atendido.idatendido}' title="Ver Diagnótico" data-toggle="tooltip">
+                                    <i class="fa fa-file-alt"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn reporte-paciente" idpaciente='${atendido.idatendido}' title="Descargar Historia Clínica" data-toggle="tooltip">
+                                    <i class="fa fa-file-pdf"></i>
+                                </button>
+                               
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.dni}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.apellido_pat} ${atendido.apellido_mat} ${atendido.nombre}
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.fecha_nacimiento}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate" style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           ${tipoPaciente(atendido.tipo_atendido)}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+            ${atendido.tipo_atendido == 1 ? (atendido.escuela.nombre == null ? "" : atendido.escuela.nombre) : subtipoPaciente(atendido.subtipo_atendido)}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
             document.querySelector("#tbodyPaciente").innerHTML += row;
+            $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
                 beanPagination.count_filter,
@@ -222,7 +321,7 @@ function toListPaciente(beanPagination) {
         if (beanRequestPaciente.operation == "paginate") {
             document.querySelector("#txtFilterPaciente").focus();
         }
-        $('[data-toggle="tooltip"]').tooltip();
+
     } else {
         destroyPagination($('#paginationPaciente'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -239,7 +338,10 @@ function addEventsPacientes() {
             document.querySelector("#buttonFiliacion").classList.add("active");
             document.querySelector("#tab-pane-17").classList.remove("active");
             document.querySelector("#tab-pane-15").classList.add("active");
-            pacienteSelected = findByPaciente(btn.parentElement.parentElement.parentElement.getAttribute('idpaciente'));
+            document.querySelector("#tab-pane-17").style.display = "none";
+            document.querySelector("#newOpenTriaje").style.display = "none";
+            document.querySelector("#tab-pane-15").style.display = "initial";
+            pacienteSelected = findByPaciente(btn.getAttribute('idpaciente'));
             if (pacienteSelected != undefined) {
 
                 //SET VALUES MODAL
@@ -266,13 +368,15 @@ function addEventsPacientes() {
             }
         };
     });
-    document.querySelectorAll('.paciente').forEach(btn => {
+    document.querySelectorAll('.reporte-paciente').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            pacienteSelected = findByPaciente(btn.parentElement.parentElement.parentElement.getAttribute('idpaciente'));
-            beanRequestPaciente.operation = "delete";
-            beanRequestPaciente.type_request = "DELETE";
-            processAjaxPaciente();
+            pacienteSelected = findByPaciente(btn.getAttribute('idpaciente'));
+            if (pacienteSelected != undefined) {
+                $("#modalCargandoVDYA").modal('show');
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Paciente ');
+            }
         };
     });
 }
@@ -378,9 +482,12 @@ function processAjaxHistoria() {
         } else {
             showAlertTopEnd('warning', beanCrudResponse.messageServer);
         }
-        $('#modalCargandoHistoria').modal("hide");
-
         historiaSelected = beanCrudResponse;
+        if (beanCrudResponse.beanPagination != undefined) {
+            console.log(beanCrudResponse.beanPagination.list);
+            historiaSelected = beanCrudResponse.beanPagination.list[0];
+        }
+        $('#modalCargandoHistoria').modal("hide");
         $('#modalCargandoTriaje').modal("show");
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -414,6 +521,31 @@ function processAjaxTriaje() {
             parameters_pagination = "/" + idhistoria;
             json = {};
         } else {
+            if (beanRequestTriaje.operation == "add") {
+                diagnosticoSelected = undefined;
+            }
+            if (diagnosticoSelected != undefined) {
+                if (diagnosticoSelected.diagnostico == null || diagnosticoSelected.diagnostico == "") {
+                    diagnosticoSelected.diagnostico = "";
+                }
+                if (diagnosticoSelected.enf_actual == null || diagnosticoSelected.enf_actual == "") {
+                    diagnosticoSelected.enf_actual = "";
+                }
+                if (diagnosticoSelected.tratamiento == null || diagnosticoSelected.tratamiento == "") {
+                    diagnosticoSelected.tratamiento = "";
+                }
+                if (diagnosticoSelected.fecha_diagnostico == null || diagnosticoSelected.fecha_diagnostico == "") {
+                    diagnosticoSelected.fecha_diagnostico = "";
+                }
+            } else {
+                diagnosticoSelected = [];
+                diagnosticoSelected.fecha_diagnostico = "";
+                diagnosticoSelected.diagnostico = ""
+                diagnosticoSelected.tratamiento = "";
+                diagnosticoSelected.enf_actual = "";
+            }
+
+
             json = {
                 "presiona": document.querySelector("#txtPaPaciente").value,
                 "brazo": document.querySelector("#txtZonaControlPaciente").value,
@@ -427,10 +559,12 @@ function processAjaxTriaje() {
                 "peso": document.querySelector("#txtPesoPaciente").value,
                 "talla": document.querySelector("#txtTallaPaciente").value,
                 "imc": (document.querySelector("#txtImcPaciente").value),
-                "enf_actual": "",
-                "diagnostico": "",
-                "tratamiento": "",
-                "fecha_triaje": dia + "/" + mes + "/" + fechaActual.getFullYear(),
+                "fecha_diagnostico": diagnosticoSelected.fecha_diagnostico,
+                "enf_actual": diagnosticoSelected.enf_actual,
+                "diagnostico": diagnosticoSelected.diagnostico,
+                "tratamiento": diagnosticoSelected.tratamiento,
+                "fecha_triaje": dia + "/" + mes + "/" + fechaActual.getFullYear()+" "+
+                        fechaActual.getHours()+":"+fechaActual.getMinutes()+":"+fechaActual.getSeconds(),
                 "idhistoria_clinica": {"idhistoria_clinica": historiaSelected.idhistoria_clinica}
             };
             if (beanRequestTriaje.operation == "update") {
@@ -452,7 +586,7 @@ function processAjaxTriaje() {
         $('#modalCargandoTriaje').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
-                $('#ventanaModalPaciente').modal("hide");
+
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
             } else {
                 showAlertTopEnd('warning', beanCrudResponse.messageServer);
@@ -512,19 +646,19 @@ function toListTriaje(beanPagination) {
             let diag = (Triaje.diagnostico != "") ? Triaje.diagnostico : "AÚN NO HAY DIAGNÓSTICO";
             let aten = (Triaje.diagnostico != "") ? "SI" : "NO";
             let fecha = (Triaje.diagnostico != "") ? Triaje.fecha_diagnostico : "PENDIENTE";
-            let color = (Triaje.diagnostico != "") ? "bg-info" : "bg-danger";
+            let color = (Triaje.diagnostico != "") ? "bg-success" : "bg-danger";
             row = "<tr ";
             row += "iddiagnostico='" + Triaje.iddiagnostico + "' ";
             row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
+            row += "<td class='pb-2'><ul class='dt-list dt-list-cm-0'>";
             row += "<li class='dt-list__item editar-diagnostico'  title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
             row += "<i class='text-info icon icon-editors'></i></a></li>";
             row += "<li class='dt-list__item eliminar-diagnostico'  title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
             row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
             row += "</ul></td>";
-            row += "<td class='" + color + " text-white align-middle'>" + aten + "</td>";
-            row += "<td class=' align-middle'>" + fecha + "</td>";
-            row += "<td class=' align-middle'>" + diag + "</td>";
+            row += "<td class='" + color + " text-white align-middle text-center pb-2' style='width:10%'>" + aten + "</td>";
+            row += "<td class=' align-middle pb-2'>" + fecha + "</td>";
+            row += "<td class=' align-middle pb-2'>" + diag + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyTriaje").innerHTML += row;
         });
@@ -557,9 +691,11 @@ function addEventsTriaje() {
             beanRequestTriaje.type_request = "PUT";
             // DNI PRUEBA 75231069
             //SET TITLE MODAL
-            document.querySelector("#txtTituloModalTriaje").innerHTML = "EDITAR TRIAJE";
+            document.querySelector("#txtTituloModalTriaje").innerHTML = "ACTUALIZAR TRIAJE<small class='pl-5 text-dark'>N° HISTORIA : " + historiaSelected.num_historia + "</small>";
             //OPEN MODEL
-            $('#ventanaModalPaciente').modal('show');
+
+            document.querySelector("#tab-pane-17").style.display = "none";
+            document.querySelector("#newOpenTriaje").style.display = "initial";
         };
     });
 
@@ -637,4 +773,41 @@ function validateFormTriaje() {
     }
 
     return true;
+}
+function processAjaxValidacionHistoria() {
+    let url_request = getHostAPI() + "api/historiaclinica/validate-historia?idatendido=" + pacienteSelected.idatendido;
+    $.ajax({
+        url: url_request,
+        type: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        //data: JSON.stringify(json),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (jsonResponse) {
+        $('#modalCargandoVDYA').modal("hide");
+        if (jsonResponse.messageServer !== undefined) {
+            if (jsonResponse.messageServer.toLowerCase() == "ok") {
+                //ABRIMOS EL REPORTE
+                //ABRIMOS EL REPORTE
+
+                let url_constancia = getHostAPI() + "api/constancias/triaje";
+                url_constancia += "?idatendido=" + pacienteSelected.idatendido;
+                document.querySelector("#titleModalPreviewReporte").innerHTML = "VISTA PREVIA";
+                document.querySelector('#idframe_reporte').setAttribute('src', url_constancia);
+                document.querySelector('#row_frame_report').style.display = "block";
+                $('#ventanaModalPreviewReporte').modal('show');
+
+
+            } else {
+                showAlertTopEnd('warning', jsonResponse.messageServer);
+            }
+        } else {
+            showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoVDYA').modal("hide");
+        showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+    });
 }

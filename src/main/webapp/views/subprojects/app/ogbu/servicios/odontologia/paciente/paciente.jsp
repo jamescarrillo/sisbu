@@ -26,23 +26,20 @@
                     </div>
                     
                 </form>
-                <!-- Tables -->
-                <div class="table-responsive">
-                    <table class="table mb-0 mt-2">
-                        <thead class="bg-primary" style="line-height: 0.4;">
-                            <tr>
-                                <th class="text-uppercase text-white" scope="col" style="width: 12%;font-weight: 500;">H. CLÍNICA</th>
-                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">DNI</th>
-                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">NOMBRE COMPLETO</th>
-                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">TIPO USUARIO</th>
-                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">SUBTIPO USUARIO</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbodyPaciente">
-                        </tbody>
-                    </table>
+                   <!-- Card -->
+                <div class="dt-card mt-4">
+                    <!-- Card Body -->
+                    <div class="dt-card__body p-0  " >
+                        <!-- Widget -->
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                             id="tbodyPaciente">
+                        </div>
+                        <!-- /widget -->
+                        <!-- /card body -->
+                    </div>
+                    
                 </div>
-                <!-- /tables -->
+              <!-- /card -->
                 <div class="row mt-2">
                     <div class="col-md-2 col-sm-3 col-4">
                         <select id="sizePagePaciente" class="form-control form-control-sm select2-single">
@@ -144,31 +141,31 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtCodigoPaciente">CÓDIGO</label>
-                                <input disabled type="text" class="form-control" id="txtCodigoPaciente" placeholder="CODIGO">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtCodigoPaciente" placeholder="CODIGO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtNumeroDocumentoPaciente">N° DOCUMENTO</label>
-                                <input disabled type="text" class="form-control" id="txtNumeroDocumentoPaciente" placeholder="N° DOCUMENTO">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtNumeroDocumentoPaciente" placeholder="N° DOCUMENTO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtApPaternoPaciente">AP. PATERNO</label>
-                                <input disabled type="text" class="form-control" id="txtApPaternoPaciente" placeholder="AP. PATERNO">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtApPaternoPaciente" placeholder="AP. PATERNO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtApMaternoPaciente">AP. MATERNO</label>
-                                <input disabled type="text" class="form-control" id="txtApMaternoPaciente" placeholder="AP. MATERNO">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtApMaternoPaciente" placeholder="AP. MATERNO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtNombrePaciente">NOMBRES</label>
-                                <input disabled type="email" class="form-control" id="txtNombrePaciente" placeholder="NOMBRES">
+                                <input disabled type="email" class="form-control form-control-sm" id="txtNombrePaciente" placeholder="NOMBRES">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
@@ -183,25 +180,25 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtFechaNacPaciente">FECHA DE NACIMIENTO</label>
-                                <input disabled type="email" class="form-control" id="txtFechaNacPaciente" placeholder="Enter email">
+                                <input disabled type="email" class="form-control form-control-sm" id="txtFechaNacPaciente" placeholder="Enter email">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtCelularPaciente">CELULAR</label>
-                                <input disabled type="text" class="form-control" id="txtCelularPaciente" placeholder="CELULAR">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtCelularPaciente" placeholder="CELULAR">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-12">
                             <div class="form-group">
                                 <label for="txtEmailPaciente">EMAIL</label>
-                                <input disabled type="email" class="form-control" id="txtEmailPaciente" placeholder="Enter email">
+                                <input disabled type="email" class="form-control form-control-sm" id="txtEmailPaciente" placeholder="Enter email">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-12">
                             <div class="form-group">
                                 <label for="txtEscuelaPaciente">ESCUELA</label>
-                                <input disabled type="text" class="form-control" id="txtEscuelaPaciente" placeholder="ESCUELA">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtEscuelaPaciente" placeholder="ESCUELA">
                             </div>
                         </div>
 
@@ -242,7 +239,7 @@
                                     <div class="col-lg-12  pr-0" >
                                         <label for="txtSaludGeneralPaciente">ANTECEDENTES DE SALUD GENERAL</label>
                                         <div class="form-group">
-                                            <textarea class="form-control" id="txtSaludGeneralPaciente" rows="5" placeholder="ANTECEDENTES DE SALUD GENERAL"></textarea>
+                                            <textarea class="form-control " id="txtSaludGeneralPaciente" rows="5" placeholder="ANTECEDENTES DE SALUD GENERAL"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -291,19 +288,19 @@
                             <div class="col-lg-4 col-sm-6" >
                                 <label for="txtPiezasDentariasPaciente">PIEZAS DENTARIAS</label>
                                 <div class="form-group">
-                                    <textarea class="form-control" id="txtPiezasDentariasPaciente" rows="3" placeholder="PIEZAS DENTARIAS"></textarea>
+                                    <textarea class="form-control form-control-sm" id="txtPiezasDentariasPaciente" rows="3" placeholder="PIEZAS DENTARIAS"></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6" >
                                 <label for="txtObservacionPaciente">OBSERVACIONES</label>
                                 <div class="form-group">
-                                    <textarea class="form-control" id="txtObservacionPaciente" rows="3" placeholder="OBSERVACIONES"></textarea>
+                                    <textarea class="form-control form-control-sm" id="txtObservacionPaciente" rows="3" placeholder="OBSERVACIONES"></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12" >
                                 <label for="txtDiagnosticoPaciente">DIAGNÓSTICO</label>
                                 <div class="form-group">
-                                    <textarea class="form-control" id="txtDiagnosticoPaciente" rows="3" placeholder="DIAGNÓSTICO"></textarea>
+                                    <textarea class="form-control form-control-sm" id="txtDiagnosticoPaciente" rows="3" placeholder="DIAGNÓSTICO"></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-12 text-center">
@@ -433,6 +430,46 @@
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                         Cargando doctores. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="ventanaModalPreviewReporte" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg-sisbu" role="document">
+        <div class="modal-content" style="border-color: #2962FF; border-width: 3px;border-radius: 7px;">
+            <form class="needs-validation" novalidate="">
+                <div class="modal-body pb-2">
+                    <h5 id="titleModalPreviewReporte"></h5>
+                    <!--FRAME PARA EL PREVIEW DEL REPORTE-->
+                    <div class="row" id="row_frame_report" style="display: none">
+                        <div class="col-12">
+                            <!--div class="embed-responsive embed-responsive-1by1">
+                            </div-->
+                            <iframe class="embed-responsive-item" src="" id="idframe_reporte" height="480" width="100%"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer pt-2 pb-2">
+                    <button type="button" class="btn btn-primary btn-xs" id="btn-cerrar-printer-comprobante" data-dismiss="modal">
+                        <i class="fas fa-times"></i>
+                        CERRAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoVDYA" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Verificando Historia Clinica del Atendido. . .
                     </div>
                 </div>
             </div>

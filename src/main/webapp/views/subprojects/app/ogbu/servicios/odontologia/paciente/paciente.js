@@ -13,7 +13,10 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestPaciente.type_request = "GET";
 
     document.querySelector("#openPaciente").style.display = "none";
-
+    document.querySelector("#openPaciente").style.display = "none";
+    $("#modalCargandoVDYA").on('shown.bs.modal', function () {
+        processAjaxValidacionHistoria();
+    });
     $('#FrmPaciente').submit(function (event) {
         beanRequestPaciente.operation = "paginate";
         beanRequestPaciente.type_request = "GET";
@@ -123,7 +126,6 @@ function processAjaxPaciente() {
         headers: {
             'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
-        data: JSON.stringify(json),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
@@ -152,22 +154,105 @@ function toListPaciente(beanPagination) {
     document.querySelector("#titleManagerPaciente").innerHTML = "[ " + beanPagination.count_filter + " ] PACIENTES";
     if (beanPagination.count_filter > 0) {
         let row;
-        beanPagination.list.forEach(paciente => {
-            row = "<tr ";
-            row += "idpaciente='" + paciente.idatendido + "' ";
-            row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item historia-clinica' data-toggle='tooltip' title='Ver Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-primary fa fa-file-alt'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-paciente' data-toggle='tooltip' title='Descargar Diagnóstico'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-danger fa fa-file-pdf'></i></a></li>";
-            row += "</ul></td>";
-            row += "<td class='align-middle'>" + paciente.dni + "</td>";
-            row += "<td class='align-middle'>" + paciente.apellido_pat + " " + paciente.apellido_mat + " " + paciente.nombre + "</td>";
-            row += "<td class='align-middle'>" + tipoPaciente(paciente.tipo_atendido) + "</td>";
-            row += "<td class='align-middle'>" + subtipoPaciente(paciente.subtipo_atendido) + "</td>";
-            row += "</tr>";
+        row =
+                `
+               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           DNI
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           NOMBRE COMPLETO /
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           FECHA DE NACIMIENTO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate" style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           TIPO DE PACIENTE
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ESCUELA PROFESIONAL
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
+        document.querySelector("#tbodyPaciente").innerHTML += row;
+        beanPagination.list.forEach(atendido => {
+            row =
+                    `
+                 <div class="dt-widget__item border-success pl-5 ">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn historia-clinica" idpaciente='${atendido.idatendido}' title="Ver Diagnótico" data-toggle="tooltip">
+                                    <i class="fa fa-file-alt"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn reporte-paciente" idpaciente='${atendido.idatendido}' title="Descargar Historia Clínica" data-toggle="tooltip">
+                                    <i class="fa fa-file-pdf"></i>
+                                </button>
+                               
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.dni}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.apellido_pat} ${atendido.apellido_mat} ${atendido.nombre}
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           ${atendido.fecha_nacimiento}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate" style="max-width: 15%;">
+                        <p class="mb-0 text-truncate ">
+                           ${tipoPaciente(atendido.tipo_atendido)}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+            ${atendido.tipo_atendido == 1 ? (atendido.escuela.nombre == null ? "" : atendido.escuela.nombre) : subtipoPaciente(atendido.subtipo_atendido)}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
             document.querySelector("#tbodyPaciente").innerHTML += row;
+            $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
                 beanPagination.count_filter,
@@ -179,7 +264,7 @@ function toListPaciente(beanPagination) {
         if (beanRequestPaciente.operation == "paginate") {
             document.querySelector("#txtFilterPaciente").focus();
         }
-        $('[data-toggle="tooltip"]').tooltip();
+
     } else {
         destroyPagination($('#paginationPaciente'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -196,7 +281,7 @@ function addEventsPacientes() {
             document.querySelector("#buttonFiliacion").classList.add("active");
             document.querySelector("#tab-pane-16").classList.remove("active");
             document.querySelector("#tab-pane-15").classList.add("active");
-            pacienteSelected = findByPaciente(btn.parentElement.parentElement.parentElement.getAttribute('idpaciente'));
+            pacienteSelected = findByPaciente(btn.getAttribute('idpaciente'));
             if (pacienteSelected != undefined) {
                 //SET VALUES MODAL
                 document.querySelector("#txtTipoDocumentoPaciente").value = pacienteSelected.tipo_documento;
@@ -222,13 +307,15 @@ function addEventsPacientes() {
             }
         };
     });
-    document.querySelectorAll('.paciente').forEach(btn => {
+    document.querySelectorAll('.reporte-paciente').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            pacienteSelected = findByPaciente(btn.parentElement.parentElement.parentElement.getAttribute('idpaciente'));
-            beanRequestPaciente.operation = "delete";
-            beanRequestPaciente.type_request = "DELETE";
-            processAjaxPaciente();
+            pacienteSelected = findByPaciente(btn.getAttribute('idpaciente'));
+            if (pacienteSelected != undefined) {
+                $("#modalCargandoVDYA").modal('show');
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Paciente ');
+            }
         };
     });
 }
@@ -294,7 +381,23 @@ function subtipoPaciente(tipopersonal) {
 
 //historia
 function addInputHistoria(historiaSelected) {
-
+    if (historiaSelected.personal.apellido_pat == null) {
+        historiaSelected.personal.apellido_pat = "";
+    }
+    if (historiaSelected.personal.apellido_mat == null) {
+        historiaSelected.personal.apellido_mat = "";
+    }
+    if (historiaSelected.personal.nombre == null) {
+        historiaSelected.personal.nombre = "";
+    }
+    if (historiaSelected.personal.cargo.idcargo == 4) {
+        doctorSelected = historiaSelected.personal;
+    } else {
+        historiaSelected.personal.nombre = "";
+        historiaSelected.personal.apellido_mat = "";
+        historiaSelected.personal.apellido_pat = "";
+        doctorSelected = undefined;
+    }
     document.querySelector("#txtHistoriaPaciente").value = historiaSelected.num_historia;
     document.querySelector("#txtSaludGeneralPaciente").value = historiaSelected.antecedentes;
     document.querySelector("#txtMedicoPaciente").value = historiaSelected.personal.apellido_pat + " " +
@@ -307,7 +410,6 @@ function addInputHistoria(historiaSelected) {
     document.querySelector("#txtPiezasDentariasPaciente").value = historiaSelected.piezas_dentarias;
     document.querySelector("#txtObservacionPaciente").value = historiaSelected.observaciones;
     document.querySelector("#txtDiagnosticoPaciente").value = historiaSelected.ex_extra_oral;
-    doctorSelected = historiaSelected.personal;
 }
 
 function limpiarInputHistoria() {
@@ -395,7 +497,7 @@ function processAjaxHistoria() {
 
         if (beanCrudResponse.messageServer == undefined) {
             if (beanCrudResponse.idhistoria_clinicao == null) {
-                console.log("agregar historia");
+
                 beanRequestHistoria.operation = "add";
                 beanRequestHistoria.type_request = "POST";
                 processAjaxHistoria();
@@ -404,12 +506,21 @@ function processAjaxHistoria() {
                 addInputHistoria(beanCrudResponse);
             }
         } else {
-            if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
-                showAlertTopEnd('success', 'Acción realizada exitosamente');
-            } else {
-                showAlertTopEnd('warning', beanCrudResponse.messageServer);
+            if (beanRequestHistoria.operation == "update") {
+                if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
+                    showAlertTopEnd('success', 'Acción realizada exitosamente');
+                } else {
+                    showAlertTopEnd('warning', beanCrudResponse.messageServer);
+                }
             }
+
         }
+
+        if (beanCrudResponse.beanPagination != undefined) {
+            historiaSelected = beanCrudResponse.beanPagination.list[0];
+            addInputHistoria(historiaSelected);
+        }
+
         $('#modalCargandoHistoria').modal("hide");
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -430,7 +541,7 @@ function validateFormHistoriaOdontologia() {
         document.querySelector("#txtSaludGeneralPaciente").focus();
         return false;
 
-    } else if (document.querySelector("#txtMedicoPaciente").value == "") {
+    } else if (doctorSelected == undefined) {
         showAlertTopEnd('warning', 'Por favor ingrese Odontólogo(a)');
         document.querySelector("#txtMedicoPaciente").focus();
         return false;
@@ -466,4 +577,41 @@ function validateFormHistoriaOdontologia() {
         return false;
     }
     return true;
+}
+function processAjaxValidacionHistoria() {
+    let url_request = getHostAPI() + "api/historiaclinicao/validate-historia?idatendido=" + pacienteSelected.idatendido;
+    $.ajax({
+        url: url_request,
+        type: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        //data: JSON.stringify(json),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (jsonResponse) {
+        $('#modalCargandoVDYA').modal("hide");
+        if (jsonResponse.messageServer !== undefined) {
+            if (jsonResponse.messageServer.toLowerCase() == "ok") {
+                //ABRIMOS EL REPORTE
+                //ABRIMOS EL REPORTE
+
+                let url_constancia = getHostAPI() + "api/constancias/historia-clinica-odontologia";
+                url_constancia += "?idatendido=" + pacienteSelected.idatendido;
+                document.querySelector("#titleModalPreviewReporte").innerHTML = "VISTA PREVIA";
+                document.querySelector('#idframe_reporte').setAttribute('src', url_constancia);
+                document.querySelector('#row_frame_report').style.display = "block";
+                $('#ventanaModalPreviewReporte').modal('show');
+
+
+            } else {
+                showAlertTopEnd('warning', jsonResponse.messageServer);
+            }
+        } else {
+            showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoVDYA').modal("hide");
+        showAlertTopEnd('error', 'Ha ocurrido un error interno al validar tu evaluación deportiva, vuelve a intentarlo mas tarde. Si el problema persiste, visite la oficina de bienestar', 10000);
+    });
 }

@@ -533,6 +533,10 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/social/atendido/usuario.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/familiar.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/distrito_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/atendido/evaluacion.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/atendido/documentos.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/atendido/evaluaciones_socieconomica.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/social/atendido/respuesta_evaluacion2.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/escuela_c.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/ocupacion_c.js" + version_project
         });
@@ -576,6 +580,18 @@ public class FilterURL implements Filter {
         this.list_resources.add(resource);
 
         //RECREACIÓN Y DEPORTE
+        ///USAURIOS
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/recreacion-deportes/usuarios");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/recreacion-deporte/usuario/usuario.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/recreacion-deporte/usuario/aficion.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/recreacion-deporte/usuario/aficion_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/recreacion-deporte/usuario/deporte.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/recreacion-deporte/usuario/deporte_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/recreacion-deporte/usuario/usuario.js" + version_project
+        });
+        this.list_resources.add(resource);
         ///deportes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/recreacion-deportes/deportes");

@@ -149,29 +149,111 @@ function toListFamiliar(beanPagination) {
     document.querySelector("#titleManagerFamiliar").innerHTML = "LISTA DE FAMILIARES";
     if (beanPagination.count_filter > 0) {
         let row;
+         row =
+                    `
+                <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate pl-5" >
+                        <p class="mb-0 text-truncate ">
+                           NOMBRE COMPLETO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           FECHA DE NACIMIENTO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ESTADO CIVIL /
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           NIVEL DE INSTRUCCIÓN
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           INGRESOS
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
+        document.querySelector("#tbodyDatosFamiliares").innerHTML += row;
         beanPagination.list.forEach(familiar => {
-            row = "<tr ";
-            row += "idfamiliar='" + familiar.idfamiliar + "' ";
-            row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item editar-familiar' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-primary icon icon-editors'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-familiar' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
-            row += "</ul></td>";
-            row += "<td class='align-middle'>" + parentesco(familiar.parentesco) + "<br>" + familiar.nombre_completo + "</td>";
-            row += "<td class='align-middle'>" + (familiar.fecha_nacimiento == null ? "" : familiar.fecha_nacimiento) + "</td>";
-            row += "<td class='align-middle'>" + estadoCivil(familiar.estado_civil) + "<br>" + nivelInstruccion(familiar.nivel_instruccion) + "</td>";
-            row += "<td class='align-middle'>" + familiar.ingresos.toFixed(2) + "</td>";
-            row += "</tr>";
+            row =
+                    `
+                <div class="dt-widget__item border-success pl-5 ">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-familiar" idfamiliar='${familiar.idfamiliar}' title="Editar Familiar" data-toggle="tooltip">
+                                    <i class="icon icon-editors icon-1x"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-familiar" idfamiliar='${familiar.idfamiliar}' title="Eliminar Familiar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${parentesco(familiar.parentesco)}
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           ${familiar.nombre_completo}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ${familiar.fecha_nacimiento == null ? "" : familiar.fecha_nacimiento}
+                        </p>
+                      
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ${estadoCivil(familiar.estado_civil)}
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           ${nivelInstruccion(familiar.nivel_instruccion)}
+                        </p>
+            
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ${familiar.ingresos.toFixed(2)}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
             document.querySelector("#tbodyDatosFamiliares").innerHTML += row;
+             $('[data-toggle="tooltip"]').tooltip();
         });
 
         addEventsFamiliares();
-        if (beanRequestFamiliar.operation == "paginate") {
-            //document.querySelector("#txtFilterFamiliar").focus();
-        }
-        $('[data-toggle="tooltip"]').tooltip();
     } else {
 
         showAlertTopEnd('warning', 'No se encontraron familiares');
@@ -183,7 +265,7 @@ function addEventsFamiliares() {
     document.querySelectorAll('.editar-familiar').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            familiarSelected = findByFamiliar(btn.parentElement.parentElement.parentElement.getAttribute('idfamiliar'));
+            familiarSelected = findByFamiliar(btn.getAttribute('idfamiliar'));
             if (familiarSelected != undefined) {
                 beanRequestFamiliar.operation = "update";
                 beanRequestFamiliar.type_request = "PUT";
@@ -199,7 +281,7 @@ function addEventsFamiliares() {
     document.querySelectorAll('.eliminar-familiar').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            familiarSelected = findByFamiliar(btn.parentElement.parentElement.parentElement.getAttribute('idfamiliar'));
+            familiarSelected = findByFamiliar(btn.getAttribute('idfamiliar'));
             beanRequestFamiliar.operation = "delete";
             beanRequestFamiliar.type_request = "DELETE";
             if (familiarSelected != undefined) {
