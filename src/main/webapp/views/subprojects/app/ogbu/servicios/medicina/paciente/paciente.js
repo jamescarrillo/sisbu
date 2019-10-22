@@ -195,7 +195,7 @@ function processAjaxPaciente() {
         parameters_pagination = "";
         if (beanRequestPaciente.operation == "delete") {
             parameters_pagination = "/" + pacienteSelected.idpaciente;
-            json = {};
+            
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombrePaciente").value,
@@ -522,7 +522,7 @@ function processAjaxHistoria() {
         parameters_pagination = "";
         if (beanRequestHistoria.operation == "dato") {
             parameters_pagination = "/" + pacienteSelected.idatendido
-            json = {};
+            
         } else {
 
             if (beanRequestHistoria.operation == "update") {

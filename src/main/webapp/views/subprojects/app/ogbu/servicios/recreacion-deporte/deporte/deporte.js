@@ -72,7 +72,7 @@ function processAjaxDeporte() {
         parameters_pagination = "";
         if (beanRequestDeporte.operation == "delete") {
             parameters_pagination = "/" + deporteSelected.iddeporte;
-            json = {};
+           
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombreDeporte").value,

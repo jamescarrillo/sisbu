@@ -164,7 +164,7 @@ function processAjaxPaciente() {
 
         if (beanRequestPaciente.operation == "delete") {
             parameters_pagination = "/" + pacienteSelected.idpaciente;
-            json = {};
+           
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombrePaciente").value,

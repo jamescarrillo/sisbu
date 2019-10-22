@@ -85,7 +85,7 @@ function processAjaxProcedimientoDeporte() {
         parameters_pagination = "";
         if (beanRequestProcedimientoDeporte.operation == "delete") {
             parameters_pagination = "/" + deporteDetalleSelected.idrelacion;
-            json = {};
+           
         } else {
             json = {
                 "estado": document.querySelector("#txtEstadoDeporteDetalle").value,
@@ -140,17 +140,18 @@ function processAjaxProcedimientoDeporte() {
 }
 
 function toListProcedimientoDeporte(beanPagination) {
+    document.querySelector("#ListaUsuario").style.display = "none";
+    document.querySelector("#OpenAficionDetalle").classList.remove("active");
+    document.querySelector("#OpenDeporteDetalle").classList.remove("active");
+    document.querySelector("#buttonAficion").classList.remove("active");
+    document.querySelector("#buttonFiliacion").classList.remove("active");
+    document.querySelector("#tab-pane-15").classList.remove("active");
+    document.querySelector("#buttonDeporte").classList.add("active");
+    document.querySelector("#OpenListaDeporteDetalle").classList.add("active");
+    document.querySelector("#openUsuario").style.display = "initial";
     document.querySelector("#tbodyDeporte").innerHTML = "";
     if (beanPagination.count_filter > 0) {
-        document.querySelector("#ListaUsuario").style.display = "none";
-        document.querySelector("#OpenAficionDetalle").classList.remove("active");
-        document.querySelector("#OpenDeporteDetalle").classList.remove("active");
-        document.querySelector("#buttonAficion").classList.remove("active");
-        document.querySelector("#buttonFiliacion").classList.remove("active");
-        document.querySelector("#tab-pane-15").classList.remove("active");
-        document.querySelector("#buttonDeporte").classList.add("active");
-        document.querySelector("#OpenListaDeporteDetalle").classList.add("active");
-        document.querySelector("#openUsuario").style.display = "initial";
+
         let row;
         row =
                 `
