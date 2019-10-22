@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         repor_deportes = "C";
         $("#modalCargandoVDYA").modal('show');
 
-        showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación', 10000)
+        //showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación', 10000)
     };
 
     document.querySelector("#btn-download-deportes-aficiones").onclick = function () {
