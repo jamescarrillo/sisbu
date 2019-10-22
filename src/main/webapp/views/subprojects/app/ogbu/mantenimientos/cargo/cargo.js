@@ -74,7 +74,6 @@ function processAjaxCargo() {
         parameters_pagination = "";
         if (beanRequestCargo.operation == "delete") {
             parameters_pagination = "/" + cargoSelected.idcargo;
-            json = {};
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombreCargo").value,
@@ -119,19 +118,57 @@ function toListCargo(beanPagination) {
     document.querySelector("#titleManagerCargo").innerHTML = "[ " + beanPagination.count_filter + " ] CARGOS";
     if (beanPagination.count_filter > 0) {
         let row;
+         row =
+                `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2"">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           NOMBRE
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
+        document.querySelector("#tbodyCargo").innerHTML += row;
         beanPagination.list.forEach(cargo => {
-            row = "<tr ";
-            row += "idcargo='" + cargo.idcargo + "' ";
-            row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item editar-cargo' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-info icon icon-editors'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-cargo' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
-            row += "</ul></td>";
-            row += "<td class='align-middle'>" + cargo.nombre + "</td>";
-            row += "</tr>";
+             row =
+                    `
+                 <div class="dt-widget__item border-success  ">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-cargo" idcargo='${cargo.idcargo}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-cargo" idcargo='${cargo.idcargo}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${cargo.nombre}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                 
+                    
+                </div>
+            `;
             document.querySelector("#tbodyCargo").innerHTML += row;
+             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
                 beanPagination.count_filter,
@@ -143,7 +180,7 @@ function toListCargo(beanPagination) {
         if (beanRequestCargo.operation == "paginate") {
             document.querySelector("#txtFilterCargo").focus();
         }
-        $('[data-toggle="tooltip"]').tooltip();
+       
     } else {
         destroyPagination($('#paginationCargo'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -155,7 +192,7 @@ function addEventsCargoes() {
     document.querySelectorAll('.editar-cargo').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            cargoSelected = findByCargo(btn.parentElement.parentElement.parentElement.getAttribute('idcargo'));
+            cargoSelected = findByCargo(btn.getAttribute('idcargo'));
             if (cargoSelected != undefined) {
                 beanRequestCargo.operation = "update";
                 beanRequestCargo.type_request = "PUT";
@@ -172,7 +209,7 @@ function addEventsCargoes() {
     document.querySelectorAll('.eliminar-cargo').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            cargoSelected = findByCargo(btn.parentElement.parentElement.parentElement.getAttribute('idcargo'));
+            cargoSelected = findByCargo(btn.getAttribute('idcargo'));
             beanRequestCargo.operation = "delete";
             beanRequestCargo.type_request = "DELETE";
             processAjaxCargo();

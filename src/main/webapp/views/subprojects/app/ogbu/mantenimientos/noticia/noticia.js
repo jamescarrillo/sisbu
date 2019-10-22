@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestNoticia.type_request = "GET";
     });
 
-     $('#modalCargandoNoticia').modal('show');
+    $('#modalCargandoNoticia').modal('show');
 
     $("#sizePageNoticia").change(function () {
         $('#modalCargandoNoticia').modal('show');
@@ -88,8 +88,8 @@ function processAjaxNoticia() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestNoticia.operation == "paginate") {
-            if (document.querySelector("#txtFilterInicialNoticia").value!="" || document.querySelector("#txtFilterFinalNoticia").value!="") {
-           document.querySelector("#pageNoticia").value=1; 
+        if (document.querySelector("#txtFilterInicialNoticia").value != "" || document.querySelector("#txtFilterFinalNoticia").value != "") {
+            document.querySelector("#pageNoticia").value = 1;
         }
         parameters_pagination += "?fechai=" + document.querySelector("#txtFilterInicialNoticia").value;
         parameters_pagination += "&fechaf=" + document.querySelector("#txtFilterFinalNoticia").value;
@@ -100,7 +100,6 @@ function processAjaxNoticia() {
         parameters_pagination = "";
         if (beanRequestNoticia.operation == "delete") {
             parameters_pagination = "/" + noticiaSelected.idnoticia;
-            json = {};
         } else {
             json = {
                 "titulo": document.querySelector("#txtTituloNoticia").value,
@@ -150,33 +149,89 @@ function toListNoticia(beanPagination) {
     document.querySelector("#titleManagerNoticia").innerHTML = "[ " + beanPagination.count_filter + " ] NOTICIAS";
     if (beanPagination.count_filter > 0) {
         let row;
+        row =
+                `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2 pl-5">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           FUENTE /
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           FECHA
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                     <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           TÍTULO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                     <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           DESCRIPCIÓN
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                </div>
+            `;
+        document.querySelector("#tbodyNoticia").innerHTML += row;
         beanPagination.list.forEach(noticia => {
-            row = "<div class='dt-widget__item border-bottom'>";
-            row += "<div class='dt-extra animate-slide align-self-center mr-5' idnoticia='" + noticia.idnoticia + "'>";
-            row += "<span class='badge badge-info badge-circle-animate badge-pill badge-sm align-text-top mr-2'>"
-            row += "<a class='text-light-gray editar-noticia' data-toggle='tooltip' title='Editar' href='javascript:void(0)'>";
-            row += "<i class='text-white icon icon-editors'></i></a>";
-            row += "</span>";
-            row += "<span class='badge badge-danger badge-circle-animate badge-pill badge-sm align-text-top'>";
-            row += "<a class='text-light-gray eliminar-noticia' data-toggle='tooltip' title='ELiminar' href='javascript:void(0)'>";
-            row += "<i class='text-white icon icon-trash-filled'></i></a>";
-            row += "</span>";
-            row += "</div>";
-            
-            row += "<div class='dt-widget__info text-truncate '  style='min-width:60px; max-width:25%'>";
-            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += noticia.fuente +"<br>"+ noticia.fecha_publicacion + "</p></div>";
 
-            row += "<div class='text-truncate mr-5' style='min-width:50px; max-width:25%;'>";
-            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += noticia.titulo + "</p></div>";
-
-            row += "<div class=' text-truncate '  style='min-width:230px; max-width:50%;'>";
-            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += noticia.descripcion + "</p></div>";
-
-            row += "</div>";
-
+            row =
+                    `
+                 <div class="dt-widget__item border-success  pl-5">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-noticia" idnoticia='${noticia.idnoticia}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-noticia" idnoticia='${noticia.idnoticia}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${noticia.fuente} 
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                           ${noticia.fecha_publicacion}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${noticia.titulo}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${noticia.descripcion}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                 
+                    
+                </div>
+            `;
             document.querySelector("#tbodyNoticia").innerHTML += row;
             $('[data-toggle="tooltip"]').tooltip();
         });
@@ -187,8 +242,8 @@ function toListNoticia(beanPagination) {
                 $('#modalCargandoNoticia'),
                 $('#paginationNoticia'));
         addEventsNoticiaes();
-      
-       
+
+
     } else {
         destroyPagination($('#paginationNoticia'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -199,7 +254,7 @@ function addEventsNoticiaes() {
     document.querySelectorAll('.editar-noticia').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            noticiaSelected = findByNoticia(btn.parentElement.parentElement.getAttribute('idnoticia'));
+            noticiaSelected = findByNoticia(btn.getAttribute('idnoticia'));
             if (noticiaSelected != undefined) {
                 beanRequestNoticia.operation = "update";
                 beanRequestNoticia.type_request = "PUT";
@@ -219,7 +274,7 @@ function addEventsNoticiaes() {
     document.querySelectorAll('.eliminar-noticia').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            noticiaSelected = findByNoticia(btn.parentElement.parentElement.getAttribute('idnoticia'));
+            noticiaSelected = findByNoticia(btn.getAttribute('idnoticia'));
             beanRequestNoticia.operation = "delete";
             beanRequestNoticia.type_request = "DELETE";
             processAjaxNoticia();

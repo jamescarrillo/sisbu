@@ -516,10 +516,8 @@ function processAjaxTriaje() {
         parameters_pagination = "";
         if (beanRequestTriaje.operation == "delete") {
             parameters_pagination = "/" + diagnosticoSelected.iddiagnostico;
-            json = {};
         } else if (beanRequestTriaje.operation == "dato") {
             parameters_pagination = "/" + idhistoria;
-            json = {};
         } else {
             if (beanRequestTriaje.operation == "add") {
                 diagnosticoSelected = undefined;

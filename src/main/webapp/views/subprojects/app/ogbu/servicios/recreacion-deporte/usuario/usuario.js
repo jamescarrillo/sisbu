@@ -78,7 +78,6 @@ function processAjaxUsuario() {
 
         if (beanRequestUsuario.operation == "delete") {
             parameters_pagination = "/" + usuarioSelected.idatendido;
-            json = {};
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombreUsuario").value,

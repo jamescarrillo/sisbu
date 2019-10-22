@@ -49,7 +49,6 @@ function processAjaxComida() {
         parameters_pagination = "";
         if (beanRequestComida.operation == "delete") {
             parameters_pagination = "/" + comidaSelected.idcomida;
-            json = {};
         } else {
             json = {
                 "descripcion": document.querySelector("#txtDescripcionComida").value,

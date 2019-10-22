@@ -625,10 +625,10 @@ function processAjaxDiagnostico() {
         parameters_pagination = "";
         if (beanRequestDiagnostico.operation == "delete") {
             parameters_pagination = "/" + diagnosticoSelected.iddiagnostico;
-            json = {};
+          
         } else if (beanRequestDiagnostico.operation == "dato") {
             parameters_pagination = "/" + historiaSelected.idhistoria_clinica;
-            json = {};
+           
         } else {
             json = {
                 "presiona": document.querySelector("#txtPaPaciente").value,

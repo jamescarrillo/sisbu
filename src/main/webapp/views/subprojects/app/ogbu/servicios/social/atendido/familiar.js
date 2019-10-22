@@ -95,7 +95,6 @@ function processAjaxFamiliar() {
         parameters_pagination = "";
         if (beanRequestFamiliar.operation == "delete") {
             parameters_pagination = "/" + familiarSelected.idfamiliar;
-            json = {};
         } else {
             json = {
                 "estado_civil": document.querySelector("#txtEstadoFamiliar").value,

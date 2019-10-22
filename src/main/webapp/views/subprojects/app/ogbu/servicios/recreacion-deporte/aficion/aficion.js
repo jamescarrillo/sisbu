@@ -72,7 +72,6 @@ function processAjaxAficion() {
         parameters_pagination = "";
         if (beanRequestAficion.operation == "delete") {
             parameters_pagination = "/" + aficionSelected.idaficion;
-            json = {};
         } else {
             json = {
                 "descripcion": document.querySelector("#txtNombreAficion").value,

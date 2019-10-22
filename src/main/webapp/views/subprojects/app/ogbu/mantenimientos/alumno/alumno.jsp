@@ -37,7 +37,7 @@
                         <div class="dt-card__heading">
 
                             <!-- Widget Item -->
-                            <div class="dt-widget__item border-bottom bg-primary" >
+                            <div class="dt-widget__item border-bottom bg-primary pb-2" >
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">

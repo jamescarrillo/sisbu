@@ -65,7 +65,6 @@ function processAjaxOficina() {
         parameters_pagination = "";
         if (beanRequestOficina.operation == "delete") {
             parameters_pagination = "/" + oficinaSelected.idoficina;
-            json = {};
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombreOficinaER").value
@@ -111,25 +110,57 @@ function toListOficina(beanPagination) {
     document.querySelector("#titleManagerOficina").innerHTML = "[ " + beanPagination.count_filter + " ] OFICINAS";
     if (beanPagination.count_filter > 0) {
         let row;
+        row =
+                `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2"">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           NOMBRE
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
+         document.querySelector("#tbodyOficina").innerHTML += row;
         beanPagination.list.forEach(oficina => {
-            row = "<div class='dt-widget__item border-bottom'>";
-            row += "<div class='dt-extra animate-slide align-self-center mr-5' idoficina='" + oficina.idoficina + "'>";
-            row += "<span class='badge badge-info badge-circle-animate badge-pill badge-sm align-text-top mr-2'>"
-            row += "<a class='text-light-gray editar-oficina' data-toggle='tooltip' title='Editar' href='javascript:void(0)'>";
-            row += "<i class='text-white icon icon-editors'></i></a>";
-            row += "</span>";
-            row += "<span class='badge badge-danger badge-circle-animate badge-pill badge-sm align-text-top'>";
-            row += "<a class='text-light-gray eliminar-oficina' data-toggle='tooltip' title='ELiminar' href='javascript:void(0)'>";
-            row += "<i class='text-white icon icon-trash-filled'></i></a>";
-            row += "</span>";
-            row += "</div>";
-
-            row += "<div class=' text-truncate '  style='min-width:230px; max-width:50%;'>";
-            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += oficina.nombre + "</p></div>";
-
-            row += "</div>";
+             row =
+                    `
+                 <div class="dt-widget__item border-success  ">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-oficina" idoficina='${oficina.idoficina}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-oficina" idoficina='${oficina.idoficina}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${oficina.nombre}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                 
+                    
+                </div>
+            `;
             document.querySelector("#tbodyOficina").innerHTML += row;
+            $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
                 beanPagination.count_filter,
@@ -141,7 +172,7 @@ function toListOficina(beanPagination) {
         if (beanRequestOficina.operation === "paginate") {
             document.querySelector("#txtFilterOficina").focus();
         }
-        $('[data-toggle="tooltip"]').tooltip();
+        
     } else {
         destroyPagination($('#paginationOficina'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -153,7 +184,7 @@ function addEventsOficinaes() {
     document.querySelectorAll('.editar-oficina').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            oficinaSelected = findByOficina(btn.parentElement.parentElement.getAttribute('idoficina'));
+            oficinaSelected = findByOficina(btn.getAttribute('idoficina'));
             if (oficinaSelected != undefined) {
                 beanRequestOficina.operation = "update";
                 beanRequestOficina.type_request = "PUT";
@@ -170,7 +201,7 @@ function addEventsOficinaes() {
     document.querySelectorAll('.eliminar-oficina').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            oficinaSelected = findByOficina(btn.parentElement.parentElement.getAttribute('idoficina'));
+            oficinaSelected = findByOficina(btn.getAttribute('idoficina'));
             if (oficinaSelected != undefined) {
                 beanRequestOficina.operation = "delete";
                 beanRequestOficina.type_request = "DELETE";
