@@ -482,7 +482,6 @@ function viewDatosGenerales() {
 function viewDatosLaborales() {
     document.querySelector('#btnDatosAcceso').classList.remove('active');
     document.querySelector('#btnDatosGenerales').classList.remove('active');
-    ;
     document.querySelector('#btnDatosLaborales').classList.add('active');
 
     document.querySelector('#tab-datos-acceso').style.display = 'none';

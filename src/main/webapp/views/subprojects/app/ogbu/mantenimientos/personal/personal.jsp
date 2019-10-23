@@ -141,7 +141,7 @@
                             <div class="col-6"> 
                             <li class="nav-item">
                                 <a class="nav-link" id="btnDatosLaborales" data-toggle="tab" 
-                                   href="#tab-datos-generales" role="tab" aria-controls="tab-datos-laborales"
+                                   href="#tab-datos-laborales" role="tab" aria-controls="tab-datos-laborales"
                                    aria-="true">DATOS LABORALES</a>
                             </li>
                             </div>
