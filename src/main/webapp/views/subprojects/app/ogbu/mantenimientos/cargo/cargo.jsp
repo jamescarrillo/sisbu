@@ -27,20 +27,20 @@
                     </div>
 
                 </form>
-                <!-- Tables -->
-                <div class="table-responsive">
-                    <table class="table mb-0 mt-2">
-                        <thead class="bg-primary ">
-                            <tr>
-                                <th class="text-uppercase pt-4 pb-2 text-white" scope="col" style="width: 10%">ACCION</th>
-                                <th class="text-uppercase pt-4 pb-2 text-white" scope="col" >NOMBRE</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbodyCargo">
-                        </tbody>
-                    </table>
+                <!-- Card -->
+                <div class="dt-card mt-4">
+                    <!-- Card Body -->
+                    <div class="dt-card__body p-0  " >
+                        <!-- Widget -->
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                             id="tbodyCargo">
+                        </div>
+                        <!-- /widget -->
+                        <!-- /card body -->
+                    </div>
+
                 </div>
-                <!-- /tables -->
+                <!-- /card -->
                 <div class="row mt-2">
                     <div class="col-md-2 col-sm-3 col-4">
                         <select id="sizePageCargo" class="form-control form-control-sm select2-single">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal">i class="icon icon-reply"></i> CANCELAR</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal"><i class="icon icon-reply"></i> CANCELAR</button>
                     <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm">GUARDAR</button>
                 </div>
             </form>

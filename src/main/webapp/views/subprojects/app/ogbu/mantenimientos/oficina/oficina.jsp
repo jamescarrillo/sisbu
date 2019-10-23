@@ -29,52 +29,21 @@
                         <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewOficina"data-toggle="tooltip" title="Agregar Oficina" ><i class="icon icon-addnew"></i></button>
                     </div>
                 </form>
-                  <!-- Card -->
-                <div class=" pb-4 ">
-
-                    <!-- Card Header -->
-                    <div class="dt-card__header mb-3 p-0 pt-3 ">
-
-                        <!-- Card Heading -->
-                        <div class="dt-card__heading">
-
-                            <!-- Widget Item -->
-                            <div class="dt-widget__item border-bottom bg-primary" >
-
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">ACCIÓN</h3>
-                                </div>
-                                <!-- /widget info -->
-
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">NOMBRE</h3>
-                                </div>
-                                <!-- /widget info -->
-
-                            </div>
-                            <!-- /widgets item -->
-
-                        </div>
-                        <!-- /card heading -->
-
-                    </div>
-                    <!-- /card header -->
-
+                 
+                <!-- Card -->
+                <div class="dt-card mt-4">
                     <!-- Card Body -->
                     <div class="dt-card__body p-0  " >
                         <!-- Widget -->
-                        <div class="dt-widget dt-widget-hover ps-custom-scrollbar ps ps--active-y" id="tbodyOficina">
-
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                             id="tbodyOficina">
                         </div>
                         <!-- /widget -->
                         <!-- /card body -->
-
                     </div>
-                    <!-- /card -->
 
                 </div>
+                <!-- /card -->
                 <div class="row mt-2">
                     <div class="col-md-2 col-sm-3 col-4">
                         <select id="sizePageOficina" class="form-control form-control-sm select-pagination sisbu-cursor-mano">

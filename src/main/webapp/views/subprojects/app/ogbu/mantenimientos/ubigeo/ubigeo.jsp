@@ -44,33 +44,31 @@
 
                         <!-- Contact Container -->
 
-                        <div class="dt-contacts__container ps-custom-scrollbar">
-                            <form id="FrmDepartamento">
-                                <div class="input-group search-box" style="max-width: 100%;">
-                                    <input type="search" id="txtFilterNombreDepartamento" class="form-control form-control-sm" placeholder="FILTRO...">
-                                    <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                    <div class="input-group-prepend">
-                                        <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewDepartamento"data-toggle="tooltip" title="Agregar Departamento" ><i class="icon icon-addnew"></i></button>
-                                    </div>
+                        <form id="FrmDepartamento">
+                            <div class="input-group search-box" style="max-width: 100%;">
+                                <input type="search" id="txtFilterNombreDepartamento" class="form-control form-control-sm" placeholder="FILTRO...">
+                                <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                                <div class="input-group-prepend">
+                                    <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                                    <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewDepartamento"data-toggle="tooltip" title="Agregar Departamento" ><i class="icon icon-addnew"></i></button>
                                 </div>
-                            </form>
-                            <!-- Tables -->
-                            <div class="table-responsive  pt-3">
-                                <table class="table mb-0">
-                                    <thead class="bg-primary" style="line-height: 0.4;">
-                                        <tr> 
-                                            <th class="text-uppercase text-center text-white" scope="col" style="width: 10%;font-weight: 500;">ACCION</th>
-                                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">DEPARTAMENTO</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbodyDepartamento">
-                                    </tbody>
-                                </table>
                             </div>
-                            <!-- /tables -->
+                        </form>
+
+                        <!-- Card -->
+                        <div class="dt-card mt-4">
+                            <!-- Card Body -->
+                            <div class="dt-card__body p-0  " >
+                                <!-- Widget -->
+                                <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                                     id="tbodyDepartamento">
+                                </div>
+                                <!-- /widget -->
+                                <!-- /card body -->
+                            </div>
 
                         </div>
+                        <!-- /card -->
 
                         <div class="row mt-2">
                             <div class="col-md-2 col-sm-3 col-4">
@@ -130,36 +128,33 @@
                     <div id="tab-provincias" style="display: none" >
 
                         <!-- Contact Container -->
-                        <div class="dt-contacts__container ps-custom-scrollbar">
-                            <!-- Card Body -->
-                            <form id="FrmProvincia">
-                                <div class="input-group search-box" style="max-width: 100%;">
-                                    <input type="search" id="txtFilterNombreProvincia" class="form-control form-control-sm" placeholder="FILTRO. . .">
-                                    <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                    <div class="input-group-prepend">
-                                        <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-sisbu"></i> BUSCAR</button>
-                                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewProvincia"data-toggle="tooltip" title="Agregar Provincia" ><i class="icon icon-addnew"></i></button>
-                                    </div>
+                        <!-- Card Body -->
+                        <form id="FrmProvincia">
+                            <div class="input-group search-box" style="max-width: 100%;">
+                                <input type="search" id="txtFilterNombreProvincia" class="form-control form-control-sm" placeholder="FILTRO. . .">
+                                <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                                <div class="input-group-prepend">
+                                    <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-sisbu"></i> BUSCAR</button>
+                                    <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewProvincia"data-toggle="tooltip" title="Agregar Provincia" ><i class="icon icon-addnew"></i></button>
                                 </div>
-                            </form>
-
-                            <!-- Tables -->
-                            <div class="table-responsive  pt-3">
-                                <table class="table mb-0 ">
-                                    <thead class="bg-primary" style="line-height: 0.4;">
-                                        <tr >
-                                            <th class="text-uppercase  text-center text-white" scope="col" style="width: 10%;font-weight: 500;">ACCION</th>
-                                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">PROVINCIA</th>
-                                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">DEPARTAMENTO</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbodyProvincia">
-                                    </tbody>
-                                </table>
                             </div>
-                            <!-- /tables -->
+                        </form>
+
+                        <!-- Card -->
+                        <div class="dt-card mt-4">
+                            <!-- Card Body -->
+                            <div class="dt-card__body p-0  " >
+                                <!-- Widget -->
+                                <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                                     id="tbodyProvincia">
+                                </div>
+                                <!-- /widget -->
+                                <!-- /card body -->
+                            </div>
 
                         </div>
+                        <!-- /card -->
+
                         <div class="row mt-2">
                             <div class="col-md-2 col-sm-3 col-4">
                                 <select id="sizePageProvincia" class="form-control form-control-sm select2-single">
@@ -226,34 +221,30 @@
 
                         <!-- Listar Container -->
 
-                        <div class="dt-contacts__container ps-custom-scrollbar">
-                            <form id="FrmDistrito">
-                                <div class="input-group search-box" style="max-width: 100%;">
-                                    <input type="search" id="txtFilterNombreDistrito" class="form-control form-control-sm" placeholder="FILTRO...">
-                                    <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                                    <div class="input-group-prepend">
-                                        <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewDistrito"data-toggle="tooltip" title="Agregar Distrito" ><i class="icon icon-addnew"></i></button>
-                                    </div>
+                        <form id="FrmDistrito">
+                            <div class="input-group search-box" style="max-width: 100%;">
+                                <input type="search" id="txtFilterNombreDistrito" class="form-control form-control-sm" placeholder="FILTRO...">
+                                <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                                <div class="input-group-prepend">
+                                    <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                                    <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewDistrito"data-toggle="tooltip" title="Agregar Distrito" ><i class="icon icon-addnew"></i></button>
                                 </div>
-                            </form>
-                            <!-- Tables -->
-                            <div class="table-responsive pt-3">
-                                <table class="table mb-0">
-                                    <thead class="bg-primary" style="line-height: 0.4;">
-                                        <tr> 
-                                            <th class="text-uppercase text-center text-white" scope="col"  style="width: 10%;font-weight: 500;">ACCION</th>
-                                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">DISTRITO</th>
-                                            <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">PROVINCIA</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbodyDistrito">
-                                    </tbody>
-                                </table>
                             </div>
-                            <!-- /tables -->
+                        </form>
+                        <!-- Card -->
+                        <div class="dt-card mt-4">
+                            <!-- Card Body -->
+                            <div class="dt-card__body p-0  " >
+                                <!-- Widget -->
+                                <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                                     id="tbodyDistrito">
+                                </div>
+                                <!-- /widget -->
+                                <!-- /card body -->
+                            </div>
 
                         </div>
+                        <!-- /card -->
 
                         <div class="row mt-2">
                             <div class="col-md-2 col-sm-3 col-4">

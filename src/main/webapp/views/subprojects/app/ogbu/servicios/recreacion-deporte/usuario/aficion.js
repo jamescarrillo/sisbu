@@ -76,7 +76,7 @@ function processAjaxProcedimientoAficion() {
         parameters_pagination = "";
         if (beanRequestProcedimientoAficion.operation == "delete") {
             parameters_pagination = "/" + aficionDetalleSelected.idrelacion;
-            json = {};
+
         } else {
             json = {
                 "estado": document.querySelector("#txtEstadoAficionDetalle").value,
@@ -128,19 +128,18 @@ function processAjaxProcedimientoAficion() {
 }
 
 function toListProcedimientoAficion(beanPagination) {
+    document.querySelector("#ListaUsuario").style.display = "none";
+    document.querySelector("#buttonDeporte").classList.remove("active");
+    document.querySelector("#OpenDeporteDetalle").classList.remove("active");
+    document.querySelector("#OpenAficionDetalle").classList.remove("active");
+    document.querySelector("#buttonFiliacion").classList.remove("active");
+    document.querySelector("#tab-pane-15").classList.remove("active");
+    document.querySelector("#buttonAficion").classList.add("active");
+    document.querySelector("#OpenListaAficionDetalle").classList.add("active");
     document.querySelector("#tbodyAficion").innerHTML = "";
+     document.querySelector("#openUsuario").style.display = "initial";
     if (beanPagination.count_filter > 0) {
-        document.querySelector("#ListaUsuario").style.display = "none";
-        document.querySelector("#buttonDeporte").classList.remove("active");
-        document.querySelector("#OpenDeporteDetalle").classList.remove("active");
-        document.querySelector("#OpenAficionDetalle").classList.remove("active");
-        document.querySelector("#buttonFiliacion").classList.remove("active");
-        document.querySelector("#tab-pane-15").classList.remove("active");
-        document.querySelector("#buttonAficion").classList.add("active");
-        document.querySelector("#OpenListaAficionDetalle").classList.add("active");
-
-
-        document.querySelector("#openUsuario").style.display = "initial";
+       
         let row;
         row =
                 `
@@ -162,7 +161,7 @@ function toListProcedimientoAficion(beanPagination) {
                     
                 </div>
             `;
-          document.querySelector("#tbodyAficion").innerHTML += row;
+        document.querySelector("#tbodyAficion").innerHTML += row;
         beanPagination.list.forEach(detalle => {
 
             row =

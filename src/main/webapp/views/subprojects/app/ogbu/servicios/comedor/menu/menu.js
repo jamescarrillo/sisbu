@@ -336,7 +336,6 @@ function processAjaxMenuSemanal() {
         parameters_pagination = "";
         if (beanRequestMenuSemanal.operation === "delete") {
             parameters_pagination = "/" + detalleCronogramaSelected.menu_semanal.idmenu_semanal;
-            json = {};
         } else {
             dms = new DetalleCronogramaCu();
             dms.menu_semanal.fechai = document.querySelector("#txtMenuSemanalFechaI").value;

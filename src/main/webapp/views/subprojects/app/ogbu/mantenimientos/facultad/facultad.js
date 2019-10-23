@@ -130,7 +130,6 @@ function processAjaxFacultad() {
         parameters_pagination = "";
         if (beanRequestFacultad.operation == "delete") {
             parameters_pagination = "/" + facultadSelected.idfacultad;
-            json = {};
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombreFacultad").value,
@@ -299,7 +298,6 @@ function processAjaxEscuela() {
         parameters_pagination = "";
         if (beanRequestEscuela.operation == "delete") {
             parameters_pagination = "/" + escuelaSelected.idescuela;
-            json = {};
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombreEscuela").value,

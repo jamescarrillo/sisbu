@@ -3,6 +3,7 @@ var alumnoSelected;
 var escuelaSelected;
 var distritoSelected;
 var cicloSelected;
+var verDni = "N";
 
 var beanRequestAlumno = new BeanRequest();
 
@@ -31,12 +32,22 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#modalCargandoAlumno').modal('show');
         event.preventDefault();
         event.stopPropagation();
+
+    });
+    $('#FrmAlumnoValidar').submit(function (event) {
+        beanRequestAlumno.operation = "paginate";
+        beanRequestAlumno.type_request = "GET";
+        beanRequestUsuario.operation = "get-user";
+        beanRequestUsuario.type_request = "GET";
+        verDni = "S";
+        $('#modalCargandoAlumno').modal('show');
+        event.preventDefault();
+        event.stopPropagation();
     });
 
     $('#FrmAlumnoModal').submit(function (event) {
 
-        event.preventDefault();
-        event.stopPropagation();
+
         if (beanRequestAlumno.operation == "add") {
             if (validateFormAddAlumno()) {
                 $('#modalCargandoAlumno').modal('show');
@@ -46,39 +57,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 $('#modalCargandoAlumno').modal('show');
             }
         }
-
+        event.preventDefault();
+        event.stopPropagation();
 
     });
     document.querySelector("#btnOpenNewAlumno").onclick = function () {
-        //CONFIGURAMOS LA SOLICITUD
-        beanRequestAlumno.operation = "add";
-        beanRequestAlumno.type_request = "POST";
-        beanRequestUsuario.operation = "add";
-        beanRequestUsuario.type_request = "POST";
-        //LIMPIAR LOS CAMPOS
-
-        limpiarInput();
-        limpiarInputUsuario();
-        viewDatosGenerales();
-
-
-        //SET TITLE MODAL
-        document.querySelector("#txtTituloModalAlumno").innerHTML = "REGISTRAR DATOS";
-        //OPEN MODEL
         document.querySelector("#btnListaAlumno").style.display = "none";
-        document.querySelector("#btnOpenAlumnoDetalle").style.display = "block";
-
+        document.querySelector("#frmIngresarDni").style.display = "initial";
     };
 
     $("#modalCargandoAlumno").on('shown.bs.modal', function () {
         if (beanRequestUsuario.operation == "add") {
-            // if (document.querySelector("#txtTipoPersonaAlumno").value == "1") {
-            //    processAjaxUsuario();
-            // } else {
-            //   beanRequestAlumno.operation = "add";
-            //   beanRequestAlumno.type_request = "POST";
-            //  processAjaxAlumno();
-            //}
             processAjaxUsuario();
         }
         if (beanRequestAlumno.operation != "add") {
@@ -105,6 +94,16 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#modalCargandoAlumno').modal('show');
     };
 
+    document.querySelector('#btnCancelarFilterDni').onclick = function () {
+        document.querySelector("#frmIngresarDni").style.display = "none";
+        document.querySelector("#btnListaAlumno").style.display = "block";
+        beanRequestAlumno.operation = "paginate";
+        beanRequestAlumno.type_request = "GET";
+        beanRequestUsuario.operation = "get-user";
+        beanRequestUsuario.type_request = "GET";
+        $('#modalCargandoAlumno').modal('show');
+    };
+
     document.querySelector("#txtNumeroDocumentoAlumno").onkeyup = function () {
         document.querySelector("#txtLoginUsuario").value = document.querySelector("#txtNumeroDocumentoAlumno").value;
         document.querySelector("#txtPassUsuario").value = document.querySelector("#txtNumeroDocumentoAlumno").value;
@@ -112,18 +111,33 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#txtNombreAlumno").onkeyup = function () {
         document.querySelector("#txtNombreUsuario").value = document.querySelector("#txtNombreAlumno").value;
     };
+    document.querySelector('#btnDatosGenerales').onclick = function () {
+        viewDatosGenerales();
+
+    };
+
+    document.querySelector('#btnDatosLaborales').onclick = function () {
+        viewDatosLaborales();
+    };
 });
 
 function processAjaxAlumno() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestAlumno.operation == "paginate") {
-        if (document.querySelector("#txtFilterDniAlumno").value != "") {
-            document.querySelector("#pageAlumno").value = 1;
+        if (verDni == "S") {
+            parameters_pagination = "?filter=" + document.querySelector("#txtFilterDni").value;
+            parameters_pagination += "&page=1&size=1";
+
+        } else {
+            if (document.querySelector("#txtFilterDniAlumno").value != "") {
+                document.querySelector("#pageAlumno").value = 1;
+            }
+            parameters_pagination = "?filter=" + document.querySelector("#txtFilterDniAlumno").value;
+            parameters_pagination += "&page=" + document.querySelector("#pageAlumno").value;
+            parameters_pagination += "&size=" + document.querySelector("#sizePageAlumno").value;
         }
-        parameters_pagination = "?filter=" + document.querySelector("#txtFilterDniAlumno").value;
-        parameters_pagination += "&page=" + document.querySelector("#pageAlumno").value;
-        parameters_pagination += "&size=" + document.querySelector("#sizePageAlumno").value;
+
 
     } else {
 
@@ -193,8 +207,11 @@ function processAjaxAlumno() {
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 if (beanRequestAlumno.operation == "add") {
+                    document.querySelector("#btnOpenAlumnoDetalle").style.display = "none";
+                    document.querySelector("#frmIngresarDni").style.display = "initial";
                     limpiarInput();
                     limpiarInputUsuario();
+
                 }
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
                 $('#ventanaModalAlumno').modal('hide');
@@ -203,8 +220,63 @@ function processAjaxAlumno() {
             }
         }
         if (beanCrudResponse.beanPagination !== undefined) {
-            beanPaginationAlumno = beanCrudResponse.beanPagination;
-            toListAlumno(beanPaginationAlumno);
+            if (verDni == "S") {
+                if (beanCrudResponse.beanPagination.count_filter == 0) {
+                    document.querySelector("#frmIngresarDni").style.display = "none";
+                    //CONFIGURAMOS LA SOLICITUD
+                    beanRequestAlumno.operation = "add";
+                    beanRequestAlumno.type_request = "POST";
+                    beanRequestUsuario.operation = "add";
+                    beanRequestUsuario.type_request = "POST";
+                    //LIMPIAR LOS CAMPOS
+
+                    limpiarInput();
+                    limpiarInputUsuario();
+                    viewDatosGenerales();
+                    document.querySelector("#txtNumeroDocumentoAlumno").value = document.querySelector("#txtFilterDni").value;
+                    document.querySelector("#txtNumeroDocumentoAlumno").disabled = true;
+                    document.querySelector("#txtLoginUsuario").value = document.querySelector("#txtFilterDni").value;
+                    document.querySelector("#txtPassUsuario").value = document.querySelector("#txtFilterDni").value;
+
+                    //SET TITLE MODAL
+                    document.querySelector("#txtTituloModalAlumno").innerHTML = "REGISTRAR DATOS";
+                    //OPEN MODEL
+
+                    document.querySelector("#btnOpenAlumnoDetalle").style.display = "block";
+                } else {
+                    if (document.querySelector("#txtFilterDni").value == beanCrudResponse.beanPagination.list[0].dni) {
+
+                        showAlertTopEnd('warning', "El Número de Documento ya se encuentra registrado ");
+                    } else {
+                        document.querySelector("#frmIngresarDni").style.display = "none";
+                        //CONFIGURAMOS LA SOLICITUD
+                        beanRequestAlumno.operation = "add";
+                        beanRequestAlumno.type_request = "POST";
+                        beanRequestUsuario.operation = "add";
+                        beanRequestUsuario.type_request = "POST";
+                        //LIMPIAR LOS CAMPOS
+
+                        limpiarInput();
+                        limpiarInputUsuario();
+                        viewDatosGenerales();
+                        document.querySelector("#txtNumeroDocumentoAlumno").value = document.querySelector("#txtFilterDni").value;
+                        document.querySelector("#txtNumeroDocumentoAlumno").disabled = true;
+                        document.querySelector("#txtLoginUsuario").value = document.querySelector("#txtFilterDni").value;
+                        document.querySelector("#txtPassUsuario").value = document.querySelector("#txtFilterDni").value;
+
+                        //SET TITLE MODAL
+                        document.querySelector("#txtTituloModalAlumno").innerHTML = "REGISTRAR DATOS";
+                        //OPEN MODEL
+
+                        document.querySelector("#btnOpenAlumnoDetalle").style.display = "block";
+                    }
+                }
+                verDni = "N";
+            } else {
+                beanPaginationAlumno = beanCrudResponse.beanPagination;
+                toListAlumno(beanPaginationAlumno);
+            }
+
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoAlumno').modal("hide");
@@ -282,6 +354,7 @@ function addEventsAlumnoes() {
                 addInputDatos(alumnoSelected);
                 usuarioSelected = alumnoSelected.usuario;
                 viewDatosGenerales();
+                document.querySelector("#txtNumeroDocumentoAlumno").disabled = false;
                 //SET TITLE MODAL
                 document.querySelector("#txtTituloModalAlumno").innerHTML = "ACTUALIZAR DATOS";
                 //OPEN MODEL
@@ -618,12 +691,34 @@ function addInputDatos(atendidoSelected) {
 }
 
 function viewDatosGenerales() {
+    document.querySelector('#btnDatosLaborales').style.display = 'block';
+    document.querySelector('#btnDatosGenerales').style.display = 'block';
+
+    document.querySelector('#btnDatosLaborales').classList.remove('active');
+    document.querySelector('#btnDatosGenerales').classList.add('active');
 
     document.querySelector('#tab-datos-acceso').style.display = 'none';
+    document.querySelector('#tab-datos-laborales').style.display = 'none';
     document.querySelector('#tab-datos-generales').style.display = 'block';
 }
 
 function viewDatosAcceso() {
+    document.querySelector('#btnDatosLaborales').style.display = 'none';
+    document.querySelector('#btnDatosGenerales').style.display = 'none';
+
     document.querySelector('#tab-datos-generales').style.display = 'none';
+    document.querySelector('#tab-datos-laborales').style.display = 'none';
     document.querySelector('#tab-datos-acceso').style.display = 'block';
+}
+
+function viewDatosLaborales() {
+    document.querySelector('#btnDatosLaborales').style.display = 'block';
+    document.querySelector('#btnDatosGenerales').style.display = 'block';
+
+    document.querySelector('#btnDatosGenerales').classList.remove('active');
+    document.querySelector('#btnDatosLaborales').classList.add('active');
+
+    document.querySelector('#tab-datos-acceso').style.display = 'none';
+    document.querySelector('#tab-datos-generales').style.display = 'none';
+    document.querySelector('#tab-datos-laborales').style.display = 'block';
 }

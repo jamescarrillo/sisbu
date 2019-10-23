@@ -70,7 +70,6 @@ function processAjaxVideoTutorial() {
         parameters_pagination = "";
         if (beanRequestVideoTutorial.operation == "delete") {
             parameters_pagination = "/" + videoTutorialSelected.idvideo_tutorial;
-            json = {};
         } else {
             json = {
                 "titulo": document.querySelector("#txtTituloVideoTutorial").value,
@@ -122,33 +121,85 @@ function toListVideoTutorial(beanPagination) {
     document.querySelector("#titleManagerVideoTutorial").innerHTML = "[ " + beanPagination.count_filter + " ] VIDEO TUTORIALES";
     if (beanPagination.count_filter > 0) {
         let row;
+        row =
+                `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pl-5">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           TÍTULO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+           <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           LINK
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           DESCRIPCIÓN
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                 
+                    
+                </div>
+            `;
+        document.querySelector("#tbodyVideoTutorial").innerHTML += row;
         beanPagination.list.forEach(videoTutorial => {
-            row = "<div class='dt-widget__item border-bottom'>";
-            row += "<div class='dt-extra animate-slide align-self-center mr-5' idvideotutorial='" + videoTutorial.idvideo_tutorial + "'>";
-            row += "<span class='badge badge-info badge-circle-animate badge-pill badge-sm align-text-top mr-2'>"
-            row += "<a class='text-light-gray editar-videoTutorial' data-toggle='tooltip' title='Editar' href='javascript:void(0)'>";
-            row += "<i class='text-white icon icon-editors'></i></a>";
-            row += "</span>";
-            row += "<span class='badge badge-danger badge-circle-animate badge-pill badge-sm align-text-top'>";
-            row += "<a class='text-light-gray eliminar-videoTutorial' data-toggle='tooltip' title='ELiminar' href='javascript:void(0)'>";
-            row += "<i class='text-white icon icon-trash-filled'></i></a>";
-            row += "</span>";
-            row += "</div>";
-
-            row += "<div class='dt-widget__info text-truncate '  style='min-width:60px; max-width:25%'>";
-            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += videoTutorial.titulo + "</p></div>";
-
-            row += "<div class=' text-truncate '  style='min-width:230px; max-width:50%;'>";
-            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += videoTutorial.descripcion + "</p></div>";
-
-            row += "<div class='text-truncate mr-5' style='min-width:50px; max-width:25%;'>";
-            row += "<p class='dt-widget__subtitle text-truncate text-dark'>";
-            row += videoTutorial.link + "</p></div>";
-
-            row += "</div>";
-
+            row =
+                    `
+                 <div class="dt-widget__item border-success  pl-5">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-videoTutorial" idvideotutorial='${videoTutorial.idvideo_tutorial}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-videoTutorial" idvideotutorial='${videoTutorial.idvideo_tutorial}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${videoTutorial.titulo}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                 <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${videoTutorial.link}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${videoTutorial.descripcion}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+               
+                 
+                    
+                </div>
+            `;
             document.querySelector("#tbodyVideoTutorial").innerHTML += row;
             $('[data-toggle="tooltip"]').tooltip();
         });
@@ -171,7 +222,7 @@ function addEventsVideoTutoriales() {
     document.querySelectorAll('.editar-videoTutorial').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            videoTutorialSelected = findByVideoTutorial(btn.parentElement.parentElement.getAttribute('idvideotutorial'));
+            videoTutorialSelected = findByVideoTutorial(btn.getAttribute('idvideotutorial'));
             if (videoTutorialSelected != undefined) {
                 beanRequestVideoTutorial.operation = "update";
                 beanRequestVideoTutorial.type_request = "PUT";
@@ -192,7 +243,7 @@ function addEventsVideoTutoriales() {
     document.querySelectorAll('.eliminar-videoTutorial').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            videoTutorialSelected = findByVideoTutorial(btn.parentElement.parentElement.getAttribute('idvideotutorial'));
+            videoTutorialSelected = findByVideoTutorial(btn.getAttribute('idvideotutorial'));
             beanRequestVideoTutorial.operation = "delete";
             beanRequestVideoTutorial.type_request = "DELETE";
             processAjaxVideoTutorial();

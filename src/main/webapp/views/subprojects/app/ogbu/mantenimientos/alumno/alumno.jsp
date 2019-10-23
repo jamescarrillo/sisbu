@@ -37,7 +37,7 @@
                         <div class="dt-card__heading">
 
                             <!-- Widget Item -->
-                            <div class="dt-widget__item border-bottom bg-primary" >
+                            <div class="dt-widget__item border-bottom bg-primary pb-2" >
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
@@ -116,7 +116,30 @@
                 <!-- /card heading -->
 
             </div>
+            <!-- Card Header -->
+            <div class="card-header">
+                <!-- Tab Navigation -->
+                <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
+                    <div class="col-6"> 
+                        <li class="nav-item">
+                            <a class="nav-link" id="btnDatosLaborales" data-toggle="tab" 
+                               href="#tab-datos-laborales" role="tab" aria-controls="tab-datos-laborales"
+                               aria-="true">DATOS LABORALES</a>
+                        </li>
+                    </div>
+                    <div class="col-6"> 
+                        <li class="nav-item">
+                            <a class="nav-link  active" id="btnDatosGenerales" data-toggle="tab" 
+                               href="#tab-datos-generales" role="tab" aria-controls="tab-datos-generales"
+                               aria-="true">DATOS GENERALES</a>
+                        </li>
+                    </div>
 
+
+                </ul>
+                <!-- /tab navigation -->
+            </div>
+            <!-- /card header -->
             <!-- /card header -->
             <!-- Card Body -->
             <div class=" card-body p-0">
@@ -129,8 +152,19 @@
                             <div id="tab-datos-generales" >
                                 <div class="card-body p-3">
                                     <div class="row">
-                                        <div class="form-group dt-card__heading  col-lg-12 ">
-                                            <h3 class="dt-card__title">DATOS GENERALES</h3>
+                                        <div class="col-lg-3 col-sm-4 col-6">
+                                            <div class="form-group">
+                                                <label for="txtTipoPersonaAlumno">TIPO DE USUARIO</label>
+                                                <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtTipoPersonaAlumno" >
+                                                    <option  value="-1">Seleccione... </option>
+                                                    <option  value="1">ALUMNO</option>
+                                                    <option  value="2">DOCENTE</option>
+                                                    <option  value="3">ADMINISTRATIVO</option>
+                                                    <option  value="4">FAMILIAR DOCENTE</option>
+                                                    <option  value="5">FAMILIAR ADMINISTRATIVO</option>
+                                                    <option  value="6">OTRO</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="col-lg-3 col-sm-4 col-6">
                                             <div class="form-group">
@@ -207,13 +241,13 @@
                                                 <input maxlength="9"  type="number" class="form-control form-control-sm" id="txtCelularAlumno" placeholder="Ingrese celular. . ." maxlength="9">
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-sm-4 col-6">
+                                        <div class="col-lg-6 col-sm-8 col-12">
                                             <div class="form-group">
                                                 <label for="txtEmailAlumno">EMAIL</label>
                                                 <input  type="email" class="form-control form-control-sm" id="txtEmailAlumno" placeholder="EMAIL" maxlength="100">
                                             </div>
                                         </div>
-                                        <div class="col-lg-5  col-sm-4 mb-3 ">
+                                        <div class="col-lg-6  col-sm-6 mb-3 ">
                                             <label for="txtDistritoActualAlumno">DISTRITO ACTUAL</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control form-control-sm" id="txtDistritoActualAlumno" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
@@ -222,7 +256,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4  col-sm-4  mb-3">
+                                        <div class="col-lg-6  col-sm-6  mb-3">
                                             <label for="txtDistritoProcedenciaAlumno">DISTRITO PROCEDENCIA</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control form-control-sm" id="txtDistritoProcedenciaAlumno" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
@@ -231,7 +265,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4  col-sm-6 ">
+                                        <div class="col-lg-6  col-sm-6 ">
                                             <div class="form-group">
                                                 <label for="txtDireccionActualAlumno">DIRECCION ACTUAL
                                                     <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección donde vives actualmente. Si vives en un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS PINOS - SAN MARTÍN" style="cursor: pointer" data-original-title=""></i>
@@ -239,7 +273,7 @@
                                                 <input  type="text" class="form-control form-control-sm" id="txtDireccionActualAlumno" placeholder="Ingrese dirección actual. . ." maxlength="80">
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-sm-6 ">
+                                        <div class="col-lg-6 col-sm-6 ">
                                             <div class="form-group">
                                                 <label for="txtDireccionProceAlumno">DIRECCION PROCEDENCIA
                                                     <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección de donde vienes. Si vienes de un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS ROSALES - SAN JUAN" style="cursor: pointer" data-original-title=""></i>
@@ -247,26 +281,18 @@
                                                 <input  type="text" class="form-control form-control-sm" id="txtDireccionProceAlumno" placeholder="Ingrese dirección de procedencia" maxlength="80">
                                             </div>
                                         </div>
-                                        <hr class="border-dashed col-11">
-
-                                        <div class="form-group dt-card__heading  col-lg-12 ">
-                                            <h3 class="dt-card__title">DATOS LABORALES</h3>
+                                        <div class="form-group col-12 text-center">
+                                            <button type="submit" id="btnGuardarAlumno" class="btn btn-primary btn-sm">GUARDAR</button>
                                         </div>
-                                        <div class="col-lg-3 col-sm-4 col-6">
-                                            <div class="form-group">
-                                                <label for="txtTipoPersonaAlumno">TIPO DE USUARIO</label>
-                                                <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtTipoPersonaAlumno" >
-                                                    <option  value="-1">Seleccione... </option>
-                                                    <option  value="1">ALUMNO</option>
-                                                    <option  value="2">DOCENTE</option>
-                                                    <option  value="3">ADMINISTRATIVO</option>
-                                                    <option  value="4">FAMILIAR DOCENTE</option>
-                                                    <option  value="5">FAMILIAR ADMINISTRATIVO</option>
-                                                    <option  value="6">OTRO</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /tab pane-->
+                            <!-- Tab Pane DATOS LABORALES-->
+                            <div id="tab-datos-laborales" >
 
+                                <div class="card-body p-3 ">
+                                    <div class="row">
                                         <div class="col-lg-3 col-sm-4 col-6">
                                             <div class="form-group">
                                                 <label for="txtTipoPersonalAlumno">TIPO DE PERSONAL
@@ -332,7 +358,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-sm-4">
+                                        <div class="col-lg-3 col-sm-4 col-6">
                                             <div class="form-group">
                                                 <label for="txtModalidadAlumno">MODALIDAD DE INGRESO
                                                     <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" 
@@ -353,7 +379,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 col-sm-4 col-6">
+                                        <div class="col-lg-3 col-sm-3 col-6">
                                             <div class="form-group">
                                                 <label for="txtComensalAlumno">COMENSAL</label>
                                                 <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtComensalAlumno" >
@@ -364,7 +390,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-sm-4 col-6">
+                                        <div class="col-lg-3 col-sm-3 col-6">
                                             <div class="form-group">
                                                 <label for="txtEstadoAlumno">ESTADO </label>
                                                 <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtEstadoAlumno">
@@ -374,7 +400,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-8 col-sm-12 mb-3">
+                                        <div class="col-lg-12 col-sm-6 mb-3">
                                             <label for="txtEscuelaAlumno">ESCUELA
                                                 <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" 
                                                    data-content="Carrera profesional a la que ingresaste. Si no es Alumno deja la caja de texto en blanco" style="cursor: pointer" data-original-title=""></i>
@@ -387,14 +413,10 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-12 text-center">
-                                            <button type="submit" id="btnGuardarAlumno" class="btn btn-primary btn-sm">GUARDAR</button>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                            <!-- /tab pane-->
-
                             <!-- /tab pane-->
                         </form>
                         <!-- Tab Pane DATOS ACCESO-->
@@ -464,6 +486,26 @@
             <!-- /card -->
         </div>
     </div>
+    <!-- Card -->
+    <div class=" col-xl-4 col-lg-4 col-sm-3 ">
+
+    </div>
+    <div class=" col-xl-4 col-lg-4 col-sm-6 " id="frmIngresarDni" style="display: none">
+        <form id="FrmAlumnoValidar" >
+            <div class="input-group search-box" style="max-width: 100%;">
+                <input type="search" id="txtFilterDni" class="form-control form-control-sm" placeholder="INGRESA DNI">
+                <div class="input-group-append">
+                    <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                    <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                </div>
+            </div>
+            <div class="text-center pt-5">
+                <button  id="btnCancelarFilterDni"type="button" class="btn btn-outline-primary btn-sm mr-2"><i class="icon icon-reply"></i> CANCELAR</button>                   
+            </div>
+        </form>
+    </div>
+
+
 </div>
 
 <div class="modal fade" id="modalCargandoAlumno" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">

@@ -31,59 +31,21 @@
                         <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewNoticia"data-toggle="tooltip" title="Agregar Noticia" ><i class="icon icon-addnew"></i></button>
                     </div>
                 </form>
-                <!-- Tables -->
+
                 <!-- Card -->
-                <div class=" pb-4 ">
-
-                    <!-- Card Header -->
-                    <div class="dt-card__header mb-3 p-0 pt-3 ">
-
-                        <!-- Card Heading -->
-                        <div class="dt-card__heading">
-
-                            <!-- Widget Item -->
-                            <div class="dt-widget__item border-bottom bg-primary" >
-
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">FUENTE /<br>FECHA PUBLICACIÓN</h3>
-                                </div>
-                                <!-- /widget info -->
-
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">TÍTULO</h3>
-                                </div>
-                                <!-- /widget info -->
-
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">DESCRIPCIÓN</h3>
-                                </div>
-                                <!-- /widget info -->
-                            </div>
-                            <!-- /widgets item -->
-
-                        </div>
-                        <!-- /card heading -->
-
-                    </div>
-                    <!-- /card header -->
-
+                <div class="dt-card mt-4">
                     <!-- Card Body -->
                     <div class="dt-card__body p-0  " >
                         <!-- Widget -->
-                        <div class="dt-widget dt-widget-hover ps-custom-scrollbar ps ps--active-y" id="tbodyNoticia">
-
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                             id="tbodyNoticia">
                         </div>
                         <!-- /widget -->
                         <!-- /card body -->
-
                     </div>
-                    <!-- /card -->
 
                 </div>
-
+                <!-- /card -->
                 <!-- /tables -->
                 <div class="row mt-2">
                     <div class="col-md-2 col-sm-3 col-4">

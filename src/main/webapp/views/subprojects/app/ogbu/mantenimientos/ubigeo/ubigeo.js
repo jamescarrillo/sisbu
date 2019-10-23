@@ -112,12 +112,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $('#FrmDistritoModal').submit(function (event) {
-        event.preventDefault();
-        event.stopPropagation();
+
         if (validateFormDistrito()) {
             $('#modalCargandoDistrito').modal('show');
         }
-
+        event.preventDefault();
+        event.stopPropagation();
     });
 
     document.querySelector("#btnOpenNewDistrito").onclick = function () {
@@ -254,7 +254,6 @@ function processAjaxDistrito() {
         parameters_pagination = "";
         if (beanRequestDistrito.operation == "delete") {
             parameters_pagination = "/" + distritoSelected.iddistrito;
-            json = {};
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombreDistrito").value,
@@ -300,20 +299,71 @@ function toListDistrito(beanPagination) {
     document.querySelector("#titleManagerDistrito").innerHTML = "[ " + beanPagination.count_filter + " ] DISTRITOS";
     if (beanPagination.count_filter > 0) {
         let row;
+        row =
+                `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2"">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           DISTRITO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           PROVINCIA
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
+        document.querySelector("#tbodyDistrito").innerHTML += row;
         beanPagination.list.forEach(distrito => {
-            row = "<tr ";
-            row += "iddistrito='" + distrito.iddistrito + "' ";
-            row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item editar-distrito'data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-primary icon icon-editors'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-distrito'data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
-            row += "</ul></td>";
-            row += "<td class='align-middle'>" + distrito.nombre + "</td>";
-            row += "<td class='align-middle'>" + distrito.idprovincia.nombre + "</td>";
-            row += "</tr>";
+            row =
+                    `
+                 <div class="dt-widget__item border-success  ">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-distrito" iddistrito='${distrito.iddistrito}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-distrito" iddistrito='${distrito.iddistrito}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${distrito.nombre}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${distrito.idprovincia.nombre}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                 
+                    
+                </div>
+            `;
             document.querySelector("#tbodyDistrito").innerHTML += row;
+            $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
                 beanPagination.count_filter,
@@ -325,7 +375,7 @@ function toListDistrito(beanPagination) {
         if (beanRequestDistrito.operation == "paginate") {
             document.querySelector("#txtFilterNombreDistrito").focus();
         }
-        $('[data-toggle="tooltip"]').tooltip();
+
     } else {
         destroyPagination($('#paginationDistrito'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -338,8 +388,7 @@ function addEventsDistritoes() {
     document.querySelectorAll('.editar-distrito').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            distritoSelected = findByDistrito(btn.parentElement.parentElement.parentElement.getAttribute('iddistrito'));
-            console.log(distritoSelected);
+            distritoSelected = findByDistrito(btn.getAttribute('iddistrito'));
             if (distritoSelected != undefined) {
                 beanRequestDistrito.operation = "update";
                 beanRequestDistrito.type_request = "PUT";
@@ -354,13 +403,13 @@ function addEventsDistritoes() {
             } else {
                 showAlertTopEnd('warning', 'No se encontró la Distrito para poder editar');
             }
-            $('#modalCargandoProvincia').modal('show');
+
         };
     });
     document.querySelectorAll('.eliminar-distrito').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            distritoSelected = findByDistrito(btn.parentElement.parentElement.parentElement.getAttribute('iddistrito'));
+            distritoSelected = findByDistrito(btn.getAttribute('iddistrito'));
             beanRequestDistrito.operation = "delete";
             beanRequestDistrito.type_request = "DELETE";
             processAjaxDistrito();
@@ -409,7 +458,6 @@ function processAjaxProvincia() {
         parameters_pagination = "";
         if (beanRequestProvincia.operation == "delete") {
             parameters_pagination = "/" + provinciaSelected.idprovincia;
-            json = {};
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombreProvincia").value,
@@ -459,20 +507,71 @@ function toListProvincia(beanPagination) {
     document.querySelector("#titleManagerProvincia").innerHTML = "[ " + beanPagination.count_filter + " ] Provincias";
     if (beanPagination.count_filter > 0) {
         let row;
+        row =
+                `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2"">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           PROVINCIA
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           DEPARTAMENTO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
+        document.querySelector("#tbodyProvincia").innerHTML += row;
         beanPagination.list.forEach(provincia => {
-            row = "<tr ";
-            row += "idprovincia='" + provincia.idprovincia + "' ";
-            row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item editar-provincia'data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-primary icon icon-editors'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-provincia'data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
-            row += "</ul></td>";
-            row += "<td class='align-middle'>" + provincia.nombre + "</td>";
-            row += "<td class='align-middle'>" + provincia.iddepartamento.nombre + "</td>";
-            row += "</tr>";
+            row =
+                    `
+                 <div class="dt-widget__item border-success  ">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-provincia" idprovincia='${provincia.idprovincia}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-provincia" idprovincia='${provincia.idprovincia}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${provincia.nombre}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${provincia.iddepartamento.nombre}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                 
+                    
+                </div>
+            `;
             document.querySelector("#tbodyProvincia").innerHTML += row;
+            $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
                 beanPagination.count_filter,
@@ -484,7 +583,7 @@ function toListProvincia(beanPagination) {
         if (beanRequestProvincia.operation == "paginate") {
             document.querySelector("#txtFilterNombreProvincia").focus();
         }
-        $('[data-toggle="tooltip"]').tooltip();
+
     } else {
         destroyPagination($('#paginationProvincia'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -497,7 +596,7 @@ function addEventsProvincia() {
     document.querySelectorAll('.editar-provincia').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            provinciaSelected = findByProvincia(btn.parentElement.parentElement.parentElement.getAttribute('idprovincia'));
+            provinciaSelected = findByProvincia(btn.getAttribute('idprovincia'));
             console.log(provinciaSelected);
             if (provinciaSelected != undefined) {
                 beanRequestProvincia.operation = "update";
@@ -513,13 +612,13 @@ function addEventsProvincia() {
             } else {
                 showAlertTopEnd('warning', 'No se encontró la Provincia para poder editar');
             }
-            $('#modalCargandoDepartamento').modal('hide');
+
         };
     });
     document.querySelectorAll('.eliminar-provincia').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            provinciaSelected = findByProvincia(btn.parentElement.parentElement.parentElement.getAttribute('idprovincia'));
+            provinciaSelected = findByProvincia(btn.getAttribute('idprovincia'));
             beanRequestProvincia.operation = "delete";
             beanRequestProvincia.type_request = "DELETE";
             processAjaxProvincia();
@@ -571,7 +670,6 @@ function processAjaxDepartamento() {
         parameters_pagination = "";
         if (beanRequestDepartamento.operation == "delete") {
             parameters_pagination = "/" + departamentoSelected.iddepartamento;
-            json = {};
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombreDepartamento").value
@@ -616,19 +714,57 @@ function toListDepartamento(beanPagination) {
     document.querySelector("#titleManagerDepartamento").innerHTML = "[ " + beanPagination.count_filter + " ] Departamento";
     if (beanPagination.count_filter > 0) {
         let rowd;
+        rowd =
+                `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2"">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           DEPARTAMENTO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
+        document.querySelector("#tbodyDepartamento").innerHTML += rowd;
         beanPagination.list.forEach(departamento => {
-            rowd = "<tr ";
-            rowd += "iddepartamento='" + departamento.iddepartamento + "' ";
-            rowd += ">";
-            rowd += "<td><ul class='dt-list dt-list-cm-0'>";
-            rowd += "<li class='dt-list__item editar-departamento' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            rowd += "<i class='text-primary icon icon-editors'></i></a></li>";
-            rowd += "<li class='dt-list__item eliminar-departamento' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            rowd += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
-            rowd += "</ul></td>";
-            rowd += "<td class='align-middle'>" + departamento.nombre + "</td>";
-            rowd += "</tr>";
+            rowd =
+                    `
+                 <div class="dt-widget__item border-success  ">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-departamento" iddepartamento='${departamento.iddepartamento}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-departamento" iddepartamento='${departamento.iddepartamento}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${departamento.nombre}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                 
+                    
+                </div>
+            `;
             document.querySelector("#tbodyDepartamento").innerHTML += rowd;
+            $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
                 beanPagination.count_filter,
@@ -640,7 +776,7 @@ function toListDepartamento(beanPagination) {
         if (beanRequestDepartamento.operation == "paginate") {
             document.querySelector("#txtFilterNombreDepartamento").focus();
         }
-        $('[data-toggle="tooltip"]').tooltip();
+
     } else {
         destroyPagination($('#paginationDepartamento'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -653,7 +789,7 @@ function addEventsDepartamento() {
     document.querySelectorAll('.editar-departamento').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            departamentoSelected = findByDepartamento(btn.parentElement.parentElement.parentElement.getAttribute('iddepartamento'));
+            departamentoSelected = findByDepartamento(btn.getAttribute('iddepartamento'));
             if (departamentoSelected != undefined) {
                 beanRequestDepartamento.operation = "update";
                 beanRequestDepartamento.type_request = "PUT";
@@ -671,7 +807,7 @@ function addEventsDepartamento() {
     document.querySelectorAll('.eliminar-departamento').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            departamentoSelected = findByDepartamento(btn.parentElement.parentElement.parentElement.getAttribute('iddepartamento'));
+            departamentoSelected = findByDepartamento(btn.getAttribute('iddepartamento'));
             beanRequestDepartamento.operation = "delete";
             beanRequestDepartamento.type_request = "DELETE";
             processAjaxDepartamento();

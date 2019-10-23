@@ -72,7 +72,6 @@ function processAjaxAtendido() {
         parameters_pagination = "";
         if (beanRequestAtendido.operation == "delete") {
             parameters_pagination = "/" + atendidoSelected.idatendido;
-            json = {};
         } else {
             json = {
                 "ciclo_academico_ingreso": atendidoSelected.ciclo_academico_ingreso.idciclo_academico,
