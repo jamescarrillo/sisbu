@@ -118,7 +118,8 @@ public class FilterURL implements Filter {
         //version_project += "0.04";
         //version_project += "0.05";
         //version_project += "0.06";
-        version_project += "0.07";
+        //version_project += "0.07";
+        version_project += "0.08";
         /*
             0.01 -> 01/08/19
          */
