@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 })
 public class FilterURL implements Filter {
 
-    private static final Logger LOG = Logger.getLogger(FilterURL.class.getName());
+   private static final Logger LOG = Logger.getLogger(FilterURL.class.getName());
     private final Map<String, String> subProjects = new HashMap<>();
     private List<Resource> list_resources;
 
@@ -429,41 +429,44 @@ public class FilterURL implements Filter {
         ///unidades de medida
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/farmacia/unidades");
-        resource.setPath("/views/subprojects/app/servicios/farmacia/unidad_medida/unidad_medida.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/farmacia/unidad-medida/unidad-medida.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/farmacia/unidad_medida/unidad_medida.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/farmacia/unidad-medida/unidad-medida.js" + version_project
         });
         this.list_resources.add(resource);
-        ///categoria
-        resource = new Resource();
-        resource.setUrl("/app/ogbu/servicios/farmacia/categorias");
-        resource.setPath("/views/subprojects/app/servicios/farmacia/categoria/categoria.jsp");
-        resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/farmacia/categoria/categoria.js" + version_project
-        });
-        this.list_resources.add(resource);
+       
         ///productos
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/farmacia/productos");
-        resource.setPath("/views/subprojects/app/servicios/farmacia/producto/producto.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/farmacia/producto/producto.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/farmacia/producto/producto.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/farmacia/producto/producto.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/farmacia/producto/unidadMedida_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/farmacia/producto/categoria_c.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///categorias
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/farmacia/catalogos");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/farmacia/categoria/categoria.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/farmacia/categoria/categoria.js" + version_project
         });
         this.list_resources.add(resource);
         ///entradas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/farmacia/entradas");
-        resource.setPath("/views/subprojects/app/servicios/farmacia/entrada/entrada.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/farmacia/entrada/entrada.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/farmacia/entrada/entrada.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/farmacia/entrada/entrada.js" + version_project
         });
         this.list_resources.add(resource);
         ///salidas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/farmacia/salidas");
-        resource.setPath("/views/subprojects/app/servicios/farmacia/salida/salida.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/farmacia/salida/salida.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/farmacia/salida/salida.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/farmacia/salida/salida.js" + version_project
         });
         this.list_resources.add(resource);
 
@@ -809,4 +812,5 @@ public class FilterURL implements Filter {
             return this.subProjects.get("/" + URL.split("/")[1]);
         }
     }
+   
 }

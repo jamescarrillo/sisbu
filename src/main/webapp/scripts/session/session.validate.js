@@ -61,13 +61,16 @@ function addMenus(usuario) {
             //ogbu
             createHTML_OGBU(usuario.tipo_perfil);
             break;
+            
         default:
 
             break;
+            
     }
 }
 
 function createHTML_OGBU(typeProfile) {
+  
     //INICIO PARA TODOS
     document.querySelector("#a-mis-datos").style.display = "none";
     document.querySelector("#menus_sisbu").innerHTML =
@@ -175,14 +178,32 @@ function createHTML_OGBU(typeProfile) {
                     </li>
                     <li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/farmacia/entradas" class="dt-side-nav__link" title="Entradas de Medicamentos">
-                            <i class="icon icon-arrow-left icon-fw icon-lg"></i>
+                        <i class="icon icon-arrow-right icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Entradas</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/servicios/farmacia/entradas" class="dt-side-nav__link" title="Salidas de Medicamentos">
-                            <i class="icon icon-arrow-right icon-fw icon-lg"></i>
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/salidas" class="dt-side-nav__link" title="Salidas de Medicamentos">
+                            <i class="icon icon-arrow-left icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Salidas</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/catalogos" class="dt-side-nav__link" title="Categorías">
+                            <i class="icon icon-arrow-right icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Categorías</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/productos" class="dt-side-nav__link" title="Productos">
+                            <i class="icon icon-arrow-right icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Productos</span>
+                        </a>
+                    </li>
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/unidades" class="dt-side-nav__link" title="Unidad de Medida">
+                            <i class="icon icon-arrow-right icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Unidad de Medida</span>
                         </a>
                     </li>
                 </ul>

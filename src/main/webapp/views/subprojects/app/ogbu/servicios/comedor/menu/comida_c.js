@@ -146,9 +146,10 @@ function toListComidac(beanPagination) {
     document.querySelector("#titleManagerComidac").innerHTML = "[ " + beanPagination.count_filter + " ] COMIDAS";
     if (beanPagination.count_filter > 0) {
         let row;
+        
         beanPagination.list.forEach(comida => {
             row = "<tr class='click-selection-comida sisbu-cursor-mano' idcomida='" + comida.idcomida + "'>";
-            row += "<td class='align-middle text-left'>" + comida.descripcion.toUpperCase() + "</td>";
+            row += "<td class='align-middle text-left pl-3'>" + comida.descripcion.toUpperCase() + "</td>";
             row += "<td class='align-middle text-left'>" + tipoComida(comida.tipo) + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyComidac").innerHTML += row;
@@ -163,7 +164,7 @@ function toListComidac(beanPagination) {
         if (beanRequestComidac.operation == "paginate") {
             document.querySelector("#txtFilterComidac").focus();
         }
-        $('[data-toggle="tooltip"]').tooltip();
+       
     } else {
         destroyPagination($('#paginationComidac'));
         showAlertTopEnd('warning', 'No se encontraron resultados');

@@ -50,27 +50,20 @@ function toListNoticia(beanPagination) {
     document.querySelector("#tbodyNoticia").innerHTML = "";
     if (beanPagination.count_filter > 0) {
         let row;
-        let contador=0,color;
+       
         beanPagination.list.forEach(noticia => {
-            contador++;
-            if(contador%2){
-                 color="bg-gradient-blue--after"; 
-            }else if(contador%3){
-                 color="bg-gradient-purple--after"; 
-            }
-
             row = '<div class="col-xl-4 col-sm-6">';
-            row += '<div class="dt-card dt-card__full-height  bg-overlay overlay-opacity-0_8 '+color+' text-white">';
+            row += '<div class="dt-card dt-social-card border border-w-2 border-light-teal">';
             row += ' <div class="bg-overlay__inner">';
             row += '<div class="dt-card__header mb-2">';
             row += '<div class="dt-card__heading">';
-            row += '<h3 class="dt-card__title text-white">' + noticia.fuente + '</h3></div>';
+            row += '<h3 class="dt-card__title ">' + noticia.fuente + '</h3></div>';
             row += '<div class="dt-card__tools">';
             row += '<span class="dt-card__more font-weight-500">' + noticia.fecha_publicacion + '</span></div></div>';
             row += '<div class="dt-card__body p-3">';
             row += '<div class="media mb-5">';
             row += '<div class="media-body ">';
-            row += '<div class="d-block display-5 font-weight-600 mb-1">' + noticia.titulo + '</div>';
+            row += '<div class="dt-card__title display-5 font-weight-600 mb-1 text-primary">' + noticia.titulo + '</div>';
             row += '</div></div>';
             row += ' <p class="card-text">' + noticia.descripcion + '</p>';
             row += '</div></div>';

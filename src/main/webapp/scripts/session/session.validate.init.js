@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (user_session.tipo_perfil == 0 || user_session.tipo_perfil == 1 || user_session.tipo_perfil == 10) {
                             console.log("Url correcta");
                         } else {
+                            console.log("Url Incorrecta");
                             sendIndex();
                         }
                     }
