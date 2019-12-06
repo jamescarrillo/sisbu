@@ -90,14 +90,14 @@ function getIndexAlternativaGlobal(descripcion) {
     return index_;
 }
 
-function toListAlternativasGlobales() {
+function toListAlternativasGlobales(bloquear_btns = false) {
     document.querySelector("#tbodyAlternativasGlobales").innerHTML = "";
     let row;
     list_alternativas_globales.forEach(alternativa => {
         row = "<tr descripcion='" + alternativa.descripcion + "'>";
         row += "<td class='align-middle'>" + alternativa.descripcion + "</td>";
         row += "<td class='text-center align-middle'>" + alternativa.valor + "</td>";
-        row += "<td class='text-center align-middle'><button class='btn btn-outline-primary btn-xs btn-eliminar-alternativa-global' data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
+        row += "<td class='text-center align-middle'><button class='btn btn-outline-primary btn-xs btn-eliminar-alternativa-global' " + (bloquear_btns == true ? "disabled" : "") + " data-toggle='tooltip' title='Eliminar'><i class='icon icon-trash icon-fw'></i></button></td>";
         row += "</tr>";
         document.querySelector("#tbodyAlternativasGlobales").innerHTML += row;
     });

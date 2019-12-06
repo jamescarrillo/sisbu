@@ -145,7 +145,7 @@ function navigateHome(ir) {
 
             document.querySelector("#row-evaluaciones").style.display = "none";
             document.querySelector("#row-configurations").style.display = "flex";
-            
+
             $("#modalCargandoProcedimientoCiclo").modal('show');
             break;
         default:
@@ -403,7 +403,7 @@ function addEventsEvaluaciones() {
             }
         };
     });
-    
+
     document.querySelectorAll(".btn-conf-criticos").forEach(btn => {
         btn.onclick = function () {
             evaluacionSelected = getEvaluacionForId(this.getAttribute('idprocedimiento'));
@@ -414,7 +414,7 @@ function addEventsEvaluaciones() {
             }
         };
     });
-    
+
     document.querySelectorAll(".btn-conf-inconsistencia").forEach(btn => {
         btn.onclick = function () {
             evaluacionSelected = getEvaluacionForId(this.getAttribute('idprocedimiento'));
@@ -425,7 +425,7 @@ function addEventsEvaluaciones() {
             }
         };
     });
-    
+
 }
 
 function openEvaluacion() {
@@ -454,9 +454,14 @@ function openEvaluacion() {
                 list_alternativas_globales.push(alternativa_);
             });
         }
-        toListAlternativasGlobales();
+        
+        //BLOQUEAMOS EL BOTON QUE AGREGA LAS NUEVAS ALTERNATIVAS GLOBALES
+        document.querySelector("#btnAgregarAlternativaGlobal").disabled = true;
+        toListAlternativasGlobales(true);
     } else {
         document.querySelector("#txtUsaAlternativasGlobalesRU").disabled = false;
+        //BLOQUEAMOS EL BOTON QUE AGREGA LAS NUEVAS ALTERNATIVAS GLOBALES
+        document.querySelector("#btnAgregarAlternativaGlobal").disabled = false;
     }
     if (evaluacionSelected.usa_parametro_inconsistencia == "S" || evaluacionSelected.usa_parametro_criticidad == "S") {
         document.querySelector("#checkParametersAvanzados").checked = true;
