@@ -18,13 +18,9 @@
             <div class="card-body pt-0">
                 <form id="FrmNoticia">
                     <div class="input-group search-box" style="max-width: 100%;">
-                        <div class="input-group col-10 pr-0 pl-0">
-                            <div class="input-group-append">
-                                <button type="button" id="btnEliminarFilterNoticia" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
-                            </div>
-                            <input type="text" id="txtFilterInicialNoticia" class="form-control form-control-sm" placeholder="Filter fecha Inicial...DD/MM/AAAA">
-                            <input type="text" id="txtFilterFinalNoticia" class="form-control form-control-sm" placeholder="Filter fecha Final...DD/MM/AAAA">
-                        </div>
+                        <button type="button" id="btnEliminarFilterNoticia" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
+                        <input type="text" id="txtFilterInicialNoticia" class="form-control form-control-sm" placeholder="Filter Fecha Inicial(DD/MM/AAAA)">
+                        <input type="text" id="txtFilterFinalNoticia" class="form-control form-control-sm" placeholder="Filter Fecha Final(DD/MM/AAAA)">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary btn-sm mr-5"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>

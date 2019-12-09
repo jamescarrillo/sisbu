@@ -232,72 +232,85 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     //LUNES
     document.querySelector("#btnAgregarComida").onclick = function () {
+        if (comidaSelected != undefined) {
+            document.querySelector("#txtComidaDetalle").value = "";
 
-        document.querySelector("#txtComidaDetalle").value = "";
+            listSelect = listDMS.filter(function (obj) {
+                if (obj.fecha == Dia_semana[0]["fecha"]) {
+                    return obj;
+                }
+                {
+                    return undefined;
+                }
 
-        listSelect = listDMS.filter(function (obj) {
-            if (obj.fecha == Dia_semana[0]["fecha"]) {
-                return obj;
+            });
+            if (comidaSelected.tipo == 1) {
+                listSelect[0].comida_dsegundo = comidaSelected;
+            } else if (comidaSelected.tipo == 2) {
+                listSelect[0].comida_dbebida = comidaSelected;
+            } else if (comidaSelected.tipo == 3) {
+                listSelect[0].comida_dpostre = comidaSelected;
             }
-            {
-                return undefined;
-            }
-
-        });
-        if (comidaSelected.tipo == 1) {
-            listSelect[0].comida_dsegundo = comidaSelected;
-        } else if (comidaSelected.tipo == 2) {
-            listSelect[0].comida_dbebida = comidaSelected;
-        } else if (comidaSelected.tipo == 3) {
-            listSelect[0].comida_dpostre = comidaSelected;
+            toListComidaTabla(listSelect[0], ".tbodyComidaDesayuno");
+        } else {
+            showAlertTopEnd('warning', 'Selecciona una Comida');
         }
-        toListComidaTabla(listSelect[0], ".tbodyComidaDesayuno");
+
     };
 
     document.querySelector("#btnAgregarComidaAlmuerzo").onclick = function () {
+        if (comidaSelected != undefined) {
+            document.querySelector("#txtComidaAlmuerzoDetalle").value = "";
+            listSelect = listDMS.filter(function (obj) {
+                if (obj.fecha == Dia_semana[0]["fecha"]) {
+                    return obj;
+                }
+                {
+                    return undefined;
+                }
 
-        document.querySelector("#txtComidaAlmuerzoDetalle").value = "";
-        listSelect = listDMS.filter(function (obj) {
-            if (obj.fecha == Dia_semana[0]["fecha"]) {
-                return obj;
+            });
+            if (comidaSelected.tipo == 1) {
+                listSelect[0].comida_asegundo = comidaSelected;
+            } else if (comidaSelected.tipo == 2) {
+                listSelect[0].comida_abebida = comidaSelected;
+            } else if (comidaSelected.tipo == 3) {
+                listSelect[0].comida_apostre = comidaSelected;
+            } else if (comidaSelected.tipo == 4) {
+                listSelect[0].comida_asopa = comidaSelected;
             }
-            {
-                return undefined;
-            }
-
-        });
-        if (comidaSelected.tipo == 1) {
-            listSelect[0].comida_asegundo = comidaSelected;
-        } else if (comidaSelected.tipo == 2) {
-            listSelect[0].comida_abebida = comidaSelected;
-        } else if (comidaSelected.tipo == 3) {
-            listSelect[0].comida_apostre = comidaSelected;
-        } else if (comidaSelected.tipo == 4) {
-            listSelect[0].comida_asopa = comidaSelected;
+            toListComidaTabla(listSelect[0], ".tbodyComidaAlmuerzo");
+        } else {
+            showAlertTopEnd('warning', 'Selecciona una Comida');
         }
-        toListComidaTabla(listSelect[0], ".tbodyComidaAlmuerzo");
+
     };
     document.querySelector("#btnAgregarComidaCena").onclick = function () {
-        document.querySelector("#txtComidaCenaDetalle").value = "";
-        listSelect = listDMS.filter(function (obj) {
-            if (obj.fecha == Dia_semana[0]["fecha"]) {
-                return obj;
-            }
-            {
-                return undefined;
-            }
+        if (comidaSelected != undefined) {
+            document.querySelector("#txtComidaCenaDetalle").value = "";
+            listSelect = listDMS.filter(function (obj) {
+                if (obj.fecha == Dia_semana[0]["fecha"]) {
+                    return obj;
+                }
+                {
+                    return undefined;
+                }
 
-        });
-        if (comidaSelected.tipo == 1) {
-            listSelect[0].comida_csegundo = comidaSelected;
-        } else if (comidaSelected.tipo == 2) {
-            listSelect[0].comida_cbebida = comidaSelected;
-        } else if (comidaSelected.tipo == 3) {
-            listSelect[0].comida_cpostre = comidaSelected;
-        } else if (comidaSelected.tipo == 4) {
-            listSelect[0].comida_csopa = comidaSelected;
+            });
+            if (comidaSelected.tipo == 1) {
+                listSelect[0].comida_csegundo = comidaSelected;
+            } else if (comidaSelected.tipo == 2) {
+                listSelect[0].comida_cbebida = comidaSelected;
+            } else if (comidaSelected.tipo == 3) {
+                listSelect[0].comida_cpostre = comidaSelected;
+            } else if (comidaSelected.tipo == 4) {
+                listSelect[0].comida_csopa = comidaSelected;
+            }
+            toListComidaTabla(listSelect[0], ".tbodyComidaCena");
+        } else {
+            showAlertTopEnd('warning', 'Selecciona una Comida');
         }
-        toListComidaTabla(listSelect[0], ".tbodyComidaCena");
+
     };
 
 });
@@ -487,7 +500,7 @@ function toListSemanal(beanPagination) {
                                                 <div class="dt-widget__extra">
                                                     <div class="hide-content">
                                                         <div class="action-btn-group" >
-                                                            <button  type="button"class="btn btn-outline-primary dt-fab-btn agregar-menu-${diaSemana(diasemana.getUTCDay()) }">
+                                                            <button data-toggle="tooltip" data-placement="top" title="Agregar Menú del ${diaSemana(diasemana.getUTCDay()) } "  type="button"class="btn btn-outline-primary dt-fab-btn agregar-menu-${diaSemana(diasemana.getUTCDay()) }">
                                                                 <i class="icon icon-plus icon-1x"></i>
                                                             </button>
                                                         </div>
@@ -496,6 +509,7 @@ function toListSemanal(beanPagination) {
                                            </div>
                 `;
             document.querySelector("#tbodyCronograma").innerHTML += row;
+            $('[data-toggle="tooltip"]').tooltip();
 
         });
         addEventsMenuSemanales();
@@ -680,7 +694,7 @@ function validateFormMenuSemanal() {
         } else if (detallecronogramacu.comida_asegundo.idcomida == undefined) {
             showAlertTopEnd('warning', 'Por favor ingrese segundo al Almuerzo del día ' + detallecronogramacu.fecha);
             retornar = false;
-            return ;
+            return;
         } else if (detallecronogramacu.comida_abebida.idcomida == undefined) {
             showAlertTopEnd('warning', 'Por favor ingrese bebida al Almuerzo del día ' + detallecronogramacu.fecha);
             retornar = false;
@@ -688,7 +702,7 @@ function validateFormMenuSemanal() {
         } else if (detallecronogramacu.comida_apostre.idcomida == undefined) {
             showAlertTopEnd('warning', 'Por favor ingrese postre al Almuerzo del día ' + detallecronogramacu.fecha);
             retornar = false;
-            return ;
+            return;
         } else if (detallecronogramacu.comida_asopa.idcomida == undefined) {
             showAlertTopEnd('warning', 'Por favor ingrese sopa al Almuerzo del día ' + detallecronogramacu.fecha);
             retornar = false;

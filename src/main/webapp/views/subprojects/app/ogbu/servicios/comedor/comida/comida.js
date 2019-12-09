@@ -27,7 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#modalCargandoComida").on('shown.bs.modal', function () {
         processAjaxComida();
     });
-
+    $('#FrmComida').submit(function (event) {
+        beanRequestComida.operation = "paginate";
+        beanRequestComida.type_request = "GET";
+        $('#modalCargandoComida').modal('show');
+        event.preventDefault();
+        event.stopPropagation();
+    });
     $('#modalCargandoComida').modal('show');
 
     $("#sizePageComida").change(function () {
@@ -101,20 +107,70 @@ function toListComida(beanPagination) {
     document.querySelector("#titleManagerComida").innerHTML = "[ " + beanPagination.count_filter + " ] COMIDAS";
     if (beanPagination.count_filter > 0) {
         let row;
+        row =
+                `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2 pl-5">
+                     <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           TIPO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                     <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           DESCRIPCIÓN
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                </div>
+            `;
+        document.querySelector("#tbodyComida").innerHTML += row;
         beanPagination.list.forEach(comida => {
-            row = "<tr ";
-            row += "idcomida='" + comida.idcomida + "' ";
-            row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item editar-comida' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-primary icon icon-editors'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-comida' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
-            row += "</ul></td>";
-            row += "<td class='align-middle'>" + tipoComida(comida.tipo) + "</td>";
-            row += "<td class='align-middle'>" + comida.descripcion + "</td>";
-            row += "</tr>";
+            row =
+                    `
+                 <div class="dt-widget__item border-success  pl-5">
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra text-right">
+                      
+                        <!-- Hide Content -->
+                        <div class="hide-content pr-2"">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-comida" idcomida='${comida.idcomida}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-comida" idcomida='${comida.idcomida}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${tipoComida(comida.tipo)} 
+                        </p>
+                       
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${comida.descripcion}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
             document.querySelector("#tbodyComida").innerHTML += row;
+            $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
                 beanPagination.count_filter,
@@ -126,7 +182,7 @@ function toListComida(beanPagination) {
         if (beanRequestComida.operation == "paginate") {
             document.querySelector("#txtFilterComida").focus();
         }
-        $('[data-toggle="tooltip"]').tooltip();
+        
     } else {
         destroyPagination($('#paginationComida'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -138,7 +194,7 @@ function addEventsComidaes() {
     document.querySelectorAll('.editar-comida').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            comidaSelected = findByComida(btn.parentElement.parentElement.parentElement.getAttribute('idcomida'));
+            comidaSelected = findByComida(btn.getAttribute('idcomida'));
             if (comidaSelected != undefined) {
                 beanRequestComida.operation = "update";
                 beanRequestComida.type_request = "PUT";
@@ -158,7 +214,7 @@ function addEventsComidaes() {
     document.querySelectorAll('.eliminar-comida').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            comidaSelected = findByComida(btn.parentElement.parentElement.parentElement.getAttribute('idcomida'));
+            comidaSelected = findByComida(btn.getAttribute('idcomida'));
             beanRequestComida.operation = "delete";
             beanRequestComida.type_request = "DELETE";
             processAjaxComida();
@@ -249,13 +305,7 @@ function viewFormulario() {
 }
 
 function addViewFormulario() {
-    $('#FrmComida').submit(function (event) {
-        beanRequestComida.operation = "paginate";
-        beanRequestComida.type_request = "GET";
-        $('#modalCargandoComida').modal('show');
-        event.preventDefault();
-        event.stopPropagation();
-    });
+
 
     $('#FrmComidaModal').submit(function (event) {
         if (validateFormComida()) {

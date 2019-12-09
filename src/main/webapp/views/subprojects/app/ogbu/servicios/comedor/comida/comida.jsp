@@ -26,24 +26,24 @@
                         </select>
                         <input type="search" id="txtFilterComida" class="form-control form-control-sm " placeholder="FILTRO. . .">
                         <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewComida"><i class="icon icon-plus icon-fw"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewComida"data-toggle="tooltip" title="Agregar Comida" ><i class="icon icon-addnew"></i></button>
                     </div>
                 </form>
-                <!-- Tables -->
-                <div class="table-responsive pt-3">
-                    <table class="table mb-0">
-                        <thead class="bg-primary" style="line-height: 0.4;">
-                            <tr>
-                                <th class="text-uppercase text-white" scope="col" style="width: 10%;font-weight: 500;">ACCION</th>
-                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">TIPO</th>
-                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">DESCRIPCION</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbodyComida">
-                        </tbody>
-                    </table>
+                <!-- Card -->
+                <div class="dt-card mt-4">
+                    <!-- Card Body -->
+                    <div class="dt-card__body p-0  " >
+                        <!-- Widget -->
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                             id="tbodyComida">
+                        </div>
+                        <!-- /widget -->
+                        <!-- /card body -->
+                    </div>
+
                 </div>
-                <!-- /tables -->
+                <!-- /card -->
+              
                 <div class="row mt-2">
                     <div class="col-md-2 col-sm-3 col-4">
                         <select id="sizePageComida" class="form-control form-control-sm select2-single">

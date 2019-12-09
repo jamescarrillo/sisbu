@@ -60,7 +60,7 @@
         <!-- /card -->
 
         <!-- Card -->
-        <div class="card mb-0 " id="openPaciente">
+        <div class="card mb-0 " id="openPaciente" style="display:none">
             <!-- Card Header -->
             <div class="card-header">
                 <!-- Tab Navigation -->

@@ -11,18 +11,18 @@
         <!-- Module Header -->
         <div class="pt-1 " id="module-header-content" >
             <div class="row">
-                <div class="col-lg-2 col-sm-2">
+                <div class="col-lg-4 col-sm-2">
                 </div>
-                <div class="dt-card  col-sm-3 col-lg-3  mb-0 ">
+                <div class="col-lg-2 col-sm-3 dt-card dt-social-card border border-w-2 border-light-teal p-0 ">
                     <!-- Card Body -->
                     <a id="btnOpenNewMenuSemanal" 
                        data-toggle="tab" 
                        href="#tab-pane-OpenNewMenuSemanal" 
                        role="tab" aria-controls="tab-pane-OpenNewMenuSemanal"
                        aria-selected="false">
-                        <div class="dt-card__body bg- d-flex flex-sm-column ">
+                        <div class="dt-card__body pl-5">
                             <div class="mb-sm-7 mr-7 mr-sm-0">
-                                <i class="icon icon-users dt-icon-bg bg-primary text-primary"></i>
+                               <i class="icon icon-burger icon-5x mr-xl-5 mr-3 align-self-center"></i>
                             </div>
                             <div class="flex-1">
                                 <div class="d-flex align-items-center mb-2">
@@ -36,14 +36,14 @@
                 </div>
                 <div class="col-lg-1 col-sm-1">
                 </div>
-                <div class="dt-card  col-sm-3 col-lg-3  mb-0 ">
+                <div class="col-lg-2 col-sm-3 dt-card dt-social-card border border-w-2 border-light-teal  p-0 ">
                     <a id="btnOpenBuscaMenuSemanal"  data-toggle="tab"
                        href="#tab-pane-OpenBuscaMenuSemanal" role="tab" aria-controls="tab-pane-OpenBuscaMenuSemanal"
                        aria-selected="false">
                         <!-- Card Body -->
-                        <div class="dt-card__body d-flex flex-sm-column">
+                        <div class="dt-card__body pl-5">
                             <div class="mb-sm-7 mr-7 mr-sm-0">
-                                <i class="icon icon-invoice-new dt-icon-bg bg-primary text-primary"></i>
+                                <i class="icon icon-burger icon-5x mr-xl-5 mr-3 align-self-center"></i>
                             </div>
                             <div class="flex-1">
                                 <div class="d-flex align-items-center mb-2">
@@ -68,11 +68,11 @@
                     <!-- Tab OPENMENU -->
                     <div id="tab-pane-OpenNewMenuSemanal" class="tab-pane ">
                         <form id="FrmMenuSemanalModal">
-                            <div class="row  pt-5 mt-2 ">
+                            <div class="row  pt-0 mt-2 ">
                                 <div class="dt-card__header col-12 mb-3 pt-0">
                                     <!-- Card Tools -->
                                     <div class="dt-card__tools">
-                                        <button data-toggle="tooltip" title="Regresar" type="button" id="regresar-central" class="btn btn-outline-primary btn-sm dt-avatar" > 
+                                        <button data-toggle="tooltip" data-placement="top" title="Regresar" type="button" id="regresar-central" class="btn btn-outline-primary btn-sm dt-avatar" > 
                                             <i class="icon icon-reply icon-lg"></i></button>
                                     </div>
                                     <!-- /card tools -->
@@ -91,11 +91,11 @@
                                     <!-- /card tools -->
                                 </div>
                                 <div class="form-group col-lg-12 col-xs-12"id="borrarObservacion">
-                                    <label for="txtMenuSemanalObservacion" >OBSERVACIÓN</label>
-                                    <input class="form-control btn-sm" placeholder="OBSERVACION" id="txtMenuSemanalObservacion"  type="text">
+                                    <label  for="txtMenuSemanalObservacion" >OBSERVACIÓN</label>
+                                    <input class="form-control form-control-sm" placeholder="OBSERVACION" id="txtMenuSemanalObservacion"  type="text">
                                 </div>
                                 <div class="form-group col-lg-6 col-sm-6">
-                                    <label for="txtMenuSemanalFechaI">DÍA DE LA SEMANA INICIAL (LUNES)</label>
+                                    <label for="txtMenuSemanalFechaI">PRIMER DÍA DE LA SEMANA (LUNES)</label>
                                     <div class="input-group">
                                         <input  type="text" class="form-control form-control-sm" id="txtMenuSemanalFechaI" placeholder="DD/MM/AAAA">
                                         <div class="input-group-append">
@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6 col-sm-6">
-                                    <label for="txtMenuSemanalFechaF">DÍA DE LA SEMANA FINAL (VIERNES)</label>
+                                    <label for="txtMenuSemanalFechaF">ÚLTIMO DÍA DE LA SEMANA (VIERNES)</label>
                                     <div class="input-group">
                                         <input  type="text" class="form-control form-control-sm" id="txtMenuSemanalFechaF" placeholder="DD/MM/AAAA">
                                         <div class="input-group-append">
@@ -155,17 +155,17 @@
                 <a id="buttonDesayuno" class="nav-link show active" data-toggle="tab" 
                    href="#tab-pane-15" role="tab" aria-controls="tab-pane-15"
                    aria-selected="true">
-                    <i class="icon icon-plus icon-fw"></i> DESAYUNO</a>
+                    DESAYUNO</a>
             </li>
             <li class="nav-item">
                 <a id="buttonAlmuerzo" class="nav-link" data-toggle="tab" href="#tab-pane-16" 
                    role="tab" aria-controls="tab-pane-16" aria-selected="false">
-                    <i class="icon icon-plus icon-fw"></i> ALMUERZO</a>
+                    ALMUERZO</a>
             </li>
             <li class="nav-item">
                 <a id="buttonCena" class="nav-link" data-toggle="tab" href="#tab-pane-17" 
                    role="tab" aria-controls="tab-pane-17" aria-selected="false">
-                    <i class="icon icon-plus icon-fw"></i> CENA</a>
+                    CENA</a>
             </li>
         </ul>
         <!-- /tab navigation -->
@@ -186,7 +186,7 @@
                             <input type="text" class="form-control form-control-sm" id="txtComidaDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
                             <div class="input-group-append">
                                 <button type="button" id="btnSeleccionarComida" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
-                                <button type="button" id="btnAgregarComida" class="ml-5 btn btn-outline-primary btn-sm"data-toggle="tooltip" title="Agregar Comida" ><i class="icon icon-addnew"></i></button>
+                                <button type="button" id="btnAgregarComida" class="ml-5 btn btn-primary btn-sm"data-toggle="tooltip" title="Agregar Comida" ><i class="icon icon-addnew"></i></button>
                             </div>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                             <input type="text" class="form-control form-control-sm" id="txtComidaAlmuerzoDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
                             <div class="input-group-append">
                                 <button type="button" id="btnSeleccionarComidaAlmuerzo" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
-                                <button type="button" id="btnAgregarComidaAlmuerzo" class="ml-5 btn btn-outline-primary btn-sm"data-toggle="tooltip" title="Agregar Comida" ><i class="icon icon-addnew"></i></button>
+                                <button type="button" id="btnAgregarComidaAlmuerzo" class="ml-5 btn btn-primary btn-sm"data-toggle="tooltip" title="Agregar Comida" ><i class="icon icon-addnew"></i></button>
                             </div>
                         </div>
                     </div>
@@ -268,7 +268,7 @@
                             <input type="text" class="form-control form-control-sm" id="txtComidaCenaDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
                             <div class="input-group-append">
                                 <button type="button" id="btnSeleccionarComidaCena" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
-                                <button type="button" id="btnAgregarComidaCena" class="ml-5 btn btn-outline-primary btn-sm"data-toggle="tooltip" title="Agregar Comida" ><i class="icon icon-addnew"></i></button>
+                                <button type="button" id="btnAgregarComidaCena" class="ml-5 btn btn-primary btn-sm"data-toggle="tooltip" title="Agregar Comida" ><i class="icon icon-addnew"></i></button>
                             </div>
                         </div>
                     </div>
@@ -347,37 +347,37 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body pb-0 pt-0">
-                <div class="row">
+            <div class="modal-body">
+                <div class="row ">
                     <div class="col-12">
                         <input type="hidden" id="pageComidac"
                                value="1">
                         <form id="FrmComidac">
-                            <div class="row mt-3">
-                                <div class="input-group col-12">
+                            <div class="input-group  search-box" style="max-width: 100%;">
+                                <input type="search" id="txtFilterComidac"
+                                       class="form-control form-control-sm" placeholder="INGRESE FILTRO . . .">
+                                <div class="input-group-append">
+                                    <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
                                     <select class="form-control form-control-sm " id="txtFilterTipoComida">
-                                        <option value="-1">seleccione tipo...</option>
-                                        <option selected  value="1">SEGUNDO</option>
+                                        <option selected  value="-1">seleccione tipo...</option>
+                                        <option value="1">SEGUNDO</option>
                                         <option value="2">BEBIDA</option>
                                         <option value="3">POSTRE</option>
                                         <option value="4">SOPA</option>
                                     </select>
-                                    <input type="text" id="txtFilterComidac"
-                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
-                                    <button type="submit" id="btnBuscarComidac"
-                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
-                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
-                                        BUSCAR</button>
                                 </div>
+                                <button type="submit" class="btn btn-primary btn-sm "><i class="icon icon-search icon-sisbu"></i> BUSCAR</button>
+
                             </div>
+
                         </form>
-                        <div class="row pl-5 pr-5 mb-2">
+                        <div class="row p-4">
                             <div class="table-responsive">
                                 <table class="table mb-0 table-fluid">
-                                    <thead>
+                                    <thead class="bg-primary ">
                                         <tr>
-                                            <th class="align-middle text-left">Comida</th>
-                                            <th class="align-middle text-left">Tipo</th>
+                                            <th class="align-middle pt-3 pb-2 text-white text-left pl-3">Comida</th>
+                                            <th class="align-middle pt-3 pb-2 text-white text-left">Tipo</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyComidac">
@@ -397,7 +397,7 @@
                             <div class="col-sm-8 mt-2">
                                 <nav aria-label="Page navigation">
                                     <ul id="paginationComidac"
-                                        class="pagination justify-content-end">
+                                        class="pagination pagination-sm justify-content-end">
 
                                     </ul>
                                 </nav>
