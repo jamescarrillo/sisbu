@@ -270,89 +270,7 @@ function toListAtendido(beanPagination) {
 }
 
 function addEventsAtendidoes() {
-    document.querySelectorAll('.editar-atendido').forEach(btn => {
-        //AGREGANDO EVENTO CLICK
-        btn.onclick = function () {
 
-            atendidoSelected = findByAtendido(btn.getAttribute('idatendido'));
-            if (atendidoSelected != undefined) {
-                beanRequestAtendido.operation = "update";
-                beanRequestAtendido.type_request = "PUT";
-                document.querySelector("#btnListaAtendido").style.display = 'none';
-                document.querySelector("#btnOpenAtendido").style.display = 'block';
-                //SET VALUES MODAL
-                document.querySelector("#txtTipoDocumentoAtendido").value = atendidoSelected.tipo_documento;
-                document.querySelector("#txtModalidadAtendido").value = atendidoSelected.modalidad_ingreso;
-                document.querySelector("#txtTipoColegioAtendido").value = atendidoSelected.tipo_colegio;
-                document.querySelector("#txtEstadoAtendido").value = atendidoSelected.estado_civil;
-                document.querySelector("#txtCodigoAtendido").value = atendidoSelected.codigo;
-                document.querySelector("#txtNumeroDocumentoAtendido").value = atendidoSelected.dni;
-                document.querySelector("#txtApPaternoAtendido").value = atendidoSelected.apellido_pat;
-                document.querySelector("#txtApMaternoAtendido").value = atendidoSelected.apellido_mat;
-                document.querySelector("#txtNombreAtendido").value = atendidoSelected.nombre;
-                document.querySelector("#txtSexoAtendido").value = atendidoSelected.sexo;
-                document.querySelector("#txtFechaNacAtendido").value = atendidoSelected.fecha_nacimiento;
-                document.querySelector("#txtCelularAtendido").value = atendidoSelected.celular;
-                document.querySelector("#txtEmailAtendido").value = atendidoSelected.email;
-                document.querySelector("#txtEscuelaAtendido").value = atendidoSelected.escuela.nombre;
-                document.querySelector("#txtDireccionActualAtendido").value = atendidoSelected.direccion_actual;
-                document.querySelector("#txtDireccionProceAtendido").value = atendidoSelected.direccion_procedencia;
-                document.querySelector("#txtDistritoActualAtendido").value = atendidoSelected.distrito_actual.nombre;
-                document.querySelector("#txtDistritoProcedenciaAtendido").value = atendidoSelected.distrito_procedencia.nombre;
-
-                if (atendidoSelected.escuela.idescuela == 0) {
-                    escuelaSelected = undefined;
-                } else {
-                    escuelaSelected = atendidoSelected.escuela;
-                }
-                if (atendidoSelected.distrito_actual.iddistrito == 0) {
-                    distritoActualSelected = undefined;
-                } else {
-                    distritoActualSelected = atendidoSelected.distrito_actual;
-                }
-                if (atendidoSelected.distrito_procedencia.iddistrito == 0) {
-                    distritoProcedenciaSelected = 0;
-                } else {
-                    distritoProcedenciaSelected = atendidoSelected.distrito_procedencia;
-                }
-                $('[data-toggle="popover"]').popover();
-                document.querySelector("#txtTituloModalMan").innerHTML = "EDITAR ATENDIDO";
-                //OPEN MODEL
-
-                document.querySelector("#txtTipoDocumentoAtendido").focus();
-            } else {
-                showAlertTopEnd('warning', 'No se encontró el Atendido para poder editar');
-            }
-        };
-    });
-    document.querySelectorAll('.usuario-atendido').forEach(btn => {
-        //AGREGANDO EVENTO CLICK
-        btn.onclick = function () {
-            atendidoSelected = findByAtendidoUsuario(btn.getAttribute('idusuario'));
-            if (atendidoSelected != undefined) {
-                beanRequestUsuario.operation = "get-user";
-                beanRequestUsuario.type_request = "GET";
-                usuarioSelected = atendidoSelected.usuario;
-                document.querySelector("#btnListaAtendido").style.display = 'none';
-                document.querySelector("#btnOpenUsuario").style.display = 'block';
-                $('#modalCargandoUsuario').modal('show');
-            }
-        };
-    });
-    document.querySelectorAll('.familiar-atendido').forEach(btn => {
-        //AGREGANDO EVENTO CLICK
-        btn.onclick = function () {
-            atendidoSelected = findByAtendido(btn.getAttribute('idatendido'));
-            if (atendidoSelected != undefined) {
-                beanRequestFamiliar.operation = "paginate";
-                beanRequestFamiliar.type_request = "GET";
-                document.querySelector("#btnListaAtendido").style.display = 'none';
-                document.querySelector("#btnOpenFamiliar").style.display = 'block';
-                $('#modalCargandoFamiliar').modal('show');
-            }
-
-        };
-    });
     document.querySelectorAll('.fichas-atendido').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
@@ -370,6 +288,7 @@ function addEventsAtendidoes() {
         };
     });
 
+    /*
     document.querySelectorAll('.constancia-atendido').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
@@ -383,7 +302,7 @@ function addEventsAtendidoes() {
             }
         };
     });
-
+    */
 }
 
 function findByAtendido(idatendido) {

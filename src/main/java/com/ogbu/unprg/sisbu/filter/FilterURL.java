@@ -123,7 +123,7 @@ public class FilterURL implements Filter {
         /*
             0.01 -> 01/08/19
          */
-        /*
+ /*
             0.04 -> 09/10/19
          */
         this.list_resources = new ArrayList<>();
@@ -494,7 +494,9 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/paciente.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/paciente.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/evaluacion.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/respuesta_evaluacion2.js" + version_project
         });
         this.list_resources.add(resource);
         ///asignaciones
@@ -650,7 +652,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/mantenimientos/alumno/escuela_c.js" + version_project,
             "/views/subprojects/app/ogbu/mantenimientos/alumno/distrito_c.js" + version_project,
             "/views/subprojects/app/ogbu/mantenimientos/alumno/ciclo_c.js" + version_project
-            
+
         });
         this.list_resources.add(resource);
         //CARGOS

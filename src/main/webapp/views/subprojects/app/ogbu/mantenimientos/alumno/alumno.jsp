@@ -40,7 +40,7 @@
                             <div class="dt-widget__item border-bottom bg-primary pb-2" >
 
                                 <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
+                                <div class="dt-widget__info text-truncate" style="max-width: 20%;">
                                     <h3 class="dt-card__title text-white">DNI</h3>
                                 </div>
                                 <!-- /widget info -->
@@ -122,20 +122,18 @@
                 <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
                     <div class="col-6"> 
                         <li class="nav-item">
-                            <a class="nav-link" id="btnDatosLaborales" data-toggle="tab" 
-                               href="#tab-datos-laborales" role="tab" aria-controls="tab-datos-laborales"
-                               aria-="true">DATOS LABORALES</a>
-                        </li>
-                    </div>
-                    <div class="col-6"> 
-                        <li class="nav-item">
                             <a class="nav-link  active" id="btnDatosGenerales" data-toggle="tab" 
                                href="#tab-datos-generales" role="tab" aria-controls="tab-datos-generales"
                                aria-="true">DATOS GENERALES</a>
                         </li>
                     </div>
-
-
+                    <div class="col-6"> 
+                        <li class="nav-item">
+                            <a class="nav-link" id="btnDatosLaborales" data-toggle="tab" 
+                               href="#tab-datos-laborales" role="tab" aria-controls="tab-datos-laborales"
+                               aria-="true">OTROS DATOS</a>
+                        </li>
+                    </div>
                 </ul>
                 <!-- /tab navigation -->
             </div>
