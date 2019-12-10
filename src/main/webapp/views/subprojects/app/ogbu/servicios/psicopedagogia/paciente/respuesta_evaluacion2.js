@@ -16,7 +16,13 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestRespuestaEvaluacion.entity_api = "api/evaluacion/atendido";
     beanRequestRespuestaEvaluacion.operation = "paginate-respuesta-evaluacion";
     beanRequestRespuestaEvaluacion.type_request = "GET";
-    
+
+    document.querySelectorAll(".btn-close-resultados-evaluacion").forEach(btn => {
+        btn.onclick = function  (){
+            showCloseResultadoEvaluacion('close');
+        };
+    });
+
     $("#sizePageRespuestaEvaluacion").change(function () {
         $('#modalCargandoRespuestaEvaluacion').modal('show');
     });
@@ -47,7 +53,7 @@ function processAjaxRespuestaEvaluacion() {
         }
         if (beanCrudResponse.beanPagination !== undefined) {
             beanPaginationRespuestaEvaluacion = beanCrudResponse.beanPagination;
-
+            showCloseResultadoEvaluacion('show');
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoRespuestaEvaluacion').modal("hide");
@@ -62,10 +68,10 @@ function toListRespuestaEvaluacion(beanPagination) {
             if (respuestaEvaluacion.pregunta.tipo_respuesta == 1) {
                 document.querySelector("#input-text-" + respuestaEvaluacion.pregunta.idpregunta).value =
                         respuestaEvaluacion.texto;
-                document.querySelector("#input-text-" + respuestaEvaluacion.pregunta.idpregunta).setAttribute("idrespuesta_evaluacion",respuestaEvaluacion.idrespuesta_evaluacion2);
+                document.querySelector("#input-text-" + respuestaEvaluacion.pregunta.idpregunta).setAttribute("idrespuesta_evaluacion", respuestaEvaluacion.idrespuesta_evaluacion2);
             } else if (respuestaEvaluacion.pregunta.tipo_respuesta == 2) {
                 document.querySelectorAll(".check-" + respuestaEvaluacion.pregunta.idpregunta).forEach(check => {
-                    check.setAttribute("idrespuesta_evaluacion",respuestaEvaluacion.idrespuesta_evaluacion2);
+                    check.setAttribute("idrespuesta_evaluacion", respuestaEvaluacion.idrespuesta_evaluacion2);
                     if (check.getAttribute('id') == respuestaEvaluacion.alternativa.idalternativa) {
                         check.checked = true;
                     }
@@ -93,4 +99,12 @@ function getRespuestaEvaluacionForId(idprocedimiento) {
     return eva_;
 }
 
-
+function showCloseResultadoEvaluacion(option) {
+    if (option == "show") {
+        document.querySelector("#row-resultado-evaluacione").style.display = "flex";
+        document.querySelector("#row-evaluaciones").style.display = "none";
+    } else {
+        document.querySelector("#row-resultado-evaluacione").style.display = "none";
+        document.querySelector("#row-evaluaciones").style.display = "flex";
+    }
+}

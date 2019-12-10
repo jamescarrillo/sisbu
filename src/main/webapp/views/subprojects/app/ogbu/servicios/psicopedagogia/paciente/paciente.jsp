@@ -101,6 +101,46 @@
         </div>
         <!-- /grid item -->
     </div>
+    
+    <!-- Tab RESULTADO DE EVALUACIONES -->
+    <div class="col-12 row" id="row-resultado-evaluacione" style="display: none">
+        <!-- Grid Item -->
+        <div class="col-12 order-xl-3">
+            <!-- Card Header EVALUACIONES -->
+            <!-- /card heading -->
+            <div class="dt-card__header ">
+                <!-- Card Tools -->
+                <div class="dt-card__tools">
+                    <button data-toggle="tooltip" title="Regresar" type="button" class="btn btn-outline-primary btn-sm dt-avatar btn-close-resultados-evaluacion" > 
+                        <i class="icon icon-reply icon-lg"></i></button>
+                </div>
+                <!-- /card tools -->
+                <!-- Card Heading -->
+                <div class="dt-card__heading">
+                    <h3  class="dt-card__title  text-primary text-center">RESULTADO DE EVALUACIÓN</h3>
+                </div>
+                <!-- /card heading -->
+            </div>
+
+            <!-- /card header -->
+            <!-- Card -->
+            <div class="dt-card ">
+
+                <!-- Card Body -->
+                <div class="dt-card__body p-0">
+                    <!-- Widget -->
+                    <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" 
+                         id="div-container-resultado-evaluacion">
+
+                    </div>
+                    <!-- /widget -->
+                </div>
+                <!-- /card body -->
+            </div>
+            <!-- /card -->
+        </div>
+        <!-- /grid item -->
+    </div>
 </div>
 
 <div class="modal fade" id="modalCargandoPaciente" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
@@ -110,33 +150,6 @@
                 <div class="progress" style="margin-bottom: 0px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Cargando Pacientes. . .
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modalCargandoDiagnostico" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                        Cargando Diagnosticos. . .
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalCargandoHistoria" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                        Cargando Historia. . .
                     </div>
                 </div>
             </div>
@@ -175,7 +188,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
-                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Procesando solicitud. . .
                     </div>
                 </div>
@@ -190,7 +203,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
-                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Procesando solicitud. . .
                     </div>
                 </div>
@@ -205,7 +218,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
-                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Procesando solicitud. . .
                     </div>
                 </div>

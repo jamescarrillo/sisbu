@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#modalCargandoVDYA").on('shown.bs.modal', function () {
         processAjaxValidacionHistoria();
     });
-    
+
     $('#FrmPaciente').submit(function (event) {
         beanRequestPaciente.operation = "paginate";
         beanRequestPaciente.type_request = "GET";
@@ -57,7 +57,7 @@ function processAjaxPaciente() {
         parameters_pagination = "";
         if (beanRequestPaciente.operation == "delete") {
             parameters_pagination = "/" + pacienteSelected.idpaciente;
-            
+
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombrePaciente").value,
@@ -140,10 +140,16 @@ function toListPaciente(beanPagination) {
                 </div>
             `;
         document.querySelector("#tbodyPaciente").innerHTML += row;
+        let text_row;
         beanPagination.list.forEach(atendido => {
+            if (atendido.ciclo_academico_ingreso.idciclo_academico <= 12) {
+                text_row = "text-danger";
+            } else {
+                text_row = "";
+            }
             row =
                     `
-                 <div class="dt-widget__item border-success pl-5 ">
+                 <div class="dt-widget__item border-success pl-5 ${text_row}">
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
                       
