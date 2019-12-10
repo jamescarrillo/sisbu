@@ -194,12 +194,6 @@ function toListAtendido(beanPagination) {
                         <div class="hide-content pr-2"">
                             <!-- Action Button Group -->
                             <div class="action-btn-group">
-                                <button class="btn btn-default text-primary dt-fab-btn editar-atendido" idatendido='${atendido.idatendido}' title="Editar Datos" data-toggle="tooltip">
-                                    <i class="icon icon-editors icon-1x"></i>
-                                </button>
-                                <button class="btn btn-default text-success dt-fab-btn usuario-atendido" idusuario='${atendido.usuario.idusuario}' title="Retaurar Contraseña" data-toggle="tooltip">
-                                    <i class="fa fa-user-circle "></i>
-                                </button>
                                 <button class="btn btn-default text-info dt-fab-btn familiar-atendido" idatendido='${atendido.idatendido}' title="Familiares" data-toggle="tooltip">
                                     <i class="fa fa-users"></i>
                                 </button>
@@ -271,6 +265,20 @@ function toListAtendido(beanPagination) {
 
 function addEventsAtendidoes() {
 
+    document.querySelectorAll('.familiar-atendido').forEach(btn => {
+        //AGREGANDO EVENTO CLICK
+        btn.onclick = function () {
+            atendidoSelected = findByAtendido(btn.getAttribute('idatendido'));
+            if (atendidoSelected != undefined) {
+                beanRequestFamiliar.operation = "paginate";
+                beanRequestFamiliar.type_request = "GET";
+                document.querySelector("#btnListaAtendido").style.display = 'none';
+                document.querySelector("#btnOpenFamiliar").style.display = 'block';
+                $('#modalCargandoFamiliar').modal('show');
+            }
+
+        };
+    });
     document.querySelectorAll('.fichas-atendido').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
@@ -288,7 +296,6 @@ function addEventsAtendidoes() {
         };
     });
 
-    /*
     document.querySelectorAll('.constancia-atendido').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
@@ -302,7 +309,6 @@ function addEventsAtendidoes() {
             }
         };
     });
-    */
 }
 
 function findByAtendido(idatendido) {

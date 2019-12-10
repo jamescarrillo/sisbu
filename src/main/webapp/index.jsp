@@ -63,7 +63,7 @@
                             <div class="dt-topbar__inner">
                                 <div class="d-flex align-items-center text-truncate mr-2">
                                     <i class="icon icon-megaphone icon-fw mr-3 icon-xl"></i>
-                                    <span class="text-truncate">Bienvenidos Ingresantes 2019-II</span>
+                                    <span class="text-truncate">Bienvenidos estudiantes de la UNPRG</span>
                                 </div>
 
                                 <ul class="dt-list dt-list-xl dt-list-bordered text-uppercase">
@@ -489,7 +489,7 @@
                     <!-- /custom Container -->
 
                     <!-- Theme Chooser -->
-                    <div class="dt-customizer-toggle">
+                    <div class="dt-customizer-toggle" style="display: none">
                         <a href="javascript:void(0)" data-toggle="customizer"> <i class="icon icon-customizer animation-customizer"></i>
                         </a>
                     </div>

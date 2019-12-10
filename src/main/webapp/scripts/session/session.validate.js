@@ -333,13 +333,7 @@ function createHTML_OGBU(typeProfile) {
                     <li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/social/usuarios" class="dt-side-nav__link" title="Atendidos">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
-                            <span class="dt-side-nav__text">Atendidos</span>
-                        </a>
-                    </li>
-                    <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/servicios/social/citas" class="dt-side-nav__link" title="Citas">
-                            <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
-                            <span class="dt-side-nav__text">Citas</span>
+                            <span class="dt-side-nav__text">Usuarios</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
@@ -449,7 +443,7 @@ function createHTML_OGBU(typeProfile) {
             <li class="dt-side-nav__item">
                 <a href="${contextPah}app/ogbu/mantenimientos/alumnos" class="dt-side-nav__link" title="Alumnos">
                     <i class="icon icon-user-add icon-fw icon-lg"></i>
-                    <span class="dt-side-nav__text">Alumnos</span>
+                    <span class="dt-side-nav__text">Usuarios</span>
                 </a>
             </li>
             <!-- Menu Item -->

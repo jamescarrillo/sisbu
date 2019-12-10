@@ -3,6 +3,8 @@
     Created on : 24 ago. 2019, 15:08:53
     Author     : James Carrillo
 --%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!--div class="row">
     <div class="col-xl-12">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -43,9 +45,253 @@
     </div>
 </div-->
 
+<div class="row">
+    <!-- Grid Item -->
+    <div class="col-12">
+
+        <!-- Card -->
+        <div class="dt-card">
+
+            <!-- Card Header -->
+            <div class="dt-card__header">
+
+                <!-- Card Heading -->
+                <div class="dt-card__heading">
+                    <h3 class="dt-card__title">OFICINA GENERAL DE BIENESTAR UNIVERSITARIO</h3>
+                </div>
+                <!-- /card heading -->
+
+            </div>
+            <!-- /card header -->
+
+            <!-- Card Body -->
+            <div class="dt-card__body">
+
+                <!-- Carousel -->
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                    <!-- Carousel Indicator -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0"
+                            class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <!-- /carousel indicator -->
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://via.placeholder.com/1280x450" alt="Slider"
+                                 class="img-fluid">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://via.placeholder.com/1280x450" alt="Slider"
+                                 class="img-fluid">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://via.placeholder.com/1280x450" alt="Slider"
+                                 class="img-fluid">
+                        </div>
+                    </div>
+
+                    <!-- Carousel Control -->
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                       data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                       data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    <!-- /carousel control -->
+
+                </div>
+                <!-- /carousel -->
+
+            </div>
+            <!-- /card body -->
+
+        </div>
+        <!-- /card -->
+
+    </div>
+    <!-- /grid item -->
+</div>
+
+<div class="row">
+    <!-- Grid Item -->
+    <div class="col-xl-12 order-xl-3">
+
+        <!-- Card -->
+        <div class="dt-card">
+
+            <!-- Card Header -->
+            <div class="dt-card__header mb-4">
+
+                <div class="dt-card__heading">
+                    <h3 class="dt-card__title">Oficinas</h3>
+                </div>
+
+            </div>
+            <!-- /card header -->
+
+            <!-- Card Body -->
+            <div class="dt-card__body p-0 max-h-350- ps-custom-scrollbar-">
+
+                <!-- Widget-->
+                <div class="dt-widget dt-widget-xl dt-widget-separator dt-widget-hover">
+                    <!-- Widget Item -->
+                    <div class="dt-widget__item">
+
+                        <!-- Widget Image -->
+                        <div class="dt-widget__img">
+                            <!-- Avatar -->
+                            <i class="icon icon-company text-indigo icon-3x"></i>
+                            <!-- /avatar -->
+                        </div>
+                        <!-- /widget image -->
+
+                        <!-- Shape -->
+                        <div class="dot-shape dot-shape-lg bg-success mx-5"></div>
+                        <!-- /shape -->
+
+                        <!-- Widget Info -->
+                        <div class="dt-widget__info align-text-top">
+                            <a class="dt-widget__title" href="javascript:void(0)">Oficina de Servicio M√©dico</a>
+                            <h6>Jfe. Dr. Amalia Arauco Nava</h6>
+                        </div>
+                        <!-- /widget info -->
+
+                        <!-- Widget Extra -->
+                        <div class="dt-widget__extra">
+                            <div class="dt-task">
+                                <div class="dt-task__number" style="margin-right: 5px">5 √Åreas</div>
+                            </div>
+                        </div>
+                        <!-- /widget extra -->
+
+                    </div>
+                    <!-- /widget item -->
+
+
+
+                    <!-- Widget Item -->
+                    <div class="dt-widget__item">
+
+                        <!-- Widget Image -->
+                        <div class="dt-widget__img">
+                            <!-- Avatar -->
+                            <i class="icon icon-heart-o text-light-pink icon-3x"></i>
+                            <!-- /avatar -->
+                        </div>
+                        <!-- /widget image -->
+
+                        <!-- Shape -->
+                        <div class="dot-shape dot-shape-lg bg-danger mx-5"></div>
+                        <!-- /shape -->
+
+                        <!-- Widget Info -->
+                        <div class="dt-widget__info align-text-top">
+                            <a class="dt-widget__title" href="javascript:void(0)">Oficina de Servicio Psicopedag√≥gico</a>
+                            <h6>Jfe. Lic. Ingrid Qui√±ones Rado</h6>
+                        </div>
+                        <!-- /widget info -->
+
+                        <!-- Widget Extra -->
+                        <div class="dt-widget__extra">
+                            <div class="dt-task">
+                                <div class="dt-task__number" style="margin-right: 5px">1 √Årea</div>
+                            </div>
+                        </div>
+                        <!-- /widget extra -->
+
+                    </div>
+                    <!-- /widget item -->
+
+                    <!-- Widget Item -->
+                    <div class="dt-widget__item">
+
+                        <!-- Widget Image -->
+                        <div class="dt-widget__img">
+                            <!-- Avatar -->
+                            <i class="icon icon-users text-orange icon-3x"></i>
+                            <!-- /avatar -->
+                        </div>
+                        <!-- /widget image -->
+
+                        <!-- Shape -->
+                        <div class="dot-shape dot-shape-lg bg-light mx-5"></div>
+                        <!-- /shape -->
+
+                        <!-- Widget Info -->
+                        <div class="dt-widget__info align-text-top">
+                            <a class="dt-widget__title" href="javascript:void(0)">Oficina de Servicio Social</a>
+                            <h6>Jfe. Lic. Carmen Torres D√≠as</h6>
+                        </div>
+                        <!-- /widget info -->
+
+                        <!-- Widget Extra -->
+                        <div class="dt-widget__extra">
+                            <div class="dt-task">
+                                <div class="dt-task__number" style="margin-right: 5px">2 √Åreas</div>
+                            </div>
+                        </div>
+                        <!-- /widget extra -->
+
+                    </div>
+                    <!-- /widget item -->
+
+                    <!-- Widget Item -->
+                    <div class="dt-widget__item">
+
+                        <!-- Widget Image -->
+                        <div class="dt-widget__img">
+                            <!-- Avatar -->
+                            <i class="icon icon-ripple text-light-green icon-3x"></i>
+                            <!-- /avatar -->
+                        </div>
+                        <!-- /widget image -->
+
+                        <!-- Shape -->
+                        <div class="dot-shape dot-shape-lg bg-yellow mx-5"></div>
+                        <!-- /shape -->
+
+                        <!-- Widget Info -->
+                        <div class="dt-widget__info align-text-top">
+                            <a class="dt-widget__title" href="javascript:void(0)">Oficina de educaci√≥n, recreaci√≥n y deporte</a>
+                            <h6>Jfe. Juan Ram√≥n Damian Garc√≠a</h6>
+                        </div>
+                        <!-- /widget info -->
+
+                        <!-- Widget Extra -->
+                        <div class="dt-widget__extra">
+                            <div class="dt-task">
+                                <div class="dt-task__number" style="margin-right: 5px">1 √Årea</div>
+                            </div>
+                        </div>
+                        <!-- /widget extra -->
+
+                    </div>
+                    <!-- /widget item -->
+
+                </div>
+                <!-- /widget-->
+
+            </div>
+            <!-- /card body -->
+
+        </div>
+        <!-- /card -->
+
+    </div>
+    <!-- /grid item -->
+</div>
+
 <!-- Page Header -->
 <div class="dt-page__header" style="margin-top: 30px">
-    <h1 class="dt-page__title">⁄ltimas Noticias</h1>
+    <h1 class="dt-page__title">√öltimas Noticias</h1>
 </div>
 <!-- /page header -->
 
@@ -65,7 +311,7 @@
                     <div class="dt-card__body d-flex">
                         <div class="row">
                             <div class="col-12 text-center mb-4">
-                                <h3 class="font-weight-500"><i class="icon icon-users dt-icon-bg bg-primary text-primary"></i> Aprendiendo a iniciar sesiÛn en Sisbu</h3>
+                                <h3 class="font-weight-500"><i class="icon icon-users dt-icon-bg bg-primary text-primary"></i> Aprendiendo a iniciar sesi√≥n en Sisbu</h3>
                                 <span class="h4 mb-0 font-weight-500 mr-2">Tutorial para</span>
                                 <span class="d-inline-flex text-success">
                                     <i class="icon icon-profit icon-fw"></i>+Ingresantes 2019-II
@@ -75,20 +321,20 @@
                                 <img class="img-fluid" src="<%=request.getContextPath()%>/resources/prod/news/tutorial_inicio_sesion.png">
                             </div>
                             <div class="col-lg-6 col-12">
-                                <h4>øComo iniciar sesiÛn en sisbu por primera vez?</h4>
-                                <p>Si eres un alumno ingresante del presente ciclo, lo ˙nico que tienes
-                                    que hacer es ir al botÛn donde dice "iniciar sesiÛn" ubicado en la parte 
-                                    superior derecha de esta p·gina y darle click.</p>
-                                <p>Enseguida te aparecer· una p·gina con una interf·z simil·r a la de la parte izquiera 
+                                <h4>¬øComo iniciar sesi√≥n en sisbu por primera vez?</h4>
+                                <p>Si eres un alumno ingresante del presente ciclo, lo √∫nico que tienes
+                                    que hacer es ir al bot√≥n donde dice "iniciar sesi√≥n" ubicado en la parte 
+                                    superior derecha de esta p√°gina y darle click.</p>
+                                <p>Enseguida te aparecer√° una p√°gina con una interf√°z simil√°r a la de la parte izquiera 
                                     de este tutorial, donde tienes que ingresar tus credenciales y listo.</p>
-                                <h4>øCu·l es mi Username(Nombre de Usuario) y Password(ContraseÒa)?</h4>
-                                <p>Cuando eres ingresante, tu nombre de usuario y contraseÒa es tu n˙mero de DNI. 
-                                    Eso quiere decir que en la caja de texto donde te solicitan nombre de usuario colocar·s
-                                    tu n˙mero de DNI y lo mismo en la caja donde te solicitan contraseÒa.</p>
+                                <h4>¬øCu√°l es mi Username(Nombre de Usuario) y Password(Contrase√±a)?</h4>
+                                <p>Cuando eres ingresante, tu nombre de usuario y contrase√±a es tu n√∫mero de DNI. 
+                                    Eso quiere decir que en la caja de texto donde te solicitan nombre de usuario colocar√°s
+                                    tu n√∫mero de DNI y lo mismo en la caja donde te solicitan contrase√±a.</p>
                             </div>
                         </div>
                         <div class="flex-1">
-                            <div class="h5 mb-2">Fecha de PublicaciÛn</div>
+                            <div class="h5 mb-2">Fecha de Publicaci√≥n</div>
                             <p class="card-text text-light-gray f-12">01/09/2019 17:30</p>
                         </div>
                     </div>
@@ -222,7 +468,7 @@
                                         <!-- Info -->
                                         <div class="dt-avatar-info">
                                             <a href="https://www.facebook.com/Andres.enginner.systems"
-                                               class="dt-avatar-name text-dark">AndrÈs Llontop</a>
+                                               class="dt-avatar-name text-dark">Andr√©s Llontop</a>
                                             <span class="f-12 text-light-gray">llontopdiazandres@gmail.com</span>
                                         </div>
                                         <!-- /info -->
@@ -319,7 +565,7 @@
                                         <!-- Info -->
                                         <div class="dt-avatar-info">
                                             <a href="https://www.facebook.com/juanjose.alarconsanches"
-                                               class="dt-avatar-name text-dark">Juan AlarcÛn</a>
+                                               class="dt-avatar-name text-dark">Juan Alarc√≥n</a>
                                             <span class="f-12 text-light-gray">-</span>
                                         </div>
                                         <!-- /info -->
