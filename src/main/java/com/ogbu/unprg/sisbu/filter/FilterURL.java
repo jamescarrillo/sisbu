@@ -244,6 +244,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ate/datos/datos.js" + version_project,
             "/views/subprojects/app/ate/datos/distrito_c.js" + version_project,
             "/views/subprojects/app/ate/datos/escuela_c.js" + version_project,
+            "/views/subprojects/app/ate/datos/ciclo_academico_c.js" + version_project,
             "/views/subprojects/app/ate/datos/ocupacion_c.js" + version_project,
             "/views/subprojects/app/ate/datos/familiar.js" + version_project
         });

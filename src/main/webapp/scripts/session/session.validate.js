@@ -53,6 +53,7 @@ function getStringTipoUsuario(tipo_usuario) {
 }
 
 function addMenus(usuario) {
+    console.log(usuario.tipo_usuario);
     switch (usuario.tipo_usuario) {
         case 1:
             createHTML_ATE(usuario.tipo_perfil);
