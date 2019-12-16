@@ -123,7 +123,7 @@
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary text-uppercase">Ingresar</button>
                                         <span class="d-inline-block ml-4">O
-                                            <a class="d-inline-block font-weight-500 ml-3" href="signup">Crear una Cuenta</a>
+                                            <a class="d-inline-block font-weight-500 ml-3" href="/sisbu/signup">Crear una Cuenta</a>
                                         </span>
                                     </div>
                                     <!-- /form group -->

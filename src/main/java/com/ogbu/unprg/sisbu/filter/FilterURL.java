@@ -113,19 +113,7 @@ public class FilterURL implements Filter {
     private void loaderResources() {
         String version_project = "?v=";
         //version_project += "0.01"; // 
-        //version_project += "0.02";
-        //version_project += "0.03";
-        //version_project += "0.04";
-        //version_project += "0.05";
-        //version_project += "0.06";
-        //version_project += "0.07";
         version_project += "0.08";
-        /*
-            0.01 -> 01/08/19
-         */
- /*
-            0.04 -> 09/10/19
-         */
         this.list_resources = new ArrayList<>();
         Resource resource;
 
@@ -193,14 +181,15 @@ public class FilterURL implements Filter {
         resource.setUrl("/signup");
         resource.setPath("");
         resource.setScripts(new String[]{
-            "/views/subprojects/signup/signup.js" + version_project
+            "/views/subprojects/signup/signup.js" + version_project,
+            "/views/subprojects/signup/util.methods.js" + version_project
         });
         this.list_resources.add(resource);
         /*SUBPROJECT DE AUTENTICACION*/
         //LOGIN
         resource = new Resource();
         resource.setUrl("/auth/login");
-        resource.setPath("/views/subprojects/auth/login/login.jsp");
+        resource.setPath("");
         resource.setScripts(new String[]{
             "/views/subprojects/auth/login/login.js" + version_project
         });

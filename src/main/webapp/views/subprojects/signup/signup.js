@@ -24,25 +24,22 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
     });
 
-    document.querySelector('#btnOpenRegistroAtendido').onclick = function () {
-        document.querySelector('#divContentTypeSelectedRegistro').style.paddingTop = "0px";
-        document.querySelector('#divSelectedTypeRegistro').style.display = "none";
-        document.querySelector('#divProfesional').style.display = "none";
-        document.querySelector('#divAtendido').style.display = "block";
+    document.querySelector("#btn-finalizar-register").onclick = function () {
+        //FINALIZACIÓN DE REGISTRO
     };
 
-    document.querySelector('#btnOpenRegistroProfesional').onclick = function () {
-        document.querySelector('#divContentTypeSelectedRegistro').style.paddingTop = "0px";
-        document.querySelector('#divSelectedTypeRegistro').style.display = "none";
-        document.querySelector('#divAtendido').style.display = "none";
-        document.querySelector('#divProfesional').style.display = "block";
+    document.querySelector("#btn-verification-DNI").onclick = function () {
+        //VERIFICACIÓN DE DNI
+        navigateRegister('s_2');
     };
 
-    document.querySelectorAll('.btn-volver-selecciona-type-registro').forEach(btn => {
+    document.querySelector("#btn-next-register-2").onclick = function () {
+        navigateRegister('s_3');
+    };
+
+    document.querySelectorAll(".btn-reply-register").forEach(btn => {
         btn.onclick = function () {
-            hideTypesRegistros();
-            document.querySelector('#divContentTypeSelectedRegistro').style.paddingTop = "150px";
-            document.querySelector('#divSelectedTypeRegistro').style.display = "block";
+            navigateRegister(this.getAttribute('step'));
         };
     });
 
@@ -204,3 +201,48 @@ function valditeFrmAtendido() {
     return true;
 }
 
+function navigateRegister(option) {
+    switch (option) {
+        case "s_2":
+            document.querySelector("#row-verification").style.display = "none";
+            document.querySelector("#row-registro-1").style.display = "flex";
+            document.querySelector("#row-registro-2").style.display = "none";
+            break;
+        case "s_3":
+            document.querySelector("#row-verification").style.display = "none";
+            document.querySelector("#row-registro-1").style.display = "none";
+            document.querySelector("#row-registro-2").style.display = "flex";
+            break;
+        default:
+            document.querySelector("#row-verification").style.display = "flex";
+            document.querySelector("#row-registro-1").style.display = "none";
+            document.querySelector("#row-registro-2").style.display = "none";
+            break;
+    }
+}
+
+function processValidateDNI() {
+    $.ajax({
+        url: getHostAPI() + "auth/signup",
+        type: 'POST',
+        data: JSON.stringify(beanCrudRequest),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (beanCrudResponse) {
+        $('#modalCargandoAtendido').modal("hide");
+        if (beanCrudResponse.messageServer != undefined) {
+            if (beanCrudResponse.messageServer.toLowerCase() === "ok") {
+                //MANDAMOS A INICIAR SESIÓN
+                showAlertTopEnd('success', 'Registro completado exitosamente');
+                setTimeout(() => {
+                    location.href = getContextAPP() + "auth/login";
+                }, 2500);
+            } else {
+                showAlertTopEnd('warning', beanCrudResponse.messageServer);
+            }
+        }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $('#modalCargandoAtendido').modal("hide");
+        showAlertErrorRequest();
+    });
+}
