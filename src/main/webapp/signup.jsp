@@ -90,72 +90,68 @@
                                         <h3 class="text-info text-center">Verificación de registro</h3>
                                     </div>
                                     <div class="col-12">
-                                        <!-- Form -->
-                                        <form id="FrmVerificacionDNI">
-                                            <h6 class="text-dark">
-                                                N° DNI
-                                            </h6>
-                                            <!-- Form Group -->
-                                            <div class="form-group">
-                                                <label class="sr-only" for="txtDNIVerificacion">DNI</label>
-                                                <input type="text" class="form-control" aria-describedby="email-1"
-                                                       placeholder="Ingresa tu DNI. . ." id="txtDNIVerificacion">
-                                            </div>
-                                            <!-- /form group -->
-                                            <h6 class="text-danger">
-                                                **Si eres cachimbo no necesitas registrarte, inicia sesión con tu DNI <a href="/sisbu/auth/login">aquí</a>.
-                                            </h6>
-                                            <!-- Form Group -->
-                                            <div class="form-group">
-                                                <button type="button" class="btn btn-primary text-uppercase" id="btn-verification-DNI" step="s_2">Verificar</button>
-                                            </div>
-                                            <!-- /form group -->
-                                            <!-- Form Group -->
-                                            <div class="d-flex flex-wrap align-items-center">
-                                                <span class="d-inline-block mr-2">Síguenos en</span>
+                                        <h6 class="text-dark">
+                                            N° DNI
+                                        </h6>
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <label class="sr-only" for="txtDNIVerificacion">DNI</label>
+                                            <input type="text" class="form-control" aria-describedby="email-1"
+                                                   placeholder="Ingresa tu DNI. . ." id="txtDNIVerificacion" maxlength="8">
+                                        </div>
+                                        <!-- /form group -->
+                                        <h6 class="text-danger">
+                                            **Si eres cachimbo no necesitas registrarte, inicia sesión con tu DNI <a href="/sisbu/auth/login">aquí</a>.
+                                        </h6>
+                                        <!-- Form Group -->
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-primary text-uppercase" id="btn-verification-DNI" step="s_2">Verificar</button>
+                                        </div>
+                                        <!-- /form group -->
+                                        <!-- Form Group -->
+                                        <div class="d-flex flex-wrap align-items-center">
+                                            <span class="d-inline-block mr-2">Síguenos en</span>
 
-                                                <!-- List -->
-                                                <ul class="dt-list dt-list-sm dt-list-cm-0 ml-auto">
-                                                    <li class="dt-list__item">
-                                                        <!-- Fab Button -->
-                                                        <a href="https://www.facebook.com/BienestarUNPRG/" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
-                                                            <i class="icon icon-facebook icon-xl"></i>
-                                                        </a>
-                                                        <!-- /fab button -->
-                                                    </li>
+                                            <!-- List -->
+                                            <ul class="dt-list dt-list-sm dt-list-cm-0 ml-auto">
+                                                <li class="dt-list__item">
+                                                    <!-- Fab Button -->
+                                                    <a href="https://www.facebook.com/BienestarUNPRG/" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                        <i class="icon icon-facebook icon-xl"></i>
+                                                    </a>
+                                                    <!-- /fab button -->
+                                                </li>
 
-                                                    <li class="dt-list__item">
-                                                        <!-- Fab Button -->
-                                                        <a href="https://www.youtube.com/channel/UCDpJg58pfAXwHxLCr6zUmbw" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
-                                                            <i class="icon icon-youtube icon-xl"></i>
-                                                        </a>
-                                                        <!-- /fab button -->
-                                                    </li>
+                                                <li class="dt-list__item">
+                                                    <!-- Fab Button -->
+                                                    <a href="https://www.youtube.com/channel/UCDpJg58pfAXwHxLCr6zUmbw" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                        <i class="icon icon-youtube icon-xl"></i>
+                                                    </a>
+                                                    <!-- /fab button -->
+                                                </li>
 
-                                                    <li class="dt-list__item">
-                                                        <!-- Fab Button -->
-                                                        <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
-                                                            <i class="icon icon-instagram icon-xl"></i>
-                                                        </a>
-                                                        <!-- /fab button -->
-                                                    </li>
+                                                <li class="dt-list__item">
+                                                    <!-- Fab Button -->
+                                                    <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                        <i class="icon icon-instagram icon-xl"></i>
+                                                    </a>
+                                                    <!-- /fab button -->
+                                                </li>
 
-                                                    <li class="dt-list__item">
-                                                        <!-- Fab Button -->
-                                                        <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
-                                                            <i class="icon icon-twitter icon-xl"></i>
-                                                        </a>
-                                                        <!-- /fab button -->
-                                                    </li>
-                                                </ul>
-                                                <!-- /list -->
-                                            </div>
-                                            <!-- /form group -->
-                                            <div class="text-right">
-                                                <a class="d-inline-block font-weight-500 mt-4" href="<%=request.getContextPath()%>/recovery">¿No puedes acceder a tu cuenta?</a>
-                                            </div>
-                                        </form>
-                                        <!-- /form -->
+                                                <li class="dt-list__item">
+                                                    <!-- Fab Button -->
+                                                    <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                        <i class="icon icon-twitter icon-xl"></i>
+                                                    </a>
+                                                    <!-- /fab button -->
+                                                </li>
+                                            </ul>
+                                            <!-- /list -->
+                                        </div>
+                                        <!-- /form group -->
+                                        <div class="text-right">
+                                            <a class="d-inline-block font-weight-500 mt-4" href="<%=request.getContextPath()%>/recovery">¿No puedes acceder a tu cuenta?</a>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -207,7 +203,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="slcTipoDocumentoUsuario">TIPO DE DOCUMENTO</label>
-                                            <select  class="form-control form-control-sm sisbu-cursor-mano" id="slcTipoDocumentoUsuario" >
+                                            <select  class="form-control form-control-sm sisbu-cursor-mano" id="slcTipoDocumentoUsuario" disabled="">
                                                 <option  value="-1">Seleccione... </option>
                                                 <option  value="1">DNI</option>
                                                 <option  value="2">CARNET DE EXTRANJERIA</option>
@@ -232,25 +228,25 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="txtApPaternoUsuario">AP. PATERNO</label>
-                                            <input  type="text" class="form-control form-control-sm" id="txtApPaternoUsuario" placeholder="AP. PATERNO" maxlength="45">
+                                            <input  type="text" class="form-control form-control-sm text-uppercase" id="txtApPaternoUsuario" placeholder="AP. PATERNO" maxlength="45">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="txtApMaternoUsuario">AP. MATERNO</label>
-                                            <input  type="text" class="form-control form-control-sm" id="txtApMaternoUsuario" placeholder="AP. MATERNO" maxlength="45">
+                                            <input  type="text" class="form-control form-control-sm text-uppercase" id="txtApMaternoUsuario" placeholder="AP. MATERNO" maxlength="45">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="txtNombreUsuario">NOMBRES</label>
-                                            <input  type="text" class="form-control form-control-sm" id="txtNombreUsuario" placeholder="NOMBRES" maxlength="45">
+                                            <input  type="text" class="form-control form-control-sm text-uppercase" id="txtNombreUsuario" placeholder="NOMBRES" maxlength="45">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="txtCelularAlumno">CELULAR</label>
-                                            <input maxlength="9"  type="number" class="form-control form-control-sm" id="txtCelularAlumno" placeholder="Ingrese celular. . ." maxlength="9">
+                                            <input maxlength="9"  type="number" class="form-control form-control-sm text-uppercase" id="txtCelularAlumno" placeholder="Ingrese celular. . ." maxlength="9">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -288,13 +284,27 @@
         </div>
         <!-- /root -->
 
-        <div class="modal fade" id="modalCargandoLogin" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+        <div class="modal fade" id="modalCargandoRegister" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="progress" style="margin-bottom: 0px;">
                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                                Autenticando. . .
+                                Finalizando registro. . .
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalCargandoValidateDNI" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="progress" style="margin-bottom: 0px;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                Validando DNI. . .
                             </div>
                         </div>
                     </div>
