@@ -3,7 +3,37 @@
     Created on : 21 set. 2019, 13:08:49
     Author     : James Carrillo
 --%>
-<div class="row justify-content-center" id="row-saludo-principal">
+<div class="row justify-content-center" id="row-saludo-principal-usuario-nc" style="margin-top: 30px; display: none">
+    <div class="col-12 text-center" style="margin-bottom: 30px">
+        <img src="<%=request.getContextPath()%>/resources/prod/custom_app/kids.gif" class="img-fluid" alt="Fam. Pedro Ruiz Gallo">
+    </div>
+    <div class="col-12">
+        <h2 class="text-center">¡Bienvenido(a) <span class="text-info" id="lblNameUserIndex">User</span>!
+        </h2>
+    </div>
+    <div class="col-xl-3 col-sm-6 col-lg-3" >
+        <div class="dt-card sisbu-cursor-mano icon-access-mi-perfil">
+            <div class="dt-card__body d-flex flex-sm-column text-center">
+                <div class="mb-sm-7">
+                    <i class="icon icon-user-account dt-icon-bg text-primary"></i>
+                </div>
+                <a class="h2 mb-0 font-weight-500">Mis Datos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 col-lg-3">
+        <div class="dt-card sisbu-cursor-mano" id="icon-access-reserva-citas">
+            <div class="dt-card__body d-flex flex-sm-column text-center">
+                <div class="mb-sm-7">
+                    <i class="icon icon-description dt-icon-bg text-primary"></i>
+                </div>
+                <a class="h2 mb-0 font-weight-500">Reserva de Citas</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center" id="row-saludo-principal" style="margin-top: 30px; display: none">
     <div class="col-md-6 col-sm-8">
         <div class="row">
             <div class="col-12 text-center">
@@ -93,7 +123,7 @@
 </div>
 <div class="row justify-content-center" id="row-access-direct" style="margin-top: 30px; display: none">
     <div class="col-xl-3 col-sm-6 col-lg-3">
-        <div class="dt-card sisbu-cursor-mano" id="icon-access-mi-perfil">
+        <div class="dt-card sisbu-cursor-mano icon-access-mi-perfil">
             <div class="dt-card__body d-flex flex-sm-column text-center">
                 <div class="mb-sm-7">
                     <i class="icon icon-user-account dt-icon-bg text-primary"></i>

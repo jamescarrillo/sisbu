@@ -9,6 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#row-access-direct").style.display = "none";
     document.querySelector("#row-pregunta-empiezo").style.display = "none";
 
+    //SET INDEX
+    if (user_session.tipo_perfil == 1000) {
+        document.querySelector("#row-saludo-principal-usuario-nc").style.display = "none";
+        document.querySelector("#row-saludo-principal").style.display = "flex";
+    } else {
+        document.querySelector("#row-saludo-principal-usuario-nc").style.display = "flex";
+        document.querySelector("#row-saludo-principal").style.display = "none";
+    }
+
     document.querySelector("#btnMirarVideosSisbu").onclick = function () {
         document.querySelector("#row-saludo-principal").style.display = "none";
         document.querySelector("#row-videos-tutoriales").style.display = "flex";
@@ -19,8 +28,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    document.querySelector("#icon-access-mi-perfil").onclick = function () {
-        window.location = "datos";
+    document.querySelectorAll(".icon-access-mi-perfil").forEach(btn => {
+        btn.onclick = function () {
+            window.location = "datos";
+        }
+    });
+    
+    document.querySelector("#icon-access-reserva-citas").onclick = function () {
+        window.location = "reservas";
     };
 
     document.querySelector("#icon-access-mis-evaluaciones").onclick = function () {
