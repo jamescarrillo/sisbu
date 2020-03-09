@@ -1,148 +1,180 @@
 var beanPaginationEntrada;
 var entradaSelected;
 var beanRequestEntrada = new BeanRequest();
-document.addEventListener("DOMContentLoaded", function () {
-    //INICIALIZANDO VARIABLES DE SOLICITUD
-    beanRequestEntrada.entity_api = "api/unidadmedidas";
+var PersonalSelected;
+document.addEventListener("DOMContentLoaded", function() {
+  //INICIALIZANDO VARIABLES DE SOLICITUD
+  beanRequestEntrada.entity_api = "api/entradas";
+  beanRequestEntrada.operation = "paginate";
+  beanRequestEntrada.type_request = "GET";
+
+  $("#FrmEntrada").submit(function(event) {
     beanRequestEntrada.operation = "paginate";
     beanRequestEntrada.type_request = "GET";
+    $("#modalCargandoEntrada").modal("show");
+    event.preventDefault();
+    event.stopPropagation();
+  });
 
-    $('#FrmEntrada').submit(function (event) {
-        beanRequestEntrada.operation = "paginate";
-        beanRequestEntrada.type_request = "GET";
-      $('#modalCargandoEntrada').modal('show');
-        event.preventDefault();
-        event.stopPropagation();
-    });
+  $("#FrmEntradaModal").submit(function(event) {
+    if (validateFormEntrada()) {
+      $("#modalCargandoEntrada").modal("show");
+    }
+    event.preventDefault();
+    event.stopPropagation();
+  });
+  $("#txtFechaEntrada")
+    .bootstrapMaterialDatePicker({
+      weekStart: 0,
+      time: false,
+      format: "DD/MM/YYYY",
+      lang: "es"
+    })
+    .on("change", function(e, date) {});
 
-    $('#FrmEntradaModal').submit(function (event) {
-        if (validateFormEntrada()) {
-            $('#modalCargandoEntrada').modal('show');
-        }
-        event.preventDefault();
-        event.stopPropagation();
-    });
+  document.querySelector("#btnEliminarFechaEntrada").onclick = function() {
+    document.querySelector("#txtFechaEntrada").value = "";
+  };
+  $("#txtFechaVencimientoEntrada")
+    .bootstrapMaterialDatePicker({
+      weekStart: 0,
+      time: false,
+      format: "DD/MM/YYYY",
+      lang: "es"
+    })
+    .on("change", function(e, date) {});
 
-    document.querySelector("#btnOpenNewEntrada").onclick = function () {
-        //CONFIGURAMOS LA SOLICITUD
-        beanRequestEntrada.operation = "add";
-        beanRequestEntrada.type_request = "POST";
-        //LIMPIAR LOS CAMPOS
-        limpiarInput();
-        //SET TITLE MODAL
-        document.querySelector("#txtTituloModalMan").innerHTML = "REGISTRAR UNIDAD DE MEDIDA";
-        //OPEN MODEL
-        document.querySelector("#btnListaEntrada").style.display = 'none';
-        document.querySelector("#btnOpenEntrada").style.display = 'block';
-    };
+  document.querySelector(
+    "#btnEliminarFechaVencimientoEntrada"
+  ).onclick = function() {
+    document.querySelector("#txtFechaVencimientoEntrada").value = "";
+  };
+  document.querySelector("#btnOpenNewEntrada").onclick = function() {
+    //CONFIGURAMOS LA SOLICITUD
+    beanRequestEntrada.operation = "add";
+    beanRequestEntrada.type_request = "POST";
+    //LIMPIAR LOS CAMPOS
+    limpiarInputEntrada();
+    //SET TITLE MODAL
+    document.querySelector("#txtTituloModalMan").innerHTML =
+      "REGISTRAR ENTRADA";
+    //OPEN MODEL
+    document.querySelector("#btnListaEntrada").style.display = "none";
+    document.querySelector("#btnOpenEntrada").style.display = "block";
+  };
 
-    document.querySelector("#btnRegresar").onclick = function () {
-        beanRequestEntrada.operation = "paginate";
-        beanRequestEntrada.type_request = "GET";
-        $('#modalCargandoEntrada').modal('show');
-        document.querySelector("#btnOpenEntrada").style.display = 'none';
-        document.querySelector("#btnListaEntrada").style.display = 'block';
-    };
+  document.querySelector("#btnRegresar").onclick = function() {
+    beanRequestEntrada.operation = "paginate";
+    beanRequestEntrada.type_request = "GET";
+    $("#modalCargandoEntrada").modal("show");
+    document.querySelector("#btnOpenEntrada").style.display = "none";
+    document.querySelector("#btnListaEntrada").style.display = "block";
+  };
 
-    $("#modalCargandoEntrada").on('shown.bs.modal', function () {
-        processAjaxEntrada();
-    });
-    $('#modalCargandoEntrada').modal('show');
+  $("#modalCargandoEntrada").on("shown.bs.modal", function() {
+    processAjaxEntrada();
+  });
+  $("#modalCargandoEntrada").modal("show");
 
-    $("#sizePageEntrada").change(function () {
-        $('#modalCargandoEntrada').modal('show');
-    });
-
+  $("#sizePageEntrada").change(function() {
+    $("#modalCargandoEntrada").modal("show");
+  });
 });
 
 function processAjaxEntrada() {
-    let parameters_pagination = "";
-    let json = "";
-    if (beanRequestEntrada.operation == "paginate") {
-        if (document.querySelector("#txtFilterEntrada").value != "") {
-            document.querySelector("#pageEntrada").value = 1;
-        }
-        parameters_pagination += "?nombre=" + document.querySelector("#txtFilterEntrada").value;
-        parameters_pagination += "&page=" + document.querySelector("#pageEntrada").value;
-        parameters_pagination += "&size=" + document.querySelector("#sizePageEntrada").value;
-
-    } else {
-        parameters_pagination = "";
-        if (beanRequestEntrada.operation == "delete") {
-            parameters_pagination = "/" + entradaSelected.identrada;
-        } else {
-            json = {
-                "nombre": document.querySelector("#txtNombreEntrada").value,
-                "nom_abreviado": document.querySelector("#txtAbreviaturaEntrada").value
-            };
-            if (beanRequestEntrada.operation == "update") {
-                json.identrada = entradaSelected.identrada;
-            }
-        }
+  let parameters_pagination = "";
+  let json = "";
+  if (beanRequestEntrada.operation == "paginate") {
+    if (document.querySelector("#txtFilterEntrada").value != "") {
+      document.querySelector("#pageEntrada").value = 1;
     }
-    $.ajax({
-        url: getHostAPI() + beanRequestEntrada.entity_api + "/" + beanRequestEntrada.operation + parameters_pagination,
-        type: beanRequestEntrada.type_request,
-        headers: {
-            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
-        },
-        data: JSON.stringify(json),
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json'
-    }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
-        $('#modalCargandoEntrada').modal("hide");
-        if (beanCrudResponse.messageServer !== undefined) {
-            if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
-                if (beanRequestEntrada.operation == "add") {
-                    limpiarInput();
-                }
-
-                showAlertTopEnd('success', 'Acción realizada exitosamente');
-
-            } else {
-                showAlertTopEnd('warning', beanCrudResponse.messageServer);
-            }
+    parameters_pagination +=
+      "?fecha=" + document.querySelector("#txtFilterEntrada").value;
+    parameters_pagination +=
+      "&page=" + document.querySelector("#pageEntrada").value;
+    parameters_pagination +=
+      "&size=" + document.querySelector("#sizePageEntrada").value;
+  } else {
+    parameters_pagination = "";
+    if (beanRequestEntrada.operation == "delete") {
+      parameters_pagination = "/" + entradaSelected.identrada;
+    } else {
+      json = {
+        entrada: listDetalleEntrada[0].entrada,
+        list: listDetalleEntrada
+      };
+      if (beanRequestEntrada.operation == "update") {
+        json.identrada = entradaSelected.identrada;
+      }
+    }
+  }
+  $.ajax({
+    url:
+      getHostAPI() +
+      beanRequestEntrada.entity_api +
+      "/" +
+      beanRequestEntrada.operation +
+      parameters_pagination,
+    type: beanRequestEntrada.type_request,
+    headers: {
+      Authorization: "Bearer " + Cookies.get("sisbu_token")
+    },
+    data: JSON.stringify(json),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json"
+  })
+    .done(function(beanCrudResponse) {
+      console.log(beanCrudResponse);
+      $("#modalCargandoEntrada").modal("hide");
+      if (beanCrudResponse.messageServer !== undefined) {
+        if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
+          if (beanRequestEntrada.operation == "add") {
+            limpiarInputEntrada();
+          }
+          toListDetalleEntrada(listDetalleEntrada);
+          showAlertTopEnd("success", "Acción realizada exitosamente");
+        } else {
+          showAlertTopEnd("warning", beanCrudResponse.messageServer);
         }
-        if (beanCrudResponse.beanPagination !== undefined) {
-            beanPaginationEntrada = beanCrudResponse.beanPagination;
-            toListEntrada(beanPaginationEntrada);
-        }
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        $('#modalCargandoEntrada').modal("hide");
-        showAlertErrorRequest();
-
+      }
+      if (beanCrudResponse.beanPagination !== undefined) {
+        beanPaginationEntrada = beanCrudResponse.beanPagination;
+        toListEntrada(beanPaginationEntrada);
+      }
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+      $("#modalCargandoEntrada").modal("hide");
+      showAlertErrorRequest();
     });
 }
 
 function toListEntrada(beanPagination) {
-    document.querySelector("#tbodyEntrada").innerHTML = "";
-    document.querySelector("#titleManagerEntrada").innerHTML = "[ " + beanPagination.count_filter + " ] ENTRADA";
-    if (beanPagination.count_filter > 0) {
-        let row;
-        row =
-                `
+  document.querySelector("#tbodyEntrada").innerHTML = "";
+  document.querySelector("#titleManagerEntrada").innerHTML =
+    "[ " + beanPagination.count_filter + " ] ENTRADA";
+  if (beanPagination.count_filter > 0) {
+    let row;
+    row = `
                <div class="dt-widget__item border-success bg-primary text-white mb-0 pl-5">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
-                           NOMBRE
+                           Fecha
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
-                           ABREVIATURA
+                           Personal
                         </p>
                     </div>
                     <!-- /widget info -->
                 </div>
             `;
-        document.querySelector("#tbodyEntrada").innerHTML += row;
-        beanPagination.list.forEach(entrada => {
-            row =
-                    `
+    document.querySelector("#tbodyEntrada").innerHTML += row;
+    beanPagination.list.forEach(BeanEntrada => {
+      row = `
                  <div class="dt-widget__item border-success  pl-5">
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
@@ -151,10 +183,10 @@ function toListEntrada(beanPagination) {
                         <div class="hide-content pr-2"">
                             <!-- Action Button Group -->
                             <div class="action-btn-group">
-                                <button class="btn btn-default text-primary dt-fab-btn editar-entrada" identrada='${entrada.identrada}' title="Editar" data-toggle="tooltip">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-entrada" identrada='${BeanEntrada.entrada.identrada}' title="Editar" data-toggle="tooltip">
                                     <i class="icon icon-editors"></i>
                                 </button>
-                                <button class="btn btn-default text-danger dt-fab-btn eliminar-entrada" identrada='${entrada.identrada}' title="Eliminar" data-toggle="tooltip">
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-entrada" identrada='${BeanEntrada.entrada.identrada}' title="Eliminar" data-toggle="tooltip">
                                     <i class="icon icon-trash-filled"></i>
                                 </button>
                               
@@ -167,96 +199,110 @@ function toListEntrada(beanPagination) {
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
-                           ${entrada.nombre}
+                           ${BeanEntrada.entrada.fecha}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
-                           ${entrada.nom_abreviado}
+                           ${BeanEntrada.entrada.personal.apellido_pat}
+                           ${BeanEntrada.entrada.personal.apellido_mat}
+                           ${BeanEntrada.entrada.personal.nombre}
                         </p>
                     </div>
                     <!-- /widget info -->
                 </div>
             `;
-            document.querySelector("#tbodyEntrada").innerHTML += row;
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-        buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageEntrada").value),
-                document.querySelector("#pageEntrada"),
-                $('#modalCargandoEntrada'),
-                $('#paginationEntrada'));
-        addEventsEntradaes();
-
-
-    } else {
-        destroyPagination($('#paginationEntrada'));
-        showAlertTopEnd('warning', 'No se encontraron resultados');
-    }
+      document.querySelector("#tbodyEntrada").innerHTML += row;
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    buildPagination(
+      beanPagination.count_filter,
+      parseInt(document.querySelector("#sizePageEntrada").value),
+      document.querySelector("#pageEntrada"),
+      $("#modalCargandoEntrada"),
+      $("#paginationEntrada")
+    );
+    addEventsEntradaes();
+  } else {
+    destroyPagination($("#paginationEntrada"));
+    showAlertTopEnd("warning", "No se encontraron resultados");
+  }
 }
 
 function addEventsEntradaes() {
-    document.querySelectorAll('.editar-entrada').forEach(btn => {
-        //AGREGANDO EVENTO CLICK
-        btn.onclick = function () {
-            entradaSelected = findByEntrada(btn.getAttribute('identrada'));
-            if (entradaSelected != undefined) {
-                beanRequestEntrada.operation = "update";
-                beanRequestEntrada.type_request = "PUT";
-                //SET VALUES MODAL
-                document.querySelector("#txtNombreEntrada").value = entradaSelected.nombre;
-                document.querySelector("#txtAbreviaturaEntrada").value=entradaSelected.nom_abreviado;
-                document.querySelector("#txtTituloModalMan").innerHTML = "EDITAR UNIDAD DE MEDIDA";
-                //OPEN MODEL
-                document.querySelector("#btnListaEntrada").style.display = 'none';
-                document.querySelector("#btnOpenEntrada").style.display = 'block';
-                document.querySelector("#txtNombreEntrada").focus();
-            } else {
-                showAlertTopEnd('warning', 'No se encontró el Entrada para poder editar');
-            }
-        };
-    });
-    document.querySelectorAll('.eliminar-entrada').forEach(btn => {
-        //AGREGANDO EVENTO CLICK
-        btn.onclick = function () {
-            entradaSelected = findByEntrada(btn.getAttribute('identrada'));
-            beanRequestEntrada.operation = "delete";
-            beanRequestEntrada.type_request = "DELETE";
-            processAjaxEntrada();
-        };
-    });
+  document.querySelectorAll(".editar-entrada").forEach(btn => {
+    //AGREGANDO EVENTO CLICK
+    btn.onclick = function() {
+      entradaSelected = findByEntrada(btn.getAttribute("identrada")).entrada;
+      listDetalleEntrada = findByEntrada(btn.getAttribute("identrada")).list;
+
+      if (entradaSelected != undefined) {
+        beanRequestEntrada.operation = "update";
+        beanRequestEntrada.type_request = "PUT";
+        //SET VALUES MODAL
+        console.log(listDetalleEntrada);
+        toListDetalleEntrada(listDetalleEntrada);
+        document.querySelector("#txtFechaEntrada").value =
+          entradaSelected.fecha;
+        PersonalSelected = entradaSelected.personal;
+        document.querySelector("#txtPersonalEntrada").value =
+          entradaSelected.personal.nombre;
+
+        document.querySelector("#txtTituloModalMan").innerHTML =
+          "EDITAR ENTRADA";
+        //OPEN MODEL
+        document.querySelector("#btnListaEntrada").style.display = "none";
+        document.querySelector("#btnOpenEntrada").style.display = "block";
+      } else {
+        showAlertTopEnd(
+          "warning",
+          "No se encontró el Entrada para poder editar"
+        );
+      }
+    };
+  });
+  document.querySelectorAll(".eliminar-entrada").forEach(btn => {
+    //AGREGANDO EVENTO CLICK
+    btn.onclick = function() {
+      entradaSelected = findByEntrada(btn.getAttribute("identrada")).entrada;
+      beanRequestEntrada.operation = "delete";
+      beanRequestEntrada.type_request = "DELETE";
+      processAjaxEntrada();
+    };
+  });
 }
 
 function findByEntrada(identrada) {
-    let entrada_;
-    beanPaginationEntrada.list.forEach(entrada => {
-        if (identrada == entrada.identrada) {
-            entrada_ = entrada;
-            return;
-        }
-    });
-    return entrada_;
+  let beanentrada_;
+  beanPaginationEntrada.list.forEach(BeanEntrada => {
+    if (identrada == BeanEntrada.entrada.identrada) {
+      beanentrada_ = BeanEntrada;
+      return;
+    }
+  });
+  return beanentrada_;
 }
 
 function validateFormEntrada() {
-    if (document.querySelector("#txtNombreEntrada").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Nombre');
-        document.querySelector("#txtNombreEntrada").focus();
-        return false;
-    }else  if (document.querySelector("#txtAbreviaturaEntrada").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Abreviatura');
-        document.querySelector("#txtAbreviaturaEntrada").focus();
-        return false;
-    }
-   
-    return true;
+  if (document.querySelector("#txtFechaEntrada").value == "") {
+    showAlertTopEnd("warning", "Por favor ingrese Fecha");
+    document.querySelector("#txtFechaEntrada").focus();
+    return false;
+  } else if (document.querySelector("#txtPersonalEntrada").value == "") {
+    showAlertTopEnd("warning", "Por favor ingrese Personal");
+    document.querySelector("#txtPersonalEntrada").focus();
+    return false;
+  }
+
+  return true;
 }
 
-function limpiarInput() {
-    document.querySelector("#txtNombreEntrada").value = "";
-     document.querySelector("#txtAbreviaturaEntrada").value="";
+function limpiarInputEntrada() {
+  document.querySelector("#txtFechaEntrada").value = "";
+  document.querySelector("#txtPersonalEntrada").value = "";
+  PersonalSelected = undefined;
+  listDetalleEntrada.length = 0;
+  toListDetalleEntrada(listDetalleEntrada);
 }
-
