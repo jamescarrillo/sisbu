@@ -6,6 +6,8 @@
 
 <div class="row">
 
+
+
     <!--TAB PACIENTES-->
     <div class="col-xl-12" id="btnListaAtendido">
         <!-- Card -->
@@ -101,9 +103,91 @@
         </div>
         <!-- /grid item -->
     </div>
-    
+
     <!-- Tab RESULTADO DE EVALUACIONES -->
     <div class="col-12 row" id="row-resultado-evaluacione" style="display: none">
+        <!-- Card -->
+        <div class="col-md-12 ">
+
+            <!-- Card -->
+            <div class="dt-card">
+
+                <!-- Card Header -->
+                <div class="dt-card__header ">
+
+                    <!-- Card Heading >
+                    <div class="dt-card__heading">
+                        <h3 class="dt-card__title">Support Tickets</h3>
+                    </div>
+                    </card heading -->
+                    <span class="badge badge-secondary badge-top-right">Puntajes por Áreas</span>
+                </div>
+                <!-- /card header -->
+
+                <!-- Card Body -->
+                <div class="dt-card__body ">
+                    <!-- Widget -->
+                    <div class="dt-widget form-row ">
+                        <div class="col-lg-3 col-4">
+                            <!-- Widget Item -->
+                            <div class="dt-widget__item p-1">
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate" style="min-width: 100%;">
+                                    <span class="h3 font-weight-400">ÁREA
+                                    </span>  
+                                </div>
+                                <!-- /widget info -->
+                            </div>
+                            <!-- /widgets item -->
+                        </div>
+                        <div class="col-lg-9 col-8">
+                            <!-- Widget Item -->
+                            <div class="dt-widget__item p-1">
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <span class="h3 font-weight-400">SUBÁREA
+                                    </span>  
+                                </div>
+                                <!-- /widget info -->
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <span class="h3 font-weight-400">N° ITEMS 
+                                    </span>  
+                                </div>
+                                <!-- /widget info -->
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <span class="h3 font-weight-400">VALOR ACUMULADO 
+                                    </span>  
+                                </div>
+                                <!-- /widget info -->
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <span class="h3 font-weight-400">PUNTAJE MÁXIMO
+                                    </span>  
+                                </div>
+                                <!-- /widget info -->
+                            </div>
+                            <!-- /widgets item -->
+                        </div>
+                    </div>
+                    <!-- /widget -->
+
+                    <!-- Widget -->
+                    <div id="tbodyPuntajeArea"class="dt-widget-hover form-row ">
+                        
+                    </div>
+                   
+                    <!-- /widget -->
+
+
+                </div>
+                <!-- /card body -->
+                <!-- /card -->
+
+            </div>
+        </div>
+        <!-- /card -->
         <!-- Grid Item -->
         <div class="col-12 order-xl-3">
             <!-- Card Header EVALUACIONES -->
@@ -117,7 +201,7 @@
                 <!-- /card tools -->
                 <!-- Card Heading -->
                 <div class="dt-card__heading">
-                    <h3  class="dt-card__title  text-primary text-center">RESULTADO DE EVALUACIÓN</h3>
+                    <h3 id="title-respuesta-evaluacion" class="dt-card__title  text-primary text-center">RESULTADO DE EVALUACIÓN</h3>
                 </div>
                 <!-- /card heading -->
             </div>
@@ -127,13 +211,22 @@
             <div class="dt-card ">
 
                 <!-- Card Body -->
-                <div class="dt-card__body p-0">
-                    <!-- Widget -->
-                    <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" 
-                         id="div-container-resultado-evaluacion">
-
+                <div class="dt-card__body pb-3">
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <ul class="list-group list-group-flush pb-4" id="content-respuesta-evaluacion-psicologico">
+                                <!--li class="list-group-item">
+                                    <label class="mb-2 text-primary">1. ¿Cuando tengo que hacer una tarea, normalmente la dejo para último minuto?
+                                    </label>
+                                    <div class="form-group custom-control custom-checkbox mb-2">
+                                        <input type="checkbox" class="custom-control-input check-279" id="1101" idpregunta="279">
+                                        <label class="custom-control-label sisbu-cursor-mano" for="1101">Nunca
+                                        </label>
+                                    </div>
+                                </li-->
+                            </ul>
+                        </div>
                     </div>
-                    <!-- /widget -->
                 </div>
                 <!-- /card body -->
             </div>
