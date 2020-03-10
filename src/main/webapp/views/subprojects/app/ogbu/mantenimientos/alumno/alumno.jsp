@@ -484,26 +484,6 @@
             <!-- /card -->
         </div>
     </div>
-    <!-- Card -->
-    <div class=" col-xl-4 col-lg-4 col-sm-3 ">
-
-    </div>
-    <div class=" col-xl-4 col-lg-4 col-sm-6 " id="frmIngresarDni" style="display: none">
-        <form id="FrmAlumnoValidar" >
-            <div class="input-group search-box" style="max-width: 100%;">
-                <input type="search" id="txtFilterDni" class="form-control form-control-sm" placeholder="INGRESA DNI">
-                <div class="input-group-append">
-                    <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                    <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                </div>
-            </div>
-            <div class="text-center pt-5">
-                <button  id="btnCancelarFilterDni"type="button" class="btn btn-outline-primary btn-sm mr-2"><i class="icon icon-reply"></i> CANCELAR</button>                   
-            </div>
-        </form>
-    </div>
-
-
 </div>
 
 <div class="modal fade" id="modalCargandoAlumno" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">

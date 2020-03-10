@@ -221,4 +221,3 @@ function restarFechas(fechai, fechaf) {
     s_rest += " Hrs.";
     return s_rest;
 }
-

@@ -501,6 +501,8 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/paciente.jsp");
         resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/respuesta_evaluacion2.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/evaluacion.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
