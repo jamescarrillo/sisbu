@@ -855,6 +855,16 @@
                             <input type="number" id="txtPuntajeMaximoSubAreaPsi"
                                    class="form-control form-control-sm" placeholder="Ingrese puntaje máximo. . ." maxlength="10">
                         </div>
+                         <div class="col-lg-6 col-12 mb-2">
+                            <label for="txtMediaSubAreaPsi">Media</label>
+                            <input type="text" id="txtMediaSubAreaPsi"
+                                   class="form-control form-control-sm" placeholder="Ingrese Media. . ." maxlength="10">
+                        </div>
+                        <div class="col-lg-6 col-12 mb-2">
+                            <label for="txtDsSubAreaPsi">DS</label>
+                            <input type="text" id="txtDsSubAreaPsi"
+                                   class="form-control form-control-sm" placeholder="Ingrese DS. . ." maxlength="10">
+                        </div>
                         <div class="col-12 mb-4">
                             <label for="txtAreaSubAreaPsi">Área</label>
                             <div class="input-group">
@@ -864,6 +874,8 @@
                                 </div>
                             </div>
                         </div>
+
+                       
                     </div>
                 </div>
                 <div class="modal-footer">

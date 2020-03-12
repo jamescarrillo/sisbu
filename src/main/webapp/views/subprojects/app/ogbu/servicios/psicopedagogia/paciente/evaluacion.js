@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestEvaluacion.operation = "paginate/evaluaciones";
     beanRequestEvaluacion.type_request = "GET";
 
-
+    
     document.querySelector("#btnCerrar").onclick = function () {
         document.querySelector("#row-evaluaciones").style.display = "none";
         document.querySelector("#btnListaAtendido").style.display = "initial";

@@ -5,61 +5,73 @@
 --%>
 
 <div class="row">
-
     <!--TAB PACIENTES-->
-    <div class="col-xl-12" id="btnListaAtendido">
-        <!-- Card -->
-        <div class="card overflow-hidden" id="ListaPaciente">
-            <!-- Card Header -->
-            <div class="card-header bg-transparent">
-                <h4 class="mb-0" id="titleManagerPaciente">[ 0 ] PACIENTES</h4>
-                <input type="hidden" id="pagePaciente" value="1">
-            </div>
-            <!-- /card header -->
-            <!-- Card Body -->
-            <div class="card-body pt-0">
-                <form id="FrmPaciente">
-                    <div class="input-group search-box" style="max-width: 100%;">
-                        <input type="search" id="txtFilterPaciente" class="form-control form-control-sm" placeholder="FILTRO. . .">
-                        <div class="input-group-append">
-                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                            <button type="submit" class="btn btn-primary btn-sm "><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                        </div>
-                    </div>
-                </form>
-                <!-- Card -->
-                <div class="dt-card mt-4">
-                    <!-- Card Body -->
-                    <div class="dt-card__body p-0  " >
-                        <!-- Widget -->
-                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                             id="tbodyPaciente">
-                        </div>
-                        <!-- /widget -->
-                        <!-- /card body -->
-                    </div>
-
-                </div>
-                <!-- /card -->
-                <div class="row mt-2">
-                    <div class="col-md-2 col-sm-3 col-4">
-                        <select id="sizePagePaciente" class="form-control form-control-sm select2-single">
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                        </select>
-                    </div>
-                    <div class="col-md-10 col-sm-9 col-8">
-                        <nav aria-label="Page navigation example">
-                            <ul id="paginationPaciente" class="pagination pagination-sm justify-content-end">
-                            </ul>
-                        </nav>  
-                    </div>
-                </div>
-            </div>
-            <!-- /card body -->
+    <div class="col-xl-12 p-0" id="btnListaAtendido">
+        <!-- Card Header -->
+        <div class="card-header bg-transparent">
+            <h4 class="mb-0" id="titleManagerPaciente">[ 0 ] PACIENTES</h4>
+            <input type="hidden" id="pagePaciente" value="1">
         </div>
-        <!-- /card -->
+        <!-- /card header -->
+        <!-- Card Body -->
+        <div class="card-body p-0">
+            <form id="FrmPaciente">
+                <div class="input-group search-box" style="max-width: 100%;">
+                    <input type="search" id="txtFilterPaciente" class="form-control form-control-sm" placeholder="FILTRO ...">
+                    <input type="search" id="txtFilterCicloPaciente" class="form-control form-control-sm" placeholder="CICLO ...">
+                    <div class="input-group-append">
+                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
+                    </div>
+                    <select class="form-control form-control-sm sisbu-cursor-mano" id="txtFilterTipoPersonaPaciente">
+                        <option value="-1">Seleccione... </option>
+                        <option selected value="1">ALUMNO</option>
+                        <option value="2">DOCENTE</option>
+                        <option value="3">ADMINISTRATIVO</option>
+                        <option value="4">FAMILIAR DOCENTE</option>
+                        <option value="5">FAMILIAR ADMINISTRATIVO</option>
+                        <option value="6">OTRO</option>
+                    </select>
+                    <select class="form-control form-control-sm sisbu-cursor-mano" id="txtFilterEstadoPaciente">
+                        <option selected value="-1">Seleccione... </option>
+                        <option value="1">REALIZADO</option>
+                        <option value="0">SIN REALIZAR</option>
+                        
+                    </select>
+                    <button type="submit" class="btn btn-primary btn-sm ">
+                        <i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                </div>
+            </form>
+            <!-- Card -->
+            <div class="dt-card mt-4">
+                <!-- Card Body -->
+                <div class="dt-card__body p-0  " >
+                    <!-- Widget -->
+                    <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                         id="tbodyPaciente">
+                    </div>
+                    <!-- /widget -->
+                    <!-- /card body -->
+                </div>
+
+            </div>
+            <!-- /card -->
+            <div class="row mt-2">
+                <div class="col-md-2 col-sm-3 col-4">
+                    <select id="sizePagePaciente" class="form-control form-control-sm select2-single">
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                </div>
+                <div class="col-md-10 col-sm-9 col-8">
+                    <nav aria-label="Page navigation example">
+                        <ul id="paginationPaciente" class="pagination pagination-sm justify-content-end">
+                        </ul>
+                    </nav>  
+                </div>
+            </div>
+        </div>
+        <!-- /card body -->
     </div>
 
     <!-- Tab EVALUACIONES -->
@@ -155,12 +167,6 @@
                                 </div>
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <span class="h6 font-weight-500">N° ITEMS 
-                                    </span>  
-                                </div>
-                                <!-- /widget info -->
-                                <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate ">
                                     <span class="h6 font-weight-500">VALOR ACUMULADO 
                                     </span>  
@@ -168,11 +174,16 @@
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <span class="h6 font-weight-500">OPERACIÓN
+                                    <span class="h6 font-weight-500">CONVERSIÓN
                                     </span>  
                                 </div>
                                 <!-- /widget info -->
-
+                                <!-- Widget Info -->
+                                <div class="dt-widget__info text-truncate">
+                                    <span class="h6 font-weight-500">N° ITEMS 
+                                    </span>  
+                                </div>
+                                <!-- /widget info -->
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">

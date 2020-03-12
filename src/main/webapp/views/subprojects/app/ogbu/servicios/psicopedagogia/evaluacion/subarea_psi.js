@@ -106,6 +106,8 @@ function processAjaxSubAreaPsi() {
                 "abreviatura": document.querySelector("#txtAbreviaturaSubAreaPsi").value,
                 "puntaje_minimo": document.querySelector("#txtPuntajeMinimoSubAreaPsi").value,
                 "puntaje_maximo": document.querySelector("#txtPuntajeMaximoSubAreaPsi").value,
+                "media": document.querySelector("#txtMediaSubAreaPsi").value,
+                "ds": document.querySelector("#txtDsSubAreaPsi").value,
                 "area_psi": {
                     "idarea_psi": area_psiSelected.idarea_psi
                 }
@@ -119,6 +121,8 @@ function processAjaxSubAreaPsi() {
                 "abreviatura": document.querySelector("#txtAbreviaturaSubAreaPsi").value,
                 "puntaje_minimo": document.querySelector("#txtPuntajeMinimoSubAreaPsi").value,
                 "puntaje_maximo": document.querySelector("#txtPuntajeMaximoSubAreaPsi").value,
+                "media": document.querySelector("#txtMediaSubAreaPsi").value,
+                "ds": document.querySelector("#txtDsSubAreaPsi").value,
                 "area_psi": {
                     "idarea_psi": area_psiSelected.idarea_psi
                 }
@@ -313,6 +317,9 @@ function clearSubArea() {
     document.querySelector("#txtPuntajeMinimoSubAreaPsi").value = "";
     document.querySelector("#txtPuntajeMaximoSubAreaPsi").value = "";
     document.querySelector("#txtAreaSubAreaPsi").value = "";
+    document.querySelector("#txtMediaSubAreaPsi").value = "";
+    document.querySelector("#txtDsSubAreaPsi").value = "";
+    area_psiSelected=undefined;
 }
 
 function openSubArea() {
@@ -322,6 +329,9 @@ function openSubArea() {
     document.querySelector("#txtPuntajeMinimoSubAreaPsi").value = subarea_psiSelected.puntaje_minimo;
     document.querySelector("#txtPuntajeMaximoSubAreaPsi").value = subarea_psiSelected.puntaje_maximo;
     document.querySelector("#txtAreaSubAreaPsi").value = subarea_psiSelected.area_psi.nombre;
+    document.querySelector("#txtMediaSubAreaPsi").value = subarea_psiSelected.media;
+    document.querySelector("#txtDsSubAreaPsi").value = subarea_psiSelected.ds;
+    area_psiSelected=subarea_psiSelected.area_psi;
     document.querySelector("#txtTituloModalManArePsi").innerHTML = "Editar SubArea";
     $('#ventanaModalManSubAreaPsi').modal('show');
     document.querySelector("#txtNombreSubAreaPsi").focus();

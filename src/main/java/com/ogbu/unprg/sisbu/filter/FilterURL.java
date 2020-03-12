@@ -82,7 +82,6 @@ public class FilterURL implements Filter {
                 res.sendRedirect(req.getContextPath() + "/index");
             } else {
                 String subProject = getSubProject(URL);
-                //LOG.info(subProject);
                 int pos_resource = getResource(URL);
                 if (pos_resource != -1) {
                     //ENCONTRÓ MANDAMOS ESOS PARAMETROS
@@ -770,7 +769,27 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/procesos/upload/upload.js" + version_project
         });
         this.list_resources.add(resource);
-
+        //INFORMES
+        //REPORTES
+            //PSICOLOGIA
+                ///usuarios
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/psicopedagogia/informes/reportes/pacientes");
+        resource.setPath("/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/paciente.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/paciente.js" + version_project
+        });
+        this.list_resources.add(resource);
+            //ENFERMERIA
+                ///usuarios
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/enfermeria/informes/reportes/pacientes");
+        resource.setPath("/views/subprojects/app/ogbu/informes/reportes/enfermeria/pacientes/paciente.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/informes/reportes/enfermeria/pacientes/paciente.js" + version_project
+        });
+        this.list_resources.add(resource);
+        
     }
 
     private int getResource(String URL) {
@@ -779,7 +798,7 @@ public class FilterURL implements Filter {
         //LOG.info(URL);
         //LOG.info("CON: ");
         for (int i = 0; i < this.list_resources.size(); i++) {
-            //LOG.info(this.list_resources.get(i).getUrl());
+          //  LOG.info(this.list_resources.get(i).getUrl());
             if (this.list_resources.get(i).getUrl().equals(URL)) {
                 pos = i;
                 break;
