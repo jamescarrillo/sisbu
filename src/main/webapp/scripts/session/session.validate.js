@@ -62,16 +62,16 @@ function addMenus(usuario) {
             //ogbu
             createHTML_OGBU(usuario.tipo_perfil);
             break;
-            
+
         default:
 
             break;
-            
+
     }
 }
 
 function createHTML_OGBU(typeProfile) {
-  
+
     //INICIO PARA TODOS
     document.querySelector("#a-mis-datos").style.display = "none";
     document.querySelector("#menus_sisbu").innerHTML =
@@ -549,18 +549,30 @@ function createHTML_OGBU(typeProfile) {
     ////informes
     if (typeProfile != 100) {
         //diferente de invitado
-        document.querySelector("#menus_sisbu").innerHTML +=
-                `
+        if (typeProfile == 0 || typeProfile == 1 || typeProfile == 10 || typeProfile == 11) {
+            document.querySelector("#menus_sisbu").innerHTML +=
+                    `
             <!-- Menu Header -->
             <li class="dt-side-nav__item dt-side-nav__header">
                 <span class="dt-side-nav__text">Informes</span>
             </li>
             <!-- /menu header -->
             <li class="dt-side-nav__item">
-                <a href="javascript:void(0)" class="dt-side-nav__link" title="Reportes">
-                    <i class="icon icon-profilepage icon-fw icon-lg"></i>
+                <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Reportes Enfermería">
+                    <i class="icon icon-components icon-fw icon-lg"></i>
                     <span class="dt-side-nav__text">Reportes</span>
                 </a>
+                <!-- Sub-menu -->
+                <ul class="dt-side-nav__sub-menu">
+                    <li class="dt-side-nav__item">
+                        <a href="${contextPah}app/ogbu/servicios/enfermeria/informes/reportes/pacientes" class="dt-side-nav__link" title="Pacientes">
+                            <i class="icon icon-profilepage icon-fw icon-lg"></i>
+                            <span class="dt-side-nav__text">Pacientes</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <!-- /sub-menu -->
             </li>
             <li class="dt-side-nav__item">
                 <a href="javascript:void(0)" class="dt-side-nav__link" title="Estadísticas">
@@ -570,6 +582,8 @@ function createHTML_OGBU(typeProfile) {
             </li>
             <!-- /menu item -->   
         `;
+        } 
+        
     }
 
 
