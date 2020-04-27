@@ -9,7 +9,7 @@
         <!-- Card -->
         <div class="card overflow-hidden" id="btnListaAlumno">
             <!-- Card Header -->
-            <div class="card-header bg-transparent">
+            <div class="card-header bg-transparent ">
                 <h4 class="mb-0" id="titleManagerAlumno">[ 0 ] PERSONAL</h4>
                 <input type="hidden" id="pageAlumno" value="1">
             </div>
@@ -18,10 +18,22 @@
             <div class=" card-body pt-0">
                 <form id="FrmAlumno" >
                     <div class="input-group search-box" style="max-width: 100%;">
-                        <input type="search" id="txtFilterDniAlumno" class="form-control form-control-sm" placeholder="FILTRO DNI">
+                        <input type="search" id="txtFilterPaciente" class="form-control form-control-sm" placeholder="FILTRO DNI">
+                        <input type="search" id="txtFilterCicloPaciente" class="form-control form-control-sm" placeholder="CICLO ...">
                         <div class="input-group-append">
                             <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                        </div>
+                        <select class="form-control form-control-sm sisbu-cursor-mano" id="txtFilterTipoPersonaPaciente">
+                            <option value="-1">Seleccione... </option>
+                            <option selected value="1">ALUMNO</option>
+                            <option value="2">DOCENTE</option>
+                            <option value="3">ADMINISTRATIVO</option>
+                            <option value="4">FAMILIAR DOCENTE</option>
+                            <option value="5">FAMILIAR ADMINISTRATIVO</option>
+                            <option value="6">OTRO</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary btn-sm "><i class="icon icon-search icon-fw"></i> BUSCAR</button>
                         </div>
                         <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewAlumno"data-toggle="tooltip" title="Agregar Alumno" ><i class="icon icon-addnew"></i></button>
                     </div>

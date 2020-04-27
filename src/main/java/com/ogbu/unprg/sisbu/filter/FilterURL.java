@@ -772,7 +772,7 @@ public class FilterURL implements Filter {
         //INFORMES
         //REPORTES
             //PSICOLOGIA
-                ///usuarios
+                ///pacientes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/informes/reportes/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/paciente.jsp");
@@ -781,7 +781,7 @@ public class FilterURL implements Filter {
         });
         this.list_resources.add(resource);
             //ENFERMERIA
-                ///usuarios
+                ///pacientes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/enfermeria/informes/reportes/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/informes/reportes/enfermeria/pacientes/paciente.jsp");
@@ -789,6 +789,26 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/informes/reportes/enfermeria/pacientes/paciente.js" + version_project
         });
         this.list_resources.add(resource);
+            //MEDICINA
+                ///pacientes
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/medicina/informes/reportes/pacientes");
+        resource.setPath("/views/subprojects/app/ogbu/informes/reportes/medicina/pacientes/paciente.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/informes/reportes/medicina/pacientes/paciente.js" + version_project
+        });
+        this.list_resources.add(resource);
+        
+            //ODONTOLOGIA
+                ///pacientes
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/odontologia/informes/reportes/pacientes");
+        resource.setPath("/views/subprojects/app/ogbu/informes/reportes/odontologia/pacientes/paciente.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/informes/reportes/odontologia/pacientes/paciente.js" + version_project
+        });
+        this.list_resources.add(resource);
+        
         
     }
 

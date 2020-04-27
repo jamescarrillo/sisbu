@@ -163,22 +163,6 @@ function toListPaciente(beanPagination) {
             row =
                     `
                  <div class="dt-widget__item border-success pl-5 ${text_row}">
-                    <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
-                            <!-- Action Button Group -->
-                            <div class="action-btn-group">
-                                <button class="btn btn-default text-danger dt-fab-btn evaluaciones-paciente" idpaciente='${atendido.idatendido}' title="Ver evaluaciones" data-toggle="tooltip">
-                                    <i class="icon icon-assignment icon-xl"></i>
-                                </button>
-                            </div>
-                            <!-- /action button group -->
-                        </div>
-                        <!-- /hide content -->
-                    </div>
-                    <!-- /widget extra -->
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " style="max-width: 15%;">
                         <p class="mb-0 text-truncate ">
@@ -222,7 +206,7 @@ function toListPaciente(beanPagination) {
                 document.querySelector("#pagePaciente"),
                 $('#modalCargandoPaciente'),
                 $('#paginationPaciente'));
-        addEventsPacientes();
+       
         if (beanRequestPaciente.operation == "paginate") {
             document.querySelector("#txtFilterPaciente").focus();
         }
@@ -232,38 +216,6 @@ function toListPaciente(beanPagination) {
         showAlertTopEnd('warning', 'No se encontraron resultados');
         document.querySelector("#txtFilterPaciente").focus();
     }
-}
-
-function addEventsPacientes() {
-
-    document.querySelectorAll('.evaluaciones-paciente').forEach(btn => {
-        //AGREGANDO EVENTO CLICK
-        btn.onclick = function () {
-            atendidoSelected = findByPaciente(btn.getAttribute('idpaciente'));
-            if (atendidoSelected != undefined) {
-                if (atendidoSelected.ciclo_academico_ingreso.idciclo_academico > 12) {
-                    $('#modalCargandoEvaluacion').modal('show');
-                } else {
-                    showAlertTopEnd('warning', 'El Atendido no pertenece al ciclo superior 2019-II');
-                }
-
-            } else {
-                showAlertTopEnd('warning', 'No se encontró el paciente ');
-            }
-        };
-    });
-
-}
-
-function findByPaciente(idpaciente) {
-    let paciente_;
-    beanPaginationPaciente.list.forEach(paciente => {
-        if (idpaciente == paciente.idatendido) {
-            paciente_ = paciente;
-            return;
-        }
-    });
-    return paciente_;
 }
 
 function validateFormPaciente() {

@@ -5,7 +5,7 @@ var fechaActual = new Date(); //Fecha actual
 document.addEventListener("DOMContentLoaded", function () {
     //INICIALIZANDO VARIABLES DE SOLICITUD ATENDIDO
     beanRequestPaciente.entity_api = "api/atendido";
-    beanRequestPaciente.operation = "paginate/enfermeria";
+    beanRequestPaciente.operation = "paginate/medicina";
     beanRequestPaciente.type_request = "GET";
 
     $("#modalCargandoVDYA").on('shown.bs.modal', function () {
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $('#FrmPaciente').submit(function (event) {
-        beanRequestPaciente.operation = "paginate/enfermeria";
+        beanRequestPaciente.operation = "paginate/medicina";
         beanRequestPaciente.type_request = "GET";
         $('#modalCargandoPaciente').modal('show');
         event.preventDefault();
@@ -25,14 +25,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $("#modalCargandoPaciente").on('hidden.bs.modal', function () {
-        beanRequestPaciente.operation = "paginate/enfermeria";
+        beanRequestPaciente.operation = "paginate/medicina";
         beanRequestPaciente.type_request = "GET";
     });
 
     $('#modalCargandoPaciente').modal('show');
 
     $("#sizePagePaciente").change(function () {
-        beanRequestPaciente.operation = "paginate/enfermeria";
+        beanRequestPaciente.operation = "paginate/medicina";
         beanRequestPaciente.type_request = "GET";
         $('#modalCargandoPaciente').modal('show');
     });
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function processAjaxPaciente() {
     let parameters_pagination = "";
     let json = "";
-    if (beanRequestPaciente.operation == "paginate/enfermeria") {
+    if (beanRequestPaciente.operation == "paginate/medicina") {
         let filterPaciente = "0", filterCiclo = "0", filterTipo = "0", filterEstado = "3";
         if (document.querySelector("#txtFilterPaciente").value != "") {
             filterPaciente = document.querySelector("#txtFilterPaciente").value;
@@ -188,7 +188,7 @@ function toListPaciente(beanPagination) {
                 document.querySelector("#pagePaciente"),
                 $('#modalCargandoPaciente'),
                 $('#paginationPaciente'));
-        if (beanRequestPaciente.operation == "paginate/enfermeria") {
+        if (beanRequestPaciente.operation == "paginate/medicina") {
             document.querySelector("#txtFilterPaciente").focus();
         }
 

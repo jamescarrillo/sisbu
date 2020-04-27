@@ -400,7 +400,7 @@ function addInputHistoria(historiaSelected) {
     document.querySelector("#txtHistoriaPaciente").value = historiaSelected.num_historia;
     document.querySelector("#txtSaludGeneralPaciente").value = historiaSelected.antecedentes;
     document.querySelector("#txtMedicoPaciente").value = historiaSelected.personal.apellido_pat + " " +
-            historiaSelected.personal.apellido_mat + " " + historiaSelected.personal.nombre;
+           historiaSelected.personal.apellido_mat + " " + historiaSelected.personal.nombre;
     document.querySelector("#txtAtmPaciente").value = historiaSelected.atm;
     document.querySelector("#txtMusculoPaciente").value = historiaSelected.musculos_ex_orales;
     document.querySelector("#txtLabiosPaciente").value = historiaSelected.labios;
@@ -458,26 +458,7 @@ function processAjaxHistoria() {
                     "atendido": {"idatendido": pacienteSelected.idatendido}
                 };
 
-            } else {
-                json = {
-                    "num_historia": "HCO" + pacienteSelected.dni + "-" + Math.floor(Math.random() * 10),
-                    "atm": "",
-                    "personal": {"idpersonal": "1"},
-                    "encias": "",
-                    "ex_extra_oral": "",
-                    "ex_intra_oral": " ",
-                    "labios": "",
-                    "lengua": "",
-                    "musculos_ex_orales": "",
-                    "observaciones": "",
-                    "antecedentes": "",
-                    "piezas_dentarias": "",
-                    "atendido": {"idatendido": pacienteSelected.idatendido}
-                };
-
             }
-
-
 
         }
     }
@@ -492,36 +473,19 @@ function processAjaxHistoria() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
-
-        if (beanCrudResponse.messageServer == undefined) {
-            if (beanCrudResponse.idhistoria_clinicao == null) {
-
-                beanRequestHistoria.operation = "add";
-                beanRequestHistoria.type_request = "POST";
-                processAjaxHistoria();
+        if (beanCrudResponse.messageServer !== undefined) {
+            if (beanCrudResponse.messageServer.toLowerCase() === "ok") {
+                showAlertTopEnd('success', 'Acción realizada exitosamente');
             } else {
-                historiaSelected = beanCrudResponse;
-                addInputHistoria(beanCrudResponse);
+                showAlertTopEnd('warning', beanCrudResponse.messageServer);
             }
-        } else {
-            if (beanRequestHistoria.operation == "update") {
-                if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
-                    showAlertTopEnd('success', 'Acción realizada exitosamente');
-                } else {
-                    showAlertTopEnd('warning', beanCrudResponse.messageServer);
-                }
-            }
-
         }
-
-        if (beanCrudResponse.beanPagination != undefined) {
-            historiaSelected = beanCrudResponse.beanPagination.list[0];
+        $('#modalCargandoHistoria').modal("hide");
+      
+        if (beanCrudResponse.idhistoria_clinicao !== undefined) {
+            historiaSelected = beanCrudResponse;
             addInputHistoria(historiaSelected);
         }
-
-        $('#modalCargandoHistoria').modal("hide");
-
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoPaciente').modal("hide");
         showAlertErrorRequest();

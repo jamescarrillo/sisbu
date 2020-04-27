@@ -5,17 +5,17 @@
 --%>
 
 <div class="row">
-    <div class="col-xl-12">
+    <div class="col-xl-12 p-0">
         <!-- Card -->
-        <div class="card overflow-hidden" id="ListaPaciente">
+        <div class="overflow-hidden" id="ListaPaciente">
             <!-- Card Header -->
-            <div class="card-header bg-transparent">
+            <div class="card-header bg-transparent pt-0">
                 <h4 class="mb-0" id="titleManagerPaciente">[ 0 ] PACIENTES</h4>
                 <input type="hidden" id="pagePaciente" value="1">
             </div>
             <!-- /card header -->
             <!-- Card Body -->
-            <div class="card-body pt-0">
+            <div class="card-body p-1">
                 <form id="FrmPaciente">
                     <div class="input-group search-box" style="max-width: 100%;">
                         <input type="search" id="txtFilterPaciente" class="form-control form-control-sm" placeholder="FILTRO. . .">
@@ -28,7 +28,7 @@
                 <!-- Card -->
                 <div class="dt-card mt-4">
                     <!-- Card Body -->
-                    <div class="dt-card__body p-0  " >
+                    <div class="dt-card__body p-0" >
                         <!-- Widget -->
                         <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
                              id="tbodyPaciente">

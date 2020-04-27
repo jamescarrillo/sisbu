@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#FrmAlumno').submit(function (event) {
         beanRequestAlumno.operation = "paginate";
         beanRequestAlumno.type_request = "GET";
-        filterDni = document.querySelector("#txtFilterDniAlumno").value;
+        filterDni = document.querySelector("#txtFilterPaciente").value;
         $('#modalCargandoAlumno').modal('show');
         event.preventDefault();
         event.stopPropagation();
@@ -125,10 +125,19 @@ function processAjaxAlumno() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestAlumno.operation == "paginate") {
+        let filterPaciente = "0", filterCiclo = "0", filterTipo = "0";
         if (filterDni != "") {
-            document.querySelector("#pageAlumno").value = 1;
+            filterPaciente = filterDni;
+            //document.querySelector("#pageAlumno").value = "1";
         }
-        parameters_pagination = "?filter=" + filterDni;
+        if (document.querySelector("#txtFilterCicloPaciente").value != "") {
+            filterCiclo = document.querySelector("#txtFilterCicloPaciente").value;
+
+        }
+        if (document.querySelector("#txtFilterTipoPersonaPaciente").value != "-1") {
+            filterTipo = document.querySelector("#txtFilterTipoPersonaPaciente").value;
+        }
+        parameters_pagination = "?filter=" + filterPaciente + "/" + filterCiclo + "/" + filterTipo;
         parameters_pagination += "&page=" + document.querySelector("#pageAlumno").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageAlumno").value;
     } else {
@@ -225,7 +234,8 @@ function processAjaxAlumno() {
 
 function toListAlumno(beanPagination) {
     document.querySelector("#tbodyAlumno").innerHTML = "";
-    document.querySelector("#titleManagerAlumno").innerHTML = "[ " + beanPagination.count_filter + " ] ALUMNO";
+    
+    document.querySelector("#titleManagerAlumno").innerHTML = "[ " + beanPagination.count_filter + " ] "+tipoAlumno(parseInt(document.querySelector("#txtFilterTipoPersonaPaciente").value));
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(alumno => {
@@ -266,13 +276,13 @@ function toListAlumno(beanPagination) {
                 $('#paginationAlumno'));
         addEventsAlumnoes();
         if (beanRequestAlumno.operation == "paginate") {
-            document.querySelector("#txtFilterDniAlumno").focus();
+            document.querySelector("#txtFilterPaciente").focus();
         }
         $('[data-toggle="tooltip"]').tooltip();
     } else {
         destroyPagination($('#paginationAlumno'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
-        document.querySelector("#txtFilterDniAlumno").focus();
+        document.querySelector("#txtFilterPaciente").focus();
     }
 }
 

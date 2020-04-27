@@ -31,8 +31,17 @@
                         <option value="5">FAMILIAR ADMINISTRATIVO</option>
                         <option value="6">OTRO</option>
                     </select>
-                    <button type="submit" class="btn btn-primary btn-sm ">
-                        <i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                    <select class="form-control form-control-sm sisbu-cursor-mano" id="txtFilterEstadoPaciente">
+                        <option selected value="1">REALIZADO</option>
+                        <option value="0">SIN REALIZAR</option>
+
+                    </select>
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary btn-sm "><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm ml-3" 
+                            id="btnReportePaciente"data-toggle="tooltip" title="Reporte Paciente" >
+                        <i class="icon icon-addnew"></i></button>
                 </div>
             </form>
             <!-- Card -->
