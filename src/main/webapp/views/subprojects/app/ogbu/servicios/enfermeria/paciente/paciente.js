@@ -74,7 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
         //LIMPIAR LOS CAMPOS
         limpiarInputTriaje();
         //SET TITLE MODAL
-        document.querySelector("#txtTituloModalTriaje").innerHTML = "REGISTRAR TRIAJE<small class='pl-5 text-dark'>N° HISTORIA : " + historiaSelected.num_historia + "</small>";
+        document.querySelector("#txtTituloModalTriaje").innerHTML = 
+                "REGISTRAR TRIAJE<small class='pl-5 text-dark'>N° HISTORIA : " 
+                + historiaSelected.num_historia + "</small>";
         //OPEN MODEL
         document.querySelector("#tab-pane-17").style.display = "none";
         document.querySelector("#newOpenTriaje").style.display = "initial";
@@ -585,7 +587,6 @@ function toListTriaje(beanPagination) {
             row += "</tr>";
             document.querySelector("#tbodyTriaje").innerHTML += row;
         });
-        historiaSelected = beanPagination.list[0].idhistoria_clinica;
         buildPagination(
                 beanPagination.count_filter,
                 parseInt(document.querySelector("#sizePageTriaje").value),
@@ -597,12 +598,13 @@ function toListTriaje(beanPagination) {
             // document.querySelector("#txtFilterTriaje").focus();
         }
         $('[data-toggle="tooltip"]').tooltip();
-        historiaSelected = beanPagination.list[0].idhistoria_clinica;
+      
     } else {
         destroyPagination($('#paginationTriaje'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
         //document.querySelector("#txtFilterTriaje").focus();
     }
+      historiaSelected = beanPagination.list[0].idhistoria_clinica;
 }
 
 function addEventsTriaje() {

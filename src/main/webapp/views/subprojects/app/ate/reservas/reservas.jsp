@@ -90,7 +90,8 @@
                 <div class="input-group">
                     <input  type="text" class="form-control form-control-sm" id="txtFechaNacPaciente" placeholder="DD/MM/AAAA">
                     <div class="input-group-append">
-                        <button type="button" id="btnEliminarFechaNacPaciente" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
+                        <button type="button" id="btnEliminarFechaNacPaciente" data-toggle="tooltip" title="Eliminar Fecha" 
+                                class="btn btn-primary btn-sm"><i class="icon icon-trash"></i></button>
                     </div>
                 </div>
             </div>

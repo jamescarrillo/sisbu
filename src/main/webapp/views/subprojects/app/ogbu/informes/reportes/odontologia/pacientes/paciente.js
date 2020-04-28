@@ -61,8 +61,8 @@ function processAjaxPaciente() {
         if (document.querySelector("#txtFilterEstadoPaciente").value != "-1") {
             filterEstado = document.querySelector("#txtFilterEstadoPaciente").value;
         }
-        parameters_pagination += "?filter=" + filterPaciente + "/" + filterCiclo +
-                "/" + filterTipo + "/" + filterEstado;
+        parameters_pagination += "?filter=" + filterPaciente.trim() + "/" + filterCiclo.trim() +
+                "/" + filterTipo.trim() + "/" + filterEstado.trim();
         parameters_pagination += "&page=" + document.querySelector("#pagePaciente").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePagePaciente").value;
 
