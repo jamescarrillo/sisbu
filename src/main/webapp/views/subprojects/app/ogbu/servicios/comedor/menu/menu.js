@@ -50,14 +50,14 @@ document.addEventListener("DOMContentLoaded", function () {
         if (beanRequestMenuSemanal.operation == "add") {
 
             fechaActual = new Date(document.querySelector("#txtMenuSemanalFechaI").value.split("/")[2] + "-" +
-                    document.querySelector("#txtMenuSemanalFechaI").value.split("/")[1] + "-" +
-                    document.querySelector("#txtMenuSemanalFechaI").value.split("/")[0]);
+                document.querySelector("#txtMenuSemanalFechaI").value.split("/")[1] + "-" +
+                document.querySelector("#txtMenuSemanalFechaI").value.split("/")[0]);
             if (fechaActual.getUTCDay() == 1) {
 
                 if (document.querySelector("#txtMenuSemanalFechaF").value != "") {
                     fechaActual = new Date(document.querySelector("#txtMenuSemanalFechaF").value.split("/")[2] + "-" +
-                            document.querySelector("#txtMenuSemanalFechaF").value.split("/")[1] + "-" +
-                            document.querySelector("#txtMenuSemanalFechaF").value.split("/")[0]);
+                        document.querySelector("#txtMenuSemanalFechaF").value.split("/")[1] + "-" +
+                        document.querySelector("#txtMenuSemanalFechaF").value.split("/")[0]);
                     if (fechaActual.getUTCDay() == 5) {
                         listDMS.length = 0;
                         toListSemanal(listDMS);
@@ -98,14 +98,14 @@ document.addEventListener("DOMContentLoaded", function () {
         if (beanRequestMenuSemanal.operation != "paginate") {
 
             fechaActual = new Date(document.querySelector("#txtMenuSemanalFechaF").value.split("/")[2] + "-" +
-                    document.querySelector("#txtMenuSemanalFechaF").value.split("/")[1] + "-" +
-                    document.querySelector("#txtMenuSemanalFechaF").value.split("/")[0]);
+                document.querySelector("#txtMenuSemanalFechaF").value.split("/")[1] + "-" +
+                document.querySelector("#txtMenuSemanalFechaF").value.split("/")[0]);
             if (fechaActual.getUTCDay() == 5) {
 
                 if (document.querySelector("#txtMenuSemanalFechaI").value != "") {
                     fechaActual = new Date(document.querySelector("#txtMenuSemanalFechaI").value.split("/")[2] + "-" +
-                            document.querySelector("#txtMenuSemanalFechaI").value.split("/")[1] + "-" +
-                            document.querySelector("#txtMenuSemanalFechaI").value.split("/")[0]);
+                        document.querySelector("#txtMenuSemanalFechaI").value.split("/")[1] + "-" +
+                        document.querySelector("#txtMenuSemanalFechaI").value.split("/")[0]);
                     if (fechaActual.getUTCDay() == 1) {
                         listDMS.length = 0;
                         toListSemanal(listDMS);
@@ -354,7 +354,7 @@ function processAjaxMenuSemanal() {
             dms.menu_semanal.fechai = document.querySelector("#txtMenuSemanalFechaI").value;
             dms.menu_semanal.fechaf = document.querySelector("#txtMenuSemanalFechaF").value;
             dms.menu_semanal.observacion = document.querySelector("#txtMenuSemanalObservacion").value;
-            json = {"list": listDMS};
+            json = { "list": listDMS };
             json.menu_semanal = dms.menu_semanal;
             if (beanRequestMenuSemanal.operation === "update") {
                 json.list.iddetalle_cronogramacu = beanPaginationMenuSemanal.list[0].iddetalle_cronogramacu;
@@ -372,7 +372,7 @@ function processAjaxMenuSemanal() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
+
         $('#modalCargandoMenuSemanal').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             document.querySelector("#txtMenuSemanalFechaI").disabled = true;
@@ -430,37 +430,37 @@ function processAjaxMenuSemanal() {
 }
 
 function toListSemanal(beanPagination) {
-    document.querySelector("#theadMenuSemanal").classList.add("dt-widget__item");
-    document.querySelector("#theadMenuSemanal").classList.add("bg-primary");
+    addClass(document.querySelector("#theadMenuSemanal").parentElement, "dt-widget dt-card dt-social-card border border-w-2 border-light-teal text-light-gray m-0");
+    addClass(document.querySelector("#theadMenuSemanal"), "dt-widget__item border");
     document.querySelector("#tbodyCronograma").innerHTML = "";
     let row;
     if (beanPagination.length > 0) {
-        console.log("si");
+
         let head;
-        head = '<div class="dt-widget__info "  style="margin-right: -20%;">';
-        head += '<div class="dt-widget__title text-white">FECHA';
+        head = '<div class="dt-widget__info " style="max-width:123px;" >';
+        head += '<div class="dt-card__title f-14">FECHA';
         head += '</div></div>';
         head += '<div class="dt-widget__info ">';
-        head += '<div class="dt-widget__title text-white">DESAYUNO';
+        head += '<div class="dt-card__title  f-14">DESAYUNO';
         head += '</div></div>';
         head += '<div class="dt-widget__info ">';
-        head += '<div class="dt-widget__title text-white">ALMUERZO';
+        head += '<div class="dt-card__title  f-14">ALMUERZO';
         head += '</div></div>';
         head += '<div class="dt-widget__info ">';
-        head += '<div class="dt-widget__title text-white">CENA';
+        head += '<div class="dt-card__title  f-14">CENA';
         head += '</div></div>';
         document.querySelector("#theadMenuSemanal").innerHTML = head;
         var desayuno, almuerzo, cena;
         beanPagination.forEach(detallecronogramacu => {
             diasemana = new Date(detallecronogramacu.fecha.split('/')[1] + ' ' +
-                    detallecronogramacu.fecha.split('/')[0] + ', ' + detallecronogramacu.fecha.split('/')[2]);
+                detallecronogramacu.fecha.split('/')[0] + ', ' + detallecronogramacu.fecha.split('/')[2]);
 
             row = `
                                             <div class="dt-widget__item">
-                                                <div class="dt-widget__info text-truncate"  style="margin-right: -13%;">
+                                                <div class="dt-widget__info text-truncate"  style="max-width:123px;">
                                                     <div class="dt-widget__title text-truncate">
                                                          <p class="dt-widget__subtitle text-truncate">
-                                                        ${ diaSemana(diasemana.getUTCDay()) }
+                                                        ${ diaSemana(diasemana.getUTCDay())}
                                                         <br>
                                 <span class="badge badge-sm badge-pill badge-primary  d-sm-inline-initial">${detallecronogramacu.fecha}</span>
                                                         </p>
@@ -469,8 +469,8 @@ function toListSemanal(beanPagination) {
                                                 </div>
                                                 <div class="dt-widget__info text-truncate">
                                                     <div class="dt-widget__title text-truncate">
-                                                        <ul style="list-style:none;">
-                                                            <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-initial">${ detallecronogramacu.comida_dsegundo.descripcion == undefined ? "" : detallecronogramacu.comida_dsegundo.descripcion }</span></li>
+                                                        <ul style="list-style:none;" class="pl-0">
+                                                            <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-initial">${ detallecronogramacu.comida_dsegundo.descripcion == undefined ? "" : detallecronogramacu.comida_dsegundo.descripcion}</span></li>
                                                             <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-initial">${detallecronogramacu.comida_dpostre.descripcion == undefined ? "" : detallecronogramacu.comida_dpostre.descripcion}</span></li>
                                                             <li><span class="badge badge-sm badge-pill badge-info  d-sm-inline-initial">${detallecronogramacu.comida_dbebida.descripcion == undefined ? "" : detallecronogramacu.comida_dbebida.descripcion}</span></li>
                                                         </ul>
@@ -478,7 +478,7 @@ function toListSemanal(beanPagination) {
                                                 </div>
                                                 <div class="dt-widget__info text-truncate">
                                                     <div class="dt-widget__title text-truncate">
-                                                            <ul style="list-style:none;">
+                                                            <ul style="list-style:none;" class="pl-0">
                                                                 <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-initial">${detallecronogramacu.comida_asegundo.descripcion == undefined ? "" : detallecronogramacu.comida_asegundo.descripcion}</span></li>
                                                                 <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-initial">${detallecronogramacu.comida_asopa.descripcion == undefined ? "" : detallecronogramacu.comida_asopa.descripcion}</span></li>
                                                                 <li><span class="badge badge-sm badge-pill badge-info  d-sm-inline-initial">${detallecronogramacu.comida_apostre.descripcion == undefined ? "" : detallecronogramacu.comida_apostre.descripcion}</span></li>
@@ -488,9 +488,9 @@ function toListSemanal(beanPagination) {
                                                 </div>
                                                 <div class="dt-widget__info text-truncate">
                                                     <div class="dt-widget__title text-truncate">
-                                                            <ul style="list-style:none;">
+                                                            <ul style="list-style:none;" class="pl-0">
                                                                 <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-initial">${detallecronogramacu.comida_csegundo.descripcion == undefined ? "" : detallecronogramacu.comida_csegundo.descripcion}</span></li>
-                                                                <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-initial">${detallecronogramacu.comida_csopa.descripcion == undefined ? "" : detallecronogramacu.comida_csopa.descripcion }</span></li>
+                                                                <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-initial">${detallecronogramacu.comida_csopa.descripcion == undefined ? "" : detallecronogramacu.comida_csopa.descripcion}</span></li>
                                                                 <li><span class="badge badge-sm badge-pill badge-info  d-sm-inline-initial">${detallecronogramacu.comida_cpostre.descripcion == undefined ? "" : detallecronogramacu.comida_cpostre.descripcion}</span></li>
                                                                 <li><span class="badge badge-sm badge-pill badge-warning  d-sm-inline-initial">${detallecronogramacu.comida_cbebida.descripcion == undefined ? "" : detallecronogramacu.comida_cbebida.descripcion}</span></li>
                                                             </ul>
@@ -498,9 +498,9 @@ function toListSemanal(beanPagination) {
                                                 </div>
             
                                                 <div class="dt-widget__extra">
-                                                    <div class="hide-content">
+                                                    <div class="">
                                                         <div class="action-btn-group" >
-                                                            <button data-toggle="tooltip" data-placement="top" title="Agregar Menú del ${diaSemana(diasemana.getUTCDay()) } "  type="button"class="btn btn-outline-primary dt-fab-btn agregar-menu-${diaSemana(diasemana.getUTCDay()) }">
+                                                            <button data-toggle="tooltip" data-placement="top" title="Agregar Menú del ${diaSemana(diasemana.getUTCDay())} "  type="button"class="btn btn-outline-primary dt-fab-btn agregar-menu-${diaSemana(diasemana.getUTCDay())}">
                                                                 <i class="icon icon-plus icon-1x"></i>
                                                             </button>
                                                         </div>
@@ -782,6 +782,9 @@ function validateFormMenuDia() {
 }
 
 function vaciarListaSemanal() {
+    removeClass(document.querySelector("#theadMenuSemanal").parentElement, "dt-widget dt-card dt-social-card border border-w-2 border-light-teal text-light-gray m-0");
+    removeClass(document.querySelector("#theadMenuSemanal"), "dt-widget__item border");
+    document.querySelector("#tbodyCronograma").innerHTML = "";
     listDMS.length = 0;
     document.querySelector("#txtMenuSemanalFechaI").value = "";
     document.querySelector("#txtMenuSemanalFechaF").value = "";
@@ -855,15 +858,15 @@ function dias(mes, anno) {
     mes = parseInt(mes);
     anno = parseInt(anno);
     switch (mes) {
-        case 1 :
-        case 3 :
-        case 5 :
-        case 7 :
-        case 8 :
-        case 10 :
-        case 12 :
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
             return 31;
-        case 2 :
+        case 2:
             return (anno % 4 == 0) ? 29 : 28;
     }
     return 30;

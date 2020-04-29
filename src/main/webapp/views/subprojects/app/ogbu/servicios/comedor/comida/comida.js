@@ -108,7 +108,7 @@ function toListComida(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
+            `
                <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2 pl-5">
                      <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
@@ -129,8 +129,24 @@ function toListComida(beanPagination) {
         document.querySelector("#tbodyComida").innerHTML += row;
         beanPagination.list.forEach(comida => {
             row =
-                    `
+                `
                  <div class="dt-widget__item border-success  pl-5">
+                    
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${tipoComida(comida.tipo)} 
+                        </p>
+                       
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${comida.descripcion}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
                       
@@ -151,38 +167,22 @@ function toListComida(beanPagination) {
                         <!-- /hide content -->
                     </div>
                     <!-- /widget extra -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
-                        <p class="mb-0 text-truncate ">
-                           ${tipoComida(comida.tipo)} 
-                        </p>
-                       
-                    </div>
-                    <!-- /widget info -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
-                        <p class="mb-0 text-truncate ">
-                           ${comida.descripcion}
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                    
                 </div>
             `;
             document.querySelector("#tbodyComida").innerHTML += row;
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageComida").value),
-                document.querySelector("#pageComida"),
-                $('#modalCargandoComida'),
-                $('#paginationComida'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageComida").value),
+            document.querySelector("#pageComida"),
+            $('#modalCargandoComida'),
+            $('#paginationComida'));
         addEventsComidaes();
         if (beanRequestComida.operation == "paginate") {
             document.querySelector("#txtFilterComida").focus();
         }
-        
+
     } else {
         destroyPagination($('#paginationComida'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
@@ -269,11 +269,11 @@ function tipoComida(tipocomida) {
 
 function viewFormulario() {
     return `
-            <div class=" bg-transparent text-center mb-5">
-                 <h4 class="mb-0 text-info" id="txtTituloModalMan"></h4>
-            </div>
-         <div class="card overflow-hidden ">
-                <div class="card-body ">
+          
+                 <h4 class="card-header m-1 text-center text-primary" id="txtTituloModalMan"></h4>
+            
+       
+                <div class="card-body p-4">
                     <form id="FrmComidaModal">
                    <div class="row" >
                     <div class="col-12">
@@ -295,11 +295,11 @@ function viewFormulario() {
                         </div>
                     </div>
                     <div class="form-group col-12 text-center">
-                        <button type="button" class="btn btn-outline-primary btn-sm" id="btnRegresarComida"><i class="icon icon-reply"></i> REGRESAR</button>
                         <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm"> GUARDAR</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" id="btnRegresarComida"><i class="icon icon-reply"></i> REGRESAR</button>
                     </div></div>
                  </form>
-                </div>
+                
             </div>
             `;
 }
