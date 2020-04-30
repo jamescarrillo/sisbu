@@ -21,6 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
         lang: 'es'
     }).on('change', function (e, date) {
     });
+
+    document.querySelector("#btnEliminarMenuSemanalFechaI").onclick = function () {
+        document.getElementById("txtMenuSemanalFechaI").value = "";
+    };
+    document.querySelector("#btnEliminarMenuSemanalFechaF").onclick = function () {
+        document.getElementById("txtMenuSemanalFechaF").value = "";
+    };
     $('#FrmMenuSemanal').submit(function (event) {
 
         $('#modalCargandoMenuSemanal').modal('show');
@@ -38,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function processAjaxMenuSemanal() {
     $.ajax({
         url: getHostAPI() + "api/menusemanal/paginate?fechai=" + document.querySelector("#txtMenuSemanalFechaI").value +
-                "&fechaf=" + document.querySelector("#txtMenuSemanalFechaF").value +
-                "&page=1&size=7",
+            "&fechaf=" + document.querySelector("#txtMenuSemanalFechaF").value +
+            "&page=1&size=7",
         type: "GET",
         headers: {
             'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
@@ -66,6 +73,8 @@ function processAjaxMenuSemanal() {
 }
 
 function toListSemanal(beanPagination) {
+    addClass(document.querySelector("#theadMenuSemanal").parentElement.parentElement, "dt-widget dt-card dt-social-card border border-w-2 border-light-teal text-light-gray m-0");
+
     document.querySelector("#theadMenuSemanal").classList.remove("bg-primary");
     document.querySelector("#tbodyCronograma").innerHTML = "";
     document.querySelector("#theadMenuSemanal").innerHTML = "";
@@ -75,14 +84,14 @@ function toListSemanal(beanPagination) {
         let head;
         head = ' <tr>';
         head += ' <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">FECHA</th>';
-        head += '<th class="text-uppercase text-white" scope="col" style="font-weight: 500;">DESAYUNO</th>';
-        head += '<th class="text-uppercase text-white" scope="col" style="font-weight: 500;">ALMUERZO</th>';
-        head += '<th class="text-uppercase text-white" scope="col" style="font-weight: 500;">CENA</th>';
+        head += '<th class="text-uppercase text-white text-center" scope="col" style="font-weight: 500;">DESAYUNO</th>';
+        head += '<th class="text-uppercase text-white text-center" scope="col" style="font-weight: 500;">ALMUERZO</th>';
+        head += '<th class="text-uppercase text-white text-center" scope="col" style="font-weight: 500;">CENA</th>';
         head += '</tr>';
         document.querySelector("#theadMenuSemanal").innerHTML = head;
         beanPagination.forEach(detallecronogramacu => {
             diasemana = new Date(detallecronogramacu.fecha.split('/')[1] + ' ' +
-                    detallecronogramacu.fecha.split('/')[0] + ', ' + detallecronogramacu.fecha.split('/')[2]);
+                detallecronogramacu.fecha.split('/')[0] + ', ' + detallecronogramacu.fecha.split('/')[2]);
 
             row = `
                              <tr>
@@ -90,14 +99,14 @@ function toListSemanal(beanPagination) {
                                 <span class="badge badge-sm badge-pill badge-primary  d-sm-inline-block">${detallecronogramacu.fecha}</span>
                                 </td>
                                 <td class='align-middle  text-truncate'>
-                                  <ul style="list-style:none;">
-                                                            <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-block">${ detallecronogramacu.comida_dsegundo.descripcion == undefined ? "" : detallecronogramacu.comida_dsegundo.descripcion }</span></li>
+                                  <ul style="list-style:none;" class="text-center">
+                                                            <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-block">${ detallecronogramacu.comida_dsegundo.descripcion == undefined ? "" : detallecronogramacu.comida_dsegundo.descripcion}</span></li>
                                                             <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-block">${detallecronogramacu.comida_dpostre.descripcion == undefined ? "" : detallecronogramacu.comida_dpostre.descripcion}</span></li>
                                                             <li><span class="badge badge-sm badge-pill badge-info  d-sm-inline-block">${detallecronogramacu.comida_dbebida.descripcion == undefined ? "" : detallecronogramacu.comida_dbebida.descripcion}</span></li>
                                    </ul>
                                 </td>
                                 <td class='align-middle  text-truncate'>
-            <ul style="list-style:none;">
+            <ul style="list-style:none;" class="text-center">
                                                                 <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-block">${detallecronogramacu.comida_asegundo.descripcion == undefined ? "" : detallecronogramacu.comida_asegundo.descripcion}</span></li>
                                                                 <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-block">${detallecronogramacu.comida_asopa.descripcion == undefined ? "" : detallecronogramacu.comida_asopa.descripcion}</span></li>
                                                                 <li><span class="badge badge-sm badge-pill badge-info  d-sm-inline-block">${detallecronogramacu.comida_apostre.descripcion == undefined ? "" : detallecronogramacu.comida_apostre.descripcion}</span></li>
@@ -105,9 +114,9 @@ function toListSemanal(beanPagination) {
                                                             </ul>
                                 </td>
                                 <td class='align-middle  text-truncate'>
-            <ul style="list-style:none;">
+            <ul style="list-style:none;" class="text-center">
                                                                 <li><span class="badge badge-sm badge-pill badge-success  d-sm-inline-block">${detallecronogramacu.comida_csegundo.descripcion == undefined ? "" : detallecronogramacu.comida_csegundo.descripcion}</span></li>
-                                                                <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-block">${detallecronogramacu.comida_csopa.descripcion == undefined ? "" : detallecronogramacu.comida_csopa.descripcion }</span></li>
+                                                                <li><span class="badge badge-sm badge-pill badge-secondary  d-sm-inline-block">${detallecronogramacu.comida_csopa.descripcion == undefined ? "" : detallecronogramacu.comida_csopa.descripcion}</span></li>
                                                                 <li><span class="badge badge-sm badge-pill badge-info  d-sm-inline-block">${detallecronogramacu.comida_cpostre.descripcion == undefined ? "" : detallecronogramacu.comida_cpostre.descripcion}</span></li>
                                                                 <li><span class="badge badge-sm badge-pill badge-warning  d-sm-inline-block">${detallecronogramacu.comida_cbebida.descripcion == undefined ? "" : detallecronogramacu.comida_cbebida.descripcion}</span></li>
                                                             </ul>
@@ -118,6 +127,8 @@ function toListSemanal(beanPagination) {
             document.querySelector("#tbodyCronograma").innerHTML += row;
 
         });
+    } else {
+        removeClass(document.querySelector("#theadMenuSemanal").parentElement.parentElement, "dt-widget dt-card dt-social-card border border-w-2 border-light-teal text-light-gray m-0");
     }
 }
 
