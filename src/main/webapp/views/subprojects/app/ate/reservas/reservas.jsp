@@ -99,9 +99,9 @@
                         <select class="form-control form-control-sm sisbu-cursor-mano" id="txtServicioSolicitudCita">
                             <option value="-1">Seleccione un servicio. . .</option>
                             <option value="1">MEDICINA</option>
-                            <option value="2">ODONTOLOGIA</option>
+                            <option value="3">ODONTOLOGIA</option>
                             <option value="6">PSICOLOGIA</option>
-                            <option value="3">OBSTETRICIA</option>
+                            <option value="4">OBSTETRICIA</option>
                         </select>
                     </div>
                 </div>

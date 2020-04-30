@@ -10,8 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btn-nueva-solicitud-cita").onclick = function () {
         document.querySelector("#txtTituloCita").innerHTML = "Registrar Solicitud de Cita";
         navigateSolicitud("crud");
-        beanRequestCita.operation = "add";
-        beanRequestCita.type_request = "POST";
+
     };
 
     document.querySelector("#btn-cancelar-crud").onclick = function () {
@@ -31,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#txtFechaFinalCita').bootstrapMaterialDatePicker({
         weekStart: 0,
         time: false,
-        format: 'DD/MM/YYYY HH:mm:ss',
+        format: 'DD/MM/YYYY ',
         lang: 'es'
     }).on('change', function (e, date) {
     });
@@ -43,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $('#FrmCitalModal').submit(function (event) {
+        beanRequestCita.operation = "add";
+        beanRequestCita.type_request = "POST";
         if (validateFormCital()) {
             $('#modalCargandoCita').modal('show');
         }
@@ -51,14 +52,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
     $('#FrmCita').submit(function (event) {
-        event.preventDefault();
-        event.stopPropagation();
         beanRequestCita.operation = "alumnos/paginate";
         beanRequestCita.type_request = "GET";
         if (validateFilterCital()) {
             $('#modalCargandoCita').modal('show');
         }
-
+        event.preventDefault();
+        event.stopPropagation();
 
     });
 });
@@ -88,12 +88,9 @@ function processAjaxCita() {
             json = {
                 "fecha_solicitud": getTimesTampJavaScriptCurrent(),
                 "motivo": document.querySelector("#txtMotivoCita").value,
-                "atendido": {"usuario": {"idusuario": user_session.idusuario}},
-                "area": {"idcita": document.querySelector("#txtServicioSolicitudCita").value},
+                "atendido": { "usuario": { "idusuario": user_session.idusuario } },
+                "area": { "idarea": document.querySelector("#txtServicioSolicitudCita").value },
             };
-
-
-
     }
     $.ajax({
         url: getHostAndContextAPI() + beanRequestCita.entity_api + "/" + beanRequestCita.operation + parameters_pagination,
@@ -105,19 +102,32 @@ function processAjaxCita() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
         $('#modalCargandoCita').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() === "ok") {
-                showAlertTopEnd('success', 'Cita reservada con éxito');
+                if (beanRequestCita.operation == "add")
+                    showAlertTopEnd('success', 'Cita Reservada con éxito');
+                else
+                    showAlertTopEnd('success', 'Cita Eliminada con éxito');
+
                 addReservas();
             } else {
                 showAlertTopEnd('warning', beanCrudResponse.messageServer);
             }
         }
+
         if (beanCrudResponse.beanPagination !== undefined) {
             beanPaginationCita = beanCrudResponse.beanPagination;
             toListCita(beanPaginationCita);
+        }
+        console.log(beanRequestCita.operation);
+        if (beanRequestCita.operation != "alumnos/paginate") {
+            console.log("beanRequestCita.operation");
+            beanRequestCita.operation = "alumnos/paginate";
+            beanRequestCita.type_request = "GET";
+            if (validateFilterCital()) {
+                processAjaxCita();
+            }
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoCita').modal("hide");
@@ -132,58 +142,53 @@ function toListCita(beanPagination) {
         let row;
         beanPagination.list.forEach(cita => {
             row =
-                    `
+                `
                 <div class="dt-widget__item ${cita.fecha_programada != null
                     ? "border-success"
                     : cita.fecha_aceptacion != null ? "border-warning"
-                    : cita.fecha_solicitud != null ? "border-danger"
-                    : ""} sisbu-cursor-mano border-bottom m-0">
+                        : cita.fecha_solicitud != null ? "border-danger"
+                            : ""} sisbu-cursor-mano border-bottom m-0">
                         <div class="dt-widget__info text-truncate">
                             <div class="dt-widget__title f-16 font-weight-500 text-truncate">${cita.area.nombre}
                             </div>
 
                             <p class="mb-0 text-truncate text-light-gray">
-                            ${cita.personal_encargado.nombre == null
+                            ${cita.personal.nombre == null
                     ? "Motivo : " + cita.motivo
-                    : 'Dr. ' + cita.personal_encargado.nombre +
-                    ' ' + cita.personal_encargado.apellido_pat +
-                    ' ' + cita.personal_encargado.apellido_mat}
+                    : 'Dr. ' + cita.personal.nombre +
+                    ' ' + cita.personal.apellido_pat +
+                    ' ' + cita.personal.apellido_mat}
                             </p>
                         </div>
                         <div class="dt-widget__extra text-right">
-                            <div class="">
+                            <div class="show-content">
                                 <span class="d-block">${
-                    cita.fecha_programada != null
+                cita.fecha_programada != null
                     ? "Fecha de Atenci&oacute;n : " + cita.fecha_programada.split(" ")[0]
                     : cita.fecha_aceptacion != null
-                    ? "Fecha de Aprobaci&oacute;n : " + cita.fecha_aceptacion.split(" ")[0]
-                    : cita.fecha_solicitud != null ? "Fecha de Solicitud : " + cita.fecha_solicitud.split(" ")[0]
-                    : ""
+                        ? "Fecha de Aprobaci&oacute;n : " + cita.fecha_aceptacion.split(" ")[0]
+                        : cita.fecha_solicitud != null ? "Fecha de Solicitud : " + cita.fecha_solicitud.split(" ")[0]
+                            : ""
 
-                    }</span>
+                }</span>
                                 <span class="d-block">${cita.fecha_programada != null
                     ? cita.fecha_programada.split(" ")[1]
                     : cita.fecha_aceptacion != null
-                    ? cita.fecha_aceptacion.split(" ")[1]
-                    : cita.fecha_solicitud != null ? cita.fecha_solicitud.split(" ")[1]
-                    : ""}</span>
+                        ? cita.fecha_aceptacion.split(" ")[1]
+                        : cita.fecha_solicitud != null ? cita.fecha_solicitud.split(" ")[1]
+                            : ""}</span>
                             </div>
                        
-                            <!-- div class="show-content">
+                            <div class="hide-content">
                                 <div class="action-btn-group">
-                                    <button class="btn btn-default text-success dt-fab-btn editar-cita"
-                                         idcita='${cita.idcita}' title="Editar solicitud"
-                                        data-toggle="tooltip">
-                                        <i class="icon icon-assignment icon-1x"></i>
-                                    </button>
-                                    <button class="btn btn-default text-danger dt-fab-btn eliminar-cita"
+                                        <button class="btn btn-default text-danger dt-fab-btn eliminar-cita"
                                          idcita='${cita.idcita}' title="Eliminar solicitud"
                                         data-toggle="tooltip">
                                         <i class="icon icon-assignment icon-xl"></i>
                                     </button>
                                  
                                 </div>
-                            </div-->
+                            </div>
                         </div>
                     </div>
             `;
@@ -224,40 +229,24 @@ function validateFilterCital() {
 }
 
 function addReservas(cita = undefined) {
-
     document.querySelector("#txtMotivoCita").value = (cita == undefined) ? "" : cita.motivo;
     document.querySelector("#txtServicioSolicitudCita").value = (cita == undefined) ? "-1" : cita.area.idcita;
 
 }
 
 function addEventsCitas() {
-    document.querySelectorAll('.editar-cita').forEach(btn => {
-        //AGREGANDO EVENTO CLICK
-        btn.onclick = function () {
-            CitaSelected = findBycita(btn.getAttribute('idcita'));
-            if (CitaSelected != undefined) {
-                beanRequestCita.operation = "update";
-                beanRequestCita.type_request = "PUT";
-                //SET VALUES MODAL
-                addReservas(CitaSelected);
-                document.querySelector("#txtTituloCita").innerHTML = "Editar Solicitud de Cita";
-                navigateSolicitud("crud");
-                document.querySelector("#txtNombrecitaER").focus();
-            } else {
-                showAlertTopEnd('warning', 'No se encontró la cita para poder editar');
-            }
-        };
-    });
+
     document.querySelectorAll('.eliminar-cita').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
             CitaSelected = findBycita(btn.getAttribute('idcita'));
             if (CitaSelected != undefined) {
-                beanRequestCita.operation = "delete";
-                beanRequestCita.type_request = "DELETE";
-                //SET VALUES MODAL
+                if (CitaSelected.fecha_programada == null) {
+                    beanRequestCita.operation = "delete";
+                    beanRequestCita.type_request = "DELETE";
+                    $('#modalCargandoCita').modal("show");
+                }
 
-                $('#modalCargandoCita').modal("show");
             } else {
                 showAlertTopEnd('warning', 'No se encontró el cita para poder editar');
             }
@@ -265,6 +254,7 @@ function addEventsCitas() {
     });
 
 }
+
 function findBycita(idcita) {
     let cita_;
     beanPaginationCita.list.forEach(cita => {
