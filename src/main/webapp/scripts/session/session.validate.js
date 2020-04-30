@@ -447,6 +447,14 @@ function createHTML_OGBU(typeProfile) {
                     <span class="dt-side-nav__text">Usuarios</span>
                 </a>
             </li>
+        
+            <!-- Menu Item -->
+            <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ogbu/mantenimientos/citas" class="dt-side-nav__link" title="Citas">
+                    <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Citas</span>
+                </a>
+            </li>
             <!-- Menu Item -->
             <li class="dt-side-nav__item">
                 <a href="${contextPah}app/ogbu/mantenimientos/cargos" class="dt-side-nav__link" title="Cargos">
@@ -652,7 +660,7 @@ function createHTML_OGBU(typeProfile) {
                
         `;
         }
-         document.querySelector("#menus_sisbu").innerHTML +=
+        document.querySelector("#menus_sisbu").innerHTML +=
                 `
              </ul>
                 <!-- /sub-menu -->

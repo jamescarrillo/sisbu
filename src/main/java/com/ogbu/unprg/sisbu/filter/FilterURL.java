@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 })
 public class FilterURL implements Filter {
 
-   private static final Logger LOG = Logger.getLogger(FilterURL.class.getName());
+    private static final Logger LOG = Logger.getLogger(FilterURL.class.getName());
     private final Map<String, String> subProjects = new HashMap<>();
     private List<Resource> list_resources;
 
@@ -122,7 +122,7 @@ public class FilterURL implements Filter {
         /*
             0.01 -> 01/08/19
          */
-        /*
+ /*
             0.04 -> 09/10/19
          */
         this.list_resources = new ArrayList<>();
@@ -434,7 +434,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/farmacia/unidad-medida/unidad-medida.js" + version_project
         });
         this.list_resources.add(resource);
-       
+
         ///productos
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/farmacia/productos");
@@ -658,7 +658,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/mantenimientos/alumno/escuela_c.js" + version_project,
             "/views/subprojects/app/ogbu/mantenimientos/alumno/distrito_c.js" + version_project,
             "/views/subprojects/app/ogbu/mantenimientos/alumno/ciclo_c.js" + version_project
-            
+
         });
         this.list_resources.add(resource);
         //CARGOS
@@ -683,6 +683,17 @@ public class FilterURL implements Filter {
         resource.setPath("/views/subprojects/app/ogbu/mantenimientos/videoTutorial/videoTutorial.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/mantenimientos/videoTutorial/videoTutorial.js" + version_project
+        });
+        this.list_resources.add(resource);
+        //CITAS
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/mantenimientos/citas");
+        resource.setPath("/views/subprojects/app/ogbu/mantenimientos/cita/cita.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/mantenimientos/cita/cita.js" + version_project,
+            "/views/subprojects/app/ogbu/mantenimientos/cita/area.js" + version_project,
+            "/views/subprojects/app/ogbu/mantenimientos/cita/personal.js" + version_project,
+            "/views/subprojects/app/ogbu/mantenimientos/cita/atendido.js" + version_project
         });
         this.list_resources.add(resource);
         //PERSONAL
@@ -771,8 +782,8 @@ public class FilterURL implements Filter {
         this.list_resources.add(resource);
         //INFORMES
         //REPORTES
-            //PSICOLOGIA
-                ///pacientes
+        //PSICOLOGIA
+        ///pacientes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/informes/reportes/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/paciente.jsp");
@@ -780,8 +791,8 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/paciente.js" + version_project
         });
         this.list_resources.add(resource);
-            //ENFERMERIA
-                ///pacientes
+        //ENFERMERIA
+        ///pacientes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/enfermeria/informes/reportes/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/informes/reportes/enfermeria/pacientes/paciente.jsp");
@@ -789,8 +800,8 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/informes/reportes/enfermeria/pacientes/paciente.js" + version_project
         });
         this.list_resources.add(resource);
-            //MEDICINA
-                ///pacientes
+        //MEDICINA
+        ///pacientes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/medicina/informes/reportes/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/informes/reportes/medicina/pacientes/paciente.jsp");
@@ -798,9 +809,9 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/informes/reportes/medicina/pacientes/paciente.js" + version_project
         });
         this.list_resources.add(resource);
-        
-            //ODONTOLOGIA
-                ///pacientes
+
+        //ODONTOLOGIA
+        ///pacientes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/odontologia/informes/reportes/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/informes/reportes/odontologia/pacientes/paciente.jsp");
@@ -808,8 +819,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/informes/reportes/odontologia/pacientes/paciente.js" + version_project
         });
         this.list_resources.add(resource);
-        
-        
+
     }
 
     private int getResource(String URL) {
@@ -818,7 +828,7 @@ public class FilterURL implements Filter {
         //LOG.info(URL);
         //LOG.info("CON: ");
         for (int i = 0; i < this.list_resources.size(); i++) {
-          //  LOG.info(this.list_resources.get(i).getUrl());
+            //  LOG.info(this.list_resources.get(i).getUrl());
             if (this.list_resources.get(i).getUrl().equals(URL)) {
                 pos = i;
                 break;
@@ -858,7 +868,5 @@ public class FilterURL implements Filter {
             return this.subProjects.get("/" + URL.split("/")[1]);
         }
     }
-   
+
 }
-
-
