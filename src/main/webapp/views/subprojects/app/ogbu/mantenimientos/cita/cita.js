@@ -157,7 +157,10 @@ function processAjaxCita() {
                 "estado_cita": "PEN",
                 "motivo": document.querySelector("#txtMotivoCita").value,
                 "atendido": {
-                    "idatendido": atendidoSelected.idatendido
+                    "idatendido": atendidoSelected.idatendido,
+                    "usuario": {
+                        "idusuario": usuarioSelected.usuario.idusuario
+                    }
                 },
                 "area": areaSelected,
                 "personal_encargado": {
