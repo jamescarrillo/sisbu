@@ -68,7 +68,7 @@ function processAjaxAtendido() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
+        //console.log(beanCrudResponse);
         $('#modalCargandoSelectedAtendido').modal("hide");
         if (beanCrudResponse.beanPagination !== undefined) {
             beanPaginationAtendido = beanCrudResponse.beanPagination;

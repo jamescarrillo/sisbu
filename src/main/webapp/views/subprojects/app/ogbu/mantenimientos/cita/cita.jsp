@@ -19,23 +19,27 @@
                 <form id="FrmCita">
                     <div class="row">
                         <div class="col-lg-3 col-sm-6 col-12 mb-2">
-                            <label for="txtFechaICita">Desde</label>
+                            <label for="txtFechaIFilterCita">Desde</label>
                             <div class="input-group input-group-sm">
                                 <input type="text" id="txtFechaIFilterCita" class="form-control form-control-sm"
                                        placeholder="DD/MM/AAAA">
-                                <button class="btn btn-dark btn-sm input-ii" type="button"
-                                        id="btnEliminarFechaIFilterCita" data-toggle="tooltip" title="Eliminar Fecha">
-                                    <i class="far fa-trash-alt"></i></button>
+                                <div class="input-group-append">
+                                    <button class="btn btn-dark btn-sm input-ii" type="button"
+                                            id="btnEliminarFechaIFilterCita" data-toggle="tooltip" title="Eliminar Fecha">
+                                        <i class="icon icon-trash"></i></button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12 mb-2">
-                            <label for="txtFechaFCita">Hasta</label>
+                            <label for="txtFechaFFilterCita">Hasta</label>
                             <div class="input-group input-group-sm">
                                 <input type="text" id="txtFechaFFilterCita" class="form-control form-control-sm"
                                        placeholder="DD/MM/AAAA">
-                                <button class="btn btn-dark btn-sm input-ii" type="button"
-                                        id="btnEliminarFechaFFilterCita" data-toggle="tooltip" title="Eliminar Fecha">
-                                    <i class="far fa-trash-alt"></i></button>
+                                <div class="input-group-append">
+                                    <button class="btn btn-dark btn-sm input-ii" type="button"
+                                            id="btnEliminarFechaFFilterCita" data-toggle="tooltip" title="Eliminar Fecha">
+                                        <i class="icon icon-trash"></i></button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
@@ -53,20 +57,21 @@
                         </div>
                     </div>
                 </form>
-                <!-- Card -->
-                <div class="dt-card mt-4">
-                    <!-- Card Body -->
-                    <div class="dt-card__body p-0  " >
-                        <!-- Widget -->
-                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                             id="tbodyCita">
-                        </div>
-                        <!-- /widget -->
-                        <!-- /card body -->
-                    </div>
-
+                <div class="table-responsive mt-3">
+                    <table class="table mb-0">
+                        <thead class="bg-primary ">
+                            <tr> 
+                                <th class="text-uppercase text-center text-white pt-3 pb-2" style="width: 5%" colspan="2">ACCION</th>
+                                <th class="text-uppercase text-white pt-3 pb-2" scope="col" >USUARIO</th>
+                                <th style="font-size: 10px" class="text-uppercase text-white pt-3 pb-2" scope="col" >F. SOLICITUD <br>Y ACEPTACION</th>
+                                <th style="font-size: 10px" class="text-uppercase text-white pt-3 pb-2" scope="col" >F. PROGRAMACIÓN <br>Y ATENCIÓN</th>
+                                <th class="text-uppercase text-white pt-3 pb-2" scope="col" >AREA</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyCita">
+                        </tbody>
+                    </table>
                 </div>
-                <!-- /card -->
                 <div class="row mt-2">
                     <div class="col-md-2 col-sm-3 col-4">
                         <select id="sizePageCita" class="form-control form-control-sm select2-single">
@@ -136,9 +141,11 @@
                             <div class="input-group input-group-sm">
                                 <input type="text" id="txtFechaProgramadaDateCita" class="form-control form-control-sm"
                                        placeholder="DD/MM/AAAA">
-                                <button class="btn btn-dark btn-sm input-ii" type="button"
-                                        id="btnEliminarFechaProgramadaDateCita" data-toggle="tooltip" title="Eliminar Fecha">
-                                    <i class="far fa-trash-alt"></i></button>
+                                <div class="input-group-append">
+                                    <button class="btn btn-dark btn-sm input-ii" type="button"
+                                            id="btnEliminarFechaProgramadaDateCita" data-toggle="tooltip" title="Eliminar Fecha">
+                                        <i class="icon icon-trash"></i></button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-12 mb-2">
@@ -146,9 +153,11 @@
                             <div class="input-group input-group-sm">
                                 <input type="text" id="txtFechaProgramadaTimeCita" class="form-control form-control-sm"
                                        placeholder="DD/MM/AAAA">
-                                <button class="btn btn-dark btn-sm input-ii" type="button"
-                                        id="btnEliminarFechaProgramadaTimeCita" data-toggle="tooltip" title="Eliminar Fecha">
-                                    <i class="far fa-trash-alt"></i></button>
+                                <div class="input-group-append">
+                                    <button class="btn btn-dark btn-sm input-ii" type="button"
+                                            id="btnEliminarFechaProgramadaTimeCita" data-toggle="tooltip" title="Eliminar Fecha">
+                                        <i class="icon icon-trash"></i></button> 
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 mb-2">

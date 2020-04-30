@@ -98,8 +98,8 @@ function processAjaxCita() {
             json = {
                 "fecha_solicitud": document.querySelector("#txtFechaSolicitudCita").value,
                 "motivo": document.querySelector("#txtMotivoCita").value,
-                "atendido": { "usuario": { "idusuario": user_session.idusuario } },
-                "area": { "idcita": document.querySelector("#txtServicioSolicitudCita").value },
+                "atendido": {"usuario": {"idusuario": user_session.idusuario}},
+                "area": {"idcita": document.querySelector("#txtServicioSolicitudCita").value},
             };
 
 
@@ -142,12 +142,12 @@ function toListCita(beanPagination) {
         let row;
         beanPagination.list.forEach(cita => {
             row =
-                `
+                    `
                 <div class="dt-widget__item ${cita.fecha_programada != null
                     ? "border-success"
                     : cita.fecha_aceptacion != null ? "border-warning"
-                        : cita.fecha_solicitud != null ? "border-danger"
-                            : ""} sisbu-cursor-mano border-bottom m-0">
+                    : cita.fecha_solicitud != null ? "border-danger"
+                    : ""} sisbu-cursor-mano border-bottom m-0">
                         <div class="dt-widget__info text-truncate">
                             <div class="dt-widget__title f-16 font-weight-500 text-truncate">${cita.area.nombre}
                             </div>
@@ -163,20 +163,20 @@ function toListCita(beanPagination) {
                         <div class="dt-widget__extra text-right">
                             <div class="">
                                 <span class="d-block">${
-                cita.fecha_programada != null
+                    cita.fecha_programada != null
                     ? "Fecha de Atenci&oacute;n : " + cita.fecha_programada.split(" ")[0]
                     : cita.fecha_aceptacion != null
-                        ? "Fecha de Aprobaci&oacute;n : " + cita.fecha_aceptacion.split(" ")[0]
-                        : cita.fecha_solicitud != null ? "Fecha de Solicitud : " + cita.fecha_solicitud.split(" ")[0]
-                            : ""
+                    ? "Fecha de Aprobaci&oacute;n : " + cita.fecha_aceptacion.split(" ")[0]
+                    : cita.fecha_solicitud != null ? "Fecha de Solicitud : " + cita.fecha_solicitud.split(" ")[0]
+                    : ""
 
-                }</span>
+                    }</span>
                                 <span class="d-block">${cita.fecha_programada != null
                     ? cita.fecha_programada.split(" ")[1]
                     : cita.fecha_aceptacion != null
-                        ? cita.fecha_aceptacion.split(" ")[1]
-                        : cita.fecha_solicitud != null ? cita.fecha_solicitud.split(" ")[1]
-                            : ""}</span>
+                    ? cita.fecha_aceptacion.split(" ")[1]
+                    : cita.fecha_solicitud != null ? cita.fecha_solicitud.split(" ")[1]
+                    : ""}</span>
                             </div>
                        
                             <!-- div class="show-content">

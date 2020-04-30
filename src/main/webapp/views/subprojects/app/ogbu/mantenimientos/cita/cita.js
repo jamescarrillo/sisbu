@@ -61,12 +61,13 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     $('#FrmCita').submit(function (event) {
-        if (document.querySelector('#txtFechaIFilterCita').value == "" && document.querySelector('#txtFechaIFilterCita').value == "") {
+        console.log("entro submi")
+        if (document.querySelector('#txtFechaIFilterCita').value == "" && document.querySelector('#txtFechaFFilterCita').value == "") {
             beanRequestCita.operation = "paginate";
             beanRequestCita.type_request = "GET";
             $('#modalCargandoCita').modal('show');
         } else {
-            if (document.querySelector('#txtFechaIFilterCita').value != "" && document.querySelector('#txtFechaIFilterCita').value != "") {
+            if (document.querySelector('#txtFechaIFilterCita').value != "" && document.querySelector('#txtFechaFFilterCita').value != "") {
                 beanRequestCita.operation = "paginate";
                 beanRequestCita.type_request = "GET";
                 $('#modalCargandoCita').modal('show');
@@ -159,11 +160,11 @@ function processAjaxCita() {
                 "atendido": {
                     "idatendido": atendidoSelected.idatendido,
                     "usuario": {
-                        "idusuario": usuarioSelected.usuario.idusuario
+                        "idusuario": atendidoSelected.usuario.idusuario
                     }
                 },
                 "area": areaSelected,
-                "personal_encargado": {
+                "personal": {
                     "idpersonal": personalSelected.idpersonal
                 },
             };
@@ -187,6 +188,9 @@ function processAjaxCita() {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
                 $('#ventanaModalCita').modal('hide');
+                setTimeout(() => {
+                    document.querySelector('#FrmCita').dispatchEvent(new Event('submit'));
+                }, 1000);
             } else {
                 showAlertTopEnd('warning', beanCrudResponse.messageServer);
             }
@@ -207,57 +211,30 @@ function toListCita(beanPagination) {
     document.querySelector("#titleManagerCita").innerHTML = "[ " + beanPagination.count_filter + " ] CITAS";
     if (beanPagination.count_filter > 0) {
         let row;
-        row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2"">
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
-                        <p class="mb-0 text-truncate ">
-                           NOMBRE
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                    
-                </div>
-            `;
-        document.querySelector("#tbodyCita").innerHTML += row;
         beanPagination.list.forEach(cita => {
-            row =
+            personal = cita.personal;
+            atendido = cita.atendido;
+            buttom_editar =
                     `
-                 <div class="dt-widget__item border-success  ">
-                    <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
-                            <!-- Action Button Group -->
-                            <div class="action-btn-group">
                                 <button class="btn btn-default text-primary dt-fab-btn editar-cita" idcita='${cita.idcita}' title="Editar" data-toggle="tooltip">
                                     <i class="icon icon-editors"></i>
                                 </button>
+            `;
+            buttom_eliminar =
+                    `
                                 <button class="btn btn-default text-danger dt-fab-btn eliminar-cita" idcita='${cita.idcita}' title="Eliminar" data-toggle="tooltip">
                                     <i class="icon icon-trash-filled"></i>
                                 </button>
-                              
-                            </div>
-                            <!-- /action button group -->
-                        </div>
-                        <!-- /hide content -->
-                    </div>
-                    <!-- /widget extra -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
-                        <p class="mb-0 text-truncate ">
-                           ${cita.nombre}
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                 
-                    
-                </div>
             `;
+            row = "<tr class='click-selection-cita sisbu-cursor-mano' idcita='" + personal.idpersonal + "'>";
+            row += "<td class='align-middle text-left'>" + buttom_editar + "</td>";
+            row += "<td class='align-middle text-left'>" + buttom_eliminar + "</td>";
+            row += "<td class='align-middle text-left'>" + atendido.dni + "<br>" + atendido.nombre.toUpperCase() + " " + atendido.apellido_pat.toUpperCase() + " " + atendido.apellido_mat.toUpperCase() + "</td>";
+            row += "<td class='align-middle text-left'>" + cita.fecha_solicitud + "<br>" + cita.fecha_aceptacion + "</td>";
+            row += "<td class='align-middle text-left'>" + (cita.fecha_programada == undefined ? "Pendiente" : cita.fecha_programada) + "<br>" + (cita.fecha_atencion == undefined ? "Pendiente" : cita.fecha_atencion) + "</td>";
+            row += "<td class='align-middle text-left'>" + cita.area.nombre + "<br>" + personal.nombre.toUpperCase() + " " + personal.apellido_pat.toUpperCase() + " " + personal.apellido_mat.toUpperCase() + "</td>";
+            row += "</tr>";
             document.querySelector("#tbodyCita").innerHTML += row;
-            $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
                 beanPagination.count_filter,
@@ -265,18 +242,15 @@ function toListCita(beanPagination) {
                 document.querySelector("#pageCita"),
                 $('#modalCargandoCita'),
                 $('#paginationCita'));
-        addEventsCitaes();
-        if (beanRequestCita.operation == "paginate") {
-            document.querySelector("#txtFilterCita").focus();
-        }
-
+        addEventsCitas();
+        $('[data-toggle="tooltip"]').tooltip();
     } else {
         destroyPagination($('#paginationCita'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
     }
 }
 
-function addEventsCitaes() {
+function addEventsCitas() {
     document.querySelectorAll('.editar-cita').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
@@ -300,7 +274,7 @@ function addEventsCitaes() {
             citaSelected = findByCita(btn.getAttribute('idcita'));
             beanRequestCita.operation = "delete";
             beanRequestCita.type_request = "DELETE";
-            processAjaxCita();
+            showAlertDelete('modalCargandoCita')
         };
     });
 }
