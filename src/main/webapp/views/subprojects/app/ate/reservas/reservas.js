@@ -17,16 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btn-cancelar-crud").onclick = function () {
         navigateSolicitud("list");
     };
-    document.querySelector("#btnEliminarFechaSolicitudCita").onclick = function () {
-        document.getElementById("txtFechaSolicitudCita").value = "";
-    };
-    $('#txtFechaSolicitudCita').bootstrapMaterialDatePicker({
-        weekStart: 0,
-        time: false,
-        format: 'DD/MM/YYYY',
-        lang: 'es'
-    }).on('change', function (e, date) {
-    });
 
     $('#txtFechaInicialCita').bootstrapMaterialDatePicker({
         weekStart: 0,
@@ -96,7 +86,7 @@ function processAjaxCita() {
             parameters_pagination = "/" + CitaSelected.idcita;
         else
             json = {
-                "fecha_solicitud": document.querySelector("#txtFechaSolicitudCita").value,
+                "fecha_solicitud": getTimesTampJavaScriptCurrent(),
                 "motivo": document.querySelector("#txtMotivoCita").value,
                 "atendido": { "usuario": { "idusuario": user_session.idusuario } },
                 "area": { "idcita": document.querySelector("#txtServicioSolicitudCita").value },
@@ -208,11 +198,7 @@ function toListCita(beanPagination) {
 }
 
 function validateFormCital() {
-    if (document.querySelector("#txtFechaSolicitudCita").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese fecha');
-        document.querySelector("#txtFechaSolicitudCita").focus();
-        return false;
-    } else if (document.querySelector("#txtMotivoCita").value == "") {
+    if (document.querySelector("#txtMotivoCita").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese Motivo');
         document.querySelector("#txtMotivoCita").focus();
         return false;
@@ -238,7 +224,7 @@ function validateFilterCital() {
 }
 
 function addReservas(cita = undefined) {
-    document.querySelector("#txtFechaSolicitudCita").value = (cita == undefined) ? "" : cita.fecha_solicitud;
+
     document.querySelector("#txtMotivoCita").value = (cita == undefined) ? "" : cita.motivo;
     document.querySelector("#txtServicioSolicitudCita").value = (cita == undefined) ? "-1" : cita.area.idcita;
 
