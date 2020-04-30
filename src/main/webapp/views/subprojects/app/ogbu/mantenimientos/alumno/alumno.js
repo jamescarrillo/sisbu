@@ -234,8 +234,8 @@ function processAjaxAlumno() {
 
 function toListAlumno(beanPagination) {
     document.querySelector("#tbodyAlumno").innerHTML = "";
-    
-    document.querySelector("#titleManagerAlumno").innerHTML = "[ " + beanPagination.count_filter + " ] "+tipoAlumno(parseInt(document.querySelector("#txtFilterTipoPersonaPaciente").value));
+
+    document.querySelector("#titleManagerAlumno").innerHTML = "[ " + beanPagination.count_filter + " ] " + tipoAlumno(parseInt(document.querySelector("#txtFilterTipoPersonaPaciente").value));
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(alumno => {

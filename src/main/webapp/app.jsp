@@ -48,7 +48,6 @@
 
         <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/chart.js/dist/Chart.min.css">
 
-<!--link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"-->
         <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/picker/css/bootstrap-material-datetimepicker.css">
 
     </head>
