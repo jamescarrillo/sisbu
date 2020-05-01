@@ -46,11 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#ventanaModalSelectedDistritoC').modal('show');
     };
 
-    document.querySelector("#btnSeleccionarDistritoFamiliar").onclick = function () {
-        distrito_option = "familiar";
-        $('#ventanaModalSelectedDistritoC').modal('show');
-    };
-
     document.querySelector("#btn-selecionar-distritoc").onclick = function () {
         if (distritoCSelected == undefined) {
             showAlertTopEnd('warning', 'Por favor seleccione un distrito');
@@ -60,10 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
             case "procedencia":
                 distritoProcedenciaSelected = distritoCSelected;
                 document.querySelector("#txtDistritoProcedenciaPaciente").value = distritoCSelected.nombre.toUpperCase();
-                break;
-            case "familiar":
-                distritoSelected = distritoCSelected;
-                document.querySelector("#txtDistritoPaciente").value = distritoCSelected.nombre.toUpperCase();
                 break;
             default:
                 //actual
@@ -80,10 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
             case "procedencia":
                 distritoActualSelected = distritoCSelected;
                 document.querySelector("#txtDistritoProcedenciaPaciente").value = "";
-                break;
-            case "familiar":
-                distritoSelected = distritoCSelected;
-                document.querySelector("#txtDistritoPaciente").value = "";
                 break;
             default:
                 //actual

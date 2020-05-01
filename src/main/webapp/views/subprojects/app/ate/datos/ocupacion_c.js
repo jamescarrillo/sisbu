@@ -46,14 +46,14 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
         ocupacionSelected = ocupacionCSelected;
-        document.querySelector("#txtOcupacionPaciente").value = ocupacionCSelected.nombre.toUpperCase();
+        document.querySelector("#txtOcupacionFamiliarPaciente").value = ocupacionCSelected.nombre.toUpperCase();
         $('#ventanaModalSelectedOcupacionC').modal('hide');
     };
 
     document.querySelector("#btnCancelSelectionOcupacionC").onclick = function () {
         ocupacionCSelected = undefined;
         ocupacionSelected = ocupacionCSelected;
-        document.querySelector("#txtOcupacionPaciente").value = "";
+        document.querySelector("#txtOcupacionFamiliarPaciente").value = "";
     };
 
     $("#sizePageOcupacionC").change(function () {
