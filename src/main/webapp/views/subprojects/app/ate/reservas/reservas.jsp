@@ -99,24 +99,13 @@
                         <select class="form-control form-control-sm sisbu-cursor-mano" id="txtServicioSolicitudCita">
                             <option value="-1">Seleccione un servicio. . .</option>
                             <option value="1">MEDICINA</option>
-                            <option value="2">ODONTOLOGIA</option>
+                            <option value="3">ODONTOLOGIA</option>
                             <option value="6">PSICOLOGIA</option>
-                            <option value="3">OBSTETRICIA</option>
+                            <option value="4">OBSTETRICIA</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-12 mb-3">
-                    <label for="txtFechaSolicitudCita">FECHA</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" id="txtFechaSolicitudCita"
-                            placeholder="DD/MM/AAAA">
-                        <div class="input-group-append">
-                            <button type="button" id="btnEliminarFechaSolicitudCita" data-toggle="tooltip"
-                                title="Eliminar Fecha" class="btn btn-primary btn-sm"><i
-                                    class="icon icon-trash"></i></button>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-12">
                     <div class="form-group">
                         <label for="txtMotivoCita">MOTIVO
