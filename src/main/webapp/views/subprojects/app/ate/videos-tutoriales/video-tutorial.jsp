@@ -8,6 +8,6 @@
         <h2 class="text-danger">Videos Tutoriales</h2>
     </div>
 </div>
-<div class="row" id="row-videos-tutoriales" style="margin-top: 40px; display: block">
+<div class="row" id="row-videos-tutoriales" style="margin-top: 40px; display: flex">
 
 </div>

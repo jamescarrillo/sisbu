@@ -11,7 +11,7 @@
             </div>
             <div class="col-lg-8">
                 <br>
-                <h2 class="text-center">
+                <h2 class="text-center" id="div-message-cachimbo">
                     ¡Felicidades por tu ingreso <span class="text-info" id="lblNameUserIndex">User</span>!
                     Estamos encantados de recibirte en nuestra UNPRG. 
                 </h2>
@@ -105,7 +105,7 @@
 <div class="row" id="row-option-socioeconomico" style="display: none;">
     <div class="col-12">
         <div class="row" id="div-evaluaciones-socioeconomico">
-            <div class="col-12">
+            <div class="col-12" style="display: none">
                 <div class="dt-card dt-card__full-height">
                     <div class="dt-card__header mb-2 pt-4">
                         <div class="dt-card__heading">
@@ -142,9 +142,347 @@
             </div>
             <div class="col-12">
                 <div class="dt-card">
-                    <div class="dt-card__body p-0">
+                    <div class="dt-card__body">
                         <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" 
                              id="div-content-evaluacion-socioeconomico">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6 class="text-primary mb-0">DATOS GENERALES</h6>
+                                    <hr class="mt-1">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="slctTienesHijos">¿Tienes hijo(s)?</label>
+                                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctTienesHijos">
+                                            <option  value="-1">Seleccionar...</option>
+                                            <option  value="S">SI</option>
+                                            <option  value="N">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="txtCantHijosFichaSocioeconomica">CANT. HIJOS
+                                        </label>
+                                        <input  type="text" class="form-control form-control-sm" id="txtCantHijosFichaSocioeconomica" placeholder="Ingrese cant hijos. . ." maxlength="2">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="txtNombreColegioFichaSocioeconomica">NOMBRE DE COLEGIO DE PROCEDENCIA
+                                        </label>
+                                        <input  type="text" class="form-control form-control-sm" id="txtNombreColegioFichaSocioeconomica" placeholder="" maxlength="300">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6 class="text-primary mb-0">ASPECTO ACADEMICO</h6>
+                                    <hr class="mt-1">
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="slctAnioIngresoFichaSocioeconomica">AÑO DE INGRESO</label>
+                                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctAnioIngresoFichaSocioeconomica">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="slctCicloEstudioFichaSocioeconomica">CICLO DE ESTUDIOS
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indique el ciclo del curso de menor nivel" style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctCicloEstudioFichaSocioeconomica">
+                                            <option value="-1">Seleccionar...</option>
+                                            <option value="I">I</option>
+                                            <option value="II">II</option>
+                                            <option value="III">III</option>
+                                            <option value="IV">IV</option>
+                                            <option value="V">V</option>
+                                            <option value="VI">VI</option>
+                                            <option value="VII">VII</option>
+                                            <option value="VIII">VIII</option>
+                                            <option value="IX">IX</option>
+                                            <option value="X">X</option>
+                                            <option value="XI">XI</option>
+                                            <option value="XII">XII</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="slctTipoCreditos">¿Tipo de créditos?</label>
+                                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctTipoCreditos">
+                                            <option  value="-1">Seleccionar...</option>
+                                            <option  value="S">SEMESTRALES</option>
+                                            <option  value="A">ANUALES</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="txtCanCreditosMatriculados">N° CRÉDITOS MATRICULADOS
+                                        </label>
+                                        <input  type="text" class="form-control form-control-sm" id="txtCanCreditosMatriculados" maxlength="3">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="txtNumCursosDesaprobadosFichaSocieconomica">N° CURSOS DESAPROBADOS
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indica la cantidad de cursos desaprobados en todo tu historial académico. Si no tienes ningún curso ingresa 0" style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <input  type="text" class="form-control form-control-sm" id="txtNumCursosDesaprobadosFichaSocieconomica" maxlength="3">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="form-group">
+                                        <label for="txtNumCursosAbandonadosFichaSocieconomica">N° CURSOS ABANDONADOS
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indica la cantidad de cursos abandonados en todo tu historial académico. Si no tienes ningún curso ingresa 0" style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <input  type="text" class="form-control form-control-sm" id="txtNumCursosAbandonadosFichaSocieconomica" maxlength="3">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6 class="text-primary mb-0">ASPECTO FAMILIAR</h6>
+                                    <hr class="mt-1">
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="txtDomicilioPadreFichaSocieconomica">DOMICIO DEL PADRE
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indica el domicilio actual del padre. Si no tienes esta información deja la caja de texto en blanco" style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <input  type="text" class="form-control form-control-sm" id="txtDomicilioPadreFichaSocieconomica" maxlength="200">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="txtDomicilioMadreFichaSocieconomica">DOMICIO DE LA MADRE
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indica el domicilio actual de la madre. Si no tienes esta información deja la caja de texto en blanco" style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <input  type="text" class="form-control form-control-sm" id="txtDomicilioMadreFichaSocieconomica" maxlength="200">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="txtFichaFichaSocieconomica">RELACIÓN DE PADRES</label>
+                                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtEstadoPaciente">
+                                            <option  value="-1">Seleccionar...</option>
+                                            <option  value="1">CONVIVIENTES</option>
+                                            <option  value="2">SEPARADOS</option>
+                                            <option  value="3">DIVORCIADO</option>
+                                            <option  value="4">ORFANDAD PARCIAL</option>
+                                            <option  value="5">ORFANDAD TOTAL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctConQuienViveFichaSocieconomica">¿CON QUIEN VIVES?</label>
+                                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctConQuienViveFichaSocieconomica">
+                                            <option  value="-1">Seleccionar...</option>
+                                            <option  value="1">AMBOS PADRES</option>
+                                            <option  value="1">PADRE</option>
+                                            <option  value="1">MADRE</option>
+                                            <option  value="1">HERMANOS</option>
+                                            <option  value="1">CONYUQUE</option>
+                                            <option  value="1">OTRO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="txtConQuienViveFichaSocieconomica">
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indica el domicilio actual de la madre. Si no tienes esta información deja la caja de texto en blanco" style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <input  type="text" class="form-control form-control-sm" id="txtConQuienViveFichaSocieconomica" maxlength="200">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctRelacionFamiliaresFichaSocieconomica">LAS RELACIONES FAMILIARES SON</label>
+                                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctRelacionFamiliaresFichaSocieconomica">
+                                            <option  value="-1">Seleccionar...</option>
+                                            <option  value="1">BUENAS</option>
+                                            <option  value="2">REGULARES</option>
+                                            <option  value="3">MALAS</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6 class="text-primary mb-0">ASPECTO ECONÓMICO</h6>
+                                    <hr class="mt-1">
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctDependenciaEconomicaFichaSocioeconomica">DEPENDENCIA ECONÓMICA</label>
+                                        <select  class="form-control form-control-sm" id="slctDependenciaEconomicaFichaSocioeconomica">
+                                            <option value="-1">Seleccione. . .</option>
+                                            <option value="1">AMBOS PADRES</option>
+                                            <option value="2">SOLO PAPÁ</option>
+                                            <option value="3">SOLO MAMÁ</option>
+                                            <option value="4">HERMANOS</option>
+                                            <option value="5">TIO</option>
+                                            <option value="6">TIA</option>
+                                            <option value="7">OTRO FAMILIAR</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctApoyoRecibeFichaSocioeconomica">APOYO QUE RECIBES ES</label>
+                                        <select  class="form-control form-control-sm" id="slctApoyoRecibeFichaSocioeconomica">
+                                            <option value="-1">Seleccione. . .</option>
+                                            <option value="1">INTEGRAL</option>
+                                            <option value="2">PARCIAL</option>
+                                            <option value="3">NINGUNO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctTrabajas">TRABAJAS</label>
+                                        <select  class="form-control form-control-sm" id="slctTrabajas">
+                                            <option value="-1">Seleccione. . .</option>
+                                            <option value="1">SI</option>
+                                            <option value="2">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="txtActividadEconomicaDesempeniaFichaSocioeconomica">¿COMO TRABAJAS?
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indica la actividad económica que desempeñas" style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <input  type="text" class="form-control form-control-sm" id="txtActividadEconomicaDesempeniaFichaSocioeconomica" placeholder="Ingrese Código. . ." maxlength="7">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6 class="text-primary mb-0">ASPECTO VIVIENDA(Actual)</h6>
+                                    <hr class="mt-1">
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctTenenciaVivienda">TENENCIA DE VIVIENDA</label>
+                                        <select  class="form-control form-control-sm" id="slctTenenciaVivienda">
+                                            <option value="-1">Seleccione. . .</option>
+                                            <option value="PROPIA">PROPIA</option>
+                                            <option value="ALQUILADA">ALQUILADA</option>
+                                            <option value="ALQUILER VENTA">ALQUILER VENTA</option>
+                                            <option value="ANTICRECES">ANTICRECES</option>
+                                            <option value="GUARDERIA">GUARDERIA</option>
+                                            <option value="OTRO">OTRO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctTipoViviendaFichaSocioeconomica">TIPO DE VIVIENDA</label>
+                                        <select  class="form-control form-control-sm" id="slctTipoViviendaFichaSocioeconomica">
+                                            <option value="-1">Seleccione. . .</option>
+                                            <option value="CASA">CASA</option>
+                                            <option value="DEPARTAMENTO">DEPARTAMENTO</option>
+                                            <option value="HABITACION">HABITACION</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctMaterialViviendaFichaSocioeconomica">MATERIAL DE VIVIENDA</label>
+                                        <select  class="form-control form-control-sm" id="slctMaterialViviendaFichaSocioeconomica">
+                                            <option value="-1">Seleccione. . .</option>
+                                            <option value="NOBLE">NOBLE</option>
+                                            <option value="SILLAR">SILLAR</option>
+                                            <option value="BLOQUETAS">BLOQUETAS</option>
+                                            <option value="OTRO">OTRO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctEstadoConstruccionFichaSocioeconomica">ESTADO DE CONSTRUCCIÓN</label>
+                                        <select  class="form-control form-control-sm" id="slctEstadoConstruccionFichaSocioeconomica">
+                                            <option value="-1">Seleccione. . .</option>
+                                            <option value="TERMINADA">TERMINADA</option>
+                                            <option value="EN CONSTRUCCION">EN CONSTRUCCION</option>
+                                            <option value="PROVICIONAL">PROVICIONAL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="txtServiciosViviendaFichaSocieconomica">
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indica el domicilio actual de la madre. Si no tienes esta información deja la caja de texto en blanco" style="cursor: pointer" data-original-title=""></i>
+                                        </label>
+                                        <input  type="text" class="form-control form-control-sm" id="txtServiciosViviendaFichaSocieconomica" maxlength="200">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctServicioInternetFichaSocioeconomica">¿CUENTAS CON SERVICIO DE INTERNET?</label>
+                                        <select  class="form-control form-control-sm" id="slctServicioInternetFichaSocioeconomica">
+                                            <option value="-1">Seleccione. . .</option>
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctTieneLaptopFichaSocioeconomica">¿CUENTAS CON LAPTOP O PC?</label>
+                                        <select  class="form-control form-control-sm" id="slctTieneLaptopFichaSocioeconomica">
+                                            <option value="-1">Seleccione. . .</option>
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctCelPlanDatosFichaSocioeconomica">¿TIENES UN CEL. CON PLAN DE DATOS?</label>
+                                        <select  class="form-control form-control-sm" id="slctCelPlanDatosFichaSocioeconomica">
+                                            <option value="-1">Seleccione. . .</option>
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6 class="text-primary mb-0">DATOS SOBRE SALUD</h6>
+                                    <hr class="mt-1">
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctTipoSeguroFichaSocioeconomica">TIPO DE SEGURO</label>
+                                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctTipoSeguroFichaSocioeconomica">
+                                            <option  value="-1">Seleccionar...</option>
+                                            <option  value="ESSALUD">ESSALUD</option>
+                                            <option  value="SIS">SIS</option>
+                                            <option  value="SEGURO VOLUNTARIO UNIVERSITARIO">SEGURO VOLUNTARIO UNIVERSITARIO</option>
+                                            <option  value="OTRO">OTRO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="slctPresentaDiscapacidadFichaSocioeconomica">¿TIENES ALGUNA DISCAPACIDAD?</label>
+                                        <select  class="form-control form-control-sm" id="slctPresentaDiscapacidadFichaSocioeconomica">
+                                            <option value="-1">Seleccione. . .</option>
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
