@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestEvaluacion.operation = "paginate/evaluaciones";
     beanRequestEvaluacion.type_request = "GET";
 
-    
+
     document.querySelector("#btnCerrar").onclick = function () {
         document.querySelector("#row-evaluaciones").style.display = "none";
         document.querySelector("#btnListaAtendido").style.display = "initial";
@@ -96,7 +96,7 @@ function toListEvaluacion(beanPagination) {
         let div;
         beanPagination.list.forEach(evaluacion => {
             div =
-                    `
+                `
                 <div class="dt-widget__item border-success">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate">
