@@ -60,8 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('#txtFechaFFilterCita').value = '';
     };
 
+    let current_date = new Date();
+    $('#txtFechaIFilterCita').val(getDateJava(current_date));
+    $('#txtFechaFFilterCita').val(getDateJava(addDays(current_date, 30)));
+
     $('#FrmCita').submit(function (event) {
-        console.log("entro submi")
         if (document.querySelector('#txtFechaIFilterCita').value == "" && document.querySelector('#txtFechaFFilterCita').value == "") {
             beanRequestCita.operation = "paginate";
             beanRequestCita.type_request = "GET";
@@ -121,10 +124,13 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestCita.type_request = "GET";
     });
 
-
     $('#modalCargandoCita').modal('show');
 
     $("#sizePageCita").change(function () {
+        $('#modalCargandoCita').modal('show');
+    });
+
+    $("#txtTypeRequestCita").change(function () {
         $('#modalCargandoCita').modal('show');
     });
 
@@ -146,16 +152,21 @@ function processAjaxCita() {
         } else {
             let fecha_programada = document.querySelector("#txtFechaProgramadaDateCita").value + " " + document.querySelector("#txtFechaProgramadaTimeCita").value + ":00";
             let fecha_aceptacion = getTimesTampJavaScriptCurrent();
+            citaSelected.estado_cita = document.querySelector("#txtEstadoCita").value;
+            citaSelected.estado_solicitud = "ACE";
             if (beanRequestCita.operation == "add") {
-                fecha_solicitud = fecha_programada;
+                citaSelected = {
+                    "idcita": 0
+                }
+                citaSelected.fecha_solicitud = fecha_programada;
             }
             json = {
-                "fecha_solicitud": fecha_solicitud,
+                "fecha_solicitud": citaSelected.fecha_solicitud,
                 "fecha_aceptacion": fecha_aceptacion,
                 "fecha_programada": fecha_programada,
                 "fecha_atendida": null,
-                "estado_solicitud": "ACE",
-                "estado_cita": "PEN",
+                "estado_solicitud": citaSelected.estado_solicitud,
+                "estado_cita": citaSelected.estado_cita,
                 "motivo": document.querySelector("#txtMotivoCita").value,
                 "atendido": {
                     "idatendido": atendidoSelected.idatendido,
@@ -213,6 +224,11 @@ function toListCita(beanPagination) {
         let row;
         beanPagination.list.forEach(cita => {
             personal = cita.personal;
+            if (personal.idpersonal == 0) {
+                s_personal = "<span class='text-danger'>Sin Personal Asignado</span>";
+            } else {
+                s_personal = personal.nombre.toUpperCase() + " " + personal.apellido_pat.toUpperCase() + " " + personal.apellido_mat.toUpperCase()
+            }
             atendido = cita.atendido;
             buttom_editar =
                     `
@@ -230,9 +246,9 @@ function toListCita(beanPagination) {
             row += "<td class='align-middle text-left'>" + buttom_editar + "</td>";
             row += "<td class='align-middle text-left'>" + buttom_eliminar + "</td>";
             row += "<td class='align-middle text-left'>" + atendido.dni + "<br>" + atendido.nombre.toUpperCase() + " " + atendido.apellido_pat.toUpperCase() + " " + atendido.apellido_mat.toUpperCase() + "</td>";
-            row += "<td class='align-middle text-left'>" + cita.fecha_solicitud + "<br>" + cita.fecha_aceptacion + "</td>";
+            row += "<td class='align-middle text-left'>" + cita.fecha_solicitud + "<br>" + (cita.fecha_aceptacion == null ? "Pendiente" : cita.fecha_aceptacion) + "</td>";
             row += "<td class='align-middle text-left'>" + (cita.fecha_programada == undefined ? "Pendiente" : cita.fecha_programada) + "<br>" + (cita.fecha_atencion == undefined ? "Pendiente" : cita.fecha_atencion) + "</td>";
-            row += "<td class='align-middle text-left'>" + cita.area.nombre + "<br>" + personal.nombre.toUpperCase() + " " + personal.apellido_pat.toUpperCase() + " " + personal.apellido_mat.toUpperCase() + "</td>";
+            row += "<td class='align-middle text-left'>" + cita.area.nombre + "<br>" + s_personal + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyCita").innerHTML += row;
         });
@@ -259,10 +275,7 @@ function addEventsCitas() {
                 beanRequestCita.operation = "update";
                 beanRequestCita.type_request = "PUT";
                 //SET VALUES MODAL
-                document.querySelector("#txtNombreCita").value = citaSelected.nombre;
-                document.querySelector("#txtTituloModalMan").innerHTML = "EDITAR CITA";
-                $('#ventanaModalCita').modal("show");
-                document.querySelector("#txtNombreCita").focus();
+                openCita();
             } else {
                 showAlertTopEnd('warning', 'No se encontró el Cita para poder editar');
             }
@@ -338,3 +351,27 @@ function validateFormCita() {
     return true;
 }
 
+function openCita() {
+    atendido = citaSelected.atendido;
+    atendidoSelected = atendido;
+    personal = citaSelected.personal;
+    if (personal.idpersonal == 0) {
+        s_personal = "";
+        personalSelected = undefined;
+    } else {
+        s_personal = personal.nombre.toUpperCase() + " " + personal.apellido_pat.toUpperCase() + " " + personal.apellido_mat.toUpperCase()
+        personalSelected = personal;
+    }
+    areaSelected = citaSelected.area;
+    document.querySelector("#txtAtendidoCita").value = atendido.nombre.toUpperCase() + " " + atendido.apellido_pat.toUpperCase() + " " + atendido.apellido_mat.toUpperCase();
+    document.querySelector("#txtAreaCita").value = citaSelected.area.nombre;
+    document.querySelector("#txtPersonalEncargadoCita").value = s_personal;
+    s_fecha_programada = citaSelected.fecha_programada == null ? "" : citaSelected.fecha_programada.split(" ")[0];
+    s_hora_programada = citaSelected.fecha_programada == null ? "" : citaSelected.fecha_programada.split(" ")[1];
+    document.querySelector("#txtFechaProgramadaDateCita").value = s_fecha_programada;
+    document.querySelector("#txtFechaProgramadaTimeCita").value = s_hora_programada;
+    document.querySelector("#txtEstadoCita").value = citaSelected.estado_cita;
+    document.querySelector("#txtMotivoCita").value = citaSelected.motivo;
+    document.querySelector("#txtTituloModalMan").innerHTML = "EDITAR CITA";
+    $('#ventanaModalCita').modal("show");
+}

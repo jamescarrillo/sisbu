@@ -66,7 +66,7 @@
     <div class="col-12">
         <h5 class="text-danger pt-2 mb-1">*Nota: Las solicitudes con la barra vertical rojo indica Solicitud Pendiente.
         </h5>
-        <h5 class="text-warning mb-1">*Nota: Las solicitudes con la barra vertical anaranjado indica Solicitud
+        <h5 class="text-primary mb-1">*Nota: Las solicitudes con la barra vertical azul indica Solicitud
             Aprobada.
         </h5>
         <h5 class="text-success mb-2">*Nota: Las solicitudes con la barra vertical verde indica Solicitud Programada.</h5>
