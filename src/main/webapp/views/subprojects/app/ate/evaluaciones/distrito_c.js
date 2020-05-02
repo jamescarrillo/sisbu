@@ -57,12 +57,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         switch (distrito_option) {
             case "padre":
-                distritoMadreSelected = distritoCSelected;
+                distritoPadreSelected = distritoCSelected;
                 document.querySelector("#txtDistritoPadre").value = distritoCSelected.nombre.toUpperCase();
                 break;
             default:
-                //actual
-                distritoPadreSelected = distritoCSelected;
+                distritoMadreSelected = distritoCSelected;
                 document.querySelector("#txtDistritoMadre").value = distritoCSelected.nombre.toUpperCase();
                 break;
         }
