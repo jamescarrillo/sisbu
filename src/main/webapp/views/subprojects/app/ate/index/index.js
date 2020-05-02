@@ -1,8 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    document.querySelector("#lblNameUserIndex").innerHTML = getStringCapitalize(Cookies.getJSON('sisbu_user').usuario.split(" ")[0].toLowerCase());
-    document.querySelector("#lblNameUserIndex2").innerHTML = document.querySelector("#lblNameUserIndex").innerHTML;
+    let nameUser = getStringCapitalize(user_session.usuario.split(" ")[0].toLowerCase());
+    document.querySelector("#lblNameUserIndex1").innerHTML = nameUser;
+    document.querySelector("#lblNameUserIndex2").innerHTML = nameUser;
+    document.querySelector("#lblNameUserIndex3").innerHTML = nameUser;
 
     document.querySelector("#row-saludo-principal").style.display = "flex";
     document.querySelector("#row-videos-tutoriales").style.display = "none";
@@ -33,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location = "datos";
         }
     });
-    
+
     document.querySelector("#icon-access-reserva-citas").onclick = function () {
         window.location = "reservas";
     };

@@ -2,6 +2,7 @@ var beanPaginationAtendido;
 var beanPaginationEscuela;
 var atendidoSelected;
 var escuelaSelected;
+var cicloAcademicoSelected;
 var distritoActualSelected;
 var distritoProcedenciaSelected;
 var beanRequestAtendido = new BeanRequest();
@@ -22,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         lang: 'es'
     }).on('change', function (e, date) {
     });
-    
+
     document.querySelector('#btnEliminarFechaNacPaciente').onclick = function () {
         document.querySelector('#txtFechaNacPaciente').value = '';
     };
@@ -100,7 +101,7 @@ function processAjaxAtendido() {
                 "subtipo_atendido": atendidoSelected.subtipo_atendido,
                 "cachimbo": atendidoSelected.cachimbo,
                 "comensal": atendidoSelected.comensal,
-                "ciclo_academico_ingreso": atendidoSelected.ciclo_academico_ingreso,
+                "ciclo_academico_ingreso": {"idciclo_academico": cicloAcademicoSelected.idciclo_academico},
                 "escuela": {"idescuela": escuelaSelected.idescuela},
                 "distrito_actual": {"iddistrito": distritoActualSelected.iddistrito},
                 "distrito_procedencia": {"iddistrito": distritoProcedenciaSelected.iddistrito},
@@ -233,6 +234,7 @@ function addInputDatos(atendidoSelected) {
     document.querySelector("#txtEscuelaPaciente").value = atendidoSelected.escuela.nombre;
     document.querySelector("#txtDistritoActualPaciente").value = atendidoSelected.distrito_actual.nombre;
     document.querySelector("#txtDistritoProcedenciaPaciente").value = atendidoSelected.distrito_procedencia.nombre;
+    document.querySelector("#txtCicloAcademicoPaciente").value = atendidoSelected.ciclo_academico_ingreso.nombre;
     if (atendidoSelected.escuela.idescuela == 0) {
         escuelaSelected = undefined;
     } else {
@@ -244,9 +246,14 @@ function addInputDatos(atendidoSelected) {
         distritoActualSelected = atendidoSelected.distrito_actual;
     }
     if (atendidoSelected.distrito_procedencia.iddistrito == 0) {
-        distritoProcedenciaSelected = 0;
+        distritoProcedenciaSelected = undefined;
     } else {
         distritoProcedenciaSelected = atendidoSelected.distrito_procedencia;
+    }
+    if (atendidoSelected.ciclo_academico_ingreso.idciclo_academico == 0) {
+        cicloAcademicoSelected = undefined;
+    } else {
+        cicloAcademicoSelected = atendidoSelected.ciclo_academico_ingreso;
     }
     $('[data-toggle="popover"]').popover();
 }
