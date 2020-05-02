@@ -85,7 +85,6 @@
                                     </select>
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
                                     <label for="txtCodigoPaciente">CÓDIGO
@@ -278,10 +277,9 @@
                         <div class="col-lg-6">
                             <div class="form-group ">
                                 <label for="txtNombreFamiliar">NOMBRE COMPLETO</label>
-                                <input  type="text" class="form-control form-control-sm" id="txtNombreFamiliar" placeholder="Ingrese nombre completo. . ." maxlength="100">
+                                <input  type="text" class="form-control form-control-sm text-uppercase" id="txtNombreFamiliar" placeholder="Ingrese nombre completo. . ." maxlength="100">
                             </div>
                         </div>
-
                         <div class="col-lg-6">
                             <div class="form-group ">
                                 <label for="txtParentescoFamiliar">PARENTESCO</label>
@@ -311,7 +309,7 @@
                             <div class="form-group ">
                                 <label for="txtEstadoFamiliar">ESTADO CIVIL</label>
                                 <select class="form-control form-control-sm sisbu-cursor-mano" id="txtEstadoFamiliar">
-                                    <option value="-1">seleccione. . .</option>
+                                    <option value="-1">Seleccione. . .</option>
                                     <option value="1">SOLTERO</option>
                                     <option value="2">CASADO</option>
                                     <option value="3">DIVORCIADO</option>
@@ -322,7 +320,7 @@
                             <div class="form-group ">
                                 <label for="txtNivelInstFamiliar">NIVEL INSTRUCCIÓN</label>
                                 <select class="form-control form-control-sm sisbu-cursor-mano" id="txtNivelInstFamiliar">
-                                    <option value="-1">seleccione. . .</option>
+                                    <option value="-1">Seleccione. . .</option>
                                     <option value="1">SIN ESTUDIOS</option>
                                     <option value="2">PRIMARIA</option>
                                     <option value="3">SECUNDARIA</option>
@@ -331,7 +329,6 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="col-lg-6">
                             <div class="form-group ">
                                 <label for="txtIngresosFamiliar">INGRESOS
@@ -341,25 +338,38 @@
                             </div>
                         </div>
                         <div class="col-lg-6 mb-3">
-                            <label for="txtOcupacionPaciente">OCUPACIÓN
+                            <label for="txtOcupacionFamiliarPaciente">OCUPACIÓN
                                 <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Es a lo que se dedica tu familiar" style="cursor: pointer" data-original-title=""></i>
                             </label>
                             <div class="input-group">
-                                <input type="text" class="form-control form-control-sm" id="txtOcupacionPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                <input type="text" class="form-control form-control-sm" id="txtOcupacionFamiliarPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
                                 <div class="input-group-append">
                                     <button type="button" id="btnSeleccionarOcupacion" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 mb-3">
-                            <label for="txtDistritoPaciente">DISTRITO PROCEDENCIA
-                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Es el distrito donde nacio tu familiar" style="cursor: pointer" data-original-title=""></i>
-                            </label>
-                            <div class="input-group">
-                                <input type="text" class="form-control form-control-sm" id="txtDistritoPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
-                                <div class="input-group-append">
-                                    <button type="button" id="btnSeleccionarDistritoFamiliar" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
-                                </div>
+                        <div class="col-lg-6">
+                            <div class="form-group ">
+                                <label for="slctSufreAlgunaEnfermedad">¿SUFRE ALGUNA ENFERMEDAD?
+                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indica si el familiar sufre de alguna enfermedad" style="cursor: pointer" data-original-title=""></i>
+                                </label>
+                                <select class="form-control form-control-sm sisbu-cursor-mano" id="slctSufreAlgunaEnfermedad">
+                                    <option value="-1">Seleccione. . .</option>
+                                    <option value="S">SI</option>
+                                    <option value="N">NO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-enfermedad">
+                            <div class="form-group ">
+                                <label for="txtEnfermedadFamiliar">ENFERMEDAD</label>
+                                <input  type="text" class="form-control form-control-sm text-uppercase" id="txtEnfermedadFamiliar" placeholder="Ingrese la enfermedad. . ." maxlength="100">
+                            </div>
+                        </div>
+                        <div class="col-12 col-enfermedad">
+                            <div class="form-group ">
+                                <label for="txtLugarTratamientoFamiliar">LUGAR DE TRATAMIENTO</label>
+                                <input  type="text" class="form-control form-control-sm text-uppercase" id="txtLugarTratamientoFamiliar" placeholder="Ingrese lugar de tratamiento. . ." maxlength="300">
                             </div>
                         </div>
                     </div>

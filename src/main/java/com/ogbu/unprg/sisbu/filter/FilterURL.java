@@ -267,6 +267,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ate/evaluaciones/evaluaciones.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/deporte_c.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/aficion_c.js" + version_project,
+            "/views/subprojects/app/ate/evaluaciones/distrito_c.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/intento_evaluacion.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/evaluaciones_socieconomica.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/evaluaciones_deportiva.js" + version_project,

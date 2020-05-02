@@ -6,6 +6,10 @@
 var beanPaginationDistritoC;
 var distritoCSelected;
 
+var distritoPadreSelected;
+var distritoMadreSelected;
+var distrito_option;
+
 var beanRequestDistritoC = new BeanRequest();
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -36,13 +40,13 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestDistritoC.type_request = "GET";
     });
 
-    document.querySelector("#btnSeleccionarDistritoActual").onclick = function () {
-        distrito_option = "actual";
+    document.querySelector("#btnSeleccionarDistritoPadre").onclick = function () {
+        distrito_option = "padre";
         $('#ventanaModalSelectedDistritoC').modal('show');
     };
 
-    document.querySelector("#btnSeleccionarDistritoProcedencia").onclick = function () {
-        distrito_option = "procedencia";
+    document.querySelector("#btnSeleccionarDistritoMadre").onclick = function () {
+        distrito_option = "madre";
         $('#ventanaModalSelectedDistritoC').modal('show');
     };
 
@@ -52,14 +56,13 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
         switch (distrito_option) {
-            case "procedencia":
-                distritoProcedenciaSelected = distritoCSelected;
-                document.querySelector("#txtDistritoProcedenciaPaciente").value = distritoCSelected.nombre.toUpperCase();
+            case "padre":
+                distritoPadreSelected = distritoCSelected;
+                document.querySelector("#txtDistritoPadre").value = distritoCSelected.nombre.toUpperCase();
                 break;
             default:
-                //actual
-                distritoActualSelected = distritoCSelected;
-                document.querySelector("#txtDistritoActualPaciente").value = distritoCSelected.nombre.toUpperCase();
+                distritoMadreSelected = distritoCSelected;
+                document.querySelector("#txtDistritoMadre").value = distritoCSelected.nombre.toUpperCase();
                 break;
         }
         $('#ventanaModalSelectedDistritoC').modal('hide');
@@ -68,14 +71,14 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnCancelSelectionDistritoC").onclick = function () {
         distritoCSelected = undefined;
         switch (distrito_option) {
-            case "procedencia":
-                distritoActualSelected = distritoCSelected;
-                document.querySelector("#txtDistritoProcedenciaPaciente").value = "";
+            case "padre":
+                distritoPadreSelected = distritoCSelected;
+                document.querySelector("#txtDistritoPadre").value = "";
                 break;
             default:
                 //actual
-                distritoActualSelected = distritoCSelected;
-                document.querySelector("#txtDistritoActualPaciente").value = "";
+                distritoPadreSelected = distritoCSelected;
+                document.querySelector("#txtDistritoMadre").value = "";
                 break;
         }
     };

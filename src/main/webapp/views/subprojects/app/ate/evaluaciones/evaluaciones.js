@@ -89,6 +89,12 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     });
 
+    if (user_session.tipo_perfil == 1000) {
+        document.querySelector("#div-message-cachimbo").style.display = "block";
+    } else {
+        document.querySelector("#div-message-cachimbo").style.display = "none";
+    }
+
     $('[data-toggle="popover"]').popover();
 
 });
@@ -104,7 +110,8 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-obstetricia").style.display = "none";
             break;
         case "deportiva":
-
+            showAlertTopEnd("warning", "Esta evaluación no está disponible");
+            return;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";
@@ -121,6 +128,8 @@ function navigateOptionEvaluation(option) {
             //showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación. Ingresa a partir del 02/10/2019', 10000)
             break;
         case "psicologica":
+            showAlertTopEnd("warning", "Esta evaluación no está disponible");
+            return ;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";
@@ -131,6 +140,8 @@ function navigateOptionEvaluation(option) {
             $('#modalCargandoProcedimientoPsicologico').modal('show');
             break;
         case "obstetricia":
+            showAlertTopEnd("warning", "Esta evaluación no está disponible");
+            return ;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";
@@ -149,7 +160,9 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-psicologica").style.display = "none";
             document.querySelector("#row-option-obstetricia").style.display = "none";
 
-            $('#modalCargandoProcedimientoSocioeconomico').modal('show');
+            beanRequestFichaSocieconomica.operation = "get/by/idusuario";
+            beanRequestFichaSocieconomica.type_request = "GET";
+            $("#modalCargandoSelectedFichaSocieconomica").modal('show');
             break;
     }
 }
@@ -386,24 +399,6 @@ function navigateProcedimientoAndPreguntas(opcion) {
                     document.querySelector("#div-regresar-selected-evaluation-psicologico").style.display = "block";
                     //VOLVEMOS A LISTAR
                     $('#modalCargandoProcedimientoPsicologico').modal('show');
-                    break;
-            }
-            break;
-        default:
-            //socioeconomico
-            switch (opcion) {
-                case "preguntas":
-                    document.querySelector("#div-evaluaciones-socioeconomico").style.display = "none";
-                    document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "flex";
-                    document.querySelector("#div-regresar-selected-evaluation-socioeconomico").style.display = "none";
-                    break;
-                default:
-                    //HOME, LISTA DE EVALUACIONES
-                    document.querySelector("#div-evaluaciones-socioeconomico").style.display = "flex";
-                    document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "none";
-                    document.querySelector("#div-regresar-selected-evaluation-socioeconomico").style.display = "block";
-                    //VOLVEMOS A LISTAR
-                    $('#modalCargandoProcedimientoSocioeconomico').modal('show');
                     break;
             }
             break;

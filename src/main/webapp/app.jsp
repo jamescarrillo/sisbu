@@ -234,7 +234,7 @@
 
                         <!-- Footer -->
                         <footer class="dt-footer">
-                            Copyright OGBU-UNPRG © 2019 v 2.0
+                            Copyright OGBU-UNPRG © 2020 v 2.1
                         </footer>
                         <!-- /footer -->
 
@@ -243,7 +243,7 @@
 
 
                     <!-- Theme Chooser -->
-                    <div class="dt-customizer-toggle" style="top: 530px">
+                    <div class="dt-customizer-toggle" style="top: 530px; display: none">
                         <a href="javascript:void(0)" data-toggle="customizer"> <i
                                 class="icon icon-customizer animation-customizer"></i> </a>
                     </div>
