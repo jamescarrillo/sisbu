@@ -155,7 +155,9 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-psicologica").style.display = "none";
             document.querySelector("#row-option-obstetricia").style.display = "none";
 
-            //$('#modalCargandoProcedimientoSocioeconomico').modal('show');
+            beanRequestFichaSocieconomica.operation = "get/by/idusuario";
+            beanRequestFichaSocieconomica.type_request = "GET";
+            $("#modalCargandoSelectedFichaSocieconomica").modal('show');
             break;
     }
 }
@@ -392,24 +394,6 @@ function navigateProcedimientoAndPreguntas(opcion) {
                     document.querySelector("#div-regresar-selected-evaluation-psicologico").style.display = "block";
                     //VOLVEMOS A LISTAR
                     $('#modalCargandoProcedimientoPsicologico').modal('show');
-                    break;
-            }
-            break;
-        default:
-            //socioeconomico
-            switch (opcion) {
-                case "preguntas":
-                    document.querySelector("#div-evaluaciones-socioeconomico").style.display = "none";
-                    document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "flex";
-                    document.querySelector("#div-regresar-selected-evaluation-socioeconomico").style.display = "none";
-                    break;
-                default:
-                    //HOME, LISTA DE EVALUACIONES
-                    document.querySelector("#div-evaluaciones-socioeconomico").style.display = "flex";
-                    document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "none";
-                    document.querySelector("#div-regresar-selected-evaluation-socioeconomico").style.display = "block";
-                    //VOLVEMOS A LISTAR
-                    $('#modalCargandoProcedimientoSocioeconomico').modal('show');
                     break;
             }
             break;

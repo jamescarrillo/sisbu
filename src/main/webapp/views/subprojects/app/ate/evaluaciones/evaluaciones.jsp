@@ -105,41 +105,6 @@
 <div class="row" id="row-option-socioeconomico" style="display: none;">
     <div class="col-12">
         <div class="row" id="div-evaluaciones-socioeconomico">
-            <div class="col-12" style="display: none">
-                <div class="dt-card dt-card__full-height">
-                    <div class="dt-card__header mb-2 pt-4">
-                        <div class="dt-card__heading">
-                            <h3 class="dt-card__title">Avance</h3>
-                        </div>
-                    </div>
-                    <div class="dt-card__body pb-4">
-                        <div class="row">
-                            <div class="col-xl-4 col-md-12 col-sm-4">
-                                <!-- Chart -->
-                                <canvas class="mx-auto mb-5 mb-sm-0 mb-md-5 mb-xl-0"
-                                        id="estimation-socioeconomico" data-fill="0"
-                                        height="110" width="110"></canvas>
-                            </div>
-                            <div class="col-xl-8 col-md-12 col-sm-8">
-                                <div class="pb-3 mb-3 border-bottom">
-                                    <span class="display-4 d-inline-block mr-2 font-weight-500 text-dark" id="lblNumProcedimientosSocioeconomico">0</span><span
-                                        class="font-weight-light f-16">Fichas</span>
-                                </div>
-                                <ul class="dt-list dt-list-col-6">
-                                    <li class="dt-list__item">
-                                        <span class="dot-shape dot-shape-lg bg-light-green mr-2"></span>
-                                        <span class="d-inline-block" id="lblNumRespondidasSocioeconomico">0 Realizadas</span>
-                                    </li>
-                                    <li class="dt-list__item">
-                                        <span class="dot-shape dot-shape-lg bg-light-pink mr-2"></span>
-                                        <span class="d-inline-block" id="lblNumPendientesSocioeconomico">0 Pendientes</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="col-12">
                 <div class="dt-card">
                     <div class="dt-card__body">
@@ -150,28 +115,22 @@
                                     <h6 class="text-primary mb-0">DATOS GENERALES</h6>
                                     <hr class="mt-1">
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="slctTienesHijos">¿Tienes hijo(s)?</label>
+                                <div class="col-12 mb-4">
+                                    <label for="slctTienesHijos">¿Tienes hijo(s)?</label>
+                                    <div class="input-group">
                                         <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctTienesHijos">
                                             <option  value="-1">Seleccionar...</option>
-                                            <option  value="S">SI</option>
-                                            <option  value="N">NO</option>
+                                            <option  value="SI">SI</option>
+                                            <option  value="NO">NO</option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="txtCantHijosFichaSocioeconomica">INGRESE CANT. HIJOS
-                                        </label>
-                                        <input  type="text" class="form-control form-control-sm" id="txtCantHijosFichaSocioeconomica" placeholder="Ingrese cant hijos. . ." maxlength="2">
+                                        <input style="display: none" type="number" class="form-control form-control-sm" id="txtCantHijosFichaSocioeconomica" placeholder="Ingrese cant hijos. . ." maxlength="2">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="txtNombreColegioFichaSocioeconomica">NOMBRE DE COLEGIO DE PROCEDENCIA
                                         </label>
-                                        <input  type="text" class="form-control form-control-sm" id="txtNombreColegioFichaSocioeconomica" placeholder="" maxlength="300">
+                                        <input  type="text" class="form-control form-control-sm text-uppercase" id="txtNombreColegioFichaSocioeconomica" placeholder="" maxlength="300">
                                     </div>
                                 </div>
                             </div>
@@ -219,8 +178,6 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group">
                                         <label for="txtCanCreditosMatriculados">N° CRÉDITOS MATRICULADOS
@@ -252,7 +209,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="txtDomicilioPadreFichaSocieconomica">DOMICIO DEL PADRE
+                                        <label for="txtDomicilioPadreFichaSocieconomica">DOMICILIO DEL PADRE
                                             <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indica el domicilio actual del padre. Si no tienes esta información deja la caja de texto en blanco" style="cursor: pointer" data-original-title=""></i>
                                         </label>
                                         <input  type="text" class="form-control form-control-sm text-uppercase" id="txtDomicilioPadreFichaSocieconomica" maxlength="200">
@@ -260,26 +217,44 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="txtDomicilioMadreFichaSocieconomica">DOMICIO DE LA MADRE
+                                        <label for="txtDomicilioMadreFichaSocieconomica">DOMICILIO DE LA MADRE
                                             <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indica el domicilio actual de la madre. Si no tienes esta información deja la caja de texto en blanco" style="cursor: pointer" data-original-title=""></i>
                                         </label>
                                         <input  type="text" class="form-control form-control-sm text-uppercase" id="txtDomicilioMadreFichaSocieconomica" maxlength="200">
                                     </div>
                                 </div>
+                                <div class="col-lg-6 col-12 mb-4">
+                                    <label for="txtDistritoPadre">DISTRITO DONDE VIVE EL PADRE</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control form-control-sm" id="txtDistritoPadre" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                        <div class="input-group-append">
+                                            <button type="button" id="btnSeleccionarDistritoPadre" class="btn btn-primary btn-sm pulse-primary"><i class="icon icon-subscribe"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12 mb-4">
+                                    <label for="txtDistritoMadre">DISTRITO DONDE VIVE LA MADRE</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control form-control-sm" id="txtDistritoMadre" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                        <div class="input-group-append">
+                                            <button type="button" id="btnSeleccionarDistritoMadre" class="btn btn-primary btn-sm pulse-primary"><i class="icon icon-subscribe"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="form-group">
-                                        <label for="txtFichaFichaSocieconomica">RELACIÓN DE PADRES</label>
-                                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtEstadoPaciente">
-                                            <option  value="-1">Seleccionar...</option>
-                                            <option  value="1">CONVIVIENTES</option>
-                                            <option  value="2">SEPARADOS</option>
-                                            <option  value="3">DIVORCIADO</option>
-                                            <option  value="4">ORFANDAD PARCIAL</option>
-                                            <option  value="5">ORFANDAD TOTAL</option>
+                                        <label for="txtRelacionPadresFichaSocieconomica">RELACIÓN DE PADRES</label>
+                                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtRelacionPadresFichaSocieconomica">
+                                            <option value="-1">Seleccionar...</option>
+                                            <option value="CONVIVIENTES">CONVIVIENTES</option>
+                                            <option value="SEPARADOS">SEPARADOS</option>
+                                            <option value="DIVORCIADO">DIVORCIADO</option>
+                                            <option value="ORFANDAD PARCIAL">ORFANDAD PARCIAL</option>
+                                            <option value="ORFANDAD TOTAL">ORFANDAD TOTAL</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 mb-4">
                                     <label for="slctConQuienViveFichaSocieconomica">¿CON QUIEN VIVES?</label>
                                     <div class="input-group">
                                         <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctConQuienViveFichaSocieconomica">
@@ -289,9 +264,10 @@
                                             <option  value="MADRE">MADRE</option>
                                             <option  value="HERMANOS">HERMANOS</option>
                                             <option  value="CONYUQUE">CONYUQUE</option>
-                                            <option  value="OTRO">OTRO</option>
+                                            <option  value="SOLO(A)">SOLO(A)</option>
+                                            <option  value="OTRO">OTRA OPCIÓN</option>
                                         </select>
-                                        <input style="display: none"  type="text" class="form-control form-control-sm" id="txtConQuienViveFichaSocieconomica" maxlength="200">
+                                        <input style="display: none"  type="text" class="form-control form-control-sm text-uppercase" id="txtConQuienViveFichaSocieconomica" maxlength="100" placeholder="Ingesa con quien vives. . .">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -299,9 +275,9 @@
                                         <label for="slctRelacionFamiliaresFichaSocieconomica">LAS RELACIONES FAMILIARES SON</label>
                                         <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctRelacionFamiliaresFichaSocieconomica">
                                             <option  value="-1">Seleccionar...</option>
-                                            <option  value="1">BUENAS</option>
-                                            <option  value="2">REGULARES</option>
-                                            <option  value="3">MALAS</option>
+                                            <option  value="BUENAS">BUENAS</option>
+                                            <option  value="REGULARES">REGULARES</option>
+                                            <option  value="MALAS">MALAS</option>
                                         </select>
                                     </div>
                                 </div>
@@ -316,13 +292,14 @@
                                         <label for="slctDependenciaEconomicaFichaSocioeconomica">DEPENDENCIA ECONÓMICA</label>
                                         <select  class="form-control form-control-sm" id="slctDependenciaEconomicaFichaSocioeconomica">
                                             <option value="-1">Seleccionar. . .</option>
-                                            <option value="1">AMBOS PADRES</option>
-                                            <option value="2">SOLO PAPÁ</option>
-                                            <option value="3">SOLO MAMÁ</option>
-                                            <option value="4">HERMANOS</option>
-                                            <option value="5">TIO</option>
-                                            <option value="6">TIA</option>
-                                            <option value="7">OTRO FAMILIAR</option>
+                                            <option value="AMBOS PADRES">AMBOS PADRES</option>
+                                            <option value="SOLO PAPÁ">SOLO PAPÁ</option>
+                                            <option value="SOLO MAMÁ">SOLO MAMÁ</option>
+                                            <option value="HERMANOS">HERMANOS</option>
+                                            <option value="TIO">TIO</option>
+                                            <option value="TIA">TIA</option>
+                                            <option value="OTRO FAMILIAR">OTRO FAMILIAR</option>
+                                            <option value="NADIE">NADIE</option>
                                         </select>
                                     </div>
                                 </div>
@@ -331,9 +308,9 @@
                                         <label for="slctApoyoRecibeFichaSocioeconomica">EL APOYO QUE RECIBES ES</label>
                                         <select  class="form-control form-control-sm" id="slctApoyoRecibeFichaSocioeconomica">
                                             <option value="-1">Seleccionar. . .</option>
-                                            <option value="1">INTEGRAL</option>
-                                            <option value="2">PARCIAL</option>
-                                            <option value="3">NINGUNO</option>
+                                            <option value="INTEGRAL">INTEGRAL</option>
+                                            <option value="PARCIAL">PARCIAL</option>
+                                            <option value="NINGUNO">NINGUNO</option>
                                         </select>
                                     </div>
                                 </div>
@@ -345,7 +322,7 @@
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
-                                        <input style="display: none" type="text" class="form-control form-control-sm" id="txtActividadEconomicaDesempeniaFichaSocioeconomica" placeholder="Ingresa como trabajas. . ." maxlength="50">
+                                        <input style="display: none" type="text" class="form-control form-control-sm text-uppercase" id="txtActividadEconomicaDesempeniaFichaSocioeconomica" placeholder="Ingresa como trabajas. . ." maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -366,7 +343,7 @@
                                             <option value="GUARDERIA">GUARDERIA</option>
                                             <option value="OTRO">OTRO</option>
                                         </select>
-                                        <input style="display: none" type="text" class="form-control form-control-sm" id="txtTenenciaViviendaFichaSocieconomica" maxlength="50">
+                                        <input style="display: none" type="text" class="form-control form-control-sm text-uppercase" id="txtTenenciaViviendaFichaSocieconomica" maxlength="50" placeholder="Ingrese tipo de tenencia de vivienda">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -390,7 +367,7 @@
                                             <option value="BLOQUETAS">BLOQUETAS</option>
                                             <option value="OTRO">OTRO</option>
                                         </select>
-                                        <input style="display: none" type="text" class="form-control form-control-sm" id="txtMaterialViviendaFichaSocioeconomica" maxlength="50">
+                                        <input style="display: none" type="text" class="form-control form-control-sm text-uppercase" id="txtMaterialViviendaFichaSocioeconomica" maxlength="50" placeholder="Ingresa el material de tu vivienda. . .">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -405,11 +382,38 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="txtServiciosViviendaFichaSocieconomica">SERVICIOS DE VIVIENDA
-                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indica el domicilio actual de la madre. Si no tienes esta información deja la caja de texto en blanco" style="cursor: pointer" data-original-title=""></i>
-                                        </label>
-                                        <input  type="text" class="form-control form-control-sm" id="txtServiciosViviendaFichaSocieconomica" maxlength="200">
+                                    <label for="txtServiciosViviendaFichaSocieconomica">SERVICIOS DE VIVIENDA</label>
+                                    <div class="row mt-1">
+                                        <div class="col-lg-2 col-md-3 col-sm-4">
+                                            <div class="form-group custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input check-servicio-fs" id="checkboxLuzService" service="LUZ">
+                                                <label class="custom-control-label sisbu-cursor-mano" for="checkboxLuzService">Luz</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-3 col-sm-4">
+                                            <div class="form-group custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input check-servicio-fs" id="checkboxAguaService" service="AGUA">
+                                                <label class="custom-control-label sisbu-cursor-mano" for="checkboxAguaService">Agua</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-3 col-sm-4">
+                                            <div class="form-group custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input check-servicio-fs" id="checkboxDesagueService" service="DESAGUE">
+                                                <label class="custom-control-label sisbu-cursor-mano" for="checkboxDesagueService">Desague</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-3 col-sm-4">
+                                            <div class="form-group custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input check-servicio-fs" id="checkboxTelefonoService" service="TELEFONO">
+                                                <label class="custom-control-label sisbu-cursor-mano" for="checkboxTelefonoService">Teléfono</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-3 col-sm-4">
+                                            <div class="form-group custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input check-servicio-fs" id="checkboxTvPorCableService" service="TV POR CABLE">
+                                                <label class="custom-control-label sisbu-cursor-mano" for="checkboxTvPorCableService">TV por cable</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-6">
@@ -448,16 +452,18 @@
                                     <h6 class="text-primary mb-0">DATOS SOBRE SALUD</h6>
                                     <hr class="mt-1">
                                 </div>
-                                <div class="col-lg-4 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="slctTipoSeguroFichaSocioeconomica">TIPO DE SEGURO</label>
+                                <div class="col-lg-4 col-sm-6 mb-4">
+                                    <label for="slctTipoSeguroFichaSocioeconomica">TIPO DE SEGURO</label>
+                                    <div class="input-group">
                                         <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctTipoSeguroFichaSocioeconomica">
                                             <option  value="-1">Seleccionar...</option>
                                             <option  value="ESSALUD">ESSALUD</option>
                                             <option  value="SIS">SIS</option>
                                             <option  value="SEGURO VOLUNTARIO UNIVERSITARIO">SEGURO VOLUNTARIO UNIVERSITARIO</option>
+                                            <option  value="NO TENGO SEGURO">NO TENGO SEGURO</option>
                                             <option  value="OTRO">OTRO</option>
                                         </select>
+                                        <input style="display: none" type="text" class="form-control form-control-sm" id="txtTipoSeguroFichaSocioeconomica" maxlength="50" placeholder="Ingresa tu tipo de seguro. . .">
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
@@ -468,82 +474,17 @@
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
-                                        <input style="display: none" type="text" class="form-control form-control-sm" id="txtDiscapacidadFichaSocioeconomica" maxlength="50">
+                                        <input style="display: none" type="text" class="form-control form-control-sm" id="txtDiscapacidadFichaSocioeconomica" maxlength="100" placeholder="Ingresa tu discapacidad. . .">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" id="div-preguntas-evaluacion-socioeconomico" style="display: none">
-            <div class="col-12" style="">
-                <div class="dt-card">
-                    <div class="dt-card__header bg-primary pb-7 mb-0 rounded-top">
-                        <div class="dt-card__heading">
-                            <div class="d-flex align-items-center">
-                                <i class="icon icon-invoice-new icon-fw icon-2x text-white mr-2"></i>
-                                <h3 class="dt-card__title text-white" style="text-transform: none">Lista de Preguntas</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dt-card__body pb-3">
-                        <div class="row mt-3">
-                            <div class="col-12">
-                                <ul class="list-group list-group-flush" id="content-preguntas-evaluacion-socioeconomico">
-                                    <!--li class="list-group-item">
-                                        <div class="form-group mb-2">
-                                            <label class="mb-2">1. ¿Como estas en todo este proceso de aprendizaje?</label>
-                                            <select class="form-control form-control-sm">
-                                                <option>Respuesta...</option>
-                                                <option>OPCION 1</option>
-                                                <option>OPCION 2</option>
-                                                <option>OPCION 3</option>
-                                                <option>OPCION 4</option>
-                                            </select>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="form-group mb-2">
-                                            <label class="mb-2">1. ¿Como estas en todo este proceso de NUEVO?</label>
-                                            <input class="form-control form-control-sm">
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <label class="mb-2">1. ¿Como estas en todo este proceso de NUEVO?
-                                            <i class="icon icon-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" 
-                                               title="" data-content="Mensaje de ayuda" 
-                                               style="cursor: pointer" data-original-title=""></i>
-                                        </label>
-                                        <div class="form-group custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="checkbox-1">
-                                            <label class="custom-control-label sisbu-cursor-mano" for="checkbox-1">Siempre</label>
-                                        </div>
-                                        <div class="form-group custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="checkbox-2">
-                                            <label class="custom-control-label" for="checkbox-2">Casi Siempre</label>
-                                        </div>
-                                        <div class="form-group custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="checkbox-3">
-                                            <label class="custom-control-label" for="checkbox-3">Aveces</label>
-                                        </div>
-                                        <div class="form-group custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="checkbox-4">
-                                            <label class="custom-control-label" for="checkbox-4">Nose xd</label>
-                                        </div>
-                                    </li-->
-                                </ul>
-                            </div>
-                            <div class="col-12 text-right">
-                                <button class="btn btn-outline-primary" id="btn-cancelar-evaluation-socioeconomico">
-                                    <i class="icon icon-reply"></i>
-                                    Salir
-                                </button>
-                                <button class="btn btn-primary" id="btn-finalizar-evaluation-socioeconomico">
-                                    <i class="icon icon-double-arrow-right mb-1"></i>
-                                    Finalizar
-                                </button>
+                            <div class="row mt-3">
+                                <div class="col-12 text-right">
+                                    <button class="btn btn-primary pulse-primary" id="btn-finalize-evuacion-socioeconomica">
+                                        <i class="fas fa-check"></i>
+                                        FANALIZAR
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1040,7 +981,7 @@
 </div>
 
 <!--MODALES CARGNADO-->
-<div class="modal" id="modalCargandoProcedimientoSocioeconomico" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal" id="modalCargandoSelectedFichaSocieconomica" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -1381,6 +1322,95 @@
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                         Cargando aficiones. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--T: DISTRITO SELECTED-->
+<div id="ventanaModalSelectedDistritoC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 1%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerDistritoC"><strong>[ 0 ]
+                        DISTRITOS</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageDistritoC"
+                               value="1">
+                        <form id="FrmDistritoC">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterDistritoC"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarDistritoC"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5 mb-2">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">DISTRITO</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyDistritoC">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2" style="display: none">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePageDistritoC"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="5">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationDistritoC"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionDistritoC"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-distritoc" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoSelectedDistritoC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando distritos. . .
                     </div>
                 </div>
             </div>
