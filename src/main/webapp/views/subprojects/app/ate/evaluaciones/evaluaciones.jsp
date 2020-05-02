@@ -23,18 +23,18 @@
 
             </div>
         </div>
-        <p class="text-center text-danger" style="font-size: 12px">
+        <!--p class="text-center text-danger" style="font-size: 12px">
             ***Nota: Te sugerimos ver los videos tutoriales sobre como llenar correctamente las evaluaciones, 
             si aún no lo has hecho, dale click a este enlace 
             <a href="<%=request.getContextPath()%>/app/ate/videos-tutoriales">
                 <i class="icon icon-arrow-right icon-fw mr-2 mr-sm-1"></i> Videos Tutoriales
             </a>
             o dale click al boton que dice ¡Mirar Videos Tutoriales!
-        </p>
+        </p-->
     </div>
-    <div class="col-12 text-center">
+    <div class="col-12 text-center mt-4">
         <button class="btn btn-primary mr-4 mb-2" id="btnEmpezarEvaluaciones"><i class="icon icon-send"></i> ¡Empezar Ahora!</button>
-        <a href="<%=request.getContextPath()%>/app/ate/videos-tutoriales" class="btn btn-light mb-2" >
+        <a  style="display: none" href="<%=request.getContextPath()%>/app/ate/videos-tutoriales" class="btn btn-light mb-2" >
             <i class="icon icon-youtube"></i>
             ¡Ver Videos Tutoriales!
         </a>
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-sm-6 col-lg-3">
+    <div class="col-xl-3 col-sm-6 col-lg-3" style="display: block">
         <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="deportiva">
             <div class="dt-card__body d-flex flex-sm-column text-center">
                 <div class="mb-sm-7">
@@ -65,7 +65,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-sm-6 col-lg-3">
+    <div class="col-xl-3 col-sm-6 col-lg-3" style="display: block">
         <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="psicologica">
             <div class="dt-card__body d-flex flex-sm-column text-center">
                 <div class="mb-sm-7">
@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-3 col-sm-6 col-lg-3">
+    <div class="col-xl-3 col-sm-6 col-lg-3" style="display: block">
         <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="obstetricia">
             <div class="dt-card__body d-flex flex-sm-column text-center">
                 <div class="mb-sm-7">
@@ -90,11 +90,11 @@
             <i class="icon icon-reply"></i>
             Regresar Saludo Inicial
         </button>
-        <a href="<%=request.getContextPath()%>/app/ate/videos-tutoriales" class="btn btn-light mr-4 mb-2" >
+        <a style="display: none" href="<%=request.getContextPath()%>/app/ate/videos-tutoriales" class="btn btn-light mr-4 mb-2" >
             <i class="icon icon-youtube"></i>
             ¡Ver Videos Tutoriales!
         </a>
-        <a href="<%=request.getContextPath()%>/app/ate/documentos" class="btn btn-success mb-2"
+        <a style="display: none" href="<%=request.getContextPath()%>/app/ate/documentos" class="btn btn-success mb-2"
            data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="¿Ya has completado todas tus evaluaciones virtuales?. Si es así dale click para ir a tus documentos. Ahí es donde encontrarás tus constancias." style="cursor: pointer" data-original-title="">
             <i class="icon icon-send"></i>
             Ir a mis documentos

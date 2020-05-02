@@ -110,7 +110,8 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-obstetricia").style.display = "none";
             break;
         case "deportiva":
-
+            showAlertTopEnd("warning", "Esta evaluación no está disponible");
+            return;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";
@@ -127,6 +128,8 @@ function navigateOptionEvaluation(option) {
             //showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación. Ingresa a partir del 02/10/2019', 10000)
             break;
         case "psicologica":
+            showAlertTopEnd("warning", "Esta evaluación no está disponible");
+            return ;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";
@@ -137,6 +140,8 @@ function navigateOptionEvaluation(option) {
             $('#modalCargandoProcedimientoPsicologico').modal('show');
             break;
         case "obstetricia":
+            showAlertTopEnd("warning", "Esta evaluación no está disponible");
+            return ;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";
