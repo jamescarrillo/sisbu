@@ -1,9 +1,6 @@
-  
 var beanPaginationPaciente;
 var pacienteSelected;
-
 var beanRequestPaciente = new BeanRequest();
-
 var fechaActual = new Date(); //Fecha actual
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -104,7 +101,7 @@ function toListPaciente(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
+            `
                <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
@@ -149,7 +146,7 @@ function toListPaciente(beanPagination) {
                 text_row = "";
             }
             row =
-                    `
+                `
                  <div class="dt-widget__item border-success pl-5 ${text_row}">
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
@@ -205,11 +202,11 @@ function toListPaciente(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePagePaciente").value),
-                document.querySelector("#pagePaciente"),
-                $('#modalCargandoPaciente'),
-                $('#paginationPaciente'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePagePaciente").value),
+            document.querySelector("#pagePaciente"),
+            $('#modalCargandoPaciente'),
+            $('#paginationPaciente'));
         addEventsPacientes();
         if (beanRequestPaciente.operation == "paginate") {
             document.querySelector("#txtFilterPaciente").focus();

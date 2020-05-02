@@ -7,9 +7,9 @@
 <div class="row">
 
     <!--TAB PACIENTES-->
-    <div class="col-xl-12" id="btnListaAtendido">
+    <div class="col-xl-12 p-0" id="btnListaAtendido">
         <!-- Card -->
-        <div class="card overflow-hidden" id="ListaPaciente">
+        <div class="overflow-hidden" id="ListaPaciente">
             <!-- Card Header -->
             <div class="card-header bg-transparent">
                 <h4 class="mb-0" id="titleManagerPaciente">[ 0 ] PACIENTES</h4>
@@ -17,23 +17,24 @@
             </div>
             <!-- /card header -->
             <!-- Card Body -->
-            <div class="card-body pt-0">
-                <form id="FrmPaciente">
+            <div class="card-body p-0">
+                <form id="FrmPaciente" class="search-box mw-100 left-side-icon">
                     <div class="input-group search-box" style="max-width: 100%;">
-                        <input type="search" id="txtFilterPaciente" class="form-control form-control-sm" placeholder="FILTRO. . .">
-                        <div class="input-group-append">
-                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                            <button type="submit" class="btn btn-primary btn-sm "><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                        </div>
+                        <input type="search" id="txtFilterPaciente" class="form-control form-control-sm"
+                            placeholder="FILTRO. . ." data-toggle="tooltip" data-placement="left"
+                            data-original-title="Buscar">
+                        <button type="submit" class="search-icon">
+                            <i class="icon icon-search icon-lg"></i></button>
+
                     </div>
                 </form>
                 <!-- Card -->
                 <div class="dt-card mt-4">
                     <!-- Card Body -->
-                    <div class="dt-card__body p-0  " >
+                    <div class="dt-card__body p-0  ">
                         <!-- Widget -->
-                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                             id="tbodyPaciente">
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg dt-social-card border border-w-2 border-light-teal"
+                            id="tbodyPaciente">
                         </div>
                         <!-- /widget -->
                         <!-- /card body -->
@@ -53,7 +54,7 @@
                         <nav aria-label="Page navigation example">
                             <ul id="paginationPaciente" class="pagination pagination-sm justify-content-end">
                             </ul>
-                        </nav>  
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -63,22 +64,22 @@
     </div>
 
     <!-- Tab EVALUACIONES -->
-    <div class="col-12 row" id="row-evaluaciones" style="display: none">
+    <div class="col-lg-12  p-0" id="row-evaluaciones" style="display: none">
         <!-- Grid Item -->
-        <div class="col-12 order-xl-3">
+        <div class="col-12 p-0 order-xl-3">
             <!-- Card Header EVALUACIONES -->
             <!-- /card heading -->
             <div class="dt-card__header ">
                 <!-- Card Tools -->
                 <div class="dt-card__tools">
-                    <button data-toggle="tooltip" title="Regresar" type="button" 
-                            id="btnCerrar" class="btn btn-outline-primary btn-sm dt-avatar" > 
+                    <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar"
+                        class="btn btn-outline-primary btn-sm dt-avatar">
                         <i class="icon icon-reply icon-lg"></i></button>
                 </div>
                 <!-- /card tools -->
                 <!-- Card Heading -->
                 <div class="dt-card__heading">
-                    <h3  class="dt-card__title  text-primary text-center">EVALUACIONES</h3>
+                    <h3 class="dt-card__title  text-primary text-center">EVALUACIONES</h3>
                 </div>
                 <!-- /card heading -->
             </div>
@@ -90,8 +91,8 @@
                 <!-- Card Body -->
                 <div class="dt-card__body p-0">
                     <!-- Widget -->
-                    <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" 
-                         id="div-container-evaluaciones">
+                    <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                        id="div-container-evaluaciones">
 
                     </div>
                     <!-- /widget -->
@@ -104,9 +105,9 @@
     </div>
 
     <!-- Tab RESULTADO DE EVALUACIONES -->
-    <div class="col-12 row" id="row-resultado-evaluacione" style="display: none">
+    <div class="col-lg-12 p-0" id="row-resultado-evaluacione" style="display: none">
         <!-- Card -->
-        <div class="col-md-12 ">
+        <div class="col-lg-12 p-0">
 
             <!-- Card -->
             <div class="dt-card">
@@ -115,17 +116,20 @@
                 <div class="dt-card__header ">
                     <!-- Card Tools -->
                     <div class="dt-card__tools">
-                        <button data-toggle="tooltip" title="Regresar" type="button" 
-                                class="btn btn-outline-primary btn-sm 
-                                dt-avatar btn-close-resultados" > 
+                        <button data-toggle="tooltip" title="Regresar" type="button" class="btn btn-outline-primary btn-sm 
+                                dt-avatar btn-close-resultados">
                             <i class="icon icon-reply icon-lg"></i></button>
                     </div>
                     <!-- /card tools -->
                     <div class="dt-card__heading text-center">
-                        <h3 class="dt-card__title text-primary">Puntajes por Áreas</h3>
+                        <h3 class="dt-card__title text-primary">Puntajes por &Aacute;reas</h3>
                     </div>
 
-                    <span id="btnOpenListaPregunta" class="badge badge-secondary badge-top-right sisbu-cursor-mano">Lista de Preguntas con Respuesta</span>
+                    <span id="btnOpenListaPregunta" data-toggle="tooltip" data-placement="bottom"
+                        data-original-title="Lista de Respuestas"
+                        class="badge badge-secondary badge-top-right sisbu-cursor-mano pulse-info">Lista de Preguntas
+                        con
+                        Respuesta</span>
                 </div>
                 <!-- /card header -->
 
@@ -138,8 +142,8 @@
                             <div class="dt-widget__item p-1">
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate" style="min-width: 100%;">
-                                    <span class="h6 font-weight-500">ÁREA
-                                    </span>  
+                                    <span class="h6 font-weight-500">&Aacute;REA
+                                    </span>
                                 </div>
                                 <!-- /widget info -->
                             </div>
@@ -150,40 +154,40 @@
                             <div class="dt-widget__item p-1">
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <span class="h6 font-weight-500">SUBÁREA
-                                    </span>  
+                                    <span class="h6 font-weight-500">SUB&Aacute;REA
+                                    </span>
                                 </div>
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <span class="h6 font-weight-500">N° ITEMS 
-                                    </span>  
+                                    <span class="h6 font-weight-500">NÂ° ITEMS
+                                    </span>
                                 </div>
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate ">
-                                    <span class="h6 font-weight-500">VALOR ACUMULADO 
-                                    </span>  
+                                    <span class="h6 font-weight-500">VALOR ACUMULADO
+                                    </span>
                                 </div>
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <span class="h6 font-weight-500">OPERACIÓN
-                                    </span>  
+                                    <span class="h6 font-weight-500">OPERACI&oacute;N
+                                    </span>
                                 </div>
                                 <!-- /widget info -->
 
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <span class="h6 font-weight-500">PUNTAJE MÁXIMO
-                                    </span>  
+                                    <span class="h6 font-weight-500">PUNTAJE M&Aacute;XIMO
+                                    </span>
                                 </div>
                                 <!-- /widget info -->
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <span class="h6 font-weight-500">INTERPRETACIÓN
-                                    </span>  
+                                    <span class="h6 font-weight-500">INTERPRETACI&Oacute;N
+                                    </span>
                                 </div>
                                 <!-- /widget info -->
                             </div>
@@ -193,7 +197,7 @@
                     <!-- /widget -->
 
                     <!-- Widget -->
-                    <div id="tbodyPuntajeArea"class="dt-widget-hover form-row ">
+                    <div id="tbodyPuntajeArea" class="dt-widget-hover form-row ">
 
                     </div>
 
@@ -209,22 +213,23 @@
         <!-- /card -->
     </div>
     <!-- Tab RESULTADO DE EVALUACIONES -->
-    <div class="col-12 row" id="row-resultado-evaluacione-preguntas" style="display: none">
+    <div class="col-lg-12 p-0" id="row-resultado-evaluacione-preguntas" style="display: none">
         <!-- Grid Item -->
-        <div class="col-12 order-xl-3">
+        <div class="col-lg-12 p-0 order-xl-3">
             <!-- Card Header EVALUACIONES -->
             <!-- /card heading -->
             <div class="dt-card__header ">
                 <!-- Card Tools -->
                 <div class="dt-card__tools">
                     <button data-toggle="tooltip" title="Regresar" type="button" class="btn btn-outline-primary btn-sm 
-                            dt-avatar btn-close-resultados-evaluacion" > 
+                            dt-avatar btn-close-resultados-evaluacion">
                         <i class="icon icon-reply icon-lg"></i></button>
                 </div>
                 <!-- /card tools -->
                 <!-- Card Heading -->
                 <div class="dt-card__heading">
-                    <h3 id="title-respuesta-evaluacion" class="dt-card__title  text-primary text-center">RESULTADO DE EVALUACIÓN</h3>
+                    <h3 id="title-respuesta-evaluacion" class="dt-card__title  text-primary text-center">RESULTADO DE
+                        EVALUACIï¿½N</h3>
                 </div>
                 <!-- /card heading -->
             </div>
@@ -239,7 +244,7 @@
                         <div class="col-12">
                             <ul class="list-group list-group-flush pb-4" id="content-respuesta-evaluacion-psicologico">
                                 <!--li class="list-group-item">
-                                    <label class="mb-2 text-primary">1. ¿Cuando tengo que hacer una tarea, normalmente la dejo para último minuto?
+                                    <label class="mb-2 text-primary">1. ï¿½Cuando tengo que hacer una tarea, normalmente la dejo para ï¿½ltimo minuto?
                                     </label>
                                     <div class="form-group custom-control custom-checkbox mb-2">
                                         <input type="checkbox" class="custom-control-input check-279" id="1101" idpregunta="279">
@@ -259,12 +264,14 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalCargandoPaciente" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+<div class="modal fade" id="modalCargandoPaciente" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Cargando Pacientes. . .
                     </div>
                 </div>
@@ -273,7 +280,9 @@
     </div>
 </div>
 
-<div id="ventanaModalPreviewReporte" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); display: none;" aria-hidden="true">
+<div id="ventanaModalPreviewReporte" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); display: none;"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg-sisbu" role="document">
         <div class="modal-content" style="border-color: #2962FF; border-width: 3px;border-radius: 7px;">
             <form class="needs-validation" novalidate="">
@@ -284,12 +293,14 @@
                         <div class="col-12">
                             <!--div class="embed-responsive embed-responsive-1by1">
                             </div-->
-                            <iframe class="embed-responsive-item" src="" id="idframe_reporte" height="480" width="100%"></iframe>
+                            <iframe class="embed-responsive-item" src="" id="idframe_reporte" height="480"
+                                width="100%"></iframe>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer pt-2 pb-2">
-                    <button type="button" class="btn btn-primary btn-xs" id="btn-cerrar-printer-comprobante" data-dismiss="modal">
+                    <button type="button" class="btn btn-primary btn-xs" id="btn-cerrar-printer-comprobante"
+                        data-dismiss="modal">
                         <i class="fas fa-times"></i>
                         CERRAR</button>
                 </div>
@@ -299,12 +310,14 @@
 </div>
 
 <!--MODAL CARGANDO EVALUACION-->
-<div class="modal fade" id="modalCargandoEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+<div class="modal fade" id="modalCargandoEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Procesando solicitud. . .
                     </div>
                 </div>
@@ -314,12 +327,14 @@
 </div>
 
 <!--MODAL CARGANDO RESPUESTA EVALUACION-->
-<div class="modal fade" id="modalCargandoRespuestaEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+<div class="modal fade" id="modalCargandoRespuestaEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Procesando solicitud. . .
                     </div>
                 </div>
@@ -329,12 +344,14 @@
 </div>
 
 <!--MODAL CARGANDO REMOVE EVALUACION-->
-<div class="modal fade" id="modalCargandoRemoveEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+<div class="modal fade" id="modalCargandoRemoveEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Procesando solicitud. . .
                     </div>
                 </div>
