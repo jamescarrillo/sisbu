@@ -65,7 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    document.querySelector("#lblNameUserIndex").innerHTML = getStringCapitalize(Cookies.getJSON('sisbu_user').usuario.split(" ")[0].toLowerCase());
+    let nameUser = getStringCapitalize(user_session.usuario.split(" ")[0].toLowerCase());
+    document.querySelector("#lblNameUserSession").innerHTML = nameUser;
 
     document.querySelector("#btnEmpezarEvaluaciones").onclick = function () {
         document.querySelector("#row-home-evaluaciones").style.display = "none";
@@ -129,7 +130,7 @@ function navigateOptionEvaluation(option) {
             break;
         case "psicologica":
             showAlertTopEnd("warning", "Esta evaluación no está disponible");
-            return ;
+            return;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";
@@ -141,7 +142,7 @@ function navigateOptionEvaluation(option) {
             break;
         case "obstetricia":
             showAlertTopEnd("warning", "Esta evaluación no está disponible");
-            return ;
+            return;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";

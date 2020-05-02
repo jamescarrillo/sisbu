@@ -42,17 +42,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector("#btn-selecionar-ciclo_academicoc").onclick = function () {
         if (cicloAcademicoCSelected == undefined) {
-            showAlertTopEnd('warning', 'Por favor seleccione un escuela');
+            showAlertTopEnd('warning', 'Por favor seleccione un ciclo académico');
             return;
         }
-        escuelaSelected = cicloAcademicoCSelected;
+        cicloAcademicoSelected = cicloAcademicoCSelected;
         document.querySelector("#txtCicloAcademicoPaciente").value = cicloAcademicoCSelected.nombre.toUpperCase();
         $('#ventanaModalSelectedCicloAcademicoC').modal('hide');
     };
 
     document.querySelector("#btnCancelSelectionCicloAcademicoC").onclick = function () {
         cicloAcademicoCSelected = undefined;
-        escuelaSelected = cicloAcademicoCSelected;
+        cicloAcademicoSelected = cicloAcademicoCSelected;
         document.querySelector("#txtCicloAcademicoPaciente").value = "";
     };
 
@@ -100,9 +100,9 @@ function toListCicloAcademicoC(beanPagination) {
     document.querySelector("#titleManagerCicloAcademicoC").innerHTML = "[ " + beanPagination.count_filter + " ] CICLOS ACADÉMICOS";
     if (beanPagination.count_filter > 0) {
         let row;
-        beanPagination.list.forEach(escuela => {
-            row = "<tr class='click-selection-escuela sisbu-cursor-mano' idescuela='" + escuela.idescuela + "'>";
-            row += "<td class='align-middle text-left'>" + escuela.nombre.toUpperCase() + "</td>";
+        beanPagination.list.forEach(ciclo_academico => {
+            row = "<tr class='click-selection-ciclo_academico sisbu-cursor-mano' idciclo_academico='" + ciclo_academico.idciclo_academico + "'>";
+            row += "<td class='align-middle text-left'>" + ciclo_academico.nombre.toUpperCase() + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyCicloAcademicoC").innerHTML += row;
         });
@@ -125,13 +125,13 @@ function toListCicloAcademicoC(beanPagination) {
 }
 
 function addEventsCicloAcademicoCes() {
-    document.querySelectorAll('.click-selection-escuela').forEach(function (element) {
+    document.querySelectorAll('.click-selection-ciclo_academico').forEach(function (element) {
         element.onclick = function () {
             if (this.classList.contains('row-selected-celeste-claro')) {
                 this.classList.remove('row-selected-celeste-claro');
                 cicloAcademicoCSelected = undefined;
             } else {
-                cicloAcademicoCSelected = findByCicloAcademicoC(this.getAttribute('idescuela'));
+                cicloAcademicoCSelected = findByCicloAcademicoC(this.getAttribute('idciclo_academico'));
                 this.parentElement.childNodes.forEach(function (element) {
                     element.classList.remove('row-selected-celeste-claro');
                 });
@@ -142,13 +142,13 @@ function addEventsCicloAcademicoCes() {
 
 }
 
-function findByCicloAcademicoC(idescuela) {
-    let escuela_;
-    beanPaginationCicloAcademicoC.list.forEach(escuela => {
-        if (parseInt(idescuela) == parseInt(escuela.idescuela)) {
-            escuela_ = escuela;
+function findByCicloAcademicoC(idciclo_academico) {
+    let ciclo_academico_;
+    beanPaginationCicloAcademicoC.list.forEach(ciclo_academico => {
+        if (parseInt(idciclo_academico) == parseInt(ciclo_academico.idciclo_academico)) {
+            ciclo_academico_ = ciclo_academico;
             return;
         }
     });
-    return escuela_;
+    return ciclo_academico_;
 }

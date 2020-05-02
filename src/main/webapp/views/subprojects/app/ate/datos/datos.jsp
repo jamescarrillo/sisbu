@@ -195,7 +195,7 @@
                                 </div>
                             </div>
                             <div class="col-12 mb-3">
-                                <label for="txtCicloAcademicoPaciente">CICLO ACADÉMICO</label>
+                                <label for="txtCicloAcademicoPaciente">CICLO ACADÉMICO INGRESO</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
                                     <div class="input-group-append">
@@ -203,8 +203,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 text-left mt-3">
-                                <button type="submit" class="btn btn-outline-primary btn-sm" id="btnGuardarPersonales">ACTUALIZAR DATOS</button>
+                            <div class="col-lg-12 text-right mt-3">
+                                <button type="submit" class="btn btn-primary btn-sm" id="btnGuardarPersonales">
+                                    <i class="fas fa-check"></i>
+                                    ACTUALIZAR DATOS</button>
                             </div> 
 
                         </div>
@@ -214,47 +216,41 @@
 
                 <!-- Tab DATOS FAMILIARES -->
                 <div id="tab-pane-17" class="tab-pane ">
-                    <div class="form-row">
-                        <div class="col-11 text-center">
-                            <label id="titleManagerFamiliar" for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE FAMILIARES</label>
-                            <input type="hidden" id="pageTriaje" value="1">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <label class="text-warning mb-2 mt-2">*Registra a todos tus familiares de primer orden es decir a papá, mamá y hermanos(as).</label>
                         </div>
-
-                        <div class="float-right">
-                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewFamiliar"><i class="icon icon-plus icon-fw"></i></button>
+                        <div class="col-lg-4 text-right">
+                            <button type="button" class="btn btn-outline-primary btn-xs border-w-2 border-light-teal ml-8 pulse-primary" id="btnOpenNewFamiliar"><i class="icon icon-plus icon-fw"></i></button>
+                        </div>
+                        <div class="col-12">
+                            <h4 class="text-center text-primary mb-2" id="titleManagerFamiliar">
+                                LISTA DE FAMILIARES
+                            </h4>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-12 ">
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead class="bg-primary" style="line-height: 1.0;">
+                                        <tr>
+                                            <th class="text-uppercase text-white pt-3" scope="col" style="font-weight: 500;width: 10%">ACCIÓN</th>
+                                            <th class="text-uppercase text-white pt-3" scope="col" style="font-weight: 500;">NOMBRE COMPLETO</th>
+                                            <th class="text-uppercase text-white pt-3" scope="col" style="font-weight: 500;width: 10%">FECHA NACIMIENTO</th>
+                                            <th class="text-uppercase text-white pt-3" scope="col" style="font-weight: 500;width: 20%">ESTADO CIVIL/<br>NIVEL INSTRUCCIÓN</th>
+                                            <th class="text-uppercase text-white pt-3" scope="col" style="font-weight: 500;width: 10%">INGRESOS</th>
 
-                    <div class="form-group col-12 ">
-                        <!-- Tables -->
-                        <div class="table-responsive">
-                            <table class="table mb-0">
-                                <thead class="bg-primary" style="line-height: 1.0;">
-                                    <tr>
-                                        <th class="text-uppercase text-white" scope="col" style="font-weight: 500;width: 10%">ACCIÓN</th>
-                                        <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">NOMBRE COMPLETO</th>
-                                        <th class="text-uppercase text-white" scope="col" style="font-weight: 500;width: 10%">FECHA NACIMIENTO</th>
-                                        <th class="text-uppercase text-white" scope="col" style="font-weight: 500;width: 20%">ESTADO CIVIL/<br>NIVEL INSTRUCCIÓN</th>
-                                        <th class="text-uppercase text-white" scope="col" style="font-weight: 500;width: 10%">INGRESOS</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody id="tbodyDatosFamiliares" class="overflow-auto" >
-                                </tbody>
-                            </table>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyDatosFamiliares" class="overflow-auto" >
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <!-- /tables -->
                     </div>
-
-
-
                 </div>
-                <!-- /tab pane-->
-
-
             </div>
-            <!-- /tab content -->
-
         </div>
         <!-- /card --> 
     </div>
@@ -683,7 +679,7 @@
 
 <!--T: CICLO ACADEMICO SELECTED-->
 <div id="ventanaModalSelectedCicloAcademicoC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
-     data-keyboard="false" style="padding-top: 1%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+     data-keyboard="false" style="padding-top: 0%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
@@ -727,7 +723,9 @@
                             <div class="col-sm-4 mt-2">
                                 <select id="sizePageCicloAcademicoC"
                                         class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
-                                    <option value="50">50</option>
+                                    <option value="7">07</option>
+                                    <option value="10">10</option>
+                                    <option value="50">30</option>
                                 </select>
                             </div>
                             <div class="col-sm-8 mt-2">

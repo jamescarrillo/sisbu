@@ -6,21 +6,13 @@
 <div class="row justify-content-center" id="row-home-evaluaciones" style="margin-top: 30px">
     <div class="col-sm-6">
         <div class="row">
-            <div class="col-lg-4 text-center">
+            <div class="col-12 text-center">
                 <img src="<%=request.getContextPath()%>/resources/prod/custom_app/pedritojr_blanco_feliz.png" class="img-fluid" alt="Pedrito Jr.">
-            </div>
-            <div class="col-lg-8">
-                <br>
-                <h2 class="text-center" id="div-message-cachimbo">
-                    ¡Felicidades por tu ingreso <span class="text-info" id="lblNameUserIndex">User</span>!
-                    Estamos encantados de recibirte en nuestra UNPRG. 
-                </h2>
                 <p class="text-center" style="font-size: 18px">
-                    Tu información es importante
+                    <span class="text-primary" id="lblNameUserSession"></span>, tu información es importante
                     para brindarte un mejor servicio. Agradecemos tu sinceridad al momento de 
                     responder las distintas evaluaciones virtuales.
                 </p>
-
             </div>
         </div>
         <!--p class="text-center text-danger" style="font-size: 12px">

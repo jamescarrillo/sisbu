@@ -150,3 +150,64 @@ function removeClass(element, class_) {
         element.classList.remove(class_iterator);
     });
 }
+
+function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
+
+function getDateJava(date = new Date()) {
+    //FORMAT dd/MM/yyyy HH:mm:ss
+    return getDateStringJava(date);
+}
+
+function getFullDateJava(date = new Date()) {
+    //FORMAT dd/MM/yyyy HH:mm:ss
+    string_full_date = getDateStringJava(date);
+    string_full_date += " ";
+    string_full_date += getHourStringJava(date);
+    return string_full_date;
+}
+
+function getDateStringJava(date = new Date()) {
+    //let date = new Date();
+    let string_date = "";
+    if (date.getDate() < 10) {
+        string_date += "0" + date.getDate();
+    } else {
+        string_date += date.getDate();
+    }
+    string_date += "/";
+    if (date.getMonth() < 9) {
+        string_date += "0" + (date.getMonth() + 1);
+    } else {
+        string_date += (date.getMonth() + 1);
+    }
+    string_date += "/";
+    string_date += date.getFullYear();
+    return string_date;
+}
+
+function getHourStringJava(date = new Date()) {
+    string_date = "";
+    //let date = new Date();
+    if (date.getHours() < 10) {
+        string_date += "0" + date.getHours();
+    } else {
+        string_date += date.getHours();
+    }
+    string_date += ":";
+    if (date.getMinutes() < 10) {
+        string_date += "0" + date.getMinutes();
+    } else {
+        string_date += date.getMinutes();
+    }
+    string_date += ":";
+    if (date.getSeconds() < 10) {
+        string_date += "0" + date.getSeconds();
+    } else {
+        string_date += date.getSeconds();
+    }
+    return string_date;
+}

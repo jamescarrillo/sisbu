@@ -122,7 +122,7 @@ function processAjaxFamiliar() {
                 "atendido": {"idatendido": atendidoSelected.idatendido},
                 "ocupacion": {"idocupacion": ocupacionSelected.idocupacion},
                 "enfermedad": document.querySelector("#txtEnfermedadFamiliar").value.toUpperCase(),
-                "enfermedad": document.querySelector("#txtLugarTratamientoFamiliar").value.toUpperCase()
+                "lugar_tratamiento": document.querySelector("#txtLugarTratamientoFamiliar").value.toUpperCase()
             };
             if (beanRequestFamiliar.operation == "update") {
                 json.idfamiliar = familiarSelected.idfamiliar;
@@ -254,7 +254,7 @@ function validateFormFamiliar() {
     } else if (ocupacionSelected == undefined) {
         showAlertTopEnd('warning', 'Por favor seleccione la ocupacion de su familiar');
         return false;
-    } 
+    }
     //VALIDAMOS SI EL INGRESO ES VALIDO
     try {
         parseFloat(document.querySelector("#txtIngresosFamiliar").value);
@@ -329,7 +329,7 @@ function nivelInstruccion(nivel) {
     switch (nivel) {
         case 1:
 
-            return "SIN ESTUDIOOS";
+            return "SIN ESTUDIOS";
             break;
         case 2:
             return "PRIMARIA";
@@ -340,7 +340,7 @@ function nivelInstruccion(nivel) {
         case 4:
             return "TÉCNICO";
             break;
-        case 4:
+        case 5:
             return "UNIVERSIDAD";
             break;
 
