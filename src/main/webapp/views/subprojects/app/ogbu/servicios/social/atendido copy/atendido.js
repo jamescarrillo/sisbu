@@ -42,10 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestAtendido.operation = "paginate";
         beanRequestAtendido.type_request = "GET";
         $('#modalCargandoAtendido').modal('show');
-        removeClass(document.querySelector("#btnOpenAtendido"), "d-block");
-        removeClass(document.querySelector("#btnListaAtendido"), "d-none");
-        addClass(document.querySelector("#btnOpenAtendido"), "d-none");
-        addClass(document.querySelector("#btnListaAtendido"), "d-block");
+        document.querySelector("#btnOpenAtendido").style.display = 'none';
+        document.querySelector("#btnListaAtendido").style.display = 'block';
     };
 
     $("#modalCargandoAtendido").on('shown.bs.modal', function () {
@@ -115,6 +113,7 @@ function processAjaxAtendido() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
+        console.log(beanCrudResponse);
         $('#modalCargandoAtendido').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
@@ -138,6 +137,7 @@ function processAjaxAtendido() {
 
     });
 }
+
 
 function toListAtendido(beanPagination) {
     document.querySelector("#tbodyAtendido").innerHTML = "";
@@ -186,12 +186,12 @@ function toListAtendido(beanPagination) {
         beanPagination.list.forEach(atendido => {
             row =
                 `
-                <div class="dt-widget__item border-success pl-5 pt-2 pb-2 m-0">
+                <div class="dt-widget__item border-success pl-5 pt-2 pb-2">
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
                       
                         <!-- Hide Content -->
-                        <div class="hide-content pr-2">
+                        <div class="hide-content pr-2"">
                             <!-- Action Button Group -->
                             <div class="action-btn-group">
                                 <button class="btn btn-default text-info dt-fab-btn familiar-atendido" idatendido='${atendido.idatendido}' title="Familiares" data-toggle="tooltip">
@@ -272,10 +272,9 @@ function addEventsAtendidoes() {
             if (atendidoSelected != undefined) {
                 beanRequestFamiliar.operation = "paginate";
                 beanRequestFamiliar.type_request = "GET";
-                removeClass(document.querySelector("#btnListaAtendido"), "d-block");
+                addClass(document.querySelector("#btnListaAtendido"), "d-none");
                 removeClass(document.querySelector("#btnOpenFamiliar"), "d-none");
                 addClass(document.querySelector("#btnOpenFamiliar"), "d-block");
-                addClass(document.querySelector("#btnListaAtendido"), "d-none");
 
                 $('#modalCargandoFamiliar').modal('show');
             }
@@ -287,14 +286,11 @@ function addEventsAtendidoes() {
         btn.onclick = function () {
             atendidoSelected = findByAtendido(btn.getAttribute('idatendido'));
             if (atendidoSelected != undefined) {
-                beanRequestFichaSocieconomica.operation = "get/by/idatendido";
-                beanRequestFichaSocieconomica.type_request = "GET";
-                $('#modalCargandoSelectedFichaSocieconomica').modal('show');
-                removeClass(document.querySelector("#btnListaAtendido"), "d-block");
-                removeClass(document.querySelector("#row-option-socioeconomico"), "d-none");
-                addClass(document.querySelector("#row-option-socioeconomico"), "d-block");
-                addClass(document.querySelector("#btnListaAtendido"), "d-none");
-
+                if (atendidoSelected.ciclo_academico_ingreso.idciclo_academico > 12) {
+                    $('#modalCargandoEvaluacion').modal('show');
+                } else {
+                    showAlertTopEnd('warning', 'El Atendido no pertenece al ciclo superior 2019-II');
+                }
 
             } else {
                 showAlertTopEnd('warning', 'No se encontró el Atendido ');

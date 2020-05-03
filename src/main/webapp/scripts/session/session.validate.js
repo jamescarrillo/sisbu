@@ -67,7 +67,7 @@ function createHTML_OGBU(typeProfile) {
     //INICIO PARA TODOS
     document.querySelector("#a-mis-datos").style.display = "none";
     document.querySelector("#menus_sisbu").innerHTML =
-            `
+        `
         <!-- Menu Header -->
         <li class="dt-side-nav__item dt-side-nav__header">
             <span class="dt-side-nav__text">Dashboard</span>
@@ -86,7 +86,7 @@ function createHTML_OGBU(typeProfile) {
     //SERVICIOS
     ///inicio
     document.querySelector("#menus_sisbu").innerHTML +=
-            `
+        `
         <!-- Menu Header -->
         <li class="dt-side-nav__item dt-side-nav__header">
             <span class="dt-side-nav__text">Servicios</span>
@@ -97,7 +97,7 @@ function createHTML_OGBU(typeProfile) {
     ////Enfermería
     if (typeProfile == 0 || typeProfile == 1 || typeProfile == 10) {
         document.querySelector("#menus_sisbu").innerHTML +=
-                `
+            `
             <!-- Menu Item -->
             <li class="dt-side-nav__item">
                 <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Enfermería">
@@ -122,7 +122,7 @@ function createHTML_OGBU(typeProfile) {
     ////medicina
     if (typeProfile == 0 || typeProfile == 1 || typeProfile == 10 || typeProfile == 11) {
         document.querySelector("#menus_sisbu").innerHTML +=
-                `
+            `
             <li class="dt-side-nav__item">
                 <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Medicina">
                     <i class="icon icon-customer icon-fw icon-lg"></i>
@@ -150,7 +150,7 @@ function createHTML_OGBU(typeProfile) {
     ////farmacia
     if (typeProfile == 0 || typeProfile == 1 || typeProfile == 10) {
         document.querySelector("#menus_sisbu").innerHTML +=
-                `
+            `
             <li class="dt-side-nav__item">
                 <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Farmacia">
                     <i class="icon icon-home icon-fw icon-lg"></i>
@@ -202,7 +202,7 @@ function createHTML_OGBU(typeProfile) {
     ////odontologia
     if (typeProfile == 0 || typeProfile == 1 || typeProfile == 3) {
         document.querySelector("#menus_sisbu").innerHTML +=
-                `
+            `
             <li class="dt-side-nav__item">
                 <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Odontología">
                     <i class="icon icon-link icon-fw icon-lg"></i>
@@ -230,7 +230,7 @@ function createHTML_OGBU(typeProfile) {
     ////obstetricia
     if (typeProfile == 0 || typeProfile == 1 || typeProfile == 4) {
         document.querySelector("#menus_sisbu").innerHTML +=
-                `
+            `
             <li class="dt-side-nav__item">
                 <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Obstetricia">
                     <i class="icon icon-contacts-app icon-fw icon-lg"></i>
@@ -264,7 +264,7 @@ function createHTML_OGBU(typeProfile) {
     ////Psicopedagogía
     if (typeProfile == 0 || typeProfile == 1 || typeProfile == 11) {
         document.querySelector("#menus_sisbu").innerHTML +=
-                `
+            `
             <li class="dt-side-nav__item">
                 <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Psicopedagogía">
                     <i class="icon icon-heart-o icon-fw icon-fw icon-lg"></i>
@@ -291,7 +291,7 @@ function createHTML_OGBU(typeProfile) {
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/servicios/psicopedagogia/citas" class="dt-side-nav__link" title="Asignaciones">
+                        <a href="${contextPah}app/ogbu/servicios/psicopedagogia/asignaciones" class="dt-side-nav__link" title="Asignaciones">
                             <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Asignaciones</span>
                         </a>
@@ -304,7 +304,7 @@ function createHTML_OGBU(typeProfile) {
     ////social
     if (typeProfile == 0 || typeProfile == 1 || typeProfile == 11 || typeProfile == 5) {
         document.querySelector("#menus_sisbu").innerHTML +=
-                `
+            `
             <li class="dt-side-nav__item">
                 <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Social">
                     <i class="icon icon-users icon-fw icon-fw icon-lg"></i>
@@ -344,7 +344,7 @@ function createHTML_OGBU(typeProfile) {
     ////comedor universitario
     if (typeProfile == 0 || typeProfile == 1 || typeProfile == 5 || typeProfile == 6) {
         document.querySelector("#menus_sisbu").innerHTML +=
-                `
+            `
             <li class="dt-side-nav__item">
                 <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Comedor Universitario">
                     <i class="icon icon-card-group icon-fw icon-fw icon-lg"></i>
@@ -385,7 +385,7 @@ function createHTML_OGBU(typeProfile) {
     ////recreacion y deporte
     if (typeProfile == 0 || typeProfile == 1 || typeProfile == 7) {
         document.querySelector("#menus_sisbu").innerHTML +=
-                `
+            `
             <li class="dt-side-nav__item">
                 <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow" title="Psicopedagogía">
                     <i class="icon icon-influence icon-fw icon-fw icon-lg"></i>
@@ -420,7 +420,7 @@ function createHTML_OGBU(typeProfile) {
     ////mantenimientos seguridad (todos)
     if (typeProfile == 0 || typeProfile == 1) {
         document.querySelector("#menus_sisbu").innerHTML +=
-                `
+            `
             <!-- Menu Header -->
             <li class="dt-side-nav__item dt-side-nav__header">
                 <span class="dt-side-nav__text">Mantenimientos</span>
@@ -545,7 +545,7 @@ function createHTML_OGBU(typeProfile) {
     if (typeProfile != 100) {
         //diferente de invitado
         document.querySelector("#menus_sisbu").innerHTML +=
-                `
+            `
             <!-- Menu Header -->
             <li class="dt-side-nav__item dt-side-nav__header">
                 <span class="dt-side-nav__text">Informes</span>
@@ -563,7 +563,7 @@ function createHTML_OGBU(typeProfile) {
         //ENFERMERIA Y MEDICINA
         if (typeProfile == 0 || typeProfile == 1 || typeProfile == 10 || typeProfile == 11) {
             document.querySelector("#menus_sisbu").innerHTML +=
-                    `
+                `
                 <li class="dt-side-nav__item">
                     <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow pl-8" title="Reportes Enfermería">
                         <i class="icon icon-components icon-fw icon-lg"></i>
@@ -602,7 +602,7 @@ function createHTML_OGBU(typeProfile) {
         //Psicopedagogía
         if (typeProfile == 0 || typeProfile == 1 || typeProfile == 11) {
             document.querySelector("#menus_sisbu").innerHTML +=
-                    `
+                `
                 <li class="dt-side-nav__item">
                     <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow pl-8" title="Reportes Enfermería">
                         <i class="icon icon-components icon-fw icon-lg"></i>
@@ -626,7 +626,7 @@ function createHTML_OGBU(typeProfile) {
         //odontologia
         if (typeProfile == 0 || typeProfile == 1 || typeProfile == 3) {
             document.querySelector("#menus_sisbu").innerHTML +=
-                    `
+                `
                 <li class="dt-side-nav__item">
                     <a href="javascript:void(0)" class="dt-side-nav__link dt-side-nav__arrow pl-8" title="Reportes Odontologia">
                         <i class="icon icon-components icon-fw icon-lg"></i>
@@ -648,7 +648,7 @@ function createHTML_OGBU(typeProfile) {
         `;
         }
         document.querySelector("#menus_sisbu").innerHTML +=
-                `
+            `
              </ul>
                 <!-- /sub-menu -->
             </li>
@@ -678,7 +678,7 @@ function createHTML_ATE(typeProfile) {
     document.querySelector("#a-mis-datos").setAttribute('href', `${contextPah}app/ate/datos`);
     //INICIO PARA TODOS
     document.querySelector("#menus_sisbu").innerHTML =
-            `
+        `
         <!-- Menu Header -->
         <li class="dt-side-nav__item dt-side-nav__header">
             <span class="dt-side-nav__text">Dashboard</span>
@@ -731,7 +731,7 @@ function createHTML_ATE(typeProfile) {
      */
 
     document.querySelector("#menus_sisbu").innerHTML +=
-            `
+        `
              <!-- Menu Item -->
                 <li class="dt-side-nav__item">
                     <a href="${contextPah}app/ate/evaluaciones" class="dt-side-nav__link" title="Evaluaciones Virtuales">
@@ -741,10 +741,10 @@ function createHTML_ATE(typeProfile) {
                 </li>
             <!-- /menu item -->
         `
-            ;
+        ;
     //SERVICIOS
     document.querySelector("#menus_sisbu").innerHTML +=
-            `
+        `
         <!-- Menu Header -->
         <li class="dt-side-nav__item dt-side-nav__header">
             <span class="dt-side-nav__text">Servicios</span>
@@ -771,7 +771,7 @@ function createHTML_ATE(typeProfile) {
 
     //EXTRAS
     document.querySelector("#menus_sisbu").innerHTML +=
-            `
+        `
         <!-- Menu Header -->
         <li class="dt-side-nav__item dt-side-nav__header">
             <span class="dt-side-nav__text">Extras</span>
@@ -803,7 +803,7 @@ function createHTML_ATE(typeProfile) {
      }
      */
     document.querySelector("#menus_sisbu").innerHTML +=
-            `
+        `
         <!-- Menu Item -->
             <li class="dt-side-nav__item">
                 <a href="${contextPah}app/ate/documentos" class="dt-side-nav__link" title="Documentos">
@@ -815,7 +815,7 @@ function createHTML_ATE(typeProfile) {
         `;
     //icon icon-arrow-right icon-fw mr-2 mr-sm-1
     document.querySelector("#menus_sisbu").innerHTML +=
-            `
+        `
         <!-- Menu Item -->
             <li class="dt-side-nav__item">
                 <a href="javascript:void(0)" class="dt-side-nav__link a-close-session" title="Cerrar Sessión">

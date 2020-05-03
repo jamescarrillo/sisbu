@@ -364,10 +364,10 @@ public class FilterURL implements Filter {
         this.list_resources.add(resource);
         ///citas
         resource = new Resource();
-        resource.setUrl("/app/ogbu/servicios/medico/citas");
-        resource.setPath("/views/subprojects/app/servicios/medico/cita/cita.jsp");
+        resource.setUrl("/app/ogbu/servicios/medicina/citas");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/medicina/cita/cita.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/medico/cita/cita.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/medicina/cita/cita.js" + version_project
         });
         this.list_resources.add(resource);
 
@@ -384,9 +384,9 @@ public class FilterURL implements Filter {
         ///citas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/odontologia/citas");
-        resource.setPath("/views/subprojects/app/servicios/odontologia/cita/cita.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/odontologia/cita/cita.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/odontologia/cita/cita.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/odontologia/cita/cita.js" + version_project
         });
         this.list_resources.add(resource);
 
@@ -422,9 +422,9 @@ public class FilterURL implements Filter {
         ///citas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/obstetricia/citas");
-        resource.setPath("/views/subprojects/app/servicios/obstetricia/cita/cita.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/obstetricia/cita/cita.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/servicios/obstetricia/cita/cita.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/obstetricia/cita/cita.js" + version_project
         });
         this.list_resources.add(resource);
 
@@ -516,7 +516,14 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/asignacion/asignacion.js" + version_project
         });
         this.list_resources.add(resource);
-
+        ///citas
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/psicopedagogia/citas");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/psicopedagogia/cita/cita.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/cita/cita.js" + version_project
+        });
+        this.list_resources.add(resource);
         //SOCIAL
         ///fichas
         resource = new Resource();
