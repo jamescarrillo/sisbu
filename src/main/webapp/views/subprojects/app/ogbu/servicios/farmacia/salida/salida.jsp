@@ -6,9 +6,9 @@
 
 
 <div class="row">
-    <div class="col-xl-12" id="btnListaUnidadMedida">
+    <div class="col-xl-12 p-0" id="btnListaUnidadMedida">
         <!-- Card -->
-        <div class="card overflow-hidden">
+        <div class="overflow-hidden">
             <!-- Card Header -->
             <div class="card-header bg-transparent">
                 <h4 class="mb-0" id="titleManagerUnidadMedida">[ 0 ] UNIDADES DE MEDIDA</h4>
@@ -16,23 +16,28 @@
             </div>
             <!-- /card header -->
             <!-- Card Body -->
-            <div class="card-body pt-0">
-                <form id="FrmUnidadMedida">
-                    <div class="input-group search-box" style="max-width: 100%;">
-                        <input type="search" id="txtFilterUnidadMedida" class="form-control form-control-sm" placeholder="Filter Nombre...">
+            <div class="card-body p-0">
+                <form id="FrmUnidadMedida" class="search-box mw-100 left-side-icon">
+                    <div class="input-group">
+                        <input type="search" id="txtFilterUnidadMedida" class="form-control form-control-sm"
+                            placeholder="Filter Nombre..." data-toggle="tooltip" data-placement="left"
+                            data-original-title="Buscar" />
+                        <button type="submit" class="search-icon">
+                            <i class="icon icon-search icon-lg"></i></button>
                         <div class="input-group-append">
-                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewUnidadMedida"
+                                data-toggle="tooltip" title="Agregar Unidad de Medida"><i
+                                    class="icon icon-addnew"></i></button>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewUnidadMedida"data-toggle="tooltip" title="Agregar Unidad de Medida" ><i class="icon icon-addnew"></i></button>
+
                     </div>
                 </form>
-                <div class="dt-card mt-4">
+                <div class="dt-card m-0 pt-2">
                     <!-- Card Body -->
-                    <div class="dt-card__body p-0  " >
+                    <div class="dt-card__body p-0  ">
                         <!-- Widget -->
                         <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                             id="tbodyUnidadMedida">
+                            id="tbodyUnidadMedida">
                         </div>
                         <!-- /widget -->
                         <!-- /card body -->
@@ -53,7 +58,7 @@
                         <nav aria-label="Page navigation example">
                             <ul id="paginationUnidadMedida" class="pagination pagination-sm justify-content-end">
                             </ul>
-                        </nav>  
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -70,22 +75,26 @@
                 <h4 class="mb-0 text-center" id="txtTituloModalMan"> UNIDADES DE MEDIDA</h4>
 
             </div>
-            <form id="FrmUnidadMedidaModal"> 
+            <form id="FrmUnidadMedidaModal">
                 <div class="row">
                     <div class="form-group col-lg-2 ">
                     </div>
                     <div class="form-group col-lg-4 col-sm-6">
                         <label for="txtNombreUnidadMedida">Nombre</label>
-                        <input class="form-control form-control-sm" id="txtNombreUnidadMedida" type="text" placeholder="NOMBRE">
+                        <input class="form-control form-control-sm" id="txtNombreUnidadMedida" type="text"
+                            placeholder="NOMBRE">
                     </div>
                     <div class="form-group col-lg-4 col-sm-6">
                         <label for="txtAbreviaturaUnidadMedida">Abreviatura</label>
-                        <input class="form-control form-control-sm" id="txtAbreviaturaUnidadMedida" type="text" placeholder="ABREVIATURA">
+                        <input class="form-control form-control-sm" id="txtAbreviaturaUnidadMedida" type="text"
+                            placeholder="ABREVIATURA">
                     </div>
 
                     <div class="form-group col-12 text-center">
-                        <button type="button" id="btnRegresar" class="btn btn-outline-primary btn-sm" ><i class="icon icon-reply"></i> CANCELAR</button>
-                        <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm"><i class="fas fa-check"></i> GUARDAR</button>
+                        <button type="button" id="btnRegresar" class="btn btn-outline-primary btn-sm"><i
+                                class="icon icon-reply"></i> CANCELAR</button>
+                        <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm"><i
+                                class="fas fa-check"></i> GUARDAR</button>
                     </div>
                 </div>
             </form>
@@ -100,12 +109,14 @@
 
 </div>
 
-<div class="modal fade" id="modalCargandoUnidadMedida" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+<div class="modal fade" id="modalCargandoUnidadMedida" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Cargando UnidadMedidas. . .
                     </div>
                 </div>

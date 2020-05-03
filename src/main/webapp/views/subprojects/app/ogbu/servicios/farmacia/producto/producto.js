@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (validateFormProducto()) {
             $('#modalCargandoProducto').modal('show');
         }
-        
+
     });
 
     document.querySelector("#btnOpenNewProducto").onclick = function () {
@@ -83,13 +83,13 @@ function processAjaxProducto() {
                 "estado": document.querySelector("#txtEstadoProducto").value,
                 "descripcion": document.querySelector("#txtDescripcionProducto").value,
                 "categoria": {
-                    "idcategoria":categoriaSelected.idcategoria
+                    "idcategoria": categoriaSelected.idcategoria
                 },
                 "unidadmedida_ingreso": {
-                    "idunidad_medida":unidadMedidaISelected.idunidad_medida
+                    "idunidad_medida": unidadMedidaISelected.idunidad_medida
                 },
-                "unidadmedida_salida":{
-                    "idunidad_medida":unidadMedidaSSelected.idunidad_medida
+                "unidadmedida_salida": {
+                    "idunidad_medida": unidadMedidaSSelected.idunidad_medida
                 },
             };
             if (beanRequestProducto.operation == "update") {
@@ -138,8 +138,8 @@ function toListProducto(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white mb-0 pl-5">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 ">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -166,28 +166,9 @@ function toListProducto(beanPagination) {
         document.querySelector("#tbodyProducto").innerHTML += row;
         beanPagination.list.forEach(producto => {
             row =
-                    `
-                 <div class="dt-widget__item border-success  pl-5">
-                    <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
-                            <!-- Action Button Group -->
-                            <div class="action-btn-group">
-                                <button class="btn btn-default text-primary dt-fab-btn editar-producto" idproducto='${producto.idproducto}' title="Editar" data-toggle="tooltip">
-                                    <i class="icon icon-editors"></i>
-                                </button>
-                                <button class="btn btn-default text-danger dt-fab-btn eliminar-producto" idproducto='${producto.idproducto}' title="Eliminar" data-toggle="tooltip">
-                                    <i class="icon icon-trash-filled"></i>
-                                </button>
-                              
-                            </div>
-                            <!-- /action button group -->
-                        </div>
-                        <!-- /hide content -->
-                    </div>
-                    <!-- /widget extra -->
+                `
+                 <div class="dt-widget__item border-success m-o pt-1 pb-1">
+                   
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -209,7 +190,26 @@ function toListProducto(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-               
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra">
+                    <div class="dt-task">
+                    <div class="dt-task__redirect">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-producto" idproducto='${producto.idproducto}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-producto" idproducto='${producto.idproducto}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                              
+                            </div>
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                  
                     
                 </div>
@@ -218,11 +218,11 @@ function toListProducto(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageProducto").value),
-                document.querySelector("#pageProducto"),
-                $('#modalCargandoProducto'),
-                $('#paginationProducto'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageProducto").value),
+            document.querySelector("#pageProducto"),
+            $('#modalCargandoProducto'),
+            $('#paginationProducto'));
         addEventsProductoes();
 
 
@@ -286,34 +286,34 @@ function findByProducto(idproducto) {
 }
 
 function validateFormProducto() {
-   
+
     if (document.querySelector("#txtCodigoProducto").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese Código');
         document.querySelector("#txtCodigoProducto").focus();
         return false;
-    }else if (document.querySelector("#txtNombreProducto").value == "") {
+    } else if (document.querySelector("#txtNombreProducto").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese Nombre');
         document.querySelector("#txtNombreProducto").focus();
         return false;
-    }else if (document.querySelector("#txtCantidadProducto").value.match(/^[0-9]+$/)==null) {
+    } else if (document.querySelector("#txtCantidadProducto").value.match(/^[0-9]+$/) == null) {
         showAlertTopEnd('warning', 'Por favor ingrese Cantidad');
         document.querySelector("#txtCantidadProducto").focus();
         return false;
-    }else if (document.querySelector("#txtFactorProducto").value.match(/^[0-9.]+$/)==null) {
+    } else if (document.querySelector("#txtFactorProducto").value.match(/^[0-9.]+$/) == null) {
         showAlertTopEnd('warning', 'Por favor ingrese Factor de conversión');
         document.querySelector("#txtFactorProducto").focus();
         return false;
-    }else if (document.querySelector("#txtEstadoProducto").value == "-1") {
+    } else if (document.querySelector("#txtEstadoProducto").value == "-1") {
         showAlertTopEnd('warning', 'Por favor ingrese Estado');
         document.querySelector("#txtEstadoProducto").focus();
         return false;
-    }else if (categoriaSelected==undefined) {
+    } else if (categoriaSelected == undefined) {
         showAlertTopEnd('warning', 'Por favor ingrese Categoría');
         return false;
-    }else if (unidadMedidaISelected==undefined) {
+    } else if (unidadMedidaISelected == undefined) {
         showAlertTopEnd('warning', 'Por favor ingrese Unidad de medida de Ingreso');
         return false;
-    }else if (unidadMedidaSSelected==undefined) {
+    } else if (unidadMedidaSSelected == undefined) {
         showAlertTopEnd('warning', 'Por favor ingrese Unidad de medida de Salida');
         return false;
     }
