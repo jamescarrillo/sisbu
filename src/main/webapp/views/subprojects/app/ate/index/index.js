@@ -6,20 +6,26 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#lblNameUserIndex2").innerHTML = nameUser;
     document.querySelector("#lblNameUserIndex3").innerHTML = nameUser;
 
-    document.querySelector("#row-saludo-principal").style.display = "flex";
+    if (user_session.estado == 4) {
+        document.querySelector("#row-activation-account").style.display = "flex";
+        document.querySelector('#txtCodeActivationAccount').value = "";
+        document.querySelector('#txtCodeActivationAccount').focus();
+    } else {
+        document.querySelector("#row-saludo-principal").style.display = "flex";
+    }
     document.querySelector("#row-videos-tutoriales").style.display = "none";
     document.querySelector("#row-access-direct").style.display = "none";
     document.querySelector("#row-pregunta-empiezo").style.display = "none";
 
     //SET INDEX
     /*
-    if (user_session.tipo_perfil == 1000) {
-        document.querySelector("#row-saludo-principal-usuario-nc").style.display = "none";
-        document.querySelector("#row-saludo-principal").style.display = "flex";
-    } else {
-        document.querySelector("#row-saludo-principal-usuario-nc").style.display = "flex";
-        document.querySelector("#row-saludo-principal").style.display = "none";
-    }
+     if (user_session.tipo_perfil == 1000) {
+     document.querySelector("#row-saludo-principal-usuario-nc").style.display = "none";
+     document.querySelector("#row-saludo-principal").style.display = "flex";
+     } else {
+     document.querySelector("#row-saludo-principal-usuario-nc").style.display = "flex";
+     document.querySelector("#row-saludo-principal").style.display = "none";
+     }
      */
 
     document.querySelector("#btnMirarVideosSisbu").onclick = function () {

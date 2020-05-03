@@ -95,13 +95,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (current_path.includes('ogbu')) {
                     sendIndex();
                 } else {
-                    //VALIDAMOS LAS URL SOLO DE CACHIMBOS
-                    /*
-                    if (current_path.includes('evaluaciones') || current_path.includes('constancias')) {
-                        if (user_session.tipo_perfil != 1000) {
+                    //Verificamos que la cuenta este activada
+                    if (user_session.estado == 4) {
+                        if (!current_path.includes('index')) {
                             sendIndex();
                         }
                     }
+                    //VALIDAMOS LAS URL SOLO DE CACHIMBOS
+                    /*
+                     if (current_path.includes('evaluaciones') || current_path.includes('constancias')) {
+                     if (user_session.tipo_perfil != 1000) {
+                     sendIndex();
+                     }
+                     }
                      */
                 }
                 break;

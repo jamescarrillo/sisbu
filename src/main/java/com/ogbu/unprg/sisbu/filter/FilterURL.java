@@ -234,7 +234,8 @@ public class FilterURL implements Filter {
         resource.setPath("/views/subprojects/app/ate/index/index.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ate/index/index.js" + version_project,
-            "/views/subprojects/app/ate/index/video_tutorial.js" + version_project
+            "/views/subprojects/app/ate/index/video_tutorial.js" + version_project,
+            "/views/subprojects/app/ate/index/activation_account.js" + version_project
         });
         this.list_resources.add(resource);
 

@@ -596,7 +596,7 @@
         <script src="<%=request.getContextPath()%>/assets/js/functions.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/customizer.js"></script>
 
-        <script src="<%out.print(request.getContextPath());%>/scripts/session/change.cookie.js"></script>
+        <!--script src="<%out.print(request.getContextPath());%>/scripts/session/change.cookie.js"></script-->
         <script src="<%out.print(request.getContextPath());%>/scripts/session/js.cookie.js?v=0.04"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.js?v=0.04"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.init.js?v=0.04"></script>
