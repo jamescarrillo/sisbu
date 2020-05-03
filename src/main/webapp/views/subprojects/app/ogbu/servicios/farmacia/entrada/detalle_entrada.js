@@ -31,7 +31,7 @@ function toListDetalleEntrada(beanPagination) {
     let row;
     row =
         `
-           <div class="dt-widget__item border-success bg-primary text-white mb-0 pl-5">
+           <div class="dt-widget__item border-success bg-primary text-white mb-0 ">
                 <!-- Widget Info -->
                 <div class="dt-widget__info text-truncate " >
                     <p class="mb-0 text-truncate ">
@@ -64,7 +64,7 @@ function toListDetalleEntrada(beanPagination) {
     beanPagination.forEach(DetalleEntrada => {
         row =
             `
-                 <div class="dt-widget__item border-success  pl-5">
+                <div class="dt-widget__item m-0 pt-1 pb-1">
                    
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
@@ -88,10 +88,8 @@ function toListDetalleEntrada(beanPagination) {
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
+                    <div class="dt-widget__extra">
+                         <div class="dt-task">
                             <!-- Action Button Group -->
                             <div class="action-btn-group">
                                 <button type="button" class="btn btn-default text-danger dt-fab-btn eliminar-DetalleEntrada" idDetalleEntrada='${DetalleEntrada.iddetalle_entrada}' title="Eliminar" data-toggle="tooltip">

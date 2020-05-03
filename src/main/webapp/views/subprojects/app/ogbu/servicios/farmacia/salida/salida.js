@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#FrmUnidadMedida').submit(function (event) {
         beanRequestUnidadMedida.operation = "paginate";
         beanRequestUnidadMedida.type_request = "GET";
-      $('#modalCargandoUnidadMedida').modal('show');
+        $('#modalCargandoUnidadMedida').modal('show');
         event.preventDefault();
         event.stopPropagation();
     });
@@ -121,8 +121,8 @@ function toListUnidadMedida(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white mb-0 pl-5">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -142,13 +142,25 @@ function toListUnidadMedida(beanPagination) {
         document.querySelector("#tbodyUnidadMedida").innerHTML += row;
         beanPagination.list.forEach(unidadMedida => {
             row =
-                    `
-                 <div class="dt-widget__item border-success  pl-5">
+                `
+                 <div class="dt-widget__item m-0 pt-1 pb-1">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${unidadMedida.nombre}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${unidadMedida.nom_abreviado}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
                     <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
+                    <div class="dt-widget__extra">
+                    <div class="dt-task">
                             <!-- Action Button Group -->
                             <div class="action-btn-group">
                                 <button class="btn btn-default text-primary dt-fab-btn editar-unidadMedida" idunidadMedida='${unidadMedida.idunidad_medida}' title="Editar" data-toggle="tooltip">
@@ -164,31 +176,17 @@ function toListUnidadMedida(beanPagination) {
                         <!-- /hide content -->
                     </div>
                     <!-- /widget extra -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
-                        <p class="mb-0 text-truncate ">
-                           ${unidadMedida.nombre}
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
-                        <p class="mb-0 text-truncate ">
-                           ${unidadMedida.nom_abreviado}
-                        </p>
-                    </div>
-                    <!-- /widget info -->
                 </div>
             `;
             document.querySelector("#tbodyUnidadMedida").innerHTML += row;
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageUnidadMedida").value),
-                document.querySelector("#pageUnidadMedida"),
-                $('#modalCargandoUnidadMedida'),
-                $('#paginationUnidadMedida'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageUnidadMedida").value),
+            document.querySelector("#pageUnidadMedida"),
+            $('#modalCargandoUnidadMedida'),
+            $('#paginationUnidadMedida'));
         addEventsUnidadMedidaes();
 
 
@@ -208,7 +206,7 @@ function addEventsUnidadMedidaes() {
                 beanRequestUnidadMedida.type_request = "PUT";
                 //SET VALUES MODAL
                 document.querySelector("#txtNombreUnidadMedida").value = unidadMedidaSelected.nombre;
-                document.querySelector("#txtAbreviaturaUnidadMedida").value=unidadMedidaSelected.nom_abreviado;
+                document.querySelector("#txtAbreviaturaUnidadMedida").value = unidadMedidaSelected.nom_abreviado;
                 document.querySelector("#txtTituloModalMan").innerHTML = "EDITAR UNIDAD DE MEDIDA";
                 //OPEN MODEL
                 document.querySelector("#btnListaUnidadMedida").style.display = 'none';
@@ -246,17 +244,17 @@ function validateFormUnidadMedida() {
         showAlertTopEnd('warning', 'Por favor ingrese Nombre');
         document.querySelector("#txtNombreUnidadMedida").focus();
         return false;
-    }else  if (document.querySelector("#txtAbreviaturaUnidadMedida").value == "") {
+    } else if (document.querySelector("#txtAbreviaturaUnidadMedida").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese Abreviatura');
         document.querySelector("#txtAbreviaturaUnidadMedida").focus();
         return false;
     }
-   
+
     return true;
 }
 
 function limpiarInput() {
     document.querySelector("#txtNombreUnidadMedida").value = "";
-     document.querySelector("#txtAbreviaturaUnidadMedida").value="";
+    document.querySelector("#txtAbreviaturaUnidadMedida").value = "";
 }
 

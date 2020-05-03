@@ -2,9 +2,9 @@
 --%>
 
 <div class="row">
-  <div class="col-xl-12" id="btnListaEntrada">
+  <div class="col-xl-12 p-0" id="btnListaEntrada">
     <!-- Card -->
-    <div class="card overflow-hidden">
+    <div class="overflow-hidden">
       <!-- Card Header -->
       <div class="card-header bg-transparent">
         <h4 class="mb-0" id="titleManagerEntrada">[ 0 ] ENTRADA</h4>
@@ -12,11 +12,11 @@
       </div>
       <!-- /card header -->
       <!-- Card Body -->
-      <div class="card-body pt-0">
+      <div class="card-body p-0">
         <form id="FrmEntrada" class="search-box mw-100 left-side-icon">
           <div class="input-group">
             <input type="search" id="txtFilterEntrada" class="form-control form-control-sm"
-              placeholder="Filter Nombre..." />
+              placeholder="Filter Nombre..." data-toggle="tooltip" data-placement="left" data-original-title="Buscar" />
             <button type="submit" class="search-icon">
               <i class="icon icon-search icon-lg"></i></button>
             <div class="input-group-append">
@@ -233,27 +233,31 @@
       </div>
       <div class="modal-body pb-0 pt-0">
         <div class="row">
-          <div class="col-12">
+          <div class="col-12 pt-2">
             <input type="hidden" id="pagePersonalC" value="1" />
-            <form id="FrmPersonalC" class="search-box w-100 right-side-icon">
-              <input type="text" id="txtFilterPersonalC" class="form-control form-control-sm mr-3"
-                placeholder="INGRESE FILTRO . . ." />
+            <form id="FrmPersonalC" class="search-box mw-100 right-side-icon">
+              <input type="search" id="txtFilterPersonalC" class="form-control form-control-sm mr-3"
+                placeholder="INGRESE FILTRO . . ." data-toggle="tooltip" data-placement="left"
+                data-original-title="Buscar" />
               <button type="submit" class="search-icon">
                 <i class="icon icon-search icon-lg"></i></button>
 
             </form>
-            <div class="row pl-5 pr-5 mb-2">
-              <div class="table-responsive">
-                <table class="table mb-0 table-fluid">
-                  <thead>
-                    <tr>
-                      <th class="align-middle text-left">Personal</th>
-                    </tr>
-                  </thead>
-                  <tbody id="tbodyPersonalC"></tbody>
-                </table>
-              </div>
+
+          </div>
+          <div class="col-12">
+
+            <div class="table-responsive">
+              <table class="table mb-0 table-fluid">
+                <thead>
+                  <tr>
+                    <th class="align-middle text-left">Personal</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyPersonalC"></tbody>
+              </table>
             </div>
+
             <div class="row mt-2 mb-2" style="display: none">
               <div class="col-sm-4 mt-2">
                 <select id="sizePagePersonalC" class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
@@ -317,43 +321,39 @@
         <div class="row">
           <div class="col-12">
             <input type="hidden" id="pageProductoC" value="1" />
-            <form id="FrmProductoC">
-              <div class="row mt-3">
-                <div class="input-group col-12">
-                  <input type="text" id="txtFilterProductoC" class="form-control form-control-sm mr-3"
-                    placeholder="INGRESE FILTRO . . ." />
-                  <button type="submit" id="btnBuscarProductoC" class="btn btn-primary btn-xs" data-toggle="tooltip"
-                    title="Buscar Pregunta">
-                    <i class="fa fa-search" aria-hidden="true"></i> BUSCAR
-                  </button>
-                </div>
-              </div>
+            <form id="FrmProductoC" class="search-box mw-100 right-side-icon">
+              <input type="search" id="txtFilterProductoC" class="form-control form-control-sm mr-3"
+                placeholder="INGRESE FILTRO . . ." data-toggle="tooltip" data-placement="left"
+                data-original-title="Buscar" />
+              <button type="submit" class="search-icon">
+                <i class="icon icon-search icon-lg"></i></button>
             </form>
-            <div class="row pl-5 pr-5 mb-2">
-              <div class="table-responsive">
-                <table class="table mb-0 table-fluid">
-                  <thead>
-                    <tr>
-                      <th class="align-middle text-left">Producto</th>
-                    </tr>
-                  </thead>
-                  <tbody id="tbodyProductoC"></tbody>
-                </table>
-              </div>
+
+          </div>
+          <div class="col-12">
+            <div class="table-responsive">
+              <table class="table mb-0 table-fluid">
+                <thead>
+                  <tr>
+                    <th class="align-middle text-left">Producto</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyProductoC"></tbody>
+              </table>
             </div>
-            <div class="row mt-2 mb-2" style="display: none">
-              <div class="col-sm-4 mt-2">
-                <select id="sizePageProductoC" class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
-                  <option value="5">05</option>
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                </select>
-              </div>
-              <div class="col-sm-8 mt-2">
-                <nav aria-label="Page navigation">
-                  <ul id="paginationProductoC" class="pagination justify-content-end"></ul>
-                </nav>
-              </div>
+          </div>
+          <div class="col-12" style="display: none">
+            <div class="col-sm-4 mt-2">
+              <select id="sizePageProductoC" class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                <option value="5">05</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+              </select>
+            </div>
+            <div class="col-sm-8 mt-2">
+              <nav aria-label="Page navigation">
+                <ul id="paginationProductoC" class="pagination justify-content-end"></ul>
+              </nav>
             </div>
           </div>
         </div>

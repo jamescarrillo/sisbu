@@ -159,7 +159,7 @@ function toListEntrada(beanPagination) {
   }
   let row;
   row = `
-               <div class="dt-widget__item border-success bg-primary text-white mb-0 pl-5">
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 ">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -179,7 +179,7 @@ function toListEntrada(beanPagination) {
   document.querySelector("#tbodyEntrada").innerHTML += row;
   beanPagination.list.forEach(BeanEntrada => {
     row = `
-                 <div class="dt-widget__item pt-1 pb-1">
+                 <div class="dt-widget__item m-0 pt-1 pb-1">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate" >
                         <p class="mb-0 text-truncate ">
