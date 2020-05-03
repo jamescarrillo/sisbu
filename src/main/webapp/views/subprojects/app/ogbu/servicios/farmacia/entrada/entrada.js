@@ -2,13 +2,13 @@ var beanPaginationEntrada;
 var entradaSelected;
 var beanRequestEntrada = new BeanRequest();
 var PersonalSelected;
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   //INICIALIZANDO VARIABLES DE SOLICITUD
   beanRequestEntrada.entity_api = "api/entradas";
   beanRequestEntrada.operation = "paginate";
   beanRequestEntrada.type_request = "GET";
 
-  $("#FrmEntrada").submit(function(event) {
+  $("#FrmEntrada").submit(function (event) {
     beanRequestEntrada.operation = "paginate";
     beanRequestEntrada.type_request = "GET";
     $("#modalCargandoEntrada").modal("show");
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     event.stopPropagation();
   });
 
-  $("#FrmEntradaModal").submit(function(event) {
+  $("#FrmEntradaModal").submit(function (event) {
     if (validateFormEntrada()) {
       $("#modalCargandoEntrada").modal("show");
     }
@@ -30,9 +30,9 @@ document.addEventListener("DOMContentLoaded", function() {
       format: "DD/MM/YYYY",
       lang: "es"
     })
-    .on("change", function(e, date) {});
+    .on("change", function (e, date) { });
 
-  document.querySelector("#btnEliminarFechaEntrada").onclick = function() {
+  document.querySelector("#btnEliminarFechaEntrada").onclick = function () {
     document.querySelector("#txtFechaEntrada").value = "";
   };
   $("#txtFechaVencimientoEntrada")
@@ -42,14 +42,14 @@ document.addEventListener("DOMContentLoaded", function() {
       format: "DD/MM/YYYY",
       lang: "es"
     })
-    .on("change", function(e, date) {});
+    .on("change", function (e, date) { });
 
   document.querySelector(
     "#btnEliminarFechaVencimientoEntrada"
-  ).onclick = function() {
+  ).onclick = function () {
     document.querySelector("#txtFechaVencimientoEntrada").value = "";
   };
-  document.querySelector("#btnOpenNewEntrada").onclick = function() {
+  document.querySelector("#btnOpenNewEntrada").onclick = function () {
     //CONFIGURAMOS LA SOLICITUD
     beanRequestEntrada.operation = "add";
     beanRequestEntrada.type_request = "POST";
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector("#btnOpenEntrada").style.display = "block";
   };
 
-  document.querySelector("#btnRegresar").onclick = function() {
+  document.querySelector("#btnRegresar").onclick = function () {
     beanRequestEntrada.operation = "paginate";
     beanRequestEntrada.type_request = "GET";
     $("#modalCargandoEntrada").modal("show");
@@ -71,12 +71,12 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector("#btnListaEntrada").style.display = "block";
   };
 
-  $("#modalCargandoEntrada").on("shown.bs.modal", function() {
+  $("#modalCargandoEntrada").on("shown.bs.modal", function () {
     processAjaxEntrada();
   });
   $("#modalCargandoEntrada").modal("show");
 
-  $("#sizePageEntrada").change(function() {
+  $("#sizePageEntrada").change(function () {
     $("#modalCargandoEntrada").modal("show");
   });
 });
@@ -123,7 +123,7 @@ function processAjaxEntrada() {
     contentType: "application/json; charset=utf-8",
     dataType: "json"
   })
-    .done(function(beanCrudResponse) {
+    .done(function (beanCrudResponse) {
       console.log(beanCrudResponse);
       $("#modalCargandoEntrada").modal("hide");
       if (beanCrudResponse.messageServer !== undefined) {
@@ -142,7 +142,7 @@ function processAjaxEntrada() {
         toListEntrada(beanPaginationEntrada);
       }
     })
-    .fail(function(jqXHR, textStatus, errorThrown) {
+    .fail(function (jqXHR, textStatus, errorThrown) {
       $("#modalCargandoEntrada").modal("hide");
       showAlertErrorRequest();
     });
@@ -152,9 +152,13 @@ function toListEntrada(beanPagination) {
   document.querySelector("#tbodyEntrada").innerHTML = "";
   document.querySelector("#titleManagerEntrada").innerHTML =
     "[ " + beanPagination.count_filter + " ] ENTRADA";
-  if (beanPagination.count_filter > 0) {
-    let row;
-    row = `
+  if (beanPagination.count_filter == 0) {
+    destroyPagination($("#paginationEntrada"));
+    showAlertTopEnd("warning", "No se encontraron resultados");
+    return;
+  }
+  let row;
+  row = `
                <div class="dt-widget__item border-success bg-primary text-white mb-0 pl-5">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
@@ -172,32 +176,12 @@ function toListEntrada(beanPagination) {
                     <!-- /widget info -->
                 </div>
             `;
-    document.querySelector("#tbodyEntrada").innerHTML += row;
-    beanPagination.list.forEach(BeanEntrada => {
-      row = `
-                 <div class="dt-widget__item border-success  pl-5">
-                    <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
-                            <!-- Action Button Group -->
-                            <div class="action-btn-group">
-                                <button class="btn btn-default text-primary dt-fab-btn editar-entrada" identrada='${BeanEntrada.entrada.identrada}' title="Editar" data-toggle="tooltip">
-                                    <i class="icon icon-editors"></i>
-                                </button>
-                                <button class="btn btn-default text-danger dt-fab-btn eliminar-entrada" identrada='${BeanEntrada.entrada.identrada}' title="Eliminar" data-toggle="tooltip">
-                                    <i class="icon icon-trash-filled"></i>
-                                </button>
-                              
-                            </div>
-                            <!-- /action button group -->
-                        </div>
-                        <!-- /hide content -->
-                    </div>
-                    <!-- /widget extra -->
+  document.querySelector("#tbodyEntrada").innerHTML += row;
+  beanPagination.list.forEach(BeanEntrada => {
+    row = `
+                 <div class="dt-widget__item pt-1 pb-1">
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
+                    <div class="dt-widget__info text-truncate" >
                         <p class="mb-0 text-truncate ">
                            ${BeanEntrada.entrada.fecha}
                         </p>
@@ -212,29 +196,49 @@ function toListEntrada(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra">
+                    <div class="dt-task">
+                        <!-- Hide Content -->
+                        <div class="dt-task__redirect">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-entrada" identrada='${BeanEntrada.entrada.identrada}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-entrada" identrada='${BeanEntrada.entrada.identrada}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                        </div>
+                    </div>
+                    <!-- /widget extra -->
                 </div>
             `;
-      document.querySelector("#tbodyEntrada").innerHTML += row;
-      $('[data-toggle="tooltip"]').tooltip();
-    });
-    buildPagination(
-      beanPagination.count_filter,
-      parseInt(document.querySelector("#sizePageEntrada").value),
-      document.querySelector("#pageEntrada"),
-      $("#modalCargandoEntrada"),
-      $("#paginationEntrada")
-    );
-    addEventsEntradaes();
-  } else {
-    destroyPagination($("#paginationEntrada"));
-    showAlertTopEnd("warning", "No se encontraron resultados");
-  }
+    document.querySelector("#tbodyEntrada").innerHTML += row;
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  buildPagination(
+    beanPagination.count_filter,
+    parseInt(document.querySelector("#sizePageEntrada").value),
+    document.querySelector("#pageEntrada"),
+    $("#modalCargandoEntrada"),
+    $("#paginationEntrada")
+  );
+  addEventsEntradaes();
+
+
+
 }
 
 function addEventsEntradaes() {
   document.querySelectorAll(".editar-entrada").forEach(btn => {
     //AGREGANDO EVENTO CLICK
-    btn.onclick = function() {
+    btn.onclick = function () {
       entradaSelected = findByEntrada(btn.getAttribute("identrada")).entrada;
       listDetalleEntrada = findByEntrada(btn.getAttribute("identrada")).list;
 
@@ -265,7 +269,7 @@ function addEventsEntradaes() {
   });
   document.querySelectorAll(".eliminar-entrada").forEach(btn => {
     //AGREGANDO EVENTO CLICK
-    btn.onclick = function() {
+    btn.onclick = function () {
       entradaSelected = findByEntrada(btn.getAttribute("identrada")).entrada;
       beanRequestEntrada.operation = "delete";
       beanRequestEntrada.type_request = "DELETE";
