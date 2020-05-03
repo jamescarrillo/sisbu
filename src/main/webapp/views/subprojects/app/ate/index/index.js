@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#row-pregunta-empiezo").style.display = "none";
 
     //SET INDEX
+    /*
     if (user_session.tipo_perfil == 1000) {
         document.querySelector("#row-saludo-principal-usuario-nc").style.display = "none";
         document.querySelector("#row-saludo-principal").style.display = "flex";
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#row-saludo-principal-usuario-nc").style.display = "flex";
         document.querySelector("#row-saludo-principal").style.display = "none";
     }
+     */
 
     document.querySelector("#btnMirarVideosSisbu").onclick = function () {
         document.querySelector("#row-saludo-principal").style.display = "none";

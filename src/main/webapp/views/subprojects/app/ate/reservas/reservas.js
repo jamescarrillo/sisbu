@@ -148,13 +148,38 @@ function toListCita(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(cita => {
+            let boton_eliminar = "";
+            let s_fecha = "";
+            let s_hora = "";
+            let color_row = "";
+            if (cita.estado_solicitud == "PEN") {
+                color_row = "border-danger"
+                s_fecha = "Fecha Solicitud: " + cita.fecha_solicitud.split(" ")[0];
+                s_hora = "Hora Solicitud: " + cita.fecha_solicitud.split(" ")[1].substring(0, 5);
+                boton_eliminar =
+                        `
+                <button class="btn btn-default text-danger dt-fab-btn eliminar-cita"
+                                         idcita='${cita.idcita}' title="Eliminar solicitud"
+                                        data-toggle="tooltip">
+                        <i class="icon icon-assignment icon-xl"></i>
+                </button>
+            `
+            } else {
+                //Ya se aceptó la solicitud, verificamos el estado actual de la cita
+                if (cita.estado_cita == "PEN") {
+                    color_row = "border-primary"
+                    s_fecha = "Fecha Programada: " + cita.fecha_programada.split(" ")[0];
+                    s_hora = "Hora Programada: " + cita.fecha_programada.split(" ")[1].substring(0, 5);
+                } else {
+                    color_row = "border-success"
+                    s_fecha = "Fecha Atención: " + cita.fecha_atencion.split(" ")[0];
+                    s_hora = "Hora Atención: " + cita.fecha_atencion.split(" ")[1].substring(0, 5);
+                }
+            }
+
             row =
                     `
-                <div class="dt-widget__item ${cita.fecha_programada != null
-                    ? "border-success"
-                    : cita.fecha_aceptacion != null ? "border-warning"
-                    : cita.fecha_solicitud != null ? "border-danger"
-                    : ""} sisbu-cursor-mano border-bottom m-0">
+                <div class="dt-widget__item ${color_row} sisbu-cursor-mano border-bottom m-0">
                         <div class="dt-widget__info text-truncate">
                             <div class="dt-widget__title f-16 font-weight-500 text-truncate">${cita.area.nombre}
                             </div>
@@ -162,38 +187,20 @@ function toListCita(beanPagination) {
                             <p class="mb-0 text-truncate text-light-gray">
                             ${cita.personal.nombre == null
                     ? "Motivo : " + cita.motivo
-                    : 'Dr. ' + cita.personal.nombre +
+                    : cita.personal.nombre +
                     ' ' + cita.personal.apellido_pat +
                     ' ' + cita.personal.apellido_mat}
                             </p>
                         </div>
                         <div class="dt-widget__extra text-right">
                             <div class="show-content">
-                                <span class="d-block">${
-                    cita.fecha_programada != null
-                    ? "Fecha de Atenci&oacute;n : " + cita.fecha_programada.split(" ")[0]
-                    : cita.fecha_aceptacion != null
-                    ? "Fecha de Aprobaci&oacute;n : " + cita.fecha_aceptacion.split(" ")[0]
-                    : cita.fecha_solicitud != null ? "Fecha : " + cita.fecha_solicitud.split(" ")[0]
-                    : ""
-
-                    }</span>
-                                <span class="d-block " style='margin-right: 50px'>Hora : ${cita.fecha_programada != null
-                    ? cita.fecha_programada.split(" ")[1].substring(0,5)
-                    : cita.fecha_aceptacion != null
-                    ? cita.fecha_aceptacion.split(" ")[1].substring(0,5)
-                    : cita.fecha_solicitud != null ? cita.fecha_solicitud.split(" ")[1].substring(0,5)
-                    : ""}</span>
+                                <span class="d-block">${s_fecha}</span>
+                                <span class="d-block " style='margin-right: 50px'>${s_hora}</span>
                             </div>
                        
                             <div class="hide-content">
                                 <div class="action-btn-group">
-                                        <button class="btn btn-default text-danger dt-fab-btn eliminar-cita"
-                                         idcita='${cita.idcita}' title="Eliminar solicitud"
-                                        data-toggle="tooltip">
-                                        <i class="icon icon-assignment icon-xl"></i>
-                                    </button>
-                                 
+                                        ${boton_eliminar}
                                 </div>
                             </div>
                         </div>

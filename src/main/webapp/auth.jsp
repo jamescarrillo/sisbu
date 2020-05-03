@@ -57,7 +57,7 @@
                     <div class="dt-login__content-wrapper">
 
                         <!-- Login Background Section -->
-                        <div class="dt-login__bg-section">
+                        <div class="dt-login__bg-section" style="background-image: url()">
 
                             <div class="dt-login__bg-content">
                                 <!-- Login Title -->
@@ -93,23 +93,28 @@
                                     <div class="form-group">
                                         <label class="sr-only" for="email-1">Username</label>
                                         <input type="text" class="form-control" aria-describedby="email-1"
-                                               placeholder="Username" id="txtUsername" name="login">
+                                               placeholder="Nombre de Usuario" id="txtUsername" name="login">
                                     </div>
                                     <!-- /form group -->
 
                                     <!-- Form Group -->
                                     <div class="form-group">
                                         <label class="sr-only" for="password-1">Password</label>
-                                        <input type="password" class="form-control" id="txtPass" name="password" placeholder="Password">
+                                        <input type="password" class="form-control" id="txtPass" name="password" placeholder="Contraseña">
                                     </div>
                                     <!-- /form group -->
 
                                     <!-- Form Group -->
                                     <h6 class="text-danger">
-                                        **Los estudiantes cachimbos de la sede Lambayeque ingresan con su DNI como Username y Password.
+                                        *Ingresa con tu DNI como nombre de usuario y contraseña.
                                     </h6>
                                     <h6 class="text-danger">
-                                        **Los estudiantes de la sede Cutervo ingresan con su Código como Username y Password.
+                                        *Si al iniciar sesión recibes este mensaje: "El usuario ingresado no existe", crea una nueva cuenta.
+                                    </h6>
+                                    <h6 class="text-danger">
+                                        *Si cambiaste tu clave de acceso y no lo recuerdas, dale click en ¿Olvide mi contraseña?
+                                    </h6>
+                                    <h6 class="text-danger">
                                     </h6>
                                     <!--div class="dt-checkbox d-block mb-6">
                                         <input type="checkbox" id="checkbox-1">
@@ -171,7 +176,7 @@
                                     <!-- /form group -->
 
                                     <div class="text-right">
-                                        <a class="d-inline-block font-weight-500 mt-4" href="<%=request.getContextPath()%>/recovery">¿No puedes acceder a tu cuenta?</a>
+                                        <a class="d-inline-block font-weight-500 mt-4" href="<%=request.getContextPath()%>/recovery">¿Olvidé mi contraseña?</a>
                                     </div>
                                 </form>
                                 <!-- /form -->

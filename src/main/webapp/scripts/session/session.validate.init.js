@@ -96,11 +96,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     sendIndex();
                 } else {
                     //VALIDAMOS LAS URL SOLO DE CACHIMBOS
+                    /*
                     if (current_path.includes('evaluaciones') || current_path.includes('constancias')) {
                         if (user_session.tipo_perfil != 1000) {
                             sendIndex();
                         }
                     }
+                     */
                 }
                 break;
         }

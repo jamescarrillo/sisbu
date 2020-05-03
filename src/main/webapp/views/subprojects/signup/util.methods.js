@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#slcTipoPersonalUsuario").disabled = true;
 
     document.querySelector("#slcTipoUsuario").onchange = function () {
-        if (this.value === "1") {
+        if (this.value == "1") {
             document.querySelector("#slcModalidadIngresoUsuario").disabled = false;
             document.querySelector("#slcTipoPersonalUsuario").value = "-1";
             document.querySelector("#slcTipoPersonalUsuario").disabled = true;
