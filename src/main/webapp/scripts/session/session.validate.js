@@ -46,15 +46,20 @@ function getStringTipoUsuario(tipo_usuario) {
     return st;
 }
 
-function addMenus(usuario) {
+function addMenus() {
     //console.log(usuario.tipo_usuario);
-    switch (usuario.tipo_usuario) {
+    switch (user_session.tipo_usuario) {
         case 1:
-            createHTML_ATE(usuario.tipo_perfil);
+            //Verificamos si esta activado la cuenta
+            if (user_session.estado == 4) {
+                createHTML_ATE_ACTIVATION_ACCOUNT();
+            } else {
+                createHTML_ATE(user_session.tipo_perfil);
+            }
             break;
         case 2:
             //ogbu
-            createHTML_OGBU(usuario.tipo_perfil);
+            createHTML_OGBU(user_session.tipo_perfil);
             break;
         default:
             break;
@@ -671,6 +676,25 @@ function createHTML_OGBU(typeProfile) {
      
      `;
      */
+}
+
+function createHTML_ATE_ACTIVATION_ACCOUNT() {
+    document.querySelector("#menus_sisbu").innerHTML =
+            `
+        <!-- Menu Header -->
+        <li class="dt-side-nav__item dt-side-nav__header">
+            <span class="dt-side-nav__text">Dashboard</span>
+        </li>
+        <!-- /menu header -->
+        <!-- Menu Item -->
+        <li class="dt-side-nav__item">
+            <a href="${contextPah}app/ate/index" class="dt-side-nav__link a-index-no" title="Inicio">
+                <i class="icon icon-home icon-fw icon-lg"></i>
+                <span class="dt-side-nav__text">Inicio</span>
+            </a>
+        </li>
+        <!-- /menu item -->
+    `;
 }
 
 function createHTML_ATE(typeProfile) {

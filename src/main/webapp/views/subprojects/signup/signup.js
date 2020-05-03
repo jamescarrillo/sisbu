@@ -142,51 +142,6 @@ function processAjaxRegisterUsuario() {
     });
 }
 
-function processAjaxRegistroAtendido() {
-    let beanCrudRequest = {
-        "t": {
-            "nro_documento": "",
-            "colegiatura": "",
-            "nombre": "",
-            "apellido_pat": "",
-            "apellido_mat": "",
-            "tipo_usuario": "ATE",
-            "username": document.querySelector("#txtUsernameAtendido").value,
-            "email": "",
-            "pass": document.querySelector("#txtPassAtendido").value,
-            "alias": document.querySelector("#txtAliasAtendido").value,
-            "estado": "ACT",
-            "path_foto": "",
-            "institucion": {
-                "idinstitucion": 1
-            }
-        }
-    };
-    $.ajax({
-        url: getHostAPI() + "auth/signup",
-        type: 'POST',
-        data: JSON.stringify(beanCrudRequest),
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json'
-    }).done(function (beanCrudResponse) {
-        $('#modalCargandoAtendido').modal("hide");
-        if (beanCrudResponse.messageServer != undefined) {
-            if (beanCrudResponse.messageServer.toLowerCase() === "ok") {
-                //MANDAMOS A INICIAR SESIÓN
-                showAlertTopEnd('success', 'Registro completado exitosamente');
-                setTimeout(() => {
-                    location.href = getContextAPP() + "auth/login";
-                }, 2500);
-            } else {
-                showAlertTopEnd('warning', beanCrudResponse.messageServer);
-            }
-        }
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        $('#modalCargandoAtendido').modal("hide");
-        showAlertErrorRequest();
-    });
-}
-
 /*
  * UTILITARIOS DEL REGISTRO
  * @returns {undefined}
@@ -194,34 +149,6 @@ function processAjaxRegistroAtendido() {
 function hideTypesRegistros() {
     document.querySelector('#divProfesional').style.display = "none";
     document.querySelector('#divAtendido').style.display = "none";
-}
-
-function valditeFrmProfesional() {
-    if (document.querySelector('#txtNombresProfesional').value === "") {
-        showAlertTopEnd('warning', 'Ingrese nombres');
-        return false;
-    }
-    if (document.querySelector('#txtApellidoPatProfesional').value === "") {
-        showAlertTopEnd('warning', 'Ingrese apellido paterno');
-        return false;
-    }
-    if (document.querySelector('#txtApellidoMatProfesional').value === "") {
-        showAlertTopEnd('warning', 'Ingrese apellido paterno');
-        return false;
-    }
-    if (document.querySelector('#txtColegiaturaProfesional').value === "") {
-        showAlertTopEnd('warning', 'Ingrese colegiatura');
-        return false;
-    }
-    if (document.querySelector('#txtUsernameProfesional').value === "") {
-        showAlertTopEnd('warning', 'Ingrese nombre de usuario');
-        return false;
-    }
-    if (document.querySelector('#txtPassProfesional').value === "") {
-        showAlertTopEnd('warning', 'Ingrese contraseña');
-        return false;
-    }
-    return true;
 }
 
 function valditeFinalizeRegister() {
@@ -247,6 +174,12 @@ function valditeFinalizeRegister() {
     }
     if (document.querySelector('#txtEmailUsuario').value === "") {
         showAlertTopEnd('warning', 'Ingrese email');
+        document.querySelector('#txtEmailUsuario').focus();
+        return false;
+    }
+    let emailTest = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (!emailTest.test(document.querySelector('#txtEmailUsuario').value)) {
+        showAlertTopEnd('warning', 'Por favor ingresa un correo electrónico válido');
         document.querySelector('#txtEmailUsuario').focus();
         return false;
     }

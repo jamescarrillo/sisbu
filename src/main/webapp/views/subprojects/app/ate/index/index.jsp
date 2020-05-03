@@ -33,6 +33,39 @@
     </div>
 </div>
 
+<div class="row justify-content-center" id="row-activation-account" style="margin-top: 10px; display: none">
+    <div class="col-md-6 col-sm-8">
+        <div class="row">
+            <div class="col-12 text-center">
+                <img src="<%=request.getContextPath()%>/resources/prod/custom_app/kids.gif" class="img-fluid" alt="Fam. Pedro Ruiz Gallo">
+            </div>
+            <div class="col-12 mt-4">
+                <h2 class="text-center">¡Bienvenido(a) <span class="text-info" id="lblNameUserIndex2">User</span>!
+                </h2>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label>CODIGO DE ACTIVACIÓN</label>
+                    <input type="text" id="txtCodeActivationAccount" maxlength="6" class="form-control" placeholder="Ingrese código. . .">
+                </div>
+            </div>
+            <div class="col-12">
+                <p class="text-center text-danger" style="font-size: 12px">
+                    *Nota: Si no te llegó el código de activación escribemos a
+                    <a href="mailto:sisbuapp.unprg@gmail.com">
+                        <i class="icon icon-message icon-fw"></i>
+                        sisbuapp.unprg@gmail.com
+                    </a>
+                </p>
+            </div>
+            <div class="col-12 text-center" style="margin-top: 10px;margin-bottom: 60px">
+                <button class="btn btn-primary mb-2 mr-4 pulse-primary btn-block" id="btn-activate-account"><i class="fas fa-check"></i> ACTIVAR CUENTA</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 <div class="row justify-content-center" id="row-saludo-principal" style="margin-top: 10px; display: none">
     <div class="col-md-6 col-sm-8">
         <div class="row">
@@ -62,7 +95,7 @@
             Ir a mis evaluaciones
         </a>
         <a href="<%=request.getContextPath()%>/app/ate/documentos" class="btn btn-success mb-2"
-            <i class="icon icon-send"></i>
+           <i class="icon icon-send"></i>
             Ir a mis documentos
         </a>
     </div>
@@ -141,6 +174,23 @@
                     <i class="icon icon-description dt-icon-bg text-primary"></i>
                 </div>
                 <a class="h2 mb-0 font-weight-500">Mis Evaluaciones</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal-loanding-activation-account" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+     style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Activando cuenta, por favor espere. . .
+                    </div>
+                </div>
             </div>
         </div>
     </div>
