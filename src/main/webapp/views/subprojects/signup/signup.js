@@ -87,9 +87,9 @@ function processAjaxRegisterUsuario() {
     let atendido = {
         "dni": document.querySelector("#txtNumeroDocumentoUsuario").value,
         "codigo": "",
-        "nombre": document.querySelector("#txtNombreUsuario").value,
-        "apellido_pat": document.querySelector("#txtApPaternoUsuario").value,
-        "apellido_mat": document.querySelector("#txtApMaternoUsuario").value,
+        "nombre": document.querySelector("#txtNombreUsuario").value.toUpperCase(),
+        "apellido_pat": document.querySelector("#txtApPaternoUsuario").value.toUpperCase(),
+        "apellido_mat": document.querySelector("#txtApMaternoUsuario").value.toUpperCase(),
         "tipo_documento": document.querySelector("#slcTipoDocumentoUsuario").value,
         "tipo_atendido": document.querySelector("#slcTipoUsuario").value,
         "subtipo_atendido": (document.querySelector("#slcTipoPersonalUsuario").value == "-1" ? "3" : document.querySelector("#slcTipoPersonalUsuario").value),

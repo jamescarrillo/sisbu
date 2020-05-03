@@ -57,7 +57,7 @@
                     <div class="dt-login__content-wrapper">
 
                         <!-- Login Background Section -->
-                        <div class="dt-login__bg-section">
+                        <div class="dt-login__bg-section" style="background-image: url()">
 
                             <div class="dt-login__bg-content">
                                 <!-- Login Title -->
@@ -101,11 +101,14 @@
                                         </div>
                                         <!-- /form group -->
                                         <h6 class="text-danger">
-                                            **Si eres cachimbo no necesitas registrarte, inicia sesión con tu DNI <a href="/sisbu/auth/login">aquí</a>.
+                                            *Si al verificar recibes el siguiente mensaje: "Ya existe un usuario con el DNI ingresado", <a href="/sisbu/auth/login">Inicia sesión</a> con tu DNI como nombre de usuario y contraseña.
                                         </h6>
                                         <!-- Form Group -->
                                         <div class="form-group">
                                             <button type="button" class="btn btn-primary text-uppercase" id="btn-verification-DNI" step="s_2">Verificar</button>
+                                            <span class="d-inline-block ml-4">O
+                                                <a class="d-inline-block font-weight-500 ml-3" href="/sisbu/auth/login">Iniciar Sesión</a>
+                                            </span>
                                         </div>
                                         <!-- /form group -->
                                         <!-- Form Group -->
@@ -150,7 +153,7 @@
                                         </div>
                                         <!-- /form group -->
                                         <div class="text-right">
-                                            <a class="d-inline-block font-weight-500 mt-4" href="<%=request.getContextPath()%>/recovery">¿No puedes acceder a tu cuenta?</a>
+                                            <a class="d-inline-block font-weight-500 mt-4" href="<%=request.getContextPath()%>/recovery">¿Olvidé mi contraseña?</a>
                                         </div>
                                     </div>
 

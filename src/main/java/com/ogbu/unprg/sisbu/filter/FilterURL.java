@@ -192,6 +192,7 @@ public class FilterURL implements Filter {
         resource.setUrl("/signup");
         resource.setPath("");
         resource.setScripts(new String[]{
+            "/views/subprojects/signup/util.methods.js" + version_project,
             "/views/subprojects/signup/signup.js" + version_project
         });
         this.list_resources.add(resource);
