@@ -77,10 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestAtendido.operation = "paginate";
         beanRequestAtendido.type_request = "GET";
         $('#modalCargandoAtendido').modal('show');
-        removeClass(document.querySelector("#btnOpenFamiliar"), "d-block");
-        removeClass(document.querySelector("#btnListaAtendido"), "d-none");
-        addClass(document.querySelector("#btnOpenFamiliar"), "d-none");
-        addClass(document.querySelector("#btnListaAtendido"), "d-block");
+        document.querySelector("#btnOpenFamiliar").style.display = 'none';
+        document.querySelector("#btnListaAtendido").style.display = 'block';
     };
 
     document.querySelector("#slctSufreAlgunaEnfermedad").onchange = function () {

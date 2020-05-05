@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#btn-cerrar-printer-comprobante").onclick = function () {
-//
+        //
     };
     document.querySelector("#buttonAntecedente").onclick = function () {
 
@@ -236,7 +236,7 @@ function toListPaciente(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
+            `
                <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
@@ -275,13 +275,13 @@ function toListPaciente(beanPagination) {
         document.querySelector("#tbodyPaciente").innerHTML += row;
         beanPagination.list.forEach(atendido => {
             row =
-                    `
-                 <div class="dt-widget__item border-success pl-5 ">
+                `
+                 <div class="dt-widget__item border-success pl-5 m-0">
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
                       
                         <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
+                        <div class="hide-content pr-2">
                             <!-- Action Button Group -->
                             <div class="action-btn-group">
                                 <button class="btn btn-default text-primary dt-fab-btn historia-clinica" idpaciente='${atendido.idatendido}' title="Ver Diagnótico" data-toggle="tooltip">
@@ -336,11 +336,11 @@ function toListPaciente(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePagePaciente").value),
-                document.querySelector("#pagePaciente"),
-                $('#modalCargandoPaciente'),
-                $('#paginationPaciente'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePagePaciente").value),
+            document.querySelector("#pagePaciente"),
+            $('#modalCargandoPaciente'),
+            $('#paginationPaciente'));
         addEventsPacientes();
         if (beanRequestPaciente.operation == "paginate") {
             document.querySelector("#txtFilterPaciente").focus();
@@ -488,7 +488,7 @@ function addInputHistoria(historiaSelected) {
     document.querySelector("#txtHistoriaPaciente").value = historiaSelected.num_historia;
     document.querySelector("#txtSeguroPaciente").value = historiaSelected.tipo_seguro;
     document.querySelector("#txtMedicoPaciente").value = historiaSelected.personal.apellido_pat + " " +
-            historiaSelected.personal.apellido_mat + " " + historiaSelected.personal.nombre;
+        historiaSelected.personal.apellido_mat + " " + historiaSelected.personal.nombre;
     document.querySelector("#txtAntFamiliPaciente").value = historiaSelected.familiares;
     document.querySelector("#txtAntPersonalPaciente").value = historiaSelected.personales;
     document.querySelector("#txtAlergiaPaciente").value = historiaSelected.alergias;
@@ -525,11 +525,11 @@ function processAjaxHistoria() {
                     "idhistoria_clinica": historiaSelected.idhistoria_clinica,
                     "num_historia": document.querySelector("#txtHistoriaPaciente").value,
                     "tipo_seguro": document.querySelector("#txtSeguroPaciente").value,
-                    "personal": {"idpersonal": doctorSelected.idpersonal},
+                    "personal": { "idpersonal": doctorSelected.idpersonal },
                     "familiares": document.querySelector("#txtAntFamiliPaciente").value,
                     "personales": document.querySelector("#txtAntPersonalPaciente").value,
                     "alergias": document.querySelector("#txtAlergiaPaciente").value,
-                    "atendido": {"idatendido": pacienteSelected.idatendido}
+                    "atendido": { "idatendido": pacienteSelected.idatendido }
                 };
 
             } else {
@@ -537,11 +537,11 @@ function processAjaxHistoria() {
                     "idhistoria_clinica": "",
                     "num_historia": "HC" + pacienteSelected.dni + "-" + Math.floor(Math.random() * 10),
                     "tipo_seguro": 4,
-                    "personal": {"idpersonal": 1},
+                    "personal": { "idpersonal": 1 },
                     "familiares": " ",
                     "personales": " ",
                     "alergias": " ",
-                    "atendido": {"idatendido": pacienteSelected.idatendido}
+                    "atendido": { "idatendido": pacienteSelected.idatendido }
                 };
             }
         }
@@ -560,7 +560,7 @@ function processAjaxHistoria() {
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
-                
+
 
             } else {
                 showAlertTopEnd('warning', beanCrudResponse.messageServer);
@@ -623,7 +623,7 @@ function processAjaxDiagnostico() {
                 "diagnostico": document.querySelector("#txtDxPaciente").value,
                 "tratamiento": document.querySelector("#txtTtoPaciente").value,
                 "fecha_diagnostico": getTimesTampJavaScriptCurrent(),
-                "idhistoria_clinica": {"idhistoria_clinica": historiaSelected.idhistoria_clinica}
+                "idhistoria_clinica": { "idhistoria_clinica": historiaSelected.idhistoria_clinica }
             };
             if (beanRequestDiagnostico.operation == "update") {
                 json.iddiagnostico = diagnosticoSelected.iddiagnostico;
@@ -733,11 +733,11 @@ function toListDiagnostico(beanPagination) {
             document.querySelector("#tbodyDiagnostico").innerHTML += row;
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageDiagnostico").value),
-                document.querySelector("#pageDiagnostico"),
-                $('#modalCargandoDiagnostico'),
-                $('#paginationDiagnostico'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageDiagnostico").value),
+            document.querySelector("#pageDiagnostico"),
+            $('#modalCargandoDiagnostico'),
+            $('#paginationDiagnostico'));
         addEventsDiagnostico();
         historiaSelected = beanPagination.list[0].idhistoria_clinica;
         $('[data-toggle="tooltip"]').tooltip();

@@ -3,63 +3,91 @@
     Created on : 28/08/2019, 09:48:09 AM
     Author     : Andres
 --%>
-<!-- Tab DATOS ATENDIDO -->
-<div class="row d-block" id="btnListaAtendido">
-    <!-- Card -->
-    <div class="col-12 p-0 overflow-hidden">
+
+<div class="row">
+
+    <!-- Tab DATOS ATENDIDO -->
+    <div class="col-xl-12 p-0" id="btnListaAtendido">
+        <!-- Card -->
+        <div class="overflow-hidden">
+            <!-- Card Header -->
+            <div class="card-header bg-transparent">
+                <h4 class="mb-0" id="titleManagerAtendido">[ 0 ] ATENDIDOS</h4>
+                <input type="hidden" id="pageAtendido" value="1">
+            </div>
+            <!-- /card header -->
+            <!-- Card Body -->
+            <div class="card-body m-0 p-0 ">
+                <form id="FrmAtendido" class=" search-box mw-100">
+                    <div class="input-group">
+                        <input type="search" id="txtFilterAtendido" class="form-control form-control-sm"
+                            placeholder="Filtrar DNI ..." data-toggle="tooltip" data-placement="left"
+                            data-original-title="Buscar" type="search" />
+                        <button type="submit" class="search-icon">
+                            <i class="icon icon-search text-primary icon-lg"></i></button>
+
+                    </div>
+                </form>
+                <!-- Tables -->
+                <!-- Card -->
+                <div class="dt-card mt-4 dt-social-card animate-slide border border-primary border-w-2 ">
+                    <!-- Card Body -->
+                    <div class="dt-card__body p-0  ">
+                        <!-- Widget -->
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                            id="tbodyAtendido">
+                        </div>
+                        <!-- /widget -->
+                        <!-- /card body -->
+                    </div>
+                    <!-- /card -->
+                </div>
+
+                <!-- /tables -->
+                <div class="row mt-2">
+                    <div class="col-md-2 col-sm-3 col-4">
+                        <select id="sizePageAtendido" class="form-control form-control-sm select2-single">
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                    <div class="col-md-10 col-sm-9 col-8">
+                        <nav aria-label="Page navigation example">
+                            <ul id="paginationAtendido" class="pagination pagination-sm justify-content-end">
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- /card body -->
+        </div>
+        <!-- /card -->
+
+    </div>
+
+    <!-- Tab RESPUESTAS -->
+    <div class="col-12">
         <!-- Card Header -->
-        <div class="card-header bg-transparent">
-            <h4 class="mb-0" id="titleManagerAtendido">[ 0 ] ATENDIDOS</h4>
-            <input type="hidden" id="pageAtendido" value="1">
+        <div class="dt-card__header mb-0">
+
+            <!-- Card Heading -->
+            <div class="dt-card__heading ">
+                <h3 class="dt-card__title" id="titleManagerRespuestaEvaluacion" style="display: none">PREGUNTAS
+                    SOCIOECON�MICAS</h3>
+            </div>
+            <!-- /card heading -->
+
         </div>
         <!-- /card header -->
+
         <!-- Card Body -->
-        <div class="card-body m-0 p-0 ">
-            <form id="FrmAtendido" class=" search-box mw-100">
-                <div class="input-group">
-                    <input type="search" id="txtFilterAtendido" class="form-control form-control-sm"
-                        placeholder="Filtrar DNI ..." data-toggle="tooltip" data-placement="left"
-                        data-original-title="Buscar" type="search" />
-                    <button type="submit" class="search-icon">
-                        <i class="icon icon-search text-primary icon-lg"></i></button>
+        <div class="dt-card__body" id="content-preguntas-evaluacion-socioeconomico">
 
-                </div>
-            </form>
-            <!-- Tables -->
-            <!-- Card -->
-            <div class="dt-card mt-4 dt-social-card animate-slide border border-primary border-w-2 ">
-                <!-- Card Body -->
-                <div class="dt-card__body p-0  ">
-                    <!-- Widget -->
-                    <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                        id="tbodyAtendido">
-                    </div>
-                    <!-- /widget -->
-                    <!-- /card body -->
-                </div>
-                <!-- /card -->
-            </div>
-
-            <!-- /tables -->
-            <div class="row mt-2">
-                <div class="col-md-2 col-sm-3 col-4">
-                    <select id="sizePageAtendido" class="form-control form-control-sm select2-single">
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                        <option value="20">20</option>
-                    </select>
-                </div>
-                <div class="col-md-10 col-sm-9 col-8">
-                    <nav aria-label="Page navigation example">
-                        <ul id="paginationAtendido" class="pagination pagination-sm justify-content-end">
-                        </ul>
-                    </nav>
-                </div>
-            </div>
         </div>
+
         <!-- /card body -->
     </div>
-    <!-- /card -->
 </div>
 
 <div class="row d-none" id="btnOpenAtendido">
@@ -274,6 +302,66 @@
     <!-- /card -->
 </div>
 
+<!-- Tab DATOS USUARIO -->
+<div class="row d-none" id="btnOpenUsuario">
+    <!-- Card -->
+    <div class="card overflow-hidden p-5">
+        <div class="card-header bg-transparent">
+            <h4 class="mb-0 text-center" id="txtTituloUsuario"> DATOS DE ACCESO</h4>
+        </div>
+        <form id="FrmUsuarioModal">
+            <div class="row">
+                <div class="form-group col-6">
+
+                    <label for="txtNombreUsuario">NOMBRE USUARIO</label>
+
+                    <input class="form-control form-control-sm" id="txtNombreUsuario" type="text" placeholder="T�TULO">
+                </div>
+                <div class="form-group col-6">
+                    <label for="txtLoginUsuario">LOGIN </label>
+                    <input class="form-control form-control-sm" id="txtLoginUsuario" type="text" placeholder="LOGIN">
+                </div>
+                <div class="form-group col-6">
+                    <label for="txtPassUsuario">CONTRASE�A</label>
+                    <div class="input-group">
+                        <input class="form-control form-control-sm" id="txtPassUsuario" type="text"
+                            placeholder="Ingrese password. . .">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-sm btn-primary" id="btnMostrarPass">
+                                <i id="icono_mostrar_pass" class="fas fa-eye-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group col-6">
+                    <label for="txtEstadoUsuario">ESTADO</label>
+                    <select class="form-control form-control-sm" id="txtEstadoUsuario">
+                        <option selected value="1">HABILITADO</option>
+                        <option value="2">DESHABILITADO</option>
+
+                    </select>
+                </div>
+                <div class="form-group col-6">
+                    <label for="txtTipoPefilUsuario">TIPO PERFIL</label>
+                    <select class="form-control form-control-sm" id="txtTipoPefilUsuario">
+                        <option selected value="1000">CACHIMBOS</option>
+                        <option value="1100">NO CACHIMBO</option>
+                        <option value="1110">OTRO</option>
+
+                    </select>
+                </div>
+                <div class="form-group col-12 text-center">
+                    <button type="button" id="btnRegresarUsuario" class="btn btn-outline-primary btn-sm"><i
+                            class="icon icon-reply"></i> CANCELAR</button>
+                    <button type="submit" id="btnGuardarUsuario" class="btn btn-primary btn-sm">ACTUALIZAR</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- /card -->
+</div>
+
 <!-- Tab DATOS FAMILIARES -->
 <div class="row p-0 d-none" id="btnOpenFamiliar">
 
@@ -313,8 +401,50 @@
     </div>
 
 </div>
-<!-- FICHA SOCIOECONMICA -->
-<div class="row d-none" id="row-option-socioeconomico">
+<!-- /tab pane-->
+<!-- Tab EVALUACIONES -->
+<div class="col-12 row d-none" id="row-evaluaciones">
+    <!-- Grid Item -->
+    <div class="col-12 order-xl-3">
+        <!-- Card Header EVALUACIONES -->
+        <!-- /card heading -->
+        <div class="dt-card__header ">
+            <!-- Card Tools -->
+            <div class="dt-card__tools">
+                <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar"
+                    class="btn btn-outline-primary btn-sm dt-avatar">
+                    <i class="icon icon-reply icon-lg"></i></button>
+            </div>
+            <!-- /card tools -->
+            <!-- Card Heading -->
+            <div class="dt-card__heading">
+                <h3 class="dt-card__title  text-primary text-center">EVALUACIONES</h3>
+
+            </div>
+            <!-- /card heading -->
+        </div>
+
+        <!-- /card header -->
+        <!-- Card -->
+        <div class="dt-card ">
+
+            <!-- Card Body -->
+            <div class="dt-card__body p-0">
+                <!-- Widget -->
+                <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                    id="div-container-evaluaciones">
+
+                </div>
+                <!-- /widget -->
+            </div>
+            <!-- /card body -->
+        </div>
+        <!-- /card -->
+    </div>
+    <!-- /grid item -->
+</div>
+
+<div class="row" id="row-option-socioeconomico">
     <div class="col-12">
         <div class="row" id="div-evaluaciones-socioeconomico">
             <div class="col-12">
@@ -775,7 +905,7 @@
                                     <button class="btn btn-primary pulse-primary"
                                         id="btn-finalize-evuacion-socioeconomica">
                                         <i class="fas fa-check"></i>
-                                        FINALIZAR
+                                        FANALIZAR
                                     </button>
                                 </div>
                             </div>
@@ -785,15 +915,14 @@
             </div>
         </div>
     </div>
-    <div class="col-12 text-center">
-        <button id="div-regresar-selected-evaluation-socioeconomico" class="btn btn-outline-primary">
-
+    <div class="col-12 text-center" id="div-regresar-selected-evaluation-socioeconomico">
+        <button class="btn btn-outline-primary btn-regresar-selected-evaluation">
             <i class="icon icon-reply"></i>
             Seleccionar otra evaluaci�n
         </button>
     </div>
 </div>
-<!--T: modal cargando atendido-->
+
 <div class="modal fade" id="modalCargandoAtendido" data-backdrop="static" data-keyboard="false" tabindex="-1"
     role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
@@ -809,6 +938,23 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalCargandoUsuario" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Cargando Usuarios. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!--T: FAMILIARES SELECTED-->
 <div class="modal fade overflow-auto" id="ventanaModalFamiliar" data-backdrop="static" tabindex="-1" role="dialog"
@@ -1286,8 +1432,52 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="modalCargandoSelectedFichaSocieconomica" data-backdrop="static" data-keyboard="false"
+<div class="modal fade" id="modalCargandoEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated"
+                        role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalCargandoRespuestaEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated"
+                        role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando Respuestas. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalCargandoProcedimientoSocioeconomico" data-backdrop="static" data-keyboard="false"
+    tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated"
+                        role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando Respuestas. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalCargandoEvaluacionAtendidoSocioeconomico" data-backdrop="static" data-keyboard="false"
     tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -1296,6 +1486,23 @@
                     <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated"
                         role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Procesando Evaluacion del Atendido. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL CARGANDO REMOVE-->
+<div class="modal fade" id="modalCargandoRemoveEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated"
+                        role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando solicitud. . .
                     </div>
                 </div>
             </div>

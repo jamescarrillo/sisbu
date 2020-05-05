@@ -37,16 +37,20 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestDistritoC.type_request = "GET";
     });
 
-
-    document.querySelector("#btnSeleccionarDistritoPadre").onclick = function () {
-        distrito_option = "padre";
+    document.querySelector("#btnSeleccionarDistritoActual").onclick = function () {
+        distrito_option = "actual";
         $('#ventanaModalSelectedDistritoC').modal('show');
     };
 
-    document.querySelector("#btnSeleccionarDistritoMadre").onclick = function () {
-        distrito_option = "madre";
+    document.querySelector("#btnSeleccionarDistritoProcedencia").onclick = function () {
+        distrito_option = "procedencia";
         $('#ventanaModalSelectedDistritoC').modal('show');
     };
+
+    // document.querySelector("#btnSeleccionarDistritoFamiliar").onclick = function () {
+    //     distrito_option = "familiar";
+    //     $('#ventanaModalSelectedDistritoC').modal('show');
+    // };
 
     document.querySelector("#btn-selecionar-distritoc").onclick = function () {
         if (distritoCSelected == undefined) {
@@ -54,13 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
         switch (distrito_option) {
-            case "madre":
+            case "procedencia":
                 distritoProcedenciaSelected = distritoCSelected;
-                document.querySelector("#txtDistritoMadre").value = distritoCSelected.nombre.toUpperCase();
+                document.querySelector("#txtDistritoProcedenciaAtendido").value = distritoCSelected.nombre.toUpperCase();
                 break;
-            case "padre":
+            case "familiar":
                 distritoSelected = distritoCSelected;
-                document.querySelector("#txtDistritoPadre").value = distritoCSelected.nombre.toUpperCase();
+                document.querySelector("#txtDistritoAtendido").value = distritoCSelected.nombre.toUpperCase();
                 break;
             default:
                 //actual
@@ -74,13 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnCancelSelectionDistritoC").onclick = function () {
         distritoCSelected = undefined;
         switch (distrito_option) {
-            case "madre":
+            case "procedencia":
                 distritoActualSelected = distritoCSelected;
-                document.querySelector("#txtDistritoMadre").value = "";
+                document.querySelector("#txtDistritoProcedenciaAtendido").value = "";
                 break;
-            case "padre":
+            case "familiar":
                 distritoSelected = distritoCSelected;
-                document.querySelector("#txtDistritoPadre").value = "";
+                document.querySelector("#txtDistritoAtendido").value = "";
                 break;
             default:
                 //actual
