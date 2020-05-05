@@ -86,101 +86,93 @@
                 </svg>
             </div>
         </div>
-        <div class="dt-root">
-            <div class="dt-root__inner">
-                <div class="dt-login--container">
-                    <div class="dt-login__content-wrapper">
-                        <div class="dt-login__bg-section" style="background-image: url()">
-                            <div class="dt-login__bg-content">
-                                <h1 class="dt-login__title" style="font-size: 2.5rem">Inicio de Sesión</h1>
-                                <p class="f-16">Inicia sesión y explora los servicios que ofrece la Oficina General de Bienstar Universitario (OGBU).</p>
-                            </div>
-                            <div class="dt-login__logo">
-                                <a class="dt-brand__logo-link" href="<%=request.getContextPath()%>/index">
-                                    <img class="dt-brand__logo-img" style="width: 120px; height: 50px"
-                                         src="<%=request.getContextPath()%>/resources/dev/img/global/logo-blanco.png" alt="logo-SisBu">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="dt-login__content">
-                            <div class="dt-login__content-inner" style="padding-bottom: 10px">
-                                <div class="row mb-3">
-                                    <div class="col-12 text-center">
-                                        <img src="<%=request.getContextPath()%>/resources/dev/img/global/logo-and-text-plomo.png"
-                                             alt="logo sisbu" height="80" width="230" />
+        <div class="row">
+            <div class="col-12">
+                <div class="card-body" >
+                    <div class="row justify-content-center" id="row-login-account"
+                         style="margin-top: 50px;">
+                        <div class="col-lg-4 col-md-6 col-sm-7">
+                            <div class="card">
+                                <div class="card-body pb-4">
+                                    <div class="row mb-3">
+                                        <div class="col-12 text-center">
+                                            <img src="<%=request.getContextPath()%>/resources/dev/img/global/logo-and-text-plomo.png"
+                                                 alt="logo sisbu" height="80" width="230" />
+                                        </div>
                                     </div>
+                                    <form id="FrmLogin">
+                                        <div class="row">
+                                            <div class="col-12" style="height: 70px;top: -10px;">
+                                                <div class="form-group form-group-md mb-0">
+                                                    <label for="txtUsername">Nombre de Usuario</label>
+                                                    <input type="text" class="form-control form-control-md"
+                                                           id="txtUsername" maxlength="20" name="login">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2" style="height: 70px;top: -10px;">
+                                                <div class="form-group form-group-md mb-0">
+                                                    <label for="txtConfirPasswordUsuario">Contraseña</label>
+                                                    <input type="password" class="form-control form-control-md"
+                                                           id="txtPass" maxlength="20" name="password">
+                                                    <span class="span_icon_password"
+                                                          idinput="txtPass">
+                                                        <i class="fas fa-eye field-icon"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12" style="top: -20px;">
+                                                <div class="text-right">
+                                                    <a class="d-inline-block font-weight-500 mt-4" href="<%=request.getContextPath()%>/recovery">¿Olvidé mi contraseña?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12" style="top: -10px;">
+                                                <h6 class="text-danger mb-2">
+                                                    *Ingresa con tu DNI como nombre de usuario y contraseña.
+                                                </h6>
+                                                <h6 class="text-danger mb-2">
+                                                    *Si al iniciar sesión recibes este mensaje: "El usuario ingresado no existe", crea una nueva cuenta.
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary text-uppercase">Ingresar</button>
+                                            <span class="d-inline-block ml-4">O
+                                                <a class="d-inline-block font-weight-500 ml-3" href="/sisbu/signup">Crear una Cuenta</a>
+                                            </span>
+                                        </div>
+                                        <div class="d-flex flex-wrap align-items-center">
+                                            <span class="d-inline-block mr-2">Síguenos en</span>
+                                            <ul class="dt-list dt-list-sm dt-list-cm-0 ml-auto">
+                                                <li class="dt-list__item">
+                                                    <a href="https://www.facebook.com/BienestarUNPRG/" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                        <i class="icon icon-facebook icon-xl"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="dt-list__item">
+                                                    <a href="https://www.youtube.com/channel/UCe_kuooOn2vSa-NxgJ8rn-A" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                        <i class="icon icon-youtube icon-xl"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="dt-list__item">
+                                                    <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                        <i class="icon icon-instagram icon-xl"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="dt-list__item">
+                                                    <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                        <i class="icon icon-twitter icon-xl"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </form>
+
                                 </div>
-                                <form id="FrmLogin">
-                                    <div class="row">
-                                        <div class="col-12" style="height: 70px;top: -10px;">
-                                            <div class="form-group form-group-md mb-0">
-                                                <label for="txtUsername">Nombre de Usuario</label>
-                                                <input type="text" class="form-control form-control-md"
-                                                       id="txtUsername" maxlength="20" name="login">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 mb-2" style="height: 70px;top: -10px;">
-                                            <div class="form-group form-group-md mb-0">
-                                                <label for="txtConfirPasswordUsuario">Contraseña</label>
-                                                <input type="password" class="form-control form-control-md"
-                                                       id="txtPass" maxlength="20" name="password">
-                                                <span class="span_icon_password"
-                                                      idinput="txtPass">
-                                                    <i class="fas fa-eye field-icon"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-12" style="top: -20px;">
-                                            <div class="text-right">
-                                                <a class="d-inline-block font-weight-500 mt-4" href="<%=request.getContextPath()%>/recovery">¿Olvidé mi contraseña?</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12" style="top: -10px;">
-                                            <h6 class="text-danger mb-2">
-                                                *Ingresa con tu DNI como nombre de usuario y contraseña.
-                                            </h6>
-                                            <h6 class="text-danger mb-2">
-                                                *Si al iniciar sesión recibes este mensaje: "El usuario ingresado no existe", crea una nueva cuenta.
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary text-uppercase">Ingresar</button>
-                                        <span class="d-inline-block ml-4">O
-                                            <a class="d-inline-block font-weight-500 ml-3" href="/sisbu/signup">Crear una Cuenta</a>
-                                        </span>
-                                    </div>
-                                    <div class="d-flex flex-wrap align-items-center">
-                                        <span class="d-inline-block mr-2">Síguenos en</span>
-                                        <ul class="dt-list dt-list-sm dt-list-cm-0 ml-auto">
-                                            <li class="dt-list__item">
-                                                <a href="https://www.facebook.com/BienestarUNPRG/" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
-                                                    <i class="icon icon-facebook icon-xl"></i>
-                                                </a>
-                                            </li>
-                                            <li class="dt-list__item">
-                                                <a href="https://www.youtube.com/channel/UCe_kuooOn2vSa-NxgJ8rn-A" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
-                                                    <i class="icon icon-youtube icon-xl"></i>
-                                                </a>
-                                            </li>
-                                            <li class="dt-list__item">
-                                                <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
-                                                    <i class="icon icon-instagram icon-xl"></i>
-                                                </a>
-                                            </li>
-                                            <li class="dt-list__item">
-                                                <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
-                                                    <i class="icon icon-twitter icon-xl"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="dt-login__content-footer text-center">
-                                <a href="http://www.unprg.edu.pe/univ/" target="_blank">Universidad Nacional Pedro Ruiz Gallo</a>
+                                <div class="dt-login__content-footer text-center">
+                                    <a href="http://www.unprg.edu.pe/univ/" target="_blank">Universidad Nacional Pedro Ruiz Gallo</a>
+                                </div>
                             </div>
                         </div>
                     </div>

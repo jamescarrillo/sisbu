@@ -86,12 +86,9 @@
                 </svg>
             </div>
         </div>
-        <!-- /loader -->
         <div class="row">
             <div class="col-12">
-                <div class="card-body"
-                     >
-                    <!--ROW REQUEST-->
+                <div class="card-body">
                     <div class="row justify-content-center" id="row-send-mail-recovery-account"
                          style="margin-top: 100px;">
                         <div class="col-lg-4 col-md-5 col-sm-7">
