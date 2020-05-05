@@ -181,20 +181,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             ficha_socieconomicaSelected.distrito_padre = distritoPadreSelected == undefined ? null : distritoPadreSelected;
             ficha_socieconomicaSelected.distrito_madre = distritoMadreSelected == undefined ? null : distritoMadreSelected;
-            ficha_socieconomicaSelected.atendido = atendidoSelected;
+            ficha_socieconomicaSelected.atendido = { "idatendido": atendidoSelected.idatendido };
             //console.log(ficha_socieconomicaSelected);
             $("#modalCargandoSelectedFichaSocieconomica").modal('show');
         }
     }
     document.querySelector("#div-regresar-selected-evaluation-socioeconomico").onclick = function () {
-        beanRequestAtendido.operation = "paginate";
-        beanRequestAtendido.type_request = "GET";
-        $('#modalCargandoAtendido').modal('show');
-        removeClass(document.querySelector("#row-option-socioeconomico"), "d-block");
-        removeClass(document.querySelector("#btnListaAtendido"), "d-none");
-        addClass(document.querySelector("#row-option-socioeconomico"), "d-none");
-        addClass(document.querySelector("#btnListaAtendido"), "d-block");
 
+        navigateOptionEvaluation();
     };
     loaderAniosIngreso();
 
@@ -227,7 +221,7 @@ function processAjaxFichaSocieconomica() {
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer == "ok") {
                 showAlertTopEnd('success', 'Acción realizada exitosamente');
-                navigateOptionEvaluation('home');
+                navigateOptionEvaluation();
             } else {
                 showAlertTopEnd('warning', 'Ha ocurrido un error al intentar guardar tu información');
             }
@@ -443,6 +437,10 @@ function validateFichaSocioeconomica() {
             showAlertTopEnd("warning", 'Por favor ingresa la cantidad de hijos que tienes');
             document.querySelector("#txtCantHijosFichaSocioeconomica").focus();
             return false;
+        } else if (document.querySelector("#txtCantHijosFichaSocioeconomica").value.length > 2) {
+            showAlertTopEnd("warning", 'Por favor ingresa la cantidad de hijos sólo dos dígitos como máximo');
+            document.querySelector("#txtCantHijosFichaSocioeconomica").focus();
+            return false;
         }
     }
     if (document.querySelector("#txtNombreColegioFichaSocioeconomica").value == "") {
@@ -472,6 +470,11 @@ function validateFichaSocioeconomica() {
         document.querySelector("#txtCanCreditosMatriculados").focus();
         return false;
     }
+    if (document.querySelector("#txtCanCreditosMatriculados").value.length > 2) {
+        showAlertTopEnd("warning", 'Por favor los créditos matriculados sólo son de dos dígitos como máximo');
+        document.querySelector("#txtCanCreditosMatriculados").focus();
+        return false;
+    }
     if (document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").value == "") {
         showAlertTopEnd("warning", 'Por favor ingrese el número de cursos desaprobados. Considerar todo tu historial académico');
         document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").focus();
@@ -482,6 +485,11 @@ function validateFichaSocioeconomica() {
         document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").focus();
         return false;
     }
+    if (document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").value.length > 2) {
+        showAlertTopEnd("warning", 'Por favor los cursos desaprobados sólo son de dos dígitos como máximo');
+        document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").focus();
+        return false;
+    }
     if (document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").value == "") {
         showAlertTopEnd("warning", 'Por favor ingrese el número de cursos abandonados. Considerar todo tu historial académico');
         document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").focus();
@@ -489,6 +497,11 @@ function validateFichaSocioeconomica() {
     }
     if (parseInt(document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").value) < 0) {
         showAlertTopEnd("warning", 'La cantidad de cursos abandonados debe ser mayor o igual a 0');
+        document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").focus();
+        return false;
+    }
+    if (document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").value.length > 2) {
+        showAlertTopEnd("warning", 'Por favor los cursos abandonados sólo son de dos dígitos como máximo');
         document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").focus();
         return false;
     }
@@ -615,4 +628,14 @@ function validateFichaSocioeconomica() {
         }
     }
     return true;
+}
+
+function navigateOptionEvaluation() {
+    removeClass(document.querySelector("#row-option-socioeconomico"), "d-block");
+    removeClass(document.querySelector("#btnListaAtendido"), "d-none");
+    addClass(document.querySelector("#row-option-socioeconomico"), "d-none");
+    addClass(document.querySelector("#btnListaAtendido"), "d-block");
+    beanRequestAtendido.operation = "paginate";
+    beanRequestAtendido.type_request = "GET";
+    $('#modalCargandoAtendido').modal('show');
 }

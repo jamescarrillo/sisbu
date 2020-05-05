@@ -1,172 +1,220 @@
-var beanPaginationUnidadMedida;
-var unidadMedidaSelected;
-var beanRequestUnidadMedida = new BeanRequest();
+var beanPaginationEntrada;
+var entradaSelected;
+var beanRequestEntrada = new BeanRequest();
+var PersonalSelected;
 document.addEventListener("DOMContentLoaded", function () {
-    //INICIALIZANDO VARIABLES DE SOLICITUD
-    beanRequestUnidadMedida.entity_api = "api/unidadmedidas";
-    beanRequestUnidadMedida.operation = "paginate";
-    beanRequestUnidadMedida.type_request = "GET";
+  //INICIALIZANDO VARIABLES DE SOLICITUD
+  beanRequestEntrada.entity_api = "api/entradas";
+  beanRequestEntrada.operation = "paginate";
+  beanRequestEntrada.type_request = "GET";
 
-    $('#FrmUnidadMedida').submit(function (event) {
-        beanRequestUnidadMedida.operation = "paginate";
-        beanRequestUnidadMedida.type_request = "GET";
-        $('#modalCargandoUnidadMedida').modal('show');
-        event.preventDefault();
-        event.stopPropagation();
+  $("#FrmEntrada").submit(function (event) {
+    beanRequestEntrada.operation = "paginate";
+    beanRequestEntrada.type_request = "GET";
+    $("#modalCargandoEntrada").modal("show");
+    event.preventDefault();
+    event.stopPropagation();
+  });
+
+  $("#FrmEntradaModal").submit(function (event) {
+    if (validateFormEntrada()) {
+      $("#modalCargandoEntrada").modal("show");
+    }
+    event.preventDefault();
+    event.stopPropagation();
+  });
+
+
+  $("#txtFechaEntrada")
+    .bootstrapMaterialDatePicker({
+      weekStart: 0,
+      time: false,
+      format: "DD/MM/YYYY",
+      lang: "es"
+    })
+    .on("change", function (e, date) {
+
     });
 
-    $('#FrmUnidadMedidaModal').submit(function (event) {
-        if (validateFormUnidadMedida()) {
-            $('#modalCargandoUnidadMedida').modal('show');
-        }
-        event.preventDefault();
-        event.stopPropagation();
-    });
+  document.querySelector("#btnEliminarFechaEntrada").onclick = function () {
+    document.querySelector("#txtFechaEntrada").value = "";
+  };
+  $("#txtFechaVencimientoEntrada")
+    .bootstrapMaterialDatePicker({
+      weekStart: 0,
+      time: false,
+      format: "DD/MM/YYYY",
+      lang: "es"
+    })
+    .on("change", function (e, date) { });
 
-    document.querySelector("#btnOpenNewUnidadMedida").onclick = function () {
-        //CONFIGURAMOS LA SOLICITUD
-        beanRequestUnidadMedida.operation = "add";
-        beanRequestUnidadMedida.type_request = "POST";
-        //LIMPIAR LOS CAMPOS
-        limpiarInput();
-        //SET TITLE MODAL
-        document.querySelector("#txtTituloModalMan").innerHTML = "REGISTRAR UNIDAD DE MEDIDA";
-        //OPEN MODEL
-        document.querySelector("#btnListaUnidadMedida").style.display = 'none';
-        document.querySelector("#btnOpenUnidadMedida").style.display = 'block';
-    };
+  let current_date = new Date();
+  $('#txtFechaEntrada').val(getDateJava(current_date));
+  $('#txtFechaVencimientoEntrada').val(getDateJava(addDays(current_date, 30)));
 
-    document.querySelector("#btnRegresar").onclick = function () {
-        beanRequestUnidadMedida.operation = "paginate";
-        beanRequestUnidadMedida.type_request = "GET";
-        $('#modalCargandoUnidadMedida').modal('show');
-        document.querySelector("#btnOpenUnidadMedida").style.display = 'none';
-        document.querySelector("#btnListaUnidadMedida").style.display = 'block';
-    };
+  document.querySelector(
+    "#btnEliminarFechaVencimientoEntrada"
+  ).onclick = function () {
+    document.querySelector("#txtFechaVencimientoEntrada").value = "";
+  };
+  document.querySelector("#btnOpenNewEntrada").onclick = function () {
+    //CONFIGURAMOS LA SOLICITUD
+    beanRequestEntrada.operation = "add";
+    beanRequestEntrada.type_request = "POST";
+    //LIMPIAR LOS CAMPOS
+    limpiarInputEntrada();
+    //SET TITLE MODAL
+    document.querySelector("#txtTituloModalMan").innerHTML =
+      "REGISTRAR ENTRADA";
+    //OPEN MODEL
+    document.querySelector("#btnListaEntrada").style.display = "none";
+    document.querySelector("#btnOpenEntrada").style.display = "block";
+  };
 
-    $("#modalCargandoUnidadMedida").on('shown.bs.modal', function () {
-        processAjaxUnidadMedida();
-    });
-    $('#modalCargandoUnidadMedida').modal('show');
+  document.querySelector("#btnRegresar").onclick = function () {
+    beanRequestEntrada.operation = "paginate";
+    beanRequestEntrada.type_request = "GET";
+    $("#modalCargandoEntrada").modal("show");
+    document.querySelector("#btnOpenEntrada").style.display = "none";
+    document.querySelector("#btnListaEntrada").style.display = "block";
+  };
 
-    $("#sizePageUnidadMedida").change(function () {
-        $('#modalCargandoUnidadMedida').modal('show');
-    });
+  $("#modalCargandoEntrada").on("shown.bs.modal", function () {
+    processAjaxEntrada();
+  });
+  $("#modalCargandoEntrada").modal("show");
 
+  $("#sizePageEntrada").change(function () {
+    $("#modalCargandoEntrada").modal("show");
+  });
 });
 
-function processAjaxUnidadMedida() {
-    let parameters_pagination = "";
-    let json = "";
-    if (beanRequestUnidadMedida.operation == "paginate") {
-        if (document.querySelector("#txtFilterUnidadMedida").value != "") {
-            document.querySelector("#pageUnidadMedida").value = 1;
-        }
-        parameters_pagination += "?nombre=" + document.querySelector("#txtFilterUnidadMedida").value;
-        parameters_pagination += "&page=" + document.querySelector("#pageUnidadMedida").value;
-        parameters_pagination += "&size=" + document.querySelector("#sizePageUnidadMedida").value;
-
-    } else {
-        parameters_pagination = "";
-        if (beanRequestUnidadMedida.operation == "delete") {
-            parameters_pagination = "/" + unidadMedidaSelected.idunidad_medida;
-        } else {
-            json = {
-                "nombre": document.querySelector("#txtNombreUnidadMedida").value,
-                "nom_abreviado": document.querySelector("#txtAbreviaturaUnidadMedida").value
-            };
-            if (beanRequestUnidadMedida.operation == "update") {
-                json.idunidad_medida = unidadMedidaSelected.idunidad_medida;
-            }
-        }
+function processAjaxEntrada() {
+  let parameters_pagination = "";
+  let json = "";
+  if (beanRequestEntrada.operation == "paginate") {
+    if (document.querySelector("#txtFilterEntrada").value != "") {
+      document.querySelector("#pageEntrada").value = 1;
     }
-    $.ajax({
-        url: getHostAPI() + beanRequestUnidadMedida.entity_api + "/" + beanRequestUnidadMedida.operation + parameters_pagination,
-        type: beanRequestUnidadMedida.type_request,
-        headers: {
-            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
-        },
-        data: JSON.stringify(json),
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json'
-    }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
-        $('#modalCargandoUnidadMedida').modal("hide");
-        if (beanCrudResponse.messageServer !== undefined) {
-            if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
-                if (beanRequestUnidadMedida.operation == "add") {
-                    limpiarInput();
-                }
-
-                showAlertTopEnd('success', 'Acción realizada exitosamente');
-
-            } else {
-                showAlertTopEnd('warning', beanCrudResponse.messageServer);
-            }
+    parameters_pagination +=
+      "?fecha=" + document.querySelector("#txtFilterEntrada").value;
+    parameters_pagination +=
+      "&page=" + document.querySelector("#pageEntrada").value;
+    parameters_pagination +=
+      "&size=" + document.querySelector("#sizePageEntrada").value;
+  } else {
+    parameters_pagination = "";
+    if (beanRequestEntrada.operation == "delete") {
+      parameters_pagination = "/" + entradaSelected.identrada;
+    } else {
+      json = {
+        entrada: listDetalleEntrada[0].entrada,
+        list: listDetalleEntrada
+      };
+      if (beanRequestEntrada.operation == "update") {
+        json.identrada = entradaSelected.identrada;
+      }
+    }
+  }
+  $.ajax({
+    url:
+      getHostAPI() +
+      beanRequestEntrada.entity_api +
+      "/" +
+      beanRequestEntrada.operation +
+      parameters_pagination,
+    type: beanRequestEntrada.type_request,
+    headers: {
+      Authorization: "Bearer " + Cookies.get("sisbu_token")
+    },
+    data: JSON.stringify(json),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json"
+  })
+    .done(function (beanCrudResponse) {
+      console.log(beanCrudResponse);
+      $("#modalCargandoEntrada").modal("hide");
+      if (beanCrudResponse.messageServer !== undefined) {
+        if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
+          if (beanRequestEntrada.operation == "add") {
+            limpiarInputEntrada();
+          }
+          toListDetalleEntrada(listDetalleEntrada);
+          showAlertTopEnd("success", "Acción realizada exitosamente");
+        } else {
+          showAlertTopEnd("warning", beanCrudResponse.messageServer);
         }
-        if (beanCrudResponse.beanPagination !== undefined) {
-            beanPaginationUnidadMedida = beanCrudResponse.beanPagination;
-            toListUnidadMedida(beanPaginationUnidadMedida);
-        }
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        $('#modalCargandoUnidadMedida').modal("hide");
-        showAlertErrorRequest();
-
+      }
+      if (beanCrudResponse.beanPagination !== undefined) {
+        beanPaginationEntrada = beanCrudResponse.beanPagination;
+        toListEntrada(beanPaginationEntrada);
+      }
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+      $("#modalCargandoEntrada").modal("hide");
+      showAlertErrorRequest();
     });
 }
 
-function toListUnidadMedida(beanPagination) {
-    document.querySelector("#tbodyUnidadMedida").innerHTML = "";
-    document.querySelector("#titleManagerUnidadMedida").innerHTML = "[ " + beanPagination.count_filter + " ] UNIDADES DE MEDIDA";
-    if (beanPagination.count_filter > 0) {
-        let row;
-        row =
-            `
-               <div class="dt-widget__item border-success bg-primary text-white mb-0">
+function toListEntrada(beanPagination) {
+  document.querySelector("#tbodyEntrada").innerHTML = "";
+  document.querySelector("#titleManagerEntrada").innerHTML =
+    "[ " + beanPagination.count_filter + " ] ENTRADA";
+  if (beanPagination.count_filter == 0) {
+    destroyPagination($("#paginationEntrada"));
+    showAlertTopEnd("warning", "No se encontraron resultados");
+    return;
+  }
+  let row;
+  row = `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 ">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
-                           NOMBRE
+                           FECHA
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
-                           ABREVIATURA
+                           PERSONAL
                         </p>
                     </div>
                     <!-- /widget info -->
                 </div>
             `;
-        document.querySelector("#tbodyUnidadMedida").innerHTML += row;
-        beanPagination.list.forEach(unidadMedida => {
-            row =
-                `
+  document.querySelector("#tbodyEntrada").innerHTML += row;
+  beanPagination.list.forEach(BeanEntrada => {
+    row = `
                  <div class="dt-widget__item m-0 pt-1 pb-1">
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
+                    <div class="dt-widget__info text-truncate" >
                         <p class="mb-0 text-truncate ">
-                           ${unidadMedida.nombre}
+                           ${BeanEntrada.entrada.fecha}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
-                           ${unidadMedida.nom_abreviado}
+                           ${BeanEntrada.entrada.personal.apellido_pat}
+                           ${BeanEntrada.entrada.personal.apellido_mat}
+                           ${BeanEntrada.entrada.personal.nombre}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra">
                     <div class="dt-task">
+                        <!-- Hide Content -->
+                        <div class="dt-task__redirect">
                             <!-- Action Button Group -->
                             <div class="action-btn-group">
-                                <button class="btn btn-default text-primary dt-fab-btn editar-unidadMedida" idunidadMedida='${unidadMedida.idunidad_medida}' title="Editar" data-toggle="tooltip">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-entrada" identrada='${BeanEntrada.entrada.identrada}' title="Editar" data-toggle="tooltip">
                                     <i class="icon icon-editors"></i>
                                 </button>
-                                <button class="btn btn-default text-danger dt-fab-btn eliminar-unidadMedida" idunidadMedida='${unidadMedida.idunidad_medida}' title="Eliminar" data-toggle="tooltip">
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-entrada" identrada='${BeanEntrada.entrada.identrada}' title="Eliminar" data-toggle="tooltip">
                                     <i class="icon icon-trash-filled"></i>
                                 </button>
                               
@@ -174,87 +222,98 @@ function toListUnidadMedida(beanPagination) {
                             <!-- /action button group -->
                         </div>
                         <!-- /hide content -->
+                        </div>
                     </div>
                     <!-- /widget extra -->
                 </div>
             `;
-            document.querySelector("#tbodyUnidadMedida").innerHTML += row;
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-        buildPagination(
-            beanPagination.count_filter,
-            parseInt(document.querySelector("#sizePageUnidadMedida").value),
-            document.querySelector("#pageUnidadMedida"),
-            $('#modalCargandoUnidadMedida'),
-            $('#paginationUnidadMedida'));
-        addEventsUnidadMedidaes();
+    document.querySelector("#tbodyEntrada").innerHTML += row;
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  buildPagination(
+    beanPagination.count_filter,
+    parseInt(document.querySelector("#sizePageEntrada").value),
+    document.querySelector("#pageEntrada"),
+    $("#modalCargandoEntrada"),
+    $("#paginationEntrada")
+  );
+  addEventsEntradaes();
 
 
-    } else {
-        destroyPagination($('#paginationUnidadMedida'));
-        showAlertTopEnd('warning', 'No se encontraron resultados');
+
+}
+
+function addEventsEntradaes() {
+  document.querySelectorAll(".editar-entrada").forEach(btn => {
+    //AGREGANDO EVENTO CLICK
+    btn.onclick = function () {
+      entradaSelected = findByEntrada(btn.getAttribute("identrada")).entrada;
+      listDetalleEntrada = findByEntrada(btn.getAttribute("identrada")).list;
+
+      if (entradaSelected != undefined) {
+        beanRequestEntrada.operation = "update";
+        beanRequestEntrada.type_request = "PUT";
+        //SET VALUES MODAL
+        console.log(listDetalleEntrada);
+        toListDetalleEntrada(listDetalleEntrada);
+        document.querySelector("#txtFechaEntrada").value =
+          entradaSelected.fecha;
+        PersonalSelected = entradaSelected.personal;
+        document.querySelector("#txtPersonalEntrada").value =
+          entradaSelected.personal.nombre;
+
+        document.querySelector("#txtTituloModalMan").innerHTML =
+          "EDITAR ENTRADA";
+        //OPEN MODEL
+        document.querySelector("#btnListaEntrada").style.display = "none";
+        document.querySelector("#btnOpenEntrada").style.display = "block";
+      } else {
+        showAlertTopEnd(
+          "warning",
+          "No se encontró el Entrada para poder editar"
+        );
+      }
+    };
+  });
+  document.querySelectorAll(".eliminar-entrada").forEach(btn => {
+    //AGREGANDO EVENTO CLICK
+    btn.onclick = function () {
+      entradaSelected = findByEntrada(btn.getAttribute("identrada")).entrada;
+      beanRequestEntrada.operation = "delete";
+      beanRequestEntrada.type_request = "DELETE";
+      processAjaxEntrada();
+    };
+  });
+}
+
+function findByEntrada(identrada) {
+  let beanentrada_;
+  beanPaginationEntrada.list.forEach(BeanEntrada => {
+    if (identrada == BeanEntrada.entrada.identrada) {
+      beanentrada_ = BeanEntrada;
+      return;
     }
+  });
+  return beanentrada_;
 }
 
-function addEventsUnidadMedidaes() {
-    document.querySelectorAll('.editar-unidadMedida').forEach(btn => {
-        //AGREGANDO EVENTO CLICK
-        btn.onclick = function () {
-            unidadMedidaSelected = findByUnidadMedida(btn.getAttribute('idunidadMedida'));
-            if (unidadMedidaSelected != undefined) {
-                beanRequestUnidadMedida.operation = "update";
-                beanRequestUnidadMedida.type_request = "PUT";
-                //SET VALUES MODAL
-                document.querySelector("#txtNombreUnidadMedida").value = unidadMedidaSelected.nombre;
-                document.querySelector("#txtAbreviaturaUnidadMedida").value = unidadMedidaSelected.nom_abreviado;
-                document.querySelector("#txtTituloModalMan").innerHTML = "EDITAR UNIDAD DE MEDIDA";
-                //OPEN MODEL
-                document.querySelector("#btnListaUnidadMedida").style.display = 'none';
-                document.querySelector("#btnOpenUnidadMedida").style.display = 'block';
-                document.querySelector("#txtNombreUnidadMedida").focus();
-            } else {
-                showAlertTopEnd('warning', 'No se encontró el UnidadMedida para poder editar');
-            }
-        };
-    });
-    document.querySelectorAll('.eliminar-unidadMedida').forEach(btn => {
-        //AGREGANDO EVENTO CLICK
-        btn.onclick = function () {
-            unidadMedidaSelected = findByUnidadMedida(btn.getAttribute('idunidadMedida'));
-            beanRequestUnidadMedida.operation = "delete";
-            beanRequestUnidadMedida.type_request = "DELETE";
-            processAjaxUnidadMedida();
-        };
-    });
+function validateFormEntrada() {
+  if (document.querySelector("#txtFechaEntrada").value == "") {
+    showAlertTopEnd("warning", "Por favor ingrese Fecha");
+    document.querySelector("#txtFechaEntrada").focus();
+    return false;
+  } else if (document.querySelector("#txtPersonalEntrada").value == "") {
+    showAlertTopEnd("warning", "Por favor ingrese Personal");
+    document.querySelector("#txtPersonalEntrada").focus();
+    return false;
+  }
+
+  return true;
 }
 
-function findByUnidadMedida(idunidadMedida) {
-    let unidadMedida_;
-    beanPaginationUnidadMedida.list.forEach(unidadMedida => {
-        if (idunidadMedida == unidadMedida.idunidad_medida) {
-            unidadMedida_ = unidadMedida;
-            return;
-        }
-    });
-    return unidadMedida_;
+function limpiarInputEntrada() {
+  document.querySelector("#txtPersonalEntrada").value = "";
+  PersonalSelected = undefined;
+  listDetalleEntrada.length = 0;
+  toListDetalleEntrada(listDetalleEntrada);
 }
-
-function validateFormUnidadMedida() {
-    if (document.querySelector("#txtNombreUnidadMedida").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Nombre');
-        document.querySelector("#txtNombreUnidadMedida").focus();
-        return false;
-    } else if (document.querySelector("#txtAbreviaturaUnidadMedida").value == "") {
-        showAlertTopEnd('warning', 'Por favor ingrese Abreviatura');
-        document.querySelector("#txtAbreviaturaUnidadMedida").focus();
-        return false;
-    }
-
-    return true;
-}
-
-function limpiarInput() {
-    document.querySelector("#txtNombreUnidadMedida").value = "";
-    document.querySelector("#txtAbreviaturaUnidadMedida").value = "";
-}
-

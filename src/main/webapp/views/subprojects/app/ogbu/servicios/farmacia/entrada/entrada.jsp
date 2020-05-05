@@ -1,205 +1,204 @@
 <%-- Document : entrada Created on : 23/10/2019, 06:15:02 PM Author : Andres
 --%>
 
-<div class="row">
-  <div class="col-xl-12 p-0" id="btnListaEntrada">
-    <!-- Card -->
-    <div class="overflow-hidden">
-      <!-- Card Header -->
-      <div class="card-header bg-transparent">
-        <h4 class="mb-0" id="titleManagerEntrada">[ 0 ] ENTRADA</h4>
-        <input type="hidden" id="pageEntrada" value="1" />
+<div class="row" id="btnListaEntrada">
+  <!-- Card -->
+  <div class="col-xl-12 p-0">
+    <!-- Card Header -->
+    <div class="card-header bg-transparent">
+      <h4 class="mb-0" id="titleManagerEntrada">[ 0 ] ENTRADA</h4>
+      <input type="hidden" id="pageEntrada" value="1" />
+    </div>
+    <!-- /card header -->
+    <!-- Card Body -->
+    <div class="card-body p-0">
+      <form id="FrmEntrada" class="search-box mw-100 left-side-icon">
+        <div class="input-group">
+          <input type="search" id="txtFilterEntrada" class="form-control form-control-sm" placeholder="Filter Nombre..."
+            data-toggle="tooltip" data-placement="left" data-original-title="Buscar" />
+          <button type="submit" class="search-icon">
+            <i class="icon icon-search icon-lg"></i></button>
+          <div class="input-group-append">
+            <button type="button" class="btn btn-primary btn-sm ml-5" id="btnOpenNewEntrada" data-toggle="tooltip"
+              title="Agregar Entrada">
+              <i class="icon icon-addnew"></i>
+            </button>
+          </div>
+
+        </div>
+      </form>
+      <div class="dt-card mt-4">
+        <!-- Card Body -->
+        <div class="dt-card__body p-0  ">
+          <!-- Widget -->
+          <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" id="tbodyEntrada"></div>
+          <!-- /widget -->
+          <!-- /card body -->
+        </div>
       </div>
-      <!-- /card header -->
-      <!-- Card Body -->
-      <div class="card-body p-0">
-        <form id="FrmEntrada" class="search-box mw-100 left-side-icon">
+      <!-- /card -->
+      <!-- /tables -->
+      <div class="row mt-2">
+        <div class="col-md-2 col-sm-3 col-4">
+          <select id="sizePageEntrada" class="form-control form-control-sm select2-single">
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+        <div class="col-md-10 col-sm-9 col-8">
+          <nav aria-label="Page navigation example">
+            <ul id="paginationEntrada" class="pagination pagination-sm justify-content-end"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- /card body -->
+  </div>
+  <!-- /card -->
+</div>
+
+<div class="row" id="btnOpenEntrada" style="display: none">
+  <!-- Card -->
+  <div class="card overflow-hidden p-0">
+    <div class="card-header bg-transparent">
+      <h4 class="mb-0 text-center" id="txtTituloModalMan">
+        ENTRADA
+      </h4>
+    </div>
+    <form id="FrmEntradaModal">
+      <div class="row">
+        <div class="form-group col-lg-2 "></div>
+        <div class="form-group col-lg-4 col-sm-6">
+          <label for="txtFechaEntrada">Fecha Ingreso</label>
           <div class="input-group">
-            <input type="search" id="txtFilterEntrada" class="form-control form-control-sm"
-              placeholder="Filter Nombre..." data-toggle="tooltip" data-placement="left" data-original-title="Buscar" />
-            <button type="submit" class="search-icon">
-              <i class="icon icon-search icon-lg"></i></button>
+            <input type="text" class="form-control form-control-sm" id="txtFechaEntrada" placeholder="DD/MM/AAAA" />
             <div class="input-group-append">
-              <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewEntrada" data-toggle="tooltip"
-                title="Agregar Entrada">
-                <i class="icon icon-addnew"></i>
+              <button type="button" id="btnEliminarFechaEntrada" data-toggle="tooltip" title="Eliminar Fecha"
+                class="btn btn-primary btn-sm">
+                <i class="icon icon-trash"></i>
               </button>
             </div>
+          </div>
+        </div>
+        <div class="form-group col-lg-4 col-sm-6">
+          <label for="txtPersonalEntrada">Personal </label>
+          <div class="input-group">
+            <input type="text" class="form-control form-control-sm" id="txtPersonalEntrada" aria-describedby="nombre"
+              placeholder="Click en el bot�n para seleccionar. . ." disabled="" />
+            <div class="input-group-append">
+              <button type="button" id="btnSeleccionarPersonal" class="btn btn-primary btn-sm">
+                <i class="icon icon-subscribe"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Grid Item -->
+      <div class="col-xl-12">
+        <!-- Entry Header -->
+        <div class="dt-entry__header">
+          <!-- Entry Heading -->
+          <div class="dt-entry__heading">
+            <h3 class="dt-entry__title">Detalle Producto</h3>
 
           </div>
-        </form>
+          <!-- /entry heading -->
+        </div>
+        <!-- /entry header -->
+        <div class="row">
+          <div class="form-group col-lg-4 col-sm-12 col-md-12 col-12">
+            <label for="txtFechaVencimientoEntrada">Fecha Vencimiento</label>
+            <div class="input-group">
+              <input type="text" class="form-control form-control-sm" id="txtFechaVencimientoEntrada"
+                placeholder="DD/MM/AAAA" />
+              <div class="input-group-append">
+                <button type="button" id="btnEliminarFechaVencimientoEntrada" data-toggle="tooltip"
+                  title="Eliminar Fecha" class="btn btn-primary btn-sm">
+                  <i class="icon icon-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-lg-4 col-sm-6 col-md-6 col-6">
+            <label for="txtProductoEntrada">Producto </label>
+            <div class="input-group">
+              <input type="text" class="form-control form-control-sm" id="txtProductoEntrada" aria-describedby="nombre"
+                placeholder="Click en el boton para seleccionar. . ." disabled="" />
+              <div class="input-group-append">
+                <button type="button" id="btnSeleccionarProducto" class="btn btn-primary btn-sm">
+                  <i class="icon icon-subscribe"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-lg-4  col-sm-6 col-md-6 col-6">
+            <label for="txtCantidadProducto">Cantidad</label>
+
+            <div class="input-group">
+              <input class="form-control form-control-sm" id="txtCantidadProducto" type="number" placeholder="CANTIDAD"
+                maxlength="6" />
+              <div class="input-group-append pl-5">
+                <button type="button" id="btnAgregarProducto" class="btn btn-outline-primary btn-sm pulse-primary"
+                  data-toggle="tooltip" title="Agregar a la Lista">
+                  <i class="icon icon-addnew"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="dt-card mt-4">
           <!-- Card Body -->
           <div class="dt-card__body p-0  ">
             <!-- Widget -->
-            <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" id="tbodyEntrada"></div>
+            <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+              id="tbodyDetalleEntrada">
+              <div class="dt-widget__item border-success bg-primary text-white mb-0 pl-5">
+                <!-- Widget Info -->
+                <div class="dt-widget__info text-truncate ">
+                  <p class="mb-0 text-truncate ">
+                    Fecha de Vencimiento
+                  </p>
+                </div>
+                <!-- /widget info -->
+                <!-- Widget Info -->
+                <div class="dt-widget__info text-truncate ">
+                  <p class="mb-0 text-truncate ">
+                    Producto
+                  </p>
+                </div>
+                <!-- /widget info -->
+                <!-- Widget Info -->
+                <div class="dt-widget__info text-truncate ">
+                  <p class="mb-0 text-truncate ">
+                    Cantidad
+                  </p>
+                </div>
+                <!-- /widget info -->
+              </div>
+            </div>
             <!-- /widget -->
             <!-- /card body -->
           </div>
         </div>
         <!-- /card -->
         <!-- /tables -->
-        <div class="row mt-2">
-          <div class="col-md-2 col-sm-3 col-4">
-            <select id="sizePageEntrada" class="form-control form-control-sm select2-single">
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-            </select>
-          </div>
-          <div class="col-md-10 col-sm-9 col-8">
-            <nav aria-label="Page navigation example">
-              <ul id="paginationEntrada" class="pagination pagination-sm justify-content-end"></ul>
-            </nav>
-          </div>
-        </div>
+
       </div>
-      <!-- /card body -->
-    </div>
-    <!-- /card -->
-  </div>
+      <!-- /grid item -->
+      <div class="form-group col-12 text-center">
 
-  <div class="col-xl-12" id="btnOpenEntrada" style="display: none">
-    <!-- Card -->
-    <div class="card overflow-hidden p-5">
-      <div class="card-header bg-transparent">
-        <h4 class="mb-0 text-center" id="txtTituloModalMan">
-          ENTRADA
-        </h4>
+        <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm">
+          <i class="fas fa-check"></i> GUARDAR
+        </button>
+        <button type="button" id="btnRegresar" class="btn btn-outline-secondary btn-sm">
+          <i class="icon icon-reply"></i> CANCELAR
+        </button>
       </div>
-      <form id="FrmEntradaModal">
-        <div class="row">
-          <div class="form-group col-lg-2 "></div>
-          <div class="form-group col-lg-4 col-sm-6">
-            <label for="txtFechaEntrada">Fecha Ingreso</label>
-            <div class="input-group">
-              <input type="text" class="form-control form-control-sm" id="txtFechaEntrada" placeholder="DD/MM/AAAA" />
-              <div class="input-group-append">
-                <button type="button" id="btnEliminarFechaEntrada" data-toggle="tooltip" title="Eliminar Fecha"
-                  class="btn btn-primary btn-sm">
-                  <i class="fa fa-trash"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="form-group col-lg-4 col-sm-6">
-            <label for="txtPersonalEntrada">Personal </label>
-            <div class="input-group">
-              <input type="text" class="form-control form-control-sm" id="txtPersonalEntrada" aria-describedby="nombre"
-                placeholder="Click en el bot�n para seleccionar. . ." disabled="" />
-              <div class="input-group-append">
-                <button type="button" id="btnSeleccionarPersonal" class="btn btn-primary btn-sm">
-                  <i class="icon icon-subscribe"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Grid Item -->
-        <div class="col-xl-12">
-          <!-- Entry Header -->
-          <div class="dt-entry__header">
-            <!-- Entry Heading -->
-            <div class="dt-entry__heading">
-              <h3 class="dt-entry__title">Detalle Producto</h3>
-
-            </div>
-            <!-- /entry heading -->
-          </div>
-          <!-- /entry header -->
-          <div class="row">
-            <div class="form-group col-lg-4 col-sm-12 col-md-12 col-12">
-              <label for="txtFechaVencimientoEntrada">Fecha Vencimiento</label>
-              <div class="input-group">
-                <input type="text" class="form-control form-control-sm" id="txtFechaVencimientoEntrada"
-                  placeholder="DD/MM/AAAA" />
-                <div class="input-group-append">
-                  <button type="button" id="btnEliminarFechaVencimientoEntrada" data-toggle="tooltip"
-                    title="Eliminar Fecha" class="btn btn-primary btn-sm">
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="form-group col-lg-4 col-sm-6 col-md-6 col-6">
-              <label for="txtProductoEntrada">Producto </label>
-              <div class="input-group">
-                <input type="text" class="form-control form-control-sm" id="txtProductoEntrada"
-                  aria-describedby="nombre" placeholder="Click en el boton para seleccionar. . ." disabled="" />
-                <div class="input-group-append">
-                  <button type="button" id="btnSeleccionarProducto" class="btn btn-primary btn-sm">
-                    <i class="icon icon-subscribe"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="form-group col-lg-4  col-sm-6 col-md-6 col-6">
-              <label for="txtCantidadProducto">Cantidad</label>
-
-              <div class="input-group">
-                <input class="form-control form-control-sm" id="txtCantidadProducto" type="number"
-                  placeholder="CANTIDAD" maxlength="6" />
-                <div class="input-group-append pl-5">
-                  <button type="button" id="btnAgregarProducto" class="btn btn-outline-primary btn-sm"
-                    data-toggle="tooltip" title="Agregar a la Lista">
-                    <i class="icon icon-addnew"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="dt-card mt-4">
-            <!-- Card Body -->
-            <div class="dt-card__body p-0  ">
-              <!-- Widget -->
-              <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                id="tbodyDetalleEntrada">
-                <div class="dt-widget__item border-success bg-primary text-white mb-0 pl-5">
-                  <!-- Widget Info -->
-                  <div class="dt-widget__info text-truncate ">
-                    <p class="mb-0 text-truncate ">
-                      Fecha de Vencimiento
-                    </p>
-                  </div>
-                  <!-- /widget info -->
-                  <!-- Widget Info -->
-                  <div class="dt-widget__info text-truncate ">
-                    <p class="mb-0 text-truncate ">
-                      Producto
-                    </p>
-                  </div>
-                  <!-- /widget info -->
-                  <!-- Widget Info -->
-                  <div class="dt-widget__info text-truncate ">
-                    <p class="mb-0 text-truncate ">
-                      Cantidad
-                    </p>
-                  </div>
-                  <!-- /widget info -->
-                </div>
-              </div>
-              <!-- /widget -->
-              <!-- /card body -->
-            </div>
-          </div>
-          <!-- /card -->
-          <!-- /tables -->
-
-        </div>
-        <!-- /grid item -->
-        <div class="form-group col-12 text-center">
-          <button type="button" id="btnRegresar" class="btn btn-outline-primary btn-sm">
-            <i class="icon icon-reply"></i> CANCELAR
-          </button>
-          <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm">
-            <i class="fas fa-check"></i> GUARDAR
-          </button>
-        </div>
-      </form>
-    </div>
-    <!-- /card -->
+    </form>
   </div>
+  <!-- /card -->
 </div>
 
 <div class="modal fade" id="modalCargandoEntrada" data-backdrop="static" data-keyboard="false" tabindex="-1"

@@ -161,13 +161,19 @@ function toListProducto(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra">
+                        <div class="dt-task">
+                        </div>
+                    </div>
+                    <!-- /widget extra -->
                 </div>
             `;
         document.querySelector("#tbodyProducto").innerHTML += row;
         beanPagination.list.forEach(producto => {
             row =
                 `
-                 <div class="dt-widget__item border-success m-o pt-1 pb-1">
+                 <div class="dt-widget__item border-success m-0 pt-1 pb-1">
                    
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >

@@ -55,11 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         switch (distrito_option) {
             case "madre":
-                distritoProcedenciaSelected = distritoCSelected;
+                distritoMadreSelected = distritoCSelected;
                 document.querySelector("#txtDistritoMadre").value = distritoCSelected.nombre.toUpperCase();
                 break;
             case "padre":
-                distritoSelected = distritoCSelected;
+                distritoPadreSelected = distritoCSelected;
                 document.querySelector("#txtDistritoPadre").value = distritoCSelected.nombre.toUpperCase();
                 break;
             default:
@@ -75,11 +75,11 @@ document.addEventListener("DOMContentLoaded", function () {
         distritoCSelected = undefined;
         switch (distrito_option) {
             case "madre":
-                distritoActualSelected = distritoCSelected;
+                distritoMadreSelected = distritoCSelected;
                 document.querySelector("#txtDistritoMadre").value = "";
                 break;
             case "padre":
-                distritoSelected = distritoCSelected;
+                distritoPadreSelected = distritoCSelected;
                 document.querySelector("#txtDistritoPadre").value = "";
                 break;
             default:

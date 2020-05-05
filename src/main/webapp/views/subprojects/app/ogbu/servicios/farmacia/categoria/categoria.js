@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#txtTituloModalMan").innerHTML = "REGISTRAR CATEGORÍA";
         //OPEN MODEL
         document.querySelector("#btnListaCategoria").style.display = 'none';
-        document.querySelector("#btnOpenCategoria").style.display = 'block';
+        document.querySelector("#btnOpenCategoria").style.display = 'flex';
     };
 
     document.querySelector("#btnRegresar").onclick = function () {
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestCategoria.type_request = "GET";
         $('#modalCargandoCategoria').modal('show');
         document.querySelector("#btnOpenCategoria").style.display = 'none';
-        document.querySelector("#btnListaCategoria").style.display = 'block';
+        document.querySelector("#btnListaCategoria").style.display = 'flex';
     };
 
     $("#modalCargandoCategoria").on('shown.bs.modal', function () {
@@ -196,7 +196,7 @@ function addEventsCategoriaes() {
                 document.querySelector("#txtTituloModalMan").innerHTML = "EDITAR CATEGORÍA";
                 //OPEN MODEL
                 document.querySelector("#btnListaCategoria").style.display = 'none';
-                document.querySelector("#btnOpenCategoria").style.display = 'block';
+                document.querySelector("#btnOpenCategoria").style.display = 'flex';
                 document.querySelector("#txtNombreCategoria").focus();
             } else {
                 showAlertTopEnd('warning', 'No se encontró el Categoria para poder editar');

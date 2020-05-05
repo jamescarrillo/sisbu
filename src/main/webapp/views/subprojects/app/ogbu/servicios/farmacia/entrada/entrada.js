@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     event.stopPropagation();
   });
+
+
   $("#txtFechaEntrada")
     .bootstrapMaterialDatePicker({
       weekStart: 0,
@@ -30,7 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
       format: "DD/MM/YYYY",
       lang: "es"
     })
-    .on("change", function (e, date) { });
+    .on("change", function (e, date) {
+
+    });
 
   document.querySelector("#btnEliminarFechaEntrada").onclick = function () {
     document.querySelector("#txtFechaEntrada").value = "";
@@ -43,6 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
       lang: "es"
     })
     .on("change", function (e, date) { });
+
+  let current_date = new Date();
+  $('#txtFechaEntrada').val(getDateJava(current_date));
+  $('#txtFechaVencimientoEntrada').val(getDateJava(addDays(current_date, 30)));
 
   document.querySelector(
     "#btnEliminarFechaVencimientoEntrada"
@@ -163,14 +171,14 @@ function toListEntrada(beanPagination) {
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
-                           Fecha
+                           FECHA
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
-                           Personal
+                           PERSONAL
                         </p>
                     </div>
                     <!-- /widget info -->
@@ -304,7 +312,6 @@ function validateFormEntrada() {
 }
 
 function limpiarInputEntrada() {
-  document.querySelector("#txtFechaEntrada").value = "";
   document.querySelector("#txtPersonalEntrada").value = "";
   PersonalSelected = undefined;
   listDetalleEntrada.length = 0;

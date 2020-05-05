@@ -294,8 +294,6 @@ function addEventsAtendidoes() {
                 removeClass(document.querySelector("#row-option-socioeconomico"), "d-none");
                 addClass(document.querySelector("#row-option-socioeconomico"), "d-block");
                 addClass(document.querySelector("#btnListaAtendido"), "d-none");
-
-
             } else {
                 showAlertTopEnd('warning', 'No se encontró el Atendido ');
             }

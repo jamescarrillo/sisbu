@@ -25,7 +25,7 @@
                         <button type="submit" class="search-icon">
                             <i class="icon icon-search icon-lg"></i></button>
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewUnidadMedida"
+                            <button type="button" class="btn btn-primary btn-sm ml-5" id="btnOpenNewUnidadMedida"
                                 data-toggle="tooltip" title="Agregar Unidad de Medida"><i
                                     class="icon icon-addnew"></i></button>
                         </div>

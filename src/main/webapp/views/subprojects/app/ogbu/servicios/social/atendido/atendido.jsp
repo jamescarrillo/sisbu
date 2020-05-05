@@ -789,7 +789,7 @@
         <button id="div-regresar-selected-evaluation-socioeconomico" class="btn btn-outline-primary">
 
             <i class="icon icon-reply"></i>
-            Seleccionar otra evaluaci�n
+            Seleccionar otra evaluaci&oacute;n
         </button>
     </div>
 </div>

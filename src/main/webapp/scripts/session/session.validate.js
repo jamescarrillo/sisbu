@@ -164,38 +164,38 @@ function createHTML_OGBU(typeProfile) {
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/servicios/farmacia/pacientes" class="dt-side-nav__link" title="Pacientes">
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/pacientes" class="dt-side-nav__link pl-10" title="Pacientes">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Pacientes</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/servicios/farmacia/entradas" class="dt-side-nav__link" title="Entradas de Medicamentos">
-                        <i class="icon icon-arrow-right icon-fw icon-lg"></i>
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/entradas" class="dt-side-nav__link pl-10" title="Entradas de Medicamentos">
+                        <i class="icon icon-login icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Entradas</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/servicios/farmacia/salidas" class="dt-side-nav__link" title="Salidas de Medicamentos">
-                            <i class="icon icon-arrow-left icon-fw icon-lg"></i>
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/salidas" class="dt-side-nav__link pl-10" title="Salidas de Medicamentos">
+                            <i class="icon icon-logout icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Salidas</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/servicios/farmacia/catalogos" class="dt-side-nav__link" title="Categorías">
-                            <i class="icon icon-arrow-right icon-fw icon-lg"></i>
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/catalogos" class="dt-side-nav__link pl-10" title="Categorías">
+                            <i class="icon icon-influence icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Categorías</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/servicios/farmacia/productos" class="dt-side-nav__link" title="Productos">
-                            <i class="icon icon-arrow-right icon-fw icon-lg"></i>
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/productos" class="dt-side-nav__link pl-10" title="Productos">
+                            <i class="icon icon-shopping-cart icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Productos</span>
                         </a>
                     </li>
                     <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/servicios/farmacia/unidades" class="dt-side-nav__link" title="Unidad de Medida">
-                            <i class="icon icon-arrow-right icon-fw icon-lg"></i>
+                        <a href="${contextPah}app/ogbu/servicios/farmacia/unidades" class="dt-side-nav__link pl-10" title="Unidad de Medida">
+                            <i class="icon icon-projects icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Unidad de Medida</span>
                         </a>
                     </li>
@@ -680,7 +680,7 @@ function createHTML_OGBU(typeProfile) {
 
 function createHTML_ATE_ACTIVATION_ACCOUNT() {
     document.querySelector("#menus_sisbu").innerHTML =
-            `
+        `
         <!-- Menu Header -->
         <li class="dt-side-nav__item dt-side-nav__header">
             <span class="dt-side-nav__text">Dashboard</span>

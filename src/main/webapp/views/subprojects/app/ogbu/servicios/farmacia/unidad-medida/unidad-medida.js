@@ -131,12 +131,18 @@ function toListUnidadMedida(beanPagination) {
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
+                    <div class="dt-widget__info text-truncate" >
                         <p class="mb-0 text-truncate ">
                            ABREVIATURA
                         </p>
                     </div>
                     <!-- /widget info -->
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra">
+                        <div class="dt-task">
+                        </div>
+                    </div>
+                    <!-- /widget extra -->
                 </div>
             `;
         document.querySelector("#tbodyUnidadMedida").innerHTML += row;
@@ -153,7 +159,7 @@ function toListUnidadMedida(beanPagination) {
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
+                    <div class="dt-widget__info text-truncate" >
                         <p class="mb-0 text-truncate ">
                            ${unidadMedida.nom_abreviado}
                         </p>
@@ -162,9 +168,9 @@ function toListUnidadMedida(beanPagination) {
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra">
                         <div class="dt-task">
-                        <div class="dt-task__redirect">
+                            <div class="dt-task__redirect">
                             <!-- Action Button Group -->
-                            <div class="action-btn-group">
+                                <div class="action-btn-group">
                                 <button class="btn btn-default text-primary dt-fab-btn editar-unidadMedida" idunidadMedida='${unidadMedida.idunidad_medida}' title="Editar" data-toggle="tooltip">
                                     <i class="icon icon-editors"></i>
                                 </button>

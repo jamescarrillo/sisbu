@@ -552,13 +552,10 @@ public class FilterURL implements Filter {
         resource.setPath("/views/subprojects/app/ogbu/servicios/social/atendido/atendido.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/servicios/social/atendido/atendido.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/atendido/usuario.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/familiar.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/distrito_c.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/atendido/evaluacion.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/documentos.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/evaluaciones_socieconomica.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/atendido/respuesta_evaluacion2.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/escuela_c.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/social/atendido/ocupacion_c.js" + version_project
         });

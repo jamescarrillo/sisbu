@@ -15,7 +15,7 @@
             </div>
             <!-- /card header -->
             <!-- Card Body -->
-            <div class="card-body p0">
+            <div class="card-body p-0">
                 <form id="FrmProducto" class="search-box mw-100 left-side-icon">
                     <div class="input-group">
                         <input type="search" id="txtFilterProducto" class="form-control form-control-sm"
@@ -24,7 +24,7 @@
                         <button type="submit" class="search-icon">
                             <i class="icon icon-search icon-lg"></i></button>
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewProducto"
+                            <button type="button" class="btn btn-primary btn-sm ml-5" id="btnOpenNewProducto"
                                 data-toggle="tooltip" title="Agregar Producto"><i class="icon icon-addnew"></i></button>
                         </div>
 
@@ -66,7 +66,7 @@
 
     </div>
 
-    <div class="col-xl-12" id="btnOpenProducto" style="display: none">
+    <div class="col-xl-12 p-0" id="btnOpenProducto" style="display: none">
         <!-- Card -->
         <div class="card overflow-hidden p-5">
             <div class="card-header bg-transparent">
