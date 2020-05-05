@@ -1,28 +1,63 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    $('#FrmLogin').submit(function (event) {
-        try {
-            if (document.querySelector("#txtUsername").value != "") {
-                if (document.querySelector("#txtPass").value != "") {
-                    $('#modalCargandoLogin').modal('show');
-                } else {
-                    showAlertTopEnd('warning', "Por favor ingrese una contraseña");
+    $('[data-toggle="tooltip"]').tooltip();
+    $(".preloader").fadeOut();
+
+    $(".form-control-md").click(function () {
+        $(this).parent().addClass("label-animate");
+    });
+
+    $(window).click(function () {
+        if (!$(event.target).is('.form-control')) {
+            $(".form-control").each(function () {
+                if ($(this).val() == '') {
+                    $(this).parent().removeClass("label-animate");
                 }
+            });
+        }
+    });
+
+    $(".form-control-md").focus(function () {
+        $(this).trigger('click');
+    });
+
+    document.querySelectorAll('.span_icon_password').forEach(span => {
+        span.onclick = function () {
+            let input = document.querySelector('#' + this.getAttribute('idinput'));
+            let children = this.children[0];
+            if (input.getAttribute('type') == "text") {
+                removeClass(children, "fas fa-eye-slash");
+                addClass(children, "fas fa-eye");
+                input.setAttribute('type', 'password');
             } else {
-                showAlertTopEnd('warning', "Por favor ingrese un nombre de usuario");
+                removeClass(children, "fas fa-eye");
+                addClass(children, "fas fa-eye-slash");
+                input.setAttribute('type', 'text');
             }
-        } catch (e) {
-            console.log(e);
+            input.focus();
+        }
+    });
+
+    document.querySelector('#FrmLogin').onsubmit = function (event) {
+        try {
+            console.log("submit login account. . .")
+            if (validateFrmLogin()) {
+                $('#modalCargandoLogin').modal('show');
+            }
+        } catch (error) {
+            console.log(error);
         }
         event.preventDefault();
         event.stopPropagation();
-    });
+    }
 
     $("#modalCargandoLogin").on('shown.bs.modal', function () {
         processAjaxAuth();
     });
 
-    document.querySelector("#txtUsername").focus();
+    document.querySelector('#txtUsername').focus();
+    document.querySelector('#txtPass').focus();
+    document.querySelector('#txtUsername').focus();
 
 });
 
@@ -70,4 +105,19 @@ function processAjaxAuth() {
         $('#modalCargandoLogin').modal("hide");
         showAlertErrorRequest();
     });
+}
+
+
+function validateFrmLogin() {
+    if (document.querySelector("#txtUsername").value == "") {
+        showAlertTopEnd('warning', "Por favor ingrese un nombre de usuario");
+        document.querySelector("#txtUsername").focus();
+        return false;
+    }
+    if (document.querySelector("#txtPass").value == "") {
+        showAlertTopEnd('warning', "Por favor ingrese una contraseña");
+        document.querySelector("#txtPass").focus();
+        return false;
+    }
+    return true;
 }
