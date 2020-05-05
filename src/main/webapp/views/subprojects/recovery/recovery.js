@@ -56,13 +56,14 @@ function start_recovery_account() {
     document.querySelectorAll('.span_icon_password').forEach(span => {
         span.onclick = function () {
             let input = document.querySelector('#' + this.getAttribute('idinput'));
+            let children = this.children[0];
             if (input.getAttribute('type') == "text") {
-                removeClass(this, "fas fa-eye-slash");
-                addClass(this, "fas fa-eye");
+                removeClass(children, "fas fa-eye-slash");
+                addClass(children, "fas fa-eye");
                 input.setAttribute('type', 'password');
             } else {
-                removeClass(this, "fas fa-eye");
-                addClass(this, "fas fa-eye-slash");
+                removeClass(children, "fas fa-eye");
+                addClass(children, "fas fa-eye-slash");
                 input.setAttribute('type', 'text');
             }
             input.focus();
@@ -147,16 +148,26 @@ function processAjaxRecoveryAccount() {
             json = {
                 "t": {
                     "code": document.querySelector('#txtCodeRecoveryAccount').value,
-                    "usuario": user_token
+                    "usuario": {
+                        "idusuario": user_token.idusuario,
+                        "login": user_token.login,
+                        "usuario": user_token.usuario,
+                        "tipo_usuario": user_token.tipo_usuario
+                    }
                 }
             }
             break;
         case "change/password":
-            user_token.pass = document.querySelector('#txtPasswordUsuario').value
             json = {
                 "t": {
                     "code": code_token,
-                    "usuario": user_token
+                    "usuario": {
+                        "idusuario": user_token.idusuario,
+                        "login": user_token.login,
+                        "usuario": user_token.usuario,
+                        "tipo_usuario": user_token.tipo_usuario,
+                        "pass": document.querySelector('#txtPasswordUsuario').value
+                    }
                 }
             }
             break;
@@ -219,9 +230,9 @@ function processAjaxRecoveryAccount() {
                                     result.dismiss === Swal.DismissReason.timer
                                     ) {
                                 //console.log('I was closed by the timer')
-                                window.location = "login";
+                                window.location = "auth/login";
                             } else {
-                                window.location = "login";
+                                window.location = "auth/login";
                             }
                         });
                     } else {

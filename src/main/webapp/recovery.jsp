@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/flag-icon-css/css/flag-icon.min.css">
         <link rel="stylesheet" href="<%=request.getContextPath()%>/vendors/gaxon-icon/styles.css">
         <!-- /font icon Styles -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.0/css/all.min.css">
         <style>
 
             .form-group-md>label {
@@ -48,44 +49,6 @@
                 font-size: 1.3rem;
                 padding-top: 8px;
                 height: 50px;
-            }
-
-            /*INPUT AUTOCOMPLETE*/
-
-            .autocomplete {
-                /*the container must be positioned relative:*/
-                position: relative;
-                display: inline-block;
-            }
-
-            .autocomplete-items {
-                position: absolute;
-                border: 1px solid #d4d4d4;
-                border-bottom: none;
-                border-top: none;
-                z-index: 99;
-                /*position the autocomplete items to be the same width as the container:*/
-                top: 100%;
-                left: 0;
-                right: 0;
-            }
-
-            .autocomplete-items div {
-                padding: 10px;
-                cursor: pointer;
-                background-color: #fff;
-                border-bottom: 1px solid #d4d4d4;
-            }
-
-            .autocomplete-items div:hover {
-                /*when hovering an item:*/
-                background-color: #e9e9e9;
-            }
-
-            .autocomplete-active {
-                /*when navigating through the items using the arrow keys:*/
-                background-color: DodgerBlue !important;
-                color: #ffffff;
             }
 
             .field-icon {
@@ -262,8 +225,10 @@
                                                     <label for="txtPasswordUsuario">Contraseña</label>
                                                     <input type="password" class="form-control form-control-md"
                                                            id="txtPasswordUsuario" maxlength="20">
-                                                    <span class="fas fa-eye field-icon span_icon_password"
-                                                          idinput="txtPasswordUsuario"></span>
+                                                    <span class="span_icon_password"
+                                                          idinput="txtPasswordUsuario">
+                                                        <i class="fas fa-eye field-icon"></i>
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="col-12 mb-2" style="height: 70px;top: -10px;">
@@ -271,8 +236,10 @@
                                                     <label for="txtConfirPasswordUsuario">Confirmar Contraseña</label>
                                                     <input type="password" class="form-control form-control-md"
                                                            id="txtConfirPasswordUsuario" maxlength="20">
-                                                    <span class="fas fa-eye field-icon span_icon_password"
-                                                          idinput="txtConfirPasswordUsuario"></span>
+                                                    <span class="span_icon_password"
+                                                          idinput="txtConfirPasswordUsuario">
+                                                        <i class="fas fa-eye field-icon"></i>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -341,6 +308,8 @@
 
         <!-- Optional JavaScript -->
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.0/js/all.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/jquery/dist/jquery.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/moment/moment.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

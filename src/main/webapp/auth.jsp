@@ -13,7 +13,6 @@
         <title><%=getServletContext().getInitParameter("name.page.base")%> AUTH</title>
 
         <!-- Site favicon -->
-        <!--link rel="shortcut icon" href="<%=request.getContextPath()%>/assets/listing/images/favicon.ico" type="image/x-icon"-->
         <link rel="shortcut icon" href="<%=request.getContextPath()%>/resources/dev/img/global/logo-short-plomo.png">
         <!-- /site favicon -->
 
@@ -21,16 +20,59 @@
         <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/flag-icon-css/css/flag-icon.min.css">
         <link rel="stylesheet" href="<%=request.getContextPath()%>/vendors/gaxon-icon/styles.css">
         <!-- /font icon Styles -->
-
-        <!-- Perfect Scrollbar stylesheet -->
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/perfect-scrollbar/css/perfect-scrollbar.css">
-        <!-- /perfect scrollbar stylesheet -->
-
-        <!-- Load Styles -->
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/semidark-style-1.min.css">
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/light-style-10.min.css">
         <!-- /load styles -->
+        <style>
 
+            .form-group-md>label {
+                /*top: 37px;
+                */
+                top: 40px;
+                left: 15px;
+                position: relative;
+                background-color: white;
+                padding: 0px 5px 0px 5px;
+                font-size: 1em;
+                transition: 0.2s;
+                pointer-events: none;
+                color: #a1aab2;
+            }
+
+            .form-group-md.label-animate>label {
+                top: 18px !important;
+                left: 16px !important;
+                font-size: 1em;
+            }
+
+            .form-group-md>input {
+                padding-left: 15px;
+                padding-right: 15px;
+                font-size: 1.3rem;
+                padding-top: 8px;
+                height: 50px;
+            }
+
+            .field-icon {
+                float: right;
+                margin-right: 8px;
+                margin-top: -30px;
+                position: relative;
+                z-index: 2;
+                cursor: pointer;
+            }
+
+            .container {
+                padding-top: 50px;
+                margin: auto;
+            }
+
+            .btn-auth:focus{
+                box-shadow: 0 0 0 0.2rem #4fc3f7;
+            }
+
+            body{
+                overflow-x: hidden !important;
+            }
+        </style>
     </head>
     <body class="dt-sidebar--fixed dt-header--fixed">
         <%
@@ -44,165 +86,107 @@
                 </svg>
             </div>
         </div>
-        <!-- /loader -->
-
-        <!-- Root -->
         <div class="dt-root">
             <div class="dt-root__inner">
-
-                <!-- Login Container -->
                 <div class="dt-login--container">
-
-                    <!-- Login Content -->
                     <div class="dt-login__content-wrapper">
-
-                        <!-- Login Background Section -->
                         <div class="dt-login__bg-section" style="background-image: url()">
-
                             <div class="dt-login__bg-content">
-                                <!-- Login Title -->
                                 <h1 class="dt-login__title" style="font-size: 2.5rem">Inicio de Sesión</h1>
-                                <!-- /login title -->
-
                                 <p class="f-16">Inicia sesión y explora los servicios que ofrece la Oficina General de Bienstar Universitario (OGBU).</p>
                             </div>
-
-
-                            <!-- Brand logo https://via.placeholder.com/334x119 -->
                             <div class="dt-login__logo">
                                 <a class="dt-brand__logo-link" href="<%=request.getContextPath()%>/index">
                                     <img class="dt-brand__logo-img" style="width: 120px; height: 50px"
                                          src="<%=request.getContextPath()%>/resources/dev/img/global/logo-blanco.png" alt="logo-SisBu">
                                 </a>
                             </div>
-                            <!-- /brand logo -->
-
                         </div>
-                        <!-- /login background section -->
-
-                        <!-- Login Content Section -->
                         <div class="dt-login__content">
-
-                            <!-- Login Content Inner -->
                             <div class="dt-login__content-inner" style="padding-bottom: 10px">
-
-                                <!-- Form -->
+                                <div class="row mb-3">
+                                    <div class="col-12 text-center">
+                                        <img src="<%=request.getContextPath()%>/resources/dev/img/global/logo-and-text-plomo.png"
+                                             alt="logo sisbu" height="80" width="230" />
+                                    </div>
+                                </div>
                                 <form id="FrmLogin">
-
-                                    <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label class="sr-only" for="email-1">Username</label>
-                                        <input type="text" class="form-control" aria-describedby="email-1"
-                                               placeholder="Nombre de Usuario" id="txtUsername" name="login">
+                                    <div class="row">
+                                        <div class="col-12" style="height: 70px;top: -10px;">
+                                            <div class="form-group form-group-md mb-0">
+                                                <label for="txtUsername">Nombre de Usuario</label>
+                                                <input type="text" class="form-control form-control-md"
+                                                       id="txtUsername" maxlength="20" name="login">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-2" style="height: 70px;top: -10px;">
+                                            <div class="form-group form-group-md mb-0">
+                                                <label for="txtConfirPasswordUsuario">Contraseña</label>
+                                                <input type="password" class="form-control form-control-md"
+                                                       id="txtPass" maxlength="20" name="password">
+                                                <span class="span_icon_password"
+                                                      idinput="txtPass">
+                                                    <i class="fas fa-eye field-icon"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-12" style="top: -20px;">
+                                            <div class="text-right">
+                                                <a class="d-inline-block font-weight-500 mt-4" href="<%=request.getContextPath()%>/recovery">¿Olvidé mi contraseña?</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!-- /form group -->
-
-                                    <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label class="sr-only" for="password-1">Password</label>
-                                        <input type="password" class="form-control" id="txtPass" name="password" placeholder="Contraseña">
+                                    <div class="row">
+                                        <div class="col-12" style="top: -10px;">
+                                            <h6 class="text-danger mb-2">
+                                                *Ingresa con tu DNI como nombre de usuario y contraseña.
+                                            </h6>
+                                            <h6 class="text-danger mb-2">
+                                                *Si al iniciar sesión recibes este mensaje: "El usuario ingresado no existe", crea una nueva cuenta.
+                                            </h6>
+                                        </div>
                                     </div>
-                                    <!-- /form group -->
-
-                                    <!-- Form Group -->
-                                    <h6 class="text-danger">
-                                        *Ingresa con tu DNI como nombre de usuario y contraseña.
-                                    </h6>
-                                    <h6 class="text-danger">
-                                        *Si al iniciar sesión recibes este mensaje: "El usuario ingresado no existe", crea una nueva cuenta.
-                                    </h6>
-                                    <h6 class="text-danger">
-                                        *Si cambiaste tu clave de acceso y no lo recuerdas, dale click en ¿Olvide mi contraseña?
-                                    </h6>
-                                    <h6 class="text-danger">
-                                    </h6>
-                                    <!--div class="dt-checkbox d-block mb-6">
-                                        <input type="checkbox" id="checkbox-1">
-                                        <label class="dt-checkbox-content" for="checkbox-1">
-                                            Mantenerme conectado en este dispositivo
-                                        </label>
-                                    </div-->
-                                    <!-- /form group -->
-
-                                    <!-- Form Group -->
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary text-uppercase">Ingresar</button>
                                         <span class="d-inline-block ml-4">O
                                             <a class="d-inline-block font-weight-500 ml-3" href="/sisbu/signup">Crear una Cuenta</a>
                                         </span>
                                     </div>
-                                    <!-- /form group -->
-
-                                    <!-- Form Group -->
                                     <div class="d-flex flex-wrap align-items-center">
                                         <span class="d-inline-block mr-2">Síguenos en</span>
-
-                                        <!-- List -->
                                         <ul class="dt-list dt-list-sm dt-list-cm-0 ml-auto">
                                             <li class="dt-list__item">
-                                                <!-- Fab Button -->
                                                 <a href="https://www.facebook.com/BienestarUNPRG/" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
                                                     <i class="icon icon-facebook icon-xl"></i>
                                                 </a>
-                                                <!-- /fab button -->
                                             </li>
-
                                             <li class="dt-list__item">
-                                                <!-- Fab Button -->
-                                                <a href="https://www.youtube.com/channel/UCDpJg58pfAXwHxLCr6zUmbw" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                <a href="https://www.youtube.com/channel/UCe_kuooOn2vSa-NxgJ8rn-A" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
                                                     <i class="icon icon-youtube icon-xl"></i>
                                                 </a>
-                                                <!-- /fab button -->
                                             </li>
-
                                             <li class="dt-list__item">
-                                                <!-- Fab Button -->
                                                 <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
                                                     <i class="icon icon-instagram icon-xl"></i>
                                                 </a>
-                                                <!-- /fab button -->
                                             </li>
-
                                             <li class="dt-list__item">
-                                                <!-- Fab Button -->
                                                 <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
                                                     <i class="icon icon-twitter icon-xl"></i>
                                                 </a>
-                                                <!-- /fab button -->
                                             </li>
                                         </ul>
-                                        <!-- /list -->
-                                    </div>
-                                    <!-- /form group -->
-
-                                    <div class="text-right">
-                                        <a class="d-inline-block font-weight-500 mt-4" href="<%=request.getContextPath()%>/recovery">¿Olvidé mi contraseña?</a>
                                     </div>
                                 </form>
-                                <!-- /form -->
-
                             </div>
-                            <!-- /login content inner -->
-
-                            <!-- Login Content Footer -->
                             <div class="dt-login__content-footer text-center">
                                 <a href="http://www.unprg.edu.pe/univ/" target="_blank">Universidad Nacional Pedro Ruiz Gallo</a>
                             </div>
-                            <!-- /login content footer -->
-
                         </div>
-                        <!-- /login content section -->
-
                     </div>
-                    <!-- /login content -->
-
                 </div>
-                <!-- /login container -->
-
             </div>
         </div>
-        <!-- /root -->
-
         <div class="modal fade" id="modalCargandoLogin" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -216,8 +200,9 @@
                 </div>
             </div>
         </div>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-        <!-- Optional JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.0/js/all.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/jquery/dist/jquery.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/moment/moment.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
