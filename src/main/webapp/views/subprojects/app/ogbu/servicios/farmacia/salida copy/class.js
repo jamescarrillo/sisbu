@@ -1,10 +1,10 @@
 
 class Salida {
-    constructor(fecha = null, personal, atendido) {
+    constructor(fecha = null, personal, diagnostico) {
         this.idsalida = 0;
         this.fecha = fecha;
         this.personal = personal;
-        this.atendido = atendido;
+        this.diagnostico = diagnostico;
     }
 }
 
@@ -14,9 +14,9 @@ class Personal {
 
     }
 }
-class Atendido {
-    constructor(idatendido = 0) {
-        this.idatendido = idatendido;
+class Diagnostico {
+    constructor(iddiagnostico = 0) {
+        this.iddiagnostico = iddiagnostico;
 
     }
 }
