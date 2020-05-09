@@ -1,15 +1,13 @@
 
 var beanPaginationPaciente;
 var pacienteSelected;
-
 var beanRequestPaciente = new BeanRequest();
-
 var fechaActual = new Date(); //Fecha actual
 document.addEventListener("DOMContentLoaded", function () {
 
     //INICIALIZANDO VARIABLES DE SOLICITUD ATENDIDO
     beanRequestPaciente.entity_api = "api/atendido";
-    beanRequestPaciente.operation = "paginate";
+    beanRequestPaciente.operation = "paginate/psicopedagogia";
     beanRequestPaciente.type_request = "GET";
 
     $("#modalCargandoVDYA").on('shown.bs.modal', function () {
@@ -17,8 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $('#FrmPaciente').submit(function (event) {
-        beanRequestPaciente.operation = "paginate";
-        beanRequestPaciente.type_request = "GET";
         $('#modalCargandoPaciente').modal('show');
         event.preventDefault();
         event.stopPropagation();
@@ -28,57 +24,39 @@ document.addEventListener("DOMContentLoaded", function () {
         processAjaxPaciente();
     });
 
-    $("#modalCargandoPaciente").on('hidden.bs.modal', function () {
-        beanRequestPaciente.operation = "paginate";
-        beanRequestPaciente.type_request = "GET";
-    });
+
 
     $('#modalCargandoPaciente').modal('show');
 
     $("#sizePagePaciente").change(function () {
-        beanRequestPaciente.operation = "paginate";
-        beanRequestPaciente.type_request = "GET";
         $('#modalCargandoPaciente').modal('show');
     });
-
+    $("#txtFilterTipoPersonaPaciente").change(function () {
+        $('#modalCargandoPaciente').modal('show');
+    });
+    $("#txtFilterEstadoPaciente").change(function () {
+        $('#modalCargandoPaciente').modal('show');
+    });
 });
 
 function processAjaxPaciente() {
+    if (beanPaginationProcedimientoC == undefined) {
+        processAjaxProcedimientoC();
+    }
+
     let parameters_pagination = "";
     let json = "";
-    if (beanRequestPaciente.operation == "paginate") {
-        let filterPaciente = "0", filterCiclo = "0", filterTipo = "0";
-        if (document.querySelector("#txtFilterPaciente").value != "") {
-            filterPaciente = document.querySelector("#txtFilterPaciente").value;
-
-        } else {
-            document.querySelector("#pagePaciente").value = "1";
-        }
-        if (document.querySelector("#txtFilterCicloPaciente").value != "") {
-            filterCiclo = document.querySelector("#txtFilterCicloPaciente").value;
-
-        }
-        console.log(document.querySelector("#txtFilterTipoPersonaPaciente").value);
-        if (document.querySelector("#txtFilterTipoPersonaPaciente").value != "-1") {
-            filterTipo = document.querySelector("#txtFilterTipoPersonaPaciente").value;
-        }
-        parameters_pagination += "?filter=" + filterPaciente + "/" + filterCiclo + "/" + filterTipo;
+    if (beanRequestPaciente.operation == "paginate/psicopedagogia") {
+        parameters_pagination += "?filter=" + document.querySelector("#txtFilterPaciente").value.trim();
+        parameters_pagination += "/" + document.querySelector("#txtFilterEscuelaPaciente").value.trim();
+        parameters_pagination += "/" + document.querySelector("#txtFilterCicloPaciente").value.trim();
+        parameters_pagination += "/" + document.querySelector("#txtFilterTipoPersonaPaciente").value.trim();
+        parameters_pagination += "/" + document.querySelector("#txtFilterEstadoPaciente").value.trim();
         parameters_pagination += "&page=" + document.querySelector("#pagePaciente").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePagePaciente").value;
 
     } else {
-        parameters_pagination = "";
-        if (beanRequestPaciente.operation == "delete") {
-            parameters_pagination = "/" + pacienteSelected.idpaciente;
-
-        } else {
-            json = {
-                "nombre": document.querySelector("#txtNombrePaciente").value,
-            };
-            if (beanRequestPaciente.operation == "update") {
-                json.idpaciente = pacienteSelected.idpaciente;
-            }
-        }
+        return;
     }
     $.ajax({
         url: getHostAPI() + beanRequestPaciente.entity_api + "/" + beanRequestPaciente.operation + parameters_pagination,
@@ -116,8 +94,8 @@ function toListPaciente(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
                         <p class="mb-0 text-truncate ">
@@ -155,14 +133,10 @@ function toListPaciente(beanPagination) {
         document.querySelector("#tbodyPaciente").innerHTML += row;
         let text_row;
         beanPagination.list.forEach(atendido => {
-            if (atendido.ciclo_academico_ingreso.idciclo_academico <= 12) {
-                text_row = "text-danger";
-            } else {
-                text_row = "";
-            }
+
             row =
-                    `
-                 <div class="dt-widget__item border-success pl-5 ${text_row}">
+                `
+                 <div class="dt-widget__item border-success pl-5 m-0">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " style="max-width: 15%;">
                         <p class="mb-0 text-truncate ">
@@ -201,12 +175,12 @@ function toListPaciente(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePagePaciente").value),
-                document.querySelector("#pagePaciente"),
-                $('#modalCargandoPaciente'),
-                $('#paginationPaciente'));
-       
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePagePaciente").value),
+            document.querySelector("#pagePaciente"),
+            $('#modalCargandoPaciente'),
+            $('#paginationPaciente'));
+
         if (beanRequestPaciente.operation == "paginate") {
             document.querySelector("#txtFilterPaciente").focus();
         }

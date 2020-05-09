@@ -809,6 +809,7 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/informes/reportes/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/paciente.jsp");
         resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/procedimiento_c.js" + version_project,
             "/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/paciente.js" + version_project
         });
         this.list_resources.add(resource);
