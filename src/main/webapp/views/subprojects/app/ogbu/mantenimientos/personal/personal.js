@@ -141,7 +141,7 @@ function processAjaxPersonal() {
                 "tipo_personal": document.querySelector("#txtTipoPersonal").value,
                 "cargo": cargoSelected,
                 "area": areaSelected,
-                "usuario": {"idusuario": usuarioSelected.idusuario}
+                "usuario": { "idusuario": usuarioSelected.idusuario }
             };
             if (beanRequestPersonal.operation == "update") {
                 json.idpersonal = personalSelected.idpersonal;
@@ -189,7 +189,7 @@ function toListPersonal(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(personal => {
-            row = "<div class='dt-widget__item border-bottom'>";
+            row = "<div class='dt-widget__item border-bottom m-0 pl-4 pb-2 pt-2 pr-1'>";
             row += "<div class='dt-extra animate-slide align-self-center mr-5' idpersonal='" + personal.idpersonal + "'>";
             row += "<span class='badge " + tipoPersonalColor(personal.tipo_personal) + " badge-circle-animate badge-pill badge-sm align-text-top'>" + tipoPersonal(personal.tipo_personal) + "</span>";
             row += "<div class='slide-content'>";
@@ -218,11 +218,11 @@ function toListPersonal(beanPagination) {
             document.querySelector("#tbodyPersonal").innerHTML += row;
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePagePersonal").value),
-                document.querySelector("#pagePersonal"),
-                $('#modalCargandoPersonal'),
-                $('#paginationPersonal'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePagePersonal").value),
+            document.querySelector("#pagePersonal"),
+            $('#modalCargandoPersonal'),
+            $('#paginationPersonal'));
         addEventsPersonales();
         if (beanRequestPersonal.operation == "paginate") {
             document.querySelector("#txtFilterDniPersonal").focus();
@@ -254,7 +254,7 @@ function addEventsPersonales() {
                 document.querySelector('#btnDatosGenerales').style.display = 'block';
                 document.querySelector('#btnDatosAcceso').style.display = 'none';
                 viewDatosGenerales();
-               
+
                 //SET TITLE MODAL
                 document.querySelector("#txtTituloModalPersonal").innerHTML = "ACTUALIZAR DATOS";
                 //OPEN MODEL

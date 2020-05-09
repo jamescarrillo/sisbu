@@ -810,7 +810,9 @@ public class FilterURL implements Filter {
         resource.setPath("/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/paciente.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/procedimiento_c.js" + version_project,
-            "/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/paciente.js" + version_project
+            "/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/paciente.js" + version_project,
+              "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project
         });
         this.list_resources.add(resource);
         //ENFERMERIA
@@ -819,7 +821,9 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/enfermeria/informes/reportes/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/informes/reportes/enfermeria/pacientes/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/informes/reportes/enfermeria/pacientes/paciente.js" + version_project
+            "/views/subprojects/app/ogbu/informes/reportes/enfermeria/pacientes/paciente.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project
         });
         this.list_resources.add(resource);
         //MEDICINA
@@ -828,7 +832,9 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/medicina/informes/reportes/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/informes/reportes/medicina/pacientes/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/informes/reportes/medicina/pacientes/paciente.js" + version_project
+            "/views/subprojects/app/ogbu/informes/reportes/medicina/pacientes/paciente.js" + version_project,
+             "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project
         });
         this.list_resources.add(resource);
 
@@ -838,7 +844,9 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/odontologia/informes/reportes/pacientes");
         resource.setPath("/views/subprojects/app/ogbu/informes/reportes/odontologia/pacientes/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/informes/reportes/odontologia/pacientes/paciente.js" + version_project
+            "/views/subprojects/app/ogbu/informes/reportes/odontologia/pacientes/paciente.js" + version_project,
+          "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project
         });
         this.list_resources.add(resource);
 

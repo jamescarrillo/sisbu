@@ -6,8 +6,6 @@ var beanPaginationDetalleAficion;
 var beanRequestProcedimientoAficion = new BeanRequest();
 document.addEventListener("DOMContentLoaded", function () {
 
-
-
     //  AFICION
     //INICIALIZANDO VARIABLES DE SOLICITUD
     beanRequestProcedimientoAficion.entity_api = "api/detalle-aficiones";
@@ -80,9 +78,9 @@ function processAjaxProcedimientoAficion() {
         } else {
             json = {
                 "estado": document.querySelector("#txtEstadoAficionDetalle").value,
-                "aficion": {"idaficion": aficionSelected.idaficion},
+                "aficion": { "idaficion": aficionSelected.idaficion },
                 "atendido": {
-                    "usuario": {"idusuario": usuarioSelected.usuario.idusuario}
+                    "usuario": { "idusuario": usuarioSelected.usuario.idusuario }
                 }
             };
             if (beanRequestProcedimientoAficion.operation == "update") {
@@ -137,13 +135,13 @@ function toListProcedimientoAficion(beanPagination) {
     document.querySelector("#buttonAficion").classList.add("active");
     document.querySelector("#OpenListaAficionDetalle").classList.add("active");
     document.querySelector("#tbodyAficion").innerHTML = "";
-     document.querySelector("#openUsuario").style.display = "initial";
+    document.querySelector("#openUsuario").style.display = "initial";
     if (beanPagination.count_filter > 0) {
-       
+
         let row;
         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" >
                         <p class="mb-0 text-truncate ">
@@ -165,29 +163,8 @@ function toListProcedimientoAficion(beanPagination) {
         beanPagination.list.forEach(detalle => {
 
             row =
-                    `
-                 <div class="dt-widget__item border-success pl-5 ">
-                    <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
-                            <!-- Action Button Group -->
-                            <div class="action-btn-group">
-                                <button class="btn btn-default text-primary dt-fab-btn editar-aficion-detalle" idrelacion='${detalle.idrelacion}' title="Editar" data-toggle="tooltip">
-                                    <i class="icon icon-editors"></i>
-                                </button>
-                                <button class="btn btn-default text-danger dt-fab-btn eliminar-aficion-detalle" idrelacion='${detalle.idrelacion}' title="Eliminar" data-toggle="tooltip">
-                                    <i class="icon icon-trash-filled"></i>
-                                </button>
-                               
-                              
-                            </div>
-                            <!-- /action button group -->
-                        </div>
-                        <!-- /hide content -->
-                    </div>
-                    <!-- /widget extra -->
+                `
+                 <div class="dt-widget__item m-0 pt-1 pb-1">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -203,18 +180,36 @@ function toListProcedimientoAficion(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                    
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra">
+                        <div class="dt-task">
+                        <div class="dt-task__redirect">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                            <button class="btn btn-default text-primary dt-fab-btn editar-aficion-detalle" idrelacion='${detalle.idrelacion}' title="Editar" data-toggle="tooltip">
+                            <i class="icon icon-editors"></i>
+                        </button>
+                        <button class="btn btn-default text-danger dt-fab-btn eliminar-aficion-detalle" idrelacion='${detalle.idrelacion}' title="Eliminar" data-toggle="tooltip">
+                            <i class="icon icon-trash-filled"></i>
+                        </button>
+                                </div>
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                 </div>
             `;
             document.querySelector("#tbodyAficion").innerHTML += row;
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageAficionDetalle").value),
-                document.querySelector("#pageAficionDetalle"),
-                $('#modalCargandoAficionDetalle'),
-                $('#paginationAficionDetalle'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageAficionDetalle").value),
+            document.querySelector("#pageAficionDetalle"),
+            $('#modalCargandoAficionDetalle'),
+            $('#paginationAficionDetalle'));
         addEventsProcedimientoAficion();
 
 

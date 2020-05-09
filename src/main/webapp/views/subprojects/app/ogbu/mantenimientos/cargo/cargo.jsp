@@ -5,9 +5,9 @@
 --%>
 
 <div class="row">
-    <div class="col-xl-12">
+    <div class="col-xl-12 p-0">
         <!-- Card -->
-        <div class="card overflow-hidden">
+        <div class="overflow-hidden">
             <!-- Card Header -->
             <div class="card-header bg-transparent">
                 <h4 class="mb-0" id="titleManagerCargo">[ 2 ] CARGOS</h4>
@@ -15,25 +15,26 @@
             </div>
             <!-- /card header -->
             <!-- Card Body -->
-            <div class="card-body pt-0">
+            <div class="card-body p-0">
                 <form id="FrmCargo">
                     <div class="input-group search-box" style="max-width: 100%;">
-                        <input type="search" id="txtFilterCargo" class="form-control form-control-sm" placeholder="FILTRO. . .">
-                        <div class="input-group-append">
-                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                            <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                        </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewCargo"data-toggle="tooltip" title="Agregar Cargo" ><i class="icon icon-addnew"></i></button>
+                        <input type="search" id="txtFilterCargo" class="form-control form-control-sm"
+                            placeholder="FILTRO. . ." data-toggle="tooltip" data-placement="left"
+                            data-original-title="Buscar">
+                        <button type="submit" class="search-icon">
+                            <i class="icon icon-search icon-lg"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm ml-4" id="btnOpenNewCargo"
+                            data-toggle="tooltip" title="Agregar Cargo"><i class="icon icon-addnew"></i></button>
                     </div>
 
                 </form>
                 <!-- Card -->
-                <div class="dt-card mt-4">
+                <div class="dt-card mt-4 p-0">
                     <!-- Card Body -->
-                    <div class="dt-card__body p-0  " >
+                    <div class="dt-card__body p-0">
                         <!-- Widget -->
-                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                             id="tbodyCargo">
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg  dt-social-card border border-w-2 border-light-teal"
+                            id="tbodyCargo">
                         </div>
                         <!-- /widget -->
                         <!-- /card body -->
@@ -53,7 +54,7 @@
                         <nav aria-label="Page navigation example">
                             <ul id="paginationCargo" class="pagination pagination-sm justify-content-end">
                             </ul>
-                        </nav>  
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -62,39 +63,44 @@
         <!-- /card -->
     </div>
 </div>
-<div class="modal fade" id="ventanaModalCargo" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ventanaModalCargo" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form id="FrmCargoModal">
                 <div class="modal-header">
                     <h6 class="modal-title" id="txtTituloModalMan"></h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">ï¿½</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="form-group col-12">
                             <label for="txtNombreCargo">NOMBRE</label>
-                            <input class="form-control form-control-sm" id="txtNombreCargo" type="text" placeholder="NOMBRE">
+                            <input class="form-control form-control-sm" id="txtNombreCargo" type="text"
+                                placeholder="NOMBRE">
                         </div>
 
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal"><i class="icon icon-reply"></i> CANCELAR</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal"><i
+                            class="icon icon-reply"></i> CANCELAR</button>
                     <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm">GUARDAR</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalCargandoCargo" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+<div class="modal fade" id="modalCargandoCargo" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Cargando Cargos. . .
                     </div>
                 </div>

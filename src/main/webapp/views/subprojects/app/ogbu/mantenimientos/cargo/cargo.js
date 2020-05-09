@@ -63,8 +63,8 @@ function processAjaxCargo() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestCargo.operation == "paginate") {
-        if (document.querySelector("#txtFilterCargo").value!="") {
-           document.querySelector("#pageCargo").value=1; 
+        if (document.querySelector("#txtFilterCargo").value != "") {
+            document.querySelector("#pageCargo").value = 1;
         }
         parameters_pagination += "?nombre=" + document.querySelector("#txtFilterCargo").value.toUpperCase();
         parameters_pagination += "&page=" + document.querySelector("#pageCargo").value;
@@ -118,9 +118,9 @@ function toListCargo(beanPagination) {
     document.querySelector("#titleManagerCargo").innerHTML = "[ " + beanPagination.count_filter + " ] CARGOS";
     if (beanPagination.count_filter > 0) {
         let row;
-         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2"">
+        row =
+            `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2 mr-1">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -128,34 +128,21 @@ function toListCargo(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                    
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra ">
+                    <div class="dt-task">
+                     </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                 </div>
             `;
         document.querySelector("#tbodyCargo").innerHTML += row;
         beanPagination.list.forEach(cargo => {
-             row =
-                    `
-                 <div class="dt-widget__item border-success  ">
-                    <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
-                            <!-- Action Button Group -->
-                            <div class="action-btn-group">
-                                <button class="btn btn-default text-primary dt-fab-btn editar-cargo" idcargo='${cargo.idcargo}' title="Editar" data-toggle="tooltip">
-                                    <i class="icon icon-editors"></i>
-                                </button>
-                                <button class="btn btn-default text-danger dt-fab-btn eliminar-cargo" idcargo='${cargo.idcargo}' title="Eliminar" data-toggle="tooltip">
-                                    <i class="icon icon-trash-filled"></i>
-                                </button>
-                              
-                            </div>
-                            <!-- /action button group -->
-                        </div>
-                        <!-- /hide content -->
-                    </div>
-                    <!-- /widget extra -->
+            row =
+                `
+                 <div class="dt-widget__item border-bottom m-0 pl-4 pb-2 pt-2 pr-1">
+                
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -163,24 +150,42 @@ function toListCargo(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                 
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra ">
+                    <div class="dt-task">
+                    <div class="dt-task__redirect">
+                               <!-- Action Button Group -->
+                               <div class="action-btn-group">
+                                   <button class="btn btn-default text-primary dt-fab-btn editar-cargo" idcargo='${cargo.idcargo}' title="Editar" data-toggle="tooltip">
+                                       <i class="icon icon-editors"></i>
+                                   </button>
+                                   <button class="btn btn-default text-danger dt-fab-btn eliminar-cargo" idcargo='${cargo.idcargo}' title="Eliminar" data-toggle="tooltip">
+                                       <i class="icon icon-trash-filled"></i>
+                                   </button>
+                                   </div>
+                               </div>
+                               <!-- /action button group -->
+                           </div>
+                           <!-- /hide content -->
+                       </div>
+                       <!-- /widget extra -->
                     
                 </div>
             `;
             document.querySelector("#tbodyCargo").innerHTML += row;
-             $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageCargo").value),
-                document.querySelector("#pageCargo"),
-                $('#modalCargandoCargo'),
-                $('#paginationCargo'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageCargo").value),
+            document.querySelector("#pageCargo"),
+            $('#modalCargandoCargo'),
+            $('#paginationCargo'));
         addEventsCargoes();
         if (beanRequestCargo.operation == "paginate") {
             document.querySelector("#txtFilterCargo").focus();
         }
-       
+
     } else {
         destroyPagination($('#paginationCargo'));
         showAlertTopEnd('warning', 'No se encontraron resultados');

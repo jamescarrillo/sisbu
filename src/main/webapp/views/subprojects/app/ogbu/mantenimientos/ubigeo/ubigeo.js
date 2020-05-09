@@ -258,7 +258,8 @@ function processAjaxDistrito() {
             json = {
                 "nombre": document.querySelector("#txtNombreDistrito").value,
                 "idprovincia": {
-                    "idprovincia": provinciaSelected.idprovincia}
+                    "idprovincia": provinciaSelected.idprovincia
+                }
             };
             if (beanRequestDistrito.operation == "update") {
                 json.iddistrito = distritoSelected.iddistrito;
@@ -300,8 +301,8 @@ function toListDistrito(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2"">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2 pr-1">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -316,34 +317,21 @@ function toListDistrito(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                    
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra ">
+                    <div class="dt-task">
+                     </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                 </div>
             `;
         document.querySelector("#tbodyDistrito").innerHTML += row;
         beanPagination.list.forEach(distrito => {
             row =
-                    `
-                 <div class="dt-widget__item border-success  ">
-                    <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
-                            <!-- Action Button Group -->
-                            <div class="action-btn-group">
-                                <button class="btn btn-default text-primary dt-fab-btn editar-distrito" iddistrito='${distrito.iddistrito}' title="Editar" data-toggle="tooltip">
-                                    <i class="icon icon-editors"></i>
-                                </button>
-                                <button class="btn btn-default text-danger dt-fab-btn eliminar-distrito" iddistrito='${distrito.iddistrito}' title="Eliminar" data-toggle="tooltip">
-                                    <i class="icon icon-trash-filled"></i>
-                                </button>
-                              
-                            </div>
-                            <!-- /action button group -->
-                        </div>
-                        <!-- /hide content -->
-                    </div>
-                    <!-- /widget extra -->
+                `
+                 <div class="dt-widget__item m-0 pt-2 pb-2  pr-1">
+                   
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -358,7 +346,25 @@ function toListDistrito(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                 
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra ">
+                    <div class="dt-task">
+                    <div class="dt-task__redirect">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-distrito" iddistrito='${distrito.iddistrito}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-distrito" iddistrito='${distrito.iddistrito}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                              
+                            </div></div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                     
                 </div>
             `;
@@ -366,11 +372,11 @@ function toListDistrito(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageDistrito").value),
-                document.querySelector("#pageDistrito"),
-                $('#modalCargandoDistrito'),
-                $('#paginationDistrito'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageDistrito").value),
+            document.querySelector("#pageDistrito"),
+            $('#modalCargandoDistrito'),
+            $('#paginationDistrito'));
         addEventsDistritoes();
         if (beanRequestDistrito.operation == "paginate") {
             document.querySelector("#txtFilterNombreDistrito").focus();
@@ -508,8 +514,8 @@ function toListProvincia(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2"">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2 mr-1">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -524,34 +530,21 @@ function toListProvincia(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                    
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra ">
+                    <div class="dt-task">
+                     </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                 </div>
             `;
         document.querySelector("#tbodyProvincia").innerHTML += row;
         beanPagination.list.forEach(provincia => {
             row =
-                    `
-                 <div class="dt-widget__item border-success  ">
-                    <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
-                            <!-- Action Button Group -->
-                            <div class="action-btn-group">
-                                <button class="btn btn-default text-primary dt-fab-btn editar-provincia" idprovincia='${provincia.idprovincia}' title="Editar" data-toggle="tooltip">
-                                    <i class="icon icon-editors"></i>
-                                </button>
-                                <button class="btn btn-default text-danger dt-fab-btn eliminar-provincia" idprovincia='${provincia.idprovincia}' title="Eliminar" data-toggle="tooltip">
-                                    <i class="icon icon-trash-filled"></i>
-                                </button>
-                              
-                            </div>
-                            <!-- /action button group -->
-                        </div>
-                        <!-- /hide content -->
-                    </div>
-                    <!-- /widget extra -->
+                `
+                 <div class="dt-widget__item  m-0 pt-2 pb-2  pr-1">
+                   
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -566,7 +559,25 @@ function toListProvincia(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                 
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra ">
+                    <div class="dt-task">
+                    <div class="dt-task__redirect">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-provincia" idprovincia='${provincia.idprovincia}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-provincia" idprovincia='${provincia.idprovincia}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                                </div>
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                     
                 </div>
             `;
@@ -574,11 +585,11 @@ function toListProvincia(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageProvincia").value),
-                document.querySelector("#pageProvincia"),
-                $('#modalCargandoProvincia'),
-                $('#paginationProvincia'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageProvincia").value),
+            document.querySelector("#pageProvincia"),
+            $('#modalCargandoProvincia'),
+            $('#paginationProvincia'));
         addEventsProvincia();
         if (beanRequestProvincia.operation == "paginate") {
             document.querySelector("#txtFilterNombreProvincia").focus();
@@ -715,8 +726,8 @@ function toListDepartamento(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let rowd;
         rowd =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2"">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2 pr-1">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -724,19 +735,32 @@ function toListDepartamento(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                    
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra ">
+                    <div class="dt-task">
+                     </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                 </div>
             `;
         document.querySelector("#tbodyDepartamento").innerHTML += rowd;
         beanPagination.list.forEach(departamento => {
             rowd =
-                    `
-                 <div class="dt-widget__item border-success  ">
+                `
+                 <div class="dt-widget__item  m-0 pt-2 pb-2  pr-1">
+                  
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${departamento.nombre}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
+                    <div class="dt-task">
+                    <div class="dt-task__redirect">
                             <!-- Action Button Group -->
                             <div class="action-btn-group">
                                 <button class="btn btn-default text-primary dt-fab-btn editar-departamento" iddepartamento='${departamento.iddepartamento}' title="Editar" data-toggle="tooltip">
@@ -745,21 +769,13 @@ function toListDepartamento(beanPagination) {
                                 <button class="btn btn-default text-danger dt-fab-btn eliminar-departamento" iddepartamento='${departamento.iddepartamento}' title="Eliminar" data-toggle="tooltip">
                                     <i class="icon icon-trash-filled"></i>
                                 </button>
-                              
+                                </div>
                             </div>
                             <!-- /action button group -->
                         </div>
                         <!-- /hide content -->
                     </div>
                     <!-- /widget extra -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
-                        <p class="mb-0 text-truncate ">
-                           ${departamento.nombre}
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                 
                     
                 </div>
             `;
@@ -767,11 +783,11 @@ function toListDepartamento(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageDepartamento").value),
-                document.querySelector("#pageDepartamento"),
-                $('#modalCargandoDepartamento'),
-                $('#paginationDepartamento'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageDepartamento").value),
+            document.querySelector("#pageDepartamento"),
+            $('#modalCargandoDepartamento'),
+            $('#paginationDepartamento'));
         addEventsDepartamento();
         if (beanRequestDepartamento.operation == "paginate") {
             document.querySelector("#txtFilterNombreDepartamento").focus();

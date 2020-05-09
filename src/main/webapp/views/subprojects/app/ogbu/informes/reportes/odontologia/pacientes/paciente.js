@@ -1,5 +1,6 @@
 var beanPaginationPaciente;
-var pacienteSelected;
+var pacienteSelected; var escuelaSelected;
+var cicloAcademicoSelected;
 var beanRequestPaciente = new BeanRequest();
 var fechaActual = new Date(); //Fecha actual
 document.addEventListener("DOMContentLoaded", function () {
@@ -53,8 +54,10 @@ function processAjaxPaciente() {
         // }
 
         parameters_pagination += "?filter=" + document.querySelector("#txtFilterPaciente").value.trim();
-        parameters_pagination += "/" + document.querySelector("#txtFilterEscuelaPaciente").value.trim();
-        parameters_pagination += "/" + document.querySelector("#txtFilterCicloPaciente").value.trim();
+        parameters_pagination += "/";
+        parameters_pagination += (escuelaSelected == undefined) ? "" : escuelaSelected.idescuela;
+        parameters_pagination += "/";
+        parameters_pagination += (cicloAcademicoSelected == undefined) ? "" : cicloAcademicoSelected.idciclo_academico;
         parameters_pagination += "/" + document.querySelector("#txtFilterTipoPersonaPaciente").value.trim();
         parameters_pagination += "/" + document.querySelector("#txtFilterEstadoPaciente").value.trim();
         parameters_pagination += "&page=" + document.querySelector("#pagePaciente").value;

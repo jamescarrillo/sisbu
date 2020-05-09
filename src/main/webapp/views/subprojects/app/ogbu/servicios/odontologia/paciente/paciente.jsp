@@ -19,12 +19,9 @@
                 <form id="FrmPaciente">
                     <div class="input-group search-box mw-100">
                         <input type="search" id="txtFilterPaciente" class="form-control form-control-sm"
-                            placeholder="FILTRO. . .">
-                        <div class="input-group-append">
-                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                            <button type="submit" class="btn btn-primary btn-sm "><i
-                                    class="icon icon-search icon-fw"></i> BUSCAR</button>
-                        </div>
+                            placeholder="FILTRO. . ." data-toggle="tooltip" data-original-title="Buscar"
+                            data-placement="left">
+                        <button type="submit" class="search-icon"><i class="icon icon-search icon-fw"></i></button>
                     </div>
 
                 </form>
@@ -32,11 +29,13 @@
                 <div class="dt-card mt-4">
                     <!-- Card Body -->
                     <div class="dt-card__body p-0  ">
-                        <!-- Widget -->
-                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                            id="tbodyPaciente">
+                        <div class="w-100 ps-custom-scrollbar mb-0 ps pb-5">
+                            <!-- Widget -->
+                            <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                                id="tbodyPaciente" style="min-width: 725px;">
+                            </div>
+                            <!-- /widget -->
                         </div>
-                        <!-- /widget -->
                         <!-- /card body -->
                     </div>
 

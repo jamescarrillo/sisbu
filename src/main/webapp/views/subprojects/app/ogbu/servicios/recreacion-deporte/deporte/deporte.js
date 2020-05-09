@@ -38,15 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#modalCargandoDeporte").on('shown.bs.modal', function () {
         if (!$('#ventanaModalDeporte').hasClass("show")) {
-          beanRequestDeporte.operation = "paginate";
+            beanRequestDeporte.operation = "paginate";
             beanRequestDeporte.type_request = "GET";
         }
         processAjaxDeporte();
     });
-    
+
     $("#modalCargandoDeporte").on('hide.bs.modal', function () {
-          beanRequestDeporte.operation = "paginate";
-          beanRequestDeporte.type_request = "GET";
+        beanRequestDeporte.operation = "paginate";
+        beanRequestDeporte.type_request = "GET";
     });
 
     $('#modalCargandoDeporte').modal('show');
@@ -61,8 +61,8 @@ function processAjaxDeporte() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestDeporte.operation == "paginate") {
-          if (document.querySelector("#txtFilterDeporte").value!="") {
-           document.querySelector("#pageDeporte").value ="1";
+        if (document.querySelector("#txtFilterDeporte").value != "") {
+            document.querySelector("#pageDeporte").value = "1";
         }
         parameters_pagination += "?nombre=" + document.querySelector("#txtFilterDeporte").value.toUpperCase();
         parameters_pagination += "&page=" + document.querySelector("#pageDeporte").value;
@@ -72,7 +72,7 @@ function processAjaxDeporte() {
         parameters_pagination = "";
         if (beanRequestDeporte.operation == "delete") {
             parameters_pagination = "/" + deporteSelected.iddeporte;
-           
+
         } else {
             json = {
                 "nombre": document.querySelector("#txtNombreDeporte").value,
@@ -115,28 +115,67 @@ function processAjaxDeporte() {
 function toListDeporte(beanPagination) {
     document.querySelector("#tbodyDeporte").innerHTML = "";
     document.querySelector("#titleManagerDeporte").innerHTML = "[ " + beanPagination.count_filter + " ] DEPORTES";
+    let row;
+    row =
+        `
+           <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2 pl-3">
+                <!-- Widget Info -->
+                <div class="dt-widget__info text-truncate pl-5" >
+                    <p class="mb-0 text-truncate ">
+                       NOMBRE
+                    </p>
+                </div>
+                <!-- /widget info -->
+               
+                
+            </div>
+        `;
+    document.querySelector("#tbodyDeporte").innerHTML += row;
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(deporte => {
-            row = "<tr ";
-            row += "iddeporte='" + deporte.iddeporte + "' ";
-            row += ">";
-            row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item editar-deporte' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-primary icon icon-editors'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-deporte' data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
-            row += "</ul></td>"; 
-            row += "<td class='align-middle'>" + deporte.nombre + "</td>";
-              row += "</tr>";
+            row =
+                `
+         <div class="dt-widget__item m-0 pt-1 pb-1 pl-3">
+            <!-- Widget Info -->
+            <div class="dt-widget__info text-truncate " >
+                <p class="mb-0 text-truncate ">
+                   ${deporte.nombre}
+                </p>
+            </div>
+            <!-- /widget info -->
+           
+           
+            <!-- Widget Extra -->
+            <div class="dt-widget__extra">
+                <div class="dt-task">
+                <div class="dt-task__redirect">
+                    <!-- Action Button Group -->
+                    <div class="action-btn-group">
+                    <button class="btn btn-default text-primary dt-fab-btn editar-deporte" iddeporte='${deporte.iddeporte}' title="Editar" data-toggle="tooltip">
+                    <i class="icon icon-editors"></i>
+                </button>
+                <button class="btn btn-default text-danger dt-fab-btn eliminar-deporte" iddeporte='${deporte.iddeporte}' title="Eliminar" data-toggle="tooltip">
+                    <i class="icon icon-trash-filled"></i>
+                </button>
+                        </div>
+                    </div>
+                    <!-- /action button group -->
+                </div>
+                <!-- /hide content -->
+            </div>
+            <!-- /widget extra -->
+        </div>
+    `;
             document.querySelector("#tbodyDeporte").innerHTML += row;
+            $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageDeporte").value),
-                document.querySelector("#pageDeporte"),
-                $('#modalCargandoDeporte'),
-                $('#paginationDeporte'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageDeporte").value),
+            document.querySelector("#pageDeporte"),
+            $('#modalCargandoDeporte'),
+            $('#paginationDeporte'));
         addEventsDeportees();
         if (beanRequestDeporte.operation == "paginate") {
             document.querySelector("#txtFilterDeporte").focus();
@@ -153,7 +192,7 @@ function addEventsDeportees() {
     document.querySelectorAll('.editar-deporte').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            deporteSelected = findByDeporte(btn.parentElement.parentElement.parentElement.getAttribute('iddeporte'));
+            deporteSelected = findByDeporte(btn.getAttribute('iddeporte'));
             if (deporteSelected != undefined) {
                 beanRequestDeporte.operation = "update";
                 beanRequestDeporte.type_request = "PUT";
@@ -170,7 +209,7 @@ function addEventsDeportees() {
     document.querySelectorAll('.eliminar-deporte').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            deporteSelected = findByDeporte(btn.parentElement.parentElement.parentElement.getAttribute('iddeporte'));
+            deporteSelected = findByDeporte(btn.getAttribute('iddeporte'));
             beanRequestDeporte.operation = "delete";
             beanRequestDeporte.type_request = "DELETE";
             processAjaxDeporte();
