@@ -76,9 +76,9 @@
             <form id="FrmProductoModal">
                 <div class="row">
                     <div class="form-group col-lg-4 col-sm-4">
-                        <label for="txtCodigoProducto">C�digo</label>
+                        <label for="txtCodigoProducto">C&oacute;digo</label>
                         <input class="form-control form-control-sm" id="txtCodigoProducto" type="text"
-                            placeholder="C�DIGO">
+                            placeholder="C&Oacute;DIGO">
                     </div>
                     <div class="form-group col-lg-4  col-sm-4">
                         <label for="txtNombreProducto">Nombre</label>
@@ -87,12 +87,12 @@
                     </div>
 
                     <div class="form-group col-lg-4  col-sm-4">
-                        <label for="txtCantidadProducto">Cantidad M�nima</label>
+                        <label for="txtCantidadProducto">Cantidad M&iacute;nima</label>
                         <input class="form-control form-control-sm" id="txtCantidadProducto" type="text"
-                            placeholder="CANTIDAD M�NIMA" maxlength="6">
+                            placeholder="CANTIDAD M&Iacute;NIMA" maxlength="6">
                     </div>
                     <div class="form-group col-lg-4  col-sm-4">
-                        <label for="txtFactorProducto">Factor de Conversi�n</label>
+                        <label for="txtFactorProducto">Factor de Conversi&oacute;n</label>
                         <input class="form-control form-control-sm" id="txtFactorProducto" type="text"
                             placeholder="FACTOR" maxlength="6">
                     </div>
@@ -106,11 +106,11 @@
                     </div>
 
                     <div class="form-group col-lg-4  col-sm-4">
-                        <label for="txtCategoriaProducto">Categor�a
+                        <label for="txtCategoriaProducto">Categor&iacute;a
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtCategoriaProducto"
-                                aria-describedby="nombre" placeholder="Click en el bot�n para seleccionar. . ."
+                                aria-describedby="nombre" placeholder="Click en el bot&oacute;n para seleccionar. . ."
                                 disabled="">
                             <div class="input-group-append">
                                 <button type="button" id="btnSeleccionarCategoria" class="btn btn-primary btn-sm"><i
@@ -123,7 +123,7 @@
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtUnidadMedidaIProducto"
-                                aria-describedby="nombre" placeholder="Click en el bot�n para seleccionar. . ."
+                                aria-describedby="nombre" placeholder="Click en el bot&oacute;n para seleccionar. . ."
                                 disabled="">
                             <div class="input-group-append">
                                 <button type="button" id="btnSeleccionarUnidadMedidaI" class="btn btn-primary btn-sm"><i
@@ -136,7 +136,7 @@
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtUnidadMedidaSProducto"
-                                aria-describedby="nombre" placeholder="Click en el bot�n para seleccionar. . ."
+                                aria-describedby="nombre" placeholder="Click en el bot&oacute;n para seleccionar. . ."
                                 disabled="">
                             <div class="input-group-append">
                                 <button type="button" id="btnSeleccionarUnidadMedidaS" class="btn btn-primary btn-sm"><i
@@ -145,9 +145,9 @@
                         </div>
                     </div>
                     <div class="form-group col-lg-12">
-                        <label for="txtDescripcionProducto">Descripci�n</label>
+                        <label for="txtDescripcionProducto">Descripci&oacute;n</label>
                         <textarea class="form-control" id="txtDescripcionProducto" rows="2"
-                            placeholder="DESCRIPCI�N"></textarea>
+                            placeholder="DESCRIPCI&Oacute;N"></textarea>
                     </div>
                     <div class="form-group col-12 text-center">
                         <button type="button" id="btnRegresar" class="btn btn-outline-primary btn-sm"><i

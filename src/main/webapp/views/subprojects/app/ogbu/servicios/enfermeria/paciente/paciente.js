@@ -74,9 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
         //LIMPIAR LOS CAMPOS
         limpiarInputTriaje();
         //SET TITLE MODAL
-        document.querySelector("#txtTituloModalTriaje").innerHTML = 
-                "REGISTRAR TRIAJE<small class='pl-5 text-dark'>N° HISTORIA : " 
-                + historiaSelected.num_historia + "</small>";
+        document.querySelector("#txtTituloModalTriaje").innerHTML =
+            "REGISTRAR TRIAJE<small class='pl-5 text-dark'>N° HISTORIA : "
+            + historiaSelected.num_historia + "</small>";
         //OPEN MODEL
         document.querySelector("#tab-pane-17").style.display = "none";
         document.querySelector("#newOpenTriaje").style.display = "initial";
@@ -203,8 +203,8 @@ function toListPaciente(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
                         <p class="mb-0 text-truncate ">
@@ -242,8 +242,8 @@ function toListPaciente(beanPagination) {
         document.querySelector("#tbodyPaciente").innerHTML += row;
         beanPagination.list.forEach(atendido => {
             row =
-                    `
-                 <div class="dt-widget__item border-success pl-5 ">
+                `
+                 <div class="dt-widget__item border-success pl-5 m-0">
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
                       
@@ -303,11 +303,11 @@ function toListPaciente(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePagePaciente").value),
-                document.querySelector("#pagePaciente"),
-                $('#modalCargandoPaciente'),
-                $('#paginationPaciente'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePagePaciente").value),
+            document.querySelector("#pagePaciente"),
+            $('#modalCargandoPaciente'),
+            $('#paginationPaciente'));
         addEventsPacientes();
         if (beanRequestPaciente.operation == "paginate") {
             document.querySelector("#txtFilterPaciente").focus();
@@ -489,7 +489,7 @@ function processAjaxTriaje() {
                 "diagnostico": diagnosticoSelected.diagnostico,
                 "tratamiento": diagnosticoSelected.tratamiento,
                 "fecha_triaje": getTimesTampJavaScriptCurrent(),
-                "idhistoria_clinica": {"idhistoria_clinica": historiaSelected.idhistoria_clinica}
+                "idhistoria_clinica": { "idhistoria_clinica": historiaSelected.idhistoria_clinica }
             };
             if (beanRequestTriaje.operation == "update") {
                 json.iddiagnostico = diagnosticoSelected.iddiagnostico;
@@ -588,23 +588,23 @@ function toListTriaje(beanPagination) {
             document.querySelector("#tbodyTriaje").innerHTML += row;
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageTriaje").value),
-                document.querySelector("#pageTriaje"),
-                $('#modalCargandoTriaje'),
-                $('#paginationTriaje'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageTriaje").value),
+            document.querySelector("#pageTriaje"),
+            $('#modalCargandoTriaje'),
+            $('#paginationTriaje'));
         addEventsTriaje();
         if (beanRequestTriaje.operation == "paginate") {
             // document.querySelector("#txtFilterTriaje").focus();
         }
         $('[data-toggle="tooltip"]').tooltip();
-      
+
     } else {
         destroyPagination($('#paginationTriaje'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
         //document.querySelector("#txtFilterTriaje").focus();
     }
-      historiaSelected = beanPagination.list[0].idhistoria_clinica;
+    historiaSelected = beanPagination.list[0].idhistoria_clinica;
 }
 
 function addEventsTriaje() {

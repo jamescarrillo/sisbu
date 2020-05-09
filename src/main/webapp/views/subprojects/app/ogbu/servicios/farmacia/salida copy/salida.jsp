@@ -93,19 +93,39 @@
           </div>
         </div>
         <div class="form-group col-lg-4 col-sm-6">
-          <label for="txtPacienteSalida">Paciente </label>
+          <label for="txtDiagnosticoSalida">Diagn&oacute;stico </label>
           <div class="input-group">
-            <input type="text" class="form-control form-control-sm" id="txtPacienteSalida" aria-describedby="nombre"
+            <input type="text" class="form-control form-control-sm" id="txtDiagnoticoSalida" aria-describedby="nombre"
               placeholder="Click en el bot&oacute;n para seleccionar. . ." disabled="" />
             <div class="input-group-append">
-              <button type="button" id="btnSeleccionarPaciente" class="btn btn-primary btn-sm">
+              <button type="button" id="btnSeleccionarDiagnostico" class="btn btn-primary btn-sm">
                 <i class="icon icon-subscribe"></i>
               </button>
             </div>
           </div>
         </div>
       </div>
+      <div id="newOpenDiagnostico" class="col-12 form-row d-none m-0">
 
+        <div class="card-header bg-transparent w-100 pt-0">
+          <h4 class="mb-0 text-primary" id="txtTituloModalDiagnostico"></h4>
+        </div>
+        <div class="col-sm-4">
+          <h4 class="mb-2">Enfermedad Actual</h4>
+          <p id="txtEnfermedadPaciente" class="mb-5">
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <h4 class="mb-2">Diagn&oacute;stico</h4>
+          <p id="txtDxPaciente" class="mb-5">
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <h4 class="mb-2">Tratamiento</h4>
+          <p id="txtTtoPaciente" class="mb-5">
+          </p>
+        </div>
+      </div>
       <!-- Grid Item -->
       <div class="col-xl-12">
         <!-- Entry Header -->
@@ -120,7 +140,7 @@
         <div class="row justify-content-center">
 
           <div class="form-group col-lg-4 col-sm-6 col-md-6 col-6">
-            <label for="txtPresentacionSalida">Presentaci&oacute;n </label>
+            <label for="txtPresentacionSalida">Presentacion </label>
             <div class="input-group">
               <input type="text" class="form-control form-control-sm" id="txtPresentacionSalida"
                 aria-describedby="nombre" placeholder="Click en el boton para seleccionar. . ." disabled="" />
@@ -199,6 +219,149 @@
   <!-- /card -->
 </div>
 
+<div class="row d-none" id="ListaPaciente">
+  <div class="col-xl-12 p-0">
+    <!-- Card -->
+    <div class="overflow-hidden">
+      <!-- Card Header -->
+      <div class="card-header bg-transparent pt-0">
+        <h4 class="mb-0" id="titleManagerPaciente">[ 0 ] PACIENTES</h4>
+        <input type="hidden" id="pagePaciente" value="1">
+      </div>
+      <!-- /card header -->
+      <!-- Card Body -->
+      <div class="card-body p-1">
+        <form id="FrmPaciente" class="search-box mw-100">
+          <div class="input-group">
+            <input type="search" id="txtFilterPaciente" class="form-control form-control-sm" placeholder="FILTRO. . .">
+            <button type="submit" class="search-icon">
+              <i class="icon icon-search text-primary icon-lg"></i></button>
+          </div>
+        </form>
+        <!-- Card -->
+        <div class="dt-card mt-4">
+          <!-- Card Body -->
+          <div class="dt-card__body p-0 ">
+            <!-- Widget -->
+            <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" id="tbodyPaciente">
+            </div>
+            <!-- /widget -->
+            <!-- /card body -->
+          </div>
+
+        </div>
+        <!-- /card -->
+        <div class="row mt-2">
+          <div class="col-md-2 col-sm-3 col-4">
+            <select id="sizePagePaciente" class="form-control form-control-sm select2-single">
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+          <div class="col-md-10 col-sm-9 col-8">
+            <nav aria-label="Page navigation example">
+              <ul id="paginationPaciente" class="pagination pagination-sm justify-content-end">
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <!-- /card body -->
+    </div>
+  </div>
+</div>
+<!-- Card -->
+<div class="row d-none" id="openPaciente">
+  <!-- Tab DIAGNOSTICO -->
+
+  <div class="col-12 p-0">
+    <div class="float-left">
+      <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar"
+        class="btn btn-outline-primary btn-sm dt-avatar">
+        <i class="icon icon-reply icon-lg"></i></button>
+    </div>
+    <!-- Card Heading -->
+    <div class="dt-card__header dt-card__header mb-4 p-0 pt-2 text-center">
+      <h3 id="titleManagerDiagnostico" class="dt-card__title text-primary w-100">LISTA DE
+        DIAGN&Oacute;STICOS</h3>
+      <input type="hidden" id="pageDiagnostico" value="1">
+    </div>
+    <!-- /card heading -->
+    <div class="card-body p-2">
+      <!-- Tables -->
+      <div class="table-responsive">
+        <table class="table mb-0 table-hover">
+          <thead style="line-height: 0.4;border-bottom-style: hidden;" class="bg-primary ">
+            <tr>
+              <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">
+                ATENDIDO </th>
+              <th class="text-uppercase text-white" scope="col">
+                FECHA </th>
+              <th class="text-uppercase text-white" scope="col">
+                DIAGN&Oacute;STICO</th>
+
+            </tr>
+          </thead>
+          <tbody id="tbodyDiagnostico" class="overflow-auto">
+          </tbody>
+        </table>
+      </div>
+      <!-- /tables -->
+      <div class="mt-2 form-row">
+        <div class="col-md-2 col-sm-3 col-4">
+          <select id="sizePageDiagnostico" class="form-control form-control-sm select2-single">
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+        <div class="col-md-10 col-sm-9 col-8">
+          <nav aria-label="Page navigation example">
+            <ul id="paginationDiagnostico" class="pagination pagination-sm justify-content-end">
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /tab pane-->
+
+  <!-- /tab content -->
+</div>
+<!-- /card -->
+
+<div class="modal fade" id="modalCargandoPaciente" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="progress" style="margin-bottom: 0px;">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"
+            aria-valuemin="0" aria-valuemax="100" style="width:100%">
+            Cargando Pacientes. . .
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalCargandoDiagnostico" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="progress" style="margin-bottom: 0px;">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"
+            aria-valuemin="0" aria-valuemax="100" style="width:100%">
+            Cargando Diagnosticos. . .
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="modalCargandoSalida" data-backdrop="static" data-keyboard="false" tabindex="-1"
   role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
@@ -209,93 +372,6 @@
           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"
             aria-valuemin="0" aria-valuemax="100" style="width:100%">
             Cargando Salidas. . .
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--T: PACIENTE SELECTED-->
-<div id="ventanaModalSelectedPacienteC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
-  data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
-      <div class="modal-header">
-        <h5 class="mb-0" id="titleManagerPacienteC">
-          <strong>[ 0 ] Paciente</strong>
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body pb-0 pt-0">
-        <div class="row">
-          <div class="col-12 pt-2">
-            <input type="hidden" id="pagePacienteC" value="1" />
-            <form id="FrmPacienteC" class="search-box mw-100 right-side-icon">
-              <input type="search" id="txtFilterPacienteC" class="form-control form-control-sm mr-3"
-                placeholder="INGRESE FILTRO . . ." data-toggle="tooltip" data-placement="left"
-                data-original-title="Buscar" />
-              <button type="submit" class="search-icon">
-                <i class="icon icon-search icon-lg"></i></button>
-
-            </form>
-
-          </div>
-          <div class="col-12">
-
-            <div class="table-responsive">
-              <table class="table mb-0 table-fluid">
-                <thead>
-                  <tr>
-                    <th class="align-middle text-left">DNI</th>
-                    <th class="align-middle text-left">Paciente</th>
-                    <th class="align-middle text-left">Escuela Profesional</th>
-                  </tr>
-                </thead>
-                <tbody id="tbodyPacienteC"></tbody>
-              </table>
-            </div>
-
-            <div class="row mt-2 mb-2" style="display: none">
-              <div class="col-sm-4 mt-2">
-                <select id="sizePagePacienteC" class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
-                  <option value="5">05</option>
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                </select>
-              </div>
-              <div class="col-sm-8 mt-2">
-                <nav aria-label="Page navigation">
-                  <ul id="paginationPacienteC" class="pagination justify-content-end"></ul>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"
-          id="btnCancelSelectionPacienteC">
-          <i class="fas fa-ban"></i> CANCELAR
-        </button>
-        <button type="button" id="btn-selecionar-Pacientec" class="btn btn-primary btn-xs">
-          <i class="fas fa-check"></i> SELECCIONAR
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal" id="modalCargandoSelectedPacienteC" data-backdrop="static" data-keyboard="false" tabindex="-1"
-  role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="progress" style="margin-bottom: 0px;height: 15px;">
-          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"
-            aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-            Cargando Paciente. . .
           </div>
         </div>
       </div>

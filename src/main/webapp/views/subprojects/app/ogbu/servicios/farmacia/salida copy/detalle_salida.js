@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (validateFormDetalleSalida()) {
             ObjectDetalleSalida = new DetalleSalida();
             ObjectDetalleSalida.iddetalle_salida = contadorObject++;
-            ObjectDetalleSalida.salida = new Salida(document.querySelector("#txtFechaSalida").value, new Personal(PersonalSelected.idpersonal), new Atendido(PacienteSelected.idatendido));
+            ObjectDetalleSalida.salida = new Salida(document.querySelector("#txtFechaSalida").value, new Personal(PersonalSelected.idpersonal), new Diagnostico(diagnosticoSelected.iddiagnostico));
             ObjectDetalleSalida.presentacion = new Presentacion(PresentacionSelected.idpresentacion, PresentacionSelected.fecha_vencimiento, PresentacionSelected.existencia - document.querySelector("#txtCantidadPresentacion").value, PresentacionSelected.producto);
             ObjectDetalleSalida.cantidad = document.querySelector("#txtCantidadPresentacion").value;
             listDetalleSalida.push(ObjectDetalleSalida);
@@ -159,19 +159,7 @@ function findByDetalleSalida(idDetalleSalida) {
     return DetalleSalida_;
 }
 
-function findDetalleSalidabyPresentacion(idpresentacion) {
-    let DetalleSalida_;
-    listDetalleSalida.forEach(DetalleSalida => {
-        if (parseInt(idpresentacion) == DetalleSalida.presentacion.idpresentacion) {
-            DetalleSalida_ = DetalleSalida;
-            return;
-        }
-    });
-    return DetalleSalida_;
-}
-
 function validateFormDetalleSalida() {
-
     if (document.querySelector("#txtFechaSalida").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese Fecha');
         document.querySelector("#txtFechaSalida").focus();
@@ -180,34 +168,22 @@ function validateFormDetalleSalida() {
         showAlertTopEnd('warning', 'Por favor ingrese Personal');
         document.querySelector("#txtPersonalSalida").focus();
         return false;
-    } if (PacienteSelected == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese Paciente');
-        document.querySelector("#txtPacienteSalida").focus();
-        return false;
     } if (document.querySelector("#txtCantidadPresentacion").value == "") {
         showAlertTopEnd('warning', 'Por favor ingrese la cantidad');
         document.querySelector("#txtCantidadPresentacion").focus();
         return false;
     }
-    if (PresentacionSelected == undefined) {
-        showAlertTopEnd('warning', 'Por favor ingrese Presentación');
-        document.querySelector("#txtPresentacionSalida").focus();
-        return false;
-    }
 
-    if (findDetalleSalidabyPresentacion(PresentacionSelected.idpresentacion) != undefined) {
-        PresentacionSelected = undefined;
-        document.querySelector("#txtPresentacionSalida").value = "";
-        showAlertTopEnd('warning', 'la Presentación ya se encuentra agregada a la Lista, seleccione otra Presentación');
-        document.querySelector("#txtPresentacionSalida").focus();
-        return false;
-    }
     if (PresentacionSelected.existencia < parseInt(document.querySelector("#txtCantidadPresentacion").value)) {
         showAlertTopEnd('warning', 'La cantidad ingresada es superior al stock del producto');
         document.querySelector("#txtCantidadPresentacion").focus();
         return false;
     }
-
+    if (PresentacionSelected == undefined) {
+        showAlertTopEnd('warning', 'Por favor ingrese Presentacion');
+        document.querySelector("#txtPresentacionSalida").focus();
+        return false;
+    }
 
     return true;
 }

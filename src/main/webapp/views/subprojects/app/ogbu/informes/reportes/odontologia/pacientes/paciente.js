@@ -36,37 +36,33 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestPaciente.type_request = "GET";
         $('#modalCargandoPaciente').modal('show');
     });
-
+    $("#txtFilterTipoPersonaPaciente").change(function () {
+        $('#modalCargandoPaciente').modal('show');
+    });
+    $("#txtFilterEstadoPaciente").change(function () {
+        $('#modalCargandoPaciente').modal('show');
+    });
 });
 
 function processAjaxPaciente() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestPaciente.operation == "paginate/odontologia") {
-        let filterPaciente = "0", filterCiclo = "0", filterTipo = "0", filterEstado = "3";
-        if (document.querySelector("#txtFilterPaciente").value != "") {
-            filterPaciente = document.querySelector("#txtFilterPaciente").value;
-        }
-        /*else {
-         document.querySelector("#pagePaciente").value = "1";
-         }*/
+        // if (document.querySelector("#txtFilterPaciente").value != "" && document.querySelector("#pagePaciente").value > 1) {
+        //     document.querySelector("#pagePaciente").value = "1";
+        // }
 
-        if (document.querySelector("#txtFilterCicloPaciente").value != "") {
-            filterCiclo = document.querySelector("#txtFilterCicloPaciente").value;
-
-        }
-        if (document.querySelector("#txtFilterTipoPersonaPaciente").value != "-1") {
-            filterTipo = document.querySelector("#txtFilterTipoPersonaPaciente").value;
-        }
-        if (document.querySelector("#txtFilterEstadoPaciente").value != "-1") {
-            filterEstado = document.querySelector("#txtFilterEstadoPaciente").value;
-        }
-        parameters_pagination += "?filter=" + filterPaciente.trim() + "/" + filterCiclo.trim() +
-                "/" + filterTipo.trim() + "/" + filterEstado.trim();
+        parameters_pagination += "?filter=" + document.querySelector("#txtFilterPaciente").value.trim();
+        parameters_pagination += "/" + document.querySelector("#txtFilterEscuelaPaciente").value.trim();
+        parameters_pagination += "/" + document.querySelector("#txtFilterCicloPaciente").value.trim();
+        parameters_pagination += "/" + document.querySelector("#txtFilterTipoPersonaPaciente").value.trim();
+        parameters_pagination += "/" + document.querySelector("#txtFilterEstadoPaciente").value.trim();
         parameters_pagination += "&page=" + document.querySelector("#pagePaciente").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePagePaciente").value;
 
-    } 
+    } else {
+        return;
+    }
     $.ajax({
         url: getHostAPI() + beanRequestPaciente.entity_api + "/" + beanRequestPaciente.operation + parameters_pagination,
         type: beanRequestPaciente.type_request,
@@ -103,8 +99,8 @@ function toListPaciente(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
                         <p class="mb-0 text-truncate ">
@@ -143,8 +139,8 @@ function toListPaciente(beanPagination) {
         let text_row;
         beanPagination.list.forEach(atendido => {
             row =
-                    `
-                 <div class="dt-widget__item border-success pl-5">
+                `
+                 <div class="dt-widget__item border-success pl-5 m-0">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " style="max-width: 15%;">
                         <p class="mb-0 text-truncate ">
@@ -183,11 +179,11 @@ function toListPaciente(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePagePaciente").value),
-                document.querySelector("#pagePaciente"),
-                $('#modalCargandoPaciente'),
-                $('#paginationPaciente'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePagePaciente").value),
+            document.querySelector("#pagePaciente"),
+            $('#modalCargandoPaciente'),
+            $('#paginationPaciente'));
         if (beanRequestPaciente.operation == "paginate/odontologia") {
             document.querySelector("#txtFilterPaciente").focus();
         }

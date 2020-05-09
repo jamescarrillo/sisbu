@@ -108,11 +108,11 @@ function processAjaxEntrada() {
       parameters_pagination = "/" + entradaSelected.identrada;
     } else {
       json = {
-        entrada: listDetalleEntrada[0].entrada,
+        entrada: new Entrada(document.querySelector("#txtFechaEntrada").value, new Personal(PersonalSelected.idpersonal)),
         list: listDetalleEntrada
       };
       if (beanRequestEntrada.operation == "update") {
-        json.identrada = entradaSelected.identrada;
+        json.entrada.identrada = entradaSelected.identrada;
       }
     }
   }
@@ -132,7 +132,6 @@ function processAjaxEntrada() {
     dataType: "json"
   })
     .done(function (beanCrudResponse) {
-      console.log(beanCrudResponse);
       $("#modalCargandoEntrada").modal("hide");
       if (beanCrudResponse.messageServer !== undefined) {
         if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
@@ -159,15 +158,10 @@ function processAjaxEntrada() {
 function toListEntrada(beanPagination) {
   document.querySelector("#tbodyEntrada").innerHTML = "";
   document.querySelector("#titleManagerEntrada").innerHTML =
-    "[ " + beanPagination.count_filter + " ] ENTRADA";
-  if (beanPagination.count_filter == 0) {
-    destroyPagination($("#paginationEntrada"));
-    showAlertTopEnd("warning", "No se encontraron resultados");
-    return;
-  }
+    "[ " + beanPagination.count_filter + " ] ENTRADAS DE PRODUCTO";
   let row;
   row = `
-               <div class="dt-widget__item border-success bg-primary text-white mb-0 ">
+               <div class="dt-widget__item border-success bg-primary text-white m-0 ">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -184,6 +178,25 @@ function toListEntrada(beanPagination) {
                     <!-- /widget info -->
                 </div>
             `;
+  if (beanPagination.count_filter == 0) {
+    destroyPagination($("#paginationEntrada"));
+    row += `
+    <div class="dt-widget__item  m-0 pt-1 pb-1">
+         <!-- Widget Info -->
+         <div class="dt-widget__info text-truncate text-center" >
+             <p class="mb-0 text-truncate ">
+                NO HAY REGISTROS
+             </p>
+         </div>
+         <!-- /widget info -->
+        
+     </div>
+ `;
+    document.querySelector("#tbodyEntrada").innerHTML += row;
+    showAlertTopEnd("warning", "No se encontraron resultados");
+    return;
+  }
+
   document.querySelector("#tbodyEntrada").innerHTML += row;
   beanPagination.list.forEach(BeanEntrada => {
     row = `
@@ -254,7 +267,6 @@ function addEventsEntradaes() {
         beanRequestEntrada.operation = "update";
         beanRequestEntrada.type_request = "PUT";
         //SET VALUES MODAL
-        console.log(listDetalleEntrada);
         toListDetalleEntrada(listDetalleEntrada);
         document.querySelector("#txtFechaEntrada").value =
           entradaSelected.fecha;

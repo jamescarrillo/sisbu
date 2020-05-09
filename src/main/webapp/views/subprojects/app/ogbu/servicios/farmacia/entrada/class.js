@@ -1,31 +1,31 @@
 
 class Entrada {
-    constructor(fecha) {
+    constructor(fecha, personal) {
         this.identrada = 0;
         this.fecha = fecha;
-        this.personal = new Personal();
+        this.personal = personal;
     }
 }
 
 class Personal {
     constructor(idpersonal) {
         this.idpersonal = idpersonal;
-       
+
     }
 }
 class Producto {
-    constructor(idproducto,nombre) {
+    constructor(idproducto, nombre) {
         this.idproducto = idproducto;
         this.nombre = nombre;
-       
+
     }
 }
 class Presentacion {
-    constructor(fecha_vencimiento,existencia) {
+    constructor(fecha_vencimiento, existencia) {
         this.idpresentacion = 0;
-        this.fecha_vencimiento=fecha_vencimiento;
-        this.existencia=existencia;
-        this.producto= new Producto();
+        this.fecha_vencimiento = fecha_vencimiento;
+        this.existencia = existencia;
+        this.producto = new Producto();
     }
 }
 
@@ -35,7 +35,7 @@ class DetalleEntrada {
         this.cantidad = 5;
         this.entrada = new Entrada();
         this.presentacion = new Presentacion();
-              
+
     }
 }
 

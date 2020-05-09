@@ -2,7 +2,6 @@ var beanPaginationSalida;
 var SalidaSelected;
 var beanRequestSalida = new BeanRequest();
 var PersonalSelected;
-var PacienteSelected;
 document.addEventListener("DOMContentLoaded", function () {
   //INICIALIZANDO VARIABLES DE SOLICITUD
   beanRequestSalida.entity_api = "api/salidas";
@@ -47,6 +46,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelector("#btnOpenNewSalida").onclick = function () {
     AccionAgregarNewSalida()
+  };
+  document.querySelector("#btnSeleccionarDiagnostico").onclick = function () {
+    addClass(document.querySelector("#btnOpenSalida"), "d-none");
+    removeClass(document.querySelector("#ListaPaciente"), "d-none");
+    $('#modalCargandoPaciente').modal('show');
+
   };
 
   document.querySelector("#btnRegresar").onclick = function () {
@@ -97,14 +102,14 @@ function processAjaxSalida() {
   } else {
     parameters_pagination = "";
     if (beanRequestSalida.operation == "delete") {
-      parameters_pagination = "/" + SalidaSelected.idsalida;
+      parameters_pagination = "/" + SalidaSelected.idSalida;
     } else {
       json = {
-        salida: new Salida(document.querySelector("#txtFechaSalida").value, new Personal(PersonalSelected.idpersonal), new Atendido(PacienteSelected.idatendido)),
+        salida: new Salida(document.querySelector("#txtFechaSalida").value, new Personal(PersonalSelected.idpersonal), new Diagnostico(diagnosticoSelected.iddiagnostico)),
         list: listDetalleSalida
       };
       if (beanRequestSalida.operation == "update") {
-        json.idsalida = SalidaSelected.idsalida;
+        json.idSalida = SalidaSelected.idSalida;
       }
     }
   }
@@ -124,6 +129,7 @@ function processAjaxSalida() {
     dataType: "json"
   })
     .done(function (beanCrudResponse) {
+      console.log(beanCrudResponse);
       $("#modalCargandoSalida").modal("hide");
       if (beanCrudResponse.messageServer !== undefined) {
         if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
@@ -150,10 +156,10 @@ function processAjaxSalida() {
 function toListSalida(beanPagination) {
   document.querySelector("#tbodySalida").innerHTML = "";
   document.querySelector("#titleManagerSalida").innerHTML =
-    "[ " + beanPagination.count_filter + " ] SALIDAS DE PRODUCTO ";
+    "[ " + beanPagination.count_filter + " ] Salida";
   let row;
   row = `
-               <div class="dt-widget__item border-success bg-primary text-white m-0 pr-0  pl-3">
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 ">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -168,27 +174,6 @@ function toListSalida(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
-                        <p class="mb-0 text-truncate ">
-                           PACIENTE
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
-                        <p class="mb-0 text-truncate ">
-                           ESCUELA PROFESIONAL
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                    <!-- Widget Extra -->
-                    <div class="dt-widget__extra">
-                    <div class="dt-task">
-                       
-                        </div>
-                    </div>
-                    <!-- /widget extra -->
                 </div>
             `;
   if (beanPagination.count_filter == 0) {
@@ -211,37 +196,20 @@ function toListSalida(beanPagination) {
   document.querySelector("#tbodySalida").innerHTML += row;
   beanPagination.list.forEach(BeanSalida => {
     row = `
-                 <div class="dt-widget__item m-0 p-1 pl-3">
+                 <div class="dt-widget__item m-0 pt-1 pb-1">
                     <!-- Widget Info -->
-                    <div class="dt-widget__info" >
-                        <p class="mb-0">
-                           ${BeanSalida.salida.fecha}
+                    <div class="dt-widget__info text-truncate" >
+                        <p class="mb-0 text-truncate ">
+                           ${BeanSalida.Salida.fecha}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info" >
-                        <p class="mb-0">
-                           ${BeanSalida.salida.personal.apellido_pat}
-                           ${BeanSalida.salida.personal.apellido_mat}
-                           ${BeanSalida.salida.personal.nombre}
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info " >
-                        <p class="mb-0 ">
-                           ${BeanSalida.salida.atendido.apellido_pat}
-                           ${BeanSalida.salida.atendido.apellido_mat}
-                           ${BeanSalida.salida.atendido.nombre}
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info" >
-                        <p class="mb-0 ">
-                           ${BeanSalida.salida.atendido.escuela.nombre}
-                          
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${BeanSalida.Salida.personal.apellido_pat}
+                           ${BeanSalida.Salida.personal.apellido_mat}
+                           ${BeanSalida.Salida.personal.nombre}
                         </p>
                     </div>
                     <!-- /widget info -->
@@ -252,10 +220,10 @@ function toListSalida(beanPagination) {
                         <div class="dt-task__redirect">
                             <!-- Action Button Group -->
                             <div class="action-btn-group">
-                                <!--button class="btn btn-default text-primary dt-fab-btn editar-Salida" idsalida='${BeanSalida.salida.idsalida}' title="Editar" data-toggle="tooltip">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-Salida" idSalida='${BeanSalida.Salida.idSalida}' title="Editar" data-toggle="tooltip">
                                     <i class="icon icon-editors"></i>
-                                </button-->
-                                <button class="btn btn-default text-danger dt-fab-btn eliminar-Salida" idsalida='${BeanSalida.salida.idsalida}' title="Eliminar" data-toggle="tooltip">
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-Salida" idSalida='${BeanSalida.Salida.idSalida}' title="Eliminar" data-toggle="tooltip">
                                     <i class="icon icon-trash-filled"></i>
                                 </button>
                               
@@ -288,25 +256,23 @@ function addEventsSalidaes() {
   document.querySelectorAll(".editar-Salida").forEach(btn => {
     //AGREGANDO EVENTO CLICK
     btn.onclick = function () {
-      SalidaSelected = findBySalida(btn.getAttribute("idsalida")).salida;
-      listDetalleSalida = findBySalida(btn.getAttribute("idsalida")).list;
+      SalidaSelected = findBySalida(btn.getAttribute("idSalida")).Salida;
+      listDetalleSalida = findBySalida(btn.getAttribute("idSalida")).list;
 
       if (SalidaSelected != undefined) {
         beanRequestSalida.operation = "update";
         beanRequestSalida.type_request = "PUT";
         //SET VALUES MODAL
+        console.log(listDetalleSalida);
         toListDetalleSalida(listDetalleSalida);
         document.querySelector("#txtFechaSalida").value =
           SalidaSelected.fecha;
         PersonalSelected = SalidaSelected.personal;
         document.querySelector("#txtPersonalSalida").value =
-          SalidaSelected.personal.apellido_pat.trim() + " " + SalidaSelected.personal.apellido_mat.trim() + " " + SalidaSelected.personal.nombre.trim();
+          SalidaSelected.personal.nombre;
 
-        PacienteSelected = SalidaSelected.atendido;
-        document.querySelector("#txtPacienteSalida").value =
-          SalidaSelected.atendido.apellido_pat.trim() + " " + SalidaSelected.atendido.apellido_mat.trim() + " " + SalidaSelected.atendido.nombre.trim();
         document.querySelector("#txtTituloModalMan").innerHTML =
-          "EDITAR SALIDA";
+          "EDITAR Salida";
         //OPEN MODEL
 
         addClass(document.querySelector("#btnListaSalida"), "d-none");
@@ -322,7 +288,7 @@ function addEventsSalidaes() {
   document.querySelectorAll(".eliminar-Salida").forEach(btn => {
     //AGREGANDO EVENTO CLICK
     btn.onclick = function () {
-      SalidaSelected = findBySalida(btn.getAttribute("idsalida")).salida;
+      SalidaSelected = findBySalida(btn.getAttribute("idSalida")).Salida;
       beanRequestSalida.operation = "delete";
       beanRequestSalida.type_request = "DELETE";
       processAjaxSalida();
@@ -330,10 +296,10 @@ function addEventsSalidaes() {
   });
 }
 
-function findBySalida(idsalida) {
+function findBySalida(idSalida) {
   let beanSalida_;
   beanPaginationSalida.list.forEach(BeanSalida => {
-    if (idsalida == BeanSalida.salida.idsalida) {
+    if (idSalida == BeanSalida.Salida.idSalida) {
       beanSalida_ = BeanSalida;
       return;
     }
@@ -358,8 +324,6 @@ function validateFormSalida() {
 function limpiarInputSalida() {
   document.querySelector("#txtPersonalSalida").value = "";
   PersonalSelected = undefined;
-  document.querySelector("#txtPacienteSalida").value = "";
-  PacienteSelected = undefined;
   listDetalleSalida.length = 0;
   toListDetalleSalida(listDetalleSalida);
 }

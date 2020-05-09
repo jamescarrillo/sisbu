@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ObjectDetalleEntrada = new DetalleEntrada();
             ObjectDetalleEntrada.iddetalle_entrada = contadorObject++;
 
-            ObjectDetalleEntrada.entrada = new Entrada(document.querySelector("#txtFechaEntrada").value);
+            ObjectDetalleEntrada.entrada = new Entrada(document.querySelector("#txtFechaEntrada").value, new Personal(PersonalSelected.idpersonal));
             ObjectDetalleEntrada.entrada.personal = new Personal(PersonalSelected.idpersonal);
             ObjectDetalleEntrada.presentacion = new Presentacion(document.querySelector("#txtFechaVencimientoEntrada").value, document.querySelector("#txtCantidadProducto").value);
             ObjectDetalleEntrada.presentacion.producto = new Producto(ProductoSelected.idproducto, ProductoSelected.nombre);
