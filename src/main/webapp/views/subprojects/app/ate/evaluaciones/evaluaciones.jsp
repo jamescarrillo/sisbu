@@ -583,7 +583,7 @@
                     <div class="row mt-2">
                         <div class="col-md-2 col-sm-3 col-4">
                             <select id="sizePageDeporteDetalle" class="form-control form-control-sm select2-single">
-                                <option value="5">5</option>
+                                <option value="5">05</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
                             </select>
@@ -1145,7 +1145,7 @@
 
 <!--T: DEPORTE SELECTED-->
 <div id="ventanaModalSelectedDeporteC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
-     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+     data-keyboard="false" style="padding-top: 0%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
@@ -1189,9 +1189,7 @@
                             <div class="col-sm-4 mt-2">
                                 <select id="sizePageDeporteC"
                                         class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
-                                    <option value="5">05</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
+                                    <option value="50">50</option>
                                 </select>
                             </div>
                             <div class="col-sm-8 mt-2">
@@ -1234,7 +1232,7 @@
 
 <!--T: AFICION SELECTED-->
 <div id="ventanaModalSelectedAficionC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
-     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+     data-keyboard="false" style="padding-top: 0%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
@@ -1278,7 +1276,7 @@
                             <div class="col-sm-4 mt-2">
                                 <select id="sizePageAficionC"
                                         class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
-                                    <option value="5">05</option>
+                                    <option value="50">50</option>
                                     <option value="10">10</option>
                                     <option value="15">15</option>
                                 </select>
