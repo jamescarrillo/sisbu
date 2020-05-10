@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         format: 'DD/MM/YYYY',
         lang: 'es'
     }).on('change', function (e, date) {
-        document.querySelector('#btnBuscarCita').dispatchEvent(new Event('click'));
+        document.querySelector('#FrmCita').dispatchEvent(new Event('submit'));
     });
 
     document.querySelector('#btnEliminarFechaIFilterCita').onclick = function () {
@@ -217,6 +217,7 @@ function toListCita(beanPagination) {
             </div>
             `;
         document.querySelector("#tbodyCita").innerHTML += row;
+        showAlertTopEnd('warning', 'No se encontraron resultados');
         return;
     }
 
@@ -225,7 +226,7 @@ function toListCita(beanPagination) {
     beanPagination.list.forEach(cita => {
         row =
             `
-                 <div class="dt-widget__item m-0 pt-2 pb-2 pr-3 pl-3">
+                 <div class="dt-widget__item border-bottom m-0 pt-2 pb-2 pr-3 pl-3">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " style="max-width: 105px;">
                         <p class="mb-0 text-truncate ">${cita.atendido.dni.trim()}

@@ -82,22 +82,56 @@ document.addEventListener("DOMContentLoaded", function () {
   $("#modalCargandoEntrada").on("shown.bs.modal", function () {
     processAjaxEntrada();
   });
-  $("#modalCargandoEntrada").modal("show");
+
+  // $("#modalCargandoEntrada").modal("show");
 
   $("#sizePageEntrada").change(function () {
     $("#modalCargandoEntrada").modal("show");
   });
+
+  $('#txtFechaIFilterCita').bootstrapMaterialDatePicker({
+    weekStart: 0,
+    time: false,
+    format: 'DD/MM/YYYY',
+    lang: 'es'
+  }).on('change', function (e, date) {
+    $('#txtFechaFFilterCita').bootstrapMaterialDatePicker('setMinDate', date);
+  });
+
+  $('#txtFechaFFilterCita').bootstrapMaterialDatePicker({
+    weekStart: 0,
+    time: false,
+    format: 'DD/MM/YYYY',
+    lang: 'es'
+  }).on('change', function (e, date) {
+    document.querySelector('#btnRegresar').dispatchEvent(new Event('click'));
+  });
+
+  document.querySelector('#btnEliminarFechaIFilterCita').onclick = function () {
+    document.querySelector('#txtFechaIFilterCita').value = '';
+  };
+
+  document.querySelector('#btnEliminarFechaFFilterCita').onclick = function () {
+    document.querySelector('#txtFechaFFilterCita').value = '';
+  };
+
+
+  $('#txtFechaIFilterCita').val(getDateJava(current_date));
+  $('#txtFechaFFilterCita').val(getDateJava(addDays(current_date, 30)));
+
+
 });
 
 function processAjaxEntrada() {
   let parameters_pagination = "";
   let json = "";
   if (beanRequestEntrada.operation == "paginate") {
-    if (document.querySelector("#txtFilterEntrada").value != "") {
+    if (document.querySelector("#txtFechaIFilterCita").value != "") {
       document.querySelector("#pageEntrada").value = 1;
     }
-    parameters_pagination +=
-      "?fecha=" + document.querySelector("#txtFilterEntrada").value;
+
+    parameters_pagination += "?fechai=" + document.querySelector("#txtFechaIFilterCita").value.trim();
+    parameters_pagination += "&fechaf=" + document.querySelector("#txtFechaFFilterCita").value.trim();
     parameters_pagination +=
       "&page=" + document.querySelector("#pageEntrada").value;
     parameters_pagination +=

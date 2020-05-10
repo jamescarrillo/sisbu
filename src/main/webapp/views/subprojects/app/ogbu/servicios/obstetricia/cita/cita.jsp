@@ -19,10 +19,10 @@
                 <form id="FrmCita" class="search-box mw-100 left-side-icon">
                     <div class="row">
                         <div class="col-md-6 col-12">
-                            <label for="txtFilterCita">Filtro</label>
+                            <label for="txtFilterCita">Buscar Paciente</label>
                             <div class="input-group">
                                 <input type="search" id="txtFilterCita" class="form-control form-control-sm"
-                                    placeholder="FILTRO. . ." data-toggle="tooltip" data-placement="left"
+                                    placeholder="Filtrar Paciente ..." data-toggle="tooltip" data-placement="left"
                                     data-original-title="Buscar" />
                                 <button type="submit" class="search-icon">
                                     <i class="icon icon-search icon-lg"></i></button>

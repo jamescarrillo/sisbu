@@ -63,7 +63,7 @@
 
     </div>
 
-    <div class="col-xl-12" id="btnOpenVideoTutorial" style="display:none;">
+    <div class="col-xl-12 p-0" id="btnOpenVideoTutorial" style="display:none;">
         <!-- Card -->
         <div class="card overflow-hidden p-5">
             <div class="card-header bg-transparent">

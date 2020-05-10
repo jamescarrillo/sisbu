@@ -95,7 +95,9 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#sizePageAlumno").change(function () {
         $('#modalCargandoAlumno').modal('show');
     });
-
+    $("#txtFilterTipoPersonaPaciente").change(function () {
+        $('#modalCargandoAlumno').modal('show');
+    });
     document.querySelector('#btnRegresarLista').onclick = function () {
         document.querySelector('#btnOpenAlumnoDetalle').style.display = 'none';
         document.querySelector('#btnListaAlumno').style.display = 'block';
@@ -235,12 +237,15 @@ function toListAlumno(beanPagination) {
             row = "<div class='dt-widget__item border-bottom m-0 pl-4 pb-2 pt-2 pr-1'>";
             row += "<div class='dt-extra animate-slide align-self-center mr-5' idalumno='" + alumno.idatendido + "'>";
             row += "<span class='badge " + tipoAlumnoColor(alumno.tipo_atendido) + " badge-circle-animate badge-pill badge-sm align-text-top'>" + tipoAlumno(alumno.tipo_atendido) + "</span>";
+
             row += "<div class='slide-content'>";
-            row += "<a class='text-light-gray editar-alumno' data-toggle='tooltip' title='Editar' href='javascript:void(0)'>";
-            row += "<i class='text-info icon icon-editors'></i></a></div>";
+            row += "<a class='text-light-gray acceso-alumno badge badge-circle badge-dark' data-toggle='tooltip' title='Restaurar Contraseña de Usuario' href='javascript:void(0)'>";
+            row += "<i class='text-white icon icon-user'></i></a></div>";
+
             row += "<div class='slide-content'>";
-            row += "<a class='text-light-gray acceso-alumno' data-toggle='tooltip' title='Restaurar Contraseña de Usuario' href='javascript:void(0)'>";
-            row += "<i class='text-primary icon icon-user'></i></a></div>";
+            row += "<a class='text-light-gray editar-alumno badge badge-circle badge-primary' data-toggle='tooltip' title='Editar' href='javascript:void(0)'>";
+            row += "<i class='text-white icon icon-editors'></i></a></div>";
+
             row += "<!-- div class='slide-content'>";
             row += "<a class='text-light-gray eliminar-alumno' data-toggle='tooltip' title='Eliminar' href='javascript:void(0)'>";
             row += "<i class='text-danger icon icon-trash-filled'></i></a></div-->";

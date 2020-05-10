@@ -49,19 +49,19 @@
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">DNI</h3>
+                                    <p class="dt-card__title text-white f-14">DNI</p>
                                 </div>
                                 <!-- /widget info -->
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">NOMBRE /<br>CARGO</h3>
+                                    <p class="dt-card__title text-white f-14">NOMBRE /<br>CARGO</p>
                                 </div>
                                 <!-- /widget info -->
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">�REA</h3>
+                                    <p class="dt-card__title text-white f-14">&Aacute;REA</p>
                                 </div>
                                 <!-- /widget info -->
 

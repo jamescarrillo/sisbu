@@ -20,10 +20,7 @@
                     <div class="form-row justify-content-center">
                         <div class="col-lg-4 col-12 form-group">
                             <label for="txtEscuelaAtendido">ESCUELA
-                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover"
-                                    data-trigger="hover" data-placement="top" title=""
-                                    data-content="Carrera profesional a la que ingresaste" style="cursor: pointer"
-                                    data-original-title=""></i>
+
                             </label>
                             <div class="input-group">
                                 <input type="text" class="form-control form-control-sm" id="txtEscuelaAtendido"
@@ -37,10 +34,7 @@
                         </div>
                         <div class="col-lg-4 col-12 form-group">
                             <label for="txtCicloAcademicoPaciente">Ciclo
-                                <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover"
-                                    data-trigger="hover" data-placement="top" title=""
-                                    data-content="Carrera profesional a la que ingresaste" style="cursor: pointer"
-                                    data-original-title=""></i>
+
                             </label>
                             <div class="input-group">
                                 <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPaciente"
@@ -92,19 +86,19 @@
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">DNI</h3>
+                                    <p class="dt-card__title text-white f-14">DNI</p>
                                 </div>
                                 <!-- /widget info -->
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">NOMBRE /<br>FECHA NACIMIENTO</h3>
+                                    <p class="dt-card__title text-white f-14">NOMBRE /<br>FECHA NACIMIENTO</p>
                                 </div>
                                 <!-- /widget info -->
 
                                 <!-- Widget Info -->
                                 <div class="dt-widget__info text-truncate">
-                                    <h3 class="dt-card__title text-white">ESCUELA</h3>
+                                    <p class="dt-card__title text-white f-14">ESCUELA</p>
                                 </div>
                                 <!-- /widget info -->
 

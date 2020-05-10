@@ -4,10 +4,10 @@
     Author     : Andres
 --%>
 
-<div class="row">
-    <div class="col-xl-12">
+<div class="row d-flex" id="btnListaNoticia">
+    <div class="col-xl-12 p-0">
         <!-- Card -->
-        <div class="card overflow-hidden">
+        <div class="overflow-hidden">
             <!-- Card Header -->
             <div class="card-header bg-transparent">
                 <h4 class="mb-0" id="titleManagerNoticia">[ 0 ] NOTICIAS</h4>
@@ -15,26 +15,56 @@
             </div>
             <!-- /card header -->
             <!-- Card Body -->
-            <div class="card-body pt-0">
+            <div class="card-body p-0">
                 <form id="FrmNoticia">
-                    <div class="input-group search-box" style="max-width: 100%;">
-                        <button type="button" id="btnEliminarFilterNoticia" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
-                        <input type="text" id="txtFilterInicialNoticia" class="form-control form-control-sm" placeholder="Filter Fecha Inicial(DD/MM/AAAA)">
-                        <input type="text" id="txtFilterFinalNoticia" class="form-control form-control-sm" placeholder="Filter Fecha Final(DD/MM/AAAA)">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary btn-sm mr-5"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-6 col-12 form-group">
+                            <label for="txtFechaIFilterNoticia">Desde</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" id="txtFechaIFilterNoticia" class="form-control form-control-sm"
+                                    placeholder="DD/MM/AAAA">
+                                <div class="input-group-append">
+                                    <button class="btn btn-dark btn-sm input-ii" type="button"
+                                        id="btnEliminarFechaIFilterNoticia" data-toggle="tooltip"
+                                        title="Eliminar Fecha">
+                                        <i class="icon icon-trash"></i></button>
+                                </div>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewNoticia"data-toggle="tooltip" title="Agregar Noticia" ><i class="icon icon-addnew"></i></button>
+                        <div class="col-lg-4 col-sm-6 col-12 form-group">
+                            <label for="txtFechaFFilterNoticia">Hasta</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" id="txtFechaFFilterNoticia" class="form-control form-control-sm"
+                                    placeholder="DD/MM/AAAA">
+                                <div class="input-group-append">
+                                    <button class="btn btn-dark btn-sm input-ii" type="button"
+                                        id="btnEliminarFechaFFilterNoticia" data-toggle="tooltip"
+                                        title="Eliminar Fecha">
+                                        <i class="icon icon-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-12 form-group align-self-end ">
+                            <div class="input-group w-100 justify-content-center">
+                                <button type="submit" class="btn btn-primary btn-sm mr-2"><i
+                                        class="icon icon-search icon-fw"></i> BUSCAR
+                                </button>
+                                <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewNoticia"
+                                    data-toggle="tooltip" title="Agregar Noticia"><i class="icon icon-addnew"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </form>
 
                 <!-- Card -->
-                <div class="dt-card mt-4">
+                <div class="dt-card m-0">
                     <!-- Card Body -->
-                    <div class="dt-card__body p-0  " >
+                    <div class="dt-card__body p-0  ">
                         <!-- Widget -->
-                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                             id="tbodyNoticia">
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg  dt-social-card border border-w-2 border-light-teal"
+                            id="tbodyNoticia">
                         </div>
                         <!-- /widget -->
                         <!-- /card body -->
@@ -55,7 +85,7 @@
                         <nav aria-label="Page navigation example">
                             <ul id="paginationNoticia" class="pagination pagination-sm justify-content-end">
                             </ul>
-                        </nav>  
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -63,57 +93,61 @@
         </div>
         <!-- /card -->
     </div>
-</div>
-<div class="modal fade" id="ventanaModalNoticia" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form id="FrmNoticiaModal">
-                <div class="modal-header">
-                    <h6 class="modal-title" id="txtTituloModalMan"></h6>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="form-group col-12">
-                            <label for="txtTituloNoticia">Título</label>
-                            <input class="form-control form-control-sm" id="txtTituloNoticia" type="text" placeholder="TÍTULO">
-                        </div>
 
-                        <div class="form-group col-6">
-                            <label for="txtFuenteNoticia">Fuente</label>
-                            <input class="form-control form-control-sm" id="txtFuenteNoticia" type="text" placeholder="FUENTE">
-                        </div>
-                        <div class="form-group col-lg-6 col-sm-6 mb-3">
-                            <label for="txtFechaNoticia">Fecha de Publicación</label>
-                            <div class="input-group">
-                                <input  type="text" class="form-control form-control-sm" id="txtFechaNoticia" placeholder="DD/MM/AAAA">
-                                <div class="input-group-append">
-                                    <button type="button" id="btnEliminarFechaNoticia" data-toggle="tooltip" title="Eliminar Fecha" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-12">
-                            <label for="txtDescripcionNoticia">Descripción</label>
-                            <textarea class="form-control" id="txtDescripcionNoticia" rows="3" placeholder="DESCRIPCIÓN"></textarea>
+</div>
+
+<div class="row justify-content-center d-none" id="btnOpenNoticia">
+    <div class="col-lg-12">
+        <form id="FrmNoticiaModal" class="card dt-card dt-social-card border border-w-2 border-light-teal p-1 m-0">
+
+            <h4 id="txtTituloModalMan" class="card-header m-1 text-center text-primary">NOTICIAS</h4>
+            <div class="card-body p-2 form-row">
+                <div class="form-group col-sm-6 col-12">
+                    <label for="txtFuenteNoticia">Fuente</label>
+                    <input class="form-control form-control-sm" id="txtFuenteNoticia" type="text" placeholder="FUENTE">
+                </div>
+                <div class="form-group col-sm-6 col-12">
+                    <label for="txtFechaNoticia">Fecha de Publicaciï¿½n</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtFechaNoticia"
+                            placeholder="DD/MM/AAAA">
+                        <div class="input-group-append">
+                            <button type="button" id="btnEliminarFechaNoticia" data-toggle="tooltip"
+                                title="Eliminar Fecha" class="btn btn-primary btn-sm"><i
+                                    class="fa fa-trash"></i></button>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal"><i class="icon icon-reply"></i> CANCELAR</button>
-                    <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm"><i class="fas fa-check"></i> GUARDAR</button>
+                <div class="form-group col-12">
+                    <label for="txtTituloNoticia">Tï¿½tulo</label>
+                    <input class="form-control form-control-sm" id="txtTituloNoticia" type="text" placeholder="Tï¿½TULO">
                 </div>
-            </form>
-        </div>
+                <div class="form-group col-12">
+                    <label for="txtDescripcionNoticia">Descripciï¿½n</label>
+                    <div id="txtDescripcionNoticia"></div>
+                </div>
+
+                <div class="form-group col-12 text-center">
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-check"></i>
+                        GUARDAR</button>
+                    <button type="button" id="btnRegresar" class="btn btn-outline-secondary btn-sm"><i
+                            class="icon icon-reply"></i> CANCELAR</button>
+
+                </div>
+            </div>
+
+        </form>
     </div>
 </div>
-<div class="modal fade" id="modalCargandoNoticia" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+
+<div class="modal fade" id="modalCargandoNoticia" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Cargando Noticias. . .
                     </div>
                 </div>

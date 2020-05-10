@@ -102,9 +102,9 @@ function toListPacienteC(beanPagination) {
         let row;
         beanPagination.list.forEach(Paciente => {
             row = "<tr class='click-selection-Paciente sisbu-cursor-mano' idatendido='" + Paciente.idatendido + "'>";
-            row += "<td class='align-middle text-left'>" + Paciente.dni + "</td>";
-            row += "<td class='align-middle text-left'>" + Paciente.apellido_pat.toUpperCase() + " " + Paciente.apellido_mat.toUpperCase() + " " + Paciente.nombre.toUpperCase() + "</td>";
-            row += "<td class='align-middle text-left'>" + Paciente.escuela.nombre + "</td>";
+            row += "<td class='align-middle text-left pt-2 pb-2'>" + Paciente.dni + "</td>";
+            row += "<td class='align-middle text-left pt-2 pb-2'>" + Paciente.apellido_pat.toUpperCase() + " " + Paciente.apellido_mat.toUpperCase() + " " + Paciente.nombre.toUpperCase() + "</td>";
+            row += "<td class='align-middle text-left pt-2 pb-2'>" + Paciente.escuela.nombre + "</td>";
             row += "</tr>";
             document.querySelector("#tbodyPacienteC").innerHTML += row;
         });

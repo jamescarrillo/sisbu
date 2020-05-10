@@ -90,14 +90,17 @@ function processAjaxRemoveEvaluacion() {
 
 function toListEvaluacion(beanPagination) {
     document.querySelector("#div-container-evaluaciones").innerHTML = "";
-    if (beanPagination.count_filter > 0) {
-        document.querySelector("#btnListaAtendido").style.display = "none";
-        document.querySelector("#row-evaluaciones").style.display = "initial";
-        let div;
-        beanPagination.list.forEach(evaluacion => {
-            div =
-                `
-                <div class="dt-widget__item border-success">
+    if (beanPagination.count_filter == 0) {
+        return showAlertTopEnd('warning', 'El Paciente no Realizó sus Evaluaciones');
+    }
+    document.querySelector("#btnListaAtendido").style.display = "none";
+    document.querySelector("#row-evaluaciones").style.display = "initial";
+    let div;
+    beanPagination.list.forEach(evaluacion => {
+
+        div =
+            `
+                <div class="dt-widget__item border-success border-bottom m-0">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate">
                         <div class="dt-widget__title f-16 font-weight-500 text-truncate">
@@ -134,16 +137,13 @@ function toListEvaluacion(beanPagination) {
                     <!-- /widget extra -->
                 </div>
             `;
-            document.querySelector("#div-container-evaluaciones").innerHTML += div;
-        });
+        document.querySelector("#div-container-evaluaciones").innerHTML += div;
+    });
 
-        addEventsEvaluaciones();
+    addEventsEvaluaciones();
 
-        $('[data-toggle="tooltip"]').tooltip();
-    } else {
+    $('[data-toggle="tooltip"]').tooltip();
 
-        showAlertTopEnd('warning', 'No se encontraron resultados');
-    }
 }
 
 function addEventsEvaluaciones() {

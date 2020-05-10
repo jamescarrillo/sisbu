@@ -19,10 +19,7 @@
                 <div class="form-row">
                     <div class="col-lg-4 col-12 form-group">
                         <label for="txtEscuelaAtendido">ESCUELA
-                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover"
-                                data-trigger="hover" data-placement="top" title=""
-                                data-content="Carrera profesional a la que ingresaste" style="cursor: pointer"
-                                data-original-title=""></i>
+
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtEscuelaAtendido"
@@ -36,10 +33,7 @@
                     </div>
                     <div class="col-lg-4 col-12 form-group">
                         <label for="txtCicloAcademicoPaciente">Ciclo
-                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover"
-                                data-trigger="hover" data-placement="top" title=""
-                                data-content="Carrera profesional a la que ingresaste" style="cursor: pointer"
-                                data-original-title=""></i>
+
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPaciente"

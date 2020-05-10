@@ -12,10 +12,34 @@
     <!-- /card header -->
     <!-- Card Body -->
     <div class="card-body p-0">
-      <form id="FrmSalida" class="search-box mw-100 left-side-icon">
-        <div class="input-group">
-          <input type="search" id="txtFilterSalida" class="form-control form-control-sm" placeholder="Filter Nombre..."
-            data-toggle="tooltip" data-placement="left" data-original-title="Buscar" />
+      <form id="FrmSalida" class="search-box mw-100 left-side-icon justify-content-center form-row m-0">
+        <div class="col-sm-4 col-12 mb-2">
+          <label for="txtFechaIFilterCita">Desde</label>
+          <div class="input-group input-group-sm">
+            <input type="text" id="txtFechaIFilterCita" class="form-control form-control-sm" placeholder="DD/MM/AAAA"
+              data-dtp="dtp_t9AHq">
+            <div class="input-group-append">
+              <button class="btn btn-dark btn-sm input-ii" type="button" id="btnEliminarFechaIFilterCita"
+                data-toggle="tooltip" title="" data-original-title="Eliminar Fecha">
+                <i class="icon icon-trash"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 col-12 mb-2">
+          <label for="txtFechaFFilterCita">Hasta</label>
+          <div class="input-group input-group-sm">
+            <input type="text" id="txtFechaFFilterCita" class="form-control form-control-sm" placeholder="DD/MM/AAAA"
+              data-dtp="dtp_HJPN4">
+            <div class="input-group-append">
+              <button class="btn btn-dark btn-sm input-ii" type="button" id="btnEliminarFechaFFilterCita"
+                data-toggle="tooltip" title="" data-original-title="Eliminar Fecha">
+                <i class="icon icon-trash"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 input-group">
+          <input type="search" id="txtFilterSalida" class="form-control form-control-sm"
+            placeholder="Filter Paciente..." data-toggle="tooltip" data-placement="left" data-original-title="Buscar" />
           <button type="submit" class="search-icon">
             <i class="icon icon-search icon-lg"></i></button>
           <div class="input-group-append">
@@ -26,6 +50,7 @@
           </div>
 
         </div>
+
       </form>
       <div class="dt-card mt-4">
         <!-- Card Body -->
@@ -109,7 +134,7 @@
       <!-- Grid Item -->
       <div class="col-xl-12">
         <!-- Entry Header -->
-        <div class="dt-entry__header">
+        <div class="dt-entry__header mb-3">
           <!-- Entry Heading -->
           <div class="dt-entry__heading">
 
@@ -147,9 +172,9 @@
           </div>
         </div>
 
-        <div class="dt-card mt-4">
+        <div class="dt-card mt-0">
           <!-- Card Body -->
-          <div class="dt-card__body p-0  ">
+          <div class="dt-card__body p-0">
             <!-- Widget -->
             <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" id="tbodyDetalleSalida">
               <div class="dt-widget__item border-success bg-primary text-white mb-0 pl-5">

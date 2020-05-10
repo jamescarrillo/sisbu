@@ -45,10 +45,11 @@ function processAjaxProcedimientoC() {
         showAlertErrorRequest();
     });
 }
+
 function tolistProcedimientoC(beanPagination) {
     let row;
     row = ` <option value="-1">SIN EVALUACIONES</option>
-            <!--option selected value="0">TODAS LAS EVALUACIONES</option-->
+            <option selected value="0">TODAS LAS EVALUACIONES</option>
             `;
     beanPagination.list.forEach(pro => {
         row += ` <option value="${pro.idprocedimiento}">${pro.descripcion}</option>

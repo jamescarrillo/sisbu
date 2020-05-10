@@ -29,19 +29,17 @@
                     </div>
                 </form>
                 <!-- Card -->
-                <div class="dt-card mt-4">
-                    <!-- Card Body -->
-                    <div class="dt-card__body p-0  ">
-                        <div class="w-100 ps-custom-scrollbar mb-0 ps pb-5">
-                            <!-- Widget -->
-                            <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg dt-social-card border border-w-2 border-light-teal"
-                                id="tbodyPaciente" style="min-width: 725px;">
-                            </div>
-                            <!-- /widget -->
-                        </div>
-                        <!-- /card body -->
-                    </div>
 
+                <!-- Card Body -->
+                <div class="dt-card__body p-0  ">
+                    <div class="w-100 ps-custom-scrollbar mb-0 ps pb-5">
+                        <!-- Widget -->
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg dt-social-card border border-w-2 border-light-teal"
+                            id="tbodyPaciente" style="min-width: 725px;">
+                        </div>
+                        <!-- /widget -->
+                    </div>
+                    <!-- /card body -->
                 </div>
                 <!-- /card -->
                 <div class="row mt-2">
@@ -71,7 +69,7 @@
         <div class="col-12 p-0 order-xl-3">
             <!-- Card Header EVALUACIONES -->
             <!-- /card heading -->
-            <div class="dt-card__header ">
+            <div class="dt-card__header mb-2">
                 <!-- Card Tools -->
                 <div class="dt-card__tools">
                     <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar"
@@ -115,7 +113,7 @@
             <div class="dt-card">
 
                 <!-- Card Header -->
-                <div class="dt-card__header ">
+                <div class="dt-card__header mb-2">
                     <!-- Card Tools -->
                     <div class="dt-card__tools">
                         <button data-toggle="tooltip" title="Regresar" type="button" class="btn btn-outline-primary btn-sm 
@@ -134,77 +132,77 @@
                         Respuesta</span>
                 </div>
                 <!-- /card header -->
-
-                <!-- Card Body -->
-                <div class="dt-card__body ">
-                    <!-- Widget -->
-                    <div class="dt-widget form-row ">
-                        <div class="col-lg-3 col-4">
-                            <!-- Widget Item -->
-                            <div class="dt-widget__item p-1">
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate" style="min-width: 100%;">
-                                    <span class="h6 font-weight-500">&Aacute;REA
-                                    </span>
+                <div class="w-100 ps-custom-scrollbar mb-0 ps pb-5">
+                    <!-- Card Body -->
+                    <div class="dt-card__body p-3" style="min-width: 725px;">
+                        <!-- Widget -->
+                        <div class="dt-widget form-row">
+                            <div class="col-lg-2 col-3">
+                                <!-- Widget Item -->
+                                <div class="dt-widget__item p-1">
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info  text-center" style="min-width: 100%;">
+                                        <span class="h6 font-weight-500">&Aacute;REA
+                                        </span>
+                                    </div>
+                                    <!-- /widget info -->
                                 </div>
-                                <!-- /widget info -->
+                                <!-- /widgets item -->
                             </div>
-                            <!-- /widgets item -->
-                        </div>
-                        <div class="col-lg-9 col-8">
-                            <!-- Widget Item -->
-                            <div class="dt-widget__item p-1">
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <span class="h6 font-weight-500">SUB&Aacute;REA
-                                    </span>
-                                </div>
-                                <!-- /widget info -->
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <span class="h6 font-weight-500">N° ITEMS
-                                    </span>
-                                </div>
-                                <!-- /widget info -->
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate ">
-                                    <span class="h6 font-weight-500">VALOR ACUMULADO
-                                    </span>
-                                </div>
-                                <!-- /widget info -->
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <span class="h6 font-weight-500">OPERACI&oacute;N
-                                    </span>
-                                </div>
-                                <!-- /widget info -->
+                            <div class="col-lg-10 col-9 pr-0">
+                                <!-- Widget Item -->
+                                <div class="dt-widget__item p-1">
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info text-center">
+                                        <span class="h6 font-weight-500">SUB&Aacute;REA
+                                        </span>
+                                    </div>
+                                    <!-- /widget info -->
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info text-center">
+                                        <span class="h6 font-weight-500">N° ITEMS
+                                        </span>
+                                    </div>
+                                    <!-- /widget info -->
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info  text-center">
+                                        <span class="h6 font-weight-500">VALOR ACUMULADO
+                                        </span>
+                                    </div>
+                                    <!-- /widget info -->
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info  text-center">
+                                        <span class="h6 font-weight-500">OPERACI&Oacute;N
+                                        </span>
+                                    </div>
+                                    <!-- /widget info -->
 
 
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <span class="h6 font-weight-500">PUNTAJE M&Aacute;XIMO
-                                    </span>
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info text-center">
+                                        <span class="h6 font-weight-500">PUNTAJE M&Aacute;XIMO
+                                        </span>
+                                    </div>
+                                    <!-- /widget info -->
+                                    <!-- Widget Info -->
+                                    <div class="dt-widget__info text-center">
+                                        <span class="h6 font-weight-500">INTERPRETACI&Oacute;N
+                                        </span>
+                                    </div>
+                                    <!-- /widget info -->
                                 </div>
-                                <!-- /widget info -->
-                                <!-- Widget Info -->
-                                <div class="dt-widget__info text-truncate">
-                                    <span class="h6 font-weight-500">INTERPRETACI&Oacute;N
-                                    </span>
-                                </div>
-                                <!-- /widget info -->
+                                <!-- /widgets item -->
                             </div>
-                            <!-- /widgets item -->
                         </div>
+                        <!-- /widget -->
+
+                        <!-- Widget -->
+                        <div id="tbodyPuntajeArea" class="dt-widget-hover form-row ">
+
+                        </div>
+
+                        <!-- /widget -->
                     </div>
-                    <!-- /widget -->
-
-                    <!-- Widget -->
-                    <div id="tbodyPuntajeArea" class="dt-widget-hover form-row ">
-
-                    </div>
-
-                    <!-- /widget -->
-
 
                 </div>
                 <!-- /card body -->
@@ -220,7 +218,7 @@
         <div class="col-lg-12 p-0 order-xl-3">
             <!-- Card Header EVALUACIONES -->
             <!-- /card heading -->
-            <div class="dt-card__header ">
+            <div class="dt-card__header mb-2">
                 <!-- Card Tools -->
                 <div class="dt-card__tools">
                     <button data-toggle="tooltip" title="Regresar" type="button" class="btn btn-outline-primary btn-sm 

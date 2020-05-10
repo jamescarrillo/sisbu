@@ -12,20 +12,41 @@
     <!-- /card header -->
     <!-- Card Body -->
     <div class="card-body p-0">
-      <form id="FrmEntrada" class="search-box mw-100 left-side-icon">
-        <div class="input-group">
-          <input type="search" id="txtFilterEntrada" class="form-control form-control-sm" placeholder="Filter Nombre..."
-            data-toggle="tooltip" data-placement="left" data-original-title="Buscar" />
-          <button type="submit" class="search-icon">
-            <i class="icon icon-search icon-lg"></i></button>
-          <div class="input-group-append">
+      <form id="FrmEntrada" class="justify-content-center form-row">
+
+        <div class="col-sm-4 col-12 mb-2">
+          <label for="txtFechaIFilterCita">Desde</label>
+          <div class="input-group input-group-sm">
+            <input type="text" id="txtFechaIFilterCita" class="form-control form-control-sm" placeholder="DD/MM/AAAA"
+              data-dtp="dtp_t9AHq">
+            <div class="input-group-append">
+              <button class="btn btn-dark btn-sm input-ii" type="button" id="btnEliminarFechaIFilterCita"
+                data-toggle="tooltip" title="" data-original-title="Eliminar Fecha">
+                <i class="icon icon-trash"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-12 mb-2">
+          <label for="txtFechaFFilterCita">Hasta</label>
+          <div class="input-group input-group-sm">
+            <input type="text" id="txtFechaFFilterCita" class="form-control form-control-sm" placeholder="DD/MM/AAAA"
+              data-dtp="dtp_HJPN4">
+            <div class="input-group-append">
+              <button class="btn btn-dark btn-sm input-ii" type="button" id="btnEliminarFechaFFilterCita"
+                data-toggle="tooltip" title="" data-original-title="Eliminar Fecha">
+                <i class="icon icon-trash"></i></button>
+            </div>
+            <button type="submit" class="btn btn-outline-primary btn-sm ml-5" data-toggle="tooltip" data-placement="top"
+              data-original-title="Buscar">
+              <i class="icon icon-search icon-lg"></i>Buscar
+            </button>
             <button type="button" class="btn btn-primary btn-sm ml-5" id="btnOpenNewEntrada" data-toggle="tooltip"
               title="Agregar Entrada">
               <i class="icon icon-addnew"></i>
             </button>
           </div>
-
         </div>
+
       </form>
       <div class="dt-card mt-4">
         <!-- Card Body -->

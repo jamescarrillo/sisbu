@@ -248,11 +248,11 @@ function toListPuntajeArea() {
             idareapsi = respuestaEvaluacion.idarea_psi;
 
             row += `
-                <div class="col-lg-3 col-4 border-top ">
+                <div class="col-lg-2 col-3 border-top border-indigo">
                         <!-- Widget Item -->
-                        <div class="dt-widget__item pl-1">
+                        <div class="dt-widget__item pr-1 pl-1 h-100">
                             <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate" style="min-width: 100%;">
+                            <div class="dt-widget__info text-truncate text-center" style="min-width: 100%;">
                                 <span class="h4 font-weight-400">${
                 (respuestaEvaluacion.nombre_area == null) ? "INDEFINIDO" :
                     respuestaEvaluacion.nombre_area
@@ -265,7 +265,7 @@ function toListPuntajeArea() {
                         <!-- /widgets item -->
                     </div>
                 
-             <div class="col-lg-9 col-8 border-top">
+             <div class="col-lg-10 col-9 border-top border-indigo pr-0">
             `;
             listSubAreaPsi.forEach(respuestaEvaluacion2 => {
                 if (respuestaEvaluacion2.idarea_psi == idareapsi) {
@@ -274,29 +274,29 @@ function toListPuntajeArea() {
                     cantidadTotal = cantidadTotal + respuestaEvaluacion2.cantidad;
                     row += `
                         <!-- Widget Item -->
-                        <div class="dt-widget__item pl-1">
+                        <div class="dt-widget__item pl-1 pr-0 border-top pt-2 pb-2">
                             <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate">
+                            <div class="dt-widget__info text-truncate text-center">
                                 <a href="javascript:void(0)" class="dt-widget__title text-truncate">${
                         (respuestaEvaluacion2.nombre == null) ? "INDEFINIDO" : respuestaEvaluacion2.nombre
                         }</a>
                             </div>
                             <!-- /widget info -->
                      <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate">
+                            <div class="dt-widget__info text-truncate text-center">
                                 <a href="javascript:void(0)" class="dt-widget__title text-truncate">${
                         respuestaEvaluacion2.cantidad}</a>
                             </div>
                             <!-- /widget info -->
                         
                         <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate">
+                            <div class="dt-widget__info text-truncate text-center">
                                 <a href="javascript:void(0)" class="dt-widget__title text-truncate">${
                         respuestaEvaluacion2.suma}</a>
                             </div>
                             <!-- /widget info -->
                         <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate">
+                            <div class="dt-widget__info text-truncate text-center">
                                 <a href="javascript:void(0)" class="dt-widget__title text-truncate">${
                         (respuestaEvaluacion2.suma_operacion == 0) ? 0 : respuestaEvaluacion2.suma_operacion.toFixed(2)
                         }</a>
@@ -304,13 +304,13 @@ function toListPuntajeArea() {
                             <!-- /widget info -->
                            
                         <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate">
+                            <div class="dt-widget__info text-truncate text-center">
                                 <a href="javascript:void(0)" class="dt-widget__title text-truncate">${
                         respuestaEvaluacion2.puntaje_maximo}</a>
                             </div>
                             <!-- /widget info -->
                         <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate">
+                            <div class="dt-widget__info text-truncate text-center">
                                 <a href="javascript:void(0)" class="dt-widget__title text-truncate"></a>
                             </div>
                             <!-- /widget info -->
@@ -323,21 +323,21 @@ function toListPuntajeArea() {
             });
             row += `
                 <!-- Widget Item -->
-                        <div class="dt-widget__item pl-1">
+                        <div class="dt-widget__item pl-1 pr-0 border-top pt-2 pb-2">
                  <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate">
+                            <div class="dt-widget__info ">
                                 <!-- Widget Extra -->
-                            <div class="dt-extra animate-slide " >
-                                <span class="badge badge-primary badge-circle-animate badge-pill badge-sm align-text-top">TOTAL</span>
+                            <div class="text-center" >
+                                <span class="badge badge-primary  badge-pill badge-sm align-text-top">TOTAL</span>
                             </div>
                             <!-- /widget extra -->
                             </div>
                             <!-- /widget info -->
                   <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate">
+                            <div class="dt-widget__info ">
                                 <!-- Widget Extra -->
-                            <div class="dt-extra animate-slide ">
-                                <span class="badge badge-info badge-circle-animate badge-pill badge-sm align-text-top">${
+                            <div class="text-center">
+                                <span class="badge badge-info badge-pill badge-sm align-text-top">${
                 cantidadTotal
                 }</span>
                             </div>
@@ -345,20 +345,20 @@ function toListPuntajeArea() {
                             </div>
                             <!-- /widget info -->
                  <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate">
+                            <div class="dt-widget__info">
                               <!-- Widget Extra -->
-                            <div class="dt-extra animate-slide " >
-                                <span class="badge badge-success badge-circle-animate badge-pill badge-sm align-text-top">${
+                            <div class="text-center" >
+                                <span class="badge badge-success  badge-pill badge-sm align-text-top">${
                 sumaTotal}</span>
                             </div>
                             <!-- /widget extra -->
                             </div>
                             <!-- /widget info -->
                 <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate">
+                            <div class="dt-widget__info">
                               <!-- Widget Extra -->
-                            <div class="dt-extra animate-slide " >
-                                <span class="badge badge-success badge-circle-animate badge-pill badge-sm align-text-top">${
+                            <div class="text-center" >
+                                <span class="badge badge-success badge-pill badge-sm align-text-top">${
                 (respuestaEvaluacion.nombre_area == null) ? 0 : sumaOperacionTotal.toFixed(2)
                 }</span>
                             </div>
@@ -367,19 +367,19 @@ function toListPuntajeArea() {
                             <!-- /widget info -->
                       
                  <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate">
+                            <div class="dt-widget__info">
                                <!-- Widget Extra -->
-                            <div class="dt-extra animate-slide " >
-                                <span class="badge badge-danger badge-circle-animate badge-pill badge-sm align-text-top">--</span>
+                            <div class="text-center" >
+                                <span class="badge badge-danger  badge-pill badge-sm align-text-top">--</span>
                             </div>
                             <!-- /widget extra -->
                             </div>
                             <!-- /widget info -->
                   <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate">
+                            <div class="dt-widget__info">
                               <!-- Widget Extra -->
-                            <div class="dt-extra animate-slide " >
-                                <span class="badge badge-success badge-circle-animate badge-pill badge-sm align-text-top">${
+                            <div class="text-center" >
+                                <span class="badge badge-success badge-pill badge-sm align-text-top">${
                 (respuestaEvaluacion.nombre_area == null) ? "--" : EscalabyProcedimiento(sumaOperacionTotal.toFixed(2))
                 }</span>
                             </div>
@@ -438,7 +438,7 @@ function EscalabyProcedimiento(valor) {
         if (0 < valor && valor < 24) {
             return "Mal Nivel";
         } else if (23 < valor && valor < 32) {
-            return "Regular Nivel";
+            return "Nivel Regular";
 
         } else {
             return "Buen Nivel";

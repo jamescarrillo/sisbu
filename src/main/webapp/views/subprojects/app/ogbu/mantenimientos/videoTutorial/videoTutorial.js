@@ -159,7 +159,7 @@ function toListVideoTutorial(beanPagination) {
         beanPagination.list.forEach(videoTutorial => {
             row =
                 `
-                 <div class="dt-widget__item  pl-5 m-0 pr-1">
+                 <div class="dt-widget__item p-2 pl-5 m-0 pr-1">
                    
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >

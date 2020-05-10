@@ -65,6 +65,37 @@ document.addEventListener("DOMContentLoaded", function () {
   $("#sizePageSalida").change(function () {
     $("#modalCargandoSalida").modal("show");
   });
+
+  $('#txtFechaIFilterCita').bootstrapMaterialDatePicker({
+    weekStart: 0,
+    time: false,
+    format: 'DD/MM/YYYY',
+    lang: 'es'
+  }).on('change', function (e, date) {
+    $('#txtFechaFFilterCita').bootstrapMaterialDatePicker('setMinDate', date);
+  });
+
+  $('#txtFechaFFilterCita').bootstrapMaterialDatePicker({
+    weekStart: 0,
+    time: false,
+    format: 'DD/MM/YYYY',
+    lang: 'es'
+  }).on('change', function (e, date) {
+    document.querySelector('#btnRegresar').dispatchEvent(new Event('click'));
+  });
+
+  document.querySelector('#btnEliminarFechaIFilterCita').onclick = function () {
+    document.querySelector('#txtFechaIFilterCita').value = '';
+  };
+
+  document.querySelector('#btnEliminarFechaFFilterCita').onclick = function () {
+    document.querySelector('#txtFechaFFilterCita').value = '';
+  };
+
+
+  $('#txtFechaIFilterCita').val(getDateJava(current_date));
+  $('#txtFechaFFilterCita').val(getDateJava(addDays(current_date, 30)));
+
 });
 
 function AccionAgregarNewSalida() {
@@ -89,7 +120,9 @@ function processAjaxSalida() {
       document.querySelector("#pageSalida").value = 1;
     }
     parameters_pagination +=
-      "?fecha=" + document.querySelector("#txtFilterSalida").value;
+      "?filter=" + document.querySelector("#txtFilterSalida").value;
+    parameters_pagination += "&fechai=" + document.querySelector("#txtFechaIFilterCita").value.trim();
+    parameters_pagination += "&fechaf=" + document.querySelector("#txtFechaFFilterCita").value.trim();
     parameters_pagination +=
       "&page=" + document.querySelector("#pageSalida").value;
     parameters_pagination +=
@@ -153,18 +186,11 @@ function toListSalida(beanPagination) {
     "[ " + beanPagination.count_filter + " ] SALIDAS DE PRODUCTO ";
   let row;
   row = `
-               <div class="dt-widget__item border-success bg-primary text-white m-0 pr-0  pl-3">
+               <div class="dt-widget__item border-success bg-primary text-white m-0 pr-0 pt-2 pb-2 pl-3">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
                            FECHA
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
-                        <p class="mb-0 text-truncate ">
-                           PERSONAL
                         </p>
                     </div>
                     <!-- /widget info -->
@@ -179,6 +205,13 @@ function toListSalida(beanPagination) {
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
                            ESCUELA PROFESIONAL
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           PERSONAL
                         </p>
                     </div>
                     <!-- /widget info -->
@@ -211,20 +244,11 @@ function toListSalida(beanPagination) {
   document.querySelector("#tbodySalida").innerHTML += row;
   beanPagination.list.forEach(BeanSalida => {
     row = `
-                 <div class="dt-widget__item m-0 p-1 pl-3">
+                 <div class="dt-widget__item m-0 p-1 pl-3 ">
                     <!-- Widget Info -->
                     <div class="dt-widget__info" >
                         <p class="mb-0">
                            ${BeanSalida.salida.fecha}
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info" >
-                        <p class="mb-0">
-                           ${BeanSalida.salida.personal.apellido_pat}
-                           ${BeanSalida.salida.personal.apellido_mat}
-                           ${BeanSalida.salida.personal.nombre}
                         </p>
                     </div>
                     <!-- /widget info -->
@@ -242,6 +266,15 @@ function toListSalida(beanPagination) {
                         <p class="mb-0 ">
                            ${BeanSalida.salida.atendido.escuela.nombre}
                           
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info" >
+                        <p class="mb-0">
+                           ${BeanSalida.salida.personal.apellido_pat}
+                           ${BeanSalida.salida.personal.apellido_mat}
+                           ${BeanSalida.salida.personal.nombre}
                         </p>
                     </div>
                     <!-- /widget info -->

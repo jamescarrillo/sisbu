@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function processAjaxNoticia() {
     $.ajax({
         url: getHostAPI() + "api/noticias/paginate?fechai=&fechaf=&page=" +
-                document.querySelector("#pageNoticia").value + "&size=" +
-                document.querySelector("#sizePageNoticia").value,
+            document.querySelector("#pageNoticia").value + "&size=" +
+            document.querySelector("#sizePageNoticia").value,
         type: "GET",
         headers: {
             'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
@@ -50,32 +50,34 @@ function toListNoticia(beanPagination) {
     document.querySelector("#tbodyNoticia").innerHTML = "";
     if (beanPagination.count_filter > 0) {
         let row;
-       
+
         beanPagination.list.forEach(noticia => {
-            row = '<div class="col-xl-4 col-sm-6">';
-            row += '<div class="dt-card dt-social-card border border-w-2 border-light-teal">';
-            row += ' <div class="bg-overlay__inner">';
-            row += '<div class="dt-card__header mb-2">';
-            row += '<div class="dt-card__heading">';
-            row += '<h3 class="dt-card__title ">' + noticia.fuente + '</h3></div>';
-            row += '<div class="dt-card__tools">';
-            row += '<span class="dt-card__more font-weight-500">' + noticia.fecha_publicacion + '</span></div></div>';
-            row += '<div class="dt-card__body p-3">';
-            row += '<div class="media mb-5">';
-            row += '<div class="media-body ">';
-            row += '<div class="dt-card__title display-5 font-weight-600 mb-1 text-primary">' + noticia.titulo + '</div>';
-            row += '</div></div>';
-            row += ' <p class="card-text">' + noticia.descripcion + '</p>';
-            row += '</div></div>';
-            row += '</div></div>';
+            row = `   <div class="col-xl-4 col-sm-6 mb-3">
+                             <div class="card dt-social-card border border-w-2 border-light-teal h-100 m-0">
+                                <div class="card-body" style="max-height:260px;">
+                                <h3 class="card-title text-center">${noticia.titulo}</h3>
+                                ${noticia.descripcion}
+                                </div>   
+                               
+                                <a class="card-link w-100 p-4 pr-10 pl-10 bg-white"  style="z-index: 2;" href="javascript:void(0)">
+                                ... Check Detalle <i class="icon icon-double-arrow-right"></i>
+                                    </a>   
+                                <div class="card-footer bg-light" style="z-index: 2;">
+                                    <span class="d-inline-block mr-3">${noticia.fuente}</span>
+                                    <span class="d-inline-block float-right"><i class="icon icon-calendar icon-fw"></i> ${ noticia.fecha_publicacion}</span>
+                                </div>
+                            </div>
+                        </div>
+            `;
+
             document.querySelector("#tbodyNoticia").innerHTML += row;
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageNoticia").value),
-                document.querySelector("#pageNoticia"),
-                $('#modalCargandoNoticia'),
-                $('#paginationNoticia'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageNoticia").value),
+            document.querySelector("#pageNoticia"),
+            $('#modalCargandoNoticia'),
+            $('#paginationNoticia'));
     } else {
         destroyPagination($('#paginationNoticia'));
         showAlertTopEnd('warning', 'No se encontraron resultados');

@@ -76,7 +76,9 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#sizePagePersonal").change(function () {
         $('#modalCargandoPersonal').modal('show');
     });
-
+    $("#txtFilterEstadoPersonal").change(function () {
+        $('#modalCargandoPersonal').modal('show');
+    });
     document.querySelector('#btnRegresarLista').onclick = function () {
         document.querySelector('#btnOpenPersonalDetalle').style.display = 'none';
         document.querySelector('#btnListaPersonal').style.display = 'block';
@@ -192,15 +194,18 @@ function toListPersonal(beanPagination) {
             row = "<div class='dt-widget__item border-bottom m-0 pl-4 pb-2 pt-2 pr-1'>";
             row += "<div class='dt-extra animate-slide align-self-center mr-5' idpersonal='" + personal.idpersonal + "'>";
             row += "<span class='badge " + tipoPersonalColor(personal.tipo_personal) + " badge-circle-animate badge-pill badge-sm align-text-top'>" + tipoPersonal(personal.tipo_personal) + "</span>";
+
             row += "<div class='slide-content'>";
-            row += "<a class='text-light-gray editar-personal' data-toggle='tooltip' title='Editar' href='javascript:void(0)'>";
-            row += "<i class='text-info icon icon-editors'></i></a></div>";
+            row += "<a class='text-light-gray acceso-personal badge badge-circle badge-dark' data-toggle='tooltip' title='Restaurar Contraseña de Usuario' href='javascript:void(0)'>";
+            row += "<i class='text-white icon icon-user'></i></a></div>";
+
             row += "<div class='slide-content'>";
-            row += "<a class='text-light-gray acceso-personal' data-toggle='tooltip' title='Restaurar Contraseña de Usuario' href='javascript:void(0)'>";
-            row += "<i class='text-primary icon icon-user'></i></a></div>";
+            row += "<a class='text-light-gray editar-personal badge badge-circle badge-primary' data-toggle='tooltip' title='Editar' href='javascript:void(0)'>";
+            row += "<i class='text-white icon icon-editors'></i></a></div>";
+
             row += "<div class='slide-content'>";
-            row += "<a class='text-light-gray eliminar-personal' data-toggle='tooltip' title='Eliminar' href='javascript:void(0)'>";
-            row += "<i class='text-danger icon icon-trash-filled'></i></a></div></div>";
+            row += "<a class='text-light-gray eliminar-personal badge badge-circle badge-danger' data-toggle='tooltip' title='Eliminar' href='javascript:void(0)'>";
+            row += "<i class='text-white icon icon-trash'></i></a></div></div>";
 
             row += "<div class='text-truncate mr-2' style='min-width:50px;width:15%;'>";
             row += "<p class='dt-widget__subtitle text-truncate text-dark'>";

@@ -28,7 +28,7 @@ function toListDetalleSalida(beanPagination) {
     let row;
     row =
         `
-           <div class="dt-widget__item border-success bg-primary text-white mb-0 ">
+           <div class="dt-widget__item border-success pt-2 pb-2 bg-primary text-white mb-0 ">
                 <!-- Widget Info -->
                 <div class="dt-widget__info text-truncate " >
                     <p class="mb-0 text-truncate ">
@@ -68,7 +68,7 @@ function toListDetalleSalida(beanPagination) {
     beanPagination.forEach(DetalleSalida => {
         row =
             `
-                <div class="dt-widget__item m-0 pt-1 pb-1">
+                <div class="dt-widget__item m-0 pt-1 pb-1 border-bottom">
                    
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
