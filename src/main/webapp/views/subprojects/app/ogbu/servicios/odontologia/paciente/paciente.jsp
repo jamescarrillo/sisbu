@@ -76,12 +76,12 @@
                     <li class="nav-item">
                         <a id="buttonFiliacion" class="nav-link show active" data-toggle="tab" href="#tab-pane-15"
                             role="tab" aria-controls="tab-pane-15" aria-="true">
-                            DATOS DE FILIACIï¿½N</a>
+                            DATOS DE FILIACIÓN</a>
                     </li>
                     <li class="nav-item">
                         <a id="buttonAntecedente" class="nav-link" data-toggle="tab" href="#tab-pane-16" role="tab"
                             aria-controls="tab-pane-16" aria-="false">
-                            ANTECEDENTES CLï¿½NICOS</a>
+                            ANTECEDENTES CLÍNICOS</a>
                     </li>
                 </ul>
                 <!-- /tab navigation -->
@@ -142,14 +142,14 @@
 
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
-                                <label for="txtCodigoPaciente">Cï¿½DIGO</label>
+                                <label for="txtCodigoPaciente">CÓDIGO</label>
                                 <input disabled type="text" class="form-control form-control-sm" id="txtCodigoPaciente"
                                     placeholder="CODIGO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
-                                <label for="txtNumeroDocumentoPaciente">Nï¿½ DOCUMENTO</label>
+                                <label for="txtNumeroDocumentoPaciente">N° DOCUMENTO</label>
                                 <input disabled type="text" class="form-control form-control-sm"
                                     id="txtNumeroDocumentoPaciente" placeholder="Nï¿½ DOCUMENTO">
                             </div>
@@ -224,7 +224,7 @@
                             <div class="col-12 form-row p-0">
                                 <div class="col-lg-4 col-sm-6 ">
                                     <div class=" form-group col-lg-12 col-sm-12  pr-0">
-                                        <label for="txtHistoriaPaciente">Nï¿½ HISTORIA</label>
+                                        <label for="txtHistoriaPaciente">N° HISTORIA</label>
                                         <div class="input-group">
                                             <div class="input-group-append">
                                                 <button type="button" class="btn btn-primary btn-sm"><i
@@ -238,7 +238,7 @@
                                     </div>
 
                                     <div class="form-group col-lg-12 col-sm-12  pr-0">
-                                        <label for="txtMedicoPaciente">ODONTï¿½LOGO(A)
+                                        <label for="txtMedicoPaciente">ODONTÓLOGO(A)
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control form-control-sm"
@@ -323,10 +323,10 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12">
-                                <label for="txtDiagnosticoPaciente">DIAGNï¿½STICO</label>
+                                <label for="txtDiagnosticoPaciente">DIAGNÓSTICO</label>
                                 <div class="form-group">
                                     <textarea class="form-control form-control-sm" id="txtDiagnosticoPaciente" rows="3"
-                                        placeholder="DIAGNï¿½STICO"></textarea>
+                                        placeholder="DIAGNÓSTICO"></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-12 text-center">
@@ -386,7 +386,7 @@
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
                 <h5 class="mb-0" id="titleManagerDoctorC"><strong>[ 0 ]
-                        ODONTï¿½LOGOS</strong></h5>
+                        ODONTÓLOGOS</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

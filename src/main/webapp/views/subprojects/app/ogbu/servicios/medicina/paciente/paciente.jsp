@@ -74,17 +74,17 @@
                     <li class="nav-item">
                         <a id="buttonFiliacion" class="nav-link show active" data-toggle="tab" href="#tab-pane-15"
                             role="tab" aria-controls="tab-pane-15" aria-="true">
-                            DATOS DE FILIACIï¿½N</a>
+                            DATOS DE FILIACIÓN</a>
                     </li>
                     <li class="nav-item">
                         <a id="buttonAntecedente" class="nav-link" data-toggle="tab" href="#tab-pane-16" role="tab"
                             aria-controls="tab-pane-16" aria-="false">
-                            ANTECEDENTES CLï¿½NICOS</a>
+                            ANTECEDENTES CLÍNICOS</a>
                     </li>
                     <li class="nav-item">
                         <a id="buttonDiagnostico" class="nav-link" data-toggle="tab" href="#tab-pane-17" role="tab"
                             aria-controls="tab-pane-17" aria-="false">
-                            DIAGNï¿½STICOS</a>
+                            DIAGNÓSTICOS</a>
                     </li>
                 </ul>
                 <!-- /tab navigation -->
@@ -145,14 +145,14 @@
 
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
-                                <label for="txtCodigoPaciente">Cï¿½DIGO</label>
+                                <label for="txtCodigoPaciente">CÓDIGO</label>
                                 <input disabled type="text" class="form-control form-control-sm" id="txtCodigoPaciente"
                                     placeholder="CODIGO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
-                                <label for="txtNumeroDocumentoPaciente">Nï¿½ DOCUMENTO</label>
+                                <label for="txtNumeroDocumentoPaciente">N° DOCUMENTO</label>
                                 <input disabled type="text" class="form-control form-control-sm"
                                     id="txtNumeroDocumentoPaciente" placeholder="Nï¿½ DOCUMENTO">
                             </div>
@@ -227,7 +227,7 @@
 
                             <div class="col-lg-4 col-sm-6">
                                 <div class="form-group">
-                                    <label for="txtHistoriaPaciente">Nï¿½ HISTORIA</label>
+                                    <label for="txtHistoriaPaciente">N° HISTORIA</label>
                                     <div class="input-group">
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-primary btn-sm"><i
@@ -250,7 +250,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-6 ">
-                                <label for="txtMedicoPaciente">Mï¿½DICO
+                                <label for="txtMedicoPaciente">MÉDICO
                                 </label>
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-sm" id="txtMedicoPaciente"
@@ -300,14 +300,14 @@
                         <!-- Card Heading -->
                         <div class="dt-card__heading">
                             <h3 id="titleManagerDiagnostico" class="dt-card__title  text-primary text-center">LISTA DE
-                                DIAGNï¿½STICOS</h3>
+                                DIAGNÓSTICOS</h3>
                             <input type="hidden" id="pageDiagnostico" value="1">
                         </div>
                         <!-- /card heading -->
                         <!-- Card Tools -->
                         <div class="dt-card__tools">
                             <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewDiagnosticoPaciente"
-                                data-toggle="tooltip" title="Agregar Diagnï¿½stico"><i class="icon icon-addnew"></i>
+                                data-toggle="tooltip" title="Agregar Diagnóstico"><i class="icon icon-addnew"></i>
                             </button>
                         </div>
                         <!-- /card tools -->
@@ -319,13 +319,13 @@
                                 <thead style="line-height: 0.4;border-bottom-style: hidden;" class="bg-primary ">
                                     <tr>
                                         <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">
-                                            ACCIï¿½N</th>
+                                            ACCIÓN</th>
                                         <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">
                                             ATENDIDO </th>
                                         <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">
                                             FECHA </th>
                                         <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">
-                                            DIAGNï¿½STICO</th>
+                                            DIAGNÓSTICO</th>
 
                                     </tr>
                                 </thead>
@@ -362,10 +362,10 @@
 
                             <div class="col-lg-3 col-sm-4">
                                 <div class="form-group ">
-                                    <label for="txtPosicionPaciente">POSICIï¿½N</label>
+                                    <label for="txtPosicionPaciente">POSICIÓN</label>
                                     <select class="form-control form-control-sm " id="txtPosicionPaciente">
                                         <option value="-1">seleccione...</option>
-                                        <option value="1">DECï¿½BITO DORSAL</option>
+                                        <option value="1">DECÚBITO DORSAL</option>
                                         <option value="3">SENTADO</option>
                                     </select>
                                 </div>
@@ -418,9 +418,9 @@
 
                             <div class="col-lg-3 col-sm-4">
                                 <div class="form-group ">
-                                    <label for="txtTPaciente">Tï¿½</label>
+                                    <label for="txtTPaciente">T°</label>
                                     <input type="text" class="form-control form-control-sm" id="txtTPaciente"
-                                        placeholder="Tï¿½">
+                                        placeholder="T°">
                                 </div>
                             </div>
 
@@ -562,7 +562,7 @@
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
                 <h5 class="mb-0" id="titleManagerDoctorC"><strong>[ 0 ]
-                        Mï¿½DICO</strong></h5>
+                        MÉDICO</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

@@ -33,47 +33,63 @@
     </div>
 </div>
 
-<div class="row justify-content-center" id="row-options-evaluaciones" style="margin-top: 70px; display: none">
+<div class="row" id="row-options-evaluaciones" style="margin-top: 10px; display: none">
     <!--div class="col-12 text-center">
         <img src="<%=request.getContextPath()%>/resources/prod/custom_app/evaluaciones.jpg" class="img-fluid" alt="Fam. Pedro Ruiz Gallo">
     </div-->
-    <div class="col-xl-3 col-sm-6 col-lg-3">
-        <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="socioconomica">
-            <div class="dt-card__body d-flex flex-sm-column text-center">
-                <div class="mb-sm-7">
-                    <i class="icon icon-wallpage dt-icon-bg text-primary"></i>
+    <div class="col-12">
+        <div class="row justify-content-center" id="row-evaluaciones-1">
+            <div class="col-xl-3 col-sm-6 col-lg-3">
+                <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="socioconomica">
+                    <div class="dt-card__body d-flex flex-sm-column text-center">
+                        <div class="mb-sm-7">
+                            <i class="icon icon-wallpage dt-icon-bg text-primary"></i>
+                        </div>
+                        <a class="h2 mb-0 font-weight-500">Evaluación<br>Socioeconómica</a>
+                    </div>
                 </div>
-                <a class="h2 mb-0 font-weight-500">Evaluación<br>Socioeconómica</a>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-lg-3" style="display: block">
+                <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="deportiva">
+                    <div class="dt-card__body d-flex flex-sm-column text-center">
+                        <div class="mb-sm-7">
+                            <i class="icon icon-ripple dt-icon-bg text-primary"></i>
+                        </div>
+                        <a class="h2 mb-0 font-weight-500">Evaluación<br>Deportiva</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-lg-3" style="display: block">
+                <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="psicologica">
+                    <div class="dt-card__body d-flex flex-sm-column text-center">
+                        <div class="mb-sm-7">
+                            <i class="icon icon-heart-o dt-icon-bg text-primary"></i>
+                        </div>
+                        <a class="h2 mb-0 font-weight-500">Evaluación<br>Psicológica</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 col-lg-3" style="display: block">
-        <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="deportiva">
-            <div class="dt-card__body d-flex flex-sm-column text-center">
-                <div class="mb-sm-7">
-                    <i class="icon icon-ripple dt-icon-bg text-primary"></i>
+        <div class="row justify-content-center" id="row-evaluaciones-2">
+            <div class="col-xl-3 col-sm-6 col-lg-3" style="display: block">
+                <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="obstetricia">
+                    <div class="dt-card__body d-flex flex-sm-column text-center">
+                        <div class="mb-sm-7">
+                            <i class="icon icon-contacts-app dt-icon-bg text-primary"></i>
+                        </div>
+                        <a class="h2 mb-0 font-weight-500">Evaluación<br>Obstetricia</a>
+                    </div>
                 </div>
-                <a class="h2 mb-0 font-weight-500">Evaluación<br>Deportiva</a>
             </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 col-lg-3" style="display: block">
-        <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="psicologica">
-            <div class="dt-card__body d-flex flex-sm-column text-center">
-                <div class="mb-sm-7">
-                    <i class="icon icon-heart-o dt-icon-bg text-primary"></i>
+            <div class="col-xl-3 col-sm-6 col-lg-3" style="display: block">
+                <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="odontologia">
+                    <div class="dt-card__body d-flex flex-sm-column text-center">
+                        <div class="mb-sm-7">
+                            <i class="icon icon-link dt-icon-bg text-primary"></i>
+                        </div>
+                        <a class="h2 mb-0 font-weight-500">Evaluación<br>Odontólogica</a>
+                    </div>
                 </div>
-                <a class="h2 mb-0 font-weight-500">Evaluación<br>Psicológica</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 col-lg-3" style="display: block">
-        <div class="dt-card sisbu-cursor-mano option-evaluation" evaluation="obstetricia">
-            <div class="dt-card__body d-flex flex-sm-column text-center">
-                <div class="mb-sm-7">
-                    <i class="icon icon-link dt-icon-bg text-primary"></i>
-                </div>
-                <a class="h2 mb-0 font-weight-500">Evaluación<br>Obstetricia</a>
             </div>
         </div>
     </div>
@@ -583,7 +599,7 @@
                     <div class="row mt-2">
                         <div class="col-md-2 col-sm-3 col-4">
                             <select id="sizePageDeporteDetalle" class="form-control form-control-sm select2-single">
-                                <option value="5">5</option>
+                                <option value="5">05</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
                             </select>
@@ -972,6 +988,96 @@
     </div>
 </div>
 
+<div class="row" id="row-option-odontologia" style="display: none">
+    <div class="col-12">
+        <div class="row" id="div-evaluaciones-odontologia">
+            <div class="col-12">
+                <div class="dt-card dt-card__full-height">
+                    <div class="dt-card__header mb-2 pt-4">
+                        <div class="dt-card__heading">
+                            <h3 class="dt-card__title">Avance</h3>
+                        </div>
+                    </div>
+                    <div class="dt-card__body pb-4">
+                        <div class="row">
+                            <div class="col-xl-4 col-md-12 col-sm-4">
+                                <!-- Chart -->
+                                <canvas class="mx-auto mb-5 mb-sm-0 mb-md-5 mb-xl-0"
+                                        id="estimation-odontologia" data-fill="0"
+                                        height="110" width="110"></canvas>
+                            </div>
+                            <div class="col-xl-8 col-md-12 col-sm-8">
+                                <div class="pb-3 mb-3 border-bottom">
+                                    <span class="display-4 d-inline-block mr-2 font-weight-500 text-dark" id="lblNumProcedimientosOdontologia">0</span><span
+                                        class="font-weight-light f-16">Fichas</span>
+                                </div>
+                                <ul class="dt-list dt-list-col-6">
+                                    <li class="dt-list__item">
+                                        <span class="dot-shape dot-shape-lg bg-light-green mr-2"></span>
+                                        <span class="d-inline-block" id="lblNumRespondidasOdontologia">0 Realizadas</span>
+                                    </li>
+                                    <li class="dt-list__item">
+                                        <span class="dot-shape dot-shape-lg bg-light-pink mr-2"></span>
+                                        <span class="d-inline-block" id="lblNumPendientesOdontologia">0 Pendientes</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="dt-card">
+                    <div class="dt-card__body p-0">
+                        <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" 
+                             id="div-content-evaluacion-odontologia">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="div-preguntas-evaluacion-odontologia" style="display: none">
+            <div class="col-12" style="">
+                <div class="dt-card">
+                    <div class="dt-card__header bg-primary pb-7 mb-0 rounded-top">
+                        <div class="dt-card__heading">
+                            <div class="d-flex align-items-center">
+                                <i class="icon icon-invoice-new icon-fw icon-2x text-white mr-2"></i>
+                                <h3 class="dt-card__title text-white" style="text-transform: none">Lista de Preguntas</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dt-card__body pb-3">
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <ul class="list-group list-group-flush" id="content-preguntas-evaluacion-odontologia">
+
+                                </ul>
+                            </div>
+                            <div class="col-12 text-right">
+                                <button class="btn btn-outline-primary" id="btn-cancelar-evaluation-odontologia">
+                                    <i class="icon icon-reply"></i>
+                                    Salir
+                                </button>
+                                <button class="btn btn-primary" id="btn-finalizar-evaluation-odontologia">
+                                    <i class="icon icon-double-arrow-right mb-1"></i>
+                                    Finalizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 text-center" id="div-regresar-selected-evaluation-odontologia">
+        <button class="btn btn-outline-primary btn-regresar-selected-evaluation">
+            <i class="icon icon-reply"></i>
+            Seleccionar otra evaluación
+        </button>
+    </div>
+</div>
+            
 <!--MODALES CARGNADO-->
 <div class="modal" id="modalCargandoSelectedFichaSocieconomica" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
@@ -1014,6 +1120,22 @@
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                         Preparando evaluación de obstetricia. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoProcedimientoOdontologia" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Preparando evaluación odontológica. . .
                     </div>
                 </div>
             </div>
@@ -1070,6 +1192,22 @@
 </div>
 
 <div class="modal" id="modalCargandoEvaluacionAtendidoObstetricia" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Finalizando. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoEvaluacionAtendidoOdontologia" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -1145,7 +1283,7 @@
 
 <!--T: DEPORTE SELECTED-->
 <div id="ventanaModalSelectedDeporteC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
-     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+     data-keyboard="false" style="padding-top: 0%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
@@ -1189,9 +1327,7 @@
                             <div class="col-sm-4 mt-2">
                                 <select id="sizePageDeporteC"
                                         class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
-                                    <option value="5">05</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
+                                    <option value="50">50</option>
                                 </select>
                             </div>
                             <div class="col-sm-8 mt-2">
@@ -1234,7 +1370,7 @@
 
 <!--T: AFICION SELECTED-->
 <div id="ventanaModalSelectedAficionC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
-     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+     data-keyboard="false" style="padding-top: 0%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
@@ -1278,7 +1414,7 @@
                             <div class="col-sm-4 mt-2">
                                 <select id="sizePageAficionC"
                                         class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
-                                    <option value="5">05</option>
+                                    <option value="50">50</option>
                                     <option value="10">10</option>
                                     <option value="15">15</option>
                                 </select>

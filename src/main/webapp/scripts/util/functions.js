@@ -70,6 +70,9 @@ function getIdAreaUserSession() {
     if (url.includes('social')) {
         return 7;
     }
+    if (url.includes('odontologia')) {
+        return 3;
+    }
 }
 
 function setUrlFotoUserSession(url_foto) {

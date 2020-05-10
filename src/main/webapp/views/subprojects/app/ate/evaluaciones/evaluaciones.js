@@ -89,13 +89,13 @@ document.addEventListener("DOMContentLoaded", function () {
             navigateOptionEvaluation('home');
         };
     });
-
-    if (user_session.tipo_perfil == 1000) {
-        document.querySelector("#div-message-cachimbo").style.display = "block";
-    } else {
-        document.querySelector("#div-message-cachimbo").style.display = "none";
-    }
-
+    /*
+     if (user_session.tipo_perfil == 1000) {
+     document.querySelector("#div-message-cachimbo").style.display = "block";
+     } else {
+     document.querySelector("#div-message-cachimbo").style.display = "none";
+     }
+     */
     $('[data-toggle="popover"]').popover();
 
 });
@@ -109,10 +109,11 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-deportiva").style.display = "none";
             document.querySelector("#row-option-psicologica").style.display = "none";
             document.querySelector("#row-option-obstetricia").style.display = "none";
+            document.querySelector("#row-option-odontologia").style.display = "none";
             break;
         case "deportiva":
-            showAlertTopEnd("warning", "Esta evaluación no está disponible");
-            return;
+            //showAlertTopEnd("warning", "Esta evaluación no está disponible");
+            //return;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";
@@ -129,8 +130,8 @@ function navigateOptionEvaluation(option) {
             //showAlertTopEnd('warning', 'Lo sentimos aún no esta disponible esta evaluación. Ingresa a partir del 02/10/2019', 10000)
             break;
         case "psicologica":
-            showAlertTopEnd("warning", "Esta evaluación no está disponible");
-            return;
+            //showAlertTopEnd("warning", "Esta evaluación no está disponible");
+            //return;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";
@@ -141,8 +142,8 @@ function navigateOptionEvaluation(option) {
             $('#modalCargandoProcedimientoPsicologico').modal('show');
             break;
         case "obstetricia":
-            showAlertTopEnd("warning", "Esta evaluación no está disponible");
-            return;
+            //showAlertTopEnd("warning", "Esta evaluación no está disponible");
+            //return;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";
@@ -151,6 +152,19 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-obstetricia").style.display = "flex";
 
             $('#modalCargandoProcedimientoObstetricia').modal('show');
+            break;
+        case "odontologia":
+            //showAlertTopEnd("warning", "Esta evaluación no está disponible");
+            //return;
+            document.querySelector("#row-options-evaluaciones").style.display = "none";
+
+            document.querySelector("#row-option-socioeconomico").style.display = "none";
+            document.querySelector("#row-option-deportiva").style.display = "none";
+            document.querySelector("#row-option-psicologica").style.display = "none";
+            document.querySelector("#row-option-obstetricia").style.display = "none";
+            document.querySelector("#row-option-odontologia").style.display = "flex";
+
+            $('#modalCargandoProcedimientoOdontologia').modal('show');
             break;
         default:
             //SOCIOECONOMICA
@@ -249,6 +263,7 @@ function getSelectPregunta(alternativas, pregunta) {
     alternativas.forEach(function (alternativa, index) {
         if (index == 0) {
             select += getOptionSelectDefault();
+            select += getOptionSelect(alternativa);
         } else {
             select += getOptionSelect(alternativa);
         }
@@ -400,6 +415,23 @@ function navigateProcedimientoAndPreguntas(opcion) {
                     document.querySelector("#div-regresar-selected-evaluation-psicologico").style.display = "block";
                     //VOLVEMOS A LISTAR
                     $('#modalCargandoProcedimientoPsicologico').modal('show');
+                    break;
+            }
+            break;
+        case "odontologia":
+            switch (opcion) {
+                case "preguntas":
+                    document.querySelector("#div-evaluaciones-odontologia").style.display = "none";
+                    document.querySelector("#div-preguntas-evaluacion-odontologia").style.display = "flex";
+                    document.querySelector("#div-regresar-selected-evaluation-odontologia").style.display = "none";
+                    break;
+                default:
+                    //HOME, LISTA DE EVALUACIONES
+                    document.querySelector("#div-evaluaciones-odontologia").style.display = "flex";
+                    document.querySelector("#div-preguntas-evaluacion-odontologia").style.display = "none";
+                    document.querySelector("#div-regresar-selected-evaluation-odontologia").style.display = "block";
+                    //VOLVEMOS A LISTAR
+                    $('#modalCargandoProcedimientoOdontologia').modal('show');
                     break;
             }
             break;

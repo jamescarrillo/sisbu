@@ -31,7 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     document.querySelector("#btnIrConfiguraciones").onclick = function () {
-        navigateHome("configuraciones");
+        showAlertTopEnd("warning", "Esta opción no esta disponible");
+        //navigateHome("configuraciones");
     };
 
     document.querySelector("#btn-regresar-principal").onclick = function () {

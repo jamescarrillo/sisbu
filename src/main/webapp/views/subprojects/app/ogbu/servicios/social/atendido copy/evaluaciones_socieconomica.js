@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#modalCargandoEvaluacionAtendidoSocioeconomico").on('shown.bs.modal', function () {
         processAjaxEvaluacionAtendidoSocieconomico();
     });
-  
+
 
 
 
@@ -110,6 +110,7 @@ function processAjaxEvaluacionAtendidoSocieconomico() {
  * FUNCTIONS PREGUNTAS DINAMICAS
  */
 
+/*
 
 function getAlternativasPregunta(pregunta) {
     let alternativas_pregunta = [];
@@ -187,6 +188,7 @@ function getSelectPregunta(alternativas, pregunta) {
     alternativas.forEach(function (alternativa, index) {
         if (index == 0) {
             select += getOptionSelectDefault();
+            select += getOptionSelect(alternativa);
         } else {
             select += getOptionSelect(alternativa);
         }
@@ -222,6 +224,7 @@ function getOptionSelect(alternativa) {
 function getOptionSelectDefault(text_default = "Respuesta. . .") {
     return `<option value="-1">${text_default}</option>`;
 }
+ */
 
 function addEvents() {
     document.querySelector("#btn-cancelar-evaluation-socioeconomico").onclick = function () {
@@ -264,7 +267,7 @@ function addEvents() {
                     //CARGAMOS LA LISTA DE RESPUESTAS
                     if (loadRespuestasProcedimiento()) {
                         //MANDAMOS A LA BD
-                 $('#modalCargandoEvaluacionAtendidoSocioeconomico').modal('show');
+                        $('#modalCargandoEvaluacionAtendidoSocioeconomico').modal('show');
                     }
                 }
             }
@@ -318,7 +321,6 @@ function openPreguntas(idcontent_preguntas_evaluacion) {
     document.querySelector("#" + idcontent_preguntas_evaluacion).innerHTML = "";
     let preguntas_checkboxs = [];
     preguntas_procedimiento.forEach(pregunta => {
-
         switch (pregunta.tipo_respuesta) {
             case 1:
                 document.querySelector("#" + idcontent_preguntas_evaluacion).innerHTML += createLiInputTextPregunta(pregunta);

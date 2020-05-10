@@ -54,9 +54,8 @@ function processAjaxIntentoEvaluacion() {
                     case "obstetricia":
                         openPreguntas('content-preguntas-evaluacion-obstetricia');
                         break;
-                    default:
-                        //socioeconomico
-                        openPreguntas('content-preguntas-evaluacion-socioeconomico');
+                    case "odontologia":
+                        openPreguntas('content-preguntas-evaluacion-odontologia');
                         break;
                 }
             } else {

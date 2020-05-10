@@ -75,7 +75,7 @@
                     <li class="nav-item">
                         <a id="buttonFiliacion" class="nav-link show active" data-toggle="tab" href="#tab-pane-15"
                             role="tab" aria-controls="tab-pane-15" aria-="true">
-                            DATOS DE FILIACIï¿½N</a>
+                            DATOS DE FILIACIÓN</a>
                     </li>
                     <li class="nav-item">
                         <a id="buttonTriaje" class="nav-link" data-toggle="tab" href="#tab-pane-17" role="tab"
@@ -141,14 +141,14 @@
 
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
-                                <label for="txtCodigoPaciente">Cï¿½DIGO</label>
+                                <label for="txtCodigoPaciente">CÓDIGO</label>
                                 <input disabled type="text" class="form-control form-control-sm" id="txtCodigoPaciente"
                                     placeholder="CODIGO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
-                                <label for="txtNumeroDocumentoPaciente">Nï¿½ DOCUMENTO</label>
+                                <label for="txtNumeroDocumentoPaciente">N° DOCUMENTO</label>
                                 <input disabled type="text" class="form-control form-control-sm"
                                     id="txtNumeroDocumentoPaciente" placeholder="Nï¿½ DOCUMENTO">
                             </div>
@@ -239,7 +239,7 @@
                                 <thead class="bg-primary" style="line-height: 0.4;border-bottom-style: hidden;">
                                     <tr>
                                         <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">
-                                            ACCIï¿½N</th>
+                                            ACCIÓN</th>
                                         <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">
                                             ATENDIDO</th>
                                         <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">
@@ -282,10 +282,10 @@
 
                             <div class="col-lg-4 col-sm-4">
                                 <div class="form-group ">
-                                    <label for="txtPosicionPaciente">POSICIï¿½N</label>
+                                    <label for="txtPosicionPaciente">POSICIÓN</label>
                                     <select class="form-control form-control-sm " id="txtPosicionPaciente">
                                         <option value="-1">seleccione...</option>
-                                        <option value="1">DECï¿½BITO DORSAL</option>
+                                        <option value="1">DECÚBITO DORSAL</option>
                                         <option value="3">SENTADO</option>
                                     </select>
                                 </div>
@@ -338,9 +338,9 @@
 
                             <div class="col-lg-3 col-sm-4">
                                 <div class="form-group ">
-                                    <label for="txtTPaciente">Tï¿½</label>
+                                    <label for="txtTPaciente">T°</label>
                                     <input type="text" class="form-control form-control-sm" id="txtTPaciente"
-                                        placeholder="Tï¿½">
+                                        placeholder="T°">
                                 </div>
                             </div>
 

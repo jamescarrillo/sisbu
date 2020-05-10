@@ -96,9 +96,9 @@ function processAjaxAtendido() {
                 "tipo_colegio": document.querySelector("#txtTipoColegioAtendido").value,
                 "tipo_documento": document.querySelector("#txtTipoDocumentoAtendido").value,
                 "modalidad_ingreso": document.querySelector("#txtModalidadAtendido").value,
-                "escuela": { "idescuela": escuelaSelected.idescuela },
-                "distrito_actual": { "iddistrito": distritoActualSelected.iddistrito },
-                "distrito_procedencia": { "iddistrito": distritoProcedenciaSelected.iddistrito },
+                "escuela": {"idescuela": escuelaSelected.idescuela},
+                "distrito_actual": {"iddistrito": distritoActualSelected.iddistrito},
+                "distrito_procedencia": {"iddistrito": distritoProcedenciaSelected.iddistrito},
             };
             if (beanRequestAtendido.operation == "update") {
                 json.idatendido = atendidoSelected.idatendido;
@@ -146,7 +146,7 @@ function toListAtendido(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-            `
+                `
                 <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
@@ -185,7 +185,7 @@ function toListAtendido(beanPagination) {
         document.querySelector("#tbodyAtendido").innerHTML += row;
         beanPagination.list.forEach(atendido => {
             row =
-                `
+                    `
                 <div class="dt-widget__item border-success pl-5 pt-2 pb-2 m-0">
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
@@ -249,11 +249,11 @@ function toListAtendido(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-            beanPagination.count_filter,
-            parseInt(document.querySelector("#sizePageAtendido").value),
-            document.querySelector("#pageAtendido"),
-            $('#modalCargandoAtendido'),
-            $('#paginationAtendido'));
+                beanPagination.count_filter,
+                parseInt(document.querySelector("#sizePageAtendido").value),
+                document.querySelector("#pageAtendido"),
+                $('#modalCargandoAtendido'),
+                $('#paginationAtendido'));
         addEventsAtendidoes();
 
 
@@ -305,9 +305,12 @@ function addEventsAtendidoes() {
         btn.onclick = function () {
             atendidoSelected = findByAtendido(btn.getAttribute('idatendido'));
             if (atendidoSelected != undefined) {
-                repor_preguntas = "N";
-                repor_familiares = "N";
-                $('#modalCargandoVDYA').modal("show");
+                showAlertTopEnd('warning', 'Constancia no disponible');
+                /*
+                 repor_preguntas = "N";
+                 repor_familiares = "N";
+                 $('#modalCargandoVDYA').modal("show");
+                 */
             } else {
                 showAlertTopEnd('warning', 'No se encontró el Atendido ');
             }

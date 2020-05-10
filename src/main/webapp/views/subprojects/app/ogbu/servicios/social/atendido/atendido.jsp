@@ -328,7 +328,7 @@
                                     <hr class="mt-1">
                                 </div>
                                 <div class="col-12 mb-4">
-                                    <label for="slctTienesHijos">ï¿½Tienes hijo(s)?</label>
+                                    <label for="slctTienesHijos">Tienes hijo(s)?</label>
                                     <div class="input-group">
                                         <select class="form-control form-control-sm sisbu-cursor-mano"
                                             id="slctTienesHijos">
@@ -358,7 +358,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group">
-                                        <label for="slctAnioIngresoFichaSocioeconomica">Aï¿½O DE INGRESO</label>
+                                        <label for="slctAnioIngresoFichaSocioeconomica">AÑO DE INGRESO</label>
                                         <select class="form-control form-control-sm sisbu-cursor-mano"
                                             id="slctAnioIngresoFichaSocioeconomica">
                                         </select>
@@ -392,7 +392,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group">
-                                        <label for="slctTipoCreditos">ï¿½TIPO DE CREDITOS?</label>
+                                        <label for="slctTipoCreditos">TIPO DE CREDITOS?</label>
                                         <select class="form-control form-control-sm sisbu-cursor-mano"
                                             id="slctTipoCreditos">
                                             <option value="-1">Seleccionar...</option>
@@ -403,7 +403,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group">
-                                        <label for="txtCanCreditosMatriculados">Nï¿½ CRï¿½DITOS MATRICULADOS
+                                        <label for="txtCanCreditosMatriculados">N° CREDITOS MATRICULADOS
                                         </label>
                                         <input type="number" class="form-control form-control-sm"
                                             id="txtCanCreditosMatriculados" maxlength="3">
@@ -411,7 +411,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group">
-                                        <label for="txtNumCursosDesaprobadosFichaSocieconomica">Nï¿½ CURSOS DESAPROBADOS
+                                        <label for="txtNumCursosDesaprobadosFichaSocieconomica">N° CURSOS DESAPROBADOS
                                             <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover"
                                                 data-trigger="hover" data-placement="top" title=""
                                                 data-content="Indica la cantidad de cursos desaprobados en todo tu historial acadï¿½mico. Si no tienes ningï¿½n curso ingresa 0"
@@ -423,7 +423,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group">
-                                        <label for="txtNumCursosAbandonadosFichaSocieconomica">Nï¿½ CURSOS ABANDONADOS
+                                        <label for="txtNumCursosAbandonadosFichaSocieconomica">N° CURSOS ABANDONADOS
                                             <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover"
                                                 data-trigger="hover" data-placement="top" title=""
                                                 data-content="Indica la cantidad de cursos abandonados en todo tu historial acadï¿½mico. Si no tienes ningï¿½n curso ingresa 0"
@@ -491,7 +491,7 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="form-group">
-                                        <label for="txtRelacionPadresFichaSocieconomica">RELACIï¿½N DE PADRES</label>
+                                        <label for="txtRelacionPadresFichaSocieconomica">RELACIÓN DE PADRES</label>
                                         <select class="form-control form-control-sm sisbu-cursor-mano"
                                             id="txtRelacionPadresFichaSocieconomica">
                                             <option value="-1">Seleccionar...</option>
@@ -504,7 +504,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-8 mb-4">
-                                    <label for="slctConQuienViveFichaSocieconomica">ï¿½CON QUIEN VIVES?</label>
+                                    <label for="slctConQuienViveFichaSocieconomica">¿CON QUIEN VIVES?</label>
                                     <div class="input-group">
                                         <select class="form-control form-control-sm sisbu-cursor-mano"
                                             id="slctConQuienViveFichaSocieconomica">
@@ -515,7 +515,7 @@
                                             <option value="HERMANOS">HERMANOS</option>
                                             <option value="CONYUQUE">CONYUQUE</option>
                                             <option value="SOLO(A)">SOLO(A)</option>
-                                            <option value="OTRO">OTRA OPCIï¿½N</option>
+                                            <option value="OTRO">OTRA OPCIÓN</option>
                                         </select>
                                         <input style="display: none" type="text"
                                             class="form-control form-control-sm text-uppercase"
@@ -539,19 +539,19 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <h6 class="text-primary mb-0">ASPECTO ECONï¿½MICO</h6>
+                                    <h6 class="text-primary mb-0">ASPECTO ECONÓMICO</h6>
                                     <hr class="mt-1">
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="slctDependenciaEconomicaFichaSocioeconomica">DEPENDENCIA
-                                            ECONï¿½MICA</label>
+                                            ECONÓMICA</label>
                                         <select class="form-control form-control-sm"
                                             id="slctDependenciaEconomicaFichaSocioeconomica">
                                             <option value="-1">Seleccionar. . .</option>
                                             <option value="AMBOS PADRES">AMBOS PADRES</option>
-                                            <option value="SOLO PAPï¿½">SOLO PAPï¿½</option>
-                                            <option value="SOLO MAMï¿½">SOLO MAMï¿½</option>
+                                            <option value="SOLO PAPÁ">SOLO PAPÁ</option>
+                                            <option value="SOLO MAMÁ">SOLO MAMÁ</option>
                                             <option value="HERMANOS">HERMANOS</option>
                                             <option value="TIO">TIO</option>
                                             <option value="TIA">TIA</option>
@@ -641,7 +641,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="slctEstadoConstruccionFichaSocioeconomica">ESTADO DE
-                                            CONSTRUCCIï¿½N</label>
+                                            CONSTRUCCIÓN</label>
                                         <select class="form-control form-control-sm"
                                             id="slctEstadoConstruccionFichaSocioeconomica">
                                             <option value="-1">Seleccionar. . .</option>
@@ -683,7 +683,7 @@
                                                 <input type="checkbox" class="custom-control-input check-servicio-fs"
                                                     id="checkboxTelefonoService" service="TELEFONO">
                                                 <label class="custom-control-label sisbu-cursor-mano"
-                                                    for="checkboxTelefonoService">Telï¿½fono</label>
+                                                    for="checkboxTelefonoService">Teléfono</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-2 col-md-3 col-sm-4">
@@ -698,7 +698,7 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="form-group">
-                                        <label for="slctServicioInternetFichaSocioeconomica">ï¿½CUENTAS CON SERVICIO DE
+                                        <label for="slctServicioInternetFichaSocioeconomica">¿CUENTAS CON SERVICIO DE
                                             INTERNET?</label>
                                         <select class="form-control form-control-sm"
                                             id="slctServicioInternetFichaSocioeconomica">
@@ -710,7 +710,7 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="form-group">
-                                        <label for="slctTieneLaptopFichaSocioeconomica">ï¿½CUENTAS CON LAPTOP O
+                                        <label for="slctTieneLaptopFichaSocioeconomica">¿CUENTAS CON LAPTOP O
                                             PC?</label>
                                         <select class="form-control form-control-sm"
                                             id="slctTieneLaptopFichaSocioeconomica">
@@ -722,7 +722,7 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="form-group">
-                                        <label for="slctCelPlanDatosFichaSocioeconomica">ï¿½TIENES UN CEL. CON PLAN DE
+                                        <label for="slctCelPlanDatosFichaSocioeconomica">¿TIENES UN CEL. CON PLAN DE
                                             DATOS?</label>
                                         <select class="form-control form-control-sm"
                                             id="slctCelPlanDatosFichaSocioeconomica">
@@ -757,7 +757,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
-                                    <label for="slctPresentaDiscapacidad">ï¿½TIENES ALGUNA DISCAPACIDAD?</label>
+                                    <label for="slctPresentaDiscapacidad">¿TIENES ALGUNA DISCAPACIDAD?</label>
                                     <div class="input-group">
                                         <select class="form-control form-control-sm" id="slctPresentaDiscapacidad">
                                             <option value="-1">Seleccionar. . .</option>

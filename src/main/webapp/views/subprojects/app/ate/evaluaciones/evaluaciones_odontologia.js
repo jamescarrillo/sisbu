@@ -4,26 +4,26 @@
  * and open the template in the editor.
  */
 
-var beanRequestProcedimientoSocioeconomico = new BeanRequest();
+var beanRequestProcedimientoOdontologia = new BeanRequest();
 
-var beanEvaluacionAtendidoSocieconomico;
+var beanEvaluacionAtendidoOdontologia;
 
 document.addEventListener("DOMContentLoaded", function () {
 
     //INICIALIZANDO VARIABLES DE SOLICITUD
-    beanRequestProcedimientoSocioeconomico.entity_api = "api/detalle-procedimiento-ciclo";
-    beanRequestProcedimientoSocioeconomico.operation = "paginate-evaluaciones-ciclo";
-    beanRequestProcedimientoSocioeconomico.type_request = "GET";
+    beanRequestProcedimientoOdontologia.entity_api = "api/detalle-procedimiento-ciclo";
+    beanRequestProcedimientoOdontologia.operation = "paginate-evaluaciones-ciclo";
+    beanRequestProcedimientoOdontologia.type_request = "GET";
 
-    $("#modalCargandoProcedimientoSocioeconomico").on('shown.bs.modal', function () {
-        processAjaxProcedimientoSocioeconomico();
+    $("#modalCargandoProcedimientoOdontologia").on('shown.bs.modal', function () {
+        processAjaxProcedimientoOdontologia();
     });
 
-    $("#modalCargandoEvaluacionAtendidoSocioeconomico").on('shown.bs.modal', function () {
-        processAjaxEvaluacionAtendidoSocieconomico();
+    $("#modalCargandoEvaluacionAtendidoOdontologia").on('shown.bs.modal', function () {
+        processAjaxEvaluacionAtendidoOdontologia();
     });
 
-    document.querySelector("#btn-cancelar-evaluation-socioeconomico").onclick = function () {
+    document.querySelector("#btn-cancelar-evaluation-odontologia").onclick = function () {
         //CONFIRMACION
         Swal.fire({
             title: '¿Estás seguro de salir?',
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     };
 
-    document.querySelector("#btn-finalizar-evaluation-socioeconomico").onclick = function () {
+    document.querySelector("#btn-finalizar-evaluation-odontologia").onclick = function () {
         //CONFIRMACION
         Swal.fire({
             title: '¿Estás seguro de finalizar?',
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     //CARGAMOS LA LISTA DE RESPUESTAS
                     if (loadRespuestasProcedimiento()) {
                         //MANDAMOS A LA BD
-                        $('#modalCargandoEvaluacionAtendidoSocioeconomico').modal('show');
+                        $('#modalCargandoEvaluacionAtendidoOdontologia').modal('show');
                     }
                 }
             }
@@ -67,38 +67,38 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 });
 
-function processAjaxProcedimientoSocioeconomico() {
+function processAjaxProcedimientoOdontologia() {
     let parameters_pagination = "";
-    let url_request = getHostAPI() + beanRequestProcedimientoSocioeconomico.entity_api + "/" + beanRequestProcedimientoSocioeconomico.operation;
-    switch (beanRequestProcedimientoSocioeconomico.operation) {
+    let url_request = getHostAPI() + beanRequestProcedimientoOdontologia.entity_api + "/" + beanRequestProcedimientoOdontologia.operation;
+    switch (beanRequestProcedimientoOdontologia.operation) {
         default:
             //7
-            parameters_pagination += "?idarea=7";
+            parameters_pagination += "?idarea=3";
             parameters_pagination += "&idusuario=" + Cookies.getJSON('sisbu_user').idusuario;
             url_request += parameters_pagination;
             break;
     }
     $.ajax({
         url: url_request,
-        type: beanRequestProcedimientoSocioeconomico.type_request,
+        type: beanRequestProcedimientoOdontologia.type_request,
         headers: {
             'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanProcedimientoCiclo) {
-        $('#modalCargandoProcedimientoSocioeconomico').modal("hide");
+        $('#modalCargandoProcedimientoOdontologia').modal("hide");
         beanProcedimientoSelectedGlobal = beanProcedimientoCiclo;
-        procedimiento_menu_selected = "socioeconomico";
-        toListProcedimientoSocioeconomico();
+        procedimiento_menu_selected = "odontologia";
+        toListProcedimientoOdontologia();
     }).fail(function (jqXHR, textStatus, errorThrown) {
-        $('#modalCargandoProcedimientoSocioeconomico').modal("hide");
+        $('#modalCargandoProcedimientoOdontologia').modal("hide");
         showAlertErrorRequest();
     });
 }
 
-function toListProcedimientoSocioeconomico() {
-    document.querySelector("#div-content-evaluacion-socioeconomico").innerHTML = "";
+function toListProcedimientoOdontologia() {
+    document.querySelector("#div-content-evaluacion-odontologia").innerHTML = "";
     if (beanProcedimientoSelectedGlobal.procedimientos.length > 0) {
         let card;
         let card_extra;
@@ -145,18 +145,18 @@ function toListProcedimientoSocioeconomico() {
                     ${card_extra}
                 </div>
             `;
-            document.querySelector("#div-content-evaluacion-socioeconomico").innerHTML += card;
+            document.querySelector("#div-content-evaluacion-odontologia").innerHTML += card;
         });
-        addEventsProcedimientoSocioeconomico();
+        addEventsProcedimientoOdontologia();
         $('[data-toggle="tooltip"]').tooltip();
-        document.querySelector("#div-preguntas-evaluacion-socioeconomico").style.display = "none";
-        setUpdateGraficaProcedimientoSocioeconomico();
+        document.querySelector("#div-preguntas-evaluacion-odontologia").style.display = "none";
+        setUpdateGraficaProcedimientoOdontologia();
     } else {
         showAlertTopEnd('warning', 'Lo sentimos, no hay ninguna evaluación configurada para este ciclo. Acerquese a la oficina correspondiente e indique el mensaje.', 10000);
     }
 }
 
-function addEventsProcedimientoSocioeconomico() {
+function addEventsProcedimientoOdontologia() {
     document.querySelectorAll(".btn-realizar-procedimiento").forEach(btn => {
         btn.onclick = function () {
             procedimientoSelectedGlobal = findProcedimientoForId(this.getAttribute('idprocedimiento'));
@@ -169,9 +169,9 @@ function addEventsProcedimientoSocioeconomico() {
     });
 }
 
-function setUpdateGraficaProcedimientoSocioeconomico() {
-    if ($('#estimation-socioeconomico').length) {
-        document.querySelector("#estimation-socioeconomico").setAttribute('data-fill', beanProcedimientoSelectedGlobal.procedimientos.length);
+function setUpdateGraficaProcedimientoOdontologia() {
+    if ($('#estimation-odontologia').length) {
+        document.querySelector("#estimation-odontologia").setAttribute('data-fill', beanProcedimientoSelectedGlobal.procedimientos.length);
         var estimation_data = {
             labels: [
                 "Realizados",
@@ -192,7 +192,7 @@ function setUpdateGraficaProcedimientoSocioeconomico() {
             ]
         };
 
-        new Chart(document.getElementById('estimation-socioeconomico'), {
+        new Chart(document.getElementById('estimation-odontologia'), {
             type: 'doughnut',
             data: estimation_data,
             options: {
@@ -203,25 +203,25 @@ function setUpdateGraficaProcedimientoSocioeconomico() {
                 }
             }
         });
-        document.querySelector("#lblNumProcedimientosSocioeconomico").innerHTML = beanProcedimientoSelectedGlobal.procedimientos.length;
-        document.querySelector("#lblNumRespondidasSocioeconomico").innerHTML = beanProcedimientoSelectedGlobal.procedimientos_realizados.length;
+        document.querySelector("#lblNumProcedimientosOdontologia").innerHTML = beanProcedimientoSelectedGlobal.procedimientos.length;
+        document.querySelector("#lblNumRespondidasOdontologia").innerHTML = beanProcedimientoSelectedGlobal.procedimientos_realizados.length;
         if (beanProcedimientoSelectedGlobal.procedimientos_realizados.length == 1) {
-            document.querySelector("#lblNumRespondidasSocioeconomico").innerHTML += " Realizada";
+            document.querySelector("#lblNumRespondidasOdontologia").innerHTML += " Realizada";
         } else {
-            document.querySelector("#lblNumRespondidasSocioeconomico").innerHTML += " Realizadas";
+            document.querySelector("#lblNumRespondidasOdontologia").innerHTML += " Realizadas";
         }
-        document.querySelector("#lblNumPendientesSocioeconomico").innerHTML = beanProcedimientoSelectedGlobal.procedimientos.length - beanProcedimientoSelectedGlobal.procedimientos_realizados.length;
+        document.querySelector("#lblNumPendientesOdontologia").innerHTML = beanProcedimientoSelectedGlobal.procedimientos.length - beanProcedimientoSelectedGlobal.procedimientos_realizados.length;
         if (beanProcedimientoSelectedGlobal.procedimientos.length - beanProcedimientoSelectedGlobal.procedimientos_realizados.length == 1) {
-            document.querySelector("#lblNumPendientesSocioeconomico").innerHTML += " Pendiente";
+            document.querySelector("#lblNumPendientesOdontologia").innerHTML += " Pendiente";
         } else {
-            document.querySelector("#lblNumPendientesSocioeconomico").innerHTML += " Pendientes";
+            document.querySelector("#lblNumPendientesOdontologia").innerHTML += " Pendientes";
         }
     }
 }
 
-function processAjaxEvaluacionAtendidoSocieconomico() {
+function processAjaxEvaluacionAtendidoOdontologia() {
     fecha_finProcedimiento = getTimesTampJavaScriptCurrent();
-    beanEvaluacionAtendidoSocieconomico = {
+    beanEvaluacionAtendidoOdontologia = {
         "evaluacion_atendido": {
             "idevaluacion_atendido": 0,
             "atendido": {
@@ -236,7 +236,7 @@ function processAjaxEvaluacionAtendidoSocieconomico() {
         },
         "list_respuestas": list_respuestas_evaluacion
     };
-    //console.log(beanEvaluacionAtendidoSocieconomico);
+    //console.log(beanEvaluacionAtendidoOdontologia);
     let url_request = getHostAPI() + "api/evaluacion/atendido/add";
     $.ajax({
         url: url_request,
@@ -244,11 +244,11 @@ function processAjaxEvaluacionAtendidoSocieconomico() {
         headers: {
             'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
         },
-        data: JSON.stringify(beanEvaluacionAtendidoSocieconomico),
+        data: JSON.stringify(beanEvaluacionAtendidoOdontologia),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrud) {
-        $('#modalCargandoEvaluacionAtendidoSocioeconomico').modal("hide");
+        $('#modalCargandoEvaluacionAtendidoOdontologia').modal("hide");
         //console.log(beanCrud);
         if (beanCrud.messageServer != undefined) {
             if (beanCrud.messageServer.toLowerCase() == "ok") {
@@ -262,7 +262,7 @@ function processAjaxEvaluacionAtendidoSocieconomico() {
             showAlertTopEnd('warning', "No se completó la finalización, ocurrió un error interno. Inténtelo mas tarde :)", 6000);
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
-        $('#modalCargandoEvaluacionAtendidoSocioeconomico').modal("hide");
+        $('#modalCargandoEvaluacionAtendidoOdontologia').modal("hide");
         showAlertTopEnd('error', 'Oh! A ocurrido un error interno, intentalo mas tarde :/', 6000);
         //showAlertErrorRequest();
     });

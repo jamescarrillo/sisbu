@@ -152,14 +152,14 @@ function processAjaxCita() {
         } else {
             let fecha_programada = document.querySelector("#txtFechaProgramadaDateCita").value + " " + document.querySelector("#txtFechaProgramadaTimeCita").value + ":00";
             let fecha_aceptacion = getTimesTampJavaScriptCurrent();
-            citaSelected.estado_cita = document.querySelector("#txtEstadoCita").value;
-            citaSelected.estado_solicitud = "ACE";
             if (beanRequestCita.operation == "add") {
                 citaSelected = {
                     "idcita": 0
                 }
                 citaSelected.fecha_solicitud = fecha_programada;
             }
+            citaSelected.estado_cita = document.querySelector("#txtEstadoCita").value;
+            citaSelected.estado_solicitud = "ACE";
             json = {
                 "fecha_solicitud": citaSelected.fecha_solicitud,
                 "fecha_aceptacion": fecha_aceptacion,
