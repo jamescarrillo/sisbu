@@ -353,6 +353,16 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/servicios/enfermeria/cita/cita.js" + version_project
         });
         this.list_resources.add(resource);
+        ///reportes
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/enfermeria/reportes");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/enfermeria/reportes/paciente.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/enfermeria/reportes/paciente.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project
+        });
+        this.list_resources.add(resource);
 
         //MEDICO
         ///pacientes
@@ -372,6 +382,16 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/medicina/cita/cita.js" + version_project
         });
         this.list_resources.add(resource);
+        ///reportes
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/medicina/reportes");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/medicina/reportes/paciente.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/medicina/reportes/paciente.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project
+        });
+        this.list_resources.add(resource);
 
         //ODONTOLOGIA
         ///pacientes
@@ -389,6 +409,36 @@ public class FilterURL implements Filter {
         resource.setPath("/views/subprojects/app/ogbu/servicios/odontologia/cita/cita.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/servicios/odontologia/cita/cita.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///fichas
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/odontologia/fichas");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/odontologia/fichas/evaluacion.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/evaluacion.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/pregunta.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/pregunta_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/critico_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/inconsistencia_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/alternativa.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/procedimiento_ciclo.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/detalle_procedimiento_ciclo.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/procedimiento_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/area_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/subarea_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/alternativa_global.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/ciclo_academico.js" + version_project
+        });
+        this.list_resources.add(resource);
+        ///reportes
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/odontologia/reportes");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/odontologia/reportes/paciente.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/odontologia/reportes/paciente.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project
         });
         this.list_resources.add(resource);
 
@@ -511,6 +561,16 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/subarea_psi.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/alternativa_global.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/ciclo_academico.js" + version_project
+        });
+        this.list_resources.add(resource);
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/psicopedagogia/reportes");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/psicopedagogia/reportes/paciente.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/reportes/procedimiento_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/reportes/paciente.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
+            "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project
         });
         this.list_resources.add(resource);
         ///usuarios
@@ -783,73 +843,6 @@ public class FilterURL implements Filter {
         });
         this.list_resources.add(resource);
         //INFORMES
-        //REPORTES
-        //PSICOLOGIA
-        ///pacientes
-        resource = new Resource();
-        resource.setUrl("/app/ogbu/servicios/psicopedagogia/informes/reportes/pacientes");
-        resource.setPath("/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/paciente.jsp");
-        resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/procedimiento_c.js" + version_project,
-            "/views/subprojects/app/ogbu/informes/reportes/psicopedagogia/pacientes/paciente.js" + version_project,
-              "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
-            "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project
-        });
-        this.list_resources.add(resource);
-        //ENFERMERIA
-        ///pacientes
-        resource = new Resource();
-        resource.setUrl("/app/ogbu/servicios/enfermeria/informes/reportes/pacientes");
-        resource.setPath("/views/subprojects/app/ogbu/informes/reportes/enfermeria/pacientes/paciente.jsp");
-        resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/informes/reportes/enfermeria/pacientes/paciente.js" + version_project,
-            "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
-            "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project
-        });
-        this.list_resources.add(resource);
-        //MEDICINA
-        ///pacientes
-        resource = new Resource();
-        resource.setUrl("/app/ogbu/servicios/medicina/informes/reportes/pacientes");
-        resource.setPath("/views/subprojects/app/ogbu/informes/reportes/medicina/pacientes/paciente.jsp");
-        resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/informes/reportes/medicina/pacientes/paciente.js" + version_project,
-             "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
-            "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project
-        });
-        this.list_resources.add(resource);
-
-        //ODONTOLOGIA
-        ///fichas
-        resource = new Resource();
-        resource.setUrl("/app/ogbu/servicios/odontologia/fichas");
-        resource.setPath("/views/subprojects/app/ogbu/servicios/odontologia/fichas/evaluacion.jsp");
-        resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/evaluacion.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/pregunta.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/pregunta_c.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/critico_psi.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/inconsistencia_psi.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/alternativa.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/procedimiento_ciclo.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/detalle_procedimiento_ciclo.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/procedimiento_c.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/area_psi.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/subarea_psi.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/alternativa_global.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/ciclo_academico.js" + version_project
-        });
-        this.list_resources.add(resource);
-        ///pacientes
-        resource = new Resource();
-        resource.setUrl("/app/ogbu/servicios/odontologia/informes/reportes/pacientes");
-        resource.setPath("/views/subprojects/app/ogbu/informes/reportes/odontologia/pacientes/paciente.jsp");
-        resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/informes/reportes/odontologia/pacientes/paciente.js" + version_project,
-          "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
-            "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project
-        });
-        this.list_resources.add(resource);
 
     }
 
