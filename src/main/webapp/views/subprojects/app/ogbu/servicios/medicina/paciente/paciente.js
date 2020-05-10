@@ -237,7 +237,7 @@ function toListPaciente(beanPagination) {
         let row;
         row =
             `
-               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
+               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2 pr-1">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
                         <p class="mb-0 text-truncate ">
@@ -276,7 +276,7 @@ function toListPaciente(beanPagination) {
         beanPagination.list.forEach(atendido => {
             row =
                 `
-                 <div class="dt-widget__item border-success pl-5 m-0">
+                 <div class="dt-widget__item border-bottom  pl-5 m-0 pr-1 pt-2 pb-2">
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
                       

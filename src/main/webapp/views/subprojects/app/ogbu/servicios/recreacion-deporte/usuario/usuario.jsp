@@ -5,9 +5,10 @@
 --%>
 
 <div class="row">
-    <div class="col-xl-12">
+    <div class="col-xl-12 p-0">
         <!-- Card -->
-        <div class="card overflow-hidden" id="ListaUsuario">
+
+        <div class="overflow-hidden" id="ListaUsuario">
             <!-- Card Header -->
             <div class="card-header bg-transparent">
                 <h4 class="mb-0" id="titleManagerUsuario">[ 0 ] USUARIOS</h4>
@@ -15,28 +16,29 @@
             </div>
             <!-- /card header -->
             <!-- Card Body -->
-            <div class="card-body pt-0">
+            <div class="card-body p-0">
                 <form id="FrmUsuario">
-                    <div class="input-group search-box" style="max-width: 100%;">
-                        <input type="search" id="txtFilterUsuario" class="form-control form-control-sm" placeholder="FILTRO. . .">
-                        <div class="input-group-append">
-                            <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                            <button type="submit" class="btn btn-primary btn-sm "><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                        </div>
+                    <div class="input-group search-box mw-100">
+                        <input type="search" id="txtFilterUsuario" class="form-control form-control-sm"
+                            placeholder="Filtrar Usuario. . ." data-toggle="tooltip" data-original-title="Buscar"
+                            data-placement="left">
+                        <button type="submit" class="search-icon"><i class="icon icon-search icon-fw"></i></button>
                     </div>
                 </form>
                 <!-- Card -->
                 <div class="dt-card mt-4">
                     <!-- Card Body -->
-                    <div class="dt-card__body p-0  " >
-                        <!-- Widget -->
-                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                             id="tbodyUsuario">
+                    <div class="dt-card__body p-0  ">
+                        <div class="w-100 ps-custom-scrollbar mb-0 ps pb-5">
+                            <!-- Widget -->
+                            <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                                id="tbodyUsuario" style="min-width: 725px;">
+                            </div>
+                            <!-- /widget -->
                         </div>
-                        <!-- /widget -->
-                        <!-- /card body -->
-                    </div>
 
+                    </div>
+                    <!-- /card body -->
                 </div>
                 <!-- /card -->
                 <div class="row mt-2">
@@ -51,7 +53,7 @@
                         <nav aria-label="Page navigation example">
                             <ul id="paginationUsuario" class="pagination pagination-sm justify-content-end">
                             </ul>
-                        </nav>  
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -66,23 +68,24 @@
                 <!-- Tab Navigation -->
                 <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
                     <li class="pr-2">
-                        <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar" class="btn btn-outline-primary btn-sm dt-avatar" > <i class="icon icon-reply icon-lg"></i></button>
+                        <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar"
+                            class="btn btn-outline-primary btn-sm dt-avatar"> <i
+                                class="icon icon-reply icon-lg"></i></button>
                     </li>
 
                     <li class="nav-item">
-                        <a id="buttonFiliacion" class="nav-link show active" data-toggle="tab" 
-                           href="#tab-pane-15" role="tab" aria-controls="tab-pane-15"
-                           aria-="true">
-                            DATOS DE FILIACIÓN</a>
+                        <a id="buttonFiliacion" class="nav-link show active" data-toggle="tab" href="#tab-pane-15"
+                            role="tab" aria-controls="tab-pane-15" aria-="true">
+                            DATOS DE FILIACIï¿½N</a>
                     </li>
                     <li class="nav-item">
-                        <a id="buttonDeporte" class="nav-link" data-toggle="tab" href="#OpenListaDeporteDetalle" 
-                           role="tab" aria-controls="OpenListaDeporteDetalle" aria-="false">
+                        <a id="buttonDeporte" class="nav-link" data-toggle="tab" href="#OpenListaDeporteDetalle"
+                            role="tab" aria-controls="OpenListaDeporteDetalle" aria-="false">
                             DEPORTES</a>
                     </li>
                     <li class="nav-item">
-                        <a id="buttonAficion" class="nav-link" data-toggle="tab" href="#OpenListaAficionDetalle" 
-                           role="tab" aria-controls="OpenListaAficionDetalle" aria-="false">
+                        <a id="buttonAficion" class="nav-link" data-toggle="tab" href="#OpenListaAficionDetalle"
+                            role="tab" aria-controls="OpenListaAficionDetalle" aria-="false">
                             AFICIONES</a>
                     </li>
                 </ul>
@@ -100,9 +103,9 @@
                             <div class="form-group">
                                 <label for="txtTipoDocumentoUsuario">TIPO DE DOCUMENTO</label>
                                 <select disabled class="form-control form-control-sm" id="txtTipoDocumentoUsuario">
-                                    <option   value="1">DNI</option>
-                                    <option  value="2">CARNET DE EXTRANJERIA</option>
-                                    <option  value="3">OTRO</option>
+                                    <option value="1">DNI</option>
+                                    <option value="2">CARNET DE EXTRANJERIA</option>
+                                    <option value="3">OTRO</option>
                                 </select>
                             </div>
                         </div>
@@ -110,11 +113,11 @@
                             <div class="form-group">
                                 <label for="txtUsuarioUsuario">TIPO DE USUARIO</label>
                                 <select disabled class="form-control form-control-sm" id="txtUsuarioUsuario">
-                                    <option   value="1">ALUMNO</option>
-                                    <option  value="2">DOCENTE</option>
-                                    <option  value="3">ADMINISTRATIVO</option>
-                                    <option  value="4">FAMILIAR DOCENTE</option>
-                                    <option  value="5">FAMILIAR ADMINISTRATIVO</option>
+                                    <option value="1">ALUMNO</option>
+                                    <option value="2">DOCENTE</option>
+                                    <option value="3">ADMINISTRATIVO</option>
+                                    <option value="4">FAMILIAR DOCENTE</option>
+                                    <option value="5">FAMILIAR ADMINISTRATIVO</option>
                                 </select>
                             </div>
                         </div>
@@ -123,7 +126,7 @@
                                 <label for="txtSubusuarioUsuario">SUBTIPO DE USUARIO</label>
                                 <select disabled class="form-control form-control-sm" id="txtSubusuarioUsuario">
                                     <option value="1">NOMBRADO</option>
-                                    <option  value="2">CONTRATADO</option>
+                                    <option value="2">CONTRATADO</option>
                                     <option value="3">NINGUNO</option>
                                 </select>
                             </div>
@@ -133,43 +136,48 @@
                             <div class="form-group">
                                 <label for="txtEstadoUsuario">ESTADO CIVIL</label>
                                 <select disabled class="form-control form-control-sm" id="txtEstadoUsuario">
-                                    <option  value="-1">Seleccionar...</option>
-                                    <option  value="1">SOLTERO(A)</option>
-                                    <option  value="2">CASADO(A)</option>
-                                    <option  value="3">DIVORSIADO(A)</option>
-                                    <option  value="4">VIUDO(A)</option>
+                                    <option value="-1">Seleccionar...</option>
+                                    <option value="1">SOLTERO(A)</option>
+                                    <option value="2">CASADO(A)</option>
+                                    <option value="3">DIVORSIADO(A)</option>
+                                    <option value="4">VIUDO(A)</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
-                                <label for="txtCodigoUsuario">CÓDIGO</label>
-                                <input disabled type="text" class="form-control form-control-sm" id="txtCodigoUsuario" placeholder="CODIGO">
+                                <label for="txtCodigoUsuario">Cï¿½DIGO</label>
+                                <input disabled type="text" class="form-control form-control-sm" id="txtCodigoUsuario"
+                                    placeholder="CODIGO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
-                                <label for="txtNumeroDocumentoUsuario">N° DOCUMENTO</label>
-                                <input disabled type="text" class="form-control form-control-sm" id="txtNumeroDocumentoUsuario" placeholder="N° DOCUMENTO">
+                                <label for="txtNumeroDocumentoUsuario">Nï¿½ DOCUMENTO</label>
+                                <input disabled type="text" class="form-control form-control-sm"
+                                    id="txtNumeroDocumentoUsuario" placeholder="Nï¿½ DOCUMENTO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtApPaternoUsuario">AP. PATERNO</label>
-                                <input disabled type="text" class="form-control form-control-sm" id="txtApPaternoUsuario" placeholder="AP. PATERNO">
+                                <input disabled type="text" class="form-control form-control-sm"
+                                    id="txtApPaternoUsuario" placeholder="AP. PATERNO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtApMaternoUsuario">AP. MATERNO</label>
-                                <input disabled type="text" class="form-control form-control-sm" id="txtApMaternoUsuario" placeholder="AP. MATERNO">
+                                <input disabled type="text" class="form-control form-control-sm"
+                                    id="txtApMaternoUsuario" placeholder="AP. MATERNO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtNombreUsuario">NOMBRES</label>
-                                <input disabled type="email" class="form-control form-control-sm" id="txtNombreUsuario" placeholder="NOMBRES">
+                                <input disabled type="email" class="form-control form-control-sm" id="txtNombreUsuario"
+                                    placeholder="NOMBRES">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
@@ -177,58 +185,67 @@
                                 <label for="txtSexoUsuario">SEXO</label>
                                 <select disabled class="form-control form-control-sm" id="txtSexoUsuario">
                                     <option value="1">MASCULINO</option>
-                                    <option  value="2">FEMENINO</option>
+                                    <option value="2">FEMENINO</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtFechaNacUsuario">FECHA DE NACIMIENTO</label>
-                                <input disabled type="email" class="form-control form-control-sm" id="txtFechaNacUsuario" placeholder="Enter email">
+                                <input disabled type="email" class="form-control form-control-sm"
+                                    id="txtFechaNacUsuario" placeholder="Enter email">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
                                 <label for="txtCelularUsuario">CELULAR</label>
-                                <input disabled type="text" class="form-control form-control-sm" id="txtCelularUsuario" placeholder="CELULAR">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtCelularUsuario"
+                                    placeholder="CELULAR">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-12">
                             <div class="form-group">
                                 <label for="txtEmailUsuario">EMAIL</label>
-                                <input disabled type="email" class="form-control form-control-sm" id="txtEmailUsuario" placeholder="Enter email">
+                                <input disabled type="email" class="form-control form-control-sm" id="txtEmailUsuario"
+                                    placeholder="Enter email">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-12">
                             <div class="form-group">
                                 <label for="txtEscuelaUsuario">ESCUELA</label>
-                                <input disabled type="text" class="form-control form-control-sm" id="txtEscuelaUsuario" placeholder="ESCUELA">
+                                <input disabled type="text" class="form-control form-control-sm" id="txtEscuelaUsuario"
+                                    placeholder="ESCUELA">
                             </div>
                         </div>
 
                     </div>
-                </div> 
+                </div>
 
                 <!-- /tab pane-->
 
                 <!-- Tab DEPORTES -->
                 <div id="OpenListaDeporteDetalle" class="tab-pane ">
-                    <div class="form-group form-row">
-                        <div class="col-11 text-center">
-                            <label  for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE DEPORTES</label>
+                    <div class="form-group justify-content-center">
+                        <div class="float-right">
+                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenDeporteDetalle"
+                                data-toggle="tooltip" data-original-title="Agregar Deporte"><i
+                                    class="icon icon-addnew"></i> </button>
+                        </div>
+                        <div class="text-center">
+                            <label for="normal-input-3"
+                                class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE
+                                DEPORTES</label>
                             <input type="hidden" id="pageDeporteDetalle" value="1">
                         </div>
-                        <div class="float-right">
-                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenDeporteDetalle"data-toggle="tooltip" title="Agregar Deporte"><i class="icon icon-addnew"></i> </button>
-                        </div>
+
                     </div>
                     <!-- Card -->
                     <div class="dt-card mt-4">
                         <!-- Card Body -->
-                        <div class="dt-card__body p-0  " >
+                        <div class="dt-card__body p-0  ">
                             <!-- Widget -->
                             <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                                 id="tbodyDeporte">
+                                id="tbodyDeporte">
                             </div>
                             <!-- /widget -->
                             <!-- /card body -->
@@ -249,67 +266,89 @@
                             <nav aria-label="Page navigation example">
                                 <ul id="paginationDeporteDetalle" class="pagination pagination-sm justify-content-end">
                                 </ul>
-                            </nav>  
+                            </nav>
                         </div>
                     </div>
 
                 </div>
-                <div id="OpenDeporteDetalle" class="tab-pane ">
-                    <div class="card-header bg-transparent pl-0 ">
-                        <h4  class="mb-0 text-primary" id="tittleDeporteDetalle"></h4>
-                    </div>
-                    <form id="FrmDeporteDetalleModal">
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label for="txtEstadoDeporteDetalle">ESTADO</label>
-                                <div class="input-group">
-                                    <select class="form-control form-control-sm" id="txtEstadoDeporteDetalle">
-                                        <option value="-1">seleccione...</option>
-                                        <option value="1">LO PRACTICO</option>
-                                        <option value="2">ME GUSTARÍA APRENDER</option>
-                                    </select>
-                                </div>
+                <div id="OpenDeporteDetalle" class="tab-pane">
+                    <div class="justify-content-center form-row">
+                        <div class="col-lg-5 col-12">
+                            <div class="card-header bg-transparent pl-0 ">
+                                <h4 class="mb-0 text-primary" id="tittleDeporteDetalle"></h4>
                             </div>
-                            <div class="form-group col-12">
-                                <label for="txtDeporteDetalle">DEPORTE
-                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Deporte que practicas " style="cursor: pointer" data-original-title=""></i>
-                                </label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control form-control-sm" id="txtDeporteDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
-                                    <div class="input-group-append">
-                                        <button type="button" id="btnSeleccionarDeporte" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                            <form id="FrmDeporteDetalleModal">
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <label for="txtEstadoDeporteDetalle">ESTADO</label>
+                                        <div class="input-group">
+                                            <select class="form-control form-control-sm" id="txtEstadoDeporteDetalle">
+                                                <option value="-1">seleccione...</option>
+                                                <option value="1">LO PRACTICO</option>
+                                                <option value="2">ME GUSTARï¿½A APRENDER</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label for="txtDeporteDetalle">DEPORTE
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover"
+                                                data-trigger="hover" data-placement="top" title=""
+                                                data-content="Deporte que practicas " style="cursor: pointer"
+                                                data-original-title=""></i>
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-sm"
+                                                id="txtDeporteDetalle" aria-describedby="nombre"
+                                                placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                                            <div class="input-group-append">
+                                                <button type="button" id="btnSeleccionarDeporte"
+                                                    class="btn btn-primary btn-sm"><i
+                                                        class="icon icon-subscribe"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-12 text-center">
+                                        <button type="button" id="btnCancelarDeporteUsuario"
+                                            class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-reply"></i>
+                                            LISTA DE
+                                            DEPORTES</button>
+                                        <button type="submit" id="btnGuardarDeporteUsuario"
+                                            class="ml-5 btn btn-primary btn-sm">GUARDAR</button>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group col-12 text-center">
-                                <button type="button" id="btnCancelarDeporteUsuario" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-reply"></i> LISTA DE DEPORTES</button>
-                                <button type="submit" id="btnGuardarDeporteUsuario" class="ml-5 btn btn-primary btn-sm">GUARDAR</button>
-                            </div>  
+                            </form>
                         </div>
-                    </form>
+                    </div>
+
+
                 </div>
                 <!-- /tab pane-->
 
                 <!-- Tab AFICIONES -->
                 <div id="OpenListaAficionDetalle" class="tab-pane ">
-                    <div class="form-group form-row">
-                        <div class="col-11 text-center">
-                            <label id="titleManagerAficion" for="normal-input-3" class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE AFICIONES</label>
+                    <div class="form-group justify-content-center">
+                        <div class="float-right">
+                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenAficionDetalle"
+                                data-toggle="tooltip" title="Agregar Deporte"><i class="icon icon-addnew"></i> </button>
+                        </div>
+                        <div class="text-center">
+                            <label id="titleManagerAficion" for="normal-input-3"
+                                class="col-form-label col-form-label-lg text-sm-center text-primary">LISTA DE
+                                AFICIONES</label>
                             <input type="hidden" id="pageAficionDetalle" value="1">
                         </div>
 
-                        <div class="float-right">
-                            <button type="button" class="btn btn-primary btn-sm" id="btnOpenAficionDetalle"data-toggle="tooltip" title="Agregar Deporte"><i class="icon icon-addnew"></i> </button>
-                        </div>
+
                     </div>
                     <!-- Card -->
                     <div class="dt-card mt-4">
+
                         <!-- Card Body -->
-                        <div class="dt-card__body p-0  " >
+                        <div class="dt-card__body p-0  ">
                             <!-- Widget -->
                             <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                                 id="tbodyAficion">
+                                id="tbodyAficion">
                             </div>
                             <!-- /widget -->
                             <!-- /card body -->
@@ -330,61 +369,78 @@
                             <nav aria-label="Page navigation example">
                                 <ul id="paginationAficionDetalle" class="pagination pagination-sm justify-content-end">
                                 </ul>
-                            </nav>  
+                            </nav>
                         </div>
                     </div>
 
                 </div>
                 <div id="OpenAficionDetalle" class="tab-pane ">
-                    <div class="card-header bg-transparent pl-0 ">
-                        <h4  class="mb-0 text-primary" id="tittleAficionDetalle"></h4>
-                    </div>
-                    <form id="FrmAficionDetalleModal">
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label for="txtEstadoAficionDetalle">ESTADO</label>
-                                <div class="input-group">
-                                    <select class="form-control form-control-sm" id="txtEstadoAficionDetalle">
-                                        <option value="-1">seleccione...</option>
-                                        <option value="1">LO PRACTICO</option>
-                                        <option value="2">ME GUSTARÍA APRENDER</option>
-                                    </select>
-                                </div>
+                    <div class="justify-content-center form-row">
+                        <div class="col-lg-5 col-12">
+                            <div class="card-header bg-transparent pl-0 ">
+                                <h4 class="mb-0 text-primary" id="tittleAficionDetalle"></h4>
                             </div>
-                            <div class="form-group col-12">
-                                <label for="txtAficionDetalle">AFICION
-                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Aficion que practicas " style="cursor: pointer" data-original-title=""></i>
-                                </label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control form-control-sm" id="txtAficionDetalle" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
-                                    <div class="input-group-append">
-                                        <button type="button" id="btnSeleccionarAficiones" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                            <form id="FrmAficionDetalleModal">
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <label for="txtEstadoAficionDetalle">ESTADO</label>
+                                        <div class="input-group">
+                                            <select class="form-control form-control-sm" id="txtEstadoAficionDetalle">
+                                                <option value="-1">seleccione...</option>
+                                                <option value="1">LO PRACTICO</option>
+                                                <option value="2">ME GUSTARï¿½A APRENDER</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label for="txtAficionDetalle">AFICION
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover"
+                                                data-trigger="hover" data-placement="top" title=""
+                                                data-content="Aficion que practicas " style="cursor: pointer"
+                                                data-original-title=""></i>
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-sm"
+                                                id="txtAficionDetalle" aria-describedby="nombre"
+                                                placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                                            <div class="input-group-append">
+                                                <button type="button" id="btnSeleccionarAficiones"
+                                                    class="btn btn-primary btn-sm"><i
+                                                        class="icon icon-subscribe"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group text-center col-12">
+                                        <button type="button" id="btnCancelarAficionUsuario"
+                                            class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-reply"></i>
+                                            LISTA DE
+                                            AFICIONES</button>
+                                        <button type="submit" id="btnGuardarAficionUsuario"
+                                            class="ml-5 btn btn-primary btn-sm">GUARDAR</button>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group text-center col-12">
-                                <button type="button" id="btnCancelarAficionUsuario" class="ml-5 btn btn-outline-primary btn-sm"><i class="icon icon-reply"></i> LISTA DE AFICIONES</button>
-                                <button type="submit" id="btnGuardarAficionUsuario" class="ml-5 btn btn-primary btn-sm">GUARDAR</button>
-                            </div>  
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <!-- /tab pane-->
             </div>
-        </div> 
+        </div>
         <!-- /tab content -->
     </div>
-    <!-- /card --> 
+    <!-- /card -->
 </div>
 </div>
 
-<div class="modal fade" id="modalCargandoUsuario" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+<div class="modal fade" id="modalCargandoUsuario" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Cargando Usuarios. . .
                     </div>
                 </div>
@@ -395,7 +451,9 @@
 
 
 
-<div id="ventanaModalPreviewReporte" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); display: none;" aria-hidden="true">
+<div id="ventanaModalPreviewReporte" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); display: none;"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg-sisbu" role="document">
         <div class="modal-content" style="border-color: #2962FF; border-width: 3px;border-radius: 7px;">
             <form class="needs-validation" novalidate="">
@@ -406,12 +464,14 @@
                         <div class="col-12">
                             <!--div class="embed-responsive embed-responsive-1by1">
                             </div-->
-                            <iframe class="embed-responsive-item" src="" id="idframe_reporte" height="480" width="100%"></iframe>
+                            <iframe class="embed-responsive-item" src="" id="idframe_reporte" height="480"
+                                width="100%"></iframe>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer pt-2 pb-2">
-                    <button type="button" class="btn btn-primary btn-xs" id="btn-cerrar-printer-comprobante" data-dismiss="modal">
+                    <button type="button" class="btn btn-primary btn-xs" id="btn-cerrar-printer-comprobante"
+                        data-dismiss="modal">
                         <i class="fas fa-times"></i>
                         CERRAR</button>
                 </div>
@@ -420,14 +480,14 @@
     </div>
 </div>
 
-<div class="modal" id="modalCargandoVDYA" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+<div class="modal" id="modalCargandoVDYA" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;height: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                         Verificando Usuario. . .
                     </div>
                 </div>
@@ -437,13 +497,13 @@
 </div>
 
 <div class="modal" id="modalCargandoDeporteDetalle" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;height: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                         Cargando deportes que practicas. . .
                     </div>
                 </div>
@@ -453,13 +513,13 @@
 </div>
 
 <div class="modal" id="modalCargandoAficionDetalle" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;height: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                         Cargando aficion que practicas. . .
                     </div>
                 </div>
@@ -470,7 +530,7 @@
 
 <!--T: DEPORTE SELECTED-->
 <div id="ventanaModalSelectedDeporteC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
-     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
@@ -483,19 +543,16 @@
             <div class="modal-body pb-0 pt-0">
                 <div class="row">
                     <div class="col-12">
-                        <input type="hidden" id="pageDeporteC"
-                               value="1">
-                        <form id="FrmDeporteC">
-                            <div class="row mt-3">
-                                <div class="input-group col-12">
-                                    <input type="text" id="txtFilterDeporteC"
-                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
-                                    <button type="submit" id="btnBuscarDeporteC"
-                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
-                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
-                                        BUSCAR</button>
-                                </div>
+                        <input type="hidden" id="pageDeporteC" value="1">
+                        <form id="FrmDeporteC" class="search-box mw-100">
+                            <div class="input-group mt-3">
+                                <input type="search" id="txtFilterDeporteC" class="form-control form-control-sm "
+                                    placeholder="INGRESE FILTRO . . ." data-toggle="tooltip"
+                                    data-original-title="Buscar" data-placement="left">
+                                <button type="submit" class="search-icon"><i
+                                        class="icon icon-search icon-fw"></i></button>
                             </div>
+
                         </form>
                         <div class="row pl-5 pr-5 mb-2">
                             <div class="table-responsive">
@@ -513,7 +570,7 @@
                         <div class="row mt-2 mb-2" style="display: none">
                             <div class="col-sm-4 mt-2">
                                 <select id="sizePageDeporteC"
-                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
                                     <option value="5">05</option>
                                     <option value="10">10</option>
                                     <option value="15">15</option>
@@ -521,8 +578,7 @@
                             </div>
                             <div class="col-sm-8 mt-2">
                                 <nav aria-label="Page navigation">
-                                    <ul id="paginationDeporteC"
-                                        class="pagination justify-content-end">
+                                    <ul id="paginationDeporteC" class="pagination justify-content-end">
 
                                     </ul>
                                 </nav>
@@ -532,7 +588,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionDeporteC"><i class="fas fa-ban"></i>
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"
+                    id="btnCancelSelectionDeporteC"><i class="fas fa-ban"></i>
                     CANCELAR</button>
                 <button type="button" id="btn-selecionar-deportec" class="btn btn-primary btn-xs"><i
                         class="fas fa-check"></i> SELECCIONAR</button>
@@ -542,13 +599,13 @@
 </div>
 
 <div class="modal" id="modalCargandoSelectedDeporteC" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;height: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                         Cargando deportes. . .
                     </div>
                 </div>
@@ -559,7 +616,7 @@
 
 <!--T: AFICION SELECTED-->
 <div id="ventanaModalSelectedAficionC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
-     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+    data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
@@ -572,18 +629,14 @@
             <div class="modal-body pb-0 pt-0">
                 <div class="row">
                     <div class="col-12">
-                        <input type="hidden" id="pageAficionC"
-                               value="1">
-                        <form id="FrmAficionC">
-                            <div class="row mt-3">
-                                <div class="input-group col-12">
-                                    <input type="text" id="txtFilterAficionC"
-                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
-                                    <button type="submit" id="btnBuscarAficionC"
-                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
-                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
-                                        BUSCAR</button>
-                                </div>
+                        <input type="hidden" id="pageAficionC" value="1">
+                        <form id="FrmAficionC" class="search-box mw-100">
+                            <div class="input-group mt-3">
+                                <input type="search" id="txtFilterAficionC" class="form-control form-control-sm"
+                                    placeholder="INGRESE FILTRO . . ." data-toggle="tooltip"
+                                    data-original-title="Buscar" data-placement="left">
+                                <button type="submit" class="search-icon"><i
+                                        class="icon icon-search icon-fw"></i></button>
                             </div>
                         </form>
                         <div class="row pl-5 pr-5 mb-2">
@@ -591,7 +644,7 @@
                                 <table class="table mb-0 table-fluid">
                                     <thead>
                                         <tr>
-                                            <th class="align-middle text-left">Afición</th>
+                                            <th class="align-middle text-left">Aficiï¿½n</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyAficionC">
@@ -602,7 +655,7 @@
                         <div class="row mt-2 mb-2" style="display: none">
                             <div class="col-sm-4 mt-2">
                                 <select id="sizePageAficionC"
-                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
                                     <option value="5">05</option>
                                     <option value="10">10</option>
                                     <option value="15">15</option>
@@ -610,8 +663,7 @@
                             </div>
                             <div class="col-sm-8 mt-2">
                                 <nav aria-label="Page navigation">
-                                    <ul id="paginationAficionC"
-                                        class="pagination justify-content-end">
+                                    <ul id="paginationAficionC" class="pagination justify-content-end">
 
                                     </ul>
                                 </nav>
@@ -621,7 +673,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionAficionC"><i class="fas fa-ban"></i>
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"
+                    id="btnCancelSelectionAficionC"><i class="fas fa-ban"></i>
                     CANCELAR</button>
                 <button type="button" id="btn-selecionar-aficionc" class="btn btn-primary btn-xs"><i
                         class="fas fa-check"></i> SELECCIONAR</button>
@@ -631,13 +684,13 @@
 </div>
 
 <div class="modal" id="modalCargandoSelectedAficionC" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;height: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                         Cargando aficiones. . .
                     </div>
                 </div>
@@ -645,15 +698,15 @@
         </div>
     </div>
 </div>
-<div class="modal" id="modalCargandoVDYA" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
+<div class="modal" id="modalCargandoVDYA" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;height: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                        Verificando evaluación deportiva. . .
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Verificando evaluaciï¿½n deportiva. . .
                     </div>
                 </div>
             </div>
@@ -661,7 +714,9 @@
     </div>
 </div>
 
-<div id="ventanaModalPreviewReporte" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); display: none;" aria-hidden="true">
+<div id="ventanaModalPreviewReporte" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+    data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); display: none;"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg-sisbu" role="document">
         <div class="modal-content" style="border-color: #2962FF; border-width: 3px;border-radius: 7px;">
             <form class="needs-validation" novalidate="">
@@ -672,12 +727,14 @@
                         <div class="col-12">
                             <!--div class="embed-responsive embed-responsive-1by1">
                             </div-->
-                            <iframe class="embed-responsive-item" src="" id="idframe_reporte" height="480" width="100%"></iframe>
+                            <iframe class="embed-responsive-item" src="" id="idframe_reporte" height="480"
+                                width="100%"></iframe>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer pt-2 pb-2">
-                    <button type="button" class="btn btn-primary btn-xs" id="btn-cerrar-printer-comprobante" data-dismiss="modal">
+                    <button type="button" class="btn btn-primary btn-xs" id="btn-cerrar-printer-comprobante"
+                        data-dismiss="modal">
                         <i class="fas fa-times"></i>
                         CERRAR</button>
                 </div>

@@ -5,9 +5,9 @@
 --%>
 
 <div class="row">
-    <div class="col-xl-12">
+    <div class="col-xl-12 p-0">
         <!-- Card -->
-        <div class="card overflow-hidden">
+        <div class="overflow-hidden">
             <!-- Card Header -->
             <div class="card-header bg-transparent">
                 <h4 class="mb-0" id="titleManagerAficion">[ 0 ] AFICIONES</h4>
@@ -15,29 +15,32 @@
             </div>
             <!-- /card header -->
             <!-- Card Body -->
-            <div class="card-body pt-0">
+            <div class="card-body p-0">
                 <form id="FrmAficion">
-                    <div class="input-group search-box" style="max-width: 100%;">
-                        <input type="search" id="txtFilterAficion" class="form-control form-control-sm" placeholder="FILTRO. . .">
-                        <span class="search-icon"><i class="icon icon-search icon-lg"></i></span>
-                        <button type="submit" class="btn btn-primary btn-sm mr-2"><i class="icon icon-search icon-fw"></i> BUSCAR</button>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnOpenNewAficion"><i class="icon icon-plus icon-fw"></i></button>
+                    <div class="input-group search-box mw-100">
+                        <input type="search" id="txtFilterAficion" class="form-control form-control-sm"
+                            placeholder="FILTRO. . ." data-toggle="tooltip" data-original-title="Buscar"
+                            data-placement="left">
+                        <button type="submit" class="search-icon"><i class="icon icon-search icon-fw"></i></button>
+                        <button type="button" class="btn btn-primary btn-sm ml-4" id="btnOpenNewAficion"
+                            data-toggle="tooltip" data-original-title="Agregar Deporte"><i
+                                class="icon icon-addnew"></i></button>
                     </div>
                 </form>
-                <!-- Tables -->
-                <div class="table-responsive">
-                    <table class="table mb-0 mt-2">
-                        <thead class="bg-primary" style="line-height: 0.4;">
-                            <tr>
-                                 <th class="text-uppercase text-white" scope="col" style="width: 10%;font-weight: 500;">ACCION</th>
-                                <th class="text-uppercase text-white" scope="col" style="font-weight: 500;">NOMBRE</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbodyAficion">
-                        </tbody>
-                    </table>
+                <!-- Card -->
+                <div class="dt-card mt-4 p-0">
+                    <!-- Card Body -->
+                    <div class="dt-card__body p-0  ">
+                        <!-- Widget -->
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                            id="tbodyAficion">
+                        </div>
+                        <!-- /widget -->
+                        <!-- /card body -->
+                    </div>
+
                 </div>
-                <!-- /tables -->
+                <!-- /card -->
                 <div class="row mt-2">
                     <div class="col-md-2 col-sm-3 col-4">
                         <select id="sizePageAficion" class="form-control form-control-sm select2-single">
@@ -50,7 +53,7 @@
                         <nav aria-label="Page navigation example">
                             <ul id="paginationAficion" class="pagination pagination-sm justify-content-end">
                             </ul>
-                        </nav>  
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -59,21 +62,23 @@
         <!-- /card -->
     </div>
 </div>
-<div class="modal fade" id="ventanaModalAficion" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ventanaModalAficion" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form id="FrmAficionModal">
                 <div class="modal-header">
                     <h6 class="modal-title" id="txtTituloModalMan"></h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">ï¿½</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="form-group col-12">
                             <label for="txtNombreAficion">NOMBRE</label>
-                            <input class="form-control form-control-sm" id="txtNombreAficion" type="text" placeholder="NOMBRE">
+                            <input class="form-control form-control-sm" id="txtNombreAficion" type="text"
+                                placeholder="NOMBRE">
                         </div>
 
                     </div>
@@ -86,12 +91,14 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalCargandoAficion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+<div class="modal fade" id="modalCargandoAficion" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Cargando Aficiones. . .
                     </div>
                 </div>

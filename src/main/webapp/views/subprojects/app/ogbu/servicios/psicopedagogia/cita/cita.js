@@ -175,7 +175,7 @@ function toListCita(beanPagination) {
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate "style="max-width: 170px;" >
                         <p class="mb-0 text-truncate ">
-                           ATENCIÓN POR
+                        PERSONAL ASIGNADO
                         </p>
                     </div>
                     <!-- /widget info -->

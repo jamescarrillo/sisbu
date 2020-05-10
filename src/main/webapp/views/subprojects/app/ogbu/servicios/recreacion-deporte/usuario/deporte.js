@@ -85,13 +85,13 @@ function processAjaxProcedimientoDeporte() {
         parameters_pagination = "";
         if (beanRequestProcedimientoDeporte.operation == "delete") {
             parameters_pagination = "/" + deporteDetalleSelected.idrelacion;
-           
+
         } else {
             json = {
                 "estado": document.querySelector("#txtEstadoDeporteDetalle").value,
-                "deporte": {"iddeporte": deporteSelected.iddeporte},
+                "deporte": { "iddeporte": deporteSelected.iddeporte },
                 "atendido": {
-                    "usuario": {"idusuario": usuarioSelected.usuario.idusuario}
+                    "usuario": { "idusuario": usuarioSelected.usuario.idusuario }
                 }
             };
             if (beanRequestProcedimientoDeporte.operation == "update") {
@@ -154,8 +154,8 @@ function toListProcedimientoDeporte(beanPagination) {
 
         let row;
         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" >
                         <p class="mb-0 text-truncate ">
@@ -170,36 +170,23 @@ function toListProcedimientoDeporte(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                    
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra">
+                        <div class="dt-task">
+                        
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                 </div>
             `;
         document.querySelector("#tbodyDeporte").innerHTML += row;
         beanPagination.list.forEach(detalle => {
 
             row =
-                    `
-                 <div class="dt-widget__item border-success pl-5 ">
-                    <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
-                            <!-- Action Button Group -->
-                            <div class="action-btn-group">
-                                <button class="btn btn-default text-primary dt-fab-btn editar-deporte-detalle" idrelacion='${detalle.idrelacion}' title="Editar" data-toggle="tooltip">
-                                    <i class="icon icon-editors"></i>
-                                </button>
-                                <button class="btn btn-default text-danger dt-fab-btn eliminar-deporte-detalle" idrelacion='${detalle.idrelacion}' title="Eliminar" data-toggle="tooltip">
-                                    <i class="icon icon-trash-filled"></i>
-                                </button>
-                               
-                              
-                            </div>
-                            <!-- /action button group -->
-                        </div>
-                        <!-- /hide content -->
-                    </div>
-                    <!-- /widget extra -->
+                `
+                 <div class="dt-widget__item  m-0 pt-1 pb-1">
+                   
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -215,18 +202,36 @@ function toListProcedimientoDeporte(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                    
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra">
+                        <div class="dt-task">
+                        <div class="dt-task__redirect">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                            <button class="btn btn-default text-primary dt-fab-btn editar-deporte-detalle" idrelacion='${detalle.idrelacion}' title="Editar" data-toggle="tooltip">
+                            <i class="icon icon-editors"></i>
+                        </button>
+                        <button class="btn btn-default text-danger dt-fab-btn eliminar-deporte-detalle" idrelacion='${detalle.idrelacion}' title="Eliminar" data-toggle="tooltip">
+                            <i class="icon icon-trash-filled"></i>
+                        </button>
+                                </div>
+                            </div>
+                            <!-- /action button group -->
+                        </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                 </div>
             `;
             document.querySelector("#tbodyDeporte").innerHTML += row;
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageDeporteDetalle").value),
-                document.querySelector("#pageDeporteDetalle"),
-                $('#modalCargandoDeporteDetalle'),
-                $('#paginationDeporteDetalle'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageDeporteDetalle").value),
+            document.querySelector("#pageDeporteDetalle"),
+            $('#modalCargandoDeporteDetalle'),
+            $('#paginationDeporteDetalle'));
         addEventsProcedimientoDeporte();
 
 

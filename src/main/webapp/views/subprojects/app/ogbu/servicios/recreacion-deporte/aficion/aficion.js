@@ -38,15 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $("#modalCargandoAficion").on('shown.bs.modal', function () {
         if (!$('#ventanaModalAficion').hasClass("show")) {
-          beanRequestAficion.operation = "paginate";
+            beanRequestAficion.operation = "paginate";
             beanRequestAficion.type_request = "GET";
         }
         processAjaxAficion();
     });
-    
+
     $("#modalCargandoAficion").on('hide.bs.modal', function () {
-          beanRequestAficion.operation = "paginate";
-          beanRequestAficion.type_request = "GET";
+        beanRequestAficion.operation = "paginate";
+        beanRequestAficion.type_request = "GET";
     });
 
     $('#modalCargandoAficion').modal('show');
@@ -61,7 +61,7 @@ function processAjaxAficion() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestAficion.operation == "paginate") {
-         if (document.querySelector("#txtFilterAficion").value != "") {
+        if (document.querySelector("#txtFilterAficion").value != "") {
             document.querySelector("#pageAficion").value = "1";
         }
         parameters_pagination += "?nombre=" + document.querySelector("#txtFilterAficion").value.toUpperCase();
@@ -116,26 +116,65 @@ function toListAficion(beanPagination) {
     document.querySelector("#titleManagerAficion").innerHTML = "[ " + beanPagination.count_filter + " ] AFICIONES";
     if (beanPagination.count_filter > 0) {
         let row;
+        row =
+            `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2 pl-3">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate pl-5" >
+                        <p class="mb-0 text-truncate ">
+                           NOMBRE
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                   
+                    
+                </div>
+            `;
+        document.querySelector("#tbodyAficion").innerHTML += row;
         beanPagination.list.forEach(aficion => {
-            row = "<tr ";
-            row += "idaficion='" + aficion.idaficion + "' ";
-            row += ">";
-           row += "<td><ul class='dt-list dt-list-cm-0'>";
-            row += "<li class='dt-list__item editar-aficion' data-toggle='tooltip' title='Editar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-primary  icon icon-editors'></i></a></li>";
-            row += "<li class='dt-list__item eliminar-aficion'data-toggle='tooltip' title='Eliminar'><a class='text-light-gray' href='javascript:void(0)'>";
-            row += "<i class='text-danger icon icon-trash-filled'></i></a></li>";
-            row += "</ul></td>";
-            row += "<td class='align-middle'>" + aficion.descripcion + "</td>";
-              row += "</tr>";
+
+            row =
+                `
+             <div class="dt-widget__item m-0 pt-1 pb-1 pl-3">
+                <!-- Widget Info -->
+                <div class="dt-widget__info text-truncate " >
+                    <p class="mb-0 text-truncate ">
+                       ${aficion.descripcion}
+                    </p>
+                </div>
+                <!-- /widget info -->
+               
+               
+                <!-- Widget Extra -->
+                <div class="dt-widget__extra">
+                    <div class="dt-task">
+                    <div class="dt-task__redirect">
+                        <!-- Action Button Group -->
+                        <div class="action-btn-group">
+                        <button class="btn btn-default text-primary dt-fab-btn editar-aficion" idaficion='${aficion.idaficion}' title="Editar" data-toggle="tooltip">
+                        <i class="icon icon-editors"></i>
+                    </button>
+                    <button class="btn btn-default text-danger dt-fab-btn eliminar-aficion" idaficion='${aficion.idaficion}' title="Eliminar" data-toggle="tooltip">
+                        <i class="icon icon-trash-filled"></i>
+                    </button>
+                            </div>
+                        </div>
+                        <!-- /action button group -->
+                    </div>
+                    <!-- /hide content -->
+                </div>
+                <!-- /widget extra -->
+            </div>
+        `;
             document.querySelector("#tbodyAficion").innerHTML += row;
+            $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageAficion").value),
-                document.querySelector("#pageAficion"),
-                $('#modalCargandoAficion'),
-                $('#paginationAficion'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageAficion").value),
+            document.querySelector("#pageAficion"),
+            $('#modalCargandoAficion'),
+            $('#paginationAficion'));
         addEventsAficiones();
         if (beanRequestAficion.operation == "paginate") {
             document.querySelector("#txtFilterAficion").focus();
@@ -152,7 +191,7 @@ function addEventsAficiones() {
     document.querySelectorAll('.editar-aficion').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            aficionSelected = findByAficion(btn.parentElement.parentElement.parentElement.getAttribute('idaficion'));
+            aficionSelected = findByAficion(btn.getAttribute('idaficion'));
             if (aficionSelected != undefined) {
                 beanRequestAficion.operation = "update";
                 beanRequestAficion.type_request = "PUT";
@@ -169,7 +208,7 @@ function addEventsAficiones() {
     document.querySelectorAll('.eliminar-aficion').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-            aficionSelected = findByAficion(btn.parentElement.parentElement.parentElement.getAttribute('idaficion'));
+            aficionSelected = findByAficion(btn.getAttribute('idaficion'));
             beanRequestAficion.operation = "delete";
             beanRequestAficion.type_request = "DELETE";
             processAjaxAficion();

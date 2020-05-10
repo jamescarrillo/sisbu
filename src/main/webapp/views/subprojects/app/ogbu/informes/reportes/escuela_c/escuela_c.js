@@ -5,7 +5,9 @@
  */
 var beanPaginationEscuelaC;
 var escuelaCSelected;
+var escuelaSelected;
 var beanRequestEscuelaC = new BeanRequest();
+
 document.addEventListener("DOMContentLoaded", function () {
 
     //INICIALIZANDO VARIABLES DE SOLICITUD
@@ -44,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
         escuelaSelected = escuelaCSelected;
-        document.querySelector("#txtEscuelaAlumno").value = escuelaCSelected.nombre.toUpperCase();
         document.querySelector("#txtEscuelaAtendido").value = escuelaCSelected.nombre.toUpperCase();
         $('#ventanaModalSelectedEscuelaC').modal('hide');
     };
@@ -52,14 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnCancelSelectionEscuelaC").onclick = function () {
         escuelaCSelected = undefined;
         escuelaSelected = escuelaCSelected;
-        document.querySelector("#txtEscuelaAlumno").value = "";
         document.querySelector("#txtEscuelaAtendido").value = "";
     };
-
-    document.querySelector("#btnSeleccionarEscuelaFilter").onclick = function () {
-        $('#ventanaModalSelectedEscuelaC').modal('show');
-    };
-
 
     $("#sizePageEscuelaC").change(function () {
         $('#modalCargandoSelectedEscuelaC').modal('show');
@@ -132,15 +127,18 @@ function toListEscuelaC(beanPagination) {
 function addEventsEscuelaCes() {
     document.querySelectorAll('.click-selection-escuela').forEach(function (element) {
         element.onclick = function () {
-            if (this.classList.contains('row-selected-celeste-claro')) {
-                this.classList.remove('row-selected-celeste-claro');
+            if (this.classList.contains('bg-info')) {
+                this.classList.remove('bg-info');
+                this.classList.remove('text-white');
                 escuelaCSelected = undefined;
             } else {
                 escuelaCSelected = findByEscuelaC(this.getAttribute('idescuela'));
                 this.parentElement.childNodes.forEach(function (element) {
-                    element.classList.remove('row-selected-celeste-claro');
+                    element.classList.remove('bg-info');
+                    element.classList.remove('text-white');
                 });
-                this.classList.add('row-selected-celeste-claro');
+                this.classList.add('bg-info');
+                this.classList.add('text-white');
             }
         };
     });

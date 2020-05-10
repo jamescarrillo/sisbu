@@ -32,11 +32,13 @@
                 <div class="dt-card mt-4">
                     <!-- Card Body -->
                     <div class="dt-card__body p-0  ">
-                        <!-- Widget -->
-                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg dt-social-card border border-w-2 border-light-teal"
-                            id="tbodyPaciente">
+                        <div class="w-100 ps-custom-scrollbar mb-0 ps pb-5">
+                            <!-- Widget -->
+                            <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg dt-social-card border border-w-2 border-light-teal"
+                                id="tbodyPaciente" style="min-width: 725px;">
+                            </div>
+                            <!-- /widget -->
                         </div>
-                        <!-- /widget -->
                         <!-- /card body -->
                     </div>
 

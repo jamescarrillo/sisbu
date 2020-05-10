@@ -111,8 +111,8 @@ function toListOficina(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2"">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pb-2 pr-1">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -120,19 +120,32 @@ function toListOficina(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                    
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra ">
+                    <div class="dt-task">
+                     </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                 </div>
             `;
-         document.querySelector("#tbodyOficina").innerHTML += row;
+        document.querySelector("#tbodyOficina").innerHTML += row;
         beanPagination.list.forEach(oficina => {
-             row =
-                    `
-                 <div class="dt-widget__item border-success  ">
+            row =
+                `
+                 <div class="dt-widget__item pl-5 m-0 pt-2 pb-2 pr-1">
+                   
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate " >
+                        <p class="mb-0 text-truncate ">
+                           ${oficina.nombre}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
                     <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
+                    <div class="dt-widget__extra ">
+                    <div class="dt-task">
+                    <div class="dt-task__redirect">
                             <!-- Action Button Group -->
                             <div class="action-btn-group">
                                 <button class="btn btn-default text-primary dt-fab-btn editar-oficina" idoficina='${oficina.idoficina}' title="Editar" data-toggle="tooltip">
@@ -141,21 +154,13 @@ function toListOficina(beanPagination) {
                                 <button class="btn btn-default text-danger dt-fab-btn eliminar-oficina" idoficina='${oficina.idoficina}' title="Eliminar" data-toggle="tooltip">
                                     <i class="icon icon-trash-filled"></i>
                                 </button>
-                              
+                                </div>
                             </div>
                             <!-- /action button group -->
                         </div>
                         <!-- /hide content -->
                     </div>
                     <!-- /widget extra -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " >
-                        <p class="mb-0 text-truncate ">
-                           ${oficina.nombre}
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                 
                     
                 </div>
             `;
@@ -163,16 +168,16 @@ function toListOficina(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageOficina").value),
-                document.querySelector("#pageOficina"),
-                $('#modalCargandoOficina'),
-                $('#paginationOficina'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageOficina").value),
+            document.querySelector("#pageOficina"),
+            $('#modalCargandoOficina'),
+            $('#paginationOficina'));
         addEventsOficinaes();
         if (beanRequestOficina.operation === "paginate") {
             document.querySelector("#txtFilterOficina").focus();
         }
-        
+
     } else {
         destroyPagination($('#paginationOficina'));
         showAlertTopEnd('warning', 'No se encontraron resultados');

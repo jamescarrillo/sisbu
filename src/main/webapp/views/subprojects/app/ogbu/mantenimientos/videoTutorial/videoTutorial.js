@@ -122,8 +122,8 @@ function toListVideoTutorial(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white mb-0 pl-5">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white mb-0 pl-5  pr-1">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -145,35 +145,22 @@ function toListVideoTutorial(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                 
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra ">
+                    <div class="dt-task">
+                     </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                     
                 </div>
             `;
         document.querySelector("#tbodyVideoTutorial").innerHTML += row;
         beanPagination.list.forEach(videoTutorial => {
             row =
-                    `
-                 <div class="dt-widget__item border-success  pl-5">
-                    <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
-                            <!-- Action Button Group -->
-                            <div class="action-btn-group">
-                                <button class="btn btn-default text-primary dt-fab-btn editar-videoTutorial" idvideotutorial='${videoTutorial.idvideo_tutorial}' title="Editar" data-toggle="tooltip">
-                                    <i class="icon icon-editors"></i>
-                                </button>
-                                <button class="btn btn-default text-danger dt-fab-btn eliminar-videoTutorial" idvideotutorial='${videoTutorial.idvideo_tutorial}' title="Eliminar" data-toggle="tooltip">
-                                    <i class="icon icon-trash-filled"></i>
-                                </button>
-                              
-                            </div>
-                            <!-- /action button group -->
-                        </div>
-                        <!-- /hide content -->
-                    </div>
-                    <!-- /widget extra -->
+                `
+                 <div class="dt-widget__item  pl-5 m-0 pr-1">
+                   
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
                         <p class="mb-0 text-truncate ">
@@ -195,7 +182,25 @@ function toListVideoTutorial(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-               
+                    <!-- Widget Extra -->
+                    <div class="dt-widget__extra ">
+                    <div class="dt-task">
+                    <div class="dt-task__redirect">
+                            <!-- Action Button Group -->
+                            <div class="action-btn-group">
+                                <button class="btn btn-default text-primary dt-fab-btn editar-videoTutorial" idvideotutorial='${videoTutorial.idvideo_tutorial}' title="Editar" data-toggle="tooltip">
+                                    <i class="icon icon-editors"></i>
+                                </button>
+                                <button class="btn btn-default text-danger dt-fab-btn eliminar-videoTutorial" idvideotutorial='${videoTutorial.idvideo_tutorial}' title="Eliminar" data-toggle="tooltip">
+                                    <i class="icon icon-trash-filled"></i>
+                                </button>
+                              
+                            </div>
+                            <!-- /action button group -->
+                        </div> </div>
+                        <!-- /hide content -->
+                    </div>
+                    <!-- /widget extra -->
                  
                     
                 </div>
@@ -204,11 +209,11 @@ function toListVideoTutorial(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageVideoTutorial").value),
-                document.querySelector("#pageVideoTutorial"),
-                $('#modalCargandoVideoTutorial'),
-                $('#paginationVideoTutorial'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageVideoTutorial").value),
+            document.querySelector("#pageVideoTutorial"),
+            $('#modalCargandoVideoTutorial'),
+            $('#paginationVideoTutorial'));
         addEventsVideoTutoriales();
 
 

@@ -121,39 +121,39 @@ function processAjaxUsuario() {
 
 function toListUsuario(beanPagination) {
     document.querySelector("#tbodyUsuario").innerHTML = "";
-    document.querySelector("#titleManagerUsuario").innerHTML = "[ " + beanPagination.count_filter + " ] PACIENTES";
+    document.querySelector("#titleManagerUsuario").innerHTML = "[ " + beanPagination.count_filter + " ] USUARIOS";
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-                `
-               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2"">
+            `
+               <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2 pr-1">
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info  pl-5" style="max-width: 15%;">
+                        <p class="mb-0  ">
                            DNI
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info ">
+                        <p class="mb-0  ">
                            NOMBRE COMPLETO /
                         </p>
-                        <p class="mb-0 text-truncate ">
+                        <p class="mb-0  ">
                            FECHA DE NACIMIENTO
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate" style="max-width: 15%;">
-                        <p class="mb-0 text-truncate ">
-                           TIPO DE PACIENTE
+                    <div class="dt-widget__info " style="max-width: 15%;">
+                        <p class="mb-0  ">
+                           TIPO DE USUARIO
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info ">
+                        <p class="mb-0  ">
                            ESCUELA PROFESIONAL
                         </p>
                     </div>
@@ -164,8 +164,8 @@ function toListUsuario(beanPagination) {
         document.querySelector("#tbodyUsuario").innerHTML += row;
         beanPagination.list.forEach(atendido => {
             row =
-                    `
-                 <div class="dt-widget__item border-success pl-5 ">
+                `
+                 <div class="dt-widget__item border-success pl-5 m-0 pr-1">
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
                       
@@ -192,32 +192,32 @@ function toListUsuario(beanPagination) {
                     </div>
                     <!-- /widget extra -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " style="max-width: 15%;">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info  " style="max-width: 15%;">
+                        <p class="mb-0  ">
                            ${atendido.dni}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info ">
+                        <p class="mb-0  ">
                            ${atendido.apellido_pat} ${atendido.apellido_mat} ${atendido.nombre}
                         </p>
-                        <p class="mb-0 text-truncate ">
+                        <p class="mb-0  ">
                            ${atendido.fecha_nacimiento}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate" style="max-width: 15%;">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info " style="max-width: 15%;">
+                        <p class="mb-0  ">
                            ${tipoUsuario(atendido.tipo_atendido)}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info ">
+                        <p class="mb-0  ">
             ${atendido.tipo_atendido == 1 ? (atendido.escuela.nombre == null ? "" : atendido.escuela.nombre) : subtipoUsuario(atendido.subtipo_atendido)}
                         </p>
                     </div>
@@ -229,11 +229,11 @@ function toListUsuario(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageUsuario").value),
-                document.querySelector("#pageUsuario"),
-                $('#modalCargandoUsuario'),
-                $('#paginationUsuario'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageUsuario").value),
+            document.querySelector("#pageUsuario"),
+            $('#modalCargandoUsuario'),
+            $('#paginationUsuario'));
         addEventsUsuarios();
         if (beanRequestUsuario.operation == "paginate") {
             document.querySelector("#txtFilterUsuario").focus();

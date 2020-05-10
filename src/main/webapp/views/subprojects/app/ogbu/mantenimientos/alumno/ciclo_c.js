@@ -39,7 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#btnSeleccionarCiclo").onclick = function () {
         $('#ventanaModalSelectedCicloC').modal('show');
     };
-
+    document.querySelector("#btnSeleccionarCicloAcademico").onclick = function () {
+        $('#ventanaModalSelectedCicloC').modal('show');
+    };
     document.querySelector("#btn-selecionar-cicloc").onclick = function () {
         if (cicloCSelected == undefined) {
             showAlertTopEnd('warning', 'Por favor seleccione un ciclo');
@@ -47,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         cicloSelected = cicloCSelected;
         document.querySelector("#txtCicloAlumno").value = cicloCSelected.nombre.toUpperCase();
+        document.querySelector("#txtCicloAcademicoPaciente").value = cicloCSelected.nombre.toUpperCase();
         $('#ventanaModalSelectedCicloC').modal('hide');
     };
 
@@ -54,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         cicloCSelected = undefined;
         cicloSelected = cicloCSelected;
         document.querySelector("#txtCicloAlumno").value = "";
+        document.querySelector("#txtCicloAcademicoPaciente").value = "";
     };
 
     $("#sizePageCicloC").change(function () {
@@ -107,11 +111,11 @@ function toListCicloC(beanPagination) {
             document.querySelector("#tbodyCicloC").innerHTML += row;
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageCicloC").value),
-                document.querySelector("#pageCicloC"),
-                $('#modalCargandoSelectedCicloC'),
-                $('#paginationCicloC'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageCicloC").value),
+            document.querySelector("#pageCicloC"),
+            $('#modalCargandoSelectedCicloC'),
+            $('#paginationCicloC'));
         addEventsCicloCes();
         if (beanRequestCicloC.operation == "paginate") {
             document.querySelector("#txtFilterCicloC").focus();
