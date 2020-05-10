@@ -6,15 +6,15 @@
 <div class="row justify-content-center" id="row-options-evaluaciones" style="display: flex">
     <div class="col-12">
         <h2 class="text-center text-primary mb-4">Mis Documentos</h2>
-        <!--i class="fa fa-barcode"></i--> 
-        <h5 class="text-warning">***Nota: Cada constancia tiene un código de barras para verificar la autenticidad del documento.</h5>
-        <!--h6 class="text-danger text-center">Nota: Cada constancia tiene un <i class="fa fa-barcode"></i> (código de barras) , para verificar la autenticidad del documento.</h6-->
+        <!--h5 class="text-warning">*Nota: Cada constancia tiene un código de barras para verificar la autenticidad del documento.</h5-->
+        <h5 class="text-warning">*Nota: Devido a la crisis social denominada CIVID-19, no se entregarán las contancias de las evaluaciones virtuales
+        en la Oficina General de Bienestar Universitario.</h5>
     </div>
     <div class="col-12">
         <div class="dt-card">
             <div class="dt-card__body p-0">
                 <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" 
-                     id="div-content-evaluaciones-completadas">
+                     id="div-content-evaluaciones-completadas" style="display: none">
                     <div class="dt-widget__item border-success sisbu-cursor-mano">
                         <div class="dt-widget__info text-truncate">
                             <div class="dt-widget__title f-16 font-weight-500 text-truncate">
@@ -140,7 +140,9 @@
     </div>
     <div class="col-12 mt-4">
         <h4 class="text-primary mb-0">Información Adicional:</h4>
-        <h5 class="mb-0 text-danger">Descarga e imprime los documentos. Llévalos a dejar a la oficina de bienestar según el cronograma establecido.</h5>
+        <!--h5 class="mb-0 text-danger">Descarga e imprime los documentos. Llévalos a dejar a la oficina de bienestar según el cronograma establecido.</h5-->
+        <h5 class="mb-0 text-danger">Siguenos en facebook <a href="https://web.facebook.com/BienestarUNPRG" target="_blank">Bienestar Universitario</a> para mantenerte informado. </h5>
+        <h5 class="mb-0 text-danger">Recuerda puedes solicitar citas virtuales <a href="<%=request.getContextPath()%>/app/ate/reservas">Aquí</a>. </h5>
     </div>
 </div>
 

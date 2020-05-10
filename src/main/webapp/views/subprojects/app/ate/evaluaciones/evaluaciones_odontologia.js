@@ -73,7 +73,7 @@ function processAjaxProcedimientoOdontologia() {
     switch (beanRequestProcedimientoOdontologia.operation) {
         default:
             //7
-            parameters_pagination += "?idarea=4";
+            parameters_pagination += "?idarea=3";
             parameters_pagination += "&idusuario=" + Cookies.getJSON('sisbu_user').idusuario;
             url_request += parameters_pagination;
             break;
