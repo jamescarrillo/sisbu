@@ -89,13 +89,13 @@ document.addEventListener("DOMContentLoaded", function () {
             navigateOptionEvaluation('home');
         };
     });
-/*
-    if (user_session.tipo_perfil == 1000) {
-        document.querySelector("#div-message-cachimbo").style.display = "block";
-    } else {
-        document.querySelector("#div-message-cachimbo").style.display = "none";
-    }
-*/
+    /*
+     if (user_session.tipo_perfil == 1000) {
+     document.querySelector("#div-message-cachimbo").style.display = "block";
+     } else {
+     document.querySelector("#div-message-cachimbo").style.display = "none";
+     }
+     */
     $('[data-toggle="popover"]').popover();
 
 });
@@ -151,6 +151,19 @@ function navigateOptionEvaluation(option) {
             document.querySelector("#row-option-obstetricia").style.display = "flex";
 
             $('#modalCargandoProcedimientoObstetricia').modal('show');
+            break;
+        case "odontologia":
+            //showAlertTopEnd("warning", "Esta evaluación no está disponible");
+            //return;
+            document.querySelector("#row-options-evaluaciones").style.display = "none";
+
+            document.querySelector("#row-option-socioeconomico").style.display = "none";
+            document.querySelector("#row-option-deportiva").style.display = "none";
+            document.querySelector("#row-option-psicologica").style.display = "none";
+            document.querySelector("#row-option-obstetricia").style.display = "none";
+            document.querySelector("#row-option-odontologia").style.display = "flex";
+
+            $('#modalCargandoProcedimientoOdontologia').modal('show');
             break;
         default:
             //SOCIOECONOMICA

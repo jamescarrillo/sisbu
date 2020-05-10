@@ -275,7 +275,8 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ate/evaluaciones/evaluaciones_socieconomica.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/evaluaciones_deportiva.js" + version_project,
             "/views/subprojects/app/ate/evaluaciones/evaluaciones_psicologica.js" + version_project,
-            "/views/subprojects/app/ate/evaluaciones/evaluaciones_obstetricia.js" + version_project
+            "/views/subprojects/app/ate/evaluaciones/evaluaciones_obstetricia.js" + version_project,
+            "/views/subprojects/app/ate/evaluaciones/evaluaciones_odontologia.js" + version_project
         });
         this.list_resources.add(resource);
 
