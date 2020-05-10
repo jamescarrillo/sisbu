@@ -33,7 +33,6 @@
                     </div>
                     <div class="col-lg-4 col-12 form-group">
                         <label for="txtCicloAcademicoPaciente">Ciclo
-
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPaciente"
