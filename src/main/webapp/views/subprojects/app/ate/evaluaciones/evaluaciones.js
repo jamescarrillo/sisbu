@@ -141,8 +141,8 @@ function navigateOptionEvaluation(option) {
             $('#modalCargandoProcedimientoPsicologico').modal('show');
             break;
         case "obstetricia":
-            showAlertTopEnd("warning", "Esta evaluación no está disponible");
-            return;
+            //showAlertTopEnd("warning", "Esta evaluación no está disponible");
+            //return;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";

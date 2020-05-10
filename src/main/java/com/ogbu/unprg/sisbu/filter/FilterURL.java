@@ -484,7 +484,7 @@ public class FilterURL implements Filter {
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/servicios/farmacia/salida/class.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/farmacia/salida/paciente_c.js" + version_project,
-             "/views/subprojects/app/ogbu/servicios/farmacia/salida/salida.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/farmacia/salida/salida.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/farmacia/salida/detalle_salida.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/farmacia/salida/producto_c.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/farmacia/salida/personal_c.js" + version_project
@@ -539,26 +539,6 @@ public class FilterURL implements Filter {
         });
         this.list_resources.add(resource);
         //SOCIAL
-        ///fichas
-        resource = new Resource();
-        resource.setUrl("/app/ogbu/servicios/social/fichas");
-        resource.setPath("/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/evaluacion.jsp");
-        resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/servicios/social/fichas/evaluacion.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/fichas/pregunta.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/fichas/pregunta_c.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/fichas/critico_psi.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/fichas/inconsistencia_psi.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/fichas/alternativa.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/fichas/procedimiento_ciclo.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/fichas/detalle_procedimiento_ciclo.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/fichas/procedimiento_c.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/fichas/area_psi.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/fichas/subarea_psi.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/fichas/alternativa_global.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/social/fichas/ciclo_academico.js" + version_project
-        });
-        this.list_resources.add(resource);
         ///usuarios
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/social/usuarios");
@@ -833,6 +813,26 @@ public class FilterURL implements Filter {
         this.list_resources.add(resource);
 
         //ODONTOLOGIA
+        ///fichas
+        resource = new Resource();
+        resource.setUrl("/app/ogbu/servicios/odontologia/fichas");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/odontologia/evaluacion/evaluacion.jsp");
+        resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/evaluacion.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/pregunta.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/pregunta_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/critico_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/inconsistencia_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/alternativa.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/procedimiento_ciclo.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/detalle_procedimiento_ciclo.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/procedimiento_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/area_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/subarea_psi.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/alternativa_global.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/ciclo_academico.js" + version_project
+        });
+        this.list_resources.add(resource);
         ///pacientes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/odontologia/informes/reportes/pacientes");
