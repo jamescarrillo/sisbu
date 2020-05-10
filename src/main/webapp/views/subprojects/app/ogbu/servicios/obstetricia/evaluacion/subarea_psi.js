@@ -106,6 +106,8 @@ function processAjaxSubAreaPsi() {
                 "abreviatura": document.querySelector("#txtAbreviaturaSubAreaPsi").value,
                 "puntaje_minimo": document.querySelector("#txtPuntajeMinimoSubAreaPsi").value,
                 "puntaje_maximo": document.querySelector("#txtPuntajeMaximoSubAreaPsi").value,
+                "media": 0,
+                "ds": 0,
                 "area_psi": {
                     "idarea_psi": area_psiSelected.idarea_psi
                 }
@@ -119,6 +121,8 @@ function processAjaxSubAreaPsi() {
                 "abreviatura": document.querySelector("#txtAbreviaturaSubAreaPsi").value,
                 "puntaje_minimo": document.querySelector("#txtPuntajeMinimoSubAreaPsi").value,
                 "puntaje_maximo": document.querySelector("#txtPuntajeMaximoSubAreaPsi").value,
+                "media": 0,
+                "ds": 0,
                 "area_psi": {
                     "idarea_psi": area_psiSelected.idarea_psi
                 }

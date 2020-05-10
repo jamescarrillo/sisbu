@@ -816,7 +816,7 @@ public class FilterURL implements Filter {
         ///fichas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/odontologia/fichas");
-        resource.setPath("/views/subprojects/app/ogbu/servicios/odontologia/evaluacion/evaluacion.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/servicios/odontologia/fichas/evaluacion.jsp");
         resource.setScripts(new String[]{
             "/views/subprojects/app/ogbu/servicios/odontologia/fichas/evaluacion.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/odontologia/fichas/pregunta.js" + version_project,

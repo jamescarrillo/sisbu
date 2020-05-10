@@ -216,6 +216,12 @@ function createHTML_OGBU(typeProfile) {
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
                     <li class="dt-side-nav__item">
+                            <a href="${contextPah}app/ogbu/servicios/odontologia/fichas" class="dt-side-nav__link" title="Fichas">
+                                <i class="icon icon-list icon-fw icon-lg"></i>
+                                <span class="dt-side-nav__text">Fichas</span>
+                            </a>
+                    </li>
+                    <li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/odontologia/pacientes" class="dt-side-nav__link" title="Pacientes">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Pacientes</span>
@@ -317,12 +323,6 @@ function createHTML_OGBU(typeProfile) {
                 </a>
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
-                    <li class="dt-side-nav__item">
-                        <a href="${contextPah}app/ogbu/servicios/social/fichas" class="dt-side-nav__link" title="Fichas">
-                            <i class="icon icon-list icon-fw icon-lg"></i>
-                            <span class="dt-side-nav__text">Fichas</span>
-                        </a>
-                    </li>
                     <li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/social/usuarios" class="dt-side-nav__link" title="Atendidos">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
