@@ -26,7 +26,7 @@
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtEscuelaAtendido"
-                                aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ."
+                                aria-describedby="nombre" placeholder="Click en el botï¿½n para seleccionar. . ."
                                 disabled="">
                             <div class="input-group-append">
                                 <button type="button" id="btnSeleccionarEscuela" class="btn btn-primary btn-sm"><i
@@ -43,7 +43,7 @@
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPaciente"
-                                aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ."
+                                aria-describedby="nombre" placeholder="Click en el botï¿½n para seleccionar. . ."
                                 disabled="">
                             <div class="input-group-append">
                                 <button type="button" id="btnSeleccionarCicloAcademico"
@@ -86,9 +86,11 @@
             <div class="dt-card m-0">
                 <!-- Card Body -->
                 <div class="dt-card__body p-0  ">
-                    <!-- Widget -->
-                    <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                        id="tbodyPaciente">
+                    <div class="w-100 ps-custom-scrollbar mb-0 ps pb-5">
+                        <!-- Widget -->
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                            id="tbodyPaciente" style="min-width: 725px;">
+                        </div>
                     </div>
                     <!-- /widget -->
                     <!-- /card body -->

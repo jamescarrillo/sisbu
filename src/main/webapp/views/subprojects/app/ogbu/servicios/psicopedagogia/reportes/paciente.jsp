@@ -78,9 +78,11 @@
             <div class="dt-card m-0">
                 <!-- Card Body -->
                 <div class="dt-card__body p-0  ">
-                    <!-- Widget -->
-                    <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                        id="tbodyPaciente">
+                    <div class="w-100 ps-custom-scrollbar mb-0 ps pb-5">
+                        <!-- Widget -->
+                        <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
+                            id="tbodyPaciente" style="min-width: 725px;">
+                        </div>
                     </div>
                     <!-- /widget -->
                     <!-- /card body -->

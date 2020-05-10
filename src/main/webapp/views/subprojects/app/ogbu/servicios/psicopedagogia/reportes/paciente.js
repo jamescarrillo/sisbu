@@ -25,8 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
         processAjaxPaciente();
     });
 
-
-
     $('#modalCargandoPaciente').modal('show');
 
     $("#sizePagePaciente").change(function () {
@@ -100,46 +98,46 @@ function toListPaciente(beanPagination) {
             `
                <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2">
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate pl-5" style="max-width: 12%;">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info  pl-5" style="max-width: 12%;">
+                        <p class="mb-0  ">
                            DNI
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info ">
+                        <p class="mb-0  ">
                            NOMBRE COMPLETO /
                         </p>
-                        <p class="mb-0 text-truncate ">
+                        <p class="mb-0  ">
                            FECHA DE NACIMIENTO
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate" style="max-width: 12%;">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info " style="max-width: 12%;">
+                        <p class="mb-0  ">
                            TIPO DE PACIENTE
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info ">
+                        <p class="mb-0  ">
                            ESCUELA PROFESIONAL
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate" style="max-width: 12%;">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info " style="max-width: 12%;">
+                        <p class="mb-0  ">
                            F. REALIZADA
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info ">
+                        <p class="mb-0  ">
                            PROCEDIMIENTO
                         </p>
                     </div>
@@ -155,49 +153,49 @@ function toListPaciente(beanPagination) {
                 `
                  <div class="dt-widget__item border-success pl-5 m-0">
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " style="max-width: 12%;">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info  " style="max-width: 12%;">
+                        <p class="mb-0  ">
                            ${eva.atendido.dni}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info ">
+                        <p class="mb-0  ">
                            ${eva.atendido.apellido_pat} ${eva.atendido.apellido_mat} ${eva.atendido.nombre}
                         </p>
-                        <p class="mb-0 text-truncate ">
+                        <p class="mb-0  ">
                            ${eva.atendido.fecha_nacimiento}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate" style="max-width: 12%;">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info " style="max-width: 12%;">
+                        <p class="mb-0  ">
                            ${tipoPaciente(eva.atendido.tipo_atendido)}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info ">
+                        <p class="mb-0  ">
             ${eva.atendido.tipo_atendido == 1 ? (eva.atendido.escuela.nombre == null ? "" : eva.atendido.escuela.nombre) : subtipoPaciente(eva.atendido.subtipo_atendido)}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate" style="max-width: 12%;">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info " style="max-width: 12%;">
+                        <p class="mb-0  ">
                            ${eva.fecha_inicio == null ? "" : eva.fecha_inicio.split(" ")[0]} 
                         </p>
-                        <p class="mb-0 text-truncate ">
+                        <p class="mb-0  ">
                         ${eva.fecha_inicio == null ? "" : eva.fecha_inicio.split(" ")[1]} 
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate">
-                        <p class="mb-0 text-truncate ">
+                    <div class="dt-widget__info ">
+                        <p class="mb-0  ">
                            ${eva.procedimiento.descripcion == null ? "" : eva.procedimiento.descripcion} 
                         </p>
                         

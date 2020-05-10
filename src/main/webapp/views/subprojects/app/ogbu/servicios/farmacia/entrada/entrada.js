@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
     processAjaxEntrada();
   });
 
-  // $("#modalCargandoEntrada").modal("show");
+  $("#modalCargandoEntrada").modal("show");
 
   $("#sizePageEntrada").change(function () {
     $("#modalCargandoEntrada").modal("show");
