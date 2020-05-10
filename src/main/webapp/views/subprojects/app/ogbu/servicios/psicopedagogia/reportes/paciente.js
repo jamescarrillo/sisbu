@@ -100,7 +100,7 @@ function toListPaciente(beanPagination) {
             `
                <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2">
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
+                    <div class="dt-widget__info text-truncate pl-5" style="max-width: 12%;">
                         <p class="mb-0 text-truncate ">
                            DNI
                         </p>
@@ -117,7 +117,7 @@ function toListPaciente(beanPagination) {
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate" style="max-width: 15%;">
+                    <div class="dt-widget__info text-truncate" style="max-width: 12%;">
                         <p class="mb-0 text-truncate ">
                            TIPO DE PACIENTE
                         </p>
@@ -130,48 +130,79 @@ function toListPaciente(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate" style="max-width: 12%;">
+                        <p class="mb-0 text-truncate ">
+                           F. REALIZADA
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           PROCEDIMIENTO
+                        </p>
+                    </div>
+                    <!-- /widget info -->
                     
                 </div>
             `;
         document.querySelector("#tbodyPaciente").innerHTML += row;
         let text_row;
-        beanPagination.list.forEach(atendido => {
+        beanPagination.list.forEach(eva => {
 
             row =
                 `
                  <div class="dt-widget__item border-success pl-5 m-0">
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate " style="max-width: 15%;">
+                    <div class="dt-widget__info text-truncate " style="max-width: 12%;">
                         <p class="mb-0 text-truncate ">
-                           ${atendido.dni}
+                           ${eva.atendido.dni}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate">
                         <p class="mb-0 text-truncate ">
-                           ${atendido.apellido_pat} ${atendido.apellido_mat} ${atendido.nombre}
+                           ${eva.atendido.apellido_pat} ${eva.atendido.apellido_mat} ${eva.atendido.nombre}
                         </p>
                         <p class="mb-0 text-truncate ">
-                           ${atendido.fecha_nacimiento}
+                           ${eva.atendido.fecha_nacimiento}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info text-truncate" style="max-width: 15%;">
+                    <div class="dt-widget__info text-truncate" style="max-width: 12%;">
                         <p class="mb-0 text-truncate ">
-                           ${tipoPaciente(atendido.tipo_atendido)}
+                           ${tipoPaciente(eva.atendido.tipo_atendido)}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate">
                         <p class="mb-0 text-truncate ">
-            ${atendido.tipo_atendido == 1 ? (atendido.escuela.nombre == null ? "" : atendido.escuela.nombre) : subtipoPaciente(atendido.subtipo_atendido)}
+            ${eva.atendido.tipo_atendido == 1 ? (eva.atendido.escuela.nombre == null ? "" : eva.atendido.escuela.nombre) : subtipoPaciente(eva.atendido.subtipo_atendido)}
                         </p>
                     </div>
                     <!-- /widget info -->
-                    
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate" style="max-width: 12%;">
+                        <p class="mb-0 text-truncate ">
+                           ${eva.fecha_inicio == null ? "" : eva.fecha_inicio.split(" ")[0]} 
+                        </p>
+                        <p class="mb-0 text-truncate ">
+                        ${eva.fecha_inicio == null ? "" : eva.fecha_inicio.split(" ")[1]} 
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate">
+                        <p class="mb-0 text-truncate ">
+                           ${eva.procedimiento.descripcion == null ? "" : eva.procedimiento.descripcion} 
+                        </p>
+                        
+                    </div>
+                    <!-- /widget info -->
                 </div>
             `;
             document.querySelector("#tbodyPaciente").innerHTML += row;

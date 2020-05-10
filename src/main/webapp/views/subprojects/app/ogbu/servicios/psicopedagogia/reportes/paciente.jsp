@@ -19,10 +19,7 @@
                 <div class="form-row">
                     <div class="col-lg-4 col-12 form-group">
                         <label for="txtEscuelaAtendido">ESCUELA
-                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover"
-                                data-trigger="hover" data-placement="top" title=""
-                                data-content="Carrera profesional a la que ingresaste" style="cursor: pointer"
-                                data-original-title=""></i>
+
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtEscuelaAtendido"
@@ -36,10 +33,7 @@
                     </div>
                     <div class="col-lg-4 col-12 form-group">
                         <label for="txtCicloAcademicoPaciente">Ciclo
-                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover"
-                                data-trigger="hover" data-placement="top" title=""
-                                data-content="Carrera profesional a la que ingresaste" style="cursor: pointer"
-                                data-original-title=""></i>
+
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPaciente"
@@ -69,7 +63,8 @@
                             <input type="search" id="txtFilterPaciente" class="form-control form-control-sm w-50"
                                 placeholder="Filtrar Paciente ...">
                             <select class="form-control form-control-sm sisbu-cursor-mano" id="txtFilterEstadoPaciente">
-                                <option selected value="-1">SIN EVALUACIONES</option>
+                                <option value="-1">SIN EVALUACIONES</option>
+                                <option selected value="0">TODAS LAS EVALUACIONES</option>
                             </select>
                             <button type="submit" class="search-icon"><i class="icon icon-search icon-fw"></i></button>
                             <!--button type="button" class="btn btn-primary btn-sm ml-3" id="btnReportePaciente"
