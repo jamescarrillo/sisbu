@@ -273,12 +273,12 @@ function createHTML_OGBU(typeProfile) {
                             <span class="dt-side-nav__text">Evaluaciones</span>
                         </a>
                     </li>
-                    <li class="dt-side-nav__item">
+                    <!--li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/obstetricia/pacientes" class="dt-side-nav__link" title="Pacientes">
                             <i class="icon icon-contacts-app icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Pacientes</span>
                         </a>
-                    </li>
+                    </li-->
                     <li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/obstetricia/citas" class="dt-side-nav__link" title="Citas">
                             <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
@@ -319,12 +319,12 @@ function createHTML_OGBU(typeProfile) {
                             <span class="dt-side-nav__text">Citas</span>
                         </a>
                     </li>
-                    <li class="dt-side-nav__item">
+                    <!--li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/psicopedagogia/asignaciones" class="dt-side-nav__link" title="Asignaciones">
                             <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Asignaciones</span>
                         </a>
-                    </li>
+                    </li-->
                     <li class="dt-side-nav__item">
                             <a href="${contextPah}app/ogbu/servicios/medicina/reportes" class="dt-side-nav__link" title="Pacientes">
                                 <i class="icon icon-profilepage icon-fw icon-lg"></i>

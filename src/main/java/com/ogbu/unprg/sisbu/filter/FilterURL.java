@@ -463,6 +463,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/ciclo_academico.js" + version_project
         });
         this.list_resources.add(resource);
+        /*
         ///pacientes
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/obstetricia/pacientes");
@@ -471,6 +472,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/obstetricia/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
+        */
         ///citas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/obstetricia/citas");
@@ -583,6 +585,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
+        /*
         ///asignaciones
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/asignaciones");
@@ -591,6 +594,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/asignacion/asignacion.js" + version_project
         });
         this.list_resources.add(resource);
+        */
         ///citas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/citas");
