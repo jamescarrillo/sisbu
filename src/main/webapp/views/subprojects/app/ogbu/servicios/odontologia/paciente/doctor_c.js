@@ -98,7 +98,7 @@ function processAjaxDoctorC() {
 
 function toListDoctorC(beanPagination) {
     document.querySelector("#tbodyDoctorC").innerHTML = "";
-    document.querySelector("#titleManagerDoctorC").innerHTML = "[ " + beanPagination.count_filter + " ] MÉDICOS";
+    document.querySelector("#titleManagerDoctorC").innerHTML = "[ " + beanPagination.count_filter + " ] ODONTÓLOGOS";
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(doctor => {

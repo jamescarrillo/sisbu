@@ -26,7 +26,7 @@
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtEscuelaAtendido"
-                                aria-describedby="nombre" placeholder="Click en el botï¿½n para seleccionar. . ."
+                                aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ."
                                 disabled="">
                             <div class="input-group-append">
                                 <button type="button" id="btnSeleccionarEscuela" class="btn btn-primary btn-sm"><i
@@ -43,7 +43,7 @@
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPaciente"
-                                aria-describedby="nombre" placeholder="Click en el botï¿½n para seleccionar. . ."
+                                aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ."
                                 disabled="">
                             <div class="input-group-append">
                                 <button type="button" id="btnSeleccionarCicloAcademico"
