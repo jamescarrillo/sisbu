@@ -63,7 +63,7 @@ function toListNoticia(beanPagination) {
                                 ... Check Detalle <i class="icon icon-double-arrow-right"></i>
                                     </a>   
                                 <div class="card-footer bg-light" style="z-index: 2;">
-                                    <span class="d-inline-block mr-3">${noticia.fuente}</span>
+                                    <span class="d-inline-block text-truncate mr-3">${noticia.fuente}</span>
                                     <span class="d-inline-block float-right"><i class="icon icon-calendar icon-fw"></i> ${ noticia.fecha_publicacion}</span>
                                 </div>
                             </div>

@@ -39,6 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#sizePageComida").change(function () {
         $('#modalCargandoComida').modal('show');
     });
+    $("#txtFilterTipoComida").change(function () {
+        $('#modalCargandoComida').modal('show');
+    });
 
 });
 
@@ -130,7 +133,7 @@ function toListComida(beanPagination) {
         beanPagination.list.forEach(comida => {
             row =
                 `
-                 <div class="dt-widget__item border-success  pl-5">
+                 <div class="dt-widget__item border-bottom m-0 pt-2 pb-2 pl-5">
                     
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " >
@@ -148,10 +151,9 @@ function toListComida(beanPagination) {
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Extra -->
-                    <div class="dt-widget__extra text-right">
-                      
-                        <!-- Hide Content -->
-                        <div class="hide-content pr-2"">
+                    <div class="dt-widget__extra">
+                        <div class="dt-task">
+                        <div class="dt-task__redirect">
                             <!-- Action Button Group -->
                             <div class="action-btn-group">
                                 <button class="btn btn-default text-primary dt-fab-btn editar-comida" idcomida='${comida.idcomida}' title="Editar" data-toggle="tooltip">
@@ -160,7 +162,7 @@ function toListComida(beanPagination) {
                                 <button class="btn btn-default text-danger dt-fab-btn eliminar-comida" idcomida='${comida.idcomida}' title="Eliminar" data-toggle="tooltip">
                                     <i class="icon icon-trash-filled"></i>
                                 </button>
-                              
+                                </div>
                             </div>
                             <!-- /action button group -->
                         </div>
