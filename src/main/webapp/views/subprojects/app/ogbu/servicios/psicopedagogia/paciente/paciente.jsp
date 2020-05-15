@@ -17,7 +17,7 @@
             </div>
             <!-- /card header -->
             <!-- Card Body -->
-            <div class="card-body p-0">
+            <div class="card-body p-0 pt-2">
                 <form id="FrmPaciente" class="search-box mw-100 left-side-icon">
                     <div class="input-group search-box" style="max-width: 100%;">
                         <input type="search" id="txtFilterPaciente" class="form-control form-control-sm"
