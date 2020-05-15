@@ -48,3 +48,30 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalNoticia" tabindex="-1" role="dialog" aria-labelledby="model-2" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+
+        <!-- Modal Content -->
+        <div class="modal-content dt-social-card border border-w-2 border-light-teal">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+
+                <h3 class="dt-card__title text-center w-100" id="tituloModal">Noticia</h3>
+            </div>
+            <!-- /modal header -->
+
+            <!-- Modal Body -->
+            <div class="modal-body" id="detalleNoticia">
+
+            </div>
+            <!-- /modal body -->
+
+
+
+        </div>
+        <!-- /modal content -->
+
+    </div>
+</div>

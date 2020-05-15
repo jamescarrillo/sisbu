@@ -52,58 +52,49 @@ document.addEventListener("DOMContentLoaded", function () {
             fechaActual = new Date(document.querySelector("#txtMenuSemanalFechaI").value.split("/")[2] + "-" +
                 document.querySelector("#txtMenuSemanalFechaI").value.split("/")[1] + "-" +
                 document.querySelector("#txtMenuSemanalFechaI").value.split("/")[0]);
+            if (fechaActual.getUTCDay() == 1) {
 
-            if (fechaActual.getDay() == 0) {
-                listDMS.length = 0;
-                document.querySelector("#txtMenuSemanalFechaF").value = getDateJava(addDays(fechaActual, 5));
-
-                for (var i = 1; i < 6; i++) {
-                    dms = new DetalleCronogramaCu();
-                    dms.menu_semanal.fechai = document.querySelector("#txtMenuSemanalFechaI").value;
-                    dms.menu_semanal.fechaf = getDateJava(addDays(fechaActual, 5));
-                    dms.menu_semanal.observacion = document.querySelector("#txtMenuSemanalObservacion").value;
-                    dms.fecha = getDateJava(addDays(fechaActual, i));
-                    listDMS.push(dms);
-
+                if (document.querySelector("#txtMenuSemanalFechaF").value != "") {
+                    fechaActual = new Date(document.querySelector("#txtMenuSemanalFechaF").value.split("/")[2] + "-" +
+                        document.querySelector("#txtMenuSemanalFechaF").value.split("/")[1] + "-" +
+                        document.querySelector("#txtMenuSemanalFechaF").value.split("/")[0]);
+                    if (fechaActual.getUTCDay() == 5) {
+                        listDMS.length = 0;
+                        toListSemanal(listDMS);
+                        let dia = document.querySelector("#txtMenuSemanalFechaI").value.split("/")[0];
+                        let mes = document.querySelector("#txtMenuSemanalFechaI").value.split("/")[1];
+                        let anio = document.querySelector("#txtMenuSemanalFechaI").value.split("/")[2];
+                        for (var i = 0; i < 5; i++) {
+                            dms = new DetalleCronogramaCu();
+                            if (dia < 10 && i > 0) {
+                                dia = "0" + dia;
+                            }
+                            if (ultimodia(document.querySelector("#txtMenuSemanalFechaI").value) < dia) {
+                                dia = "0" + 1;
+                                if (mes == "12") {
+                                    mes = "01";
+                                    anio = ++anio;
+                                } else {
+                                    mes++;
+                                }
+                            }
+                            dms.menu_semanal.fechai = document.querySelector("#txtMenuSemanalFechaI").value;
+                            dms.menu_semanal.fechaf = document.querySelector("#txtMenuSemanalFechaF").value;
+                            dms.menu_semanal.observacion = document.querySelector("#txtMenuSemanalObservacion").value;
+                            dms.fecha = dia + "/" + mes + "/" + anio;
+                            listDMS.push(dms);
+                            dia++;
+                        }
+                        console.log(listDMS);
+                        toListSemanal(listDMS);
+                    }
                 }
-                toListSemanal(listDMS);
-
             }
         }
 
 
     };
-    document.querySelector("#txtMenuSemanalFechaF").onchange = function () {
-        if (beanRequestMenuSemanal.operation == "add") {
 
-            fechaActual = new Date(document.querySelector("#txtMenuSemanalFechaF").value.split("/")[2] + "-" +
-                document.querySelector("#txtMenuSemanalFechaF").value.split("/")[1] + "-" +
-                document.querySelector("#txtMenuSemanalFechaF").value.split("/")[0]);
-
-            if (fechaActual.getDay() == 4) {
-                listDMS.length = 0;
-                document.querySelector("#txtMenuSemanalFechaI").value = getDateJava(addDays(fechaActual, -3));
-
-                fechaActual = new Date(document.querySelector("#txtMenuSemanalFechaI").value.split("/")[2] + "-" +
-                    document.querySelector("#txtMenuSemanalFechaI").value.split("/")[1] + "-" +
-                    document.querySelector("#txtMenuSemanalFechaI").value.split("/")[0]);
-
-                for (var i = 1; i < 6; i++) {
-                    dms = new DetalleCronogramaCu();
-                    dms.menu_semanal.fechaf = document.querySelector("#txtMenuSemanalFechaF").value;
-                    dms.menu_semanal.fechai = document.querySelector("#txtMenuSemanalFechaI").value;
-                    dms.menu_semanal.observacion = document.querySelector("#txtMenuSemanalObservacion").value;
-                    dms.fecha = getDateJava(addDays(fechaActual, i));
-                    listDMS.push(dms);
-
-                }
-                toListSemanal(listDMS);
-
-            }
-        }
-
-
-    };
     $('#FrmMenuSemanal').submit(function (event) {
         beanRequestMenuSemanal.operation = "paginate";
         beanRequestMenuSemanal.type_request = "GET";
@@ -276,7 +267,28 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
 });
+function inicializaValorMenuSemanal() {
 
+    var mes = fechaActual.getMonth() + 1; //obteniendo mes
+    var dia = fechaActual.getDate(); //obteniendo dia
+    var ano = fechaActual.getFullYear(); //obteniendo año
+    if (dia < 10)
+        dia = '0' + dia; //agrega cero si el menor de 10
+    if (mes < 10)
+        mes = '0' + mes //agrega cero si el menor de 10
+    let diaLunes = dia - fechaActual.getUTCDay() + 1;
+    let diaViernes = diaLunes + 4;
+    if (diaLunes < 10)
+        diaLunes = '0' + diaLunes;
+
+    if (diaViernes < 10)
+        diaViernes = '0' + diaViernes;
+
+    document.querySelector('#txtMenuSemanalObservacion').value = "";
+    document.querySelector('#txtMenuSemanalFecha').value = ano + "-" + mes + "-" + dia;
+    document.querySelector("#txtMenuSemanalFechaI").value = ano + "-" + mes + "-" + diaLunes;
+    document.querySelector("#txtMenuSemanalFechaF").value = ano + "-" + mes + "-" + diaViernes;
+}
 
 function processAjaxMenuSemanal() {
     let parameters_pagination = "";
@@ -816,7 +828,14 @@ function dias(mes, anno) {
     return 30;
 }
 
-
+function ultimodia(elemento) {
+    let arreglo = elemento.split("/");
+    let diaa = arreglo[0];
+    let mess = arreglo[1];
+    let anno = arreglo[2];
+    diaa = dias(mess, anno);
+    return diaa;
+}
 
 //COMIDA
 function toListComidaTabla(ArrayComida, tablaBody) {

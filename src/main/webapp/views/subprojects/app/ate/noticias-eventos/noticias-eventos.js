@@ -59,11 +59,12 @@ function toListNoticia(beanPagination) {
                                 ${noticia.descripcion}
                                 </div>   
                                
-                                <a class="card-link w-100 p-4 pr-10 pl-10 bg-white"  style="z-index: 2;" href="javascript:void(0)">
+                                <a class="card-link w-100 p-4 pr-10 pl-10 bg-white detalle-noticia"  style="z-index: 2;" href="javascript:void(0)"
+                                idnoticia="${noticia.idnoticia}">
                                 ... Check Detalle <i class="icon icon-double-arrow-right"></i>
                                     </a>   
                                 <div class="card-footer bg-light" style="z-index: 2;">
-                                    <span class="d-inline-block mr-3">${noticia.fuente}</span>
+                                    <span class="d-inline-block text-truncate mr-3">${noticia.fuente}</span>
                                     <span class="d-inline-block float-right"><i class="icon icon-calendar icon-fw"></i> ${ noticia.fecha_publicacion}</span>
                                 </div>
                             </div>
@@ -78,13 +79,39 @@ function toListNoticia(beanPagination) {
             document.querySelector("#pageNoticia"),
             $('#modalCargandoNoticia'),
             $('#paginationNoticia'));
+        addEventsNoticiaes();
     } else {
         destroyPagination($('#paginationNoticia'));
         showAlertTopEnd('warning', 'No se encontraron resultados');
     }
 }
+function addEventsNoticiaes() {
+    document.querySelectorAll('.detalle-noticia').forEach(btn => {
+        //AGREGANDO EVENTO CLICK
+        btn.onclick = function () {
+            noticiaSelected = findByNoticia(btn.getAttribute('idnoticia'));
+            if (noticiaSelected != undefined) {
+                $('#modalNoticia').modal("show");
+                document.querySelector("#tituloModal").innerHTML = noticiaSelected.titulo;
+                document.querySelector("#detalleNoticia").innerHTML = noticiaSelected.descripcion;
 
+            } else {
+                showAlertTopEnd('warning', 'No se encontró el Noticia para poder editar');
+            }
+        };
+    });
 
+}
+function findByNoticia(idnoticia) {
+    let noticia_;
+    beanPaginationNoticia.list.forEach(noticia => {
+        if (idnoticia == noticia.idnoticia) {
+            noticia_ = noticia;
+            return;
+        }
+    });
+    return noticia_;
+}
 
 
 

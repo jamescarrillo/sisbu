@@ -5,7 +5,6 @@
  */
 var beanPaginationComidac;
 var comidacSelected;
-
 var beanRequestComidac = new BeanRequest();
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -89,6 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#sizePageComidac").change(function () {
         $('#modalCargandoSelectedComidac').modal('show');
     });
+
+    $("#txtFilterTipoComida").change(function () {
+        $('#modalCargandoSelectedComidac').modal('show');
+    });
+
     //almuerzo
     document.querySelector("#btnSeleccionarComidaAlmuerzo").onclick = function () {
 
@@ -109,8 +113,8 @@ function processAjaxComidac() {
     let url_request = getHostAPI() + beanRequestComidac.entity_api + "/" + beanRequestComidac.operation;
     switch (beanRequestComidac.operation) {
         default:
-            if ( document.querySelector("#txtFilterTipoComida").value > 0 ||
-                    document.querySelector("#txtFilterComidac").value != "") {
+            if (document.querySelector("#txtFilterTipoComida").value > 0 ||
+                document.querySelector("#txtFilterComidac").value != "") {
                 document.querySelector("#pageComidac").value = "1";
             }
             parameters_pagination += "?tipo=" + document.querySelector("#txtFilterTipoComida").value;
@@ -146,7 +150,7 @@ function toListComidac(beanPagination) {
     document.querySelector("#titleManagerComidac").innerHTML = "[ " + beanPagination.count_filter + " ] COMIDAS";
     if (beanPagination.count_filter > 0) {
         let row;
-        
+
         beanPagination.list.forEach(comida => {
             row = "<tr class='click-selection-comida sisbu-cursor-mano' idcomida='" + comida.idcomida + "'>";
             row += "<td class='align-middle text-left pl-3'>" + comida.descripcion.toUpperCase() + "</td>";
@@ -155,16 +159,16 @@ function toListComidac(beanPagination) {
             document.querySelector("#tbodyComidac").innerHTML += row;
         });
         buildPagination(
-                beanPagination.count_filter,
-                parseInt(document.querySelector("#sizePageComidac").value),
-                document.querySelector("#pageComidac"),
-                $('#modalCargandoSelectedComidac'),
-                $('#paginationComidac'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageComidac").value),
+            document.querySelector("#pageComidac"),
+            $('#modalCargandoSelectedComidac'),
+            $('#paginationComidac'));
         addEventsComidaces();
         if (beanRequestComidac.operation == "paginate") {
             document.querySelector("#txtFilterComidac").focus();
         }
-       
+
     } else {
         destroyPagination($('#paginationComidac'));
         showAlertTopEnd('warning', 'No se encontraron resultados');

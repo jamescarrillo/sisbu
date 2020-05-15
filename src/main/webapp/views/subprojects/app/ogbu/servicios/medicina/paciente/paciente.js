@@ -233,10 +233,9 @@ function processAjaxPaciente() {
 function toListPaciente(beanPagination) {
     document.querySelector("#tbodyPaciente").innerHTML = "";
     document.querySelector("#titleManagerPaciente").innerHTML = "[ " + beanPagination.count_filter + " ] PACIENTES";
-    if (beanPagination.count_filter > 0) {
-        let row;
-        row =
-            `
+    let row;
+    row =
+        `
                <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2 pr-1">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
@@ -272,10 +271,29 @@ function toListPaciente(beanPagination) {
                     
                 </div>
             `;
+    if (beanPagination.count_filter == 0) {
+        destroyPagination($('#paginationPaciente'));
+        showAlertTopEnd('warning', 'No se encontraron resultados');
+        document.querySelector("#txtFilterPaciente").focus();
+        row +=
+            `
+               <div class="dt-widget__item  border-bottom  pl-5 m-0 pr-1 pt-2 pb-2">
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info text-truncate text-center" >
+                        NO HAY PACIENTES
+                    </div>
+                    <!-- /widget info -->
+                    
+                </div>
+            `;
         document.querySelector("#tbodyPaciente").innerHTML += row;
-        beanPagination.list.forEach(atendido => {
-            row =
-                `
+        return;
+    }
+
+    document.querySelector("#tbodyPaciente").innerHTML += row;
+    beanPagination.list.forEach(atendido => {
+        row =
+            `
                  <div class="dt-widget__item border-bottom  pl-5 m-0 pr-1 pt-2 pb-2">
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
@@ -332,25 +350,21 @@ function toListPaciente(beanPagination) {
                     
                 </div>
             `;
-            document.querySelector("#tbodyPaciente").innerHTML += row;
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-        buildPagination(
-            beanPagination.count_filter,
-            parseInt(document.querySelector("#sizePagePaciente").value),
-            document.querySelector("#pagePaciente"),
-            $('#modalCargandoPaciente'),
-            $('#paginationPaciente'));
-        addEventsPacientes();
-        if (beanRequestPaciente.operation == "paginate") {
-            document.querySelector("#txtFilterPaciente").focus();
-        }
-
-    } else {
-        destroyPagination($('#paginationPaciente'));
-        showAlertTopEnd('warning', 'No se encontraron resultados');
+        document.querySelector("#tbodyPaciente").innerHTML += row;
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    buildPagination(
+        beanPagination.count_filter,
+        parseInt(document.querySelector("#sizePagePaciente").value),
+        document.querySelector("#pagePaciente"),
+        $('#modalCargandoPaciente'),
+        $('#paginationPaciente'));
+    addEventsPacientes();
+    if (beanRequestPaciente.operation == "paginate") {
         document.querySelector("#txtFilterPaciente").focus();
     }
+
+
 }
 
 function addEventsPacientes() {
