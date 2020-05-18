@@ -10,7 +10,7 @@
 
         <div class="overflow-hidden" id="ListaUsuario">
             <!-- Card Header -->
-            <div class="card-header bg-transparent">
+            <div class="card-header bg-transparent pl-0">
                 <h4 class="mb-0" id="titleManagerUsuario">[ 0 ] USUARIOS</h4>
                 <input type="hidden" id="pageUsuario" value="1">
             </div>
@@ -76,7 +76,7 @@
                     <li class="nav-item">
                         <a id="buttonFiliacion" class="nav-link show active" data-toggle="tab" href="#tab-pane-15"
                             role="tab" aria-controls="tab-pane-15" aria-="true">
-                            DATOS DE FILIACI�N</a>
+                            DATOS DE FILIACION</a>
                     </li>
                     <li class="nav-item">
                         <a id="buttonDeporte" class="nav-link" data-toggle="tab" href="#OpenListaDeporteDetalle"
@@ -147,16 +147,16 @@
 
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
-                                <label for="txtCodigoUsuario">C�DIGO</label>
+                                <label for="txtCodigoUsuario">CxDIGO</label>
                                 <input disabled type="text" class="form-control form-control-sm" id="txtCodigoUsuario"
                                     placeholder="CODIGO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="form-group">
-                                <label for="txtNumeroDocumentoUsuario">N� DOCUMENTO</label>
+                                <label for="txtNumeroDocumentoUsuario">Nx DOCUMENTO</label>
                                 <input disabled type="text" class="form-control form-control-sm"
-                                    id="txtNumeroDocumentoUsuario" placeholder="N� DOCUMENTO">
+                                    id="txtNumeroDocumentoUsuario" placeholder="Nx DOCUMENTO">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
@@ -285,7 +285,7 @@
                                             <select class="form-control form-control-sm" id="txtEstadoDeporteDetalle">
                                                 <option value="-1">seleccione...</option>
                                                 <option value="1">LO PRACTICO</option>
-                                                <option value="2">ME GUSTAR�A APRENDER</option>
+                                                <option value="2">ME GUSTARIA APRENDER</option>
                                             </select>
                                         </div>
                                     </div>
@@ -299,7 +299,7 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control form-control-sm"
                                                 id="txtDeporteDetalle" aria-describedby="nombre"
-                                                placeholder="Click en el bot�n para seleccionar. . ." disabled="">
+                                                placeholder="Click en el botxn para seleccionar. . ." disabled="">
                                             <div class="input-group-append">
                                                 <button type="button" id="btnSeleccionarDeporte"
                                                     class="btn btn-primary btn-sm"><i
@@ -388,7 +388,7 @@
                                             <select class="form-control form-control-sm" id="txtEstadoAficionDetalle">
                                                 <option value="-1">seleccione...</option>
                                                 <option value="1">LO PRACTICO</option>
-                                                <option value="2">ME GUSTAR�A APRENDER</option>
+                                                <option value="2">ME GUSTARIA APRENDER</option>
                                             </select>
                                         </div>
                                     </div>
@@ -402,7 +402,7 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control form-control-sm"
                                                 id="txtAficionDetalle" aria-describedby="nombre"
-                                                placeholder="Click en el bot�n para seleccionar. . ." disabled="">
+                                                placeholder="Click en el botxn para seleccionar. . ." disabled="">
                                             <div class="input-group-append">
                                                 <button type="button" id="btnSeleccionarAficiones"
                                                     class="btn btn-primary btn-sm"><i
@@ -644,7 +644,7 @@
                                 <table class="table mb-0 table-fluid">
                                     <thead>
                                         <tr>
-                                            <th class="align-middle text-left">Afici�n</th>
+                                            <th class="align-middle text-left">Aficion</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyAficionC">
@@ -706,7 +706,7 @@
                 <div class="progress" style="margin-bottom: 0px;height: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                        Verificando evaluaci�n deportiva. . .
+                        Verificando evaluacion deportiva. . .
                     </div>
                 </div>
             </div>

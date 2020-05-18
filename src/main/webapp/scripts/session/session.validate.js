@@ -353,7 +353,7 @@ function createHTML_OGBU(typeProfile) {
                             <span class="dt-side-nav__text">Usuarios</span>
                         </a>
                     </li>
-                    <li class="dt-side-nav__item">
+                    <!--li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/social/reservas-cu" class="dt-side-nav__link" title="Reservas C.U">
                             <i class="icon icon-list icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Reservas C.U</span>
@@ -364,7 +364,7 @@ function createHTML_OGBU(typeProfile) {
                             <i class="icon icon-list icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Convocatorias C.U</span>
                         </a>
-                    </li>
+                    </li-->
                 </ul>
                 <!-- /sub-menu -->
             </li>
@@ -381,7 +381,7 @@ function createHTML_OGBU(typeProfile) {
                 </a>
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
-                    <li class="dt-side-nav__item">
+                    <!--li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/comedor/c-a-cu" class="dt-side-nav__link" title="Control Asistencia del C.U">
                             <i class="icon icon-collapse icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Control Diario</span>
@@ -392,7 +392,7 @@ function createHTML_OGBU(typeProfile) {
                             <i class="icon icon-calendar icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Asistencia</span>
                         </a>
-                    </li>
+                    </li-->
                     <li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/comedor/comidas" class="dt-side-nav__link" title="Comidas">
                             <i class="icon icon-burger icon-fw icon-lg"></i>
