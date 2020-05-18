@@ -9,7 +9,7 @@
         <!-- Card -->
         <div class="overflow-hidden" id="btnListaPersonal">
             <!-- Card Header -->
-            <div class="card-header bg-transparent">
+            <div class="card-header bg-transparent pl-0">
                 <h4 class="mb-0" id="titleManagerPersonal">[ 0 ] PERSONAL</h4>
                 <input type="hidden" id="pagePersonal" value="1">
             </div>

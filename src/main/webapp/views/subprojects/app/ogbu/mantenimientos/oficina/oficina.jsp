@@ -11,7 +11,7 @@
         <div class="overflow-hidden">
 
             <!-- Card Header -->
-            <div class="card-header bg-transparent">
+            <div class="card-header bg-transparent pl-0">
                 <h4 class="mb-0" id="titleManagerOficina">[ 0 ] OFICINAS</h4>
                 <input type="hidden" id="pageOficina" value="1">
             </div>

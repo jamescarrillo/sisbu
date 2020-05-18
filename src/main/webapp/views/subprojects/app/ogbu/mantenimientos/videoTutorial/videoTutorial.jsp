@@ -9,7 +9,7 @@
         <!-- Card -->
         <div class="overflow-hidden">
             <!-- Card Header -->
-            <div class="card-header bg-transparent">
+            <div class="card-header bg-transparent pl-0">
                 <h4 class="mb-0" id="titleManagerVideoTutorial">[ 0 ] VIDEO TUTORIALES</h4>
                 <input type="hidden" id="pageVideoTutorial" value="1">
             </div>
@@ -19,7 +19,7 @@
                 <form id="FrmVideoTutorial">
                     <div class="input-group search-box mw-100">
                         <input type="search" id="txtFilterVideoTutorial" class="form-control form-control-sm"
-                            placeholder="Filter T�tulo..." data-toggle="tooltip" data-placement="left"
+                            placeholder="Filter..." data-toggle="tooltip" data-placement="left"
                             data-original-title="Buscar">
                         <button type="submit" class="search-icon">
                             <i class="icon icon-search icon-lg"></i></button>
