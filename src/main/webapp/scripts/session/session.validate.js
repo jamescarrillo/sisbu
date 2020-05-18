@@ -326,7 +326,7 @@ function createHTML_OGBU(typeProfile) {
                         </a>
                     </li-->
                     <li class="dt-side-nav__item">
-                            <a href="${contextPah}app/ogbu/servicios/medicina/reportes" class="dt-side-nav__link" title="Pacientes">
+                            <a href="${contextPah}app/ogbu/servicios/psicopedagogia/reportes" class="dt-side-nav__link" title="Pacientes">
                                 <i class="icon icon-profilepage icon-fw icon-lg"></i>
                                 <span class="dt-side-nav__text">Reportes</span>
                             </a>

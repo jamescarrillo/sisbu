@@ -197,7 +197,7 @@ function toListAtendido(beanPagination) {
                                 <button class="btn btn-default text-info dt-fab-btn familiar-atendido" idatendido='${atendido.idatendido}' title="Familiares" data-toggle="tooltip">
                                     <i class="fa fa-users"></i>
                                 </button>
-                                <button class="btn btn-default text-warning dt-fab-btn fichas-atendido" idatendido='${atendido.idatendido}' title="Fichas" data-toggle="tooltip">
+                                <button class="btn btn-default text-warning dt-fab-btn fichas-atendido" idatendido='${atendido.idatendido}' title="Evaluacion" data-toggle="tooltip">
                                     <i class="fa fa-list-ol"></i>
                                 </button>
                                 <button class="btn btn-default text-danger dt-fab-btn constancia-atendido" idatendido='${atendido.idatendido}' title="Descargar Constancia" data-toggle="tooltip">

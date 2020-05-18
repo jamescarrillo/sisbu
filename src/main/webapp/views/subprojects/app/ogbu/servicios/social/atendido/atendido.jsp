@@ -8,7 +8,7 @@
     <!-- Card -->
     <div class="col-12 p-0 overflow-hidden">
         <!-- Card Header -->
-        <div class="card-header bg-transparent">
+        <div class="card-header bg-transparent pl-0">
             <h4 class="mb-0" id="titleManagerAtendido">[ 0 ] ATENDIDOS</h4>
             <input type="hidden" id="pageAtendido" value="1">
         </div>
@@ -27,7 +27,7 @@
             </form>
             <!-- Tables -->
             <!-- Card -->
-            <div class="dt-card mt-4 dt-social-card animate-slide border border-primary border-w-2 ">
+            <div class="dt-card mt-4 dt-social-card animate-slide border border-primary border-w-2 mb-4">
                 <!-- Card Body -->
                 <div class="dt-card__body p-0  ">
                     <!-- Widget -->
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-md-10 col-sm-9 col-8">
                     <nav aria-label="Page navigation example">
-                        <ul id="paginationAtendido" class="pagination pagination-sm justify-content-end">
+                        <ul id="paginationAtendido" class="pagination justify-content-end">
                         </ul>
                     </nav>
                 </div>
@@ -208,7 +208,7 @@
                     </label>
                     <div class="input-group">
                         <input type="text" class="form-control form-control-sm" id="txtEscuelaAtendido"
-                            aria-describedby="nombre" placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                            aria-describedby="nombre" placeholder="Click en el boton para seleccionar. . ." disabled="">
                         <div class="input-group-append">
                             <button type="button" id="btnSeleccionarEscuela" class="btn btn-primary btn-sm"><i
                                     class="icon icon-subscribe"></i></button>
@@ -243,7 +243,7 @@
                     <label for="txtDistritoActualAtendido">DISTRITO ACTUAL</label>
                     <div class="input-group">
                         <input type="text" class="form-control form-control-sm" id="txtDistritoActualAtendido"
-                            aria-describedby="nombre" placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                            aria-describedby="nombre" placeholder="Click en el boton para seleccionar. . ." disabled="">
                         <div class="input-group-append">
                             <button type="button" id="btnSeleccionarDistritoActual" class="btn btn-primary btn-sm"><i
                                     class="icon icon-subscribe"></i></button>
@@ -254,7 +254,7 @@
                     <label for="txtDistritoProcedenciaAtendido">DISTRITO PROCEDENCIA</label>
                     <div class="input-group">
                         <input type="text" class="form-control form-control-sm" id="txtDistritoProcedenciaAtendido"
-                            aria-describedby="nombre" placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                            aria-describedby="nombre" placeholder="Click en el boton para seleccionar. . ." disabled="">
                         <div class="input-group-append">
                             <button type="button" id="btnSeleccionarDistritoProcedencia"
                                 class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
@@ -294,7 +294,7 @@
         </div>
     </div>
     <!-- Card -->
-    <div class="dt-card mt-4 ">
+    <div class="dt-card">
         <!-- Card Body -->
         <div class="dt-card__body p-0">
             <!-- Widget -->
@@ -468,7 +468,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control form-control-sm" id="txtDistritoPadre"
                                             aria-describedby="nombre"
-                                            placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                                            placeholder="Click en el boton para seleccionar. . ." disabled="">
                                         <div class="input-group-append">
                                             <button type="button" id="btnSeleccionarDistritoPadre"
                                                 class="btn btn-primary btn-sm pulse-primary"><i
@@ -481,7 +481,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control form-control-sm" id="txtDistritoMadre"
                                             aria-describedby="nombre"
-                                            placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                                            placeholder="Click en el boton para seleccionar. . ." disabled="">
                                         <div class="input-group-append">
                                             <button type="button" id="btnSeleccionarDistritoMadre"
                                                 class="btn btn-primary btn-sm pulse-primary"><i
@@ -819,7 +819,7 @@
             <div class="modal-header">
                 <h6 class="modal-title" id="txtTituloModalFamiliar"></h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">ï¿½</span>
+                    <span aria-hidden="true">x</span>
                 </button>
             </div>
             <form id="FrmFamiliarAtendido" autocomplete="off">
@@ -911,7 +911,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control form-control-sm"
                                     id="txtOcupacionFamiliarPaciente" aria-describedby="nombre"
-                                    placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                                    placeholder="Click en el boton para seleccionar. . ." disabled="">
                                 <div class="input-group-append">
                                     <button type="button" id="btnSeleccionarOcupacion" class="btn btn-primary btn-sm"><i
                                             class="icon icon-subscribe"></i></button>
@@ -920,7 +920,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group ">
-                                <label for="slctSufreAlgunaEnfermedad">Â¿SUFRE ALGUNA ENFERMEDAD?
+                                <label for="slctSufreAlgunaEnfermedad">¿SUFRE ALGUNA ENFERMEDAD?
                                     <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover"
                                         data-trigger="hover" data-placement="top" title=""
                                         data-content="Indica si el familiar sufre de alguna enfermedad"
@@ -1188,7 +1188,7 @@
                                 <table class="table mb-0 table-fluid">
                                     <thead>
                                         <tr>
-                                            <th class="align-middle text-left">Ocupaciï¿½n</th>
+                                            <th class="align-middle text-left">Ocupacion</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyOcupacionC">
