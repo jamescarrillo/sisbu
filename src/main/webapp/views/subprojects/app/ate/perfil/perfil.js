@@ -15,18 +15,32 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         closeSession();
     }
+    
+    
+    document.querySelector("#btn-selected-image-tmp").onclick = function (){
+        showAlertTopEnd('warning','Servicio no disponible temporalmente');
+    };
+    
+    document.querySelector("#btn-selected-image-tmp").onclick = function (){
+        showAlertTopEnd('warning','Servicio no disponible temporalmente');
+    };
+    
+    document.querySelector("#btnSubirFotoUser").onclick = function (){
+        showAlertTopEnd('warning','Servicio no disponible temporalmente');
+    };
 
-    addEventsBtnsSelectedImages('btn-selected-image');
+    //addEventsBtnsSelectedImages('btn-selected-image');
 
     var fileExtensions = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
 
     var src_default = getHostAPI() + "resources/img/150x150.png";
 
-    addEventsChangeInputsImagesGeneric('input-image', 'btn-upload', 'btn-delete-image', fileExtensions, src_default);
+    //addEventsChangeInputsImagesGeneric('input-image', 'btn-upload', 'btn-delete-image', fileExtensions, src_default);
+    
 
-    addEventsUploadFilesGeneric('btn-upload', 'usuarios/upload-foto-user', $('#idusuario'));
+    //addEventsUploadFilesGeneric('btn-upload', 'usuarios/upload-foto-user', $('#idusuario'));
 
-    addEventsRemoveFileGeneric('btn-delete-image', 'usuarios/delete-foto-user', $('#idusuario'), src_default, '150x150.png');
+    //addEventsRemoveFileGeneric('btn-delete-image', 'usuarios/delete-foto-user', $('#idusuario'), src_default, '150x150.png');
 
     document.querySelector('#btnMostrarPass').onclick = function () {
         if (mostrar_pass) {

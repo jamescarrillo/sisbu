@@ -23,7 +23,7 @@
                                 <input id="fileImageFotoUser" name="fileImageFotoUser"
                                        class="input-image" idvisor="visorImagenFotoUser" type="file" style="display: none">
                                 <button type="button" class="btn btn-warning btn-sm btn-selected-image" title="Click para seleccionar una foto" data-toggle="tooltip"
-                                        idvisor="visorImagenFotoUser" idinput="fileImageFotoUser">
+                                        idvisor="visorImagenFotoUser" idinput="fileImageFotoUser" id="btn-selected-image-tmp">
                                     <i class="fa fa-folder-open"></i>
                                 </button>
                             </div>

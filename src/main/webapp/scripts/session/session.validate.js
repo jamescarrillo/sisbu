@@ -17,6 +17,7 @@ if (Cookies.get("sisbu_token") === undefined) {
         element.innerHTML = getStringTipoUsuario(user.tipo_usuario);
     });
     let url_foto;
+    user.foto = "";
     if (user.foto != "") {
         url_foto = getHostAPI() + "resources/img/FOTOS/" + user.foto;
     } else {
@@ -588,7 +589,7 @@ function createHTML_OGBU(typeProfile) {
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">  
         `;
-        
+
         document.querySelector("#menus_sisbu").innerHTML +=
                 `
              </ul>
