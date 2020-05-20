@@ -73,19 +73,19 @@
             <form id="FrmVideoTutorialModal">
                 <div class="row">
                     <div class="form-group col-6">
-                        <label for="txtTituloVideoTutorial">T�tulo</label>
+                        <label for="txtTituloVideoTutorial">Titulo</label>
                         <input class="form-control form-control-sm" id="txtTituloVideoTutorial" type="text"
-                            placeholder="T�TULO">
+                            placeholder="">
                     </div>
                     <div class="form-group col-6">
                         <label for="txtLinkVideoTutorial">Link</label>
                         <input class="form-control form-control-sm" id="txtLinkVideoTutorial" type="text"
-                            placeholder="LINK">
+                            placeholder="">
                     </div>
                     <div class="form-group col-12">
-                        <label for="txtDescripcionVideoTutorial">Descripci�n</label>
+                        <label for="txtDescripcionVideoTutorial">Descripcion</label>
                         <textarea class="form-control" id="txtDescripcionVideoTutorial" rows="3"
-                            placeholder="DESCRIPCI�N"></textarea>
+                            placeholder=""></textarea>
                     </div>
                     <div class="form-group col-12 text-center">
                         <button type="button" id="btnRegresar" class="btn btn-outline-primary btn-sm"><i
@@ -114,7 +114,7 @@
                 <div class="progress" style="margin-bottom: 0px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                        Cargando VideoTutorials. . .
+                        Cargando Videos tutoriales. . .
                     </div>
                 </div>
             </div>

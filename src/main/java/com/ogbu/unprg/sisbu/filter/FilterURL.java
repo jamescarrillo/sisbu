@@ -26,9 +26,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author James Carrillo
  */
-@WebFilter(urlPatterns = {
-    "/*"
-})
+@WebFilter(
+        urlPatterns = {
+            "/*"
+        }
+        //initParams = @WebInitParam(name = "fileTypes", value = "doc;xls;zip;txt;jpg;png;gif")
+        //initParams = @WebInitParam(name = "credentials", value = "true")
+)
 public class FilterURL implements Filter {
 
     private static final Logger LOG = Logger.getLogger(FilterURL.class.getName());
@@ -472,7 +476,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/obstetricia/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
-        */
+         */
         ///citas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/obstetricia/citas");
@@ -594,7 +598,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/asignacion/asignacion.js" + version_project
         });
         this.list_resources.add(resource);
-        */
+         */
         ///citas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/citas");

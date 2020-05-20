@@ -107,7 +107,7 @@
                     <input class="form-control form-control-sm" id="txtFuenteNoticia" type="text" placeholder="FUENTE">
                 </div>
                 <div class="form-group col-sm-6 col-12">
-                    <label for="txtFechaNoticia">Fecha de Publicaci�n</label>
+                    <label for="txtFechaNoticia">Fecha de Publicacion</label>
                     <div class="input-group">
                         <input type="text" class="form-control form-control-sm" id="txtFechaNoticia"
                             placeholder="DD/MM/AAAA">
@@ -119,11 +119,11 @@
                     </div>
                 </div>
                 <div class="form-group col-12">
-                    <label for="txtTituloNoticia">T�tulo</label>
+                    <label for="txtTituloNoticia">Titulo</label>
                     <input class="form-control form-control-sm" id="txtTituloNoticia" type="text" placeholder="T�TULO">
                 </div>
                 <div class="form-group col-12">
-                    <label for="txtDescripcionNoticia">Descripci�n</label>
+                    <label for="txtDescripcionNoticia">Descripcion</label>
                     <div id="txtDescripcionNoticia"></div>
                 </div>
 

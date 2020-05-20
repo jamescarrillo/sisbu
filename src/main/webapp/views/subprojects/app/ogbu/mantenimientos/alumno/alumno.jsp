@@ -552,7 +552,7 @@
 
                                         </div>
                                         <div class="form-group col-lg-4 col-sm-6">
-                                            <label for="txtPassUsuario">CONTRASEoA</label>
+                                            <label for="txtPassUsuario">CONTRASEÑA</label>
                                             <div class="input-group">
                                                 <input class="form-control form-control-sm" id="txtPassUsuario"
                                                     type="text" placeholder="Ingrese password. . .">

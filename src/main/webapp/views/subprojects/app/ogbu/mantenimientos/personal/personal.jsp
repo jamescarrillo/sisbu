@@ -172,7 +172,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-lg-3 col-sm-4 col-6">
-                                            <label for="txtDniPersonal">Nï¿½ DOCUMENTO</label>
+                                            <label for="txtDniPersonal">N° DOCUMENTO</label>
                                             <input maxlength="8" class="form-control form-control-sm"
                                                 id="txtDniPersonal" type="text" placeholder="Nï¿½ DOCUMENTO">
                                         </div>
@@ -238,9 +238,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-6 col-sm-12 ">
-                                            <label for="txtDireccionPersonal">DIRECCIï¿½N</label>
+                                            <label for="txtDireccionPersonal">DIRECCION</label>
                                             <input class="form-control form-control-sm" id="txtDireccionPersonal"
-                                                type="text" placeholder="DIRECCIï¿½N">
+                                                type="text" placeholder="DIRECCION">
                                         </div>
 
                                     </div>
@@ -255,12 +255,12 @@
 
                                     <div class="row ml-5 mr-5 pr-5 pl-5">
                                         <div class="form-group col-lg-6 col-sm-6 ">
-                                            <label for="txtAreaPersonal">ï¿½REA
+                                            <label for="txtAreaPersonal">AREA
                                             </label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control form-control-sm"
                                                     id="txtAreaPersonal" aria-describedby="nombre"
-                                                    placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                                                    placeholder="Click en el boton para seleccionar. . ." disabled="">
                                                 <div class="input-group-append">
                                                     <button type="button" id="btnSeleccionarArea"
                                                         class="btn btn-primary btn-sm"><i
@@ -274,7 +274,7 @@
                                             <div class="input-group">
                                                 <input type="text" class="form-control form-control-sm"
                                                     id="txtCargoPersonal" aria-describedby="nombre"
-                                                    placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                                                    placeholder="Click en el boton para seleccionar. . ." disabled="">
                                                 <div class="input-group-append">
                                                     <button type="button" id="btnSeleccionarCargo"
                                                         class="btn btn-primary btn-sm"><i
@@ -338,7 +338,7 @@
 
                                         </div>
                                         <div class="form-group col-lg-4 col-sm-6 col-6">
-                                            <label for="txtPassUsuario">CONTRASEï¿½A</label>
+                                            <label for="txtPassUsuario">CONTRASEÑA</label>
                                             <div class="input-group">
                                                 <input class="form-control form-control-sm" id="txtPassUsuario"
                                                     type="text" placeholder="Ingrese password. . .">
@@ -358,7 +358,7 @@
                                             <div class="input-group">
                                                 <input type="text" class="form-control form-control-sm"
                                                     id="txtPerfilUsuario" aria-describedby="nombre"
-                                                    placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                                                    placeholder="Click en el boton para seleccionar. . ." disabled="">
                                                 <div class="input-group-append">
                                                     <button type="button" id="btnSeleccionarPerfil"
                                                         class="btn btn-primary btn-sm"><i
@@ -373,15 +373,15 @@
                                                 <option style="display:none" value="0">SISTEMAS</option>
                                                 <option value="1">ADMIN</option>
                                                 <option value="2">FARMACIA</option>
-                                                <option value="3">ODONTOLOGï¿½A</option>
-                                                <option value="4">OBSTETRï¿½CIA</option>
+                                                <option value="3">ODONTOLOGIA</option>
+                                                <option value="4">OBSTETRICIA</option>
                                                 <option value="5">SOCIAL</option>
                                                 <option value="6">COMEDOR</option>
                                                 <option value="7">DEPORTE</option>
-                                                <option value="100">Invitado(solo el inicio)</option>
-                                                <option value="10">Todo el Servicio Mï¿½dico(enfermeria, medicina,
+                                                <option value="100">INVITADO(solo el inicio)</option>
+                                                <option value="10">SERVICIO MEDICO(enfermeria, medicina,
                                                     farmacia, obstetricia))</option>
-                                                <option value="11">Psicopedagogia (medicina, psicopedagogia, social)
+                                                <option value="11">PSICOPEDAGOGIA (medicina, psicopedagogia, social)
                                                 </option>
 
                                             </select>
@@ -453,7 +453,7 @@
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
                 <h5 class="mb-0" id="titleManagerAreaC"><strong>[ 0 ]
-                        ï¿½REAS</strong></h5>
+                        AREAS</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -525,7 +525,7 @@
                 <div class="progress" style="margin-bottom: 0px;height: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                        Cargando ï¿½reas. . .
+                        Cargando areas. . .
                     </div>
                 </div>
             </div>
