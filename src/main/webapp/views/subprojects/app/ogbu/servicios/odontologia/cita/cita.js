@@ -103,7 +103,7 @@ function processAjaxCita() {
         parameters_pagination = "";
 
         if (beanRequestCita.operation == "update") {
-            citaSelected.estado_cita = "ACE";
+            citaSelected.estado_cita = "ATE";
             citaSelected.fecha_atendida = getTimesTampJavaScriptCurrent();
             json = citaSelected;
         }
