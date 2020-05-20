@@ -243,7 +243,7 @@ function toListCita(beanPagination) {
                     <!-- /widget info -->
                     <!-- Widget Info -->
                     <div class="dt-widget__info">
-                        <p class="mb-0 ">${cita.atendido.escuela.nombre}
+                        <p class="mb-0 ">${cita.atendido.escuela.nombre} <br> ${cita.atendido.celular}
                         </p>
                     </div>
                     <!-- /widget info -->

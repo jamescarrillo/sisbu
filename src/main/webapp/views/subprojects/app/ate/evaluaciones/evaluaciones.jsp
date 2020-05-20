@@ -330,7 +330,7 @@
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
-                                        <input style="display: none" type="text" class="form-control form-control-sm text-uppercase" id="txtActividadEconomicaDesempeniaFichaSocioeconomica" placeholder="Ingresa como trabajas. . ." maxlength="50">
+                                        <input style="display: none" type="text" class="form-control form-control-sm text-uppercase" id="txtActividadEconomicaDesempeniaFichaSocioeconomica" placeholder="Ingresa la labor que desempeñas. . ." maxlength="50">
                                     </div>
                                 </div>
                             </div>
@@ -931,6 +931,9 @@
                                         <span class="d-inline-block" id="lblNumPendientesObstetricia">0 Pendientes</span>
                                     </li>
                                 </ul>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <h5 class="text-danger">*Por favor completa las evaluaciones según tu género</h5>
                             </div>
                         </div>
                     </div>

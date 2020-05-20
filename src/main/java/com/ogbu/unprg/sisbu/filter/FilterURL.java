@@ -115,20 +115,7 @@ public class FilterURL implements Filter {
 
     private void loaderResources() {
         String version_project = "?v=";
-        //version_project += "0.01"; // 
-        //version_project += "0.02";
-        //version_project += "0.03";
-        //version_project += "0.04";
-        //version_project += "0.05";
-        //version_project += "0.06";
-        //version_project += "0.07";
-        version_project += "0.10";
-        /*
-            0.01 -> 01/08/19
-         */
- /*
-            0.04 -> 09/10/19
-         */
+        version_project += "0.11";
         this.list_resources = new ArrayList<>();
         Resource resource;
 

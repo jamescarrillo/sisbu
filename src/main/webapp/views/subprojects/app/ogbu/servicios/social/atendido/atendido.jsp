@@ -583,7 +583,7 @@
                                         <input style="display: none" type="text"
                                             class="form-control form-control-sm text-uppercase"
                                             id="txtActividadEconomicaDesempeniaFichaSocioeconomica"
-                                            placeholder="Ingresa como trabajas. . ." maxlength="50">
+                                            placeholder="Ingresa la labor que desempeñas. . ." maxlength="50">
                                     </div>
                                 </div>
                             </div>
