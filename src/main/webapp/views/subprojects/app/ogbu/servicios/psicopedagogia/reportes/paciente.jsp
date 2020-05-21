@@ -62,10 +62,6 @@
                         <div class="input-group search-box mw-100">
                             <input type="search" id="txtFilterPaciente" class="form-control form-control-sm w-50"
                                 placeholder="Filtrar Paciente ...">
-                            <select class="form-control form-control-sm sisbu-cursor-mano" id="txtFilterEstadoPaciente">
-                                <option value="-1">SIN EVALUACIONES</option>
-                                <option selected value="0">TODAS LAS EVALUACIONES</option>
-                            </select>
                             <button type="submit" class="search-icon"><i class="icon icon-search icon-fw"></i></button>
                             <!--button type="button" class="btn btn-primary btn-sm ml-3" id="btnReportePaciente"
                                 data-toggle="tooltip" title="Reporte Paciente">
