@@ -291,7 +291,7 @@
                                         <li class="dt-nav__item dt-notification dropdown">
 
                                             <!-- Dropdown Link -->
-                                            <a href="mailto:sisbu.unprg@gmail.com" class="dt-nav__link dropdown-toggle no-arrow" data-toggle="dropdown"
+                                            <a href="mailto:sisbuapp.unprg@gmail.com" class="dt-nav__link dropdown-toggle no-arrow" data-toggle="dropdown"
                                                aria-haspopup="true" aria-expanded="false"> <i class="icon icon-open-mail icon-fw icon-xl"></i>
                                             </a>
                                             <!-- /dropdown link -->

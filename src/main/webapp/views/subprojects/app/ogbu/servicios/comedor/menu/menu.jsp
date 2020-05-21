@@ -25,7 +25,7 @@
                                     <div class="d-flex align-items-center mb-2">
                                         <span class="h2 mb-0 font-weight-500 mr-2">Registrar</span>
                                     </div>
-                                    <div class="h5 mb-2">Men� Semanal</div>
+                                    <div class="h5 mb-2">Menu Semanal</div>
                                 </div>
                             </div>
                         </a>

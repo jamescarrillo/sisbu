@@ -8,7 +8,7 @@
         <!-- Card -->
         <div class="overflow-hidden" id="ListaOpenComida">
             <!-- Card Header -->
-            <div class="card-header bg-transparent pt-0">
+            <div class="card-header bg-transparent pt-0 pl-0">
                 <h4 class="mb-0" id="titleManagerComida">[ 0 ] COMIDAS</h4>
                 <input type="hidden" id="pageComida" value="1">
             </div>

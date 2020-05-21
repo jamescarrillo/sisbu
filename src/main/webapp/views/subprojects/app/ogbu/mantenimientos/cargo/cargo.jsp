@@ -9,7 +9,7 @@
         <!-- Card -->
         <div class="overflow-hidden">
             <!-- Card Header -->
-            <div class="card-header bg-transparent">
+            <div class="card-header bg-transparent pl-0">
                 <h4 class="mb-0" id="titleManagerCargo">[ 2 ] CARGOS</h4>
                 <input type="hidden" id="pageCargo" value="1">
             </div>
@@ -71,7 +71,7 @@
                 <div class="modal-header">
                     <h6 class="modal-title" id="txtTituloModalMan"></h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">�</span>
+                        <span aria-hidden="true">x</span>
                     </button>
                 </div>
                 <div class="modal-body">

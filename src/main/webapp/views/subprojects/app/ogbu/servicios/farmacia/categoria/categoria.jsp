@@ -9,8 +9,8 @@
     <!-- Card -->
     <div class="col-12 p-0">
         <!-- Card Header -->
-        <div class="card-header bg-transparent">
-            <h4 class="mb-0" id="titleManagerCategoria">[ 0 ] CATEGOR�AS</h4>
+        <div class="card-header bg-transparent pl-0">
+            <h4 class="mb-0" id="titleManagerCategoria">[ 0 ] CATEGORIAS</h4>
             <input type="hidden" id="pageCategoria" value="1">
         </div>
         <!-- /card header -->

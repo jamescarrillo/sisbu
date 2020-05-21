@@ -49,6 +49,10 @@
         <param-name>name.page.base</param-name>
         <param-value>SISBU - WEB APP</param-value>
     </context-param>
-    
-    
+    <!--filter>
+        <init-param>
+            <param-name>cors.support.credentials</param-name>
+            <param-value>false</param-value>
+        </init-param>
+    </filter-->
 </web-app>

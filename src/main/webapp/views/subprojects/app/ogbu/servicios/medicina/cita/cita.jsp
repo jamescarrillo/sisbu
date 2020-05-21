@@ -9,7 +9,7 @@
         <!-- Card -->
         <div class="overflow-hidden" id="ListaCita">
             <!-- Card Header -->
-            <div class="card-header bg-transparent pt-0">
+            <div class="card-header bg-transparent pt-0 pl-0">
                 <h4 class="mb-0" id="titleManagerCita">[ 0 ] CitaS</h4>
                 <input type="hidden" id="pageCita" value="1">
             </div>

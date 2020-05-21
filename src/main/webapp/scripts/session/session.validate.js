@@ -17,6 +17,7 @@ if (Cookies.get("sisbu_token") === undefined) {
         element.innerHTML = getStringTipoUsuario(user.tipo_usuario);
     });
     let url_foto;
+    user.foto = "";
     if (user.foto != "") {
         url_foto = getHostAPI() + "resources/img/FOTOS/" + user.foto;
     } else {
@@ -326,7 +327,7 @@ function createHTML_OGBU(typeProfile) {
                         </a>
                     </li-->
                     <li class="dt-side-nav__item">
-                            <a href="${contextPah}app/ogbu/servicios/medicina/reportes" class="dt-side-nav__link" title="Pacientes">
+                            <a href="${contextPah}app/ogbu/servicios/psicopedagogia/reportes" class="dt-side-nav__link" title="Pacientes">
                                 <i class="icon icon-profilepage icon-fw icon-lg"></i>
                                 <span class="dt-side-nav__text">Reportes</span>
                             </a>
@@ -353,7 +354,7 @@ function createHTML_OGBU(typeProfile) {
                             <span class="dt-side-nav__text">Usuarios</span>
                         </a>
                     </li>
-                    <li class="dt-side-nav__item">
+                    <!--li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/social/reservas-cu" class="dt-side-nav__link" title="Reservas C.U">
                             <i class="icon icon-list icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Reservas C.U</span>
@@ -364,7 +365,7 @@ function createHTML_OGBU(typeProfile) {
                             <i class="icon icon-list icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Convocatorias C.U</span>
                         </a>
-                    </li>
+                    </li-->
                 </ul>
                 <!-- /sub-menu -->
             </li>
@@ -381,7 +382,7 @@ function createHTML_OGBU(typeProfile) {
                 </a>
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">
-                    <li class="dt-side-nav__item">
+                    <!--li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/comedor/c-a-cu" class="dt-side-nav__link" title="Control Asistencia del C.U">
                             <i class="icon icon-collapse icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Control Diario</span>
@@ -392,7 +393,7 @@ function createHTML_OGBU(typeProfile) {
                             <i class="icon icon-calendar icon-fw icon-lg"></i>
                             <span class="dt-side-nav__text">Asistencia</span>
                         </a>
-                    </li>
+                    </li-->
                     <li class="dt-side-nav__item">
                         <a href="${contextPah}app/ogbu/servicios/comedor/comidas" class="dt-side-nav__link" title="Comidas">
                             <i class="icon icon-burger icon-fw icon-lg"></i>
@@ -588,7 +589,7 @@ function createHTML_OGBU(typeProfile) {
                 <!-- Sub-menu -->
                 <ul class="dt-side-nav__sub-menu">  
         `;
-        
+
         document.querySelector("#menus_sisbu").innerHTML +=
                 `
              </ul>

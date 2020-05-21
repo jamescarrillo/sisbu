@@ -8,7 +8,7 @@
     <!--TAB PACIENTES-->
     <div class="col-xl-12 p-0" id="btnListaAtendido">
         <!-- Card Header -->
-        <div class="card-header bg-transparent pt-0">
+        <div class="card-header bg-transparent pt-0 pl-0">
             <h4 class="mb-0" id="titleManagerPaciente">[ 0 ] PACIENTES</h4>
             <input type="hidden" id="pagePaciente" value="1">
         </div>
@@ -18,12 +18,12 @@
             <form id="FrmPaciente">
                 <div class="form-row">
                     <div class="col-lg-4 col-12 form-group">
-                        <label for="txtEscuelaAtendido">ESCUELA
+                        <label for="txtEscuelaAtendido">Escuela
 
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtEscuelaAtendido"
-                                aria-describedby="nombre" placeholder="Click en el bot�n para seleccionar. . ."
+                                aria-describedby="nombre" placeholder="Click en el boton para seleccionar. . ."
                                 disabled="">
                             <div class="input-group-append">
                                 <button type="button" id="btnSeleccionarEscuela" class="btn btn-primary btn-sm"><i
@@ -37,7 +37,7 @@
                         </label>
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPaciente"
-                                aria-describedby="nombre" placeholder="Click en el bot�n para seleccionar. . ."
+                                aria-describedby="nombre" placeholder="Click en el boton para seleccionar. . ."
                                 disabled="">
                             <div class="input-group-append">
                                 <button type="button" id="btnSeleccionarCicloAcademico"
@@ -129,7 +129,7 @@
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
                 <h5 class="mb-0" id="titleManagerCicloAcademicoC"><strong>[ 0 ]
-                        CICLOS ACAD�MICOS</strong></h5>
+                        CICLOS ACADEMICOS</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -155,7 +155,7 @@
                                 <table class="table mb-0 table-fluid">
                                     <thead>
                                         <tr>
-                                            <th class="align-middle text-left">CICLO ACAD�MICO</th>
+                                            <th class="align-middle text-left">CICLO ACADEMICO</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyCicloAcademicoC">
@@ -202,7 +202,7 @@
                 <div class="progress" style="margin-bottom: 0px;height: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                        Cargando ciclos acac�micos. . .
+                        Cargando ciclos academicos. . .
                     </div>
                 </div>
             </div>
@@ -212,7 +212,7 @@
 
 <!--T: ESCUELA SELECTED-->
 <div id="ventanaModalSelectedEscuelaC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
-    data-keyboard="false" style="padding-top: 1%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    data-keyboard="false" style="padding-top: 0%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
@@ -255,7 +255,7 @@
                             <div class="col-sm-4 mt-2">
                                 <select id="sizePageEscuelaC"
                                     class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
-                                    <option value="5">05</option>
+                                    <option value="7">07</option>
                                     <option value="10">10</option>
                                     <option value="15">15</option>
                                 </select>

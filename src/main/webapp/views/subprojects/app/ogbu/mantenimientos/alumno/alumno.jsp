@@ -9,8 +9,8 @@
         <!-- Card -->
         <div class="overflow-hidden" id="btnListaAlumno">
             <!-- Card Header -->
-            <div class="card-header bg-transparent ">
-                <h4 class="mb-0" id="titleManagerAlumno">[ 0 ] PERSONAL</h4>
+            <div class="card-header bg-transparent pl-0">
+                <h4 class="mb-0" id="titleManagerAlumno">[ 0 ] USUARIOS</h4>
                 <input type="hidden" id="pageAlumno" value="1">
             </div>
             <!-- /card header -->
@@ -18,13 +18,13 @@
             <div class="card-body p-0">
                 <form id="FrmAlumno">
                     <div class="form-row justify-content-center">
-                        <div class="col-lg-4 col-12 form-group">
-                            <label for="txtEscuelaAtendido">ESCUELA
+                        <div class="col-lg-6 col-12 form-group">
+                            <label for="txtEscuelaAtendido">Escuela
 
                             </label>
                             <div class="input-group">
                                 <input type="text" class="form-control form-control-sm" id="txtEscuelaAtendido"
-                                    aria-describedby="nombre" placeholder="Click en el botï¿½n para seleccionar. . ."
+                                    aria-describedby="nombre" placeholder="Click en el boton para seleccionar. . ."
                                     disabled="">
                                 <div class="input-group-append">
                                     <button type="button" id="btnSeleccionarEscuelaFilter"
@@ -32,13 +32,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-12 form-group">
+                        <div class="col-lg-6 col-12 form-group">
                             <label for="txtCicloAcademicoPaciente">Ciclo
 
                             </label>
                             <div class="input-group">
                                 <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPaciente"
-                                    aria-describedby="nombre" placeholder="Click en el botï¿½n para seleccionar. . ."
+                                    aria-describedby="nombre" placeholder="Click en el boton para seleccionar. . ."
                                     disabled="">
                                 <div class="input-group-append">
                                     <button type="button" id="btnSeleccionarCicloAcademico"
@@ -218,10 +218,10 @@
                                         </div>
                                         <div class="col-lg-3 col-sm-4 col-6">
                                             <div class="form-group">
-                                                <label for="txtNumeroDocumentoAlumno">Nï¿½ DOCUMENTO</label>
+                                                <label for="txtNumeroDocumentoAlumno">N° DOCUMENTO</label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     id="txtNumeroDocumentoAlumno"
-                                                    placeholder="Ingrese nï¿½ documento. . ." maxlength="8">
+                                                    placeholder="Ingrese no documento. . ." maxlength="8">
                                             </div>
                                         </div>
 
@@ -304,7 +304,7 @@
                                             <div class="input-group">
                                                 <input type="text" class="form-control form-control-sm"
                                                     id="txtDistritoActualAlumno" aria-describedby="nombre"
-                                                    placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                                                    placeholder="Click en el boton para seleccionar. . ." disabled="">
                                                 <div class="input-group-append">
                                                     <button type="button" id="btnSeleccionarDistritoActual"
                                                         class="btn btn-primary btn-sm"><i
@@ -317,7 +317,7 @@
                                             <div class="input-group">
                                                 <input type="text" class="form-control form-control-sm"
                                                     id="txtDistritoProcedenciaAlumno" aria-describedby="nombre"
-                                                    placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                                                    placeholder="Click en el boton para seleccionar. . ." disabled="">
                                                 <div class="input-group-append">
                                                     <button type="button" id="btnSeleccionarDistritoProcedencia"
                                                         class="btn btn-primary btn-sm"><i
@@ -331,12 +331,12 @@
                                                     <i class="fa fa-question-circle" aria-hidden="true"
                                                         data-toggle="popover" data-trigger="hover" data-placement="top"
                                                         title=""
-                                                        data-content="Direcciï¿½n donde vives actualmente. Si vives en un caserï¿½o ingresa tu direcciï¿½n y luego agrega tu caserï¿½o separado por un guiï¿½n. Ejm: #LOS PINOS - SAN MARTï¿½N"
+                                                        data-content="Direccion donde vives actualmente. Si vives en un caseroo ingresa tu direccion y luego agrega tu caseroo separado por un guion. Ejm: #LOS PINOS - SAN MARToN"
                                                         style="cursor: pointer" data-original-title=""></i>
                                                 </label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     id="txtDireccionActualAlumno"
-                                                    placeholder="Ingrese direcciï¿½n actual. . ." maxlength="80">
+                                                    placeholder="Ingrese direccion actual. . ." maxlength="80">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-sm-6 ">
@@ -345,12 +345,12 @@
                                                     <i class="fa fa-question-circle" aria-hidden="true"
                                                         data-toggle="popover" data-trigger="hover" data-placement="top"
                                                         title=""
-                                                        data-content="Direcciï¿½n de donde vienes. Si vienes de un caserï¿½o ingresa tu direcciï¿½n y luego agrega tu caserï¿½o separado por un guiï¿½n. Ejm: #LOS ROSALES - SAN JUAN"
+                                                        data-content="Direccion de donde vienes. Si vienes de un caseroo ingresa tu direccion y luego agrega tu caseroo separado por un guion. Ejm: #LOS ROSALES - SAN JUAN"
                                                         style="cursor: pointer" data-original-title=""></i>
                                                 </label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     id="txtDireccionProceAlumno"
-                                                    placeholder="Ingrese direcciï¿½n de procedencia" maxlength="80">
+                                                    placeholder="Ingrese direccion de procedencia" maxlength="80">
                                             </div>
                                         </div>
                                         <div class="form-group col-12 text-center">
@@ -372,7 +372,7 @@
                                                     <i class="fa fa-question-circle" aria-hidden="true"
                                                         data-toggle="popover" data-trigger="hover" data-placement="top"
                                                         title=""
-                                                        data-content="Si no labora en la Universidad selecciona la opciï¿½n 'OTRO'"
+                                                        data-content="Si no labora en la Universidad selecciona la opcion 'OTRO'"
                                                         style="cursor: pointer" data-original-title=""></i>
 
                                                 </label>
@@ -396,7 +396,7 @@
                                             <div class="input-group">
                                                 <input type="text" class="form-control form-control-sm"
                                                     id="txtCicloAlumno" aria-describedby="nombre"
-                                                    placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                                                    placeholder="Click en el boton para seleccionar. . ." disabled="">
                                                 <div class="input-group-append">
                                                     <button type="button" id="btnSeleccionarCiclo"
                                                         class="btn btn-primary btn-sm"><i
@@ -406,15 +406,15 @@
                                         </div>
                                         <div class="col-lg-3 col-sm-4 col-6">
                                             <div class="form-group">
-                                                <label for="txtCodigoAlumno">Cï¿½DIGO
+                                                <label for="txtCodigoAlumno">CoDIGO
                                                     <i class="fa fa-question-circle" aria-hidden="true"
                                                         data-toggle="popover" data-trigger="hover" data-placement="top"
                                                         title=""
-                                                        data-content="Es el cï¿½digo ï¿½nico de estudiante. Si aï¿½n no sabes cual es tu cï¿½digo, deja la caja de texto en blanco. Si no es Alumno deja la caja de texto en blanco"
+                                                        data-content="Es el codigo onico de estudiante. Si aon no sabes cual es tu codigo, deja la caja de texto en blanco. Si no es Alumno deja la caja de texto en blanco"
                                                         style="cursor: pointer" data-original-title=""></i>
                                                 </label>
                                                 <input type="text" class="form-control form-control-sm"
-                                                    id="txtCodigoAlumno" placeholder="Ingrese Cï¿½digo. . ."
+                                                    id="txtCodigoAlumno" placeholder="Ingrese Codigo. . ."
                                                     maxlength="7">
                                             </div>
                                         </div>
@@ -424,7 +424,7 @@
                                                     <i class="fa fa-question-circle" aria-hidden="true"
                                                         data-toggle="popover" data-trigger="hover" data-placement="top"
                                                         title=""
-                                                        data-content="Si no es Alumno selecciona la opciï¿½n 'NO'"
+                                                        data-content="Si no es Alumno selecciona la opcion 'NO'"
                                                         style="cursor: pointer" data-original-title=""></i>
 
                                                 </label>
@@ -442,7 +442,7 @@
                                                     <i class="fa fa-question-circle" aria-hidden="true"
                                                         data-toggle="popover" data-trigger="hover" data-placement="top"
                                                         title=""
-                                                        data-content="Si no es Alumno selecciona la opciï¿½n 'OTRO'"
+                                                        data-content="Si no es Alumno selecciona la opcion 'OTRO'"
                                                         style="cursor: pointer" data-original-title=""></i>
 
                                                 </label>
@@ -461,7 +461,7 @@
                                                     <i class="fa fa-question-circle" aria-hidden="true"
                                                         data-toggle="popover" data-trigger="hover" data-placement="top"
                                                         title=""
-                                                        data-content="Si no es Alumno selecciona la opciï¿½n 'OTRO'"
+                                                        data-content="Si no es Alumno selecciona la opcion 'OTRO'"
                                                         style="cursor: pointer" data-original-title=""></i>
 
                                                 </label>
@@ -514,7 +514,7 @@
                                             <div class="input-group">
                                                 <input type="text" class="form-control form-control-sm"
                                                     id="txtEscuelaAlumno" aria-describedby="nombre"
-                                                    placeholder="Click en el botï¿½n para seleccionar. . ." disabled="">
+                                                    placeholder="Click en el boton para seleccionar. . ." disabled="">
                                                 <div class="input-group-append">
                                                     <button type="button" id="btnSeleccionarEscuela"
                                                         class="btn btn-primary btn-sm"><i
@@ -552,7 +552,7 @@
 
                                         </div>
                                         <div class="form-group col-lg-4 col-sm-6">
-                                            <label for="txtPassUsuario">CONTRASEï¿½A</label>
+                                            <label for="txtPassUsuario">CONTRASEÑA</label>
                                             <div class="input-group">
                                                 <input class="form-control form-control-sm" id="txtPassUsuario"
                                                     type="text" placeholder="Ingrese password. . .">
@@ -847,7 +847,7 @@
                                 <table class="table mb-0 table-fluid">
                                     <thead>
                                         <tr>
-                                            <th class="align-middle text-left">Ocupaciï¿½n</th>
+                                            <th class="align-middle text-left">Ocupacion</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyOcupacionC">
@@ -982,7 +982,7 @@
                 <div class="progress" style="margin-bottom: 0px;height: 15px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                        Cargando Ciclos Acadï¿½micos. . .
+                        Cargando Ciclos Acadomicos. . .
                     </div>
                 </div>
             </div>

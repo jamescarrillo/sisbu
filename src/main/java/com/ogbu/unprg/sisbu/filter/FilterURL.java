@@ -26,9 +26,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author James Carrillo
  */
-@WebFilter(urlPatterns = {
-    "/*"
-})
+@WebFilter(
+        urlPatterns = {
+            "/*"
+        }
+        //initParams = @WebInitParam(name = "fileTypes", value = "doc;xls;zip;txt;jpg;png;gif")
+        //initParams = @WebInitParam(name = "credentials", value = "true")
+)
 public class FilterURL implements Filter {
 
     private static final Logger LOG = Logger.getLogger(FilterURL.class.getName());
@@ -111,20 +115,7 @@ public class FilterURL implements Filter {
 
     private void loaderResources() {
         String version_project = "?v=";
-        //version_project += "0.01"; // 
-        //version_project += "0.02";
-        //version_project += "0.03";
-        //version_project += "0.04";
-        //version_project += "0.05";
-        //version_project += "0.06";
-        //version_project += "0.07";
-        version_project += "0.08";
-        /*
-            0.01 -> 01/08/19
-         */
- /*
-            0.04 -> 09/10/19
-         */
+        version_project += "0.12";
         this.list_resources = new ArrayList<>();
         Resource resource;
 
@@ -472,7 +463,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/obstetricia/paciente/paciente.js" + version_project
         });
         this.list_resources.add(resource);
-        */
+         */
         ///citas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/obstetricia/citas");
@@ -593,7 +584,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/asignacion/asignacion.js" + version_project
         });
         this.list_resources.add(resource);
-        */
+         */
         ///citas
         resource = new Resource();
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/citas");

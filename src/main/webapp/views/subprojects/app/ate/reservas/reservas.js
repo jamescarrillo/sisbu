@@ -109,7 +109,7 @@ function processAjaxCita() {
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() === "ok") {
                 if (beanRequestCita.operation == "add") {
-                    showAlertTopEnd('success', 'Cita reservada con éxito');
+                    showAlertTopEnd('success', 'Cita solicitada con éxito');
                     navigateSolicitud('list');
                 } else {
                     showAlertTopEnd('success', 'Cita eliminada con éxito');

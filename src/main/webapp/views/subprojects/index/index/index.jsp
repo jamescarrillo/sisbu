@@ -45,39 +45,29 @@
     </div>
 </div-->
 
-<div class="row">
-    <!-- Grid Item -->
+<!--div class="row">
     <div class="col-12">
 
-        <!-- Card -->
         <div class="dt-card">
 
-            <!-- Card Header -->
             <div class="dt-card__header">
 
-                <!-- Card Heading -->
                 <div class="dt-card__heading">
                     <h3 class="dt-card__title">OFICINA GENERAL DE BIENESTAR UNIVERSITARIO</h3>
                 </div>
-                <!-- /card heading -->
 
             </div>
-            <!-- /card header -->
 
-            <!-- Card Body -->
             <div class="dt-card__body">
 
-                <!-- Carousel -->
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 
-                    <!-- Carousel Indicator -->
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0"
                             class="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
-                    <!-- /carousel indicator -->
 
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -94,7 +84,6 @@
                         </div>
                     </div>
 
-                    <!-- Carousel Control -->
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                        data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -105,20 +94,79 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
-                    <!-- /carousel control -->
 
                 </div>
-                <!-- /carousel -->
 
             </div>
-            <!-- /card body -->
 
         </div>
-        <!-- /card -->
+
+    </div>
+</div-->
+
+<!-- Grid -->
+<div class="row">
+
+    <!-- Grid Item -->
+    <div class="col-12 order-xl-2">
+
+        <!-- Grid -->
+        <div class="row">
+            <!-- Grid Item -->
+            <div class="col-12">
+                <!-- Card -->
+                <div class="dt-card-">
+                    <!-- Card Body -->
+                    <div class="dt-card__body d-flex">
+                        <div class="row">
+                            <div class="col-12 text-center mb-4">
+                                <h3 class="font-weight-500"><i class="icon icon-users dt-icon-bg bg-primary text-primary"></i> Aprendiendo a usar SISBU APP</h3>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <img class="img-fluid" src="<%=request.getContextPath()%>/resources/prod/news/login.png">
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <h4 class="mt-4">¿Cómo iniciar sesión?</h4>
+                                <ul>
+                                    <li>Click en el botón donde dice "INICIAR SESION" ubicado en la parte 
+                                        superior derecha de esta página o has click en este <a href="auth/login">enlace</a>.</li>
+                                    <li>Ingresa tu DNI como nombre de usuario.</li>
+                                    <li>Ingresa tu DNI como contraseña.</li>
+                                </ul>
+                                <h4 class="mt-4">¿Cómo recuperar mi cuenta?</h4>
+                                <ul>
+                                    <li>Click en este <a href="recovery">enlace</a>.</li>
+                                    <li>Ingresa tu dirección de correo electrónico para recibir el código de recuperación.</li>
+                                    <li>Ingresa el código de recuperación.</li>
+                                    <li>Ingresa tu nueva contraseña.</li>
+                                </ul>
+                                <h4 class="mt-4">¿Cómo crear una cuenta?</h4>
+                                <ul>
+                                    <li>Click en el botón donde dice "CREAR CUENTA" ubicado en la parte superior derecha de esta página o has click en este <a href="signup">enlace</a>.</li>
+                                    <li>Ingresa tu DNI para verificar si aun no estas registrado.</li>
+                                    <li>Ingresa tus datos solicitados.</li>
+                                    <li>Inicia sesión.</li>
+                                    <li>Activa tu cuenta ingresando el código de activación que se te envió al correo que proporcionaste al momento de registrarte.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /card body -->
+
+                </div>
+                <!-- /card -->
+            </div>
+            <!-- /grid item -->
+
+        </div>
+        <!-- /grid -->
 
     </div>
     <!-- /grid item -->
+
 </div>
+<!-- /grid -->
+
 
 <div class="row">
     <!-- Grid Item -->
@@ -289,70 +337,6 @@
     <!-- /grid item -->
 </div>
 
-<!-- Page Header -->
-<div class="dt-page__header" style="margin-top: 30px">
-    <h1 class="dt-page__title">Últimas Noticias</h1>
-</div>
-<!-- /page header -->
-
-<!-- Grid -->
-<div class="row">
-
-    <!-- Grid Item -->
-    <div class="col-12 order-xl-2">
-
-        <!-- Grid -->
-        <div class="row">
-            <!-- Grid Item -->
-            <div class="col-12">
-                <!-- Card -->
-                <div class="dt-card">
-                    <!-- Card Body -->
-                    <div class="dt-card__body d-flex">
-                        <div class="row">
-                            <div class="col-12 text-center mb-4">
-                                <h3 class="font-weight-500"><i class="icon icon-users dt-icon-bg bg-primary text-primary"></i> Aprendiendo a iniciar sesión en Sisbu</h3>
-                                <span class="h4 mb-0 font-weight-500 mr-2">Tutorial para</span>
-                                <span class="d-inline-flex text-success">
-                                    <i class="icon icon-profit icon-fw"></i>+Ingresantes 2019-II
-                                </span>
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <img class="img-fluid" src="<%=request.getContextPath()%>/resources/prod/news/tutorial_inicio_sesion.png">
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <h4>¿Como iniciar sesión en sisbu por primera vez?</h4>
-                                <p>Si eres un alumno ingresante del presente ciclo, lo único que tienes
-                                    que hacer es ir al botón donde dice "iniciar sesión" ubicado en la parte 
-                                    superior derecha de esta página y darle click.</p>
-                                <p>Enseguida te aparecerá una página con una interfáz similár a la de la parte izquiera 
-                                    de este tutorial, donde tienes que ingresar tus credenciales y listo.</p>
-                                <h4>¿Cuál es mi Username(Nombre de Usuario) y Password(Contraseña)?</h4>
-                                <p>Cuando eres ingresante, tu nombre de usuario y contraseña es tu número de DNI. 
-                                    Eso quiere decir que en la caja de texto donde te solicitan nombre de usuario colocarás
-                                    tu número de DNI y lo mismo en la caja donde te solicitan contraseña.</p>
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <div class="h5 mb-2">Fecha de Publicación</div>
-                            <p class="card-text text-light-gray f-12">01/09/2019 17:30</p>
-                        </div>
-                    </div>
-                    <!-- /card body -->
-
-                </div>
-                <!-- /card -->
-            </div>
-            <!-- /grid item -->
-
-        </div>
-        <!-- /grid -->
-
-    </div>
-    <!-- /grid item -->
-
-</div>
-<!-- /grid -->
 
 <!-- Page Header -->
 <div class="dt-page__header">
@@ -432,7 +416,7 @@
                                         <div class="dt-avatar-info">
                                             <a href="https://www.facebook.com/carrilloc.james"
                                                class="dt-avatar-name text-dark">James Carrillo</a>
-                                            <span class="f-12 text-light-gray">jamescarrilloc@gmail.com</span>
+                                            <span class="f-12 text-light-gray">jcarrilloc@unprg.edu.pe</span>
                                         </div>
                                         <!-- /info -->
                                     </div>

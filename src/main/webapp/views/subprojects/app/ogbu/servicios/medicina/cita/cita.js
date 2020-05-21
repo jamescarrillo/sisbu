@@ -103,7 +103,7 @@ function processAjaxCita() {
         parameters_pagination = "";
 
         if (beanRequestCita.operation == "update") {
-            citaSelected.estado_cita = "ACE";
+            citaSelected.estado_cita = "ATE";
             citaSelected.fecha_atendida = getTimesTampJavaScriptCurrent();
             json = citaSelected;
         }
@@ -242,7 +242,7 @@ function toListCita(beanPagination) {
                     <!-- /widget info -->
                     <!-- Widget Info -->
                     <div class="dt-widget__info">
-                        <p class="mb-0 ">${cita.atendido.escuela.nombre}
+                        <p class="mb-0 ">${cita.atendido.escuela.nombre} <br> ${cita.atendido.celular}
                         </p>
                     </div>
                     <!-- /widget info -->
