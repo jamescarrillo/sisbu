@@ -151,7 +151,7 @@
                             </div>
                             <div class="col-lg-8 col-12 mb-3">
                                 <label for="txtEscuelaPaciente">ESCUELA
-                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Carrera profesional a la que ingresaste" style="cursor: pointer" data-original-title=""></i>
+                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Carrera profesional a la que ingresaste. Si eres un docente o administrativo puedes dejar esto en blanco." style="cursor: pointer" data-original-title=""></i>
                                 </label>
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-sm" id="txtEscuelaPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
@@ -195,7 +195,9 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-12 mb-3">
-                                <label for="txtCicloAcademicoPaciente">CICLO ACADÉMICO INGRESO</label>
+                                <label for="txtCicloAcademicoPaciente">CICLO ACADÉMICO INGRESO
+                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Si eres un docente o administrativo puedes dejar esto en blanco." style="cursor: pointer" data-original-title=""></i>
+                                </label>
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
                                     <div class="input-group-append">
@@ -211,7 +213,7 @@
                                        data-content="Encuenta el codigo ubigeo en tu DNI, junto a la fecha de nacimiento."
                                        style="cursor: pointer" data-original-title=""></i>
                                 </label>
-                                <input maxlength="10" type="text" class="form-control form-control-sm"
+                                <input maxlength="6" type="text" class="form-control form-control-sm"
                                        id="txtUbigeoAlumno" placeholder="Ingrese ubigeo. . ."
                                        >
                             </div>

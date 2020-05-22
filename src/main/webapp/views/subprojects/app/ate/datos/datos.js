@@ -226,6 +226,10 @@ function validateFormAtendido() {
     } else if (cicloAcademicoSelected == undefined && atendidoSelected.tipo_atendido == 1) {
         showAlertTopEnd('warning', 'Por favor seleccione ciclo academico');
         return false;
+    } else if (document.querySelector("#txtUbigeoAlumno").value == "") {
+        showAlertTopEnd('warning', 'Por favor ingrese ubigeo');
+        document.querySelector("#txtUbigeoAlumno").focus();
+        return false;
     }
     return true;
 }
