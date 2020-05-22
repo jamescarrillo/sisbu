@@ -194,7 +194,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 mb-3">
+                            <div class="col-lg-6 col-12 mb-3">
                                 <label for="txtCicloAcademicoPaciente">CICLO ACADÉMICO INGRESO</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
@@ -202,6 +202,18 @@
                                         <button type="button" id="btnSeleccionarCicloAcademico" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-lg-6 col-12 mb-3">
+                                <label for="txtUbigeoAlumno">UBIGEO
+                                    <i class="fa fa-question-circle" aria-hidden="true"
+                                       data-toggle="popover" data-trigger="hover" data-placement="top"
+                                       title=""
+                                       data-content="Encuenta el codigo ubigeo en tu DNI, junto a la fecha de nacimiento."
+                                       style="cursor: pointer" data-original-title=""></i>
+                                </label>
+                                <input maxlength="10" type="text" class="form-control form-control-sm"
+                                       id="txtUbigeoAlumno" placeholder="Ingrese ubigeo. . ."
+                                       >
                             </div>
                             <div class="col-lg-12 text-right mt-3">
                                 <button type="submit" class="btn btn-primary btn-sm" id="btnGuardarPersonales">

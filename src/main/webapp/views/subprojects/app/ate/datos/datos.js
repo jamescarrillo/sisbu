@@ -81,6 +81,18 @@ function processAjaxAtendido() {
             parameters_pagination = "/" + atendidoSelected.idatendido;
             json = {};
         } else {
+            let escuela_ = null;
+            if (escuelaSelected != undefined) {
+                escuela_ = {
+                    "idescuela": escuelaSelected.idescuela
+                }
+            }
+            let ciclo_academico_ = null;
+            if (cicloAcademicoSelected != undefined) {
+                ciclo_academico_ = {
+                    "idciclo_academico": cicloAcademicoSelected.idciclo_academico
+                }
+            }
             json = {
                 "nombre": document.querySelector("#txtNombrePaciente").value,
                 "apellido_mat": document.querySelector("#txtApMaternoPaciente").value,
@@ -101,10 +113,11 @@ function processAjaxAtendido() {
                 "subtipo_atendido": atendidoSelected.subtipo_atendido,
                 "cachimbo": atendidoSelected.cachimbo,
                 "comensal": atendidoSelected.comensal,
-                "ciclo_academico_ingreso": {"idciclo_academico": cicloAcademicoSelected.idciclo_academico},
-                "escuela": {"idescuela": escuelaSelected.idescuela},
+                "ciclo_academico_ingreso": ciclo_academico_,
+                "escuela": escuela_,
                 "distrito_actual": {"iddistrito": distritoActualSelected.iddistrito},
                 "distrito_procedencia": {"iddistrito": distritoProcedenciaSelected.iddistrito},
+                "ubigeo": document.querySelector("#txtUbigeoAlumno").value
             };
             if (beanRequestAtendido.operation == "update") {
                 json.idatendido = atendidoSelected.idatendido;
@@ -193,7 +206,7 @@ function validateFormAtendido() {
         showAlertTopEnd('warning', 'Por favor ingrese email');
         document.querySelector("#txtEmailPaciente").focus();
         return false;
-    } else if (escuelaSelected == undefined) {
+    } else if (escuelaSelected == undefined && atendidoSelected.tipo_atendido == 1) {
         showAlertTopEnd('warning', 'Por favor seleccione una escuela');
         return false;
     } else if (document.querySelector("#txtDireccionActualPaciente").value == "") {
@@ -209,6 +222,9 @@ function validateFormAtendido() {
         return false;
     } else if (distritoProcedenciaSelected == undefined) {
         showAlertTopEnd('warning', 'Por favor seleccione distrito de procedencia');
+        return false;
+    } else if (cicloAcademicoSelected == undefined && atendidoSelected.tipo_atendido == 1) {
+        showAlertTopEnd('warning', 'Por favor seleccione ciclo academico');
         return false;
     }
     return true;
@@ -235,6 +251,7 @@ function addInputDatos(atendidoSelected) {
     document.querySelector("#txtDistritoActualPaciente").value = atendidoSelected.distrito_actual.nombre;
     document.querySelector("#txtDistritoProcedenciaPaciente").value = atendidoSelected.distrito_procedencia.nombre;
     document.querySelector("#txtCicloAcademicoPaciente").value = atendidoSelected.ciclo_academico_ingreso.nombre;
+    document.querySelector("#txtUbigeoAlumno").value = atendidoSelected.ubigeo;
     if (atendidoSelected.escuela.idescuela == 0) {
         escuelaSelected = undefined;
     } else {

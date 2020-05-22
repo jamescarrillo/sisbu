@@ -179,7 +179,8 @@ function processAjaxAlumno() {
                 "ciclo_academico_ingreso": { "idciclo_academico": cicloSelected.idciclo_academico },
                 "distrito_actual": distritoActualSelected,
                 "distrito_procedencia": distritoProcedenciaSelected,
-                "usuario": { "idusuario": usuarioSelected.idusuario }
+                "usuario": { "idusuario": usuarioSelected.idusuario },
+                "ubigeo" : document.querySelector("#txtUbigeoAlumno").value
             };
             if (beanRequestAlumno.operation == "update") {
                 json.idatendido = alumnoSelected.idatendido;
