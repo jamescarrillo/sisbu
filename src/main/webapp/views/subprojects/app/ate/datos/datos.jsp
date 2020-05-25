@@ -80,7 +80,7 @@
                                         <option  value="-1">Seleccionar...</option>
                                         <option  value="1">SOLTERO(A)</option>
                                         <option  value="2">CASADO(A)</option>
-                                        <option  value="3">DIVORSIADO(A)</option>
+                                        <option  value="3">DIVORCIADO(A)</option>
                                         <option  value="4">VIUDO(A)</option>
                                     </select>
                                 </div>
@@ -162,7 +162,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="txtDireccionActualPaciente">DIRECCION ACTUAL
+                                    <label for="txtDireccionActualPaciente">DIRECCIÓN ACTUAL
                                         <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección donde vives actualmente. Si vives en un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS PINOS - SAN MARTÍN" style="cursor: pointer" data-original-title=""></i>
                                     </label>
                                     <input  type="text" class="form-control form-control-sm" id="txtDireccionActualPaciente" placeholder="Ingrese dirección actual. . ." maxlength="80">
@@ -170,7 +170,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="txtDireccionProcePaciente">DIRECCION PROCEDENCIA
+                                    <label for="txtDireccionProcePaciente">DIRECCIÓN PROCEDENCIA
                                         <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección de donde vienes. Si vienes de un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS ROSALES - SAN JUAN" style="cursor: pointer" data-original-title=""></i>
                                     </label>
                                     <input  type="text" class="form-control form-control-sm" id="txtDireccionProcePaciente" placeholder="Ingrese dirección de procedencia" maxlength="80">

@@ -119,10 +119,14 @@
                                         <div class="form-group text-center">
                                             <div class="col-xs-12 p-b-5">
                                                 <button id="btn-send-mail-recovery-account"
+                                                        class="btn btn-block btn-info btn-auth" type="submit"
+                                                        style="background-color: #2ca8d8; border-color: #2ca8d8; font-size: 1.4rem;">Enviar</button>
+
+                                                <!--button id="btn-send-mail-recovery-account"
                                                         class="btn btn-block btn-info g-recaptcha btn-auth" type="submit"
                                                         data-sitekey="6LdWK_wUAAAAABzmMXALmT_7DbxUgRYGWVFYfNLF"
                                                         data-callback='onSubmitSendMailRecoveryAccount'
-                                                        style="background-color: #2ca8d8; border-color: #2ca8d8; font-size: 1.4rem;">Enviar</button>
+                                                        style="background-color: #2ca8d8; border-color: #2ca8d8; font-size: 1.4rem;">Enviar</button-->
                                             </div>
                                         </div>
                                         <div class="form-group m-b-0 m-t-5">
