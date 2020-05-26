@@ -310,10 +310,12 @@ function validateCodeRecoveryAccount() {
         document.querySelector('#txtCodeRecoveryAccount').focus();
         return false;
     }
+    /*
     if (token == "") {
         showAlertTopEnd('warning', 'No se validó el captcha. Por favor recargue la página y vuelva a intentarlo');
         return false;
     }
+     */
     captcha_selected = {
         "token": token,
         "success": "",
@@ -361,10 +363,12 @@ function validateChangePasswordAccount() {
         document.querySelector('#txtPasswordUsuario').focus();
         return false;
     }
+    /*
     if (token == "") {
         showAlertTopEnd('warning', 'No se validó el captcha. Por favor recargue la página y vuelva a intentarlo');
         return false;
     }
+     */
     captcha_selected = {
         "token": token,
         "success": "",
