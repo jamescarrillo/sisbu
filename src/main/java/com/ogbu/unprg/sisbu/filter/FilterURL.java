@@ -115,7 +115,7 @@ public class FilterURL implements Filter {
 
     private void loaderResources() {
         String version_project = "?v=";
-        version_project += "0.15";
+        version_project += "0.16";
         this.list_resources = new ArrayList<>();
         Resource resource;
 
