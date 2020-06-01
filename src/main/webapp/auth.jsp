@@ -9,8 +9,22 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <jsp:include page="zinclude_pages/meta_tags.jsp" />
-        <title><%=getServletContext().getInitParameter("name.page.base")%> AUTH</title>
+        <!-- Meta tags -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Inicio de Sesión">
+        <meta name="author" content="UNPRG">
+        <meta name="copyright" content="OGBU - UNPRG">
+        <meta name="keywords" content="
+              sisbu, 
+              sisbu unprg, 
+              sistema de bienestar universitario, 
+              bienestar unprg,
+              unprg
+              ">
+        <!-- /meta tags -->
+        <title>SISBU Login</title>
 
         <!-- Site favicon -->
         <link rel="shortcut icon" href="<%=request.getContextPath()%>/resources/dev/img/global/logo-short-plomo.png">
