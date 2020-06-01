@@ -6,7 +6,7 @@ var fechaActual = new Date(); //Fecha actual
 document.addEventListener("DOMContentLoaded", function () {
     //INICIALIZANDO VARIABLES DE SOLICITUD ATENDIDO
     beanRequestPaciente.entity_api = "api/atendido";
-    beanRequestPaciente.operation = "paginate/medicina";
+    beanRequestPaciente.operation = "paginate/enfermeria";
     beanRequestPaciente.type_request = "GET";
 
     $("#modalCargandoVDYA").on('shown.bs.modal', function () {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $('#FrmPaciente').submit(function (event) {
-        beanRequestPaciente.operation = "paginate/medicina";
+        beanRequestPaciente.operation = "paginate/enfermeria";
         beanRequestPaciente.type_request = "GET";
         $('#modalCargandoPaciente').modal('show');
         event.preventDefault();
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $("#modalCargandoPaciente").on('hidden.bs.modal', function () {
-        beanRequestPaciente.operation = "paginate/medicina";
+        beanRequestPaciente.operation = "paginate/enfermeria";
         beanRequestPaciente.type_request = "GET";
     });
 
@@ -38,15 +38,13 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#txtFilterTipoPersonaPaciente").change(function () {
         $('#modalCargandoPaciente').modal('show');
     });
-    $("#txtFilterEstadoPaciente").change(function () {
-        $('#modalCargandoPaciente').modal('show');
-    });
+
 });
 
 function processAjaxPaciente() {
     let parameters_pagination = "";
     let json = "";
-    if (beanRequestPaciente.operation == "paginate/medicina") {
+    if (beanRequestPaciente.operation == "paginate/enfermeria") {
 
         /*else {
          document.querySelector("#pagePaciente").value = "1";
@@ -58,7 +56,6 @@ function processAjaxPaciente() {
         parameters_pagination += "/";
         parameters_pagination += (cicloAcademicoSelected == undefined) ? "" : cicloAcademicoSelected.idciclo_academico;
         parameters_pagination += "/" + document.querySelector("#txtFilterTipoPersonaPaciente").value.trim();
-        parameters_pagination += "/" + document.querySelector("#txtFilterEstadoPaciente").value.trim();
         parameters_pagination += "&page=" + document.querySelector("#pagePaciente").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePagePaciente").value;
 
@@ -120,9 +117,16 @@ function toListPaciente(beanPagination) {
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info " style="max-width: 15%;">
+                    <div class="dt-widget__info " >
                         <p class="mb-0  ">
-                           TIPO DE PACIENTE
+                           EMAIL
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info "  style="max-width: 12%;min-width: 12%;">
+                        <p class="mb-0  ">
+                           CELULAR
                         </p>
                     </div>
                     <!-- /widget info -->
@@ -130,6 +134,13 @@ function toListPaciente(beanPagination) {
                     <div class="dt-widget__info ">
                         <p class="mb-0  ">
                            ESCUELA PROFESIONAL
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info " style="max-width: 10%;">
+                        <p class="mb-0  ">
+                           TIPO DE PACIENTE
                         </p>
                     </div>
                     <!-- /widget info -->
@@ -178,17 +189,31 @@ function toListPaciente(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info " style="max-width: 15%;">
+                     <!-- Widget Info -->
+                    <div class="dt-widget__info" >
                         <p class="mb-0  ">
-                           ${tipoPaciente(atendido.tipo_atendido)}
+                           ${atendido.email}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info ">
+                    <div class="dt-widget__info " style="max-width: 12%;min-width: 12%;" >
+                        <p class="mb-0  ">
+                           ${atendido.celular}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info" >
                         <p class="mb-0  ">
             ${atendido.tipo_atendido == 1 ? (atendido.escuela.nombre == null ? "" : atendido.escuela.nombre) : subtipoPaciente(atendido.subtipo_atendido)}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                     <!-- Widget Info -->
+                    <div class="dt-widget__info " style="max-width: 10%;">
+                        <p class="mb-0  ">
+                           ${tipoPaciente(atendido.tipo_atendido)}
                         </p>
                     </div>
                     <!-- /widget info -->
@@ -204,7 +229,7 @@ function toListPaciente(beanPagination) {
         document.querySelector("#pagePaciente"),
         $('#modalCargandoPaciente'),
         $('#paginationPaciente'));
-    if (beanRequestPaciente.operation == "paginate/medicina") {
+    if (beanRequestPaciente.operation == "paginate/enfermeria") {
         document.querySelector("#txtFilterPaciente").focus();
     }
 

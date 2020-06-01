@@ -560,7 +560,6 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/reportes");
         resource.setPath("/views/subprojects/app/ogbu/servicios/psicopedagogia/reportes/paciente.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/servicios/psicopedagogia/reportes/procedimiento_c.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/reportes/paciente.js" + version_project,
             "/views/subprojects/app/ogbu/informes/reportes/ciclo_c/ciclo_academico_c.js" + version_project,
             "/views/subprojects/app/ogbu/informes/reportes/escuela_c/escuela_c.js" + version_project

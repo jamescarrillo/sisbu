@@ -1,6 +1,7 @@
 
 var beanPaginationPaciente;
-var pacienteSelected; var escuelaSelected;
+var pacienteSelected;
+var escuelaSelected;
 var cicloAcademicoSelected;
 var beanRequestPaciente = new BeanRequest();
 var fechaActual = new Date(); //Fecha actual
@@ -8,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //INICIALIZANDO VARIABLES DE SOLICITUD ATENDIDO
     beanRequestPaciente.entity_api = "api/atendido";
-    beanRequestPaciente.operation = "paginate/psicopedagogia";
+    beanRequestPaciente.operation = "paginate/enfermeria";
     beanRequestPaciente.type_request = "GET";
 
     $("#modalCargandoVDYA").on('shown.bs.modal', function () {
@@ -33,26 +34,19 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#txtFilterTipoPersonaPaciente").change(function () {
         $('#modalCargandoPaciente').modal('show');
     });
-    $("#txtFilterEstadoPaciente").change(function () {
-        $('#modalCargandoPaciente').modal('show');
-    });
+
 });
 
 function processAjaxPaciente() {
-    if (beanPaginationProcedimientoC == undefined) {
-        processAjaxProcedimientoC();
-    }
-
     let parameters_pagination = "";
     let json = "";
-    if (beanRequestPaciente.operation == "paginate/psicopedagogia") {
+    if (beanRequestPaciente.operation == "paginate/enfermeria") {
         parameters_pagination += "?filter=" + document.querySelector("#txtFilterPaciente").value.trim();
         parameters_pagination += "/";
         parameters_pagination += (escuelaSelected == undefined) ? "" : escuelaSelected.idescuela;
         parameters_pagination += "/";
         parameters_pagination += (cicloAcademicoSelected == undefined) ? "" : cicloAcademicoSelected.idciclo_academico;
         parameters_pagination += "/" + document.querySelector("#txtFilterTipoPersonaPaciente").value.trim();
-        parameters_pagination += "/" + document.querySelector("#txtFilterEstadoPaciente").value.trim();
         parameters_pagination += "&page=" + document.querySelector("#pagePaciente").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePagePaciente").value;
 
@@ -95,7 +89,7 @@ function toListPaciente(beanPagination) {
     if (beanPagination.count_filter > 0) {
         let row;
         row =
-            `
+                `
                <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2">
                     <!-- Widget Info -->
                     <div class="dt-widget__info  pl-5" style="max-width: 12%;">
@@ -115,9 +109,16 @@ function toListPaciente(beanPagination) {
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info " style="max-width: 12%;">
+                    <div class="dt-widget__info " >
                         <p class="mb-0  ">
-                           TIPO DE PACIENTE
+                           EMAIL
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info "  style="max-width: 12%;min-width: 12%;">
+                        <p class="mb-0  ">
+                           CELULAR
                         </p>
                     </div>
                     <!-- /widget info -->
@@ -129,76 +130,62 @@ function toListPaciente(beanPagination) {
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info " style="max-width: 12%;">
+                    <div class="dt-widget__info " style="max-width: 10%;">
                         <p class="mb-0  ">
-                           F. REALIZADA
+                           TIPO DE PACIENTE
                         </p>
                     </div>
                     <!-- /widget info -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info ">
-                        <p class="mb-0  ">
-                           PROCEDIMIENTO
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                    
                 </div>
             `;
         document.querySelector("#tbodyPaciente").innerHTML += row;
-        let text_row;
         beanPagination.list.forEach(eva => {
-
             row =
-                `
+                    `
                  <div class="dt-widget__item border-success pl-5 m-0">
                     <!-- Widget Info -->
                     <div class="dt-widget__info  " style="max-width: 12%;">
                         <p class="mb-0  ">
-                           ${eva.atendido.dni}
+                           ${eva.dni}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
                     <div class="dt-widget__info ">
-                        <p class="mb-0  ">
-                           ${eva.atendido.apellido_pat} ${eva.atendido.apellido_mat} ${eva.atendido.nombre}
+                        <p class="mb-0">
+                           ${eva.apellido_pat} ${eva.apellido_mat} ${eva.nombre}
                         </p>
-                        <p class="mb-0  ">
-                           ${eva.atendido.fecha_nacimiento}
-                        </p>
-                    </div>
-                    <!-- /widget info -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info " style="max-width: 12%;">
-                        <p class="mb-0  ">
-                           ${tipoPaciente(eva.atendido.tipo_atendido)}
+                        <p class="mb-0">
+                           ${eva.fecha_nacimiento}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info ">
+                    <div class="dt-widget__info" >
                         <p class="mb-0  ">
-            ${eva.atendido.tipo_atendido == 1 ? (eva.atendido.escuela.nombre == null ? "" : eva.atendido.escuela.nombre) : subtipoPaciente(eva.atendido.subtipo_atendido)}
+                           ${eva.email}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info " style="max-width: 12%;">
+                    <div class="dt-widget__info " style="max-width: 12%;min-width: 12%;" >
                         <p class="mb-0  ">
-                           ${eva.fecha_inicio == null ? "" : eva.fecha_inicio.split(" ")[0]} 
-                        </p>
-                        <p class="mb-0  ">
-                        ${eva.fecha_inicio == null ? "" : eva.fecha_inicio.split(" ")[1]} 
+                           ${eva.celular}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info ">
+                    <div class="dt-widget__info" >
                         <p class="mb-0  ">
-                           ${eva.procedimiento.descripcion == null ? "" : eva.procedimiento.descripcion} 
+            ${eva.tipo_atendido == 1 ? (eva.escuela.nombre == null ? "" : eva.escuela.nombre) : subtipoPaciente(eva.subtipo_atendido)}
                         </p>
-                        
+                    </div>
+                    <!-- /widget info -->
+                     <!-- Widget Info -->
+                    <div class="dt-widget__info " style="max-width: 10%;">
+                        <p class="mb-0  ">
+                           ${tipoPaciente(eva.tipo_atendido)}
+                        </p>
                     </div>
                     <!-- /widget info -->
                 </div>
@@ -207,11 +194,11 @@ function toListPaciente(beanPagination) {
             $('[data-toggle="tooltip"]').tooltip();
         });
         buildPagination(
-            beanPagination.count_filter,
-            parseInt(document.querySelector("#sizePagePaciente").value),
-            document.querySelector("#pagePaciente"),
-            $('#modalCargandoPaciente'),
-            $('#paginationPaciente'));
+                beanPagination.count_filter,
+                parseInt(document.querySelector("#sizePagePaciente").value),
+                document.querySelector("#pagePaciente"),
+                $('#modalCargandoPaciente'),
+                $('#paginationPaciente'));
 
         if (beanRequestPaciente.operation == "paginate") {
             document.querySelector("#txtFilterPaciente").focus();

@@ -39,9 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#txtFilterTipoPersonaPaciente").change(function () {
         $('#modalCargandoPaciente').modal('show');
     });
-    $("#txtFilterEstadoPaciente").change(function () {
-        $('#modalCargandoPaciente').modal('show');
-    });
+ 
 });
 
 function processAjaxPaciente() {
@@ -56,7 +54,6 @@ function processAjaxPaciente() {
         parameters_pagination += "/";
         parameters_pagination += (cicloAcademicoSelected == undefined) ? "" : cicloAcademicoSelected.idciclo_academico;
         parameters_pagination += "/" + document.querySelector("#txtFilterTipoPersonaPaciente").value.trim();
-        parameters_pagination += "/" + document.querySelector("#txtFilterEstadoPaciente").value.trim();
         parameters_pagination += "&page=" + document.querySelector("#pagePaciente").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePagePaciente").value;
         console.log(parameters_pagination);
@@ -119,9 +116,16 @@ function toListPaciente(beanPagination) {
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info " style="max-width: 15%;">
+                    <div class="dt-widget__info " >
                         <p class="mb-0  ">
-                           TIPO DE PACIENTE
+                           EMAIL
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info "  style="max-width: 12%;min-width: 12%;">
+                        <p class="mb-0  ">
+                           CELULAR
                         </p>
                     </div>
                     <!-- /widget info -->
@@ -129,6 +133,13 @@ function toListPaciente(beanPagination) {
                     <div class="dt-widget__info ">
                         <p class="mb-0  ">
                            ESCUELA PROFESIONAL
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info " style="max-width: 10%;">
+                        <p class="mb-0  ">
+                           TIPO DE PACIENTE
                         </p>
                     </div>
                     <!-- /widget info -->
@@ -176,17 +187,31 @@ function toListPaciente(beanPagination) {
                         </p>
                     </div>
                     <!-- /widget info -->
-                    <!-- Widget Info -->
-                    <div class="dt-widget__info " style="max-width: 15%;">
+                     <!-- Widget Info -->
+                    <div class="dt-widget__info" >
                         <p class="mb-0  ">
-                           ${tipoPaciente(atendido.tipo_atendido)}
+                           ${atendido.email}
                         </p>
                     </div>
                     <!-- /widget info -->
                     <!-- Widget Info -->
-                    <div class="dt-widget__info ">
+                    <div class="dt-widget__info " style="max-width: 12%;min-width: 12%;" >
+                        <p class="mb-0  ">
+                           ${atendido.celular}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                    <!-- Widget Info -->
+                    <div class="dt-widget__info" >
                         <p class="mb-0  ">
             ${atendido.tipo_atendido == 1 ? (atendido.escuela.nombre == null ? "" : atendido.escuela.nombre) : subtipoPaciente(atendido.subtipo_atendido)}
+                        </p>
+                    </div>
+                    <!-- /widget info -->
+                     <!-- Widget Info -->
+                    <div class="dt-widget__info " style="max-width: 10%;">
+                        <p class="mb-0  ">
+                           ${tipoPaciente(atendido.tipo_atendido)}
                         </p>
                     </div>
                     <!-- /widget info -->
