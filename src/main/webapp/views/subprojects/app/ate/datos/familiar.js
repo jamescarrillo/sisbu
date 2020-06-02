@@ -121,7 +121,8 @@ function processAjaxFamiliar() {
                 "parentesco": document.querySelector("#txtParentescoFamiliar").value,
                 "atendido": { "idatendido": atendidoSelected.idatendido },
                 "ocupacion": { "idocupacion": ocupacionSelected.idocupacion },
-                "distrito": { "iddistrito": distritoSelected.iddistrito }
+                "lugar_tratamiento": document.querySelector("#txtLugarTratamientoFamiliar").value,
+                "enfermedad": document.querySelector("#txtEnfermedadFamiliar").value
             };
             if (beanRequestFamiliar.operation == "update") {
                 json.idfamiliar = familiarSelected.idfamiliar;
