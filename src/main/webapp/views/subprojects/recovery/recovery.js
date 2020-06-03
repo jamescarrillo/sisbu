@@ -122,10 +122,11 @@ function start_recovery_account() {
         processAjaxRecoveryAccount();
     });
 
+/*
     document.querySelector('#btn-send-mail-recovery-account').onclick = function () {
         $("#modal-loanding-validate-captcha").modal('show');
     }
-
+*/
     document.querySelector('#txtEmailRecovery').focus();
 
 }
@@ -282,12 +283,15 @@ function validateSendMailRecoveryAccount() {
         document.querySelector('#txtEmailRecovery').focus();
         return false;
     }
+    /*
     if (token == "") {
         showAlertTopEnd('warning', 'No se validó el captcha. Por favor recargue la página y vuelva a intentarlo');
         return false;
     }
+     */
     captcha_selected = {
-        "token": token,
+        //"token": token,
+        "token": "",
         "success": "",
         "challenge_ts": "",
         "hostname": ""
@@ -306,10 +310,12 @@ function validateCodeRecoveryAccount() {
         document.querySelector('#txtCodeRecoveryAccount').focus();
         return false;
     }
+    /*
     if (token == "") {
         showAlertTopEnd('warning', 'No se validó el captcha. Por favor recargue la página y vuelva a intentarlo');
         return false;
     }
+     */
     captcha_selected = {
         "token": token,
         "success": "",
@@ -357,10 +363,12 @@ function validateChangePasswordAccount() {
         document.querySelector('#txtPasswordUsuario').focus();
         return false;
     }
+    /*
     if (token == "") {
         showAlertTopEnd('warning', 'No se validó el captcha. Por favor recargue la página y vuelva a intentarlo');
         return false;
     }
+     */
     captcha_selected = {
         "token": token,
         "success": "",

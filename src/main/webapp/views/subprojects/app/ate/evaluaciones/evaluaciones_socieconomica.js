@@ -124,11 +124,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 ficha_socieconomicaSelected.num_creditos_matriculados_anuales = 0;
             } else {
                 ficha_socieconomicaSelected.num_creditos_matriculados_semestrales = 0;
-                ficha_socieconomicaSelected.num_creditos_matriculados_anuales = parseInt(document.querySelector("#txtCanCreditosMatriculados").value);
+                ficha_socieconomicaSelected.num_creditos_matriculados_anuales = document.querySelector("#txtCanCreditosMatriculados").value == "" ? 0 : parseInt(document.querySelector("#txtCanCreditosMatriculados").value);
             }
             ficha_socieconomicaSelected.num_creditos_matriculados = ficha_socieconomicaSelected.num_creditos_matriculados_semestrales + ficha_socieconomicaSelected.num_creditos_matriculados_anuales;
-            ficha_socieconomicaSelected.num_cursos_desaprobados = document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").value;
-            ficha_socieconomicaSelected.num_cursos_abandonados = document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").value;
+            ficha_socieconomicaSelected.num_cursos_desaprobados = document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").value == "" ? 0 : document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").value;
+            ficha_socieconomicaSelected.num_cursos_abandonados = document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").value == "" ? 0 : document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").value;
             ficha_socieconomicaSelected.domicilio_padre = document.querySelector("#txtDomicilioPadreFichaSocieconomica").value.toUpperCase();
             ficha_socieconomicaSelected.domicilio_madre = document.querySelector("#txtDomicilioMadreFichaSocieconomica").value.toUpperCase();
             ficha_socieconomicaSelected.relacion_padres = document.querySelector("#txtRelacionPadresFichaSocieconomica").value;
@@ -454,44 +454,50 @@ function validateFichaSocioeconomica() {
         document.querySelector("#txtNombreColegioFichaSocioeconomica").focus();
         return false;
     }
-    if (document.querySelector("#slctAnioIngresoFichaSocioeconomica").value == "-1") {
-        showAlertTopEnd("warning", 'Por favor seleccione su año de ingreso al a universidad');
-        return false;
-    }
-    if (document.querySelector("#slctCicloEstudioFichaSocioeconomica").value == "-1") {
-        showAlertTopEnd("warning", 'Por favor seleccione ciclo de estudios. Indique el ciclo del curoso de menor nivel');
-        return false;
-    }
-    if (document.querySelector("#slctTipoCreditos").value == "-1") {
-        showAlertTopEnd("warning", 'Por favor seleccione tipo de créditos');
-        return false;
-    }
-    if (document.querySelector("#txtCanCreditosMatriculados").value == "") {
-        showAlertTopEnd("warning", 'Por favor ingrese la cantidad de créditos matriculados');
-        document.querySelector("#txtCanCreditosMatriculados").focus();
-        return false;
-    }
-    if (parseInt(document.querySelector("#txtCanCreditosMatriculados").value) < 0) {
+    /*
+     if (document.querySelector("#slctAnioIngresoFichaSocioeconomica").value == "-1") {
+     showAlertTopEnd("warning", 'Por favor seleccione su año de ingreso al a universidad');
+     return false;
+     }
+     if (document.querySelector("#slctCicloEstudioFichaSocioeconomica").value == "-1") {
+     showAlertTopEnd("warning", 'Por favor seleccione ciclo de estudios. Indique el ciclo del curoso de menor nivel');
+     return false;
+     }
+     if (document.querySelector("#slctTipoCreditos").value == "-1") {
+     showAlertTopEnd("warning", 'Por favor seleccione tipo de créditos');
+     return false;
+     }
+     if (document.querySelector("#txtCanCreditosMatriculados").value == "") {
+     showAlertTopEnd("warning", 'Por favor ingrese la cantidad de créditos matriculados');
+     document.querySelector("#txtCanCreditosMatriculados").focus();
+     return false;
+     }
+     */
+    if (document.querySelector("#txtCanCreditosMatriculados").value != "" && parseInt(document.querySelector("#txtCanCreditosMatriculados").value) < 0) {
         showAlertTopEnd("warning", 'La cantidad de créditos matriculados debe ser mayor o igual a 0');
         document.querySelector("#txtCanCreditosMatriculados").focus();
         return false;
     }
-    if (document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").value == "") {
-        showAlertTopEnd("warning", 'Por favor ingrese el número de cursos desaprobados. Considerar todo tu historial académico');
-        document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").focus();
-        return false;
-    }
-    if (parseInt(document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").value) < 0) {
+    /*
+     if (document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").value == "") {
+     showAlertTopEnd("warning", 'Por favor ingrese el número de cursos desaprobados. Considerar todo tu historial académico');
+     document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").focus();
+     return false;
+     }
+     */
+    if (document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").value != "" && parseInt(document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").value) < 0) {
         showAlertTopEnd("warning", 'La cantidad de cursos desaprobados debe ser mayor o igual a 0');
         document.querySelector("#txtNumCursosDesaprobadosFichaSocieconomica").focus();
         return false;
     }
-    if (document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").value == "") {
-        showAlertTopEnd("warning", 'Por favor ingrese el número de cursos abandonados. Considerar todo tu historial académico');
-        document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").focus();
-        return false;
-    }
-    if (parseInt(document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").value) < 0) {
+    /*
+     if (document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").value == "") {
+     showAlertTopEnd("warning", 'Por favor ingrese el número de cursos abandonados. Considerar todo tu historial académico');
+     document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").focus();
+     return false;
+     }
+     */
+    if (document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").value != "" && parseInt(document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").value) < 0) {
         showAlertTopEnd("warning", 'La cantidad de cursos abandonados debe ser mayor o igual a 0');
         document.querySelector("#txtNumCursosAbandonadosFichaSocieconomica").focus();
         return false;

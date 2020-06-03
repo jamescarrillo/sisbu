@@ -9,8 +9,22 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <jsp:include page="zinclude_pages/meta_tags.jsp" />
-        <title><%=getServletContext().getInitParameter("name.page.base")%> RECOVERY</title>
+        <!-- Meta tags -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Recuperación de Cuenta">
+        <meta name="author" content="UNPRG">
+        <meta name="copyright" content="OGBU - UNPRG">
+        <meta name="keywords" content="
+              recuperar cuenta sisbu, 
+              sisbu unprg, 
+              sistema de bienestar universitario, 
+              bienestar unprg,
+              unprg
+              ">
+        <!-- /meta tags -->
+        <title>SISBU Recovery</title>
 
         <!-- Site favicon -->
         <link rel="shortcut icon" href="<%=request.getContextPath()%>/resources/dev/img/global/logo-short-plomo.png">
@@ -117,18 +131,16 @@
                                             </div>
                                         </div>
                                         <div class="form-group text-center">
-                                            <!--
-                                                dev
-                                                data-sitekey="6LcmkvIUAAAAACHi45Nm5Cgq4Eu42wIt5UjN3Ocv"
-                                                prod
-                                                data-sitekey="6LcZgekUAAAAAB-kh5CQLnmSAEOdbVLGQcVYPH0Y"
-                                            -->
                                             <div class="col-xs-12 p-b-5">
                                                 <button id="btn-send-mail-recovery-account"
-                                                        class="btn btn-block btn-info g-recaptcha btn-auth" type="submit"
-                                                        data-sitekey="6LcmkvIUAAAAACHi45Nm5Cgq4Eu42wIt5UjN3Ocv"
-                                                        data-callback='onSubmitSendMailRecoveryAccount'
+                                                        class="btn btn-block btn-info btn-auth" type="submit"
                                                         style="background-color: #2ca8d8; border-color: #2ca8d8; font-size: 1.4rem;">Enviar</button>
+
+                                                <!--button id="btn-send-mail-recovery-account"
+                                                        class="btn btn-block btn-info g-recaptcha btn-auth" type="submit"
+                                                        data-sitekey="6LdWK_wUAAAAABzmMXALmT_7DbxUgRYGWVFYfNLF"
+                                                        data-callback='onSubmitSendMailRecoveryAccount'
+                                                        style="background-color: #2ca8d8; border-color: #2ca8d8; font-size: 1.4rem;">Enviar</button-->
                                             </div>
                                         </div>
                                         <div class="form-group m-b-0 m-t-5">

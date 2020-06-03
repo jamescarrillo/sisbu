@@ -277,19 +277,11 @@
                                                     id="txtApMaternoAlumno" placeholder="AP. MATERNO" maxlength="45">
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-sm-4 col-6">
+                                        <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label for="txtNombreAlumno">NOMBRES</label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     id="txtNombreAlumno" placeholder="NOMBRES" maxlength="45">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-sm-4 col-6">
-                                            <div class="form-group">
-                                                <label for="txtCelularAlumno">CELULAR</label>
-                                                <input maxlength="9" type="number" class="form-control form-control-sm"
-                                                    id="txtCelularAlumno" placeholder="Ingrese celular. . ."
-                                                    maxlength="9">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-sm-8 col-12">
@@ -297,6 +289,28 @@
                                                 <label for="txtEmailAlumno">EMAIL</label>
                                                 <input type="email" class="form-control form-control-sm"
                                                     id="txtEmailAlumno" placeholder="EMAIL" maxlength="100">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-4 col-6">
+                                            <div class="form-group">
+                                                <label for="txtCelularAlumno">CELULAR</label>
+                                                <input type="number" class="form-control form-control-sm"
+                                                    id="txtCelularAlumno" placeholder="Ingrese celular. . ."
+                                                    maxlength="9">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-4 col-6">
+                                            <div class="form-group">
+                                                <label for="txtUbigeoAlumno">UBIGEO
+                                                <i class="fa fa-question-circle" aria-hidden="true"
+                                                        data-toggle="popover" data-trigger="hover" data-placement="top"
+                                                        title=""
+                                                        data-content="Encuenta el codigo ubigeo en tu DNI, junto a la fecha de nacimiento."
+                                                        style="cursor: pointer" data-original-title=""></i>
+                                                </label>
+                                                <input maxlength="10" type="text" class="form-control form-control-sm"
+                                                    id="txtUbigeoAlumno" placeholder="Ingrese ubigeo. . ."
+F                                                    >
                                             </div>
                                         </div>
                                         <div class="col-lg-6  col-sm-6 mb-3 ">
@@ -406,7 +420,7 @@
                                         </div>
                                         <div class="col-lg-3 col-sm-4 col-6">
                                             <div class="form-group">
-                                                <label for="txtCodigoAlumno">CoDIGO
+                                                <label for="txtCodigoAlumno">CODIGO
                                                     <i class="fa fa-question-circle" aria-hidden="true"
                                                         data-toggle="popover" data-trigger="hover" data-placement="top"
                                                         title=""

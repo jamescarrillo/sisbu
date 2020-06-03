@@ -144,12 +144,15 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <h6 class="text-primary mb-0">ASPECTO ACADEMICO</h6>
+                                    <h6 class="text-primary mb-0">ASPECTO ACADÉMICO
+                                        <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Si eres docente o administrativo puedes ingnorar esta sección." style="cursor: pointer" data-original-title=""></i>
+                                    </h6>
                                     <hr class="mt-1">
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group">
-                                        <label for="slctAnioIngresoFichaSocioeconomica">AÑO DE INGRESO</label>
+                                        <label for="slctAnioIngresoFichaSocioeconomica">AÑO DE INGRESO
+                                        </label>
                                         <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctAnioIngresoFichaSocioeconomica">
                                         </select>
                                     </div>
@@ -157,7 +160,7 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group">
                                         <label for="slctCicloEstudioFichaSocioeconomica">CICLO DE ESTUDIOS
-                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indique el ciclo del curso de menor nivel" style="cursor: pointer" data-original-title=""></i>
+                                            <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Indique el ciclo del curso de menor nivel." style="cursor: pointer" data-original-title=""></i>
                                         </label>
                                         <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctCicloEstudioFichaSocioeconomica">
                                             <option value="-1">Seleccionar...</option>
@@ -178,7 +181,8 @@
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="form-group">
-                                        <label for="slctTipoCreditos">¿TIPO DE CREDITOS?</label>
+                                        <label for="slctTipoCreditos">¿TIPO DE CRÉDITOS?
+                                        </label>
                                         <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctTipoCreditos">
                                             <option  value="-1">Seleccionar...</option>
                                             <option  value="S">SEMESTRALES</option>
@@ -263,7 +267,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-8 mb-4">
-                                    <label for="slctConQuienViveFichaSocieconomica">¿CON QUIEN VIVES?</label>
+                                    <label for="slctConQuienViveFichaSocieconomica">¿CON QUIÉN VIVES?</label>
                                     <div class="input-group">
                                         <select  class="form-control form-control-sm sisbu-cursor-mano" id="slctConQuienViveFichaSocieconomica">
                                             <option  value="-1">Seleccionar...</option>
@@ -361,7 +365,7 @@
                                             <option value="-1">Seleccionar. . .</option>
                                             <option value="CASA">CASA</option>
                                             <option value="DEPARTAMENTO">DEPARTAMENTO</option>
-                                            <option value="HABITACION">HABITACION</option>
+                                            <option value="HABITACION">HABITACIÓN</option>
                                         </select>
                                     </div>
                                 </div>
@@ -490,7 +494,7 @@
                                 <div class="col-12 text-right">
                                     <button class="btn btn-primary pulse-primary" id="btn-finalize-evuacion-socioeconomica">
                                         <i class="fas fa-check"></i>
-                                        FANALIZAR
+                                        FINALIZAR
                                     </button>
                                 </div>
                             </div>
@@ -1080,7 +1084,7 @@
         </button>
     </div>
 </div>
-            
+
 <!--MODALES CARGNADO-->
 <div class="modal" id="modalCargandoSelectedFichaSocieconomica" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.1)">

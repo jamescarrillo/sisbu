@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Sistema de Binestar Universitario UNPRG">
+<meta name="description" content="Sistema de Bienestar Universitario UNPRG">
 <meta name="author" content="UNPRG">
 <meta name="copyright" content="DEPARTAMENTO DE SISTEMAS UNPRG">
 <meta name="keywords" content="

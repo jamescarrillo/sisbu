@@ -7,8 +7,7 @@
     <div class="col-12">
         <h2 class="text-center text-primary mb-4">Mis Documentos</h2>
         <!--h5 class="text-warning">*Nota: Cada constancia tiene un código de barras para verificar la autenticidad del documento.</h5-->
-        <h5 class="text-warning">*Nota: Debido a la crisis social denominada COVID-19, no se entregarán las contancias de las evaluaciones virtuales
-        en la Oficina General de Bienestar Universitario.</h5>
+        <h5 class="text-warning">*Nota: Debido a la coyuntura pandémica, no se entregarán CONSTANCIAS de las evaluaciones virtuales en la Oficina General de Bienestar Universitario.</h5>
     </div>
     <div class="col-12">
         <div class="dt-card">

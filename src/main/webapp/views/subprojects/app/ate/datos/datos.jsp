@@ -80,7 +80,7 @@
                                         <option  value="-1">Seleccionar...</option>
                                         <option  value="1">SOLTERO(A)</option>
                                         <option  value="2">CASADO(A)</option>
-                                        <option  value="3">DIVORSIADO(A)</option>
+                                        <option  value="3">DIVORCIADO(A)</option>
                                         <option  value="4">VIUDO(A)</option>
                                     </select>
                                 </div>
@@ -151,7 +151,7 @@
                             </div>
                             <div class="col-lg-8 col-12 mb-3">
                                 <label for="txtEscuelaPaciente">ESCUELA
-                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Carrera profesional a la que ingresaste" style="cursor: pointer" data-original-title=""></i>
+                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Carrera profesional a la que ingresaste. Si eres un docente o administrativo puedes dejar esto en blanco." style="cursor: pointer" data-original-title=""></i>
                                 </label>
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-sm" id="txtEscuelaPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
@@ -162,7 +162,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="txtDireccionActualPaciente">DIRECCION ACTUAL
+                                    <label for="txtDireccionActualPaciente">DIRECCIÓN ACTUAL
                                         <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección donde vives actualmente. Si vives en un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS PINOS - SAN MARTÍN" style="cursor: pointer" data-original-title=""></i>
                                     </label>
                                     <input  type="text" class="form-control form-control-sm" id="txtDireccionActualPaciente" placeholder="Ingrese dirección actual. . ." maxlength="80">
@@ -170,7 +170,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="txtDireccionProcePaciente">DIRECCION PROCEDENCIA
+                                    <label for="txtDireccionProcePaciente">DIRECCIÓN PROCEDENCIA
                                         <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Dirección de donde vienes. Si vienes de un caserío ingresa tu dirección y luego agrega tu caserío separado por un guión. Ejm: #LOS ROSALES - SAN JUAN" style="cursor: pointer" data-original-title=""></i>
                                     </label>
                                     <input  type="text" class="form-control form-control-sm" id="txtDireccionProcePaciente" placeholder="Ingrese dirección de procedencia" maxlength="80">
@@ -194,14 +194,28 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 mb-3">
-                                <label for="txtCicloAcademicoPaciente">CICLO ACADÉMICO INGRESO</label>
+                            <div class="col-lg-6 col-12 mb-3">
+                                <label for="txtCicloAcademicoPaciente">CICLO ACADÉMICO INGRESO
+                                    <i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="Si eres un docente o administrativo puedes dejar esto en blanco." style="cursor: pointer" data-original-title=""></i>
+                                </label>
                                 <div class="input-group">
                                     <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPaciente" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
                                     <div class="input-group-append">
                                         <button type="button" id="btnSeleccionarCicloAcademico" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-lg-6 col-12 mb-3">
+                                <label for="txtUbigeoAlumno">UBIGEO
+                                    <i class="fa fa-question-circle" aria-hidden="true"
+                                       data-toggle="popover" data-trigger="hover" data-placement="top"
+                                       title=""
+                                       data-content="Encuenta el codigo ubigeo en tu DNI, junto a la fecha de nacimiento."
+                                       style="cursor: pointer" data-original-title=""></i>
+                                </label>
+                                <input maxlength="6" type="text" class="form-control form-control-sm"
+                                       id="txtUbigeoAlumno" placeholder="Ingrese ubigeo. . ."
+                                       >
                             </div>
                             <div class="col-lg-12 text-right mt-3">
                                 <button type="submit" class="btn btn-primary btn-sm" id="btnGuardarPersonales">

@@ -250,7 +250,7 @@ function toListCita(beanPagination) {
                    
                     <!-- Widget Info -->
                     <div class="dt-widget__info " style="max-width: 170px;">
-                    <p class="mb-0 ">Dr. ${cita.personal.nombre.toUpperCase()}
+                    <p class="mb-0 ">${cita.personal.nombre.toUpperCase()}
                     </p>
                     <p class="mb-0 ">${cita.personal.apellido_pat.toUpperCase() + " " + cita.personal.apellido_mat.toUpperCase()}
                     </p>
