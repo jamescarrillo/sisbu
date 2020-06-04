@@ -238,6 +238,7 @@ function addEventsPacientes() {
     document.querySelectorAll('.evaluaciones-paciente').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
+             $('[data-toggle="tooltip"]').tooltip("hide");
             atendidoSelected = findByPaciente(btn.getAttribute('idpaciente'));
             if (atendidoSelected != undefined) {
                 if (atendidoSelected.ciclo_academico_ingreso.idciclo_academico > 12) {

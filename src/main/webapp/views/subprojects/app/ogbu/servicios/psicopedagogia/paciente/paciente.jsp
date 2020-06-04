@@ -18,11 +18,11 @@
             <!-- /card header -->
             <!-- Card Body -->
             <div class="card-body p-0 pt-2">
-                <form id="FrmPaciente" class="search-box mw-100 left-side-icon">
+                <form id="FrmPaciente" class="search-box mw-100 left-side-icon pb-3">
                     <div class="input-group search-box" style="max-width: 100%;">
                         <input type="search" id="txtFilterPaciente" class="form-control form-control-sm"
-                            placeholder="FILTRO. . ." data-toggle="tooltip" data-placement="left"
-                            data-original-title="Buscar">
+                               placeholder="FILTRO. . ." data-toggle="tooltip" data-placement="left"
+                               data-original-title="Buscar">
                         <button type="submit" class="search-icon">
                             <i class="icon icon-search icon-lg"></i></button>
 
@@ -35,7 +35,7 @@
                     <div class="w-100 ps-custom-scrollbar mb-0 ps pb-5">
                         <!-- Widget -->
                         <div class="dt-widget dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg dt-social-card border border-w-2 border-light-teal"
-                            id="tbodyPaciente" style="min-width: 725px;">
+                             id="tbodyPaciente" style="min-width: 725px;">
                         </div>
                         <!-- /widget -->
                     </div>
@@ -73,7 +73,7 @@
                 <!-- Card Tools -->
                 <div class="dt-card__tools">
                     <button data-toggle="tooltip" title="Regresar" type="button" id="btnCerrar"
-                        class="btn btn-outline-primary btn-sm dt-avatar">
+                            class="btn btn-outline-primary btn-sm ">
                         <i class="icon icon-reply icon-lg"></i></button>
                 </div>
                 <!-- /card tools -->
@@ -92,7 +92,7 @@
                 <div class="dt-card__body p-0">
                     <!-- Widget -->
                     <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg"
-                        id="div-container-evaluaciones">
+                         id="div-container-evaluaciones">
 
                     </div>
                     <!-- /widget -->
@@ -117,7 +117,7 @@
                     <!-- Card Tools -->
                     <div class="dt-card__tools">
                         <button data-toggle="tooltip" title="Regresar" type="button" class="btn btn-outline-primary btn-sm 
-                                dt-avatar btn-close-resultados">
+                                btn-close-resultados">
                             <i class="icon icon-reply icon-lg"></i></button>
                     </div>
                     <!-- /card tools -->
@@ -125,11 +125,7 @@
                         <h3 class="dt-card__title text-primary">Puntajes por &Aacute;reas</h3>
                     </div>
 
-                    <span id="btnOpenListaPregunta" data-toggle="tooltip" data-placement="bottom"
-                        data-original-title="Lista de Respuestas"
-                        class="badge badge-secondary badge-top-right sisbu-cursor-mano pulse-info">Lista de Preguntas
-                        con
-                        Respuesta</span>
+
                 </div>
                 <!-- /card header -->
                 <div class="w-100 ps-custom-scrollbar mb-0 ps pb-5">
@@ -153,20 +149,20 @@
                                 <!-- Widget Item -->
                                 <div class="dt-widget__item p-1">
                                     <!-- Widget Info -->
-                                    <div class="dt-widget__info text-center">
+                                    <div class="dt-widget__info text-center"style="min-width: 130px;">
                                         <span class="h6 font-weight-500">SUB&Aacute;REA
                                         </span>
                                     </div>
                                     <!-- /widget info -->
                                     <!-- Widget Info -->
                                     <div class="dt-widget__info text-center">
-                                        <span class="h6 font-weight-500">NÂ° ITEMS
+                                        <span class="h6 font-weight-500">N° ITEMS
                                         </span>
                                     </div>
                                     <!-- /widget info -->
                                     <!-- Widget Info -->
                                     <div class="dt-widget__info  text-center">
-                                        <span class="h6 font-weight-500">VALOR ACUMULADO
+                                        <span class="h6 font-weight-500">PUNTAJE CONVERTIDO
                                         </span>
                                     </div>
                                     <!-- /widget info -->
@@ -212,7 +208,8 @@
         </div>
         <!-- /card -->
     </div>
-    <!-- Tab RESULTADO DE EVALUACIONES -->
+
+    <!-- Tab RESULTADO DE EVALUACIONES PREGUNTAS -->
     <div class="col-lg-12 p-0" id="row-resultado-evaluacione-preguntas" style="display: none">
         <!-- Grid Item -->
         <div class="col-lg-12 p-0 order-xl-3">
@@ -222,7 +219,7 @@
                 <!-- Card Tools -->
                 <div class="dt-card__tools">
                     <button data-toggle="tooltip" title="Regresar" type="button" class="btn btn-outline-primary btn-sm 
-                            dt-avatar btn-close-resultados-evaluacion">
+                            btn-close-resultados-evaluacion">
                         <i class="icon icon-reply icon-lg"></i></button>
                 </div>
                 <!-- /card tools -->
@@ -231,7 +228,16 @@
                     <h3 id="title-respuesta-evaluacion" class="dt-card__title  text-primary text-center">RESULTADO DE
                         EVALUACIï¿½N</h3>
                 </div>
+                <!-- Card Tools -->
+                <div class="dt-card__tools">
+                    <button id="btnOpenPromedioArea" 
+                            class="btn btn-outline-warning btn-sm 
+                            ">Puntajes por &Aacute;reas
+                        </button>
+                </div>
+                <!-- /card tools -->
                 <!-- /card heading -->
+               
             </div>
 
             <!-- /card header -->
@@ -265,13 +271,13 @@
 </div>
 
 <div class="modal fade" id="modalCargandoPaciente" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+     role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Cargando Pacientes. . .
                     </div>
                 </div>
@@ -281,8 +287,8 @@
 </div>
 
 <div id="ventanaModalPreviewReporte" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
-    data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); display: none;"
-    aria-hidden="true">
+     data-keyboard="false" style="overflow-y: visible; background-color: rgba(0, 0, 0, 0.1); display: none;"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg-sisbu" role="document">
         <div class="modal-content" style="border-color: #2962FF; border-width: 3px;border-radius: 7px;">
             <form class="needs-validation" novalidate="">
@@ -294,13 +300,13 @@
                             <!--div class="embed-responsive embed-responsive-1by1">
                             </div-->
                             <iframe class="embed-responsive-item" src="" id="idframe_reporte" height="480"
-                                width="100%"></iframe>
+                                    width="100%"></iframe>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer pt-2 pb-2">
                     <button type="button" class="btn btn-primary btn-xs" id="btn-cerrar-printer-comprobante"
-                        data-dismiss="modal">
+                            data-dismiss="modal">
                         <i class="fas fa-times"></i>
                         CERRAR</button>
                 </div>
@@ -311,13 +317,13 @@
 
 <!--MODAL CARGANDO EVALUACION-->
 <div class="modal fade" id="modalCargandoEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+     role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Procesando solicitud. . .
                     </div>
                 </div>
@@ -328,13 +334,13 @@
 
 <!--MODAL CARGANDO RESPUESTA EVALUACION-->
 <div class="modal fade" id="modalCargandoRespuestaEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+     role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Procesando solicitud. . .
                     </div>
                 </div>
@@ -345,13 +351,13 @@
 
 <!--MODAL CARGANDO REMOVE EVALUACION-->
 <div class="modal fade" id="modalCargandoRemoveEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1"
-    role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+     role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="progress" style="margin-bottom: 0px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Procesando solicitud. . .
                     </div>
                 </div>

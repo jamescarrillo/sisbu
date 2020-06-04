@@ -12,7 +12,7 @@ class RespuestaEvaluacion2 {
 }
 class SubAreaPsi {
     constructor(idarea_psi, nombre_area, idsubarea_psi, nombre, abreviatura,
-        puntaje_minimo, puntaje_maximo, cantidad, suma, suma_operacion) {
+            puntaje_minimo, puntaje_maximo, cantidad, suma, suma_operacion) {
         this.idarea_psi = idarea_psi;
         this.nombre_area = nombre_area;
         this.idsubarea_psi = idsubarea_psi;
@@ -34,20 +34,29 @@ document.addEventListener("DOMContentLoaded", function () {
     beanRequestRespuestaEvaluacion.operation = "paginate-respuesta-evaluacion";
     beanRequestRespuestaEvaluacion.type_request = "GET";
 
-    document.querySelector("#btnOpenListaPregunta").onclick = function () {
-        document.querySelector("#row-resultado-evaluacione").style.display = "none";
-        document.querySelector("#row-resultado-evaluacione-preguntas").style.display = "initial";
+    document.querySelector("#btnOpenPromedioArea").onclick = function () {
+
+        if (listSubAreaPsi.length > 0) {
+            showCloseResultadoEvaluacion('show');
+        } else {
+            showAlertTopEnd('warning', 'No se Asignaron Áreas a las Preguntas');
+        }
+
+
 
     };
     document.querySelectorAll(".btn-close-resultados-evaluacion").forEach(btn => {
         btn.onclick = function () {
-            showCloseResultadoEvaluacion('close');
+            $('[data-toggle="tooltip"]').tooltip("hide");
+            document.querySelector("#row-resultado-evaluacione-preguntas").style.display = "none";
+            document.querySelector("#row-evaluaciones").style.display = "flex";
         };
     });
     document.querySelectorAll(".btn-close-resultados").forEach(btn => {
         btn.onclick = function () {
-            document.querySelector("#row-resultado-evaluacione").style.display = "none";
-            document.querySelector("#row-evaluaciones").style.display = "flex";
+            $('[data-toggle="tooltip"]').tooltip("hide");
+            showCloseResultadoEvaluacion('close');
+
         };
     });
 
@@ -72,7 +81,7 @@ function processAjaxRespuestaEvaluacion() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'
     }).done(function (beanCrudResponse) {
-        console.log(beanCrudResponse);
+        //console.log(beanCrudResponse);
         $('#modalCargandoRespuestaEvaluacion').modal("hide");
         if (beanCrudResponse.messageServer !== undefined) {
             if (beanCrudResponse.messageServer.toLowerCase() == "ok") {
@@ -86,7 +95,8 @@ function processAjaxRespuestaEvaluacion() {
             toListPuntajeSubArea(beanPaginationRespuestaEvaluacion);
 
             toListRespuestaEvaluacion(beanPaginationRespuestaEvaluacion);
-            showCloseResultadoEvaluacion('show');
+            document.querySelector("#row-evaluaciones").style.display = "none";
+            document.querySelector("#row-resultado-evaluacione-preguntas").style.display = "initial";
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         $('#modalCargandoRespuestaEvaluacion').modal("hide");
@@ -110,14 +120,14 @@ function toListRespuestaEvaluacion(beanPagination) {
                               ${respuestaEvaluacion.pregunta.enunciado}</label>
                             <div class="form-group custom-control custom-checkbox mb-2">
                                 <label class="sisbu-cursor-mano" >${
-                respuestaEvaluacion.alternativa.descripcion}
+                    respuestaEvaluacion.alternativa.descripcion}
                                 </label>
                 
                                 <label class="float-right" >${
-                (respuestaEvaluacion.pregunta.item_negativo == "S") ? valorInvertido(respuestaEvaluacion.alternativa.valor) : respuestaEvaluacion.alternativa.valor}
+                    (respuestaEvaluacion.pregunta.item_negativo == "S") ? valorInvertido(respuestaEvaluacion.alternativa.valor) : respuestaEvaluacion.alternativa.valor}
                                 </label>
                             <label class="mr-5 font-weight-500 text-dark float-right" >${
-                (respuestaEvaluacion.pregunta.subarea_psi.nombre == null) ? "" : respuestaEvaluacion.pregunta.subarea_psi.nombre}
+                    (respuestaEvaluacion.pregunta.subarea_psi.nombre == null) ? "" : respuestaEvaluacion.pregunta.subarea_psi.nombre}
                                 </label>
                             </div>
                         </li>
@@ -125,7 +135,7 @@ function toListRespuestaEvaluacion(beanPagination) {
 
             if (respuestaEvaluacion.pregunta.tipo_respuesta == 1) {
                 document.querySelector("#input-text-" + respuestaEvaluacion.pregunta.idpregunta).value =
-                    respuestaEvaluacion.texto;
+                        respuestaEvaluacion.texto;
                 document.querySelector("#input-text-" + respuestaEvaluacion.pregunta.idpregunta).setAttribute("idrespuesta_evaluacion", respuestaEvaluacion.idrespuesta_evaluacion2);
             } else if (respuestaEvaluacion.pregunta.tipo_respuesta == 2) {
                 document.querySelectorAll(".check-" + respuestaEvaluacion.pregunta.idpregunta).forEach(check => {
@@ -144,7 +154,7 @@ function toListRespuestaEvaluacion(beanPagination) {
             <li class="list-group-item bg-primary">
                             <label class="dt-card__title text-white">TOTAL</label>
                                 <label class="float-right dt-card__title text-white" >${
-            suma}
+                suma}
                                 </label>
                         </li>
             `;
@@ -177,19 +187,19 @@ function toListPuntajeSubArea(beanPagination) {
         if (contador < beanPaginationRespuestaEvaluacion.count_filter) {
 
             if (respuestaEvaluacion2.pregunta.subarea_psi.idsubarea_psi ==
-                beanPagination.list[contador].pregunta.subarea_psi.idsubarea_psi) {
+                    beanPagination.list[contador].pregunta.subarea_psi.idsubarea_psi) {
 
                 contadorValor++;
             } else {
                 subAreaPsi = new SubAreaPsi(
-                    respuestaEvaluacion2.pregunta.subarea_psi.area_psi.idarea_psi,
-                    respuestaEvaluacion2.pregunta.subarea_psi.area_psi.nombre,
-                    respuestaEvaluacion2.pregunta.subarea_psi.idsubarea_psi,
-                    respuestaEvaluacion2.pregunta.subarea_psi.nombre,
-                    respuestaEvaluacion2.pregunta.subarea_psi.abreviatura,
-                    respuestaEvaluacion2.pregunta.subarea_psi.puntaje_minimo,
-                    respuestaEvaluacion2.pregunta.subarea_psi.puntaje_maximo,
-                    contadorValor, suma, sumaOperacion);
+                        respuestaEvaluacion2.pregunta.subarea_psi.area_psi.idarea_psi,
+                        respuestaEvaluacion2.pregunta.subarea_psi.area_psi.nombre,
+                        respuestaEvaluacion2.pregunta.subarea_psi.idsubarea_psi,
+                        respuestaEvaluacion2.pregunta.subarea_psi.nombre,
+                        respuestaEvaluacion2.pregunta.subarea_psi.abreviatura,
+                        respuestaEvaluacion2.pregunta.subarea_psi.puntaje_minimo,
+                        respuestaEvaluacion2.pregunta.subarea_psi.puntaje_maximo,
+                        contadorValor, suma, sumaOperacion);
                 listSubAreaPsi.push(subAreaPsi);
                 suma = 0;
                 sumaOperacion = 0;
@@ -198,14 +208,14 @@ function toListPuntajeSubArea(beanPagination) {
         } else {
             if (respuestaEvaluacion2.pregunta.subarea_psi.area_psi.idarea_psi != 0) {
                 subAreaPsi = new SubAreaPsi(
-                    respuestaEvaluacion2.pregunta.subarea_psi.area_psi.idarea_psi,
-                    respuestaEvaluacion2.pregunta.subarea_psi.area_psi.nombre,
-                    respuestaEvaluacion2.pregunta.subarea_psi.idsubarea_psi,
-                    respuestaEvaluacion2.pregunta.subarea_psi.nombre,
-                    respuestaEvaluacion2.pregunta.subarea_psi.abreviatura,
-                    respuestaEvaluacion2.pregunta.subarea_psi.puntaje_minimo,
-                    respuestaEvaluacion2.pregunta.subarea_psi.puntaje_maximo,
-                    contadorValor, suma, sumaOperacion);
+                        respuestaEvaluacion2.pregunta.subarea_psi.area_psi.idarea_psi,
+                        respuestaEvaluacion2.pregunta.subarea_psi.area_psi.nombre,
+                        respuestaEvaluacion2.pregunta.subarea_psi.idsubarea_psi,
+                        respuestaEvaluacion2.pregunta.subarea_psi.nombre,
+                        respuestaEvaluacion2.pregunta.subarea_psi.abreviatura,
+                        respuestaEvaluacion2.pregunta.subarea_psi.puntaje_minimo,
+                        respuestaEvaluacion2.pregunta.subarea_psi.puntaje_maximo,
+                        contadorValor, suma, sumaOperacion);
                 listSubAreaPsi.push(subAreaPsi);
             }
 
@@ -252,11 +262,11 @@ function toListPuntajeArea() {
                         <!-- Widget Item -->
                         <div class="dt-widget__item pr-1 pl-1 h-100">
                             <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate text-center" style="min-width: 100%;">
+                            <div class="dt-widget__info text-center" style="min-width: 100%;">
                                 <span class="h4 font-weight-400">${
-                (respuestaEvaluacion.nombre_area == null) ? "INDEFINIDO" :
+                    (respuestaEvaluacion.nombre_area == null) ? "INDEFINIDO" :
                     respuestaEvaluacion.nombre_area
-                }
+                    }
                                 </span>  
                             </div>
                             <!-- /widget info -->
@@ -276,42 +286,42 @@ function toListPuntajeArea() {
                         <!-- Widget Item -->
                         <div class="dt-widget__item pl-1 pr-0 border-top pt-2 pb-2">
                             <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate text-center">
-                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">${
-                        (respuestaEvaluacion2.nombre == null) ? "INDEFINIDO" : respuestaEvaluacion2.nombre
-                        }</a>
+                            <div class="dt-widget__info text-center" style="min-width: 130px;">
+                                <a href="javascript:void(0)" class="dt-widget__title">${
+                            (respuestaEvaluacion2.nombre == null) ? "INDEFINIDO" : respuestaEvaluacion2.nombre
+                            }</a>
                             </div>
                             <!-- /widget info -->
                      <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate text-center">
-                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">${
-                        respuestaEvaluacion2.cantidad}</a>
+                            <div class="dt-widget__info text-center">
+                                <a href="javascript:void(0)" class="dt-widget__title ">${
+                            respuestaEvaluacion2.cantidad}</a>
                             </div>
                             <!-- /widget info -->
                         
                         <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate text-center">
-                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">${
-                        respuestaEvaluacion2.suma}</a>
+                            <div class="dt-widget__info text-center">
+                                <a href="javascript:void(0)" class="dt-widget__title">${
+                            respuestaEvaluacion2.suma}</a>
                             </div>
                             <!-- /widget info -->
                         <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate text-center">
-                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">${
-                        (respuestaEvaluacion2.suma_operacion == 0) ? 0 : respuestaEvaluacion2.suma_operacion.toFixed(2)
-                        }</a>
+                            <div class="dt-widget__info text-center">
+                                <a href="javascript:void(0)" class="dt-widget__title">${
+                            (respuestaEvaluacion2.suma_operacion == 0) ? 0 : respuestaEvaluacion2.suma_operacion.toFixed(2)
+                            }</a>
                             </div>
                             <!-- /widget info -->
                            
                         <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate text-center">
-                                <a href="javascript:void(0)" class="dt-widget__title text-truncate">${
-                        respuestaEvaluacion2.puntaje_maximo}</a>
+                            <div class="dt-widget__info text-center">
+                                <a href="javascript:void(0)" class="dt-widget__title">${
+                            respuestaEvaluacion2.puntaje_maximo}</a>
                             </div>
                             <!-- /widget info -->
                         <!-- Widget Info -->
-                            <div class="dt-widget__info text-truncate text-center">
-                                <a href="javascript:void(0)" class="dt-widget__title text-truncate"></a>
+                            <div class="dt-widget__info text-center">
+                                <a href="javascript:void(0)" class="dt-widget__title"></a>
                             </div>
                             <!-- /widget info -->
                         </div>
@@ -325,7 +335,7 @@ function toListPuntajeArea() {
                 <!-- Widget Item -->
                         <div class="dt-widget__item pl-1 pr-0 border-top pt-2 pb-2">
                  <!-- Widget Info -->
-                            <div class="dt-widget__info ">
+                            <div class="dt-widget__info "style="min-width: 130px;">
                                 <!-- Widget Extra -->
                             <div class="text-center" >
                                 <span class="badge badge-primary  badge-pill badge-sm align-text-top">TOTAL</span>
@@ -337,9 +347,9 @@ function toListPuntajeArea() {
                             <div class="dt-widget__info ">
                                 <!-- Widget Extra -->
                             <div class="text-center">
-                                <span class="badge badge-info badge-pill badge-sm align-text-top">${
-                cantidadTotal
-                }</span>
+                                <span class="badge badge-dark badge-pill badge-sm align-text-top">${
+                    cantidadTotal
+                    }</span>
                             </div>
                             <!-- /widget extra -->
                             </div>
@@ -348,8 +358,8 @@ function toListPuntajeArea() {
                             <div class="dt-widget__info">
                               <!-- Widget Extra -->
                             <div class="text-center" >
-                                <span class="badge badge-success  badge-pill badge-sm align-text-top">${
-                sumaTotal}</span>
+                                <span class="badge badge-dark  badge-pill badge-sm align-text-top">${
+                    sumaTotal}</span>
                             </div>
                             <!-- /widget extra -->
                             </div>
@@ -358,9 +368,9 @@ function toListPuntajeArea() {
                             <div class="dt-widget__info">
                               <!-- Widget Extra -->
                             <div class="text-center" >
-                                <span class="badge badge-success badge-pill badge-sm align-text-top">${
-                (respuestaEvaluacion.nombre_area == null) ? 0 : sumaOperacionTotal.toFixed(2)
-                }</span>
+                                <span class="badge badge-dark badge-pill badge-sm align-text-top">${
+                    (respuestaEvaluacion.nombre_area == null) ? 0 : sumaOperacionTotal.toFixed(2)
+                    }</span>
                             </div>
                             <!-- /widget extra -->
                             </div>
@@ -370,7 +380,7 @@ function toListPuntajeArea() {
                             <div class="dt-widget__info">
                                <!-- Widget Extra -->
                             <div class="text-center" >
-                                <span class="badge badge-danger  badge-pill badge-sm align-text-top">--</span>
+                                <span class="badge badge-dark  badge-pill badge-sm align-text-top">--</span>
                             </div>
                             <!-- /widget extra -->
                             </div>
@@ -379,9 +389,9 @@ function toListPuntajeArea() {
                             <div class="dt-widget__info">
                               <!-- Widget Extra -->
                             <div class="text-center" >
-                                <span class="badge badge-success badge-pill badge-sm align-text-top">${
-                (respuestaEvaluacion.nombre_area == null) ? "--" : EscalabyProcedimiento(sumaOperacionTotal.toFixed(2))
-                }</span>
+                                <span class="badge badge-dark badge-pill badge-sm align-text-top">${
+                    (respuestaEvaluacion.nombre_area == null) ? "--" : EscalabyProcedimiento(sumaOperacionTotal.toFixed(2))
+                    }</span>
                             </div>
                             <!-- /widget extra -->
                             </div>
@@ -402,18 +412,24 @@ function toListPuntajeArea() {
 
 function showCloseResultadoEvaluacion(option) {
     if (option == "show") {
+
         document.querySelector("#row-resultado-evaluacione").style.display = "flex";
-        document.querySelector("#row-evaluaciones").style.display = "none";
-    } else {
         document.querySelector("#row-resultado-evaluacione-preguntas").style.display = "none";
-        document.querySelector("#row-resultado-evaluacione").style.display = "flex";
+    } else {
+        document.querySelector("#row-resultado-evaluacione").style.display = "none";
+        document.querySelector("#row-resultado-evaluacione-preguntas").style.display = "flex";
     }
 }
 
 function EscalabyProcedimiento(valor) {
 
-    if (evaluacionSelected.procedimiento.descripcion.toUpperCase().includes("BARON")) {
-        if (0 < valor && valor < 80) {
+    if (evaluacionSelected.procedimiento.descripcion.toUpperCase().includes("BARON ICE")) {
+
+        console.log(valor);
+        console.log("BARON ICE");
+        if (valor < 0) {
+            return "NO DEFINIDO";
+        } else if (0 < valor && valor < 80) {
             return "MUY BAJO";
         } else if (79 < valor && valor < 91) {
             return "BAJO";
@@ -425,7 +441,11 @@ function EscalabyProcedimiento(valor) {
             return "MUY ALTO";
         }
     } else if (evaluacionSelected.procedimiento.descripcion.toUpperCase().includes("ZUNG")) {
-        if (0 < valor && valor < 45) {
+
+        console.log("ZUNG");
+        if (valor < 0) {
+            return "NO DEFINIDO";
+        } else if (0 < valor && valor < 45) {
             return "Dentro del Límite de lo Normal";
         } else if (44 < valor && valor < 60) {
             return "Mínimo – Moderado";
@@ -434,14 +454,18 @@ function EscalabyProcedimiento(valor) {
         } else {
             return "Grado Máximo";
         }
-    } else if (evaluacionSelected.procedimiento.descripcion.toUpperCase().includes("IHEA")) {
-        if (0 < valor && valor < 24) {
-            return "Mal Nivel";
+    } else if (evaluacionSelected.procedimiento.descripcion.toUpperCase().includes("INVENTARIO DE HABILIDADES")) {
+
+        console.log("INVENTARIO DE HABILIDADES");
+        if (valor < 0) {
+            return "NO DEFINIDO";
+        } else if (0 < valor && valor < 24) {
+            return "Nivel Malo";
         } else if (23 < valor && valor < 32) {
             return "Nivel Regular";
 
         } else {
-            return "Buen Nivel";
+            return "Nivel Bueno";
         }
     } else {
         return "--";
@@ -451,7 +475,7 @@ function EscalabyProcedimiento(valor) {
 function OperacionbyProcedimiento(respuestaEvaluacion2, suma) {
     if (evaluacionSelected.procedimiento.descripcion.toUpperCase().includes("BARON")) {
         return (((suma - respuestaEvaluacion2.pregunta.subarea_psi.media) /
-            respuestaEvaluacion2.pregunta.subarea_psi.ds * 15) + 100);
+                respuestaEvaluacion2.pregunta.subarea_psi.ds * 15) + 100);
     } else if (evaluacionSelected.procedimiento.descripcion.toUpperCase().includes("ZUNG")) {
         return (suma / 80) * 100;
     } else {

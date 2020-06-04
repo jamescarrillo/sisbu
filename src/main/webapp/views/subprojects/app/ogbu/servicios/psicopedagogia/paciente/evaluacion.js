@@ -99,7 +99,7 @@ function toListEvaluacion(beanPagination) {
     beanPagination.list.forEach(evaluacion => {
 
         div =
-            `
+                `
                 <div class="dt-widget__item border-success border-bottom m-0">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate">
@@ -150,8 +150,17 @@ function addEventsEvaluaciones() {
 
     document.querySelectorAll(".btn-ver-resultado").forEach(btn => {
         btn.onclick = function () {
+            $('[data-toggle="tooltip"]').tooltip("hide");
             evaluacionSelected = getEvaluacionForId(this.getAttribute('idevaluacion'));
             if (evaluacionSelected != undefined) {
+                let evaTitulo = evaluacionSelected.procedimiento.descripcion.toUpperCase();
+                document.querySelector("#btnOpenPromedioArea").style.display = "none";
+               /* if (evaTitulo.includes("BARON ICE") || evaTitulo.includes("INVENTARIO DE HABILIDADES")
+                        || evaTitulo.includes("ZUNG")) {
+                    document.querySelector("#btnOpenPromedioArea").style.display = "flex";
+                } else {
+                    document.querySelector("#btnOpenPromedioArea").style.display = "none";
+                }*/
                 $('#modalCargandoRespuestaEvaluacion').modal("show");
             } else {
                 showAlertTopEnd('warnign', 'No se encontró el registro para eliminar');
@@ -161,6 +170,7 @@ function addEventsEvaluaciones() {
 
     document.querySelectorAll(".btn-remove-evaluacion").forEach(btn => {
         btn.onclick = function () {
+            $('[data-toggle="tooltip"]').tooltip("hide");
             evaluacionSelected = getEvaluacionForId(this.getAttribute('idevaluacion'));
             if (evaluacionSelected != undefined) {
                 showAlertDelete('modalCargandoRemoveEvaluacion');

@@ -307,7 +307,7 @@ function addEventsCitas() {
                 beanRequestCita.operation = "update";
                 beanRequestCita.type_request = "PUT";
                 //SET VALUES MODAL
-                 showAlertDelete("modalCargandoCita","¿Desea confirmar atención de este Paciente?");
+                 showAlertDelete("modalCargandoCita","¿Desea confirmar Atención del Paciente?");
             } else {
                 showAlertTopEnd('warning', 'No se encontró la Cita para poder aceptar la solicitud');
             }

@@ -597,11 +597,11 @@
         <!-- /perfect scrollbar jQuery -->
 
         <!--JS COMPLEMENTS-->
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions.js?v=0.10"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_alerts.js?v=0.10"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_operational.js?v=0.10"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_file.js?v=0.10"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/util/configuration_api.js?v=0.10"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions.js?v=0.11"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_alerts.js?v=0.11"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_operational.js?v=0.11"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/functions_file.js?v=0.11"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/util/configuration_api.js?v=0.11"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/util/shortcut.js"></script>
 
         <!-- masonry script -->
@@ -611,9 +611,9 @@
         <script src="<%=request.getContextPath()%>/assets/js/customizer.js"></script>
 
         <!--script src="<%out.print(request.getContextPath());%>/scripts/session/change.cookie.js"></script-->
-        <script src="<%out.print(request.getContextPath());%>/scripts/session/js.cookie.js?v=0.10"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.js?v=0.10"></script>
-        <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.init.js?v=0.10"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/session/js.cookie.js?v=0.11"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.js?v=0.11"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.init.js?v=0.11"></script>
 
         <!-- Custom JavaScript -->
         <script src="<%=request.getContextPath()%>/plugins/chartist/dist/chartist.min.js"></script>
@@ -627,7 +627,7 @@
         <script src="<%=request.getContextPath()%>/plugins/chart.js/dist/Chart.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/picker/js/bootstrap-material-datetimepicker.js"></script>
 
-        <script src="<%out.print(request.getContextPath());%>/scripts/init_parameters.js?v=0.10"></script>
+        <script src="<%out.print(request.getContextPath());%>/scripts/init_parameters.js?v=0.11"></script>
 
         <%
             for (int i = 0; i < resource.getScripts().length; i++) {
