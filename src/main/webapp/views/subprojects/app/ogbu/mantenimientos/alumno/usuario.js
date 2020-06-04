@@ -198,7 +198,7 @@ function agregarInputUsuario(bean) {
     document.querySelector("#txtNombreUsuario").value = bean.usuario;
     //document.querySelector("#txtPassUsuario").value = bean.pass;
     document.querySelector("#txtLoginUsuario").value = bean.login;
-    document.querySelector("#txtLoginUsuario").disabled = true;
+    //document.querySelector("#txtLoginUsuario").disabled = true;
     document.querySelector("#txtEstadoUsuario").value = bean.estado;
     document.querySelector("#txtTipoPerfilUsuario").value = bean.tipo_perfil;
     document.querySelector("#txtPassUsuario").value = "";
