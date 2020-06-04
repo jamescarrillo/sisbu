@@ -160,17 +160,25 @@
             <div class="card-header">
                 <!-- Tab Navigation -->
                 <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
-                    <div class="col-6">
+                    <div class="col-4">
                         <li class="nav-item">
                             <a class="nav-link  active" id="btnDatosGenerales" data-toggle="tab"
                                 href="#tab-datos-generales" role="tab" aria-controls="tab-datos-generales"
                                 aria-="true">DATOS GENERALES</a>
                         </li>
                     </div>
-                    <div class="col-6">
+                     
+                    <div class="col-4">
                         <li class="nav-item">
                             <a class="nav-link" id="btnDatosLaborales" data-toggle="tab" href="#tab-datos-laborales"
                                 role="tab" aria-controls="tab-datos-laborales" aria-="true">OTROS DATOS</a>
+                        </li>
+                    </div>
+                    <div class="col-4">
+                        <li class="nav-item">
+                            <a class="nav-link" id="btnDatosAcceso" data-toggle="tab"
+                                href="#tab-datos-acceso" role="tab" aria-controls="tab-datos-acceso"
+                                aria-="true">DATOS DE ACCESO</a>
                         </li>
                     </div>
                 </ul>

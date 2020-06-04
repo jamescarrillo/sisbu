@@ -25,9 +25,9 @@ function showAlertTop(type, message, timer_, position_) {
     }
 }
 
-function showAlertDelete(idmodal) {
+function showAlertDelete(idmodal,titulo="¿Desea eliminar este registro?") {
     Swal.fire({
-        title: '¿Desea eliminar este registro?',
+        title: titulo,
         text: "No podrás revertir una vez confirmado!",
         type: 'warning',
         showCancelButton: true,

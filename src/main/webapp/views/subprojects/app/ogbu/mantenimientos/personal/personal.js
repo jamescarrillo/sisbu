@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('#btnDatosLaborales').onclick = function () {
         viewDatosLaborales();
     };
+   
     document.querySelector("#txtDniPersonal").onkeyup = function () {
         document.querySelector("#txtLoginUsuario").value = document.querySelector("#txtDniPersonal").value;
         document.querySelector("#txtPassUsuario").value = document.querySelector("#txtDniPersonal").value;

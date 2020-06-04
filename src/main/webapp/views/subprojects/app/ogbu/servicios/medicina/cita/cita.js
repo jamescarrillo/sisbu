@@ -279,9 +279,6 @@ function toListCita(beanPagination) {
             <p class="mb-0 text-truncate ">${cita.fecha_atendida.split(" ")[1]}</p>`;
         }
 
-
-
-
         row += `</div>
                     <!-- /widget info -->
                    
@@ -310,7 +307,7 @@ function addEventsCitas() {
                 beanRequestCita.operation = "update";
                 beanRequestCita.type_request = "PUT";
                 //SET VALUES MODAL
-                $('#modalCargandoCita').modal('show');
+                 showAlertDelete("modalCargandoCita","¿Desea confirmar atención de este Paciente?");
             } else {
                 showAlertTopEnd('warning', 'No se encontró la Cita para poder aceptar la solicitud');
             }

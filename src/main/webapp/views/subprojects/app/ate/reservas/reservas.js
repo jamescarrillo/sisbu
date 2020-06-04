@@ -80,7 +80,9 @@ function processAjaxCita() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestCita.operation === "alumnos/paginate") {
-        parameters_pagination = "?fechai=" + document.querySelector("#txtFechaInicialCita").value;
+        
+        parameters_pagination = "?id=" + user_session.idusuario;
+        parameters_pagination += "&fechai=" + document.querySelector("#txtFechaInicialCita").value;
         parameters_pagination += "&fechaf=" + document.querySelector("#txtFechaFinalCita").value;
         parameters_pagination += "&page=1&size=5";
     } else {
@@ -171,12 +173,12 @@ function toListCita(beanPagination) {
                     s_fecha = "Fecha Programada: " + cita.fecha_programada.split(" ")[0];
                     s_hora = "Hora Programada: " + cita.fecha_programada.split(" ")[1].substring(0, 5);
                 } else {
+                  
                     color_row = "border-success"
-                    s_fecha = "Fecha Atención: " + cita.fecha_atencion.split(" ")[0];
-                    s_hora = "Hora Atención: " + cita.fecha_atencion.split(" ")[1].substring(0, 5);
+                    s_fecha = "Fecha Atención: " + cita.fecha_atendida.split(" ")[0];
+                    s_hora = "Hora Atención: " + cita.fecha_atendida.split(" ")[1].substring(0, 5);
                 }
             }
-
             row =
                     `
                 <div class="dt-widget__item ${color_row} sisbu-cursor-mano border-bottom m-0">
@@ -193,7 +195,7 @@ function toListCita(beanPagination) {
                             </p>
                         </div>
                         <div class="dt-widget__extra text-right">
-                            <div class="show-content">
+                            <div class="${(cita.estado_solicitud == "PEN")?"show-content":""}">
                                 <span class="d-block">${s_fecha}</span>
                                 <span class="d-block " style='margin-right: 50px'>${s_hora}</span>
                             </div>

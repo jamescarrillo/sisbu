@@ -320,9 +320,10 @@
                                 <label for="txtEstadoFamiliar">ESTADO CIVIL</label>
                                 <select class="form-control form-control-sm sisbu-cursor-mano" id="txtEstadoFamiliar">
                                     <option value="-1">Seleccione. . .</option>
-                                    <option value="1">SOLTERO</option>
-                                    <option value="2">CASADO</option>
-                                    <option value="3">DIVORCIADO</option>
+                                    <option value="1">SOLTERO(A)</option>
+                                    <option value="2">CASADO(A)</option>
+                                    <option value="3">DIVORCIADO(A)</option>
+                                    <option value="4">VIUDO(A)</option>
                                 </select>
                             </div>
                         </div>
