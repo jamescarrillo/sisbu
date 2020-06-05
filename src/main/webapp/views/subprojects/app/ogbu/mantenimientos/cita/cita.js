@@ -245,7 +245,7 @@ function toListCita(beanPagination) {
             row = "<tr class='click-selection-cita sisbu-cursor-mano' idcita='" + personal.idpersonal + "'>";
             row += "<td class='align-middle text-left'>" + buttom_editar + "</td>";
             row += "<td class='align-middle text-left'>" + buttom_eliminar + "</td>";
-            row += "<td class='align-middle text-left'>" + atendido.dni + "<br>" + atendido.nombre.toUpperCase() + " " + atendido.apellido_pat.toUpperCase() + " " + atendido.apellido_mat.toUpperCase() + "</td>";
+            row += "<td class='align-middle text-left'>" + atendido.dni + " <br> " + atendido.nombre.toUpperCase() + " " + atendido.apellido_pat.toUpperCase() + " " + atendido.apellido_mat.toUpperCase() + "<br><span class='text-info'>" + atendido.escuela.nombre + "</span></td>";
             row += "<td class='align-middle text-left'>" + cita.fecha_solicitud + "<br>" + (cita.fecha_aceptacion == null ? "Pendiente" : cita.fecha_aceptacion) + "</td>";
             row += "<td class='align-middle text-left'>" + (cita.fecha_programada == undefined ? "Pendiente" : cita.fecha_programada) + "<br>" + (cita.fecha_atendida == undefined ? "Pendiente" : cita.fecha_atendida) + "</td>";
             row += "<td class='align-middle text-left'>" + cita.area.nombre + "<br>" + s_personal + "</td>";
@@ -367,7 +367,7 @@ function openCita() {
     document.querySelector("#txtAreaCita").value = citaSelected.area.nombre;
     document.querySelector("#txtPersonalEncargadoCita").value = s_personal;
     s_fecha_programada = citaSelected.fecha_programada == null ? "" : citaSelected.fecha_programada.split(" ")[0];
-    s_hora_programada = citaSelected.fecha_programada == null ? "" : citaSelected.fecha_programada.split(" ")[1].substring(0,5);
+    s_hora_programada = citaSelected.fecha_programada == null ? "" : citaSelected.fecha_programada.split(" ")[1].substring(0, 5);
     document.querySelector("#txtFechaProgramadaDateCita").value = s_fecha_programada;
     document.querySelector("#txtFechaProgramadaTimeCita").value = s_hora_programada;
     document.querySelector("#txtEstadoCita").value = citaSelected.estado_cita;

@@ -61,7 +61,7 @@
                     <table class="table mb-0">
                         <thead class="bg-primary ">
                             <tr> 
-                                <th class="text-uppercase text-center text-white pt-3 pb-2" style="width: 5%" colspan="2">ACCION</th>
+                                <th class="text-uppercase text-center text-white pt-3 pb-2" colspan="2">ACCION</th>
                                 <th class="text-uppercase text-white pt-3 pb-2" scope="col" >USUARIO</th>
                                 <th style="font-size: 10px" class="text-uppercase text-white pt-3 pb-2" scope="col" >F. SOLICITUD <br>Y ACEPTACION</th>
                                 <th style="font-size: 10px" class="text-uppercase text-white pt-3 pb-2" scope="col" >F. PROGRAMACIÓN <br>Y ATENCIÓN</th>
