@@ -154,8 +154,8 @@ function navigateOptionEvaluation(option) {
             $('#modalCargandoProcedimientoObstetricia').modal('show');
             break;
         case "odontologia":
-            showAlertTopEnd("warning", "Esta evaluación estará disponible en las próximas horas");
-            return;
+            //showAlertTopEnd("warning", "Esta evaluación estará disponible en las próximas horas");
+            //return;
             document.querySelector("#row-options-evaluaciones").style.display = "none";
 
             document.querySelector("#row-option-socioeconomico").style.display = "none";
