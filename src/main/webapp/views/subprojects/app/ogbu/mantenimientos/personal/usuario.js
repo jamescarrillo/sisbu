@@ -188,7 +188,7 @@ function limpiarInputUsuario() {
     document.querySelector("#txtPassUsuario").value = "";
     document.querySelector("#txtLoginUsuario").value = "";
     document.querySelector("#txtEstadoUsuario").value = "1";
-    document.querySelector("#txtPerfilUsuario").value = "";
+   // document.querySelector("#txtPerfilUsuario").value = "";
     document.querySelector("#txtTipoPerfilUsuario").value = "-1";
     perfilSelected = null;
 }
@@ -200,7 +200,7 @@ function agregarInputUsuario(bean) {
     document.querySelector("#txtLoginUsuario").disabled = true;
     document.querySelector("#txtEstadoUsuario").value = bean.estado;
     document.querySelector("#txtTipoPerfilUsuario").value = bean.tipo_perfil;
-    document.querySelector("#txtPerfilUsuario").value = bean.perfil.nombre;
+    //document.querySelector("#txtPerfilUsuario").value = bean.perfil.nombre;
     document.querySelector("#txtPassUsuario").value = "";
     document.querySelector("#txtPassUsuario").focus();
 

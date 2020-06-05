@@ -64,14 +64,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#btnOpenNewAlumno").onclick = function () {
+        removeClass(document.querySelector('#btnDatosLaborales').parentElement.parentElement, "col-6");
+        removeClass(document.querySelector('#btnDatosGenerales').parentElement.parentElement, "col-6");
+        addClass(document.querySelector('#btnDatosLaborales').parentElement.parentElement, "col-4");
+        addClass(document.querySelector('#btnDatosGenerales').parentElement.parentElement, "col-4");
+        removeClass(document.querySelector('#btnDatosAcceso').parentElement.parentElement, "col-12");
+        addClass(document.querySelector('#btnDatosAcceso').parentElement.parentElement, "col-4");
         document.querySelector('#btnGuardarUsuario').classList.add("d-none");
         limpiarInput();
         beanRequestAlumno.operation = "add";
         beanRequestAlumno.type_request = "POST";
-        
+
         beanRequestUsuario.operation = "add";
         beanRequestUsuario.type_request = "POST";
-        
+
         document.querySelector("#btnListaAlumno").style.display = "none";
         document.querySelector("#btnOpenAlumnoDetalle").style.display = "block";
         viewDatosGenerales();
@@ -303,7 +309,10 @@ function addEventsAlumnoes() {
                 beanRequestAlumno.type_request = "PUT";
                 beanRequestUsuario.operation = "get-user";
                 beanRequestUsuario.type_request = "GET";
-
+                removeClass(document.querySelector('#btnDatosLaborales').parentElement.parentElement, "col-4");
+                removeClass(document.querySelector('#btnDatosGenerales').parentElement.parentElement, "col-4");
+                addClass(document.querySelector('#btnDatosLaborales').parentElement.parentElement, "col-6");
+                addClass(document.querySelector('#btnDatosGenerales').parentElement.parentElement, "col-6");
 
                 //SET VALUES MODAL
                 addInputDatos(alumnoSelected);
@@ -315,7 +324,7 @@ function addEventsAlumnoes() {
                 //OPEN MODEL
                 document.querySelector("#btnListaAlumno").style.display = "none";
                 document.querySelector("#btnOpenAlumnoDetalle").style.display = "block";
-                
+
             } else {
                 showAlertTopEnd('warning', 'No se encontró el Alumno para poder editar');
             }
@@ -326,11 +335,13 @@ function addEventsAlumnoes() {
         btn.onclick = function () {
             alumnoSelected = findByAlumno(btn.parentElement.parentElement.getAttribute('idalumno'));
             if (alumnoSelected != undefined) {
-                 document.querySelector('#btnGuardarUsuario').classList.add("d-block");
+                document.querySelector('#btnGuardarUsuario').classList.add("d-block");
                 usuarioSelected = alumnoSelected.usuario;
                 beanRequestUsuario.operation = "get-user";
                 beanRequestUsuario.type_request = "GET";
                 $('#modalCargandoUsuario').modal('show');
+                removeClass(document.querySelector('#btnDatosAcceso').parentElement.parentElement, "col-4");
+                addClass(document.querySelector('#btnDatosAcceso').parentElement.parentElement, "col-12");
                 viewDatosAcceso();
                 //SET TITLE MODAL
                 document.querySelector("#txtTituloModalAlumno").innerHTML = "ACTUALIZAR DATOS DE USUARIO";
@@ -646,14 +657,14 @@ function addInputDatos(atendidoSelected) {
 }
 
 function viewDatosGenerales() {
-    if ( beanRequestAlumno.operation == "add") {
+    if (beanRequestAlumno.operation == "add") {
         document.querySelector('#btnDatosAcceso').style.display = 'block';
-    }else{
-         document.querySelector('#btnDatosAcceso').style.display = 'none';
+    } else {
+        document.querySelector('#btnDatosAcceso').style.display = 'none';
     }
     document.querySelector('#btnDatosLaborales').style.display = 'block';
     document.querySelector('#btnDatosGenerales').style.display = 'block';
-    
+
 
     document.querySelector('#btnDatosAcceso').classList.remove('active');
     document.querySelector('#btnDatosLaborales').classList.remove('active');
@@ -667,7 +678,7 @@ function viewDatosGenerales() {
 function viewDatosAcceso() {
     document.querySelector('#btnDatosLaborales').style.display = 'none';
     document.querySelector('#btnDatosGenerales').style.display = 'none';
-    document.querySelector('#btnDatosAcceso').style.display = 'none';
+    document.querySelector('#btnDatosAcceso').style.display = 'block';
 
     document.querySelector('#btnDatosGenerales').classList.remove('active');
     document.querySelector('#btnDatosLaborales').classList.remove('active');
@@ -676,7 +687,7 @@ function viewDatosAcceso() {
     document.querySelector('#tab-datos-generales').style.display = 'none';
     document.querySelector('#tab-datos-laborales').style.display = 'none';
     document.querySelector('#tab-datos-acceso').style.display = 'block';
-    
+
 }
 
 function viewDatosAccesoEdit() {
@@ -691,10 +702,10 @@ function viewDatosAccesoEdit() {
 }
 
 function viewDatosLaborales() {
-    if ( beanRequestAlumno.operation == "add") {
+    if (beanRequestAlumno.operation == "add") {
         document.querySelector('#btnDatosAcceso').style.display = 'block';
-    }else{
-         document.querySelector('#btnDatosAcceso').style.display = 'none';
+    } else {
+        document.querySelector('#btnDatosAcceso').style.display = 'none';
     }
     document.querySelector('#btnDatosLaborales').style.display = 'block';
     document.querySelector('#btnDatosGenerales').style.display = 'block';

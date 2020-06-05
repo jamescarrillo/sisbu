@@ -42,9 +42,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#btnOpenNewPersonal").onclick = function () {
+        removeClass(document.querySelector('#btnDatosLaborales').parentElement.parentElement, "col-6");
+        removeClass(document.querySelector('#btnDatosGenerales').parentElement.parentElement, "col-6");
+        addClass(document.querySelector('#btnDatosLaborales').parentElement.parentElement, "col-4");
+        addClass(document.querySelector('#btnDatosGenerales').parentElement.parentElement, "col-4");
+        removeClass(document.querySelector('#btnDatosAcceso').parentElement.parentElement, "col-12");
+        addClass(document.querySelector('#btnDatosAcceso').parentElement.parentElement, "col-4");
+        document.querySelector('#btnGuardarUsuario').classList.add("d-none");
         document.querySelector('#btnDatosLaborales').style.display = 'block';
         document.querySelector('#btnDatosGenerales').style.display = 'block';
-        document.querySelector('#btnDatosAcceso').style.display = 'none';
+        document.querySelector('#btnDatosAcceso').style.display = 'block';
         //CONFIGURAMOS LA SOLICITUD
         beanRequestPersonal.operation = "add";
         beanRequestPersonal.type_request = "POST";
@@ -98,7 +105,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('#btnDatosLaborales').onclick = function () {
         viewDatosLaborales();
     };
-   
+    document.querySelector('#btnDatosAcceso').onclick = function () {
+        viewDatosAcceso();
+    };
+
     document.querySelector("#txtDniPersonal").onkeyup = function () {
         document.querySelector("#txtLoginUsuario").value = document.querySelector("#txtDniPersonal").value;
         document.querySelector("#txtPassUsuario").value = document.querySelector("#txtDniPersonal").value;
@@ -144,7 +154,7 @@ function processAjaxPersonal() {
                 "tipo_personal": document.querySelector("#txtTipoPersonal").value,
                 "cargo": cargoSelected,
                 "area": areaSelected,
-                "usuario": { "idusuario": usuarioSelected.idusuario }
+                "usuario": {"idusuario": usuarioSelected.idusuario}
             };
             if (beanRequestPersonal.operation == "update") {
                 json.idpersonal = personalSelected.idpersonal;
@@ -224,11 +234,11 @@ function toListPersonal(beanPagination) {
             document.querySelector("#tbodyPersonal").innerHTML += row;
         });
         buildPagination(
-            beanPagination.count_filter,
-            parseInt(document.querySelector("#sizePagePersonal").value),
-            document.querySelector("#pagePersonal"),
-            $('#modalCargandoPersonal'),
-            $('#paginationPersonal'));
+                beanPagination.count_filter,
+                parseInt(document.querySelector("#sizePagePersonal").value),
+                document.querySelector("#pagePersonal"),
+                $('#modalCargandoPersonal'),
+                $('#paginationPersonal'));
         addEventsPersonales();
         if (beanRequestPersonal.operation == "paginate") {
             document.querySelector("#txtFilterDniPersonal").focus();
@@ -257,6 +267,12 @@ function addEventsPersonales() {
                 agregarInput(personalSelected);
                 usuarioSelected = personalSelected.usuario;
                 document.querySelector('#btnDatosLaborales').style.display = 'block';
+                removeClass(document.querySelector('#btnDatosLaborales').parentElement.parentElement, "col-4");
+                removeClass(document.querySelector('#btnDatosGenerales').parentElement.parentElement, "col-4");
+                addClass(document.querySelector('#btnDatosLaborales').parentElement.parentElement, "col-6");
+                addClass(document.querySelector('#btnDatosGenerales').parentElement.parentElement, "col-6");
+
+
                 document.querySelector('#btnDatosGenerales').style.display = 'block';
                 document.querySelector('#btnDatosAcceso').style.display = 'none';
                 viewDatosGenerales();
@@ -278,6 +294,7 @@ function addEventsPersonales() {
         btn.onclick = function () {
             personalSelected = findByPersonal(btn.parentElement.parentElement.getAttribute('idpersonal'));
             if (personalSelected != undefined) {
+                 document.querySelector('#btnGuardarUsuario').classList.remove("d-none");
                 usuarioSelected = personalSelected.usuario;
                 console.log(usuarioSelected);
                 beanRequestUsuario.operation = "get-user";
@@ -288,6 +305,8 @@ function addEventsPersonales() {
                 document.querySelector('#btnDatosLaborales').style.display = 'none';
                 document.querySelector('#btnDatosGenerales').style.display = 'none';
                 document.querySelector('#btnDatosAcceso').style.display = 'block';
+                removeClass(document.querySelector('#btnDatosAcceso').parentElement.parentElement, "col-4");
+                addClass(document.querySelector('#btnDatosAcceso').parentElement.parentElement, "col-12");
                 //SET TITLE MODAL
                 document.querySelector("#txtTituloModalPersonal").innerHTML = "ACTUALIZAR DATOS DE USUARIO";
                 //OPEN MODEL

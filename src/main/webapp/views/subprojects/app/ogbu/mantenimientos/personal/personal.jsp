@@ -131,21 +131,21 @@
                     <div class="card-header">
                         <!-- Tab Navigation -->
                         <ul class="card-header-pills nav nav-pills nav-fill" role="tablist">
-                            <div class="col-6">
+                            <div class="col-4">
                                 <li class="nav-item">
                                     <a class="nav-link  active" id="btnDatosGenerales" data-toggle="tab"
                                         href="#tab-datos-generales" role="tab" aria-controls="tab-datos-generales"
                                         aria-="true">DATOS GENERALES</a>
                                 </li>
                             </div>
-                            <div class="col-6">
+                            <div class="col-4">
                                 <li class="nav-item">
                                     <a class="nav-link" id="btnDatosLaborales" data-toggle="tab"
                                         href="#tab-datos-laborales" role="tab" aria-controls="tab-datos-laborales"
                                         aria-="true">DATOS LABORALES</a>
                                 </li>
                             </div>
-                            <div class="col-12">
+                            <div class="col-4">
                                 <li class="nav-item">
                                     <a class="nav-link" id="btnDatosAcceso" data-toggle="tab" href="#tab-datos-acceso"
                                         role="tab" aria-controls="tab-datos-acceso" aria-="true">DATOS DE ACCESO</a>
@@ -303,7 +303,7 @@
 
 
                                         <div class="form-group col-12 text-center">
-                                            <button type="submit" id="btnGuardarUsuario"
+                                            <button type="submit" id="btnGuardarPersonal"
                                                 class="btn btn-primary btn-sm">GUARDAR</button>
                                         </div>
 
@@ -352,7 +352,7 @@
 
                                         </div>
 
-                                        <div class="form-group col-lg-4 col-sm-6 ">
+                                        <!--div class="form-group col-lg-4 col-sm-6 ">
                                             <label for="txtPerfilUsuario">PERFIL
                                             </label>
                                             <div class="input-group">
@@ -365,7 +365,7 @@
                                                             class="icon icon-subscribe"></i></button>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div-->
                                         <div class="form-group col-lg-4 col-sm-6">
                                             <label for="txtTipoPerfilUsuario">TIPO PERFIL</label>
                                             <select class="form-control form-control-sm" id="txtTipoPerfilUsuario">
@@ -453,7 +453,7 @@
         <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
             <div class="modal-header">
                 <h5 class="mb-0" id="titleManagerAreaC"><strong>[ 0 ]
-                        AREAS</strong></h5>
+                        ÁREAS</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -479,7 +479,7 @@
                                 <table class="table mb-0 table-fluid">
                                     <thead>
                                         <tr>
-                                            <th class="align-middle text-left">ï¿½rea</th>
+                                            <th class="align-middle text-left">Área</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbodyAreaC">
