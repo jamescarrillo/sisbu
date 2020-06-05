@@ -104,11 +104,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#txtPesoPaciente").onkeyup = function () {
-        document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
+        document.querySelector("#txtImcPaciente").value = (document.querySelector("#txtPesoPaciente").value/ Math.pow(document.querySelector("#txtTallaPaciente").value,2));
     };
 
     document.querySelector("#txtTallaPaciente").onkeyup = function () {
-        document.querySelector("#txtImcPaciente").value = document.querySelector("#txtPesoPaciente").value * document.querySelector("#txtTallaPaciente").value;
+        document.querySelector("#txtImcPaciente").value = (document.querySelector("#txtPesoPaciente").value/ Math.pow(document.querySelector("#txtTallaPaciente").value,2));
     };
 
 
