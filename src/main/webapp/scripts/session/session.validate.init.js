@@ -86,7 +86,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (user_session.tipo_perfil == 0 || user_session.tipo_perfil == 1) {
                             console.log("Url correcta");
                         } else {
-                            sendIndex();
+                            //ignoramos las citas para algunos servicios
+                            let tipe_profiles_tmp = [3, 4, 10, 11];
+                            if (tipe_profiles_tmp.indexOf(user_session.tipo_perfil) == -1) {
+                                sendIndex();
+                            }
                         }
                     }
                 }

@@ -43,6 +43,13 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
+                            <label for="txtAreaFilterCita">AREA</label>
+                            <div class="input-group" style="max-width: 100%;">
+                                <select id="txtAreaFilterCita" class="form-control form-control-sm sisbu-cursor-mano">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
                             <label for="txtTypeRequestCita">TIPO DE FILTRO</label>
                             <div class="input-group" style="max-width: 100%;">
                                 <select id="txtTypeRequestCita" class="form-control form-control-sm sisbu-cursor-mano mr-4">
@@ -93,7 +100,9 @@
         <!-- /card -->
     </div>
 </div>
-<div class="modal fade" id="ventanaModalCita" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="ventanaModalCita" data-backdrop="static" tabindex="-1" role="dialog" 
+     aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 0%;overflow-y: visible;">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form id="FrmCitaModal">
@@ -168,9 +177,21 @@
                                 <option value="CAN">CANCELADA</option>
                             </select>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 mb-2">
                             <label for="txtMotivoCita">Motivo</label>
                             <textarea id="txtMotivoCita" class="form-control" rows="3" maxlength="300" 
+                                      placeholder="">
+                            </textarea>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="txtObservacionProgramacionCita">Observación de Programación</label>
+                            <textarea id="txtObservacionProgramacionCita" class="form-control" rows="3" maxlength="300" 
+                                      placeholder="">
+                            </textarea>
+                        </div>
+                        <div class="col-12">
+                            <label for="txtObservacionAtencion">Observación de Atención</label>
+                            <textarea id="txtObservacionAtencion" class="form-control" rows="3" maxlength="300" 
                                       placeholder="">
                             </textarea>
                         </div>

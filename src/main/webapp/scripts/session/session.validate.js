@@ -447,6 +447,29 @@ function createHTML_OGBU(typeProfile) {
             <!-- /menu item -->
         `;
     }
+
+    let tipe_profiles_tmp = [3, 4, 10, 11];
+    if (tipe_profiles_tmp.indexOf(typeProfile) != -1) {
+        let mant_citas = `
+            <!-- Menu Header -->
+            <li class="dt-side-nav__item dt-side-nav__header">
+                <span class="dt-side-nav__text">Mantenimientos</span>
+            </li>
+            <!-- /menu header -->
+    
+            <!-- Menu Item -->
+            <li class="dt-side-nav__item">
+                <a href="${contextPah}app/ogbu/mantenimientos/citas" class="dt-side-nav__link" title="Citas">
+                    <i class="icon icon-sweet-alert icon-fw icon-lg"></i>
+                    <span class="dt-side-nav__text">Citas</span>
+                </a>
+            </li>
+
+        `;
+        document.querySelector("#menus_sisbu").innerHTML += mant_citas;
+    }
+
+
     ////mantenimientos seguridad (todos)
     if (typeProfile == 0 || typeProfile == 1) {
         document.querySelector("#menus_sisbu").innerHTML +=
@@ -571,6 +594,7 @@ function createHTML_OGBU(typeProfile) {
         
         `;
     }
+
     ////informes
     if (typeProfile != 100) {
         //diferente de invitado

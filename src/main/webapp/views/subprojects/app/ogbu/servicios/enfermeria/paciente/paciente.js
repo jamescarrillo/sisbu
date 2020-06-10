@@ -75,8 +75,8 @@ document.addEventListener("DOMContentLoaded", function () {
         limpiarInputTriaje();
         //SET TITLE MODAL
         document.querySelector("#txtTituloModalTriaje").innerHTML =
-            "REGISTRAR TRIAJE<small class='pl-5 text-dark'>N° HISTORIA : "
-            + historiaSelected.num_historia + "</small>";
+                "REGISTRAR TRIAJE<small class='pl-5 text-dark'>N° HISTORIA : "
+                + historiaSelected.num_historia + "</small>";
         //OPEN MODEL
         document.querySelector("#tab-pane-17").style.display = "none";
         document.querySelector("#newOpenTriaje").style.display = "initial";
@@ -87,9 +87,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $('#FrmTriajePaciente').submit(function (event) {
-        if (validateFormTriaje()) {
+        /*
+         if (validateFormTriaje()) {
+         $('#modalCargandoTriaje').modal('show');
+         }
+         */
+        try {
             $('#modalCargandoTriaje').modal('show');
+        } catch (e) {
+            console.log(e);
         }
+
         event.preventDefault();
         event.stopPropagation();
     });
@@ -203,7 +211,7 @@ function toListPaciente(beanPagination) {
 
     let row;
     row =
-        `
+            `
                <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2 pr-1">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
@@ -244,7 +252,7 @@ function toListPaciente(beanPagination) {
         showAlertTopEnd('warning', 'No se encontraron resultados');
         document.querySelector("#txtFilterPaciente").focus();
         row +=
-            `
+                `
                <div class="dt-widget__item  border-bottom  pl-5 m-0 pr-1 pt-2 pb-2">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate text-center" >
@@ -260,7 +268,7 @@ function toListPaciente(beanPagination) {
     document.querySelector("#tbodyPaciente").innerHTML += row;
     beanPagination.list.forEach(atendido => {
         row =
-            `
+                `
                  <div class="dt-widget__item border-bottom  pl-5 m-0 pr-1 pt-2 pb-2">
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
@@ -321,11 +329,11 @@ function toListPaciente(beanPagination) {
         $('[data-toggle="tooltip"]').tooltip();
     });
     buildPagination(
-        beanPagination.count_filter,
-        parseInt(document.querySelector("#sizePagePaciente").value),
-        document.querySelector("#pagePaciente"),
-        $('#modalCargandoPaciente'),
-        $('#paginationPaciente'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePagePaciente").value),
+            document.querySelector("#pagePaciente"),
+            $('#modalCargandoPaciente'),
+            $('#paginationPaciente'));
     addEventsPacientes();
     if (beanRequestPaciente.operation == "paginate") {
         document.querySelector("#txtFilterPaciente").focus();
@@ -484,26 +492,25 @@ function processAjaxTriaje() {
                 diagnosticoSelected.enf_actual = "";
             }
 
-
             json = {
                 "presiona": document.querySelector("#txtPaPaciente").value,
-                "brazo": document.querySelector("#txtZonaControlPaciente").value,
+                "brazo": document.querySelector("#txtZonaControlPaciente").value == "" ? "0" : document.querySelector("#txtZonaControlPaciente").value,
                 "posicion": document.querySelector("#txtPosicionPaciente").value,
-                "frecuencia_cardiaca": document.querySelector("#txtFcPaciente").value,
-                "frecuencia_respiratoria": document.querySelector("#txtFrPaciente").value,
-                "temperatura": document.querySelector("#txtTPaciente").value,
-                "presion_oxigeno": document.querySelector("#txtSoPaciente").value,
-                "glicemia": document.querySelector("#txtGlicemiaPaciente").value,
+                "frecuencia_cardiaca": document.querySelector("#txtFcPaciente").value == "" ? "0" : document.querySelector("#txtFcPaciente").value,
+                "frecuencia_respiratoria": document.querySelector("#txtFrPaciente").value == "" ? "0" : document.querySelector("#txtFrPaciente").value,
+                "temperatura": document.querySelector("#txtTPaciente").value == "" ? "0":document.querySelector("#txtTPaciente").value,
+                "presion_oxigeno": document.querySelector("#txtSoPaciente").value == "" ? "0": document.querySelector("#txtSoPaciente").value,
+                "glicemia": document.querySelector("#txtGlicemiaPaciente").value == "" ? "0" : document.querySelector("#txtGlicemiaPaciente").value,
                 "ayuna": document.querySelector("#txtAyunoPaciente").value,
-                "peso": document.querySelector("#txtPesoPaciente").value,
-                "talla": document.querySelector("#txtTallaPaciente").value,
-                "imc": (document.querySelector("#txtImcPaciente").value),
+                "peso": document.querySelector("#txtPesoPaciente").value == "" ? "0" : document.querySelector("#txtPesoPaciente").value,
+                "talla": document.querySelector("#txtTallaPaciente").value == "" ? "0" : document.querySelector("#txtTallaPaciente").value,
+                "imc": (document.querySelector("#txtImcPaciente").value) == "" ? "0" : document.querySelector("#txtImcPaciente").value,
                 "fecha_diagnostico": diagnosticoSelected.fecha_diagnostico,
                 "enf_actual": diagnosticoSelected.enf_actual,
                 "diagnostico": diagnosticoSelected.diagnostico,
                 "tratamiento": diagnosticoSelected.tratamiento,
                 "fecha_triaje": getTimesTampJavaScriptCurrent(),
-                "idhistoria_clinica": { "idhistoria_clinica": historiaSelected.idhistoria_clinica }
+                "idhistoria_clinica": {"idhistoria_clinica": historiaSelected.idhistoria_clinica}
             };
             if (beanRequestTriaje.operation == "update") {
                 json.iddiagnostico = diagnosticoSelected.iddiagnostico;
@@ -602,11 +609,11 @@ function toListTriaje(beanPagination) {
             document.querySelector("#tbodyTriaje").innerHTML += row;
         });
         buildPagination(
-            beanPagination.count_filter,
-            parseInt(document.querySelector("#sizePageTriaje").value),
-            document.querySelector("#pageTriaje"),
-            $('#modalCargandoTriaje'),
-            $('#paginationTriaje'));
+                beanPagination.count_filter,
+                parseInt(document.querySelector("#sizePageTriaje").value),
+                document.querySelector("#pageTriaje"),
+                $('#modalCargandoTriaje'),
+                $('#paginationTriaje'));
         addEventsTriaje();
         if (beanRequestTriaje.operation == "paginate") {
             // document.querySelector("#txtFilterTriaje").focus();

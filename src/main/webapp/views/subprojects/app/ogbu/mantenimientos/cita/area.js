@@ -59,6 +59,12 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#modalCargandoSelectedArea').modal('show');
     });
 
+    document.querySelector("#txtAreaFilterCita").onchange = function () {
+        $('#modalCargandoCita').modal('show');
+    };
+
+    addComboArea();
+
 });
 
 function processAjaxArea() {
@@ -150,4 +156,35 @@ function findByArea(idarea) {
         }
     });
     return area_;
+}
+
+function addComboArea() {
+    let parameters_pagination = "";
+    let json = "";
+    let url_request = getHostAPI() + beanRequestArea.entity_api + "/" + beanRequestArea.operation;
+    switch (beanRequestArea.operation) {
+        default:
+            parameters_pagination += "?nombre=";
+            parameters_pagination += "&page=1";
+            parameters_pagination += "&size=1000";
+            url_request += parameters_pagination;
+            break;
+    }
+    $.ajax({
+        url: url_request,
+        type: beanRequestArea.type_request,
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get("sisbu_token")
+        },
+        data: JSON.stringify(json),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+    }).done(function (beanCrudResponse) {
+        document.querySelector("#txtAreaFilterCita").innerHTML = "<option value='-1'>TODOS</option>";
+        beanCrudResponse.beanPagination.list.forEach(function (value, index) {
+            document.querySelector("#txtAreaFilterCita").innerHTML += "<option value='" + value.idarea + "'>" + value.nombre + "</option>";
+        })
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        showAlertErrorRequest();
+    });
 }
