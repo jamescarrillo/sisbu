@@ -494,14 +494,14 @@ function processAjaxTriaje() {
 
             json = {
                 "presiona": document.querySelector("#txtPaPaciente").value,
-                "brazo": document.querySelector("#txtZonaControlPaciente").value == "" ? "0" : document.querySelector("#txtZonaControlPaciente").value,
+                "brazo": document.querySelector("#txtZonaControlPaciente").value == "-1" ? "0" : document.querySelector("#txtZonaControlPaciente").value,
                 "posicion": document.querySelector("#txtPosicionPaciente").value,
                 "frecuencia_cardiaca": document.querySelector("#txtFcPaciente").value == "" ? "0" : document.querySelector("#txtFcPaciente").value,
                 "frecuencia_respiratoria": document.querySelector("#txtFrPaciente").value == "" ? "0" : document.querySelector("#txtFrPaciente").value,
                 "temperatura": document.querySelector("#txtTPaciente").value == "" ? "0":document.querySelector("#txtTPaciente").value,
                 "presion_oxigeno": document.querySelector("#txtSoPaciente").value == "" ? "0": document.querySelector("#txtSoPaciente").value,
                 "glicemia": document.querySelector("#txtGlicemiaPaciente").value == "" ? "0" : document.querySelector("#txtGlicemiaPaciente").value,
-                "ayuna": document.querySelector("#txtAyunoPaciente").value,
+                "ayuna": document.querySelector("#txtAyunoPaciente").value == "-1" ? "0" : document.querySelector("#txtAyunoPaciente").value,
                 "peso": document.querySelector("#txtPesoPaciente").value == "" ? "0" : document.querySelector("#txtPesoPaciente").value,
                 "talla": document.querySelector("#txtTallaPaciente").value == "" ? "0" : document.querySelector("#txtTallaPaciente").value,
                 "imc": (document.querySelector("#txtImcPaciente").value) == "" ? "0" : document.querySelector("#txtImcPaciente").value,
