@@ -639,7 +639,7 @@ function processAjaxDiagnostico() {
                 "ayuna": document.querySelector("#txtAyunoPaciente").value,
                 "peso": document.querySelector("#txtPesoPaciente").value == "" ? "0" : document.querySelector("#txtPesoPaciente").value,
                 "talla": document.querySelector("#txtTallaPaciente").value == "" ? "0" : document.querySelector("#txtTallaPaciente").value,
-                "imc": (document.querySelector("#txtPesoPaciente").value) / (document.querySelector("#txtTallaPaciente").value),
+                "imc": (document.querySelector("#txtImcPaciente").value == "" ? "0" : document.querySelector("#txtImcPaciente").value),
                 "enf_actual": document.querySelector("#txtEnfermedadPaciente").value,
                 "diagnostico": document.querySelector("#txtDxPaciente").value,
                 "tratamiento": document.querySelector("#txtTtoPaciente").value,
