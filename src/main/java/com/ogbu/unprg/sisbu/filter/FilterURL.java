@@ -808,9 +808,9 @@ public class FilterURL implements Filter {
         //OCUPACIONES
         resource = new Resource();
         resource.setUrl("/app/ogbu/mantenimientos/ocupaciones");
-        resource.setPath("/views/subprojects/app/mantenimientos/ocupacion/ocupacion.jsp");
+        resource.setPath("/views/subprojects/app/ogbu/mantenimientos/ocupacion/ocupacion.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/mantenimientos/ocupacion/ocupacion.js" + version_project
+            "/views/subprojects/app/ogbu/mantenimientos/ocupacion/ocupacion.js" + version_project
         });
         this.list_resources.add(resource);
         //UBIGEO
