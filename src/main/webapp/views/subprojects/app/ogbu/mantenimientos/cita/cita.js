@@ -141,6 +141,7 @@ function processAjaxCita() {
     let json = "";
     if (beanRequestCita.operation == "paginate") {
         parameters_pagination += "?type_request=" + document.querySelector("#txtTypeRequestCita").value.toLowerCase();
+        parameters_pagination += "&idarea=" + document.querySelector("#txtAreaFilterCita").value.toLowerCase();
         parameters_pagination += "&fechai=" + document.querySelector("#txtFechaIFilterCita").value.toLowerCase();
         parameters_pagination += "&fechaf=" + document.querySelector("#txtFechaFFilterCita").value.toLowerCase();
         parameters_pagination += "&page=" + document.querySelector("#pageCita").value;
@@ -168,6 +169,8 @@ function processAjaxCita() {
                 "estado_solicitud": citaSelected.estado_solicitud,
                 "estado_cita": citaSelected.estado_cita,
                 "motivo": document.querySelector("#txtMotivoCita").value,
+                "observacion_programacion": document.querySelector("#txtObservacionProgramacionCita").value,
+                "observacion_atencion": document.querySelector("#txtObservacionAtencion").value,
                 "atendido": {
                     "idatendido": atendidoSelected.idatendido,
                     "usuario": {
@@ -311,6 +314,8 @@ function clearCita() {
     document.querySelector("#txtFechaProgramadaTimeCita").value = "";
     document.querySelector("#txtEstadoCita").value = "PEN";
     document.querySelector("#txtMotivoCita").value = "";
+    document.querySelector("#txtObservacionProgramacionCita").value = "";
+    document.querySelector("#txtObservacionAtencion").value = "";
 }
 
 function validateFormCita() {
