@@ -5,10 +5,11 @@
 --%>
 <div class="row justify-content-center p-0" id="row-list-solicitud-cita" style="display: flex">
     <div class="col-12">
-        <h2 class="text-center text-primary self-item-center mb-0">Mis citas
+        <h2 class="text-center text-primary self-item-center mb-0">MIS CITAS
         </h2>
     </div>
     <div class="col-12">
+        <h4 class="mt-1">Solicita tu cita virtual si deseas orientación o presentes alguna complicación médica.</h4>
         <hr>
     </div>
     <div class="col-12 p-0">
@@ -64,22 +65,22 @@
         </div>
     </div>
     <div class="col-12">
-        <h5 class="text-danger pt-2 mb-1">*Nota: Las solicitudes con la barra vertical rojo indica Solicitud Pendiente.
+        <h5 class="text-danger pt-2 mb-1">*Las solicitudes con la barra vertical rojo indica Solicitud Pendiente.
         </h5>
-        <h5 class="text-primary mb-1">*Nota: Las solicitudes con la barra vertical azul indica Solicitud
+        <!--h5 class="text-primary mb-1">*Nota: Las solicitudes con la barra vertical azul indica Solicitud
             Aprobada.
-        </h5>
-        <h5 class="text-success mb-2">*Nota: Las solicitudes con la barra vertical verde indica Solicitud Programada.</h5>
+        </h5-->
+        <h5 class="text-success mb-2">*Las solicitudes con la barra vertical verde indica Solicitud Programada.</h5>
     </div>
     <div class="col-12">
         <hr>
     </div>
     <div class="col-12 p-0 text-center mb-4">
-        <a href="<%=request.getContextPath()%>/app/ate/perfil" class="btn btn-warning text-white mr-4 mb-2">
+        <a href="<%=request.getContextPath()%>/app/ate/perfil" class="btn btn-primary text-white mr-4 mb-2">
             <i class="icon icon-send"></i>
             Ir a mi perfil
         </a>
-        <a href="<%=request.getContextPath()%>/app/ate/datos" class="btn btn-success mr-4 mb-2">
+        <a href="<%=request.getContextPath()%>/app/ate/datos" class="btn btn-primary mr-4 mb-2">
             <i class="icon icon-send"></i>
             Ir a mis Datos
         </a>
