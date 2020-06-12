@@ -124,8 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestCita.type_request = "GET";
     });
 
-    $('#modalCargandoCita').modal('show');
-
     $("#sizePageCita").change(function () {
         $('#modalCargandoCita').modal('show');
     });
@@ -170,7 +168,7 @@ function processAjaxCita() {
                 "estado_cita": citaSelected.estado_cita,
                 "motivo": document.querySelector("#txtMotivoCita").value,
                 "observacion_programacion": document.querySelector("#txtObservacionProgramacionCita").value,
-                "observacion_atencion": document.querySelector("#txtObservacionAtencion").value,
+                "observacion_atencion": document.querySelector("#txtObservacionAtencionCita").value,
                 "atendido": {
                     "idatendido": atendidoSelected.idatendido,
                     "usuario": {
@@ -315,7 +313,7 @@ function clearCita() {
     document.querySelector("#txtEstadoCita").value = "PEN";
     document.querySelector("#txtMotivoCita").value = "";
     document.querySelector("#txtObservacionProgramacionCita").value = "";
-    document.querySelector("#txtObservacionAtencion").value = "";
+    document.querySelector("#txtObservacionAtencionCita").value = "";
 }
 
 function validateFormCita() {
@@ -377,6 +375,8 @@ function openCita() {
     document.querySelector("#txtFechaProgramadaTimeCita").value = s_hora_programada;
     document.querySelector("#txtEstadoCita").value = citaSelected.estado_cita;
     document.querySelector("#txtMotivoCita").value = citaSelected.motivo;
+    document.querySelector("#txtObservacionProgramacionCita").value = citaSelected.observacion_programacion;
+    document.querySelector("#txtObservacionAtencionCita").value = citaSelected.observacion_atencion;
     document.querySelector("#txtTituloModalMan").innerHTML = "EDITAR CITA";
     $('#ventanaModalCita').modal("show");
 }

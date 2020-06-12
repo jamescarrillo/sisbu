@@ -183,7 +183,8 @@ function addComboArea() {
         document.querySelector("#txtAreaFilterCita").innerHTML = "<option value='-1'>TODOS</option>";
         beanCrudResponse.beanPagination.list.forEach(function (value, index) {
             document.querySelector("#txtAreaFilterCita").innerHTML += "<option value='" + value.idarea + "'>" + value.nombre + "</option>";
-        })
+        });
+        $('#modalCargandoCita').modal('show');
     }).fail(function (jqXHR, textStatus, errorThrown) {
         showAlertErrorRequest();
     });

@@ -67,6 +67,16 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
     });
 
+    $('#FrmCitaModal').submit(function (event) {
+        try {
+            showAlertDelete("modalCargandoCita", "¿Desea confirmar Atención del Paciente?");
+        } catch (e) {
+            console.log(e);
+        }
+        event.preventDefault();
+        event.stopPropagation();
+    });
+
     $("#modalCargandoCita").on('shown.bs.modal', function () {
         processAjaxCita();
     });
@@ -105,6 +115,8 @@ function processAjaxCita() {
         if (beanRequestCita.operation == "update") {
             citaSelected.estado_cita = "ATE";
             citaSelected.fecha_atendida = getTimesTampJavaScriptCurrent();
+            citaSelected.observacion_programacion = document.querySelector("#txtObservacionProgramacionCita").value;
+            citaSelected.observacion_atencion = document.querySelector("#txtObservacionAtencionCita").value;
             json = citaSelected;
         }
 
@@ -148,7 +160,7 @@ function toListCita(beanPagination) {
     document.querySelector("#titleManagerCita").innerHTML = "[ " + beanPagination.count_filter + " ] CITAS";
     let row;
     row =
-        `
+            `
                <div class="dt-widget__item border-success bg-primary text-white mb-0 pr-3 pl-3">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " style="max-width: 105px;">
@@ -206,7 +218,7 @@ function toListCita(beanPagination) {
     if (beanPagination.count_filter == 0) {
         destroyPagination($('#paginationCita'));
         row +=
-            `
+                `
             <div class="dt-widget__item">
                 <!-- Widget Info -->
                 <div class="dt-widget__info text-center" >
@@ -224,7 +236,7 @@ function toListCita(beanPagination) {
     document.querySelector("#tbodyCita").innerHTML += row;
     beanPagination.list.forEach(cita => {
         row =
-            `
+                `
                  <div class="dt-widget__item border-bottom m-0 pt-2 pb-2 pr-3 pl-3">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate " style="max-width: 105px;">
@@ -288,11 +300,11 @@ function toListCita(beanPagination) {
         $('[data-toggle="tooltip"]').tooltip();
     });
     buildPagination(
-        beanPagination.count_filter,
-        parseInt(document.querySelector("#sizePageCita").value),
-        document.querySelector("#pageCita"),
-        $('#modalCargandoCita'),
-        $('#paginationCita'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePageCita").value),
+            document.querySelector("#pageCita"),
+            $('#modalCargandoCita'),
+            $('#paginationCita'));
     addEventsCitas();
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -307,7 +319,10 @@ function addEventsCitas() {
                 beanRequestCita.operation = "update";
                 beanRequestCita.type_request = "PUT";
                 //SET VALUES MODAL
-                 showAlertDelete("modalCargandoCita","¿Desea confirmar Atención del Paciente?");
+                document.querySelector("#txtObservacionProgramacionCita").value = "";
+                document.querySelector("#txtObservacionAtencionCita").value = "";
+                $('#ventanaModalCita').modal('show');
+                //showAlertDelete("modalCargandoCita", "¿Desea confirmar Atención del Paciente?");
             } else {
                 showAlertTopEnd('warning', 'No se encontró la Cita para poder aceptar la solicitud');
             }

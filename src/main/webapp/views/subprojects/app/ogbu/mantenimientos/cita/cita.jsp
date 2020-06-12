@@ -190,8 +190,8 @@
                             </textarea>
                         </div>
                         <div class="col-12">
-                            <label for="txtObservacionAtencion">Observación de Atención</label>
-                            <textarea id="txtObservacionAtencion" class="form-control" rows="3" maxlength="300" 
+                            <label for="txtObservacionAtencionCita">Observación de Atención</label>
+                            <textarea id="txtObservacionAtencionCita" class="form-control" rows="3" maxlength="300" 
                                       placeholder="">
                             </textarea>
                         </div>
