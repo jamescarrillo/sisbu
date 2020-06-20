@@ -370,7 +370,8 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/medicina/citas");
         resource.setPath("/views/subprojects/app/ogbu/servicios/medicina/cita/cita.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/servicios/medicina/cita/cita.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/medicina/cita/cita.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/medicina/cita/personal.js" + version_project
         });
         this.list_resources.add(resource);
         ///reportes

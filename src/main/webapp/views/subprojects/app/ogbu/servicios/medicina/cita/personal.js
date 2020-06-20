@@ -37,16 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#btnSeleccionarPersonal").onclick = function () {
-        if (areaSelected == undefined) {
-            showAlertTopEnd('warning', 'Por favor seleccione primero una area');
-            return;
-        }
         $('#ventanaModalSelectedPersonal').modal('show');
     };
 
     document.querySelector("#btn-selecionar-personal").onclick = function () {
         if (personalSelected == undefined) {
-            showAlertTopEnd('warning', 'Por favor seleccione el personal encargado de la cita');
+            showAlertTopEnd('warning', 'Por favor seleccione el personal correctamente');
             return;
         }
         document.querySelector("#txtPersonalEncargadoCita").value = personalSelected.nombre.toUpperCase() + " " + personalSelected.apellido_pat.toUpperCase() + " " + personalSelected.apellido_mat.toUpperCase();
@@ -62,6 +58,35 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#modalCargandoSelectedPersonal').modal('show');
     });
 
+    document.querySelector("#btnDownloadCitas").onclick = function () {
+        if (personalSelected == undefined) {
+            showAlertTopEnd('warning', 'Por favor seleccione un personal');
+            return;
+        }
+        if (document.querySelector("#txtFechaIFilterCita").value == "") {
+            showAlertTopEnd('warning', 'Por favor ingrese el parámetro desde');
+            return;
+        }
+        if (document.querySelector("#txtFechaFFilterCita").value == "") {
+            showAlertTopEnd('warning', 'Por favor ingrese el parámetro hasta');
+            return;
+        }
+        let parameters = {
+            "idpersonal": personalSelected.idpersonal,
+            "dni": personalSelected.dni,
+            "fechai": document.querySelector("#txtFechaIFilterCita").value,
+            "fechaf": document.querySelector("#txtFechaFFilterCita").value,
+            "name_area": personalSelected.area.nombre
+        }
+        let url_request = getHostAndContextAPI() + "reports/citas/personal";
+        url_request += "?" + new URLSearchParams(parameters).toString();
+        window.open(
+                url_request,
+                '_blank' // <- This is what makes it open in a new window.
+                );
+        console.log("Parametros de reporte success");
+    }
+
 });
 
 function processAjaxPersonal() {
@@ -71,7 +96,7 @@ function processAjaxPersonal() {
     switch (beanRequestPersonal.operation) {
         default:
             parameters_pagination += "?filter=" + document.querySelector("#txtFilterPersonal").value.toUpperCase();
-            parameters_pagination += "&cargo=" + getIdCargoByArea(areaSelected.idarea) + "&estado=1";
+            parameters_pagination += "&cargo=" + getIdCargoByArea(getIdAreaUserSession()) + "&estado=1";
             parameters_pagination += "&page=" + document.querySelector("#pagePersonal").value;
             parameters_pagination += "&size=" + document.querySelector("#sizePagePersonal").value;
             url_request += parameters_pagination;

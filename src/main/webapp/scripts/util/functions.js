@@ -73,6 +73,28 @@ function getIdAreaUserSession() {
     if (url.includes('odontologia')) {
         return 3;
     }
+    if (url.includes('medicina')) {
+        return 1;
+    }
+}
+
+function getNameAreaUserSession() {
+    let url = window.location.href;
+    if (url.includes('obstetricia')) {
+        return "OBSTETRICIA";
+    }
+    if (url.includes('psicopedagogia')) {
+        return "PSICOPEDAGOGIA";
+    }
+    if (url.includes('social')) {
+        return "SOCIAL";
+    }
+    if (url.includes('odontologia')) {
+        return "ONDONTOLOGIA";
+    }
+    if (url.includes('medicina')) {
+        return "MEDICINA";
+    }
 }
 
 function setUrlFotoUserSession(url_foto) {

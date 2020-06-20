@@ -86,8 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestCita.type_request = "GET";
     });
 
-    $('#modalCargandoCita').modal('show');
-
     $("#sizePageCita").change(function () {
         $('#modalCargandoCita').modal('show');
     });
@@ -96,19 +94,21 @@ document.addEventListener("DOMContentLoaded", function () {
         $('#modalCargandoCita').modal('show');
     });
 
+    $('#modalCargandoCita').modal('show');
+
 });
 
 function processAjaxCita() {
     let parameters_pagination = "";
     let json = "";
     if (beanRequestCita.operation == "servicio/paginate") {
-
         parameters_pagination += "?type_service=1&type_request=" + document.querySelector("#txtTypeRequestCita").value.toLowerCase();
         parameters_pagination += "&filter=" + document.querySelector("#txtFilterCita").value.toLowerCase();
         parameters_pagination += "&fechai=" + document.querySelector("#txtFechaIFilterCita").value.toLowerCase();
         parameters_pagination += "&fechaf=" + document.querySelector("#txtFechaFFilterCita").value.toLowerCase();
         parameters_pagination += "&page=" + document.querySelector("#pageCita").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageCita").value;
+        parameters_pagination += "&idpersonal=" + (personalSelected == undefined ? "-1" : personalSelected.idpersonal);
     } else {
         parameters_pagination = "";
 
