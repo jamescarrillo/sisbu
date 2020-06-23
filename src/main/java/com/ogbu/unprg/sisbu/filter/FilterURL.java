@@ -30,8 +30,8 @@ import javax.servlet.http.HttpServletResponse;
         urlPatterns = {
             "/*"
         }
-        //initParams = @WebInitParam(name = "fileTypes", value = "doc;xls;zip;txt;jpg;png;gif")
-        //initParams = @WebInitParam(name = "credentials", value = "true")
+//initParams = @WebInitParam(name = "fileTypes", value = "doc;xls;zip;txt;jpg;png;gif")
+//initParams = @WebInitParam(name = "credentials", value = "true")
 )
 public class FilterURL implements Filter {
 
@@ -115,7 +115,7 @@ public class FilterURL implements Filter {
 
     private void loaderResources() {
         String version_project = "?v=";
-        version_project += "0.25";
+        version_project += "0.26";
         this.list_resources = new ArrayList<>();
         Resource resource;
 
@@ -400,7 +400,8 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/odontologia/citas");
         resource.setPath("/views/subprojects/app/ogbu/servicios/odontologia/cita/cita.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/servicios/odontologia/cita/cita.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/odontologia/cita/cita.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/cita/personal.js" + version_project
         });
         this.list_resources.add(resource);
         ///fichas
@@ -470,7 +471,8 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/obstetricia/citas");
         resource.setPath("/views/subprojects/app/ogbu/servicios/obstetricia/cita/cita.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/servicios/obstetricia/cita/cita.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/obstetricia/cita/cita.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/cita/personal.js" + version_project
         });
         this.list_resources.add(resource);
 
@@ -592,7 +594,8 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/psicopedagogia/citas");
         resource.setPath("/views/subprojects/app/ogbu/servicios/psicopedagogia/cita/cita.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/app/ogbu/servicios/psicopedagogia/cita/cita.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/cita/cita.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/cita/personal.js" + version_project
         });
         this.list_resources.add(resource);
         //SOCIAL

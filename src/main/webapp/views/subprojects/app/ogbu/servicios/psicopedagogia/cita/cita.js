@@ -86,8 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestCita.type_request = "GET";
     });
 
-    $('#modalCargandoCita').modal('show');
-
     $("#sizePageCita").change(function () {
         $('#modalCargandoCita').modal('show');
     });
@@ -95,6 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#txtTypeRequestCita").change(function () {
         $('#modalCargandoCita').modal('show');
     });
+
+    $('#modalCargandoCita').modal('show');
 
 });
 
@@ -109,6 +109,7 @@ function processAjaxCita() {
         parameters_pagination += "&fechaf=" + document.querySelector("#txtFechaFFilterCita").value.toLowerCase();
         parameters_pagination += "&page=" + document.querySelector("#pageCita").value;
         parameters_pagination += "&size=" + document.querySelector("#sizePageCita").value;
+        parameters_pagination += "&idpersonal=" + (personalSelected == undefined ? "-1" : personalSelected.idpersonal);
     } else {
         parameters_pagination = "";
 

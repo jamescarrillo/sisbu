@@ -229,6 +229,7 @@ function toListCita(beanPagination) {
             </div>
             `;
         document.querySelector("#tbodyCita").innerHTML += row;
+        showAlertTopEnd('warning', 'No se encontraron resultados');
         return;
     }
 
