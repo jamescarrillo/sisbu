@@ -195,7 +195,7 @@ function toListPaciente(beanPagination) {
                            ${atendido.apellido_pat} ${atendido.apellido_mat} ${atendido.nombre}
                         </p>
                         <p class="mb-0 text-truncate ">
-                           ${atendido.fecha_nacimiento}
+                           ${atendido.fecha_nacimiento == null ? "" : atendido.fecha_nacimiento}
                         </p>
                     </div>
                     <!-- /widget info -->

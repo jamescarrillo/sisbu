@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     document.querySelector("#btnIrConfiguraciones").onclick = function () {
-        showAlertTopEnd("warning","Esta opción no esta disponible");
+        showAlertTopEnd("warning", "Esta opción no esta disponible");
         //navigateHome("configuraciones");
     };
 
@@ -298,7 +298,14 @@ function toListEvaluacion(beanPagination) {
         let div;
         let btn_incon;
         let btn_cri;
+        let btn_ce;
         beanPagination.list.forEach(evaluacion => {
+            btn_ce =
+                    `
+                    <button style='color: #512da8' class="btn btn-default dt-fab-btn btn-conf-ce" idprocedimiento='${evaluacion.idprocedimiento}' title="Configurar criterios para resultados" data-toggle="tooltip">
+                        <i class="icon icon-assignment icon-xl"></i>
+                    </button>
+                `;
             if (evaluacion.usa_parametro_inconsistencia == "S") {
                 btn_incon =
                         `
@@ -352,6 +359,7 @@ function toListEvaluacion(beanPagination) {
                                 </button>
                                 ${btn_incon}
                                 ${btn_cri}
+                                ${btn_ce}
                             </div>
                             <!-- /action button group -->
                         </div>
@@ -426,6 +434,17 @@ function addEventsEvaluaciones() {
             }
         };
     });
+    
+    document.querySelectorAll(".btn-conf-ce").forEach(btn => {
+        btn.onclick = function () {
+            evaluacionSelected = getEvaluacionForId(this.getAttribute('idprocedimiento'));
+            if (evaluacionSelected != undefined) {
+                $('#ventanaModalCriterioEvaluacion').modal('show');
+            } else {
+                showAlertTopEnd('warnign', 'No se encontró el registro para editar');
+            }
+        };
+    });
 
 }
 
@@ -455,7 +474,7 @@ function openEvaluacion() {
                 list_alternativas_globales.push(alternativa_);
             });
         }
-        
+
         //BLOQUEAMOS EL BOTON QUE AGREGA LAS NUEVAS ALTERNATIVAS GLOBALES
         document.querySelector("#btnAgregarAlternativaGlobal").disabled = true;
         toListAlternativasGlobales(true);
