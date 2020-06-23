@@ -34,6 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
         showAlertTopEnd("warning", "Esta opción no esta disponible");
         //navigateHome("configuraciones");
     };
+    
+    document.querySelector("#btnIrResultados").onclick = function () {
+        navigateHome("resultados");
+    };
 
     document.querySelector("#btn-regresar-principal").onclick = function () {
         navigateHome("home");
@@ -148,6 +152,17 @@ function navigateHome(ir) {
             document.querySelector("#row-configurations").style.display = "flex";
 
             $("#modalCargandoProcedimientoCiclo").modal('show');
+            break;
+        case "resultados":
+            document.querySelector("#row-text-selected-option").style.display = "none";
+            document.querySelector("#row-options-selected").style.display = "none";
+            document.querySelector("#row-navigation-options").style.display = "flex";
+
+            document.querySelector("#row-resultados").style.display = "flex";
+            document.querySelector("#row-evaluaciones").style.display = "none";
+            document.querySelector("#row-configurations").style.display = "none";
+
+            //$("#modalCargandoEvaluacion").modal('show');
             break;
         default:
             //MENU PRINCIPAL
@@ -434,7 +449,7 @@ function addEventsEvaluaciones() {
             }
         };
     });
-    
+
     document.querySelectorAll(".btn-conf-ce").forEach(btn => {
         btn.onclick = function () {
             evaluacionSelected = getEvaluacionForId(this.getAttribute('idprocedimiento'));

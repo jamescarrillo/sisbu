@@ -47,6 +47,22 @@
         <!-- /card -->
     </div>
     <!-- /grid item -->
+    <!-- Grid Item -->
+    <div class="col-xl-3 col-sm-6 col-md-4 col-lg-3">
+        <!-- Card -->
+        <div class="dt-card sisbu-cursor-mano" id="btnIrResultados">
+            <!-- Card Body -->
+            <div class="dt-card__body d-flex flex-sm-column text-center">
+                <div class="mb-sm-7">
+                    <i class="icon icon-list dt-icon-bg bg-primary text-primary"></i>
+                </div>
+                <a class="h2 mb-0 font-weight-500">Resultados</a>
+            </div>
+            <!-- /card body -->
+        </div>
+        <!-- /card -->
+    </div>
+    <!-- /grid item -->
 </div>
 
 <div class="row" id="row-evaluaciones" style="display: none">
@@ -86,32 +102,6 @@
                 <!-- Widget -->
                 <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" 
                      id="div-container-evaluaciones">
-                    <!--div class="dt-widget__item border-success">
-                        <div class="dt-widget__info text-truncate">
-                            <div class="dt-widget__title f-16 font-weight-500 text-truncate">
-                                BaronIce
-                            </div>
-                            <p class="mb-0 text-truncate text-light-gray">
-                                Usa Alternativas Globales
-                            </p>
-                        </div>
-                        <div class="dt-widget__extra text-right">
-                            <div class="show-content">
-                                <span class="d-block text-dark">150</span>
-                                <span class="d-block">Preguntas</span>
-                            </div>
-                            <div class="hide-content">
-                                <div class="action-btn-group">
-                                    <button class="btn btn-default text-success dt-fab-btn" title="Editar Evaluación" data-toggle="tooltip">
-                                        <i class="icon icon-editors icon-1x"></i>
-                                    </button>
-                                    <button class="btn btn-default text-danger dt-fab-btn" title="Editar Preguntas" data-toggle="tooltip">
-                                        <i class="icon icon-assignment icon-xl"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div-->
                 </div>
                 <!-- /widget -->
             </div>
@@ -136,6 +126,66 @@
         <!-- /card -->
     </div>
     <!-- /grid item -->
+</div>
+
+<div class="row" id="row-resultados" style="display: none">
+    <div class="col-12 order-xl-3">
+        <div class="dt-card pb-4">
+            <div class="dt-card__header mb-0">
+                <div class="dt-card__heading">
+                    <h3 class="dt-card__title ml-0" id="titleManageResultados">PARAMETROS</h3>
+                </div>
+            </div>
+            <div class="mb-5 pt-5 pl-3 pr-3">
+                <div class="col-12 mb-2">
+                    <label for="txtEvaluacionResultados">EVALUACION</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtEvaluacionResultados" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                        <div class="input-group-append">
+                            <button type="button" id="btnSeleccionarEvaluacionResultados" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="txtCicloAcademicoResultados">CICLO ACADEMICO</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoResultados" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                        <div class="input-group-append">
+                            <button type="button" id="btnSeleccionarCicloAcademicoResultados" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="txtFacultadResultados">FACULTAD</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtFacultadResultados" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                        <div class="input-group-append">
+                            <button type="button" id="btnSeleccionarFacultadResultados" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="txtEscuelaResultados">ESCUELA</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtEscuelaResultados" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                        <div class="input-group-append">
+                            <button type="button" id="btnSeleccionarEscuelaResultados" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-2 mt-4 text-center">
+                    <button type="button" id="btnDownloadCitas" class="btn btn-warning btn-sm text-white"><i class="icon icon-download"></i> EXPORTAR RESULTADOS</button>
+                </div>
+            </div>
+            <div class="dt-card__body p-0">
+                <!-- Widget -->
+                <div class="dt-widget dt-widget-hl-item dt-widget-hl-item-space dt-widget-mb-item dt-widget-hover-bg" 
+                     id="div-container-resultados">
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row" id="row-crud-evaluaciones" style="display: none">
@@ -855,7 +905,7 @@
                             <input type="number" id="txtPuntajeMaximoSubAreaPsi"
                                    class="form-control form-control-sm" placeholder="Ingrese puntaje máximo. . ." maxlength="10">
                         </div>
-                         <div class="col-lg-6 col-12 mb-2">
+                        <div class="col-lg-6 col-12 mb-2">
                             <label for="txtMediaSubAreaPsi">Media</label>
                             <input type="text" id="txtMediaSubAreaPsi"
                                    class="form-control form-control-sm" placeholder="Ingrese Media. . ." maxlength="10">
@@ -875,7 +925,7 @@
                             </div>
                         </div>
 
-                       
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -1662,7 +1712,6 @@
     </div>
 </div>
 
-
 <!--T: PROCEDIMIENTO_SELECTED-->
 <div id="ventanaModalSelectedProcedimientoC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
      data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
@@ -1882,6 +1931,275 @@
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                         Procesando Solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--HTML RESULTADOS-->
+<!--SELECTED CICLO ACADEMICO-->
+<div id="ventanaModalCicloAcademicoResultados" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #757575; border-width: 4px;border-radius: 10px">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerCicloAcademicoResultados"><strong>[ 0 ]
+                        CICLOS ACADEMICOS</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageCicloAcademicoResultados"
+                               value="1">
+                        <form id="FrmCicloAcademicoResultados">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterCicloAcademicoResultados"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarCicloAcademicoResultados"
+                                            class="btn btn-primary btn-xs mr-3" data-toggle="tooltip"
+                                            title="Buscar Ciclo"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                    <button type="button" id="btnOpenNewCicloAcademicoResultados" class="btn btn-primary btn-xs"
+                                            data-toggle="tooltip" title="Agregar Ciclo"><i class="icon icon-plus"
+                                                                                   aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Nombre</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyCicloAcademicoResultados">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-sm-3 col-4 mt-2">
+                                <select id="sizePageCicloAcademicoResultados"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="6">06</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-9 col-8 mt-2">
+                                <nav aria-label="Page navigation Area">
+                                    <ul id="paginationCicloAcademicoResultados"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-ciclo-academico-resultados" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCargandoCicloAcademicoResultados" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none; background-color: rgba(0,0,0,.2)" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div id="lblModalCargandoEvaluacion" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--T: PROCEDIMIENTO_SELECTED-->
+<div id="ventanaModalSelectedProcedimientoC2" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 2%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerProcedimientoC2"><strong>[ 0 ]
+                        EVALUACIONES</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageProcedimientoC2"
+                               value="1">
+                        <form id="FrmProcedimientoC2">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterProcedimientoC2"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarProcedimientoC2"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">Evaluación</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyProcedimientoC2">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePageProcedimientoC2"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="5">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationProcedimientoC2"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionProcedimientoC2"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-procedimientoc2" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoSelectedProcedimientoC2" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.4)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Procesar solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--T: ESCUELA SELECTED-->
+<div id="ventanaModalSelectedEscuelaC" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 1%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerEscuelaC"><strong>[ 0 ]
+                        ESCUELAS</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pageEscuelaC"
+                               value="1">
+                        <form id="FrmEscuelaC">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterEscuelaC"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarEscuelaC"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5 mb-2">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">ESCUELA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyEscuelaC">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2" style="display: none">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePageEscuelaC"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="5">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationEscuelaC"
+                                        class="pagination justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionEscuelaC"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-escuelac" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoSelectedEscuelaC" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando escuelas. . .
                     </div>
                 </div>
             </div>
