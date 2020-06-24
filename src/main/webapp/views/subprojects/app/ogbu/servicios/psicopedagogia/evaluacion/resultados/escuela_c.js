@@ -28,6 +28,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $("#ventanaModalSelectedEscuelaC").on('shown.bs.modal', function () {
+        if (facultadCSelected == undefined) {
+            document.querySelector("#row-full-pagination").style.display = "flex";
+            document.querySelector("#sizePageEscuelaC").value = "5";
+        } else {
+            document.querySelector("#row-full-pagination").style.display = "none";
+            document.querySelector("#sizePageEscuelaC").value = "100";
+        }
         $("#modalCargandoSelectedEscuelaC").modal('show');
     });
 
@@ -36,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         beanRequestEscuelaC.type_request = "GET";
     });
 
-    document.querySelector("#btnSeleccionarEscuela").onclick = function () {
+    document.querySelector("#btnSeleccionarEscuelaResultados").onclick = function () {
         $('#ventanaModalSelectedEscuelaC').modal('show');
     };
 
@@ -46,14 +53,14 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
         escuelaSelected = escuelaCSelected;
-        document.querySelector("#txtEscuelaPaciente").value = escuelaCSelected.nombre.toUpperCase();
+        document.querySelector("#txtEscuelaResultados").value = escuelaCSelected.nombre.toUpperCase();
         $('#ventanaModalSelectedEscuelaC').modal('hide');
     };
 
     document.querySelector("#btnCancelSelectionEscuelaC").onclick = function () {
         escuelaCSelected = undefined;
         escuelaSelected = escuelaCSelected;
-        document.querySelector("#txtEscuelaPaciente").value = "";
+        document.querySelector("#txtEscuelaResultados").value = "";
     };
 
     $("#sizePageEscuelaC").change(function () {
@@ -97,14 +104,20 @@ function processAjaxEscuelaC() {
 
 function toListEscuelaC(beanPagination) {
     document.querySelector("#tbodyEscuelaC").innerHTML = "";
-    document.querySelector("#titleManagerEscuelaC").innerHTML = "[ " + beanPagination.count_filter + " ] ESCUELAS";
+    document.querySelector("#titleManagerEscuelaC").innerHTML = "ESCUELAS";
     if (beanPagination.count_filter > 0) {
         let row;
         beanPagination.list.forEach(escuela => {
             row = "<tr class='click-selection-escuela sisbu-cursor-mano' idescuela='" + escuela.idescuela + "'>";
             row += "<td class='align-middle text-left'>" + escuela.nombre.toUpperCase() + "</td>";
             row += "</tr>";
-            document.querySelector("#tbodyEscuelaC").innerHTML += row;
+            if (facultadCSelected != undefined) {
+                if (escuela.idfacultad.idfacultad == facultadCSelected.idfacultad) {
+                    document.querySelector("#tbodyEscuelaC").innerHTML += row;
+                }
+            } else {
+                document.querySelector("#tbodyEscuelaC").innerHTML += row;
+            }
         });
         buildPagination(
                 beanPagination.count_filter,
