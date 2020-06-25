@@ -174,7 +174,7 @@
                     </div>
                 </div>
                 <div class="col-12 mb-2 mt-4 text-center">
-                    <button type="button" id="btnDownloadCitas" class="btn btn-warning btn-sm text-white"><i class="icon icon-download"></i> EXPORTAR RESULTADOS</button>
+                    <button type="button" id="btnDownloadResultadosGenericos" class="btn btn-warning btn-sm text-white"><i class="icon icon-download"></i> EXPORTAR RESULTADOS</button>
                 </div>
             </div>
             <div class="dt-card__body p-0">

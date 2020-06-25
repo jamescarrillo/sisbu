@@ -115,7 +115,7 @@ public class FilterURL implements Filter {
 
     private void loaderResources() {
         String version_project = "?v=";
-        version_project += "0.26";
+        version_project += "0.27";
         this.list_resources = new ArrayList<>();
         Resource resource;
 
@@ -548,6 +548,7 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/resultados/procedimiento_c2.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/resultados/escuela_c.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/resultados/facultad_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/resultados/resultado.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/evaluacion.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/pregunta.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/evaluacion/pregunta_c.js" + version_project,
