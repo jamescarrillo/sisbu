@@ -115,7 +115,7 @@ public class FilterURL implements Filter {
 
     private void loaderResources() {
         String version_project = "?v=";
-        version_project += "0.27";
+        version_project += "0.28";
         this.list_resources = new ArrayList<>();
         Resource resource;
 
@@ -409,6 +409,11 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/odontologia/fichas");
         resource.setPath("/views/subprojects/app/ogbu/servicios/odontologia/fichas/evaluacion.jsp");
         resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/resultados/ciclo_academico.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/resultados/procedimiento_c2.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/resultados/escuela_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/resultados/facultad_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/odontologia/fichas/resultados/resultado.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/odontologia/fichas/evaluacion.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/odontologia/fichas/pregunta.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/odontologia/fichas/pregunta_c.js" + version_project,
@@ -441,6 +446,11 @@ public class FilterURL implements Filter {
         resource.setUrl("/app/ogbu/servicios/obstetricia/evaluaciones");
         resource.setPath("/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/evaluacion.jsp");
         resource.setScripts(new String[]{
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/resultados/ciclo_academico.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/resultados/procedimiento_c2.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/resultados/escuela_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/resultados/facultad_c.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/resultados/resultado.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/evaluacion.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/pregunta.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/obstetricia/evaluacion/pregunta_c.js" + version_project,
