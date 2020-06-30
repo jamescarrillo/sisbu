@@ -145,16 +145,30 @@
                                                 <h6 class="text-danger mb-2">
                                                     *Ingresa con tu DNI como nombre de usuario y contraseña.
                                                 </h6>
-                                                <h6 class="text-danger mb-2">
+                                                <!--h6 class="text-danger mb-2">
                                                     *Si al iniciar sesión recibes este mensaje: "El usuario ingresado no existe", crea una nueva cuenta.
-                                                </h6>
+                                                </h6-->
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary text-uppercase">Ingresar</button>
-                                            <span class="d-inline-block ml-4">O
-                                                <a class="d-inline-block font-weight-500 ml-3" href="/sisbu/signup">Crear una Cuenta</a>
-                                            </span>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-primary btn-block text-uppercase">Iniciar Sesión</button>
+                                                <!--span class="d-inline-block ml-4">O
+                                                                                                <a class="d-inline-block font-weight-500 ml-3" href="/sisbu/signup">Crear una Cuenta</a>
+                                                                                            </span-->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                <h6 class="text-danger mb-2">
+                                                    Tambien ingresa con
+                                                </h6>
+                                            </div>
+                                            <div class="col-12 mt-2 mb-3">
+                                                <button type="button" id="btnLoginWhitGoogle" class="btn btn-outline-danger btn-block text-uppercase">
+                                                    <i class="icon icon-google-plus icon-xl"></i>
+                                                    Correo Institucional</button>
+                                            </div>
                                         </div>
                                         <div class="d-flex flex-wrap align-items-center">
                                             <span class="d-inline-block mr-2">Síguenos en</span>
