@@ -158,45 +158,44 @@
                                                                                             </span-->
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12 mt-3">
-                                                <h6 class="text-danger mb-2">
-                                                    Tambien ingresa con
-                                                </h6>
-                                            </div>
-                                            <div class="col-12 mt-2 mb-3">
-                                                <button type="button" id="btnLoginWhitGoogle" class="btn btn-outline-danger btn-block text-uppercase">
-                                                    <i class="icon icon-google-plus icon-xl"></i>
-                                                    Correo Institucional</button>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-wrap align-items-center">
-                                            <span class="d-inline-block mr-2">Síguenos en</span>
-                                            <ul class="dt-list dt-list-sm dt-list-cm-0 ml-auto">
-                                                <li class="dt-list__item">
-                                                    <a href="https://www.facebook.com/BienestarUNPRG/" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
-                                                        <i class="icon icon-facebook icon-xl"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="dt-list__item">
-                                                    <a href="https://www.youtube.com/channel/UCe_kuooOn2vSa-NxgJ8rn-A" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
-                                                        <i class="icon icon-youtube icon-xl"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="dt-list__item">
-                                                    <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
-                                                        <i class="icon icon-instagram icon-xl"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="dt-list__item">
-                                                    <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
-                                                        <i class="icon icon-twitter icon-xl"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </form>
-
+                                    <div class="row">
+                                        <div class="col-12 mt-3">
+                                            <h6 class="text-danger mb-2">
+                                                Tambien ingresa con
+                                            </h6>
+                                        </div>
+                                        <div class="col-12 mt-2 mb-3">
+                                            <button type="button" id="btnLoginWhitGoogle" class="btn btn-outline-danger btn-block text-uppercase">
+                                                <i class="icon icon-google-plus icon-xl"></i>
+                                                Correo Institucional</button>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-wrap align-items-center">
+                                        <span class="d-inline-block mr-2">Síguenos en</span>
+                                        <ul class="dt-list dt-list-sm dt-list-cm-0 ml-auto">
+                                            <li class="dt-list__item">
+                                                <a href="https://www.facebook.com/BienestarUNPRG/" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                    <i class="icon icon-facebook icon-xl"></i>
+                                                </a>
+                                            </li>
+                                            <li class="dt-list__item">
+                                                <a href="https://www.youtube.com/channel/UCe_kuooOn2vSa-NxgJ8rn-A" target="_blank" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                    <i class="icon icon-youtube icon-xl"></i>
+                                                </a>
+                                            </li>
+                                            <li class="dt-list__item">
+                                                <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                    <i class="icon icon-instagram icon-xl"></i>
+                                                </a>
+                                            </li>
+                                            <li class="dt-list__item">
+                                                <a href="javascript:void(0)" class="btn btn-outline-primary dt-fab-btn size-30">
+                                                    <i class="icon icon-twitter icon-xl"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="dt-login__content-footer text-center">
                                     <a href="http://www.unprg.edu.pe/univ/" target="_blank">Universidad Nacional Pedro Ruiz Gallo</a>
@@ -220,7 +219,36 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="modal-loanding-validate-user-by-email" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="progress" style="margin-bottom: 0px;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                Verificando cuenta institucional. . .
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalCargandoRegister" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="progress" style="margin-bottom: 0px;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                Completando registro, por favor espere. . .
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="https://apis.google.com/js/api:client.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.0/js/all.min.js"></script>
         <script src="<%=request.getContextPath()%>/plugins/jquery/dist/jquery.min.js"></script>
@@ -242,7 +270,7 @@
         <script src="<%=request.getContextPath()%>/assets/js/functions.js"></script>
         <script src="<%=request.getContextPath()%>/assets/js/customizer.js"></script>
 
-        <script src="<%out.print(request.getContextPath());%>/scripts/session/change.cookie.js"></script>
+        <!--script src="<%out.print(request.getContextPath());%>/scripts/session/change.cookie.js"></script-->
         <script src="<%out.print(request.getContextPath());%>/scripts/session/js.cookie.js"></script>
         <script src="<%out.print(request.getContextPath());%>/scripts/session/session.validate.login.js"></script>
 

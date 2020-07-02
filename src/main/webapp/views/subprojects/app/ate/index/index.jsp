@@ -40,7 +40,7 @@
                 <img src="<%=request.getContextPath()%>/resources/prod/custom_app/kids.gif" class="img-fluid" alt="Fam. Pedro Ruiz Gallo">
             </div>
             <div class="col-12 mt-4">
-                <h2 class="text-center">¡Bienvenido(a) <span class="text-info" id="lblNameUserIndex2">User</span>!
+                <h2 class="text-center">¡Bienvenido(a) <span class="text-info lblNameUserIndex2">User</span>!
                 </h2>
             </div>
             <div class="col-12">
@@ -73,7 +73,7 @@
                 <img src="<%=request.getContextPath()%>/resources/prod/custom_app/kids.gif" class="img-fluid" alt="Fam. Pedro Ruiz Gallo">
             </div>
             <div class="col-12 mt-4">
-                <h2 class="text-center">¡Bienvenido(a) <span class="text-info" id="lblNameUserIndex2">User</span>!
+                <h2 class="text-center">¡Bienvenido(a) <span class="text-info lblNameUserIndex2">User</span>!
                 </h2>
                 <p class="text-center" style="font-size: 18px">
                     Mira los videos tutoriales para llenar llenar correctamente tu información. Click en el botón que dice ¡Ver los videos!

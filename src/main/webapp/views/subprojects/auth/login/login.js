@@ -121,3 +121,42 @@ function validateFrmLogin() {
     }
     return true;
 }
+
+async function validateUserByEmail(email) {
+    $('#modal-loanding-validate-user-by-email').modal("show");
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            url: getHostAndContextAPI() + "authentication/validate/by/email/" + email,
+            type: 'GET'
+        }).done(function (user_) {
+            setTimeout(() => {
+                $('#modal-loanding-validate-user-by-email').modal("hide");
+                resolve(user_);
+            }, 1000);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            $('#modal-loanding-validate-user-by-email').modal("hide");
+            showError(jqXHR, textStatus);
+        });
+    });
+}
+
+async function getTokenSessionByGoogle(idtoken) {
+    $('#modal-loanding-validate-user-by-email').modal("show");
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            url: getHostAndContextAPI() + "authentication/get/token/by/google?idtoken=" + idtoken,
+            type: 'GET'
+        }).done(function (jsonResponse) {
+            setTimeout(() => {
+                $('#modal-loanding-validate-user-by-email').modal("hide");
+                resolve(jsonResponse);
+            }, 1000);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            $('#modal-loanding-validate-user-by-email').modal("hide");
+            showError(jqXHR, textStatus);
+        });
+    });
+}
+
+// 34169868 - Pago efectivo.
+// 

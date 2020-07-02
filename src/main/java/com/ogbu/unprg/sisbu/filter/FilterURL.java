@@ -193,7 +193,10 @@ public class FilterURL implements Filter {
         resource.setUrl("/auth/login");
         resource.setPath("/views/subprojects/auth/login/login.jsp");
         resource.setScripts(new String[]{
-            "/views/subprojects/auth/login/login.js" + version_project
+            "/views/subprojects/auth/login/login.js" + version_project,
+            "/views/subprojects/auth/login/google.js" + version_project,
+            "/views/subprojects/auth/login/signup.js" + version_project,
+            "/views/subprojects/auth/login/util.methods.js" + version_project
         });
         this.list_resources.add(resource);
         /*SUBPROJECT DE RECOVERY*/

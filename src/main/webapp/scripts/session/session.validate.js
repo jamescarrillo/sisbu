@@ -8,24 +8,30 @@ if (Cookies.get("sisbu_token") === undefined) {
 } else if (parseJwt(Cookies.get("sisbu_token"))) {
     //CARGAMOS LOS DATOS DEL USUARIO
     user_session = Cookies.getJSON('sisbu_user');
-    let user = user_session;
     //SET DATOS USER
     document.querySelectorAll('.name-user-session').forEach(element => {
-        element.innerHTML = getStringCapitalize(user.usuario.split(" ")[0].toLowerCase());
+        element.innerHTML = getStringCapitalize(user_session.usuario.split(" ")[0].toLowerCase());
     });
     document.querySelectorAll('.name-type-user-session').forEach(element => {
-        element.innerHTML = getStringTipoUsuario(user.tipo_usuario);
+        element.innerHTML = getStringTipoUsuario(user_session.tipo_usuario);
     });
     let url_foto;
-    user.foto = "";
-    if (user.foto != "") {
-        url_foto = getHostAPI() + "resources/img/FOTOS/" + user.foto;
+    //user.foto = "";
+    /*
+     if (user.foto != "") {
+     url_foto = getHostAPI() + "resources/img/FOTOS/" + user_session.foto;
+     } else {
+     url_foto = getHostAPI() + "resources/img/150x150.png";
+     }
+     */
+    if (user_session.foto.includes("https://")) {
+        url_foto = user_session.foto;
     } else {
         url_foto = getHostAPI() + "resources/img/150x150.png";
     }
     setUrlFotoUserSession(url_foto);
     //ADD ITEMS MENU AL SIDEBAR
-    addMenus(user);
+    addMenus(user_session);
 } else {
     closeSession();
 }

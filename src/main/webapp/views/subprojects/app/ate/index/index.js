@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let nameUser = getStringCapitalize(user_session.usuario.split(" ")[0].toLowerCase());
     document.querySelector("#lblNameUserIndex1").innerHTML = nameUser;
-    document.querySelector("#lblNameUserIndex2").innerHTML = nameUser;
+    document.querySelectorAll(".lblNameUserIndex2").forEach(function (span, index){
+        span.innerHTML = nameUser;
+    });
     document.querySelector("#lblNameUserIndex3").innerHTML = nameUser;
 
     if (user_session.estado == 4) {
