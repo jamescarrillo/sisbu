@@ -7,7 +7,7 @@ function processAjaxRegisterUsuario() {
         "nombre": googleUser_.getBasicProfile().getGivenName().toUpperCase(),
         "apellido_pat": googleUser_.getBasicProfile().getFamilyName().toUpperCase().split(" ")[0],
         "apellido_mat": googleUser_.getBasicProfile().getFamilyName().toUpperCase().split(" ")[1],
-        "tipo_documento": -1,
+        "tipo_documento": 1,
         "tipo_atendido": -1,
         "subtipo_atendido": -1,
         "sexo": -1,

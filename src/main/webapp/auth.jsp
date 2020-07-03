@@ -159,7 +159,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <div class="row">
+                                    <!--div class="row">
                                         <div class="col-12 mt-3">
                                             <h6 class="text-danger mb-2">
                                                 Tambien ingresa con
@@ -170,7 +170,7 @@
                                                 <i class="icon icon-google-plus icon-xl"></i>
                                                 Correo Institucional</button>
                                         </div>
-                                    </div>
+                                    </div-->
                                     <div class="d-flex flex-wrap align-items-center">
                                         <span class="d-inline-block mr-2">Síguenos en</span>
                                         <ul class="dt-list dt-list-sm dt-list-cm-0 ml-auto">
