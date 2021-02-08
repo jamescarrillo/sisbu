@@ -101,7 +101,7 @@ function toListPaciente(beanPagination) {
 
     let row;
     row =
-        `
+            `
                <div class="dt-widget__item border-success bg-primary text-white pl-5 mb-0 pb-2 pr-1">
                     <!-- Widget Info -->
                     <div class="dt-widget__info text-truncate pl-5" style="max-width: 15%;">
@@ -142,7 +142,7 @@ function toListPaciente(beanPagination) {
         showAlertTopEnd('warning', 'No se encontraron resultados');
         document.querySelector("#txtFilterPaciente").focus();
         row +=
-            `
+                `
                                <div class="dt-widget__item  border-bottom  pl-5 m-0 pr-1 pt-2 pb-2">
                                     <!-- Widget Info -->
                                     <div class="dt-widget__info text-truncate text-center" >
@@ -164,7 +164,7 @@ function toListPaciente(beanPagination) {
             text_row = "";
         }
         row =
-            `
+                `
                  <div class="dt-widget__item border-bottom  pl-5 m-0 pr-1 pt-2 pb-2 ${text_row}">
                     <!-- Widget Extra -->
                     <div class="dt-widget__extra text-right">
@@ -173,7 +173,7 @@ function toListPaciente(beanPagination) {
                         <div class="hide-content pr-2"">
                             <!-- Action Button Group -->
                             <div class="action-btn-group">
-                                <button class="btn btn-default text-danger dt-fab-btn evaluaciones-paciente" idpaciente='${atendido.idatendido}' title="Ver evaluaciones" data-toggle="tooltip">
+                                <button class="btn btn-default text-danger dt-fab-btn btn-manager-pacientes" idpaciente='${atendido.idatendido}' title="Gestionar Paciente" data-toggle="tooltip">
                                     <i class="icon icon-assignment icon-xl"></i>
                                 </button>
                             </div>
@@ -220,11 +220,11 @@ function toListPaciente(beanPagination) {
         $('[data-toggle="tooltip"]').tooltip();
     });
     buildPagination(
-        beanPagination.count_filter,
-        parseInt(document.querySelector("#sizePagePaciente").value),
-        document.querySelector("#pagePaciente"),
-        $('#modalCargandoPaciente'),
-        $('#paginationPaciente'));
+            beanPagination.count_filter,
+            parseInt(document.querySelector("#sizePagePaciente").value),
+            document.querySelector("#pagePaciente"),
+            $('#modalCargandoPaciente'),
+            $('#paginationPaciente'));
     addEventsPacientes();
     if (beanRequestPaciente.operation == "paginate") {
         document.querySelector("#txtFilterPaciente").focus();
@@ -235,18 +235,13 @@ function toListPaciente(beanPagination) {
 
 function addEventsPacientes() {
 
-    document.querySelectorAll('.evaluaciones-paciente').forEach(btn => {
+    document.querySelectorAll('.btn-manager-pacientes').forEach(btn => {
         //AGREGANDO EVENTO CLICK
         btn.onclick = function () {
-             $('[data-toggle="tooltip"]').tooltip("hide");
+            $('[data-toggle="tooltip"]').tooltip("hide");
             atendidoSelected = findByPaciente(btn.getAttribute('idpaciente'));
             if (atendidoSelected != undefined) {
-                if (atendidoSelected.ciclo_academico_ingreso.idciclo_academico > 12) {
-                    $('#modalCargandoEvaluacion').modal('show');
-                } else {
-                    showAlertTopEnd('warning', 'El Atendido no pertenece al ciclo superior 2019-II');
-                }
-
+                navigateManagerPaciente('show');
             } else {
                 showAlertTopEnd('warning', 'No se encontró el paciente ');
             }
@@ -309,5 +304,15 @@ function subtipoPaciente(tipopersonal) {
             return "";
             break;
 
+    }
+}
+
+function navigateManagerPaciente(option) {
+    if (option == "show") {
+        document.querySelector("#btnListaAtendido").style.display = "none";
+        document.querySelector("#row-options-paciente-selected").style.display = "flex";
+    } else {
+        document.querySelector("#btnListaAtendido").style.display = "flex";
+        document.querySelector("#row-options-paciente-selected").style.display = "none";
     }
 }

@@ -170,6 +170,7 @@ function navigateHome(ir) {
             document.querySelector("#row-options-selected").style.display = "flex";
             document.querySelector("#row-navigation-options").style.display = "none";
 
+            document.querySelector("#row-resultados").style.display = "none";
             document.querySelector("#row-evaluaciones").style.display = "none";
             document.querySelector("#row-configurations").style.display = "none";
             break;
