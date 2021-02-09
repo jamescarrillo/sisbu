@@ -33,6 +33,12 @@ function navigateHome(ir) {
             document.querySelector("#row-evaluaciones").style.display = "none";
 
             document.querySelector("#row-options-paciente-selected").style.display = "none";
+
+            beanRequestFichaAdmisionPsicologica.entity_api = "api/ficha/admision/psicologica";
+            beanRequestFichaAdmisionPsicologica.operation = "get";
+            beanRequestFichaAdmisionPsicologica.type_request = "GET";
+
+            $('#modalCargandoFichaAdmisionPsicologica').modal('show');
             break;
         case "historia_psicologica":
             document.querySelector("#row-ficha-admision").style.display = "none";

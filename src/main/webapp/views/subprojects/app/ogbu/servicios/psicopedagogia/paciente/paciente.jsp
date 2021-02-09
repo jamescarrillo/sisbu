@@ -139,6 +139,158 @@
                     <hr>
                 </div>
                 <div class="col-12 text-center">
+                    <h5 class="text-success">DATOS PERSONALES</h5>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtTipoDocumentoPacienteFichaAdmision">TIPO DE DOCUMENTO</label>
+                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtTipoDocumentoPacienteFichaAdmision" disabled="">
+                            <option  value="1">DNI</option>
+                            <option  value="2">CARNET DE EXTRANJERIA</option>
+                            <option  value="3">OTRO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtModalidadPacienteFichaAdmision">MODALIDAD DE INGRESO</label>
+                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtModalidadPacienteFichaAdmision" disabled="">
+                            <option   value="100">Seleccione. . .</option>
+                            <option   value="1">EXAMEN ORDINARIO</option>
+                            <option  value="2">DEPORTISTA CALIFICADO</option>
+                            <option  value="3">PRIMEROS PUESTOS</option>
+                            <option  value="4">INGRESANTE CPU</option>
+                            <option  value="5">CAMBIO DE UNIVERSIDAD</option>
+                            <option  value="6">GRADUADOS O TITULADOS</option>
+                            <option  value="7">5TO DE SECUNDARIA</option>
+                            <option  value="8">OTRO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtTipoColegioPacienteTipoColegioFichaAdmision">TIPO DE COLEGIO</label>
+                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtTipoColegioPacienteTipoColegioFichaAdmision" disabled="">
+                            <option   value="-1">Seleccione. . .</option>
+                            <option   value="1">NACIONAL</option>
+                            <option  value="2">PARTICULAR</option>
+                            <option  value="3">OTRO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtEstadoPacienteEstadoCivilFichaAdmision">ESTADO CIVIL</label>
+                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtEstadoPacienteEstadoCivilFichaAdmision" disabled="">
+                            <option  value="-1">Seleccionar...</option>
+                            <option  value="1">SOLTERO(A)</option>
+                            <option  value="2">CASADO(A)</option>
+                            <option  value="3">DIVORCIADO(A)</option>
+                            <option  value="4">VIUDO(A)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtCodigoPacienteFichaAdmision">CÓDIGO
+                        </label>
+                        <input  type="text" class="form-control form-control-sm" id="txtCodigoPacienteFichaAdmision" placeholder="" maxlength="7" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtNumeroDocumentoPacienteFichaAdmision">N° DOCUMENTO</label>
+                        <input  type="text" class="form-control form-control-sm" id="txtNumeroDocumentoPacienteFichaAdmision" placeholder="" maxlength="8" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtApPaternoPacienteFichaAdmision">AP. PATERNO</label>
+                        <input  type="text" class="form-control form-control-sm" id="txtApPaternoPacienteFichaAdmision" placeholder="" maxlength="45" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtApMaternoPacienteFichaAdmision">AP. MATERNO</label>
+                        <input  type="text" class="form-control form-control-sm" id="txtApMaternoPacienteFichaAdmision" placeholder="" maxlength="45" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtNombrePacienteFichaAdmision">NOMBRES</label>
+                        <input  type="text" class="form-control form-control-sm" id="txtNombrePacienteFichaAdmision" placeholder="" maxlength="45" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtSexoPacienteFichaAdmision">SEXO</label>
+                        <select  class="form-control form-control-sm" id="txtSexoPacienteFichaAdmision" disabled="">
+                            <option value="-1">Seleccione. . .</option>
+                            <option value="1">MASCULINO</option>
+                            <option  value="2">FEMENINO</option>
+                            <option  value="3">OTRO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-3">
+                    <label for="txtFechaNacPacienteFichaAdmision">FECHA DE NACIMIENTO</label>
+                    <div class="input-group">
+                        <input  type="text" class="form-control form-control-sm" id="txtFechaNacPacienteFichaAdmision" placeholder="DD/MM/AAAA" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtCelularPacienteFichaAdmision">CELULAR</label>
+                        <input  type="number" class="form-control form-control-sm" id="txtCelularPacienteFichaAdmision" placeholder="" maxlength="9" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="txtEmailPacienteFichaAdmision">EMAIL</label>
+                        <input  type="email" class="form-control form-control-sm" id="txtEmailPacienteFichaAdmision" placeholder="" maxlength="100" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-12 mb-3">
+                    <label for="txtEscuelaPacienteFichaAdmision">ESCUELA
+                    </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtEscuelaPacienteFichaAdmision" aria-describedby="nombre" placeholder="" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12 mb-3">
+                    <label for="txtDistritoActualPacienteFichaAdmision">DISTRITO ACTUAL</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtDistritoActualPacienteFichaAdmision" aria-describedby="nombre" placeholder="" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-12 mb-3">
+                    <div class="form-group">
+                        <label for="txtDireccionActualPacienteFichaAdmision">DIRECCIÓN ACTUAL
+                        </label>
+                        <input  type="text" class="form-control form-control-sm" id="txtDireccionActualPacienteFichaAdmision" placeholder="" maxlength="80" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12 mb-3">
+                    <label for="txtDistritoProcedenciaPacienteFichaAdmision">DISTRITO PROCEDENCIA</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtDistritoProcedenciaPacienteFichaAdmision" aria-describedby="nombre" placeholder="" disabled="">
+                    </div>
+                </div>
+                <div class=col-lg-8 col-12 mb-3">
+                    <div class="form-group">
+                        <label for="txtDireccionProcePacienteFichaAdmision">DIRECCIÓN PROCEDENCIA
+                        </label>
+                        <input  type="text" class="form-control form-control-sm" id="txtDireccionProcePacienteFichaAdmision" placeholder="" maxlength="80" disabled="">
+                    </div>
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="txtCicloAcademicoPacienteFichaAdmision">CICLO ACADÉMICO INGRESO
+                    </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPacienteFichaAdmision" aria-describedby="nombre" placeholder="" disabled="">
+                    </div>
+                </div>
+                <div class="col-12 text-center">
                     <h5 class="text-success">AREA ACADEMICA</h5>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -481,6 +633,9 @@
                         <textarea class="form-control" id="" placeholder="txtSiElApoyoPsicologicoTuvieraExitoQueCambiosObservariasEnTuConducta" maxlength="500" rows="4">
                         </textarea>
                     </div>
+                </div>
+                <div class="col-12">
+                    
                 </div>
 
             </div>
@@ -832,6 +987,23 @@
 
 <!--MODAL CARGANDO REMOVE EVALUACION-->
 <div class="modal fade" id="modalCargandoRemoveEvaluacion" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL CARGANDO FICHA_ADMISION -->
+<div class="modal fade" id="modalCargandoFichaAdmisionPsicologica" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">

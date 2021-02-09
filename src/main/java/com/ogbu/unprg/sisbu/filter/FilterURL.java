@@ -595,7 +595,8 @@ public class FilterURL implements Filter {
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/respuesta_evaluacion2.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/evaluacion.js" + version_project,
             "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/paciente.js" + version_project,
-            "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/manager.paciente.js" + version_project
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/manager.paciente.js" + version_project,
+            "/views/subprojects/app/ogbu/servicios/psicopedagogia/paciente/ficha_admision_psicologica.js" + version_project
         });
         this.list_resources.add(resource);
         /*
