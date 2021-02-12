@@ -1335,3 +1335,125 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="ventanaModalSesionPsicologica" data-backdrop="static" tabindex="-1" role="dialog" 
+     aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding-top: 0%;overflow-y: visible;">
+    <div class="modal-dialog modal-lg-sisbu" role="document">
+        <div class="modal-content">
+            <form id="FrmSesionPsicologicaModal">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="txtTituloModalMan"></h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!--div class="col-12 mb-2">
+                            <label for="txtPersonalEncargadoSesionPsicologica">Personal Atención</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-sm" id="txtPersonalEncargadoSesionPsicologica" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                                <div class="input-group-append">
+                                    <button type="button" id="btnSeleccionarPersonal" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                                </div>
+                            </div>
+                        </div-->
+                        <div class="col-md-6 col-12 mb-2">
+                            <label for="txtObjetivoSesionPsicologica">Objetivo</label>
+                            <textarea id="txtObjetivoSesionPsicologica" class="form-control" rows="4" maxlength="500" 
+                                      placeholder="">
+                            </textarea>
+                        </div>
+                        <div class="col-md-6 col-12 mb-2">
+                            <label for="txtTecnicasSesionPsicologica">Tecnicas</label>
+                            <textarea id="txtTecnicasSesionPsicologica" class="form-control" rows="4" maxlength="500" 
+                                      placeholder="">
+                            </textarea>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="txtSituacionActualSesionPsicologica">Situacion Actual</label>
+                            <textarea id="txtSituacionActualSesionPsicologica" class="form-control" rows="3" maxlength="800" 
+                                      placeholder="">
+                            </textarea>
+                        </div>
+                        <div class="col-md-6 col-12 mb-2">
+                            <label for="txtActividadesRealizadasSesionPsicologica">Actividades Realizadas</label>
+                            <textarea id="txtActividadesRealizadasSesionPsicologica" class="form-control" rows="6" maxlength="800" 
+                                      placeholder="">
+                            </textarea>
+                        </div>
+                        <div class="col-md-6 col-12 mb-2">
+                            <label for="txtTareasRecomendadasSesionPsicologica">Tareas Recomendadas</label>
+                            <textarea id="txtTareasRecomendadasSesionPsicologica" class="form-control" rows="6" maxlength="800" 
+                                      placeholder="">
+                            </textarea>
+                        </div>
+                        <div class="col-12 mb-2">
+                            <label for="txtObservacionesSesionPsicologica">Observaciones</label>
+                            <textarea id="txtObservacionesSesionPsicologica" class="form-control" rows="3" maxlength="800" 
+                                      placeholder="">
+                            </textarea>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12 mb-2">
+                            <label for="txtFechaProximaCitaSesionPsicologica">Fecha</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" id="txtFechaProximaCitaSesionPsicologica" class="form-control form-control-sm"
+                                       placeholder="DD/MM/AAAA">
+                                <div class="input-group-append">
+                                    <button class="btn btn-dark btn-sm input-ii" type="button"
+                                            id="btnEliminarFechaProximaCita" data-toggle="tooltip" title="Eliminar Fecha">
+                                        <i class="icon icon-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12 mb-2">
+                            <label for="txtHoraProximaCitaSesionPsicologica">Hora</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" id="txtHoraProximaCitaSesionPsicologica" class="form-control form-control-sm"
+                                       placeholder="HH:MM">
+                                <div class="input-group-append">
+                                    <button class="btn btn-dark btn-sm input-ii" type="button"
+                                            id="btnEliminarHoraProximaCitaSesionPsicologica" data-toggle="tooltip" title="Eliminar Fecha">
+                                        <i class="icon icon-trash"></i></button> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 mb-2">
+                            <label for="txtEscalaSesionPsicologica">Escala</label>
+                            <select id="txtEscalaSesionPsicologica" class="form-control form-control-sm sisbu-cursor-mano">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal"><i class="icon icon-reply"></i> CANCELAR</button>
+                    <button type="submit" id="btnGuardar" class="btn btn-primary btn-sm">GUARDAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalCargandoSesionPsicologica" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Cargando SesionPsicologicas. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
