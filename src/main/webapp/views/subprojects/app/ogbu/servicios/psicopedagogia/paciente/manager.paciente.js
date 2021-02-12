@@ -8,10 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
         navigateHome('historia_psicologica');
     }
 
-    document.querySelector('#btnIrFichaSeguimiento').onclick = function () {
-        navigateHome('ficha_seguimiento');
-    }
-
     document.querySelector('#btnIrEvaluaciones').onclick = function () {
         navigateHome('evaluaciones_psicologicas');
     }
@@ -29,7 +25,6 @@ function navigateHome(ir) {
         case "ficha_admision":
             document.querySelector("#row-ficha-admision").style.display = "flex";
             document.querySelector("#row-historia-psicologica").style.display = "none";
-            document.querySelector("#row-ficha-seguimiento").style.display = "none";
             document.querySelector("#row-evaluaciones").style.display = "none";
 
             document.querySelector("#row-options-paciente-selected").style.display = "none";
@@ -43,24 +38,20 @@ function navigateHome(ir) {
         case "historia_psicologica":
             document.querySelector("#row-ficha-admision").style.display = "none";
             document.querySelector("#row-historia-psicologica").style.display = "flex";
-            document.querySelector("#row-ficha-seguimiento").style.display = "none";
             document.querySelector("#row-evaluaciones").style.display = "none";
 
             document.querySelector("#row-options-paciente-selected").style.display = "none";
-            break;
-        case "ficha_seguimiento":
-            document.querySelector("#row-ficha-admision").style.display = "none";
-            document.querySelector("#row-historia-psicologica").style.display = "none";
-            document.querySelector("#row-ficha-seguimiento").style.display = "flex";
-            document.querySelector("#row-evaluaciones").style.display = "none";
 
-            document.querySelector("#row-options-paciente-selected").style.display = "none";
+            beanRequestHistoriaPsicologica.entity_api = "api/historia/psicologica";
+            beanRequestHistoriaPsicologica.operation = "get";
+            beanRequestHistoriaPsicologica.type_request = "GET";
+
+            $('#modalCargandoHistoriaPsicologica').modal('show');
             break;
         case "evaluaciones_psicologicas":
             if (atendidoSelected.ciclo_academico_ingreso.idciclo_academico > 12) {
                 document.querySelector("#row-ficha-admision").style.display = "none";
                 document.querySelector("#row-historia-psicologica").style.display = "none";
-                document.querySelector("#row-ficha-seguimiento").style.display = "none";
                 document.querySelector("#row-evaluaciones").style.display = "flex";
 
                 document.querySelector("#row-options-paciente-selected").style.display = "none";
@@ -74,7 +65,6 @@ function navigateHome(ir) {
             //MENU PRINCIPAL
             document.querySelector("#row-ficha-admision").style.display = "none";
             document.querySelector("#row-historia-psicologica").style.display = "none";
-            document.querySelector("#row-ficha-seguimiento").style.display = "none";
             document.querySelector("#row-evaluaciones").style.display = "none";
 
             document.querySelector("#row-options-paciente-selected").style.display = "flex";

@@ -65,7 +65,7 @@
 
     <div class="row justify-content-center" id="row-options-paciente-selected" style="margin-top: 50px; display: none">
         <!-- Grid Item -->
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+        <div class="col-xl-3 col-md-4 col-sm-6">
             <!-- Card -->
             <div class="dt-card sisbu-cursor-mano" id="btnIrFIchaAdmision">
                 <!-- Card Body -->
@@ -73,7 +73,7 @@
                     <div class="mb-sm-7">
                         <i class="icon icon-attendance dt-icon-bg bg-primary text-primary"></i>
                     </div>
-                    <a class="h2 mb-0 font-weight-500">Ficha <br>Admision</a>
+                    <a class="h2 mb-0 font-weight-500">Ficha Admision</a>
                 </div>
                 <!-- /card body -->
             </div>
@@ -81,7 +81,7 @@
         </div>
         <!-- /grid item -->
         <!-- Grid Item -->
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+        <div class="col-xl-3 col-md-4 col-sm-6">
             <!-- Card -->
             <div class="dt-card sisbu-cursor-mano" id="btnIrHistoriaPsicologica">
                 <!-- Card Body -->
@@ -97,23 +97,7 @@
         </div>
         <!-- /grid item -->
         <!-- Grid Item -->
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-            <!-- Card -->
-            <div class="dt-card sisbu-cursor-mano" id="btnIrFichaSeguimiento">
-                <!-- Card Body -->
-                <div class="dt-card__body d-flex flex-sm-column text-center">
-                    <div class="mb-sm-7">
-                        <i class="icon icon-attendance dt-icon-bg bg-success text-primary"></i>
-                    </div>
-                    <a class="h2 mb-0 font-weight-500">Ficha de Seguimiento</a>
-                </div>
-                <!-- /card body -->
-            </div>
-            <!-- /card -->
-        </div>
-        <!-- /grid item -->
-        <!-- Grid Item -->
-        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+        <div class="col-xl-3 col-md-4 col-sm-6">
             <!-- Card -->
             <div class="dt-card sisbu-cursor-mano" id="btnIrEvaluaciones">
                 <!-- Card Body -->
@@ -134,8 +118,13 @@
     <div class="row justify-content-center" id="row-ficha-admision" style="display: none">
         <div class="col-12">
             <div class="row">
-                <div class="col-12">
+                <div class="col-lg-9 col-sm-8 col-12">
                     <h4 class="text-primary mb-0">FICHA DE ADMISION</h4>
+                </div>
+                <div class="col-lg-3 col-sm-4 col-12 text-right">
+                    <button class="btn btn-primary btn-xs btn-close-option-manager-paciente-selected"><i class="icon icon-reply"></i> Regresar</button>
+                </div>
+                <div class="col-12">
                     <hr>
                 </div>
                 <div class="col-12 text-center">
@@ -169,8 +158,8 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="form-group">
-                        <label for="txtTipoColegioPacienteTipoColegioFichaAdmision">TIPO DE COLEGIO</label>
-                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtTipoColegioPacienteTipoColegioFichaAdmision" disabled="">
+                        <label for="txtTipoColegioPacienteFichaAdmision">TIPO DE COLEGIO</label>
+                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtTipoColegioPacienteFichaAdmision" disabled="">
                             <option   value="-1">Seleccione. . .</option>
                             <option   value="1">NACIONAL</option>
                             <option  value="2">PARTICULAR</option>
@@ -180,8 +169,8 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="form-group">
-                        <label for="txtEstadoPacienteEstadoCivilFichaAdmision">ESTADO CIVIL</label>
-                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtEstadoPacienteEstadoCivilFichaAdmision" disabled="">
+                        <label for="txtEstadoCivilPacienteFichaAdmision">ESTADO CIVIL</label>
+                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtEstadoCivilPacienteFichaAdmision" disabled="">
                             <option  value="-1">Seleccionar...</option>
                             <option  value="1">SOLTERO(A)</option>
                             <option  value="2">CASADO(A)</option>
@@ -293,15 +282,7 @@
                 <div class="col-12 text-center">
                     <h5 class="text-success">AREA ACADEMICA</h5>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="form-group">
-                        <label for="txtAnioIngresasteUNPRG">
-                            Año que ingresaste a la UNPRG?
-                        </label>
-                        <input  type="text" class="form-control form-control-sm" id="txtAnioIngresasteUNPRG" placeholder="" maxlength="7">
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-6">
+                <div class="col-md-6 col-12">
                     <div class="form-group">
                         <label for="txtBuscasteInformacionAcercaTuCarrera">
                             Buscaste informacion acerca de tu carrera?
@@ -313,7 +294,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-md-6 col-12">
                     <div class="form-group">
                         <label for="txtElegisteTuCarreraIniciativaPropia">
                             Elegiste tu carrera por iniciativa Propia?
@@ -325,7 +306,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-6">
+                <div class="col-12">
                     <div class="form-group">
                         <label for="txtAlgunaVezPensasteCambiarteCarrera">
                             Alguna vez pensaste en cambiarte de carrera?
@@ -405,7 +386,7 @@
                         <label for="txtComoEsTuRendimientoAcademico">
                             Como es tu rendimiento academico?
                         </label>
-                        <textarea class="form-control" id="" placeholder="txtComoEsTuRendimientoAcademico" maxlength="500" rows="4">
+                        <textarea class="form-control" id="txtComoEsTuRendimientoAcademico" placeholder="" maxlength="500" rows="4">
                         </textarea>
                     </div>
                 </div>
@@ -548,7 +529,7 @@
                         <label for="txtQueObstaculizaParaQueTuProblemaSeaResueltoComoInterfiereEnTuVidaYTusEstudios">
                             Que obstaculiza para que tu problema sea resuelto? ¿Como interfiere en tu vida y en tus estudios?
                         </label>
-                        <textarea class="form-control" id="" placeholder="txtQueObstaculizaParaQueTuProblemaSeaResueltoComoInterfiereEnTuVidaYTusEstudios" maxlength="500" rows="4">
+                        <textarea class="form-control" id="txtQueObstaculizaParaQueTuProblemaSeaResueltoComoInterfiereEnTuVidaYTusEstudios" placeholder="" maxlength="500" rows="4">
                         </textarea>
                     </div>
                 </div>
@@ -630,46 +611,16 @@
                         <label for="txtSiElApoyoPsicologicoTuvieraExitoQueCambiosObservariasEnTuConducta">
                             Si el apoyo psicologico tuviera exito, ¿Que cambios observarias en tu conducta y como lo notarian los demas?
                         </label>
-                        <textarea class="form-control" id="" placeholder="txtSiElApoyoPsicologicoTuvieraExitoQueCambiosObservariasEnTuConducta" maxlength="500" rows="4">
+                        <textarea class="form-control" id="txtSiElApoyoPsicologicoTuvieraExitoQueCambiosObservariasEnTuConducta" placeholder="" maxlength="500" rows="4">
                         </textarea>
                     </div>
                 </div>
-                <div class="col-12">
-                    
+                <div class="col-12 text-right">
+                    <button class="btn btn-primary btn-xs" id="btn-save-ficha-admision-psicologica"><i class="fa fa-save"></i> GUARDAR</button>
                 </div>
 
             </div>
         </div>
-        <!--
-        
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="">
-                        </label>
-                        <textarea class="form-control" id="" placeholder="" maxlength="500" rows="4">
-                        </textarea>
-                    </div>
-                </div>
-        
-        <div class="col-lg-8 col-md-6">
-                    <div class="form-group">
-                        <label for="txt">
-                        </label>
-                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txt">
-                            <option value="-1">Seleccionar...</option>
-                            <option value="SI">SI</option>
-                            <option value="NO">NO</option>
-                        </select>
-                    </div>
-                </div>
-        
-        
-        
-        
-        
-        
-        -->
-
         <div class="col-12 text-center">
             <button class="btn btn-primary btn-xs btn-close-option-manager-paciente-selected"><i class="icon icon-reply"></i> Regresar</button>
         </div>
@@ -678,19 +629,279 @@
     <!-- Tab HISTORIA PSICOLOGICA -->
     <div class="row justify-content-center" id="row-historia-psicologica" style="display: none">
         <div class="col-12">
-            <h4>Historia psicologica</h4>
-        </div>
-        <div class="col-12 text-center">
-            <button class="btn btn-primary btn-xs btn-close-option-manager-paciente-selected"><i class="icon icon-reply"></i> Regresar</button>
-        </div>
-    </div>
+            <div class="row">
+                <div class="col-lg-9 col-sm-8 col-12">
+                    <h4 class="text-primary mb-0">Historia Psicologica</h4>
+                </div>
+                <div class="col-lg-3 col-sm-4 col-12 text-right">
+                    <button class="btn btn-primary btn-xs btn-close-option-manager-paciente-selected"><i class="icon icon-reply"></i> Regresar</button>
+                </div>
+                <div class="col-12">
+                    <hr>
+                </div>
+                <div class="col-12 text-center">
+                    <h5 class="text-success">Datos de Filiacion</h5>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtTipoDocumentoPacienteHistoriaPsicologica">TIPO DE DOCUMENTO</label>
+                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtTipoDocumentoPacienteHistoriaPsicologica" disabled="">
+                            <option  value="1">DNI</option>
+                            <option  value="2">CARNET DE EXTRANJERIA</option>
+                            <option  value="3">OTRO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtModalidadPacienteHistoriaPsicologica">MODALIDAD DE INGRESO</label>
+                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtModalidadPacienteHistoriaPsicologica" disabled="">
+                            <option  value="100">Seleccione. . .</option>
+                            <option  value="1">EXAMEN ORDINARIO</option>
+                            <option  value="2">DEPORTISTA CALIFICADO</option>
+                            <option  value="3">PRIMEROS PUESTOS</option>
+                            <option  value="4">INGRESANTE CPU</option>
+                            <option  value="5">CAMBIO DE UNIVERSIDAD</option>
+                            <option  value="6">GRADUADOS O TITULADOS</option>
+                            <option  value="7">5TO DE SECUNDARIA</option>
+                            <option  value="8">OTRO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtTipoColegioPacienteHistoriaPsicologica">TIPO DE COLEGIO</label>
+                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtTipoColegioPacienteHistoriaPsicologica" disabled="">
+                            <option   value="-1">Seleccione. . .</option>
+                            <option   value="1">NACIONAL</option>
+                            <option  value="2">PARTICULAR</option>
+                            <option  value="3">OTRO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtEstadoCivilPacienteHistoriaPsicologica">ESTADO CIVIL</label>
+                        <select  class="form-control form-control-sm sisbu-cursor-mano" id="txtEstadoCivilPacienteHistoriaPsicologica" disabled="">
+                            <option  value="-1">Seleccionar...</option>
+                            <option  value="1">SOLTERO(A)</option>
+                            <option  value="2">CASADO(A)</option>
+                            <option  value="3">DIVORCIADO(A)</option>
+                            <option  value="4">VIUDO(A)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtCodigoPacienteHistoriaPsicologica">CÓDIGO
+                        </label>
+                        <input  type="text" class="form-control form-control-sm" id="txtCodigoPacienteHistoriaPsicologica" placeholder="" maxlength="7" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtNumeroDocumentoPacienteHistoriaPsicologica">N° DOCUMENTO</label>
+                        <input  type="text" class="form-control form-control-sm" id="txtNumeroDocumentoPacienteHistoriaPsicologica" placeholder="" maxlength="8" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtApPaternoPacienteHistoriaPsicologica">AP. PATERNO</label>
+                        <input  type="text" class="form-control form-control-sm" id="txtApPaternoPacienteHistoriaPsicologica" placeholder="" maxlength="45" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtApMaternoPacienteHistoriaPsicologica">AP. MATERNO</label>
+                        <input  type="text" class="form-control form-control-sm" id="txtApMaternoPacienteHistoriaPsicologica" placeholder="" maxlength="45" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtNombrePacienteHistoriaPsicologica">NOMBRES</label>
+                        <input  type="text" class="form-control form-control-sm" id="txtNombrePacienteHistoriaPsicologica" placeholder="" maxlength="45" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtSexoPacienteHistoriaPsicologica">SEXO</label>
+                        <select  class="form-control form-control-sm" id="txtSexoPacienteHistoriaPsicologica" disabled="">
+                            <option value="-1">Seleccione. . .</option>
+                            <option value="1">MASCULINO</option>
+                            <option  value="2">FEMENINO</option>
+                            <option  value="3">OTRO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mb-3">
+                    <label for="txtFechaNacPacienteHistoriaPsicologica">FECHA DE NACIMIENTO</label>
+                    <div class="input-group">
+                        <input  type="text" class="form-control form-control-sm" id="txtFechaNacPacienteHistoriaPsicologica" placeholder="DD/MM/AAAA" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="form-group">
+                        <label for="txtCelularPacienteHistoriaPsicologica">CELULAR</label>
+                        <input  type="number" class="form-control form-control-sm" id="txtCelularPacienteHistoriaPsicologica" placeholder="" maxlength="9" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="txtEmailPacienteHistoriaPsicologica">EMAIL</label>
+                        <input  type="email" class="form-control form-control-sm" id="txtEmailPacienteHistoriaPsicologica" placeholder="" maxlength="100" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-12 mb-3">
+                    <label for="txtEscuelaPacienteHistoriaPsicologica">ESCUELA
+                    </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtEscuelaPacienteHistoriaPsicologica" aria-describedby="nombre" placeholder="" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12 mb-3">
+                    <label for="txtDistritoActualPacienteHistoriaPsicologica">DISTRITO ACTUAL</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtDistritoActualPacienteHistoriaPsicologica" aria-describedby="nombre" placeholder="" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-12 mb-3">
+                    <div class="form-group">
+                        <label for="txtDireccionActualPacienteHistoriaPsicologica">DIRECCIÓN ACTUAL
+                        </label>
+                        <input  type="text" class="form-control form-control-sm" id="txtDireccionActualPacienteHistoriaPsicologica" placeholder="" maxlength="80" disabled="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12 mb-3">
+                    <label for="txtDistritoProcedenciaPacienteHistoriaPsicologica">DISTRITO PROCEDENCIA</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtDistritoProcedenciaPacienteHistoriaPsicologica" aria-describedby="nombre" placeholder="" disabled="">
+                    </div>
+                </div>
+                <div class=col-lg-8 col-12 mb-3">
+                    <div class="form-group">
+                        <label for="txtDireccionProcePacienteHistoriaPsicologica">DIRECCIÓN PROCEDENCIA
+                        </label>
+                        <input  type="text" class="form-control form-control-sm" id="txtDireccionProcePacienteHistoriaPsicologica" placeholder="" maxlength="80" disabled="">
+                    </div>
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="txtCicloAcademicoPacienteHistoriaPsicologica">CICLO ACADÉMICO INGRESO
+                    </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtCicloAcademicoPacienteHistoriaPsicologica" aria-describedby="nombre" placeholder="" disabled="">
+                    </div>
+                </div>
+                <!--Datos de Historia Psicologica-->
+                <div class="col-12 mb-2">
+                    <label for="txtPersonal">PSICOLOGO(A)</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" id="txtPersonal" aria-describedby="nombre" placeholder="Click en el botón para seleccionar. . ." disabled="">
+                        <div class="input-group-append">
+                            <button type="button" id="btnSeleccionarPersonal" class="btn btn-primary btn-sm"><i class="icon icon-subscribe"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="txtMotivoDeConsulta">
+                            Motivo de Consulta
+                        </label>
+                        <textarea class="form-control" id="txtMotivoDeConsulta" placeholder="" maxlength="500" rows="4">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <h5 class="text-success">Observaciones Generales</h5>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="txtObservacionesGeneralesFisicas">
+                            Fisicas
+                        </label>
+                        <textarea class="form-control" id="txtObservacionesGeneralesFisicas" placeholder="" maxlength="500" rows="4">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="txtObservacionesGeneralesConductuales">
+                            Conductuales
+                        </label>
+                        <textarea class="form-control" id="txtObservacionesGeneralesConductuales" placeholder="" maxlength="500" rows="4">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <h5 class="text-success">Otros Datos</h5>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="txtProblemaActual">
+                            Problema Actual
+                        </label>
+                        <textarea class="form-control" id="txtProblemaActual" placeholder="" maxlength="800" rows="5">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="txtTecnicasYPruebasAplicadas">
+                            Tecnicas y Pruebas Aplicadas
+                        </label>
+                        <textarea class="form-control" id="txtTecnicasYPruebasAplicadas" placeholder="" maxlength="800" rows="5">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="txtApreciacionDiagnostica">
+                            Aprecicion Diagnostica
+                        </label>
+                        <textarea class="form-control" id="txtApreciacionDiagnostica" placeholder="" maxlength="500" rows="5">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="txtRecomendaciones">
+                            Recomendaciones
+                        </label>
+                        <textarea class="form-control" id="txtRecomendaciones" placeholder="" maxlength="800" rows="5">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="col-12 text-right">
+                    <button class="btn btn-primary btn-xs" id="btn-save-historia-psicologica"><i class="fa fa-save"></i> GUARDAR</button>
+                </div>
+            </div>
 
-    <!-- Tab FICHA SEGUIMIENTO -->
-    <div class="row justify-content-center" id="row-ficha-seguimiento" style="display: none">
-        <div class="col-12">
-            <h4>Ficha de Seguimiento</h4>
+            <div class="row mt-2" id="row-plan-intervencion" style="display: none">
+                <div class="col-lg-9 col-sm-8 col-12">
+                    <h4 class="text-primary mb-0">Plan de Intervencion</h4>
+                </div>
+                <div class="col-lg-3 col-sm-4 col-12 text-right mb-1">
+                    <button class="btn btn-primary btn-xs" id="btnAddSesionPsicologica"><i class="icon icon-plus"></i></button>
+                </div>
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead class="bg-primary" style="line-height: 1.0;">
+                                <tr>
+                                    <th class="text-uppercase text-white pt-3" scope="col" style="font-weight: 500;width: 10%">N° SESION</th>
+                                    <th class="text-uppercase text-white pt-3" scope="col" style="font-weight: 500;">OBJECITOS</th>
+                                    <th class="text-uppercase text-white pt-3" scope="col" style="font-weight: 500;">TECNICAS</th>
+                                    <th class="text-uppercase text-white pt-3" scope="col" style="font-weight: 500;width: 15%">ESTADO</th>
+                                </tr>
+                            </thead>
+                            <tbody class="overflow-auto" id="tbodySesionPsicologica">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-12 text-center">
+        <div class="col-12 text-center mt-2">
             <button class="btn btn-primary btn-xs btn-close-option-manager-paciente-selected"><i class="icon icon-reply"></i> Regresar</button>
         </div>
     </div>
@@ -1012,6 +1223,112 @@
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
                         Procesando solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL CARGANDO HISTORIA PSICOLOGICA -->
+<div class="modal fade" id="modalCargandoHistoriaPsicologica" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" style="padding-top: 18%; overflow-y: visible; display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                        Procesando solicitud. . .
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--T: PERSONAL SELECTED-->
+<div id="ventanaModalSelectedPersonal" class="modal" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false" style="padding-top: 1%; overflow-y: visible;background-color: rgba(0,0,0,.2)">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-color: #0085c1; border-width: 4px;">
+            <div class="modal-header">
+                <h5 class="mb-0" id="titleManagerPersonal"><strong>[ 0 ]
+                        PERSONAL</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-0 pt-0">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="hidden" id="pagePersonal"
+                               value="1">
+                        <form id="FrmPersonal">
+                            <div class="row mt-3">
+                                <div class="input-group col-12">
+                                    <input type="text" id="txtFilterPersonal"
+                                           class="form-control form-control-sm mr-3" placeholder="INGRESE FILTRO . . .">
+                                    <button type="submit" id="btnBuscarPersonal"
+                                            class="btn btn-primary btn-xs" data-toggle="tooltip"
+                                            title="Buscar Pregunta"><i class="fa fa-search" aria-hidden="true"></i>
+                                        BUSCAR</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row pl-5 pr-5 mb-2">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-fluid">
+                                    <thead>
+                                        <tr>
+                                            <th class="align-middle text-left">PERSONAL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyPersonal">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2" style="display: none">
+                            <div class="col-sm-4 mt-2">
+                                <select id="sizePagePersonal"
+                                        class="form-control form-control-sm sisbu-cursor-mano combo-paginar">
+                                    <option value="7">07</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-8 mt-2">
+                                <nav aria-label="Page navigation">
+                                    <ul id="paginationPersonal"
+                                        class="pagination  justify-content-end">
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary btn-xs" data-dismiss="modal" id="btnCancelSelectionPersonal"><i class="fas fa-ban"></i>
+                    CANCELAR</button>
+                <button type="button" id="btn-selecionar-personal" class="btn btn-primary btn-xs"><i
+                        class="fas fa-check"></i> SELECCIONAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalCargandoSelectedPersonal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;background-color: rgba(0,0,0,.3)">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="progress" style="margin-bottom: 0px;height: 15px;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Cargando personal. . .
                     </div>
                 </div>
             </div>
