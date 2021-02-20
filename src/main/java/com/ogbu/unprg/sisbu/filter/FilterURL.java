@@ -115,7 +115,7 @@ public class FilterURL implements Filter {
 
     private void loaderResources() {
         String version_project = "?v=";
-        version_project += "0.30";
+        version_project += "0.31";
         this.list_resources = new ArrayList<>();
         Resource resource;
 
@@ -144,39 +144,6 @@ public class FilterURL implements Filter {
             "/views/subprojects/index/new/new.js" + version_project
         });
         this.list_resources.add(resource);
-        //DESCARGAS
-        resource = new Resource();
-        resource.setUrl("/downloads");
-        resource.setPath("/views/subprojects/index/download/download.jsp");
-        resource.setScripts(new String[]{
-            "/views/subprojects/index/download/download.js" + version_project
-        });
-        this.list_resources.add(resource);
-        //PROYECTO SISBU - QUE ES
-        resource = new Resource();
-        resource.setUrl("/proyecto-sisbu/que-es");
-        resource.setPath("/views/subprojects/index/proyecto-sisbu/que-es/que-es.jsp");
-        resource.setScripts(new String[]{
-            "/views/subprojects/index/proyecto-sisbu/que-es/que-es.js" + version_project
-        });
-        this.list_resources.add(resource);
-        //PROYECTO SISBU - EQUIPO SISBU
-        resource = new Resource();
-        resource.setUrl("/proyecto-sisbu/equipo");
-        resource.setPath("/views/subprojects/index/proyecto-sisbu/equipo/equipo.jsp");
-        resource.setScripts(new String[]{
-            "/views/subprojects/index/proyecto-sisbu/equipo/equipo.js" + version_project
-        });
-        this.list_resources.add(resource);
-        //PROYECTO SISBU - SER PARTE
-        resource = new Resource();
-        resource.setUrl("/proyecto-sisbu/ser-parte");
-        resource.setPath("/views/subprojects/index/proyecto-sisbu/ser-parte/ser-parte.jsp");
-        resource.setScripts(new String[]{
-            "/views/subprojects/index/proyecto-sisbu/ser-parte/ser-parte.js" + version_project
-        });
-        this.list_resources.add(resource);
-
         /*SUBPROJECT DE REGISTRO*/
         //SIGN UP
         resource = new Resource();
