@@ -137,7 +137,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <div class="form-group">
-                        <label for="txtNumeroDocumentoAtendido">Nï¿½ DOCUMENTO</label>
+                        <label for="txtNumeroDocumentoAtendido">N° DOCUMENTO</label>
                         <input type="text" class="form-control form-control-sm" id="txtNumeroDocumentoAtendido"
                             placeholder="Ingrese nï¿½ documento. . ." maxlength="8">
                     </div>
